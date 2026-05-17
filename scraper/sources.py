@@ -36,14 +36,6 @@ SOURCES = [
         "selector": "h2, h3, p",
     },
     {
-        "name": "Entra (Tech Community Blog)",
-        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity",
-        "cadence": "irregular",
-        "category": "Identity & Access",
-        "rss": None,
-        "selector": "h2, h3, p",
-    },
-    {
         "name": "Teams",
         "url": "https://learn.microsoft.com/en-us/microsoftteams/whats-new-microsoft-teams",
         "cadence": "rolling",
