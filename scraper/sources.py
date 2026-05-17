@@ -52,12 +52,12 @@ SOURCES = [
         "selector": "h2, h3, p",
     },
     {
-        "name": "Windows Autopatch",
-        "url": "https://learn.microsoft.com/en-us/windows/deployment/windows-autopatch/whats-new/windows-autopatch-whats-new-2026",
-        "cadence": "monthly",
-        "category": "Endpoint Management",
-        "rss": None,
-        "selector": "h2, h3, p",
+        "name": "Microsoft Security Blog (Zero Trust)",
+        "url": "https://www.microsoft.com/en-us/security/blog/",
+        "cadence": "rolling",
+        "category": "Security & Compliance",
+        "rss": "https://www.microsoft.com/en-us/security/blog/feed/",
+        "selector": None,
     },
     {
         "name": "Purview",
