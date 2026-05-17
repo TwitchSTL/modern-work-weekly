@@ -526,14 +526,81 @@ details[open] .toc-label::before { content: "▼ "; }
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--color-border);
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   font-size: 0.825rem;
   color: var(--color-text-muted);
 }
 
-.footer-inner { display: flex; flex-direction: column; gap: 0.35rem; }
+.footer-inner { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  font-size: 0.825rem;
+}
+
+.footer-links a:hover { color: var(--color-accent); text-decoration: none; }
+
+.footer-byline { font-size: 0.8rem; }
 
 .footer-disclaimer { font-size: 0.75rem; }
+
+/* ── Taxonomy terms page ─────────────────────────────────────────────── */
+.terms-page { padding: 2rem 0 3rem; }
+
+.terms-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.terms-sub {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.term-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.term-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.15);
+  text-decoration: none;
+}
+
+.term-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.term-count {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
 
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 600px) {

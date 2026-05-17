@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="terms-page">
+  <h1 class="terms-title">{{ .Title }}</h1>
+  <p class="terms-sub">Browse all posts by topic.</p>
+  <div class="terms-grid">
+    {{ range .Data.Terms.Alphabetical }}
+    <a class="term-card" href="{{ .Page.Permalink }}">
+      <span class="term-name">{{ .Page.Title }}</span>
+      <span class="term-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

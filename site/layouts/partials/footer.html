@@ -1,14 +1,16 @@
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p>
-      Modern Work Weekly by {{ .Site.Params.author }} ·
-      <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">LinkedIn</a> ·
-      <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub</a> ·
+    <div class="footer-links">
+      {{ with .Site.Params.linkedin }}
+      <a href="{{ . }}" target="_blank" rel="noopener">LinkedIn ↗</a>
+      {{ end }}
+      {{ with .Site.Params.github }}
+      <a href="{{ . }}" target="_blank" rel="noopener">GitHub ↗</a>
+      {{ end }}
       <a href="/index.xml">RSS</a>
-    </p>
-    <p class="footer-disclaimer">
-      Independent digest. Not affiliated with Microsoft.
-      Updates sourced from official Microsoft documentation portals.
-    </p>
+      <a href="/tags/">Topics</a>
+    </div>
+    <p class="footer-byline">Modern Work Weekly by {{ .Site.Params.author }}</p>
+    <p class="footer-disclaimer">Independent digest. Not affiliated with Microsoft. Updates sourced from official Microsoft documentation portals.</p>
   </div>
 </footer>
