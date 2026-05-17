@@ -27,8 +27,8 @@
     <p class="post-card-desc">{{ . }}</p>
     {{ end }}
     {{ with .Params.tags }}
-    <div class="post-card-tags">
-      {{ range . }}<span class="tag">#{{ . }}</span> {{ end }}
+    <div class="post-card-topics">
+      {{ range . }}<span class="topic-chip">{{ . }}</span>{{ end }}
     </div>
     {{ end }}
     <a class="read-more" href="{{ .Permalink }}">Read digest →</a>
