@@ -9,7 +9,7 @@
 
 <section class="post-list">
   {{ if not .IsHome }}<h2>{{ .Title }}</h2>{{ end }}
-  {{ range where .Pages "Kind" "page" }}
+  {{ range (cond .IsHome (.Site.RegularPages.ByDate.Reverse) (where .Pages "Kind" "page")) }}
   <article class="post-card">
     <div class="post-card-meta">
       <time>{{ .Date.Format "Jan 02, 2006" }}</time>
