@@ -19,9 +19,10 @@ No marketing. No executive summaries. Operational signal only.
 
 - **Endpoint management** — Intune for Windows, macOS, iOS, and Android. Configuration policies, compliance, enrollment, and the PowerShell and Graph API hooks underneath.
 - **Identity & access** — Entra ID, Conditional Access, External MFA, hybrid sync, Privileged Identity Management, and the expanding agent identity model.
-- **Defender for Endpoint & MDO** — XDR updates, attack disruption, identity-based detections, and Defender for Office 365 changes that affect mail flow and threat posture.
-- **Purview** — Sensitivity labels, DLP, Information Protection, Insider Risk Management, and AI data governance as Purview expands into the AI era.
-- **Zero Trust** — Practical changes to Conditional Access, device compliance, Global Secure Access, and identity posture — not framework theory.
+- **Defender for Endpoint** — XDR updates, attack disruption, identity-based detections, vulnerability management, and endpoint security policy changes.
+- **Defender for Office 365 (MDO)** — Anti-phishing, safe links, safe attachments, threat policies, and mail flow changes that affect your tenant's security posture.
+- **Microsoft Purview** — Sensitivity labels, DLP, Information Protection, Insider Risk Management, Communications Compliance, AI data governance, and the expanding Purview compliance surface.
+- **Security & Zero Trust** — Practical Zero Trust posture changes spanning Conditional Access, device compliance, Global Secure Access, Secure Score, and identity hardening — not framework theory.
 - **Licensing** — E3/E5 differences, Business Premium, Business Premium + Defender/Purview Suite Add-On, and Copilot licensing and guardrails before users go live.
 - **AI & Copilot governance** — Agent 365, Shadow AI controls, Copilot guardrails, and the intersection of AI agents and enterprise security policy.
 
