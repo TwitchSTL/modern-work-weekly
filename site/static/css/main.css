@@ -1,11 +1,10 @@
 /* Modern Work Weekly — main.css */
-/* Clean, readable, engineer-appropriate. No gradients. No fluff. */
 
 :root {
-  --color-bg: #0d1117;
+  --color-bg: #080c12;
   --color-surface: #161b22;
   --color-border: #30363d;
-  --color-text: #e6edf3;
+  --color-text: #f0f6fc;
   --color-text-muted: #8b949e;
   --color-accent: #58a6ff;
   --color-accent-hover: #79b8ff;
@@ -45,7 +44,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+html { font-size: 17px; -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--font-sans);
@@ -55,7 +54,35 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
 }
+
+/* ── Ambient background glow ─────────────────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(30, 60, 120, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(20, 40, 90, 0.25) 0%, transparent 65%);
+  pointer-events: none;
+  animation: ambientShift 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambientShift {
+  0%   { opacity: 1; transform: scale(1) translate(0, 0); }
+  50%  { opacity: 0.85; transform: scale(1.04) translate(1%, 1%); }
+  100% { opacity: 1; transform: scale(1) translate(-1%, -0.5%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
+/* Ensure content sits above the glow layer */
+.site-header, main, .site-footer { position: relative; z-index: 1; }
 
 main { flex: 1; }
 
