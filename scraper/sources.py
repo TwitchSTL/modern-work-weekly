@@ -40,8 +40,8 @@ SOURCES = [
         "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity",
         "cadence": "irregular",
         "category": "Identity & Access",
-        "rss": "https://techcommunity.microsoft.com/gxcuf89792/rss/board?board.id=Identity",
-        "selector": None,
+        "rss": None,
+        "selector": "h2, h3, p",
     },
     {
         "name": "Teams",
