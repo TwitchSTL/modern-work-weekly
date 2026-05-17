@@ -37,10 +37,10 @@ SOURCES = [
     },
     {
         "name": "Entra (Tech Community Blog)",
-        "url": "https://techcommunity.microsoft.com/blog/microsoft-entra-blog",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity",
         "cadence": "irregular",
         "category": "Identity & Access",
-        "rss": "https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=&bid=1044&size=10",
+        "rss": "https://techcommunity.microsoft.com/gxcuf89792/rss/board?board.id=Identity",
         "selector": None,
     },
     {
@@ -85,7 +85,7 @@ SOURCES = [
     },
     {
         "name": "Agent 365",
-        "url": "https://techcommunity.microsoft.com/blog/agent-365-blog",
+        "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog",
         "cadence": "monthly",
         "category": "Automation & AI",
         "rss": None,
