@@ -2,36 +2,44 @@
 /* Clean, readable, engineer-appropriate. No gradients. No fluff. */
 
 :root {
-  --color-bg: #ffffff;
-  --color-surface: #f8f8f7;
-  --color-border: #e4e4e0;
-  --color-text: #1a1a1a;
-  --color-text-muted: #6b6b68;
-  --color-accent: #185fa5;
-  --color-accent-hover: #0c447c;
-  --color-badge-ep: #e6f1fb;
-  --color-badge-ep-text: #0c447c;
-  --color-badge-ia: #eeedfe;
-  --color-badge-ia-text: #3c3489;
-  --color-badge-sc: #faece7;
-  --color-badge-sc-text: #712b13;
-  --color-badge-ai: #eaf3de;
-  --color-badge-ai-text: #27500a;
+  --color-bg: #0d1117;
+  --color-surface: #161b22;
+  --color-border: #30363d;
+  --color-text: #e6edf3;
+  --color-text-muted: #8b949e;
+  --color-accent: #58a6ff;
+  --color-accent-hover: #79b8ff;
+  --color-badge-ep: #1c2d3f;
+  --color-badge-ep-text: #79b8ff;
+  --color-badge-ia: #1e1e3a;
+  --color-badge-ia-text: #b392f0;
+  --color-badge-sc: #2a1a1a;
+  --color-badge-sc-text: #f97583;
+  --color-badge-ai: #1a2a1a;
+  --color-badge-ai-text: #85e89d;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --max-width: 740px;
   --radius: 6px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --color-bg: #111110;
-    --color-surface: #1a1a19;
-    --color-border: #2c2c2a;
-    --color-text: #e8e8e4;
-    --color-text-muted: #888780;
-    --color-accent: #85b7eb;
-    --color-accent-hover: #b5d4f4;
+    --color-bg: #ffffff;
+    --color-surface: #f6f8fa;
+    --color-border: #d0d7de;
+    --color-text: #1f2328;
+    --color-text-muted: #656d76;
+    --color-accent: #0969da;
+    --color-accent-hover: #0550ae;
+    --color-badge-ep: #ddf4ff;
+    --color-badge-ep-text: #0550ae;
+    --color-badge-ia: #fbefff;
+    --color-badge-ia-text: #6639ba;
+    --color-badge-sc: #ffebe9;
+    --color-badge-sc-text: #82071e;
+    --color-badge-ai: #dafbe1;
+    --color-badge-ai-text: #116329;
   }
 }
 
@@ -165,6 +173,8 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 
 .post-card-title a { color: var(--color-text); }
 .post-card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+.meta-sep { color: var(--color-border); }
 
 .post-card-desc {
   font-size: 0.9rem;

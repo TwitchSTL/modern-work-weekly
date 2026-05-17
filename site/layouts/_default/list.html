@@ -13,7 +13,10 @@
   <article class="post-card">
     <div class="post-card-meta">
       <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+      <span class="meta-sep">·</span>
+      <span>{{ .ReadingTime }} min read</span>
       {{ with .Params.categories }}
+        <span class="meta-sep">·</span>
         {{ range . }}<span class="cat-badge">{{ . }}</span>{{ end }}
       {{ end }}
     </div>
