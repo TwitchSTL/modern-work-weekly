@@ -1,7 +1,6 @@
 baseURL = "https://ryanarbuckle.dev"
 languageCode = "en-us"
 title = "Modern Work Weekly"
-theme = ""
 
 [params]
   author = "Ryan Arbuckle"
