@@ -20,6 +20,15 @@
     {{ end }}
   </header>
 
+  {{ if .TableOfContents }}
+  <details class="toc-block">
+    <summary class="toc-label">Jump to section</summary>
+    <nav class="toc-nav">
+      {{ .TableOfContents }}
+    </nav>
+  </details>
+  {{ end }}
+
   <div class="post-content">
     {{ .Content }}
   </div>
