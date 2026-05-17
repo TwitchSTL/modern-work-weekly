@@ -1,0 +1,49 @@
+# Caddyfile — Modern Work Weekly
+# Copy to /etc/caddy/Caddyfile on the LXC
+# Then: systemctl reload caddy
+#
+# Replace firstlast.dev with your actual domain.
+# When using Cloudflare Tunnel, Caddy serves on localhost:8080
+# and cloudflared proxies public traffic to it.
+# TLS is handled by Cloudflare — Caddy doesn't need to issue certs.
+
+# ── Local binding (for Cloudflare Tunnel) ───────────────────────────────────
+:8080 {
+    root * /opt/modern-work-weekly/site/public
+    file_server
+
+    # Clean URLs — serve index.html for directory paths
+    try_files {path} {path}/index.html =404
+
+    # Cache static assets
+    @static {
+        path *.css *.js *.png *.jpg *.svg *.ico *.woff2
+    }
+    header @static Cache-Control "public, max-age=31536000, immutable"
+
+    # Security headers
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy strict-origin-when-cross-origin
+        -Server
+    }
+
+    # Gzip
+    encode gzip
+
+    log {
+        output file /var/log/caddy/access.log
+        format json
+    }
+}
+
+# ── Optional: direct HTTPS if you ever want to bypass Cloudflare Tunnel ─────
+# Uncomment and set your domain if not using the tunnel:
+#
+# firstlast.dev {
+#     root * /opt/modern-work-weekly/site/public
+#     file_server
+#     encode gzip
+#     tls your@email.com
+# }

@@ -1,0 +1,376 @@
+/* Modern Work Weekly — main.css */
+/* Clean, readable, engineer-appropriate. No gradients. No fluff. */
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f8f8f7;
+  --color-border: #e4e4e0;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b68;
+  --color-accent: #185fa5;
+  --color-accent-hover: #0c447c;
+  --color-badge-ep: #e6f1fb;
+  --color-badge-ep-text: #0c447c;
+  --color-badge-ia: #eeedfe;
+  --color-badge-ia-text: #3c3489;
+  --color-badge-sc: #faece7;
+  --color-badge-sc-text: #712b13;
+  --color-badge-ai: #eaf3de;
+  --color-badge-ai-text: #27500a;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --max-width: 740px;
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111110;
+    --color-surface: #1a1a19;
+    --color-border: #2c2c2a;
+    --color-text: #e8e8e4;
+    --color-text-muted: #888780;
+    --color-accent: #85b7eb;
+    --color-accent-hover: #b5d4f4;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+a { color: var(--color-accent); text-decoration: none; }
+a:hover { color: var(--color-accent-hover); text-decoration: underline; }
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+  z-index: 10;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-title {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.site-title-main {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.site-title-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.site-nav a {
+  color: var(--color-text-muted);
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* ── Hero ────────────────────────────────────────────────────────────── */
+.hero {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin-bottom: 0.25rem;
+}
+
+.hero-byline {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Post list ───────────────────────────────────────────────────────── */
+.post-list { padding: 1rem 0 3rem; }
+
+.post-card {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 0;
+}
+
+.post-card:last-child { border-bottom: none; }
+
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.post-card-title {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.post-card-title a { color: var(--color-text); }
+.post-card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+.post-card-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.post-card-tags { margin-bottom: 0.6rem; }
+
+.read-more {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ── Post single ─────────────────────────────────────────────────────── */
+.post { padding: 2rem 0 3rem; }
+
+.post-header { margin-bottom: 2rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.25rem; }
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.post-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.post-description {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.post-tags .tag { margin-right: 0.25rem; }
+
+/* ── Post content ────────────────────────────────────────────────────── */
+.post-content h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.post-content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 1.25rem 0 0.4rem;
+}
+
+.post-content p { margin-bottom: 1rem; }
+
+.post-content ul, .post-content ol {
+  margin: 0.5rem 0 1rem 1.25rem;
+}
+
+.post-content li { margin-bottom: 0.35rem; }
+
+.post-content code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+}
+
+.post-content pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.post-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.post-content blockquote {
+  border-left: 3px solid var(--color-border);
+  margin: 1rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.post-content hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+.post-content th, .post-content td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.post-content th {
+  background: var(--color-surface);
+  font-weight: 500;
+}
+
+/* ── Badges ──────────────────────────────────────────────────────────── */
+.cat-badge, .tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.cat-badge {
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.tag {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+/* ── Post footer ─────────────────────────────────────────────────────── */
+.post-footer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.share-block {
+  margin-bottom: 1.25rem;
+}
+
+.share-block p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.share-btn {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+.share-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  gap: 1rem;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 1.5rem 0;
+  font-size: 0.825rem;
+  color: var(--color-text-muted);
+}
+
+.footer-inner { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.footer-disclaimer { font-size: 0.75rem; }
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .post-title { font-size: 1.3rem; }
+  .hero h1 { font-size: 1.5rem; }
+  .site-nav { gap: 0.75rem; flex-wrap: wrap; }
+}

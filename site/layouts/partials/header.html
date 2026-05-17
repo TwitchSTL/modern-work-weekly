@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-title" href="/">
+      <span class="site-title-main">Modern Work Weekly</span>
+      <span class="site-title-sub">{{ .Site.Params.subtitle }}</span>
+    </a>
+    <nav class="site-nav">
+      {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}" {{ if eq $.RelPermalink .URL }}class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+      {{ with .Site.Params.linkedin }}
+      <a href="{{ . }}" target="_blank" rel="noopener" class="nav-external">LinkedIn ↗</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

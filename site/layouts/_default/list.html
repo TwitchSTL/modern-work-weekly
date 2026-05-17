@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ if .IsHome }}
+<section class="hero">
+  <h1>Modern Work Weekly</h1>
+  <p class="hero-sub">{{ .Site.Params.description }}</p>
+  <p class="hero-byline">{{ .Site.Params.subtitle }}</p>
+</section>
+{{ end }}
+
+<section class="post-list">
+  {{ if not .IsHome }}<h2>{{ .Title }}</h2>{{ end }}
+  {{ range .Pages }}
+  <article class="post-card">
+    <div class="post-card-meta">
+      <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+      {{ with .Params.categories }}
+        {{ range . }}<span class="cat-badge">{{ . }}</span>{{ end }}
+      {{ end }}
+    </div>
+    <h2 class="post-card-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+    {{ with .Description }}
+    <p class="post-card-desc">{{ . }}</p>
+    {{ end }}
+    {{ with .Params.tags }}
+    <div class="post-card-tags">
+      {{ range . }}<span class="tag">#{{ . }}</span> {{ end }}
+    </div>
+    {{ end }}
+    <a class="read-more" href="{{ .Permalink }}">Read digest →</a>
+  </article>
+  {{ end }}
+</section>
+{{ end }}

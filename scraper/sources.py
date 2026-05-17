@@ -1,0 +1,135 @@
+"""
+sources.py — Microsoft portal source definitions for the scraper.
+
+Each source has:
+  - name: display name
+  - url: the "What's New" or release notes page
+  - cadence: how often it updates
+  - category: default classification bucket
+  - rss: RSS feed URL if available (preferred over HTML scraping)
+  - selector: CSS selector for HTML fallback (if no RSS)
+"""
+
+SOURCES = [
+    {
+        "name": "Intune",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "cadence": "weekly",
+        "category": "Endpoint Management",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Defender XDR",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "cadence": "monthly",
+        "category": "Security & Compliance",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Entra ID",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "cadence": "irregular",
+        "category": "Identity & Access",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Entra (Tech Community Blog)",
+        "url": "https://techcommunity.microsoft.com/blog/microsoft-entra-blog",
+        "cadence": "irregular",
+        "category": "Identity & Access",
+        "rss": "https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=&bid=1044&size=10",
+        "selector": None,
+    },
+    {
+        "name": "Teams",
+        "url": "https://learn.microsoft.com/en-us/microsoftteams/whats-new-microsoft-teams",
+        "cadence": "rolling",
+        "category": "Collaboration & Productivity",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Windows Autopatch",
+        "url": "https://learn.microsoft.com/en-us/windows/deployment/windows-autopatch/whats-new/windows-autopatch-whats-new-2026",
+        "cadence": "monthly",
+        "category": "Endpoint Management",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Purview",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "cadence": "monthly",
+        "category": "Security & Compliance",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "SharePoint / OneDrive",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/whatsnew",
+        "cadence": "rolling",
+        "category": "Collaboration & Productivity",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Microsoft 365 Roadmap",
+        "url": "https://www.microsoft.com/en-us/microsoft-365/roadmap",
+        "cadence": "rolling",
+        "category": "Cross-platform",
+        "rss": "https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS",
+        "selector": None,
+    },
+    {
+        "name": "Agent 365",
+        "url": "https://techcommunity.microsoft.com/blog/agent-365-blog",
+        "cadence": "monthly",
+        "category": "Automation & AI",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
+]
+
+# Classification keywords — used to override default source category
+CLASSIFICATION_KEYWORDS = {
+    "Endpoint Management": [
+        "intune", "autopatch", "mdm", "enrollment", "compliance policy",
+        "configuration profile", "remediation", "hotpatch", "windows update",
+        "lxc", "endpoint", "device management", "managed device", "linux", "macos",
+        "android enterprise", "apple", "tvos", "visionos",
+    ],
+    "Identity & Access": [
+        "entra", "azure ad", "conditional access", "mfa", "passwordless",
+        "passkey", "sso", "saml", "oauth", "identity", "authentication",
+        "hard-match", "cloud sync", "connect sync", "privileged", "pim",
+        "lifecycle workflows", "external mfa", "global secure access",
+    ],
+    "Security & Compliance": [
+        "defender", "purview", "dlp", "sentinel", "attack disruption",
+        "predictive shielding", "secure score", "vulnerability", "threat",
+        "incident", "hunting", "xdr", "siem", "dspm", "insider risk",
+        "information protection", "data loss", "compliance", "secure boot",
+    ],
+    "Collaboration & Productivity": [
+        "teams", "sharepoint", "onedrive", "outlook", "copilot", "calendar",
+        "meeting", "channel", "viva", "loop", "planner", "yammer",
+        "forms", "power automate", "power apps", "ai charts",
+    ],
+    "Automation & AI": [
+        "graph api", "powershell", "rest api", "automation", "agent",
+        "copilot studio", "agent 365", "shadow ai", "ai gateway",
+        "prompt injection", "llm", "generative ai", "logic app", "workflow",
+        "api", "sdk", "webhook", "power automate",
+    ],
+}
+
+# Rollout phase keywords
+PHASE_KEYWORDS = {
+    "Preview": ["preview", "public preview", "private preview", "beta", "in development"],
+    "GA": ["generally available", "now available", "ga", "released"],
+    "Targeted": ["targeted release", "targeted rollout", "first release"],
+    "Broad": ["broad deployment", "full rollout", "all tenants", "worldwide"],
+}

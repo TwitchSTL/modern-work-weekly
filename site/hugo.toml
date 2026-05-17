@@ -1,0 +1,46 @@
+baseURL = "https://ryanarbuckle.dev"
+languageCode = "en-us"
+title = "Modern Work Weekly"
+theme = ""
+
+[params]
+  author = "Ryan Arbuckle"
+  description = "Weekly Microsoft 365 and Modern Work change digest for engineers, architects, and admins."
+  subtitle = "by Ryan Arbuckle"
+  github = "https://github.com/TwitchSTL"
+  linkedin = "https://linkedin.com/in/yourhandle"
+  keywords = ["Microsoft 365", "Intune", "Entra", "Defender", "Modern Work", "IT Admin"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.highlight]
+    style = "github"
+    lineNos = false
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[params.rss]
+  enabled = true
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Archive"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3

@@ -1,0 +1,51 @@
+name: Build and deploy Hugo site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.128.0"
+          extended: false
+
+      - name: Build site
+        run: |
+          cd site
+          hugo --minify --baseURL "https://RyanArbuckle.dev"
+
+      - name: Copy CSS to public
+        run: |
+          mkdir -p site/public/css
+          cp site/assets/css/main.css site/public/css/main.css
+
+      - name: Deploy to homelab via rsync
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avz --delete
+          path: site/public/
+          remote_path: /opt/modern-work-weekly/site/public/
+          remote_host: ${{ secrets.HOMELAB_HOST }}
+          remote_user: ${{ secrets.HOMELAB_USER }}
+          remote_key: ${{ secrets.HOMELAB_SSH_KEY }}
+
+# ── Required GitHub Secrets ─────────────────────────────────────────────────
+# HOMELAB_HOST    — IP or hostname of your LXC (10.127.31.35 or via Cloudflare)
+# HOMELAB_USER    — SSH user on the LXC (e.g. mww or deploy)
+# HOMELAB_SSH_KEY — Private SSH key (the LXC's authorized_keys holds the public key)
+#
+# Set these at: GitHub repo → Settings → Secrets and variables → Actions

@@ -1,0 +1,34 @@
+# tunnel.yml — Cloudflare Tunnel configuration
+# Copy to /etc/cloudflared/config.yml on the LXC
+# Replace YOUR_TUNNEL_ID with the ID from: cloudflared tunnel create modern-work-weekly
+#
+# Full setup:
+#   cloudflared tunnel login
+#   cloudflared tunnel create modern-work-weekly
+#   cloudflared tunnel route dns modern-work-weekly ryanarbuckle.dev
+#   cloudflared tunnel route dns modern-work-weekly www.ryanarbuckle.dev
+#   cp tunnel.yml /etc/cloudflared/config.yml
+#   cloudflared service install
+#   systemctl start cloudflared
+
+tunnel: YOUR_TUNNEL_ID
+credentials-file: /root/.cloudflared/YOUR_TUNNEL_ID.json
+
+ingress:
+  # Main site
+  - hostname: ryanarbuckle.dev
+    service: http://localhost:8080
+
+  # www redirect
+  - hostname: www.ryanarbuckle.dev
+    service: http://localhost:8080
+
+  # Catch-all (required by cloudflared)
+  - service: http_status:404
+
+# Notes:
+# - Caddy listens on :8080 (see Caddyfile)
+# - Cloudflare handles TLS termination — traffic from CF to your LXC is HTTP
+# - Your home IP is never exposed — all traffic routes through Cloudflare's network
+# - Free Cloudflare plan is sufficient for this use case
+# - Enable "Under Attack Mode" in CF dashboard if you ever get hammered

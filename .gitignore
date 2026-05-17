@@ -1,0 +1,31 @@
+# State — stays on LXC only, never pushed
+state/seen_items.json
+state/weekly_draft_*.json
+
+# Secrets
+.env
+*.env
+secrets/
+cloudflare_token.txt
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Hugo build output — GitHub Action rebuilds this
+site/public/
+site/resources/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
