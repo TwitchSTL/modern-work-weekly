@@ -262,7 +262,7 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
   border-radius: var(--radius);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   padding: 0;
 }
 
