@@ -3,6 +3,8 @@ title: "About"
 date: 2026-05-10
 description: "What Modern Work Weekly is, what it covers, and who it's for."
 draft: false
+_build:
+  list: never
 ---
 
 ## What this is
