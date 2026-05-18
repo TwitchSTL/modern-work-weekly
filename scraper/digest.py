@@ -48,6 +48,7 @@ Your output must be valid Hugo-flavored Markdown with YAML front matter. Be dire
 Format rules:
 - Front matter: title, date, description (1 punchy sentence), tags (lowercase, relevant topics), categories (from the standard list)
 - Top 5 section: the 5 most important changes this week with a brief why-it-matters for each
+- Title format must be exactly: "Modern Work Weekly — Week of YYYY-MM-DD"
 - Per-category sections: h2 headings, bullet points per item, bold the item title, include phase tag (GA/Preview/etc)
 - Action Required section: any items with deadlines or required admin steps, with dates
 - End with a {{< sources >}} shortcode listing the source URLs

@@ -155,11 +155,23 @@ def fetch_html(source: dict) -> list[dict]:
     if not article:
         return []
 
+    # Patterns that indicate page navigation / boilerplate, not real update content
+    NOISE_TITLES = {
+        "in this article", "feedback", "additional resources", "next steps",
+        "prerequisites", "see also", "related articles", "overview",
+        "current version", "tip", "note", "important", "warning",
+    }
+
     # Walk h2/h3 headings — each becomes a potential item
     headings = article.find_all(["h2", "h3"])
     for heading in headings[:25]:
         title = heading.get_text(strip=True)
         if len(title) < 10:
+            continue
+        if title.lower() in NOISE_TITLES:
+            continue
+        # Skip "Week of ..." date headings — they're section separators, not items
+        if title.lower().startswith("week of ") or title.lower().startswith("month of "):
             continue
         # Collect following paragraphs until next heading
         body_parts = []
