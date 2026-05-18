@@ -51,7 +51,7 @@ modern-work-weekly/
 │   ├── SETUP.md              # Full setup guide (LXC → live site)
 │   ├── WEEKLY_WORKFLOW.md    # What you do every Monday
 │   ├── PHASE2_API.md         # Upgrade path to fully automated pipeline
-│   └── DNS_NEXTDNS.md        # Replacing Pi-hole with NextDNS
+│   └── DNS_NEXTDNS.md        
 │
 ├── .github/
 │   └── workflows/
