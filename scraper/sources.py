@@ -38,7 +38,7 @@ SOURCES = [
     },
     {
         "name": "Teams",
-        "url": "https://learn.microsoft.com/en-us/microsoftteams/whats-new-microsoft-teams",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
         "cadence": "rolling",
         "category": "Collaboration & Productivity",
         "rss": None,
@@ -62,7 +62,7 @@ SOURCES = [
     },
     {
         "name": "SharePoint / OneDrive",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/whatsnew",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/sync-release-notes",
         "cadence": "rolling",
         "category": "Collaboration & Productivity",
         "rss": None,
@@ -114,8 +114,8 @@ SOURCES = [
         "health": True,
     },
     {
-        "name": "Entra ID Troubleshooting",
-        "url": "https://learn.microsoft.com/en-us/troubleshoot/entra/entra-id/welcome-entra-id",
+        "name": "Entra ID Known Issues",
+        "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
         "rss": None,
