@@ -62,7 +62,7 @@ SOURCES = [
     },
     {
         "name": "SharePoint / OneDrive",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/sync-release-notes",
+        "url": "https://learn.microsoft.com/en-us/SharePoint/what-s-new-in-sharepoint",
         "cadence": "rolling",
         "category": "Collaboration & Productivity",
         "rss": None,
