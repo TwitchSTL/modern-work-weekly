@@ -7,6 +7,8 @@
 </section>
 {{ end }}
 
+{{ if .IsHome }}{{ partial "health-card.html" . }}{{ end }}
+
 <section class="post-list">
   {{ if not .IsHome }}<h2>{{ .Title }}</h2>{{ end }}
   {{ range (cond .IsHome (.Site.RegularPages.ByDate.Reverse) (where .Pages "Kind" "page")) }}

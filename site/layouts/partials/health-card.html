@@ -1,0 +1,30 @@
+{{ with .Site.Data.health }}
+<aside class="health-card">
+  <div class="health-card-header">
+    <span class="health-card-title">Recent Alerts &amp; Known Issues</span>
+    <a class="health-status-link" href="{{ .status_url }}" target="_blank" rel="noopener">
+      Live Service Health ↗
+    </a>
+  </div>
+
+  {{ if gt (len .items) 0 }}
+  <ul class="health-item-list">
+    {{ range first 6 .items }}
+    <li class="health-item">
+      <span class="health-item-source">{{ .source }}</span>
+      <a class="health-item-title" href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  <p class="health-empty">No known issues at this time. Check <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
+  {{ end }}
+
+  <div class="health-card-footer">
+    <span class="health-updated">Last scraped: {{ .updated }}</span>
+    {{ if gt .item_count 6.0 }}
+    <span class="health-more">{{ .item_count | int }} items total</span>
+    {{ end }}
+  </div>
+</aside>
+{{ end }}

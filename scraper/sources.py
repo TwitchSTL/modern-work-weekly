@@ -8,6 +8,7 @@ Each source has:
   - category: default classification bucket
   - rss: RSS feed URL if available (preferred over HTML scraping)
   - selector: CSS selector for HTML fallback (if no RSS)
+  - health: True if this is a known-issues/service-health source (routed separately)
 """
 
 SOURCES = [
@@ -82,6 +83,44 @@ SOURCES = [
         "category": "Automation & AI",
         "rss": None,
         "selector": "h2, h3, p",
+    },
+    # ── Service Health & Known Issues ──────────────────────────────────────────
+    # health=True sources are routed to site/data/health.json, not the weekly draft
+    {
+        "name": "Intune Known Issues",
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues",
+        "cadence": "rolling",
+        "category": "Service Health & Known Issues",
+        "rss": None,
+        "selector": "h2, h3, p",
+        "health": True,
+    },
+    {
+        "name": "Defender XDR Service Issues",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot",
+        "cadence": "rolling",
+        "category": "Service Health & Known Issues",
+        "rss": None,
+        "selector": "h2, h3, p",
+        "health": True,
+    },
+    {
+        "name": "Purview Known Issues",
+        "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues",
+        "cadence": "rolling",
+        "category": "Service Health & Known Issues",
+        "rss": None,
+        "selector": "h2, h3, p",
+        "health": True,
+    },
+    {
+        "name": "Entra ID Troubleshooting",
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/entra/entra-id/welcome-entra-id",
+        "cadence": "rolling",
+        "category": "Service Health & Known Issues",
+        "rss": None,
+        "selector": "h2, h3, p",
+        "health": True,
     },
 ]
 

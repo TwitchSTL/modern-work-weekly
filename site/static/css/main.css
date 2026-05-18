@@ -523,6 +523,102 @@ details[open] .toc-label::before { content: "▼ "; }
   gap: 1rem;
 }
 
+/* ── Health Card ─────────────────────────────────────────────────────── */
+.health-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid #f78166;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem 1rem;
+  margin: 0 0 2rem;
+}
+
+.health-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.health-card-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #f78166;
+}
+
+.health-status-link {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.health-status-link:hover { text-decoration: underline; }
+
+.health-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.health-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.health-item-source {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.1em 0.45em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.health-item-title {
+  color: var(--color-text);
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.health-item-title:hover { color: var(--color-accent); }
+
+.health-empty {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.75rem;
+}
+.health-empty a { color: var(--color-accent); }
+
+.health-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.health-more {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--color-border);

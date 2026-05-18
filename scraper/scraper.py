@@ -34,9 +34,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATE_DIR = BASE_DIR / "state"
 STATE_FILE = STATE_DIR / "seen_items.json"
 LOG_DIR = BASE_DIR / "logs"
+HEALTH_DATA_FILE = BASE_DIR / "site" / "data" / "health.json"
 
 STATE_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
+(BASE_DIR / "site" / "data").mkdir(parents=True, exist_ok=True)
 
 # ── Logging ─────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -200,6 +202,27 @@ def enrich_item(raw: dict) -> dict:
     }
 
 
+def write_health_data(health_items: list[dict]):
+    """Write health/known-issues items to site/data/health.json for Hugo."""
+    payload = {
+        "updated": datetime.now(timezone.utc).date().isoformat(),
+        "status_url": "https://status.cloud.microsoft",
+        "item_count": len(health_items),
+        "items": [
+            {
+                "source": item["source"],
+                "title": item["title"],
+                "body": item["body"][:300],
+                "url": item["url"],
+            }
+            for item in health_items[:20]  # cap at 20 items for the card
+        ],
+    }
+    with open(HEALTH_DATA_FILE, "w") as f:
+        json.dump(payload, f, indent=2)
+    log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items)")
+
+
 def run_scraper(args):
     state = load_state()
     seen_ids = set(state.get("seen_ids", []))
@@ -214,6 +237,7 @@ def run_scraper(args):
             sys.exit(1)
 
     all_raw = []
+    health_raw = []
     for source in sources_to_run:
         log.info(f"Fetching: {source['name']}")
         try:
@@ -226,12 +250,21 @@ def run_scraper(args):
             raw_items = []
 
         log.info(f"  → {len(raw_items)} raw items fetched.")
-        all_raw.extend(raw_items)
+        if source.get("health"):
+            health_raw.extend(raw_items)
+        else:
+            all_raw.extend(raw_items)
         time.sleep(REQUEST_DELAY)
 
-    # Enrich and dedup
+    # Write health items to site/data/health.json (always overwrite — no dedup needed)
+    if health_raw:
+        health_items = [enrich_item(r) for r in health_raw]
+        write_health_data(health_items)
+    elif any(s.get("health") for s in sources_to_run):
+        log.warning("Health sources returned 0 items — health.json not updated.")
+
+    # Enrich and dedup digest items
     new_items = []
-    updated_items = []
     for raw in all_raw:
         enriched = enrich_item(raw)
         if args.force_all or enriched["id"] not in seen_ids:
