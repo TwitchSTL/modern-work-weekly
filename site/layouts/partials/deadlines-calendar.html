@@ -1,0 +1,16 @@
+{{ with .Site.Data.deadlines }}
+<div class="sidebar-panel calendar-sidebar">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label sidebar-label-calendar">30-Day Deadlines</span>
+  </div>
+
+  <!-- JS builds the calendar grid here -->
+  <div id="deadline-calendar" data-deadlines='{{ .deadlines | jsonify }}'></div>
+
+  <!-- JS builds the upcoming list here -->
+  <div id="deadline-upcoming"></div>
+
+  <div class="sidebar-panel-footer">Updated {{ .updated }}</div>
+</div>
+<script src="/js/calendar.js"></script>
+{{ end }}

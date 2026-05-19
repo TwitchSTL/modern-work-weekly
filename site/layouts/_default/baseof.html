@@ -23,7 +23,7 @@
 </head>
 <body>
   {{ partial "header.html" . }}
-  <main class="{{ if and .IsPage (in .File.Path "posts") }}main-wide{{ else }}container{{ end }}">
+  <main class="{{ if or .IsHome (and .IsPage (in .File.Path "posts")) }}main-wide{{ else }}container{{ end }}">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}

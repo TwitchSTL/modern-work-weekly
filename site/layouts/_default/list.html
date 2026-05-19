@@ -1,17 +1,58 @@
 {{ define "main" }}
 {{ if .IsHome }}
-<section class="hero">
-  <h1>Modern Work Weekly</h1>
-  <p class="hero-sub">{{ .Site.Params.description }}</p>
-  <p class="hero-byline">{{ .Site.Params.subtitle }}</p>
-</section>
-{{ end }}
 
-{{ if .IsHome }}{{ partial "health-card.html" . }}{{ end }}
+<div class="post-layout home-layout">
+
+  <!-- Left sidebar: Known Issues -->
+  <aside class="post-sidebar post-sidebar-left">
+    {{ partial "health-sidebar.html" . }}
+  </aside>
+
+  <!-- Center: hero + post list -->
+  <div class="home-center">
+    <section class="hero">
+      <h1>Modern Work Weekly</h1>
+      <p class="hero-sub">{{ .Site.Params.description }}</p>
+      <p class="hero-byline">{{ .Site.Params.subtitle }}</p>
+    </section>
+
+    <section class="post-list">
+      {{ range .Site.RegularPages.ByDate.Reverse }}
+      <article class="post-card">
+        <div class="post-card-meta">
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+          <span class="meta-sep">·</span>
+          <span>{{ .ReadingTime }} min read</span>
+        </div>
+        <h2 class="post-card-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+        {{ with .Description }}
+        <p class="post-card-desc">{{ . }}</p>
+        {{ end }}
+        {{ with .Params.tags }}
+        <div class="post-card-topics">
+          {{ range . }}<a class="topic-chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>{{ end }}
+        </div>
+        {{ end }}
+        <a class="read-more" href="{{ .Permalink }}">Read digest →</a>
+      </article>
+      {{ end }}
+    </section>
+  </div>
+
+  <!-- Right sidebar: 30-day deadline calendar -->
+  <aside class="post-sidebar post-sidebar-right">
+    {{ partial "deadlines-calendar.html" . }}
+  </aside>
+
+</div>
+
+{{ else }}
 
 <section class="post-list">
-  {{ if not .IsHome }}<h2>{{ .Title }}</h2>{{ end }}
-  {{ range (cond .IsHome (.Site.RegularPages.ByDate.Reverse) (where .Pages "Kind" "page")) }}
+  <h2>{{ .Title }}</h2>
+  {{ range where .Pages "Kind" "page" }}
   <article class="post-card">
     <div class="post-card-meta">
       <time>{{ .Date.Format "Jan 02, 2006" }}</time>
@@ -24,13 +65,10 @@
     {{ with .Description }}
     <p class="post-card-desc">{{ . }}</p>
     {{ end }}
-    {{ with .Params.tags }}
-    <div class="post-card-topics">
-      {{ range . }}<a class="topic-chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>{{ end }}
-    </div>
-    {{ end }}
     <a class="read-more" href="{{ .Permalink }}">Read digest →</a>
   </article>
   {{ end }}
 </section>
+
+{{ end }}
 {{ end }}
