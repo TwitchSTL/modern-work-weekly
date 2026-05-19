@@ -1,0 +1,31 @@
+{{ with .Site.Data.health }}
+<div class="sidebar-panel health-sidebar">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label sidebar-label-alert">Known Issues</span>
+    <a class="sidebar-panel-ext" href="{{ .status_url }}" target="_blank" rel="noopener">Live Status ↗</a>
+  </div>
+
+  {{ if gt (len .sources) 0 }}
+    {{ range .sources }}
+    <details class="sidebar-source">
+      <summary class="sidebar-source-summary">
+        <span class="sidebar-source-name">{{ .name }}</span>
+        <span class="sidebar-source-badge">{{ .count }}</span>
+      </summary>
+      <ul class="sidebar-source-items">
+        {{ range .items }}
+        <li class="sidebar-source-item">
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </details>
+    {{ end }}
+    <a class="sidebar-view-all" href="/health/">View all known issues →</a>
+  {{ else }}
+  <p class="sidebar-empty">No known issues at this time</p>
+  {{ end }}
+
+  <div class="sidebar-panel-footer">Scraped {{ .updated }}</div>
+</div>
+{{ end }}

@@ -1,0 +1,32 @@
+{{ with .Site.Data.deadlines }}
+{{ $pillarColors := dict
+  "Identity"              "#a78bfa"
+  "Devices"              "#3fb950"
+  "Apps"                 "#58a6ff"
+  "Data"                 "#f0883e"
+  "Network"              "#39d353"
+  "Visibility & Automation" "#d2a8ff"
+}}
+<div class="sidebar-panel deadlines-sidebar">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label sidebar-label-calendar">Deadlines</span>
+    <span class="sidebar-panel-hint">hover for detail</span>
+  </div>
+
+  {{ if gt (len .deadlines) 0 }}
+    {{ range .deadlines }}
+    {{ $color := index $pillarColors .pillar | default "#6e7681" }}
+    <div class="deadline-item" data-date="{{ .date }}" style="border-left-color: {{ $color }}">
+      <div class="deadline-date">{{ .date }}</div>
+      <div class="deadline-title">{{ .title }}</div>
+      <div class="deadline-pillar" style="color: {{ $color }}">{{ .pillar }}</div>
+      <div class="deadline-action">{{ .action }}</div>
+    </div>
+    {{ end }}
+  {{ else }}
+  <p class="sidebar-empty">No upcoming deadlines</p>
+  {{ end }}
+
+  <div class="sidebar-panel-footer">Updated {{ .updated }}</div>
+</div>
+{{ end }}
