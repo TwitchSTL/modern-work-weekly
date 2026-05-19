@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ with .Site.Data.health }}
+<section class="health-page">
+  <div class="health-page-header">
+    <h1>Known Issues &amp; Service Alerts</h1>
+    <p class="health-page-sub">Current known issues across Microsoft 365 portals. Last scraped: <strong>{{ .updated }}</strong>. For live service health, see <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft ↗</a>.</p>
+  </div>
+
+  {{ if gt (len .sources) 0 }}
+  <div class="health-page-summary">
+    {{ range .sources }}
+    <a class="health-summary-chip" href="#{{ .name | urlize }}">{{ .name }} <span class="chip-count">{{ .count }}</span></a>
+    {{ end }}
+  </div>
+
+  {{ range .sources }}
+  <div class="health-page-source" id="{{ .name | urlize }}">
+    <div class="health-page-source-header">
+      <h2 class="health-page-source-name">{{ .name }}</h2>
+      <a class="health-page-source-link" href="{{ .url }}" target="_blank" rel="noopener">View source ↗</a>
+    </div>
+    <ul class="health-page-item-list">
+      {{ range .items }}
+      <li class="health-page-item">
+        <a class="health-page-item-title" href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
+        {{ with .body }}<p class="health-page-item-body">{{ . }}</p>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  {{ else }}
+  <p class="health-empty">No known issues found on last scrape. Check <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
+  {{ end }}
+</section>
+{{ end }}
+{{ end }}

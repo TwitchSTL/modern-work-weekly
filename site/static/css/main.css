@@ -549,6 +549,12 @@ details[open] .toc-label::before { content: "▼ "; }
   color: #f78166;
 }
 
+.health-card-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
 .health-status-link {
   font-size: 0.8rem;
   color: var(--color-accent);
@@ -557,33 +563,50 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 .health-status-link:hover { text-decoration: underline; }
 
-.health-item-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 0.75rem;
+/* Source groups inside the card */
+.health-source-group {
+  margin-bottom: 0.75rem;
+}
+.health-source-group:last-of-type { margin-bottom: 0; }
+
+.health-source-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
 }
 
-.health-item {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  line-height: 1.4;
-}
-
-.health-item-source {
-  font-size: 0.7rem;
+.health-source-name {
+  font-size: 0.75rem;
   font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.health-source-count {
+  font-size: 0.7rem;
   color: var(--color-text-muted);
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--color-border);
-  border-radius: 3px;
-  padding: 0.1em 0.45em;
-  white-space: nowrap;
-  flex-shrink: 0;
+  border-radius: 10px;
+  padding: 0.1em 0.5em;
+}
+
+.health-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.health-item {
+  font-size: 0.83rem;
+  line-height: 1.4;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-border);
 }
 
 .health-item-title {
@@ -595,6 +618,13 @@ details[open] .toc-label::before { content: "▼ "; }
   -webkit-box-orient: vertical;
 }
 .health-item-title:hover { color: var(--color-accent); }
+
+.health-item-more a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-size: 0.78rem;
+}
+.health-item-more a:hover { text-decoration: underline; }
 
 .health-empty {
   font-size: 0.875rem;
@@ -609,14 +639,105 @@ details[open] .toc-label::before { content: "▼ "; }
   justify-content: space-between;
   gap: 1rem;
   padding-top: 0.75rem;
+  margin-top: 0.75rem;
   border-top: 1px solid var(--color-border);
   font-size: 0.75rem;
   color: var(--color-text-muted);
 }
 
-.health-more {
+/* ── Health Page ─────────────────────────────────────────────────────── */
+.health-page { padding: 1rem 0 3rem; }
+
+.health-page-header { margin-bottom: 1.5rem; }
+.health-page-header h1 { margin-bottom: 0.5rem; }
+.health-page-sub { color: var(--color-text-muted); font-size: 0.9rem; }
+.health-page-sub a { color: var(--color-accent); }
+
+.health-page-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.health-summary-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 0.3em 0.8em;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.health-summary-chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.chip-count {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 0.05em 0.45em;
   font-size: 0.75rem;
   color: var(--color-text-muted);
+}
+
+.health-page-source {
+  margin-bottom: 2.5rem;
+  scroll-margin-top: 4rem;
+}
+
+.health-page-source-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.health-page-source-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f78166;
+  margin: 0;
+}
+
+.health-page-source-link {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.health-page-source-link:hover { text-decoration: underline; }
+
+.health-page-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.health-page-item {
+  border-left: 3px solid var(--color-border);
+  padding-left: 1rem;
+}
+
+.health-page-item-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.health-page-item-title:hover { color: var(--color-accent); }
+
+.health-page-item-body {
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* ── Footer ──────────────────────────────────────────────────────────── */

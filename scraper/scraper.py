@@ -215,24 +215,32 @@ def enrich_item(raw: dict) -> dict:
 
 
 def write_health_data(health_items: list[dict]):
-    """Write health/known-issues items to site/data/health.json for Hugo."""
+    """Write health/known-issues items to site/data/health.json for Hugo.
+
+    Groups items by source so the card and health page can render per-portal sections.
+    """
+    # Group items by source
+    grouped = {}
+    for item in health_items:
+        src = item["source"]
+        if src not in grouped:
+            grouped[src] = {"name": src, "url": item["url"], "count": 0, "items": []}
+        grouped[src]["count"] += 1
+        grouped[src]["items"].append({
+            "title": item["title"],
+            "body": item["body"][:300],
+            "url": item["url"],
+        })
+
     payload = {
         "updated": datetime.now(timezone.utc).date().isoformat(),
         "status_url": "https://status.cloud.microsoft",
-        "item_count": len(health_items),
-        "items": [
-            {
-                "source": item["source"],
-                "title": item["title"],
-                "body": item["body"][:300],
-                "url": item["url"],
-            }
-            for item in health_items[:20]  # cap at 20 items for the card
-        ],
+        "total_count": len(health_items),
+        "sources": list(grouped.values()),
     }
     with open(HEALTH_DATA_FILE, "w") as f:
         json.dump(payload, f, indent=2)
-    log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items)")
+    log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items across {len(grouped)} sources)")
 
 
 def run_scraper(args):
