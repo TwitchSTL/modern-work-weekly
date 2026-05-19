@@ -53,7 +53,10 @@ Format rules:
 - Action Required section: any items with deadlines or required admin steps, with dates
 - End with a {{< sources >}} shortcode listing the source URLs
 
-Standard categories: Endpoint Management, Identity & Access, Security & Compliance, Collaboration & Productivity, Automation & AI
+Categories align to Microsoft Zero Trust pillars — use exactly these names:
+Identity, Devices, Apps, Data, Network, Visibility & Automation
+
+Map content accordingly: Entra/MFA/PIM → Identity; Intune/Autopatch/MDM → Devices; Teams/SharePoint/Copilot features → Apps; Purview/DLP/Sensitivity Labels → Data; Global Secure Access/networking → Network; Defender/SIEM/Graph API/AI agents → Visibility & Automation
 
 Tone: confident, peer-to-peer, no fluff. Write like a senior engineer briefing their team."""
 

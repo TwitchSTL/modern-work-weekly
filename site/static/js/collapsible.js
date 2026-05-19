@@ -5,13 +5,15 @@
  * Category sections: title + item count + preview visible, list expands on click
  */
 
+// Zero Trust pillar colors
 const CATEGORY_COLORS = {
-  'endpoint management':      '#3fb950',
-  'identity & access':        '#a78bfa',
-  'security & compliance':    '#f78166',
-  'collaboration & productivity': '#58a6ff',
-  'automation & ai':          '#39d353',
-  'action required':          '#f0883e',
+  'identity':                  '#a78bfa',  // purple
+  'devices':                   '#3fb950',  // green
+  'apps':                      '#58a6ff',  // blue
+  'data':                      '#f0883e',  // amber
+  'network':                   '#39d353',  // teal
+  'visibility & automation':   '#d2a8ff',  // lavender
+  'action required':           '#ff6b6b',  // red — always stands out
 };
 
 function categoryColor(name) {
@@ -137,6 +139,12 @@ function makeSectionsCollapsible(content) {
 
     details.appendChild(summary);
     siblings.forEach(sib => details.appendChild(sib));
+
+    // Auto-expand Action Required / deadlines sections
+    const titleLower = titleText.toLowerCase();
+    if (titleLower.includes('action') || titleLower.includes('deadline') || titleLower.includes('required')) {
+      details.open = true;
+    }
 
     h2.parentNode.insertBefore(details, h2);
     h2.remove();

@@ -124,36 +124,46 @@ SOURCES = [
     },
 ]
 
-# Classification keywords — used to override default source category
+# Classification keywords — Zero Trust pillar alignment
+# Pillars: Identity, Devices, Apps, Data, Network, Visibility & Automation
 CLASSIFICATION_KEYWORDS = {
-    "Endpoint Management": [
-        "intune", "autopatch", "mdm", "enrollment", "compliance policy",
-        "configuration profile", "remediation", "hotpatch", "windows update",
-        "lxc", "endpoint", "device management", "managed device", "linux", "macos",
-        "android enterprise", "apple", "tvos", "visionos",
-    ],
-    "Identity & Access": [
+    "Identity": [
         "entra", "azure ad", "conditional access", "mfa", "passwordless",
         "passkey", "sso", "saml", "oauth", "identity", "authentication",
         "hard-match", "cloud sync", "connect sync", "privileged", "pim",
-        "lifecycle workflows", "external mfa", "global secure access",
+        "lifecycle workflows", "external mfa", "certificate-based", "cba",
+        "entitlement management", "access review", "identity governance",
     ],
-    "Security & Compliance": [
-        "defender", "purview", "dlp", "sentinel", "attack disruption",
-        "predictive shielding", "secure score", "vulnerability", "threat",
-        "incident", "hunting", "xdr", "siem", "dspm", "insider risk",
-        "information protection", "data loss", "compliance", "secure boot",
+    "Devices": [
+        "intune", "autopatch", "mdm", "enrollment", "compliance policy",
+        "configuration profile", "remediation", "hotpatch", "windows update",
+        "endpoint", "device management", "managed device", "linux", "macos",
+        "android enterprise", "apple", "tvos", "visionos", "epm",
+        "endpoint privilege", "laps", "firmware",
     ],
-    "Collaboration & Productivity": [
+    "Apps": [
         "teams", "sharepoint", "onedrive", "outlook", "copilot", "calendar",
         "meeting", "channel", "viva", "loop", "planner", "yammer",
-        "forms", "power automate", "power apps", "ai charts",
+        "forms", "power apps", "microsoft 365 apps", "office", "ai charts",
     ],
-    "Automation & AI": [
-        "graph api", "powershell", "rest api", "automation", "agent",
-        "copilot studio", "agent 365", "shadow ai", "ai gateway",
-        "prompt injection", "llm", "generative ai", "logic app", "workflow",
-        "api", "sdk", "webhook", "power automate",
+    "Data": [
+        "purview", "dlp", "sensitivity label", "insider risk", "dspm",
+        "information protection", "data loss", "data governance",
+        "compliance", "retention", "ediscovery", "communications compliance",
+        "records management", "data lifecycle",
+    ],
+    "Network": [
+        "global secure access", "network", "vpn", "firewall", "ztna",
+        "remote network", "traffic forwarding", "private access",
+        "internet access", "cloud firewall", "network segmentation",
+    ],
+    "Visibility & Automation": [
+        "defender", "sentinel", "attack disruption", "predictive shielding",
+        "secure score", "vulnerability", "threat", "incident", "hunting",
+        "xdr", "siem", "soar", "graph api", "powershell", "rest api",
+        "automation", "agent", "copilot studio", "agent 365", "shadow ai",
+        "ai gateway", "prompt injection", "llm", "generative ai", "logic app",
+        "workflow", "api", "sdk", "webhook", "power automate", "power platform",
     ],
 }
 

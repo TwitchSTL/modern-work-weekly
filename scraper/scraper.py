@@ -88,7 +88,7 @@ def classify_item(title: str, body: str) -> str:
             if kw in combined:
                 scores[cat] += 1
     best = max(scores, key=scores.get)
-    return best if scores[best] > 0 else "Endpoint Management"
+    return best if scores[best] > 0 else "Visibility & Automation"
 
 
 def detect_phase(title: str, body: str) -> str:
