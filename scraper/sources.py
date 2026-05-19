@@ -60,16 +60,14 @@ SOURCES = [
         "rss": None,
         "selector": "h2, h3, p",
     },
-    # SharePoint / OneDrive — disabled, URL keeps changing on Microsoft's end
-    # Re-enable when a stable what's-new URL is found
-    # {
-    #     "name": "SharePoint / OneDrive",
-    #     "url": "https://learn.microsoft.com/en-us/SharePoint/what-s-new-in-sharepoint",
-    #     "cadence": "rolling",
-    #     "category": "Collaboration & Productivity",
-    #     "rss": None,
-    #     "selector": "h2, h3, p",
-    # },
+    {
+        "name": "SharePoint / OneDrive",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "cadence": "rolling",
+        "category": "Collaboration & Productivity",
+        "rss": None,
+        "selector": "h2, h3, p",
+    },
     {
         "name": "Microsoft 365 Roadmap",
         "url": "https://www.microsoft.com/en-us/microsoft-365/roadmap",
