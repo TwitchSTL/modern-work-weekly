@@ -5,37 +5,38 @@
  * Category sections: title + item count + preview visible, list expands on click
  */
 
-// Zero Trust pillar colors
-const CATEGORY_COLORS = {
-  // Current ZT pillar names
-  'identity':                  '#a78bfa',  // purple
-  'devices':                   '#3fb950',  // green
-  'apps':                      '#58a6ff',  // blue
-  'data':                      '#f0883e',  // amber
-  'network':                   '#39d353',  // teal
-  'visibility & automation':   '#d2a8ff',  // lavender
-  'action required':           '#ff6b6b',  // red — always stands out
-  // Legacy aliases for existing posts
-  'identity & access':         '#a78bfa',
-  'endpoint management':       '#3fb950',
-  'collaboration & productivity': '#58a6ff',
-  'security & compliance':     '#f0883e',
-  'automation & ai':           '#d2a8ff',
-};
+// Zero Trust pillar colors — ordered longest-key-first for partial matching
+const PILLAR_COLORS = [
+  { keys: ['visibility & automation', 'automation & ai', 'ai & automation'],  color: '#d2a8ff' },
+  { keys: ['collaboration & productivity'],                                    color: '#58a6ff' },
+  { keys: ['identity & access', 'identity'],                                  color: '#a78bfa' },
+  { keys: ['endpoint management', 'devices'],                                 color: '#3fb950' },
+  { keys: ['security & compliance', 'data'],                                  color: '#f0883e' },
+  { keys: ['network'],                                                        color: '#39d353' },
+  { keys: ['apps'],                                                           color: '#58a6ff' },
+  { keys: ['action required', 'action items', 'recommended actions'],         color: '#ff6b6b' },
+];
 
-// Detect ZT pillar from item text for Top 5 coloring
+function categoryColor(name) {
+  const n = name.toLowerCase().trim();
+  for (const { keys, color } of PILLAR_COLORS) {
+    for (const key of keys) {
+      if (n.includes(key)) return color;
+    }
+  }
+  return '#6e7681'; // neutral gray fallback instead of blue
+}
+
+// Detect ZT pillar from Top 5 item text
 function detectPillar(text) {
   const t = text.toLowerCase();
-  if (/entra|azure ad|\bmfa\b|passkey|\bsso\b|\bpim\b|identity|conditional access|\bcba\b|lifecycle workflow|entitlement/.test(t)) return 'identity';
-  if (/intune|autopatch|\bmdm\b|device|endpoint|macos|android|apple|\btvos\b|windows update|\bepm\b|laps/.test(t)) return 'devices';
+  if (/entra|azure ad|\bmfa\b|passkey|\bsso\b|\bpim\b|identity|conditional access|\bcba\b|entitlement/.test(t)) return 'identity';
+  if (/intune|autopatch|\bmdm\b|device|endpoint|macos|android|apple|windows update|\bepm\b|laps/.test(t)) return 'devices';
   if (/teams|sharepoint|onedrive|outlook|copilot|viva|loop|planner|yammer|forms/.test(t)) return 'apps';
   if (/purview|\bdlp\b|sensitivity label|insider risk|compliance|data governance|retention|ediscovery/.test(t)) return 'data';
   if (/global secure access|\bztna\b|firewall|network|private access|internet access/.test(t)) return 'network';
+  if (/defender|sentinel|threat|incident|hunting|\bxdr\b|\bsiem\b|secure score|vulnerability|agent|api|automation/.test(t)) return 'visibility & automation';
   return 'visibility & automation';
-}
-
-function categoryColor(name) {
-  return CATEGORY_COLORS[name.toLowerCase().trim()] || 'var(--color-accent)';
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -66,7 +67,6 @@ function makeTop5Collapsible(content) {
 
   if (!top5OL) return;
 
-  // Build the Top 5 section wrapper
   const section = document.createElement('div');
   section.className = 'top5-section';
 
@@ -83,19 +83,31 @@ function makeTop5Collapsible(content) {
     const strong = li.querySelector('strong');
     if (!strong) return;
 
-    const pillar = detectPillar(li.textContent);
-    const pillarColor = categoryColor(pillar);
+    const pillar  = detectPillar(li.textContent);
+    const color   = categoryColor(pillar);
 
     const details = document.createElement('details');
     details.className = 'top5-item';
-    details.style.setProperty('--item-color', pillarColor);
+    details.style.borderLeftColor = color;
 
     const summary = document.createElement('summary');
     summary.className = 'top5-summary';
-    summary.innerHTML =
-      `<span class="top5-badge">${index}</span>` +
-      `<span class="top5-title">${strong.innerHTML}</span>` +
-      `<span class="top5-chevron"></span>`;
+
+    const badge = document.createElement('span');
+    badge.className = 'top5-badge';
+    badge.textContent = index;
+    badge.style.background = color;
+
+    const title = document.createElement('span');
+    title.className = 'top5-title';
+    title.innerHTML = strong.innerHTML;
+
+    const chevron = document.createElement('span');
+    chevron.className = 'top5-chevron';
+
+    summary.appendChild(badge);
+    summary.appendChild(title);
+    summary.appendChild(chevron);
 
     const body = document.createElement('div');
     body.className = 'top5-body';
@@ -110,8 +122,6 @@ function makeTop5Collapsible(content) {
   });
 
   section.appendChild(list);
-
-  // Replace h2 + OL with our new section
   if (top5H2) top5H2.replaceWith(section);
   top5OL.remove();
 }
@@ -134,7 +144,7 @@ function makeSectionsCollapsible(content) {
     }
     if (siblings.length === 0) return;
 
-    // Build preview from first 3 bold item titles
+    // Preview: first 3 bold item titles
     const tempDiv = document.createElement('div');
     siblings.forEach(s => tempDiv.appendChild(s.cloneNode(true)));
     const boldItems = Array.from(tempDiv.querySelectorAll('li strong, li b'));
@@ -145,28 +155,50 @@ function makeSectionsCollapsible(content) {
 
     const details = document.createElement('details');
     details.className = 'section-collapsible';
-    details.style.setProperty('--cat-color', color);
+    details.style.borderLeftColor = color;
+
+    // Auto-expand action sections
+    const tl = titleText.toLowerCase();
+    if (tl.includes('action') || tl.includes('deadline') || tl.includes('required') || tl.includes('recommended')) {
+      details.open = true;
+    }
 
     const summary = document.createElement('summary');
     summary.className = 'section-summary';
-    summary.innerHTML =
-      `<div class="section-row">` +
-        `<span class="section-title">${titleText}</span>` +
-        `<div class="section-right">` +
-          `<span class="section-count">${itemCount} item${itemCount !== 1 ? 's' : ''}</span>` +
-          `<span class="section-chevron"></span>` +
-        `</div>` +
-      `</div>` +
-      (preview ? `<span class="section-preview">${preview}</span>` : '');
+
+    const row = document.createElement('div');
+    row.className = 'section-row';
+
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'section-title';
+    titleSpan.textContent = titleText;
+    titleSpan.style.color = color;
+
+    const right = document.createElement('div');
+    right.className = 'section-right';
+
+    const count = document.createElement('span');
+    count.className = 'section-count';
+    count.textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
+
+    const chevron = document.createElement('span');
+    chevron.className = 'section-chevron';
+
+    right.appendChild(count);
+    right.appendChild(chevron);
+    row.appendChild(titleSpan);
+    row.appendChild(right);
+    summary.appendChild(row);
+
+    if (preview) {
+      const prev = document.createElement('span');
+      prev.className = 'section-preview';
+      prev.textContent = preview;
+      summary.appendChild(prev);
+    }
 
     details.appendChild(summary);
     siblings.forEach(sib => details.appendChild(sib));
-
-    // Auto-expand Action Required / deadlines sections
-    const titleLower = titleText.toLowerCase();
-    if (titleLower.includes('action') || titleLower.includes('deadline') || titleLower.includes('required')) {
-      details.open = true;
-    }
 
     h2.parentNode.insertBefore(details, h2);
     h2.remove();
