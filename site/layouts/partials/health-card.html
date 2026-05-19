@@ -1,32 +1,26 @@
 {{ with .Site.Data.health }}
 <aside class="health-card">
+
   <div class="health-card-header">
-    <span class="health-card-title">Recent Alerts &amp; Known Issues</span>
-    <div class="health-card-links">
-      <a class="health-status-link" href="/health/">View all ({{ .total_count }}) →</a>
-      <a class="health-status-link" href="{{ .status_url }}" target="_blank" rel="noopener">Live Status ↗</a>
-    </div>
+    <span class="health-card-label">Recent Alerts &amp; Known Issues</span>
+    <a class="health-live-link" href="{{ .status_url }}" target="_blank" rel="noopener">Live Status ↗</a>
   </div>
 
   {{ if gt (len .sources) 0 }}
-  {{ range .sources }}
-  <div class="health-source-group">
-    <div class="health-source-header">
-      <span class="health-source-name">{{ .name }}</span>
-      <span class="health-source-count">{{ .count }} {{ if eq .count 1 }}issue{{ else }}issues{{ end }}</span>
+    {{ range .sources }}
+    <div class="health-source-group">
+      <a class="health-source-header" href="/health/#{{ .name | urlize }}">
+        <span class="health-source-name">{{ .name }}</span>
+        <span class="health-source-badge">{{ .count }}</span>
+      </a>
+      <ul class="health-source-items">
+        {{ range first 3 .items }}
+        <li>{{ .title }}</li>
+        {{ end }}
+      </ul>
     </div>
-    <ul class="health-item-list">
-      {{ range first 3 .items }}
-      <li class="health-item">
-        <a class="health-item-title" href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
-      </li>
-      {{ end }}
-      {{ if gt .count 3 }}
-      <li class="health-item health-item-more"><a href="/health/">+{{ sub .count 3 }} more →</a></li>
-      {{ end }}
-    </ul>
-  </div>
-  {{ end }}
+    {{ end }}
+    <a class="health-view-all" href="/health/">View all known issues →</a>
   {{ else }}
   <p class="health-empty">No known issues at this time. Check <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
   {{ end }}
@@ -34,5 +28,6 @@
   <div class="health-card-footer">
     <span class="health-updated">Last scraped: {{ .updated }}</span>
   </div>
+
 </aside>
 {{ end }}
