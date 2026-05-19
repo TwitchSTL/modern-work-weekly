@@ -6,8 +6,8 @@
 # 3. Generate digest via Claude API
 # 4. Commit new post + health data and push
 #
-# Cron: 0 7 * * 2 /opt/modern-work-weekly/scraper/weekly-run.sh
-# (7 AM UTC every Tuesday = Monday night US Central / Tuesday morning US Eastern)
+# Cron: 55 11 * * 2 /opt/modern-work-weekly/repo/scraper/weekly-run.sh
+# (11:55 AM UTC = 5:55 AM CST / 6:55 AM CDT every Tuesday)
 
 set -euo pipefail
 
