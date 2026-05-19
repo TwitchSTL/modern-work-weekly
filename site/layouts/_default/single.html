@@ -20,7 +20,7 @@
     {{ end }}
   </header>
 
-  {{ if .TableOfContents }}
+  {{ if and .TableOfContents (not (in .File.Path "posts")) }}
   <details class="toc-block">
     <summary class="toc-label">Jump to section</summary>
     <nav class="toc-nav">
@@ -32,6 +32,8 @@
   <div class="post-content">
     {{ .Content }}
   </div>
+
+  <script src="/js/collapsible.js"></script>
 
   <footer class="post-footer">
     <div class="share-block">

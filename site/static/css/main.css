@@ -746,6 +746,129 @@ details[open] .toc-label::before { content: "▼ "; }
   margin: 0;
 }
 
+/* ── Collapsible Sections ────────────────────────────────────────────── */
+
+/* Category section blocks */
+.section-collapsible {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.section-summary {
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  background: var(--color-surface);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  user-select: none;
+}
+.section-summary::-webkit-details-marker { display: none; }
+.section-summary::marker { display: none; }
+
+.section-summary-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.section-meta {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.1em 0.55em;
+  white-space: nowrap;
+}
+
+.section-preview {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.section-collapsible[open] > .section-summary {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-collapsible > ul,
+.section-collapsible > ol,
+.section-collapsible > p {
+  padding: 1rem 1.25rem;
+  margin: 0;
+}
+
+/* Top 5 collapsible items */
+.top5-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.top5-item {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.top5-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  background: var(--color-surface);
+  list-style: none;
+  user-select: none;
+}
+.top5-summary::-webkit-details-marker { display: none; }
+.top5-summary::marker { display: none; }
+
+.top5-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  min-width: 1.25rem;
+  flex-shrink: 0;
+}
+
+.top5-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.top5-arrow {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.top5-item[open] .top5-arrow { transform: rotate(90deg); }
+
+.top5-body {
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  border-top: 1px solid var(--color-border);
+}
+
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .site-footer {
   border-top: 1px solid var(--color-border);
