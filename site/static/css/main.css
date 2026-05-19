@@ -598,24 +598,37 @@ details[open] .toc-label::before { content: "▼ "; }
   padding: 0.1em 0.55em;
 }
 
-.health-source-items {
-  list-style: none;
-  padding: 0 0 0 0.65rem;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.health-ticker-wrap {
+  height: 60px;
+  overflow: hidden;
+  margin: 0.25rem 0 0.25rem 0.25rem;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
 }
 
-.health-source-items li {
-  font-size: 0.81rem;
+.health-ticker-wrap:hover .health-ticker {
+  animation-play-state: paused;
+}
+
+.health-ticker {
+  animation: health-scroll linear infinite;
+}
+
+@keyframes health-scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+.health-tick {
+  height: 22px;
+  line-height: 22px;
+  font-size: 0.78rem;
   color: var(--color-text-muted);
-  line-height: 1.4;
-  padding-left: 0.6rem;
-  border-left: 2px solid rgba(247, 129, 102, 0.25);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0 0.25rem 0 0.6rem;
+  border-left: 2px solid rgba(247, 129, 102, 0.3);
 }
 
 .health-view-all {

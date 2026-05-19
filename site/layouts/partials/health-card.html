@@ -13,11 +13,12 @@
         <span class="health-source-name">{{ .name }}</span>
         <span class="health-source-badge">{{ .count }}</span>
       </a>
-      <ul class="health-source-items">
-        {{ range first 3 .items }}
-        <li>{{ .title }}</li>
-        {{ end }}
-      </ul>
+      <div class="health-ticker-wrap">
+        <div class="health-ticker" style="animation-duration: {{ mul (len .items) 3 }}s">
+          {{ range .items }}<div class="health-tick">{{ .title }}</div>{{ end }}
+          {{ range .items }}<div class="health-tick">{{ .title }}</div>{{ end }}
+        </div>
+      </div>
     </div>
     {{ end }}
     <a class="health-view-all" href="/health/">View all known issues →</a>
