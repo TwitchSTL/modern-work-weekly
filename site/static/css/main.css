@@ -770,7 +770,7 @@ details[open] .toc-label::before { content: "▼ "; }
 
 .top5-item {
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--item-color, var(--color-accent));
   border-radius: 6px;
   overflow: hidden;
   background: var(--color-surface);
@@ -795,7 +795,7 @@ details[open] .toc-label::before { content: "▼ "; }
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--item-color, var(--color-accent));
   color: #0d1117;
   font-size: 0.7rem;
   font-weight: 800;

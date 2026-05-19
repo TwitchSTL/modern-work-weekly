@@ -7,6 +7,7 @@
 
 // Zero Trust pillar colors
 const CATEGORY_COLORS = {
+  // Current ZT pillar names
   'identity':                  '#a78bfa',  // purple
   'devices':                   '#3fb950',  // green
   'apps':                      '#58a6ff',  // blue
@@ -14,7 +15,24 @@ const CATEGORY_COLORS = {
   'network':                   '#39d353',  // teal
   'visibility & automation':   '#d2a8ff',  // lavender
   'action required':           '#ff6b6b',  // red — always stands out
+  // Legacy aliases for existing posts
+  'identity & access':         '#a78bfa',
+  'endpoint management':       '#3fb950',
+  'collaboration & productivity': '#58a6ff',
+  'security & compliance':     '#f0883e',
+  'automation & ai':           '#d2a8ff',
 };
+
+// Detect ZT pillar from item text for Top 5 coloring
+function detectPillar(text) {
+  const t = text.toLowerCase();
+  if (/entra|azure ad|\bmfa\b|passkey|\bsso\b|\bpim\b|identity|conditional access|\bcba\b|lifecycle workflow|entitlement/.test(t)) return 'identity';
+  if (/intune|autopatch|\bmdm\b|device|endpoint|macos|android|apple|\btvos\b|windows update|\bepm\b|laps/.test(t)) return 'devices';
+  if (/teams|sharepoint|onedrive|outlook|copilot|viva|loop|planner|yammer|forms/.test(t)) return 'apps';
+  if (/purview|\bdlp\b|sensitivity label|insider risk|compliance|data governance|retention|ediscovery/.test(t)) return 'data';
+  if (/global secure access|\bztna\b|firewall|network|private access|internet access/.test(t)) return 'network';
+  return 'visibility & automation';
+}
 
 function categoryColor(name) {
   return CATEGORY_COLORS[name.toLowerCase().trim()] || 'var(--color-accent)';
@@ -65,8 +83,12 @@ function makeTop5Collapsible(content) {
     const strong = li.querySelector('strong');
     if (!strong) return;
 
+    const pillar = detectPillar(li.textContent);
+    const pillarColor = categoryColor(pillar);
+
     const details = document.createElement('details');
     details.className = 'top5-item';
+    details.style.setProperty('--item-color', pillarColor);
 
     const summary = document.createElement('summary');
     summary.className = 'top5-summary';
