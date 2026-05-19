@@ -13,11 +13,10 @@
         <span class="health-source-name">{{ .name }}</span>
         <span class="health-source-badge">{{ .count }}</span>
       </a>
-      <div class="health-ticker-wrap">
-        <div class="health-ticker" style="animation-duration: {{ mul (len .items) 3 }}s">
-          {{ range .items }}<div class="health-tick">{{ .title }}</div>{{ end }}
-          {{ range .items }}<div class="health-tick">{{ .title }}</div>{{ end }}
-        </div>
+      <div class="health-scroll-box">
+        {{ range .items }}
+        <div class="health-tick">{{ .title }}</div>
+        {{ end }}
       </div>
     </div>
     {{ end }}

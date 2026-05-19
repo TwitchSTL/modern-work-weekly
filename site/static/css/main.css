@@ -598,37 +598,34 @@ details[open] .toc-label::before { content: "▼ "; }
   padding: 0.1em 0.55em;
 }
 
-.health-ticker-wrap {
-  height: 60px;
-  overflow: hidden;
-  margin: 0.25rem 0 0.25rem 0.25rem;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+.health-scroll-box {
+  max-height: 80px;
+  overflow-y: auto;
+  margin: 0.2rem 0 0.25rem 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(247,129,102,0.3) transparent;
 }
 
-.health-ticker-wrap:hover .health-ticker {
-  animation-play-state: paused;
+.health-scroll-box::-webkit-scrollbar {
+  width: 3px;
 }
-
-.health-ticker {
-  animation: health-scroll linear infinite;
+.health-scroll-box::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-@keyframes health-scroll {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-50%); }
+.health-scroll-box::-webkit-scrollbar-thumb {
+  background: rgba(247,129,102,0.4);
+  border-radius: 2px;
 }
 
 .health-tick {
-  height: 22px;
-  line-height: 22px;
   font-size: 0.78rem;
   color: var(--color-text-muted);
+  line-height: 1.5;
+  padding: 0.1rem 0.25rem 0.1rem 0.6rem;
+  border-left: 2px solid rgba(247, 129, 102, 0.3);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 0.25rem 0 0.6rem;
-  border-left: 2px solid rgba(247, 129, 102, 0.3);
 }
 
 .health-view-all {
