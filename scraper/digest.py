@@ -66,7 +66,7 @@ Sources checked: {sources}
 RAW DATA:
 {grouped_items}
 
-Produce the complete Hugo markdown post. Start immediately with the YAML front matter (---). Do not add any preamble or explanation outside the markdown."""
+Produce the complete Hugo markdown post. Start immediately with the YAML front matter (---). Do not wrap the output in code fences. Do not add any preamble or explanation outside the markdown."""
 
 
 def find_latest_draft() -> Path:
