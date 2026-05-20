@@ -3,22 +3,33 @@
     <span class="sidebar-panel-label">Quick Launch</span>
   </div>
 
-  <!-- Admin Center — needs a separate admin account -->
+  <!-- Admin Center — separate account recommended -->
   <div class="admin-links-group">
     <div class="admin-links-name">
       Admin Center
       <span class="admin-links-badge">separate account</span>
     </div>
     <div class="admin-links-buttons">
+      <a class="admin-link-btn"
+         href="https://admin.microsoft.com"
+         target="_blank" rel="noopener"
+         title="Open in Chrome">
+        Chrome
+      </a>
       <button class="admin-link-btn admin-link-incognito"
               onclick="adminLaunchIncognito('https://admin.microsoft.com')"
-              title="Copies URL to clipboard — paste into Chrome Incognito (Ctrl+Shift+N)">
-        Chrome Incognito
+              title="Copies URL — paste into Chrome Incognito (Ctrl+Shift+N)">
+        Incognito
       </button>
+      <a class="admin-link-btn"
+         href="microsoft-edge:https://admin.microsoft.com"
+         title="Open in Edge">
+        Edge
+      </a>
       <a class="admin-link-btn admin-link-inprivate"
          href="microsoft-edge:?inprivate&url=https://admin.microsoft.com"
-         title="Opens admin.microsoft.com in Edge InPrivate">
-        Edge InPrivate
+         title="Open in Edge InPrivate">
+        InPrivate
       </a>
     </div>
   </div>
