@@ -124,17 +124,21 @@ SOURCES = [
         "rss": None,
         "selector": "h2, h3, p",
     },
-    {
-        "name": "Viva",
-        "url": "https://learn.microsoft.com/en-us/viva/whats-new",
-        "cadence": "monthly",
-        "category": "Apps",
-        "rss": None,
-        "selector": "h2, h3, p",
-    },
+    # Viva What's New — /viva/whats-new resolves but returns 0 parseable items (JS-rendered).
+    # No reliable static known-issues page found. Re-enable when a scrapable URL is confirmed.
+    # {
+    #     "name": "Viva",
+    #     "url": "TODO",
+    #     "cadence": "monthly",
+    #     "category": "Apps",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    # },
     {
         "name": "Global Secure Access",
-        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/whats-new-global-secure-access",
+        # No dedicated "What's New" page exists; using the Windows client release history
+        # which publishes versioned release notes per build.
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
         "cadence": "monthly",
         "category": "Network",
         "rss": None,
@@ -153,7 +157,7 @@ SOURCES = [
     },
     {
         "name": "Windows 365 Known Issues",
-        "url": "https://learn.microsoft.com/en-us/windows-365/enterprise/known-issues",
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
         "rss": None,
