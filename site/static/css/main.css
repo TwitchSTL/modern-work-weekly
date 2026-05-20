@@ -455,12 +455,17 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 .sources-label {
-  display: block;
+  display: list-item;   /* keeps the browser disclosure triangle */
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.sources-block[open] .sources-label {
   margin-bottom: 0.6rem;
 }
 
