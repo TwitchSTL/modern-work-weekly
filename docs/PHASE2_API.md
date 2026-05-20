@@ -1,6 +1,14 @@
-# Phase 2 — Fully Automated Pipeline
+# ⚠️ Superseded
 
-When you're ready to remove the manual Claude.ai step and run end-to-end automatically, this is the upgrade path. Estimated additional cost: ~$0.50/week.
+This document described the Phase 2 upgrade path. That implementation is now complete.
+
+See [`PIPELINE.md`](PIPELINE.md) for current pipeline internals and Claude API reference.
+
+---
+
+# Phase 2 — Fully Automated Pipeline (historical)
+
+> This was the upgrade plan. It has been implemented. Content below is retained for reference only.
 
 ---
 

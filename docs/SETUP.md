@@ -166,21 +166,49 @@ Push any change to `site/` in the `main` branch → GitHub Actions tab → watch
 
 ---
 
-## Step 7 — Set up the scraper on the LXC
+## Step 7 — Set up the scraper and digest pipeline
 
 ```bash
-# Copy scraper files
-cp -r /opt/modern-work-weekly/repo/scraper/* /opt/modern-work-weekly/scraper/
-cp -r /opt/modern-work-weekly/repo/state/ /opt/modern-work-weekly/
-
 # Activate venv and install deps
-source /opt/modern-work-weekly/scraper/.venv/bin/activate
-pip install -r /opt/modern-work-weekly/scraper/requirements.txt
+cd /opt/modern-work-weekly/repo/scraper
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 
-# Test run (single source)
-cd /opt/modern-work-weekly/scraper
+# Test scraper (single source)
 python scraper.py --source Intune
 ```
+
+### 7b. Add your Anthropic API key
+
+The digest pipeline calls the Claude API. Get a key at [console.anthropic.com](https://console.anthropic.com)
+and store it on the LXC — never in the repo:
+
+```bash
+echo 'ANTHROPIC_API_KEY=sk-ant-...' > /opt/modern-work-weekly/.env
+chmod 600 /opt/modern-work-weekly/.env
+```
+
+Test the full pipeline:
+
+```bash
+python scraper.py          # Accumulate items into pending_draft.json
+python digest.py --dry-run # Verify prompt builds correctly (no API call)
+python digest.py           # Generate the draft post
+```
+
+### 7c. Schedule the weekly cron
+
+```bash
+crontab -e
+```
+
+Add:
+```
+55 5 * * 2 /opt/modern-work-weekly/repo/scraper/weekly-run.sh >> /opt/modern-work-weekly/logs/cron.log 2>&1
+```
+
+This fires every Tuesday at 5:55 AM (adjust to your timezone).
 
 ---
 
@@ -198,7 +226,7 @@ GitHub Actions egress IPs: https://api.github.com/meta (under `actions`)
 
 ## You're done
 
-- Site live at `https://firstlast.dev`
-- Pushes to `main` auto-deploy via GitHub Actions
-- Scraper runs manually on the LXC (see `docs/WEEKLY_WORKFLOW.md`)
-- State persists in `/opt/modern-work-weekly/state/seen_items.json`
+- Site live at `https://yourdomain.com`
+- Pushes to `master` auto-deploy via GitHub Actions
+- Scraper + digest run automatically via Tuesday cron (see `docs/WEEKLY_WORKFLOW.md`)
+- Dedup state persists in `/opt/modern-work-weekly/repo/state/seen_items.json`

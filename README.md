@@ -25,7 +25,7 @@ Every Tuesday at 5:55 AM CST (automated cron on LXC)
   ┌─────────────────────────────────────────────────────────┐
   │  scraper.py   →  Fetches 15+ Microsoft portals          │
   │                  Deduplicates against seen_items.json   │
-  │                  Appends new items to pending_draft.json │
+  │                  Appends new items to pending_draft.json│
   │                  Writes known issues to health.json     │
   │                                                         │
   │  digest.py    →  Reads pending_draft.json               │
@@ -59,45 +59,57 @@ Every Tuesday at 5:55 AM CST (automated cron on LXC)
 
 ## Repository layout
 
-```
-modern-work-weekly/
-├── scraper/
-│   ├── scraper.py            # Fetches portals, deduplicates, builds pending draft
-│   ├── digest.py             # Calls Claude API, writes Hugo post, archives draft
-│   ├── sources.py            # All source URLs, selectors, and health flags
-│   ├── weekly-run.sh         # Tuesday cron entrypoint — pull → scrape → draft → push
-│   └── requirements.txt
-│
-├── state/                    # Persisted on LXC — gitignored
-│   ├── seen_items.json       # Dedup tracker
-│   ├── pending_draft.json    # Rolling accumulator (cleared after each publish)
-│   ├── weekly_draft_*.json   # Per-run snapshots (kept for reference)
-│   └── archive/              # Archived pending drafts post-publish
-│
-├── site/                     # Hugo site
-│   ├── content/posts/        # One .md file per weekly digest
-│   ├── data/
-│   │   ├── health.json       # Known issues — rendered in sidebar
-│   │   └── deadlines.json    # ZT deadline calendar data
-│   ├── layouts/              # Hugo templates (3-column digest layout)
-│   ├── static/css/           # Custom styles
-│   └── static/js/            # collapsible.js, calendar.js, sidebar-dates.js
-│
-├── infra/
-│   ├── lxc/bootstrap.sh      # Fresh Ubuntu 24.04 LXC setup
-│   ├── caddy/Caddyfile        # Reverse proxy config
-│   └── cloudflare/tunnel.yml # Cloudflare Tunnel config
-│
-├── docs/
-│   ├── SETUP.md              # Full setup guide
-│   ├── WEEKLY_WORKFLOW.md    # Pipeline reference
-│   └── PHASE2_API.md         # Claude API integration notes
-│
-└── .github/
-    ├── FUNDING.yml           # Ko-fi sponsor link
-    └── workflows/
-        └── hugo-build.yml    # Build + deploy on push to site/**
-```
+**`scraper/`** — Data collection and digest drafting
+
+| File | Description |
+|---|---|
+| `scraper.py` | Fetches all portals, deduplicates against `seen_items.json`, appends to rolling draft |
+| `digest.py` | Reads `pending_draft.json`, calls Claude API, writes Hugo post, archives draft |
+| `sources.py` | Source URLs, CSS selectors, RSS feeds, and health-check flags for all 15+ portals |
+| `weekly-run.sh` | Tuesday cron entrypoint — pull → scrape → draft → push |
+
+**`state/`** — Persisted on LXC, gitignored
+
+| File | Description |
+|---|---|
+| `pending_draft.json` | Rolling accumulator — items build across runs, cleared after each publish |
+| `seen_items.json` | Dedup tracker — SHA-256 hashes of all previously seen items |
+| `weekly_draft_*.json` | Per-run snapshots retained for reference |
+| `archive/` | Pending drafts archived after each publish |
+
+**`site/`** — Hugo static site
+
+| Path | Description |
+|---|---|
+| `content/posts/` | One `.md` file per weekly digest |
+| `data/health.json` | Known issues — rendered in sidebar |
+| `data/deadlines.json` | Zero Trust deadline calendar |
+| `layouts/` | Hugo templates — 3-column digest layout with sticky sidebars |
+| `static/css/` | Custom styles |
+| `static/js/` | Collapsible sections, calendar, admin portal links |
+
+**`infra/`** — Infrastructure configuration
+
+| File | Description |
+|---|---|
+| `lxc/bootstrap.sh` | Fresh Ubuntu 24.04 LXC setup |
+| `caddy/Caddyfile` | Caddy reverse proxy config |
+| `cloudflare/tunnel.yml` | Cloudflare Tunnel config reference |
+
+**`docs/`** — Reference documentation
+
+| File | Description |
+|---|---|
+| `SETUP.md` | Full initial setup guide — LXC to live site |
+| `WEEKLY_WORKFLOW.md` | Weekly pipeline reference |
+| `PIPELINE.md` | Claude API and digest pipeline internals |
+
+**`.github/`**
+
+| File | Description |
+|---|---|
+| `FUNDING.yml` | Ko-fi sponsor link |
+| `workflows/hugo-build.yml` | Build + deploy on push to `site/**` |
 
 ---
 
