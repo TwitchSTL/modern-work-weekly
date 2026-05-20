@@ -129,7 +129,7 @@ def md_to_linkedin(md_text: str) -> str:
         output.append(hashtags)
 
     output.append("")
-    output.append("🔗 Read the full digest: https://ryanarbuckle.dev")
+    output.append("🔗 Read the full digest: https://modernworkweekly.com")
     output.append("")
 
     # Collapse excessive blank lines

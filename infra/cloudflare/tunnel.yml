@@ -5,8 +5,8 @@
 # Full setup:
 #   cloudflared tunnel login
 #   cloudflared tunnel create modern-work-weekly
-#   cloudflared tunnel route dns modern-work-weekly ryanarbuckle.dev
-#   cloudflared tunnel route dns modern-work-weekly www.ryanarbuckle.dev
+#   cloudflared tunnel route dns modern-work-weekly modernworkweekly.com
+#   cloudflared tunnel route dns modern-work-weekly www.modernworkweekly.com
 #   cp tunnel.yml /etc/cloudflared/config.yml
 #   cloudflared service install
 #   systemctl start cloudflared
@@ -16,11 +16,11 @@ credentials-file: /root/.cloudflared/YOUR_TUNNEL_ID.json
 
 ingress:
   # Main site
-  - hostname: ryanarbuckle.dev
+  - hostname: modernworkweekly.com
     service: http://localhost:8080
 
   # www redirect
-  - hostname: www.ryanarbuckle.dev
+  - hostname: www.modernworkweekly.com
     service: http://localhost:8080
 
   # Catch-all (required by cloudflared)

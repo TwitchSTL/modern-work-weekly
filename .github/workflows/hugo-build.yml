@@ -26,6 +26,6 @@ jobs:
       - name: Build site
         run: |
           cd site
-          hugo --minify --baseURL "https://ryanarbuckle.dev"
+          hugo --minify --baseURL "https://modernworkweekly.com"
 
 # Deploy is handled by a cron job on the LXC that pulls from GitHub every 5 minutes.

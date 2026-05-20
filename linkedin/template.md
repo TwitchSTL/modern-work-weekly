@@ -75,7 +75,7 @@ What's the theme of this week? What's the one thing nobody should miss?
 ---
 
 *Ryan Arbuckle is a Modern Work Engineer writing weekly about Microsoft 365 changes.*
-*Read the full digest with sources at https://ryanarbuckle.dev*
+*Read the full digest with sources at https://modernworkweekly.com*
 
 ---
 

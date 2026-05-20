@@ -1,7 +1,7 @@
 # Modern Work Weekly
 
 [![Hugo Build](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml/badge.svg)](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml)
-[![Site](https://img.shields.io/badge/site-ryanarbuckle.dev-blue?style=flat)](https://ryanarbuckle.dev)
+[![Site](https://img.shields.io/badge/site-modernworkweekly.com-blue?style=flat)](https://modernworkweekly.com)
 [![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
 > A self-hosted, fully automated Microsoft 365 change digest — scraped, drafted by Claude, and published weekly as a Hugo blog.
