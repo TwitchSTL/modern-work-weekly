@@ -1,71 +1,61 @@
-<div class="sidebar-panel admin-links-panel">
-  <div class="sidebar-panel-header">
-    <span class="sidebar-panel-label">Quick Launch</span>
-  </div>
+<div class="portals-dropdown" id="portals-dropdown">
+  <button class="portals-toggle"
+          onclick="togglePortals()"
+          aria-expanded="false"
+          aria-controls="portals-panel">
+    Portals <span class="portals-caret">▾</span>
+  </button>
 
-  <!-- Admin Center — separate account recommended -->
-  <div class="admin-links-group">
-    <div class="admin-links-name">
-      Admin Center
-      <span class="admin-links-badge">separate account</span>
-    </div>
-    <div class="admin-links-buttons">
-      <a class="admin-link-btn"
-         href="https://admin.microsoft.com"
-         target="_blank" rel="noopener"
-         title="Open in Chrome">
-        Chrome
-      </a>
-      <button class="admin-link-btn admin-link-incognito"
-              onclick="adminLaunchIncognito('https://admin.microsoft.com')"
-              title="Copies URL — paste into Chrome Incognito (Ctrl+Shift+N)">
-        Incognito
-      </button>
-      <a class="admin-link-btn"
-         href="microsoft-edge:https://admin.microsoft.com"
-         title="Open in Edge">
-        Edge
-      </a>
-      <a class="admin-link-btn admin-link-inprivate"
-         href="microsoft-edge:?inprivate&url=https://admin.microsoft.com"
-         title="Open in Edge InPrivate">
-        InPrivate
-      </a>
-    </div>
-  </div>
+  <div class="portals-panel" id="portals-panel" hidden>
+    <div class="portals-grid">
 
-  <!-- Partner Center — regular browser -->
-  <div class="admin-links-group">
-    <div class="admin-links-name">Partner Center</div>
-    <div class="admin-links-buttons">
-      <a class="admin-link-btn"
-         href="https://partner.microsoft.com/dashboard"
-         target="_blank" rel="noopener">
-        Chrome
-      </a>
-      <a class="admin-link-btn"
-         href="microsoft-edge:https://partner.microsoft.com/dashboard">
-        Edge
-      </a>
-    </div>
-  </div>
+      <!-- Admin Center — separate account recommended -->
+      <div class="portals-group">
+        <div class="portals-group-name">
+          Admin Center
+          <span class="portals-badge">separate account</span>
+        </div>
+        <div class="portals-buttons">
+          <a class="portal-btn"
+             href="https://admin.microsoft.com"
+             target="_blank" rel="noopener">Chrome</a>
+          <button class="portal-btn portal-btn-private"
+                  onclick="adminLaunchPrivate('https://admin.microsoft.com','incognito')"
+                  title="Copies URL — paste in Chrome Incognito (Ctrl+Shift+N)">Incognito</button>
+          <a class="portal-btn"
+             href="microsoft-edge:https://admin.microsoft.com">Edge</a>
+          <button class="portal-btn portal-btn-private"
+                  onclick="adminLaunchPrivate('https://admin.microsoft.com','inprivate')"
+                  title="Copies URL — paste in Edge InPrivate (Ctrl+Shift+P)">InPrivate</button>
+        </div>
+      </div>
 
-  <!-- M365 Lighthouse — regular browser -->
-  <div class="admin-links-group">
-    <div class="admin-links-name">M365 Lighthouse</div>
-    <div class="admin-links-buttons">
-      <a class="admin-link-btn"
-         href="https://lighthouse.microsoft.com"
-         target="_blank" rel="noopener">
-        Chrome
-      </a>
-      <a class="admin-link-btn"
-         href="microsoft-edge:https://lighthouse.microsoft.com">
-        Edge
-      </a>
+      <!-- Partner Center -->
+      <div class="portals-group">
+        <div class="portals-group-name">Partner Center</div>
+        <div class="portals-buttons">
+          <a class="portal-btn"
+             href="https://partner.microsoft.com/dashboard"
+             target="_blank" rel="noopener">Chrome</a>
+          <a class="portal-btn"
+             href="microsoft-edge:https://partner.microsoft.com/dashboard">Edge</a>
+        </div>
+      </div>
+
+      <!-- M365 Lighthouse -->
+      <div class="portals-group">
+        <div class="portals-group-name">M365 Lighthouse</div>
+        <div class="portals-buttons">
+          <a class="portal-btn"
+             href="https://lighthouse.microsoft.com"
+             target="_blank" rel="noopener">Chrome</a>
+          <a class="portal-btn"
+             href="microsoft-edge:https://lighthouse.microsoft.com">Edge</a>
+        </div>
+      </div>
+
     </div>
   </div>
-
 </div>
 
 <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>

@@ -11,6 +11,7 @@
       {{ with .Site.Params.linkedin }}
       <a href="{{ . }}" target="_blank" rel="noopener" class="nav-external">LinkedIn ↗</a>
       {{ end }}
+      {{ partial "admin-links.html" . }}
     </nav>
   </div>
 </header>

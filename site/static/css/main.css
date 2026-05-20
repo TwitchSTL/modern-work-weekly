@@ -148,6 +148,114 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 
+/* ── Portals dropdown ────────────────────────────────────────────────── */
+.portals-dropdown {
+  position: relative;
+}
+
+.portals-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.portals-toggle:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
+
+.portals-caret {
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+.portals-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 200;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  padding: 1rem 1.25rem;
+  min-width: 480px;
+}
+
+.portals-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.portals-group-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.portals-badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #f0883e;
+  background: rgba(240, 136, 62, 0.1);
+  border: 1px solid rgba(240, 136, 62, 0.3);
+  border-radius: 3px;
+  padding: 0.1rem 0.35rem;
+  align-self: flex-start;
+}
+
+.portals-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.portal-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.portal-btn:hover {
+  text-decoration: none;
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
+
+.portal-btn-private:hover {
+  color: #a78bfa;
+  border-color: #a78bfa;
+}
+
 /* ── Hero ────────────────────────────────────────────────────────────── */
 .hero {
   padding: 3rem 0 2rem;
@@ -564,80 +672,6 @@ details[open] .toc-label::before { content: "▼ "; }
 
 .post-nav-back {
   font-weight: 600;
-}
-
-/* ── Admin quick-launch panel ─────────────────────────────────────────── */
-.admin-links-panel {
-  margin-top: 1rem;
-}
-
-.admin-links-group {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.admin-links-group:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.admin-links-name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 0.4rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.admin-links-badge {
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: #f0883e;
-  background: rgba(240, 136, 62, 0.1);
-  border: 1px solid rgba(240, 136, 62, 0.3);
-  border-radius: 3px;
-  padding: 0.1rem 0.35rem;
-  letter-spacing: 0.03em;
-}
-
-.admin-links-buttons {
-  display: flex;
-  gap: 0.35rem;
-  flex-wrap: wrap;
-}
-
-.admin-link-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.55rem;
-  font-size: 0.72rem;
-  font-weight: 500;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  color: var(--color-text-muted);
-  background: var(--color-surface);
-  cursor: pointer;
-  text-decoration: none;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
-  font-family: inherit;
-}
-
-.admin-link-btn:hover {
-  text-decoration: none;
-  color: var(--color-text);
-  border-color: var(--color-text-muted);
-}
-
-.admin-link-incognito:hover {
-  border-color: #4285f4;
-  color: #4285f4;
-}
-
-.admin-link-inprivate:hover {
-  border-color: #0078d4;
-  color: #0078d4;
 }
 
 /* ── Admin toast notification ─────────────────────────────────────────── */
