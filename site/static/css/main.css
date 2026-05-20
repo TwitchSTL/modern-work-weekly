@@ -1264,6 +1264,39 @@ details[open] .toc-label::before { content: "▼ "; }
 .post-sidebar::-webkit-scrollbar-track { background: transparent; }
 .post-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
 
+/* Homepage right sidebar: calendar grid floats, upcoming list scrolls.
+   Override overflow so the sidebar itself doesn't scroll as a whole. */
+.home-layout .post-sidebar-right {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Calendar month grid — pinned, never scrolls away */
+#deadline-calendar {
+  flex-shrink: 0;
+}
+
+/* Upcoming list — takes remaining height and scrolls independently */
+#deadline-upcoming {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+#deadline-upcoming::-webkit-scrollbar { width: 3px; }
+#deadline-upcoming::-webkit-scrollbar-track { background: transparent; }
+#deadline-upcoming::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
 /* ── Sidebar panels (shared card shell) ──────────────────────────────── */
 .sidebar-panel {
   background: var(--color-surface);
