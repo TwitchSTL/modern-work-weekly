@@ -6,14 +6,14 @@
     <p class="health-page-sub">Current known issues across Microsoft 365 portals. Last scraped: <strong>{{ .updated }}</strong>. For live service health, see <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft ↗</a>.</p>
   </div>
 
-  {{ if gt (len .sources) 0 }}
+  {{ with .sources }}
   <div class="health-page-summary">
-    {{ range .sources }}
+    {{ range . }}
     <a class="health-summary-chip" href="#{{ .name | urlize }}">{{ .name }} <span class="chip-count">{{ .count }}</span></a>
     {{ end }}
   </div>
 
-  {{ range .sources }}
+  {{ range . }}
   <div class="health-page-source" id="{{ .name | urlize }}">
     <div class="health-page-source-header">
       <h2 class="health-page-source-name">{{ .name }}</h2>
@@ -31,7 +31,7 @@
   {{ end }}
 
   {{ else }}
-  <p class="health-empty">No known issues found on last scrape. Check <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
+  <p class="health-empty">No known issues found on last scrape. Check <a href="https://status.cloud.microsoft" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
   {{ end }}
 </section>
 {{ end }}

@@ -5,8 +5,8 @@
     <a class="sidebar-panel-ext" href="{{ .status_url }}" target="_blank" rel="noopener">Live Status ↗</a>
   </div>
 
-  {{ if gt (len .sources) 0 }}
-    {{ range .sources }}
+  {{ with .sources }}
+    {{ range . }}
     <details class="sidebar-source">
       <summary class="sidebar-source-summary">
         <span class="sidebar-source-name">{{ .name }}</span>

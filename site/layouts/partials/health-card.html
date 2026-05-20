@@ -6,8 +6,8 @@
     <a class="health-live-link" href="{{ .status_url }}" target="_blank" rel="noopener">Live Status ↗</a>
   </div>
 
-  {{ if gt (len .sources) 0 }}
-    {{ range .sources }}
+  {{ with .sources }}
+    {{ range . }}
     <div class="health-source-group">
       <a class="health-source-header" href="/health/#{{ .name | urlize }}">
         <span class="health-source-name">{{ .name }}</span>
@@ -22,7 +22,7 @@
     {{ end }}
     <a class="health-view-all" href="/health/">View all known issues →</a>
   {{ else }}
-  <p class="health-empty">No known issues at this time. Check <a href="{{ .status_url }}" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
+  <p class="health-empty">No known issues at this time. Check <a href="https://status.cloud.microsoft" target="_blank" rel="noopener">status.cloud.microsoft</a> for live service health.</p>
   {{ end }}
 
   <div class="health-card-footer">
