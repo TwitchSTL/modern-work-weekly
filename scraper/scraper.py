@@ -33,6 +33,7 @@ from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATE_DIR = BASE_DIR / "state"
 STATE_FILE = STATE_DIR / "seen_items.json"
+PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
 LOG_DIR = BASE_DIR / "logs"
 HEALTH_DATA_FILE = BASE_DIR / "site" / "data" / "health.json"
 
@@ -303,13 +304,15 @@ def run_scraper(args):
         cat = item["category"]
         grouped.setdefault(cat, []).append(item)
 
-    # Build draft output
     run_date = datetime.now(timezone.utc).date().isoformat()
-    draft = {
+    sources_this_run = [s["name"] for s in sources_to_run]
+
+    # ── Per-run snapshot (dated, for reference / manual replay) ───────────────
+    snapshot = {
         "run_date": run_date,
         "week_of": run_date,
         "total_new_items": len(new_items),
-        "sources_checked": [s["name"] for s in sources_to_run],
+        "sources_checked": sources_this_run,
         "grouped_items": grouped,
         "claude_prompt_hint": (
             "Paste this JSON into Claude.ai with your master prompt. "
@@ -317,11 +320,56 @@ def run_scraper(args):
             "Top 5, section highlights, recommended actions, Graph/API hooks, hashtags."
         ),
     }
-
     draft_path = STATE_DIR / f"weekly_draft_{run_date}.json"
     with open(draft_path, "w") as f:
-        json.dump(draft, f, indent=2)
-    log.info(f"Draft saved → {draft_path}")
+        json.dump(snapshot, f, indent=2)
+    log.info(f"Run snapshot saved → {draft_path}")
+
+    # ── Rolling pending draft (accumulates across runs until digest publishes) ─
+    if PENDING_DRAFT_FILE.exists():
+        with open(PENDING_DRAFT_FILE) as f:
+            pending = json.load(f)
+        # Collect IDs already in the pending draft to avoid double-adding
+        existing_ids = {
+            item["id"]
+            for cat_items in pending.get("grouped_items", {}).values()
+            for item in cat_items
+        }
+        added = 0
+        for item in new_items:
+            if item["id"] not in existing_ids:
+                cat = item["category"]
+                pending["grouped_items"].setdefault(cat, []).append(item)
+                existing_ids.add(item["id"])
+                added += 1
+        pending["last_updated"] = run_date
+        pending["runs"] = pending.get("runs", []) + [run_date]
+        pending["total_new_items"] = sum(
+            len(v) for v in pending["grouped_items"].values()
+        )
+        # Union of all sources checked across runs
+        pending["sources_checked"] = list(
+            set(pending.get("sources_checked", [])) | set(sources_this_run)
+        )
+        log.info(
+            f"Pending draft updated — {added} new items added, "
+            f"{pending['total_new_items']} total accumulated."
+        )
+    else:
+        # First run since last digest — start a fresh pending draft
+        pending = {
+            "week_of": run_date,       # overwritten by digest.py to the publish date
+            "last_updated": run_date,
+            "runs": [run_date],
+            "total_new_items": len(new_items),
+            "sources_checked": sources_this_run,
+            "grouped_items": grouped,
+        }
+        log.info(f"Pending draft created — {len(new_items)} items.")
+
+    with open(PENDING_DRAFT_FILE, "w") as f:
+        json.dump(pending, f, indent=2)
+    log.info(f"Pending draft saved → {PENDING_DRAFT_FILE}")
 
     # Update state
     for item in new_items:
@@ -332,9 +380,10 @@ def run_scraper(args):
     save_state(state)
 
     print(f"\n{'='*60}")
-    print(f"  Draft ready: {draft_path}")
-    print(f"  New items:   {len(new_items)}")
-    print(f"  Next step:   Open Claude.ai → paste draft JSON + master prompt")
+    print(f"  Run snapshot:    {draft_path}")
+    print(f"  New this run:    {len(new_items)}")
+    print(f"  Pending total:   {pending['total_new_items']} items across {len(pending['runs'])} run(s)")
+    print(f"  Next step:       python digest.py  (reads pending_draft.json)")
     print(f"{'='*60}\n")
 
 

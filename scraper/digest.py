@@ -29,6 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATE_DIR = BASE_DIR / "state"
 POSTS_DIR = BASE_DIR / "site" / "content" / "posts"
 ENV_FILE = Path("/opt/modern-work-weekly/.env")
+PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
+ARCHIVE_DIR = STATE_DIR / "archive"
 
 POSTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -80,11 +82,31 @@ Produce the complete Hugo markdown post. Start immediately with the YAML front m
 
 
 def find_latest_draft() -> Path:
+    # Prefer the rolling pending draft — it accumulates items across all runs
+    # since the last digest was published.
+    if PENDING_DRAFT_FILE.exists():
+        log.info("Found pending_draft.json — using accumulated rolling draft.")
+        return PENDING_DRAFT_FILE
+    # Fall back to the most recent per-run snapshot
     drafts = sorted(STATE_DIR.glob("weekly_draft_*.json"), reverse=True)
     if not drafts:
-        log.error("No weekly draft found in state/. Run scraper.py first.")
+        log.error("No draft found in state/. Run scraper.py first.")
         sys.exit(1)
+    log.info("No pending_draft.json found — falling back to latest run snapshot.")
     return drafts[0]
+
+
+def archive_pending_draft(week_of: str):
+    """Move pending_draft.json to state/archive/ after a successful publish.
+
+    This clears the slate so the next scraper run starts a fresh accumulation.
+    """
+    if not PENDING_DRAFT_FILE.exists():
+        return
+    ARCHIVE_DIR.mkdir(exist_ok=True)
+    archive_path = ARCHIVE_DIR / f"pending_draft_{week_of}.json"
+    PENDING_DRAFT_FILE.rename(archive_path)
+    log.info(f"Pending draft archived → {archive_path}")
 
 
 def load_draft(path: Path) -> dict:
@@ -156,7 +178,18 @@ def run(args):
     log.info(f"Using draft: {draft_path}")
 
     draft = load_draft(draft_path)
-    week_of = draft.get("week_of", datetime.now(timezone.utc).date().isoformat())
+
+    # When consuming the rolling pending draft, use today as the publish date so
+    # the post filename reflects when it was actually published, not when
+    # scraping started.  Per-run snapshots keep their own run_date.
+    if draft_path == PENDING_DRAFT_FILE:
+        week_of = datetime.now(timezone.utc).date().isoformat()
+        runs = draft.get("runs", [])
+        if runs:
+            log.info(f"Pending draft covers {len(runs)} run(s): {', '.join(runs)}")
+    else:
+        week_of = draft.get("week_of", datetime.now(timezone.utc).date().isoformat())
+
     prompt = build_prompt(draft)
 
     if args.dry_run:
@@ -172,6 +205,11 @@ def run(args):
     content = call_claude(prompt)
     post_path = write_post(content, week_of)
 
+    # Clear the pending draft now that it's been published — next scraper run
+    # starts a fresh accumulation.
+    if not args.keep_pending and draft_path == PENDING_DRAFT_FILE:
+        archive_pending_draft(week_of)
+
     print(f"\n{'='*60}")
     print(f"  Digest drafted: {post_path}")
     print(f"  Next step:      Review the post, edit as needed, then:")
@@ -185,5 +223,7 @@ if __name__ == "__main__":
                         help="Path to a specific weekly_draft_*.json (default: latest)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Print the prompt without calling the API")
+    parser.add_argument("--keep-pending", action="store_true",
+                        help="Don't archive pending_draft.json after publishing (useful for testing)")
     args = parser.parse_args()
     run(args)
