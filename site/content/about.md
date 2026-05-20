@@ -50,7 +50,9 @@ Modern Work is a fast-moving space. Microsoft ships continuously, terminology ch
 
 The goal is simple: close that gap. One well-organized digest, once a week, so engineers can stay current without spending hours across portals tracking it themselves.
 
-This will always be free and open. I'm not selling anything. If this ever saves you time or helps you catch something you would have missed, and you want to support it — [a small donation](https://buymeacoffee.com) goes a long way toward keeping me motivated to learn, build, and make a bigger impact on the community.
+This will always be free and open. I'm not selling anything.
+
+If this digest saves you an hour of portal-hunting — or helps you catch something before it breaks something — that's the whole point. If you want to help offset the API costs and keep me motivated to make it better, [a small contribution on Ko-fi](https://ko-fi.com/ryanarbuckle) goes a long way. No pressure, no paywall.
 
 ---
 

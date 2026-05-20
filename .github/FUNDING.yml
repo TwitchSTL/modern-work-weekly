@@ -1,0 +1,6 @@
+# Sponsor buttons shown on the GitHub repo page.
+# Ko-fi: one-time and monthly support.
+# custom: add a Stripe Payment Link URL here when ready, e.g.:
+#   custom: ["https://buy.stripe.com/YOUR_LINK"]
+
+ko_fi: ryanarbuckle
