@@ -9,11 +9,25 @@ _build:
 
 ## What this is
 
-Modern Work Weekly is a weekly digest of Microsoft 365 changes, built for **Modern Work Engineers** — the people responsible for designing, deploying, and securing Microsoft 365 environments day to day.
+**Modern Work** is Microsoft's framework for how organizations work in the cloud era — built around Microsoft 365, Teams, and the broader suite of productivity and security tools that keep people connected and data protected. At its core, Modern Work isn't just about apps. It's about enabling secure, productive work from anywhere, underpinned by Microsoft's **Zero Trust** security model.
 
-Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly filters the noise and surfaces what actually matters to engineers on the ground.
+Zero Trust is the principle that no user, device, or network connection should be implicitly trusted — even inside a corporate perimeter. Microsoft has built their entire platform stack around it: identity verification through Entra ID, device health enforcement through Intune, data protection through Purview, threat detection through Defender, and network access control through Global Secure Access. Together, these form the pillars that Modern Work engineers are responsible for deploying, maintaining, and hardening every day.
+
+Modern Work Weekly is a weekly digest of changes across that stack — built for the engineers doing the actual work.
+
+Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly pulls from the source, filters the noise, and surfaces what actually matters.
 
 No marketing. No executive summaries. Operational signal only.
+
+---
+
+## Standing on the shoulders of giants
+
+This site wouldn't exist without the Microsoft employees, MVPs, and community contributors who put out exceptional work — writing detailed docs, publishing deep-dive blog posts, presenting at Ignite and community events, and generally making the M365 ecosystem more legible for everyone trying to work in it.
+
+The problem isn't a lack of content. It's the opposite: between the official What's New pages, MVP blogs, Tech Community posts, and product-specific portals, there's more signal than any one person can reasonably track. Especially for MSP engineers supporting multiple clients across multiple environments — the breadth of what you need to stay current on is enormous.
+
+This is my attempt to solve that for myself, and share it with anyone else who finds it useful. One place, one weekly cadence, organized by the pillars that matter.
 
 ---
 
@@ -34,7 +48,9 @@ No marketing. No executive summaries. Operational signal only.
 
 Modern Work is a fast-moving space. Microsoft ships continuously, terminology changes, and the gap between what's announced and what engineers actually know about it is wide.
 
-The goal of Modern Work Weekly is simple: close that gap. One well-organized digest, once a week, so engineers can stay current without spending hours across portals tracking it themselves.
+The goal is simple: close that gap. One well-organized digest, once a week, so engineers can stay current without spending hours across portals tracking it themselves.
+
+This will always be free and open. I'm not selling anything. If this ever saves you time or helps you catch something you would have missed, and you want to support it — [a small donation](https://buymeacoffee.com) goes a long way toward keeping me motivated to learn, build, and make a bigger impact on the community.
 
 ---
 
