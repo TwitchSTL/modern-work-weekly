@@ -89,7 +89,7 @@
     const today  = new Date();
     today.setHours(0, 0, 0, 0);
     const cutoff = new Date(today);
-    cutoff.setDate(cutoff.getDate() + 30);
+    cutoff.setDate(cutoff.getDate() + 60);
 
     // Build date → deadlines map
     const deadlineMap = {};
