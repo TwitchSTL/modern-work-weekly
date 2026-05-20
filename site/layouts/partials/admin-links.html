@@ -1,0 +1,61 @@
+<div class="sidebar-panel admin-links-panel">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label">Quick Launch</span>
+  </div>
+
+  <!-- Admin Center — needs a separate admin account -->
+  <div class="admin-links-group">
+    <div class="admin-links-name">
+      Admin Center
+      <span class="admin-links-badge">separate account</span>
+    </div>
+    <div class="admin-links-buttons">
+      <button class="admin-link-btn admin-link-incognito"
+              onclick="adminLaunchIncognito('https://admin.microsoft.com')"
+              title="Copies URL to clipboard — paste into Chrome Incognito (Ctrl+Shift+N)">
+        Chrome Incognito
+      </button>
+      <a class="admin-link-btn admin-link-inprivate"
+         href="microsoft-edge:?inprivate&url=https://admin.microsoft.com"
+         title="Opens admin.microsoft.com in Edge InPrivate">
+        Edge InPrivate
+      </a>
+    </div>
+  </div>
+
+  <!-- Partner Center — regular browser -->
+  <div class="admin-links-group">
+    <div class="admin-links-name">Partner Center</div>
+    <div class="admin-links-buttons">
+      <a class="admin-link-btn"
+         href="https://partner.microsoft.com/dashboard"
+         target="_blank" rel="noopener">
+        Chrome
+      </a>
+      <a class="admin-link-btn"
+         href="microsoft-edge:https://partner.microsoft.com/dashboard">
+        Edge
+      </a>
+    </div>
+  </div>
+
+  <!-- M365 Lighthouse — regular browser -->
+  <div class="admin-links-group">
+    <div class="admin-links-name">M365 Lighthouse</div>
+    <div class="admin-links-buttons">
+      <a class="admin-link-btn"
+         href="https://lighthouse.microsoft.com"
+         target="_blank" rel="noopener">
+        Chrome
+      </a>
+      <a class="admin-link-btn"
+         href="microsoft-edge:https://lighthouse.microsoft.com">
+        Edge
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
+<script src="/js/admin-links.js"></script>

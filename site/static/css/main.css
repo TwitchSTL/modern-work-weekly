@@ -529,9 +529,139 @@ details[open] .toc-label::before { content: "▼ "; }
 
 .post-nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  font-size: 0.875rem;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.post-nav-arrows {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.post-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.post-nav-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.post-nav-back {
+  font-weight: 600;
+}
+
+/* ── Admin quick-launch panel ─────────────────────────────────────────── */
+.admin-links-panel {
+  margin-top: 1rem;
+}
+
+.admin-links-group {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-links-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.admin-links-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-links-badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #f0883e;
+  background: rgba(240, 136, 62, 0.1);
+  border: 1px solid rgba(240, 136, 62, 0.3);
+  border-radius: 3px;
+  padding: 0.1rem 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+.admin-links-buttons {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.admin-link-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  font-family: inherit;
+}
+
+.admin-link-btn:hover {
+  text-decoration: none;
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
+
+.admin-link-incognito:hover {
+  border-color: #4285f4;
+  color: #4285f4;
+}
+
+.admin-link-inprivate:hover {
+  border-color: #0078d4;
+  color: #0078d4;
+}
+
+/* ── Admin toast notification ─────────────────────────────────────────── */
+.admin-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(1rem);
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 9999;
+}
+
+.admin-toast.admin-toast-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* ── Health Card ─────────────────────────────────────────────────────── */
