@@ -1,29 +1,46 @@
 {{ with .Site.Data.deadlines }}
+{{ $allDeadlines := .deadlines }}
 {{ $pillarColors := dict
-  "Identity"              "#a78bfa"
-  "Devices"              "#3fb950"
-  "Apps"                 "#58a6ff"
-  "Data"                 "#f0883e"
-  "Network"              "#39d353"
+  "Identity"               "#a78bfa"
+  "Devices"                "#3fb950"
+  "Apps"                   "#58a6ff"
+  "Data"                   "#f0883e"
+  "Network"                "#39d353"
   "Visibility & Automation" "#d2a8ff"
 }}
+{{ $pillars := slice "Identity" "Devices" "Apps" "Data" "Network" "Visibility & Automation" }}
+
 <div class="sidebar-panel deadlines-sidebar">
   <div class="sidebar-panel-header">
     <span class="sidebar-panel-label sidebar-label-calendar">Deadlines</span>
-    <span class="sidebar-panel-hint">hover for detail</span>
   </div>
 
-  {{ if gt (len .deadlines) 0 }}
-    {{ range .deadlines }}
-    {{ $color := index $pillarColors .pillar | default "#6e7681" }}
-    <div class="deadline-item" data-date="{{ .date }}" style="border-left-color: {{ $color }}">
-      <div class="deadline-date">{{ .date }}</div>
-      <div class="deadline-title">{{ .title }}</div>
-      <div class="deadline-pillar" style="color: {{ $color }}">{{ .pillar }}</div>
-      <div class="deadline-action">{{ .action }}</div>
-    </div>
+  {{ $hasAny := false }}
+  {{ range $pillars }}
+    {{ $pillar := . }}
+    {{ $items := where $allDeadlines "pillar" $pillar }}
+    {{ if $items }}
+      {{ $hasAny = true }}
+      {{ $color := index $pillarColors $pillar | default "#6e7681" }}
+      <details class="deadline-group">
+        <summary class="deadline-group-summary" style="border-left-color:{{ $color }}">
+          <span class="deadline-group-name" style="color:{{ $color }}">{{ $pillar }}</span>
+          <span class="deadline-group-count">{{ len $items }}</span>
+        </summary>
+        <div class="deadline-group-items">
+          {{ range $items }}
+          <div class="deadline-item" data-date="{{ .date }}" style="border-left-color:{{ $color }}">
+            <div class="deadline-date">{{ .date }}</div>
+            <div class="deadline-title">{{ .title }}</div>
+            <div class="deadline-action">{{ .action }}</div>
+          </div>
+          {{ end }}
+        </div>
+      </details>
     {{ end }}
-  {{ else }}
+  {{ end }}
+
+  {{ if not $hasAny }}
   <p class="sidebar-empty">No upcoming deadlines</p>
   {{ end }}
 

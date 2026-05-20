@@ -15,16 +15,17 @@
           Admin Center
           <span class="portals-badge">separate account</span>
         </div>
-        <div class="portals-buttons">
-          <a class="portal-btn"
+        <!-- 2×2 grid: Chrome/Edge top, private modes bottom -->
+        <div class="portals-buttons portals-buttons-admin">
+          <a class="portal-btn portal-btn-chrome"
              href="https://admin.cloud.microsoft"
              target="_blank" rel="noopener">Chrome</a>
-          <button class="portal-btn portal-btn-private"
+          <a class="portal-btn portal-btn-edge"
+             href="microsoft-edge:https://admin.cloud.microsoft">Edge</a>
+          <button class="portal-btn portal-btn-incognito"
                   onclick="adminLaunchPrivate('https://admin.cloud.microsoft','incognito')"
                   title="Copies URL — paste in Chrome Incognito (Ctrl+Shift+N)">Incognito</button>
-          <a class="portal-btn"
-             href="microsoft-edge:https://admin.cloud.microsoft">Edge</a>
-          <button class="portal-btn portal-btn-private"
+          <button class="portal-btn portal-btn-inprivate"
                   onclick="adminLaunchPrivate('https://admin.cloud.microsoft','inprivate')"
                   title="Copies URL — paste in Edge InPrivate (Ctrl+Shift+P)">InPrivate</button>
         </div>
@@ -34,10 +35,10 @@
       <div class="portals-group">
         <div class="portals-group-name">Partner Center</div>
         <div class="portals-buttons">
-          <a class="portal-btn"
+          <a class="portal-btn portal-btn-chrome"
              href="https://partner.microsoft.com/dashboard/v2/home"
              target="_blank" rel="noopener">Chrome</a>
-          <a class="portal-btn"
+          <a class="portal-btn portal-btn-edge"
              href="microsoft-edge:https://partner.microsoft.com/dashboard/v2/home">Edge</a>
         </div>
       </div>
@@ -46,10 +47,10 @@
       <div class="portals-group">
         <div class="portals-group-name">M365 Lighthouse</div>
         <div class="portals-buttons">
-          <a class="portal-btn"
+          <a class="portal-btn portal-btn-chrome"
              href="https://lighthouse.microsoft.com"
              target="_blank" rel="noopener">Chrome</a>
-          <a class="portal-btn"
+          <a class="portal-btn portal-btn-edge"
              href="microsoft-edge:https://lighthouse.microsoft.com">Edge</a>
         </div>
       </div>

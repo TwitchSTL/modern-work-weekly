@@ -159,19 +159,26 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   gap: 0.25rem;
   padding: 0.3rem 0.65rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
   color: var(--color-text-muted);
-  background: transparent;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
+  /* 3D effect */
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: color 0.1s, border-color 0.1s, box-shadow 0.1s, transform 0.1s;
 }
 
 .portals-toggle:hover {
   color: var(--color-text);
   border-color: var(--color-text-muted);
+}
+
+.portals-toggle:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .portals-caret {
@@ -181,15 +188,15 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 
 .portals-panel {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + 0.6rem);
   right: 0;
   z-index: 200;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
   padding: 1rem 1.25rem;
-  min-width: 480px;
+  min-width: 500px;
 }
 
 .portals-grid {
@@ -199,12 +206,10 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 }
 
 .portals-group-name {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--color-text);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -213,8 +218,6 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 .portals-badge {
   font-size: 0.65rem;
   font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0;
   color: #f0883e;
   background: rgba(240, 136, 62, 0.1);
   border: 1px solid rgba(240, 136, 62, 0.3);
@@ -226,34 +229,163 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 .portals-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
+/* Admin Center: 2×2 grid — Chrome/Edge top, Incognito/InPrivate bottom */
+.portals-buttons-admin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+}
+
+/* ── Portal browser buttons — 3D + color coded ───────────────────────── */
 .portal-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.55rem;
+  justify-content: center;
+  padding: 0.28rem 0.6rem;
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   font-family: inherit;
-  border: 1px solid var(--color-border);
+  border: 1px solid;
   border-radius: var(--radius);
-  color: var(--color-text-muted);
-  background: transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.15s, color 0.15s;
+  /* 3D base */
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: box-shadow 0.1s, transform 0.1s, color 0.1s, border-color 0.1s;
 }
 
 .portal-btn:hover {
   text-decoration: none;
-  color: var(--color-text);
-  border-color: var(--color-text-muted);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
-.portal-btn-private:hover {
-  color: #a78bfa;
-  border-color: #a78bfa;
+.portal-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Chrome — Google blue */
+.portal-btn-chrome {
+  color: #4285f4;
+  border-color: #4285f4;
+  background: rgba(66, 133, 244, 0.08);
+  box-shadow: 0 3px 0 #1a56b0, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-chrome:hover {
+  color: #6ba3f5;
+  border-color: #6ba3f5;
+  box-shadow: 0 4px 0 #1a56b0, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-chrome:active {
+  box-shadow: 0 1px 0 #1a56b0, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Edge — Microsoft blue */
+.portal-btn-edge {
+  color: #0078d4;
+  border-color: #0078d4;
+  background: rgba(0, 120, 212, 0.08);
+  box-shadow: 0 3px 0 #004e8c, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-edge:hover {
+  color: #2899f5;
+  border-color: #2899f5;
+  box-shadow: 0 4px 0 #004e8c, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-edge:active {
+  box-shadow: 0 1px 0 #004e8c, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Incognito — muted purple (privacy mode) */
+.portal-btn-incognito {
+  color: #8ab4f8;
+  border-color: #8ab4f8;
+  background: rgba(138, 180, 248, 0.08);
+  box-shadow: 0 3px 0 #3a5fa0, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-incognito:hover {
+  color: #aacbfa;
+  border-color: #aacbfa;
+  box-shadow: 0 4px 0 #3a5fa0, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-incognito:active {
+  box-shadow: 0 1px 0 #3a5fa0, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* InPrivate — muted teal-blue (Edge privacy mode) */
+.portal-btn-inprivate {
+  color: #50b0e0;
+  border-color: #50b0e0;
+  background: rgba(80, 176, 224, 0.08);
+  box-shadow: 0 3px 0 #1a6090, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-inprivate:hover {
+  color: #7ac8ec;
+  border-color: #7ac8ec;
+  box-shadow: 0 4px 0 #1a6090, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.portal-btn-inprivate:active {
+  box-shadow: 0 1px 0 #1a6090, inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ── Deadline collapsible groups ─────────────────────────────────────── */
+.deadline-group {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.deadline-group:last-of-type {
+  border-bottom: none;
+}
+
+.deadline-group-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.25rem;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.deadline-group-summary::-webkit-details-marker { display: none; }
+
+.deadline-group-summary::after {
+  content: '▾';
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  padding-left: 0.4rem;
+}
+
+.deadline-group[open] .deadline-group-summary::after {
+  content: '▴';
+}
+
+.deadline-group-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.deadline-group-count {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.05rem 0.4rem;
+  margin-left: 0.4rem;
+  margin-right: 0.25rem;
+}
+
+.deadline-group-items {
+  padding-bottom: 0.4rem;
 }
 
 /* ── Hero ────────────────────────────────────────────────────────────── */
