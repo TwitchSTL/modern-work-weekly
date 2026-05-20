@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - "site/**"
+      - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
@@ -26,6 +27,8 @@ jobs:
       - name: Build site
         run: |
           cd site
+          hugo version
+          hugo --minify --baseURL "https://ryanarbuckle.dev" --verbose 2>&1 || true
           hugo --minify --baseURL "https://ryanarbuckle.dev"
 
 # Deploy is handled by a cron job on the LXC that pulls from GitHub every 5 minutes.
