@@ -1,17 +1,59 @@
 # Modern Work Weekly
 
-**A self-hosted Microsoft 365 / Modern Work change digest — published as a blog.**
+[![Hugo Build](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml/badge.svg)](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml)
+[![Site](https://img.shields.io/badge/site-ryanarbuckle.dev-blue?style=flat)](https://ryanarbuckle.dev)
+[![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
-Built and maintained by Ryan Arbuckle. Runs on a homelab LXC, served via Cloudflare Tunnel, published with Hugo.
+> A self-hosted, fully automated Microsoft 365 change digest — scraped, drafted by Claude, and published weekly as a Hugo blog.
 
 ---
 
-## What this project does
+## What this is
 
-Every week, a Python scraper collects "What's New" updates from Microsoft's official portals across Intune, Entra, Defender XDR, Purview, Teams, the Microsoft Security Blog, the M365 Roadmap, Agent 365, and SharePoint. The raw pull is reviewed in Claude.ai, turned into a structured digest, and published as:
+**Modern Work** is Microsoft's framework for secure, cloud-connected productivity — built around Microsoft 365 and underpinned by the **Zero Trust** security model. Modern Work engineers are responsible for deploying and hardening the full stack: identity through Entra ID, device compliance through Intune, data protection through Purview, threat detection through Defender, and network access through Global Secure Access.
 
-- A **blog post** at [ryanarbuckle.dev](https://ryanarbuckle.dev)
-- A **Markdown file** committed to this GitHub repo (version history + backup)
+Microsoft ships updates across all of it continuously. **Modern Work Weekly** scrapes the official portals, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without spending hours across portals tracking it themselves.
+
+No marketing. No executive summaries. Operational signal only.
+
+---
+
+## How it works
+
+```
+Every Tuesday at 5:55 AM CST (automated cron on LXC)
+  ┌─────────────────────────────────────────────────────────┐
+  │  scraper.py   →  Fetches 15+ Microsoft portals          │
+  │                  Deduplicates against seen_items.json   │
+  │                  Appends new items to pending_draft.json │
+  │                  Writes known issues to health.json     │
+  │                                                         │
+  │  digest.py    →  Reads pending_draft.json               │
+  │                  Calls Claude API (claude-sonnet-4-6)   │
+  │                  Writes site/content/posts/YYYY-MM-DD.md│
+  │                  Archives pending_draft.json            │
+  │                                                         │
+  │  git push     →  GitHub Actions builds the Hugo site    │
+  │                  Deployed via Cloudflare Tunnel         │
+  └─────────────────────────────────────────────────────────┘
+```
+
+**Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run. When the Tuesday digest fires, it consumes everything since the last publish — so nothing gets lost between runs.
+
+---
+
+## Sources scraped
+
+| Category | Sources |
+|---|---|
+| Identity & Access | Entra ID |
+| Endpoint Management | Intune, Autopilot, Windows 365 |
+| Security | Defender XDR, Defender for Endpoint, Defender for Office 365 |
+| Collaboration | Teams, SharePoint / OneDrive, Exchange Online |
+| Data | Purview |
+| Network | Global Secure Access |
+| Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog, Agent 365 |
+| Known Issues | Intune, Autopilot, Windows 365, Defender for Endpoint, Defender XDR, Purview, Entra ID, Teams, Windows Release Health |
 
 ---
 
@@ -19,67 +61,43 @@ Every week, a Python scraper collects "What's New" updates from Microsoft's offi
 
 ```
 modern-work-weekly/
-├── scraper/                  # Python scraper — collects raw MS update data
-│   ├── scraper.py            # Main scraper script
-│   ├── sources.py            # Source URLs and selectors per portal
-│   ├── requirements.txt      # Python dependencies
-│   └── README.md             # Scraper-specific docs
+├── scraper/
+│   ├── scraper.py            # Fetches portals, deduplicates, builds pending draft
+│   ├── digest.py             # Calls Claude API, writes Hugo post, archives draft
+│   ├── sources.py            # All source URLs, selectors, and health flags
+│   ├── weekly-run.sh         # Tuesday cron entrypoint — pull → scrape → draft → push
+│   └── requirements.txt
 │
-├── state/                    # Persisted state — stays on LXC, never pushed to GitHub
-│   └── seen_items.json       # Dedup tracker (gitignored)
-│
-├── linkedin/                 # LinkedIn article formatter (in progress)
-│   ├── formatter.py          # Converts digest MD → LinkedIn paste
-│   └── template.md           # LinkedIn article structure template
+├── state/                    # Persisted on LXC — gitignored
+│   ├── seen_items.json       # Dedup tracker
+│   ├── pending_draft.json    # Rolling accumulator (cleared after each publish)
+│   ├── weekly_draft_*.json   # Per-run snapshots (kept for reference)
+│   └── archive/              # Archived pending drafts post-publish
 │
 ├── site/                     # Hugo site
-│   ├── hugo.toml             # Hugo config
 │   ├── content/posts/        # One .md file per weekly digest
+│   ├── data/
+│   │   ├── health.json       # Known issues — rendered in sidebar
+│   │   └── deadlines.json    # ZT deadline calendar data
+│   ├── layouts/              # Hugo templates (3-column digest layout)
 │   ├── static/css/           # Custom styles
-│   ├── layouts/              # Hugo templates
-│   └── archetypes/           # New post template
+│   └── static/js/            # collapsible.js, calendar.js, sidebar-dates.js
 │
 ├── infra/
-│   ├── lxc/
-│   │   └── bootstrap.sh      # Run once on a fresh Ubuntu 24.04 LXC
-│   ├── caddy/
-│   │   └── Caddyfile         # Reverse proxy config
-│   └── cloudflare/
-│       └── tunnel.yml        # Cloudflare Tunnel config
+│   ├── lxc/bootstrap.sh      # Fresh Ubuntu 24.04 LXC setup
+│   ├── caddy/Caddyfile        # Reverse proxy config
+│   └── cloudflare/tunnel.yml # Cloudflare Tunnel config
 │
 ├── docs/
-│   ├── SETUP.md              # Full setup guide (LXC → live site)
-│   ├── WEEKLY_WORKFLOW.md    # What you do every Monday
-│   ├── PHASE2_API.md         # Upgrade path to fully automated pipeline
-│   └── DNS_NEXTDNS.md        
+│   ├── SETUP.md              # Full setup guide
+│   ├── WEEKLY_WORKFLOW.md    # Pipeline reference
+│   └── PHASE2_API.md         # Claude API integration notes
 │
-├── .github/
-│   └── workflows/
-│       └── hugo-build.yml    # GitHub Action: validates Hugo build on push
-│
-├── .gitignore
-└── README.md                 # This file
+└── .github/
+    ├── FUNDING.yml           # Ko-fi sponsor link
+    └── workflows/
+        └── hugo-build.yml    # Build + deploy on push to site/**
 ```
-
----
-
-## Phase 1 (current) — Manual-assisted workflow
-
-```
-Monday morning
-  1. Run scraper:        python scraper/scraper.py
-  2. Review output:      state/weekly_draft_YYYY-MM-DD.json
-  3. Open Claude.ai →   paste JSON + master prompt → get digest draft
-  4. Edit digest:        save to site/content/posts/YYYY-MM-DD.md
-  5. Push to GitHub:     git add . && git commit -m "digest: YYYY-MM-DD" && git push
-  6. Site rebuilds automatically within 5 minutes via LXC cron job
-```
-
-**Estimated time per week:** 30–45 minutes including review and editing.
-
-## Phase 2 (upgrade path) — Fully automated
-
-Add an Anthropic API key → scraper calls Claude directly → digest drafted automatically → you review and push. See `docs/PHASE2_API.md`.
 
 ---
 
@@ -87,17 +105,25 @@ Add an Anthropic API key → scraper calls Claude directly → digest drafted au
 
 | Component | Tool |
 |---|---|
-| Hosting | LXC on Ubuntu 24.04 |
+| Hosting | Ubuntu 24.04 LXC (Proxmox) |
 | Web server | Caddy |
 | Tunnel | Cloudflare Tunnel |
 | Static site | Hugo |
-| Scraper | Python 3.12 |
+| Scraper | Python 3.12 — requests, BeautifulSoup, feedparser |
+| Digest drafting | Claude API (claude-sonnet-4-6) |
 | CI/CD | GitHub Actions |
 
 ---
 
-## Quick links
+## Requirements
 
-- Blog: [ryanarbuckle.dev](https://ryanarbuckle.dev)
-- Scraper logs: `/opt/modern-work-weekly/logs/`
-- State file: `/opt/modern-work-weekly/state/seen_items.json`
+- Python 3.12+ with dependencies from `scraper/requirements.txt`
+- `ANTHROPIC_API_KEY` in `/opt/modern-work-weekly/.env`
+- Hugo extended v0.128+
+- Cloudflare Tunnel configured for your domain
+
+---
+
+## Support
+
+This project is free and open. If it saves you time, [contributions on Ko-fi](https://ko-fi.com/ryanarbuckle) help offset the API costs and keep it going.
