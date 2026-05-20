@@ -126,7 +126,7 @@ SOURCES = [
     },
     {
         "name": "Viva",
-        "url": "https://learn.microsoft.com/en-us/viva/whats-new-in-microsoft-viva",
+        "url": "https://learn.microsoft.com/en-us/viva/whats-new",
         "cadence": "monthly",
         "category": "Apps",
         "rss": None,
@@ -134,7 +134,7 @@ SOURCES = [
     },
     {
         "name": "Global Secure Access",
-        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/whats-new",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/whats-new-global-secure-access",
         "cadence": "monthly",
         "category": "Network",
         "rss": None,
@@ -153,7 +153,7 @@ SOURCES = [
     },
     {
         "name": "Windows 365 Known Issues",
-        "url": "https://learn.microsoft.com/en-us/windows-365/known-issues",
+        "url": "https://learn.microsoft.com/en-us/windows-365/enterprise/known-issues",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
         "rss": None,
@@ -169,15 +169,16 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    {
-        "name": "Autopatch Known Issues",
-        "url": "https://learn.microsoft.com/en-us/windows/deployment/windows-autopatch/whats-new/windows-autopatch-known-issues",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
+    # Autopatch Known Issues — URL needs verification; disabled until confirmed
+    # {
+    #     "name": "Autopatch Known Issues",
+    #     "url": "TODO",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
     {
         "name": "Defender for Endpoint Known Issues",
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
@@ -187,15 +188,17 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    {
-        "name": "Defender for Office 365 Known Issues",
-        "url": "https://learn.microsoft.com/en-us/defender-office-365/known-issues",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
+    # Defender for Office 365 Known Issues — no dedicated known-issues page found;
+    # /defender-office-365/known-issues returns 404. Re-enable if Microsoft publishes one.
+    # {
+    #     "name": "Defender for Office 365 Known Issues",
+    #     "url": "TODO",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
     {
         "name": "Defender XDR Known Issues",
         "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot",
@@ -232,42 +235,50 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    {
-        "name": "SharePoint Known Issues",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/troubleshoot/known-issues-sharepoint-online-suite",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
-    {
-        "name": "OneDrive Known Issues",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/troubleshoot/onedrive-errors/onedrive-known-issues",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
-    {
-        "name": "Exchange Known Issues",
-        "url": "https://learn.microsoft.com/en-us/exchange/troubleshoot/known-issues/exchange-online-known-issues",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
-    {
-        "name": "Viva Known Issues",
-        "url": "https://learn.microsoft.com/en-us/viva/known-issues",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
+    # SharePoint Known Issues — /sharepoint/troubleshoot/known-issues-sharepoint-online-suite 404s.
+    # Candidate URL (needs manual verification): https://learn.microsoft.com/en-us/troubleshoot/sharepoint/
+    # {
+    #     "name": "SharePoint Known Issues",
+    #     "url": "TODO",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
+    # OneDrive Known Issues — /sharepoint/troubleshoot/onedrive-errors/onedrive-known-issues 404s.
+    # No dedicated known-issues page found. Re-enable if Microsoft publishes one.
+    # {
+    #     "name": "OneDrive Known Issues",
+    #     "url": "TODO",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
+    # Exchange Known Issues — /exchange/troubleshoot/known-issues/exchange-online-known-issues 404s.
+    # Candidate URL (needs manual verification): https://learn.microsoft.com/en-us/troubleshoot/exchange/exchange-online-welcome
+    # {
+    #     "name": "Exchange Known Issues",
+    #     "url": "TODO",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
+    # Viva Known Issues — /viva/known-issues 404s.
+    # Candidate URL (needs manual verification): https://learn.microsoft.com/en-us/troubleshoot/viva/
+    # {
+    #     "name": "Viva Known Issues",
+    #     "url": "TODO",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
     {
         "name": "Windows Release Health",
         "url": "https://learn.microsoft.com/en-us/windows/release-health/",
