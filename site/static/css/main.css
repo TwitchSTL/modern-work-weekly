@@ -182,10 +182,10 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   top: calc(100% + 0.6rem);
   right: 0;
   z-index: 200;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75);
   padding: 1rem 1.25rem;
   min-width: 500px;
 }
@@ -261,10 +261,10 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 
 /* Chrome — Google blue */
 .portal-btn-chrome {
-  color: #4285f4;
+  color: #e8f0fe;
   border-color: #4285f4;
-  background: rgba(66, 133, 244, 0.08);
-  box-shadow: 0 3px 0 #1a56b0, inset 0 1px 0 rgba(255,255,255,0.05);
+  background: rgba(66, 133, 244, 0.32);
+  box-shadow: 0 3px 0 #1a56b0, inset 0 1px 0 rgba(255,255,255,0.08);
 }
 .portal-btn-chrome:hover {
   color: #6ba3f5;
@@ -277,10 +277,10 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 
 /* Edge — Microsoft blue */
 .portal-btn-edge {
-  color: #0078d4;
+  color: #cce4f7;
   border-color: #0078d4;
-  background: rgba(0, 120, 212, 0.08);
-  box-shadow: 0 3px 0 #004e8c, inset 0 1px 0 rgba(255,255,255,0.05);
+  background: rgba(0, 120, 212, 0.32);
+  box-shadow: 0 3px 0 #004e8c, inset 0 1px 0 rgba(255,255,255,0.08);
 }
 .portal-btn-edge:hover {
   color: #2899f5;
@@ -584,9 +584,12 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 .post-content h3 {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 1.25rem 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.4rem;
+  color: var(--color-accent);
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--color-accent);
 }
 
 .post-content p { margin-bottom: 1rem; }
