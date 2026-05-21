@@ -115,20 +115,14 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 
 .site-title {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   text-decoration: none;
-  color: var(--color-text);
 }
 
-.site-title-main {
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.site-title-sub {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+.site-logo {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 .site-nav {
