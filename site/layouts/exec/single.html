@@ -1,0 +1,47 @@
+{{ define "main" }}
+<div class="container">
+  <article class="post post-simple exec-post">
+
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
+        <span class="meta-sep">·</span>
+        <span class="exec-badge">Leadership Edition</span>
+      </div>
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{ with .Params.description }}
+      <p class="post-description">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="post-content exec-content">
+      {{ .Content }}
+    </div>
+
+    <footer class="post-footer exec-footer">
+      {{/* Cross-link to the technical digest for the same week */}}
+      {{ $techPost := site.GetPage (printf "/posts/%s" (.Date.Format "2006-01-02")) }}
+      {{ if $techPost }}
+      <p class="exec-cross-link">
+        For your IT team: <a href="{{ $techPost.Permalink }}">technical digest for this week →</a>
+      </p>
+      {{ end }}
+
+      <nav class="post-nav">
+        <a class="post-nav-btn post-nav-back" href="/exec/">← All Briefs</a>
+        <div class="post-nav-arrows">
+          {{ with .PrevInSection }}
+          <a class="post-nav-btn post-nav-prev" href="{{ .Permalink }}"
+             title="{{ .Title }}">← {{ .Date.Format "Jan 2" }}</a>
+          {{ end }}
+          {{ with .NextInSection }}
+          <a class="post-nav-btn post-nav-next" href="{{ .Permalink }}"
+             title="{{ .Title }}">{{ .Date.Format "Jan 2" }} →</a>
+          {{ end }}
+        </div>
+      </nav>
+    </footer>
+
+  </article>
+</div>
+{{ end }}

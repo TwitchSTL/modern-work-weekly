@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="container">
+
+  <section class="exec-list-header">
+    <h1 class="exec-list-title">Executive's Guide</h1>
+    <p class="exec-list-sub">Microsoft 365 changes explained for business leaders — risk, compliance, cost, and user impact. No jargon.</p>
+    <p class="exec-list-note">Each edition pairs with the <a href="/posts/">technical digest</a> published the same week.</p>
+  </section>
+
+  <section class="post-list">
+    {{ range .Pages.ByDate.Reverse }}
+    <article class="post-card exec-card">
+      <div class="post-card-meta">
+        <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+        <span class="meta-sep">·</span>
+        <span>{{ .ReadingTime }} min read</span>
+        <span class="meta-sep">·</span>
+        <span class="exec-badge">Leadership</span>
+      </div>
+      <h2 class="post-card-title">
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </h2>
+      {{ with .Description }}
+      <p class="post-card-desc">{{ . }}</p>
+      {{ end }}
+      <a class="read-more" href="{{ .Permalink }}">Read brief →</a>
+    </article>
+    {{ end }}
+  </section>
+
+</div>
+{{ end }}

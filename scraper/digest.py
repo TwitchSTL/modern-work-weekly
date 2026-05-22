@@ -28,11 +28,13 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATE_DIR = BASE_DIR / "state"
 POSTS_DIR = BASE_DIR / "site" / "content" / "posts"
+EXEC_POSTS_DIR = BASE_DIR / "site" / "content" / "exec"
 ENV_FILE = Path("/opt/modern-work-weekly/.env")
 PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
 ARCHIVE_DIR = STATE_DIR / "archive"
 
 POSTS_DIR.mkdir(parents=True, exist_ok=True)
+EXEC_POSTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Logging ─────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -68,6 +70,42 @@ Identity, Devices, Apps, Data, Network, Visibility & Automation
 Map content accordingly: Entra/MFA/PIM → Identity; Intune/Autopatch/MDM → Devices; Teams/SharePoint/Copilot features → Apps; Purview/DLP/Sensitivity Labels → Data; Global Secure Access/networking → Network; Defender/SIEM/Graph API/AI agents → Visibility & Automation
 
 Tone: confident, peer-to-peer, no fluff. Write like a senior engineer briefing their team."""
+
+EXEC_SYSTEM_PROMPT = """You are a trusted technology advisor writing a weekly briefing for C-suite executives, IT directors, compliance officers, and business leaders at organizations using Microsoft 365.
+
+Your audience makes decisions about risk, budget, compliance, and people. They do not configure technology. Write accordingly — no unexplained jargon, no assumed technical knowledge.
+
+Your output must be valid Hugo-flavored Markdown with YAML front matter.
+
+Risk levels — use exactly these markers in the "Week at a Glance" section:
+🔴 High — act now or face measurable business, financial, or compliance risk
+🟡 Medium — plan within 30 days; budget or approval may be needed
+🟢 Low — awareness only; no immediate action required
+
+Format rules:
+- Front matter: title (must be exactly "Executive's Guide — Week of YYYY-MM-DD"), date, description (1-2 sentences on the week's business significance — not technical), categories: ["Executive Guide"], tags (business-level: compliance, security, cost, user-impact, licensing, identity, devices, data-protection)
+- ## The Week at a Glance — 3-4 risk-labeled bullets in plain English
+- ## Why This Week Matters — 2-3 sentences of leadership-level context; the one thing leadership must understand
+- ## Risk & Compliance — markdown table with columns: Change | Business Risk | Regulatory Angle | Act By
+- ## What Your Employees Will Notice — bullets of user-facing changes; what to communicate proactively
+- ## What Your Help Desk Should Expect — specific ticket types or support volume changes to anticipate
+- ## Cost & Licensing — licensing tier implications, new costs, or spend optimization opportunities (omit section if nothing applies)
+- ## Planning Horizon — deadlines in the next 30/60/90 days requiring leadership decisions, budget approval, or vendor coordination
+- ## If You Take No Action — plain-language consequences for the 2-3 highest-risk items only
+
+Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, cyber insurance requirements, GDPR, state privacy laws.
+
+Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board."""
+
+EXEC_DIGEST_PROMPT_TEMPLATE = """Here is this week's Microsoft 365 update data. Produce the Executive's Guide briefing.
+
+Week of: {week_of}
+Total items: {total_new_items}
+
+RAW DATA:
+{grouped_items}
+
+Produce the complete Hugo markdown post for executive and leadership audiences. Start immediately with YAML front matter (---). Do not wrap in code fences. Do not add preamble or explanation outside the markdown."""
 
 DIGEST_PROMPT_TEMPLATE = """Here is this week's scraped Microsoft update data. Produce the full weekly digest.
 
@@ -150,6 +188,51 @@ def call_claude(prompt: str) -> str:
     return message.content[0].text
 
 
+def build_exec_prompt(draft: dict) -> str:
+    compact = {}
+    for cat, items in draft.get("grouped_items", {}).items():
+        compact[cat] = [
+            {
+                "title": item["title"],
+                "body": item["body"],
+                "source": item["source"],
+                "phase": item.get("phase", "GA"),
+                "admin_action": item.get("admin_action"),
+                "url": item.get("url", ""),
+            }
+            for item in items
+        ]
+    return EXEC_DIGEST_PROMPT_TEMPLATE.format(
+        week_of=draft.get("week_of", datetime.now(timezone.utc).date().isoformat()),
+        total_new_items=draft.get("total_new_items", 0),
+        grouped_items=json.dumps(compact, indent=2),
+    )
+
+
+def call_claude_exec(prompt: str) -> str:
+    client = anthropic.Anthropic()
+    log.info("Calling Claude API for Executive's Guide...")
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=4096,
+        system=EXEC_SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return message.content[0].text
+
+
+def write_exec_post(content: str, week_of: str) -> Path:
+    post_path = EXEC_POSTS_DIR / f"{week_of}.md"
+    if post_path.exists():
+        backup = post_path.with_suffix(".md.bak")
+        post_path.rename(backup)
+        log.info(f"Existing exec post backed up → {backup}")
+    with open(post_path, "w") as f:
+        f.write(content)
+    log.info(f"Exec post written → {post_path}")
+    return post_path
+
+
 def write_post(content: str, week_of: str) -> Path:
     post_path = POSTS_DIR / f"{week_of}.md"
     if post_path.exists():
@@ -205,15 +288,27 @@ def run(args):
     content = call_claude(prompt)
     post_path = write_post(content, week_of)
 
+    # Generate Executive's Guide unless skipped
+    exec_post_path = None
+    if not args.skip_exec:
+        try:
+            exec_prompt = build_exec_prompt(draft)
+            exec_content = call_claude_exec(exec_prompt)
+            exec_post_path = write_exec_post(exec_content, week_of)
+        except Exception as e:
+            log.warning(f"Executive's Guide generation failed (non-fatal): {e}")
+
     # Clear the pending draft now that it's been published — next scraper run
     # starts a fresh accumulation.
     if not args.keep_pending and draft_path == PENDING_DRAFT_FILE:
         archive_pending_draft(week_of)
 
     print(f"\n{'='*60}")
-    print(f"  Digest drafted: {post_path}")
-    print(f"  Next step:      Review the post, edit as needed, then:")
-    print(f"                  git add . && git commit -m 'digest: {week_of}' && git push")
+    print(f"  Digest drafted:      {post_path}")
+    if exec_post_path:
+        print(f"  Executive's Guide:   {exec_post_path}")
+    print(f"  Next step:           Review posts, edit as needed, then:")
+    print(f"                       git add . && git commit -m 'digest: {week_of}' && git push")
     print(f"{'='*60}\n")
 
 
@@ -225,5 +320,7 @@ if __name__ == "__main__":
                         help="Print the prompt without calling the API")
     parser.add_argument("--keep-pending", action="store_true",
                         help="Don't archive pending_draft.json after publishing (useful for testing)")
+    parser.add_argument("--skip-exec", action="store_true",
+                        help="Skip Executive's Guide generation (technical digest only)")
     args = parser.parse_args()
     run(args)

@@ -1743,6 +1743,112 @@ details[open] .toc-label::before { content: "▼ "; }
   color: var(--color-text-muted);
 }
 
+/* ── Executive's Guide ───────────────────────────────────────────────── */
+.exec-list-header {
+  padding: 2rem 0 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.exec-list-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+}
+
+.exec-list-sub {
+  color: var(--color-text-muted);
+  margin: 0 0 0.4rem;
+}
+
+.exec-list-note {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.exec-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #f5a623;
+  background: rgba(245, 166, 35, 0.12);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.exec-card {
+  border-left: 3px solid rgba(245, 166, 35, 0.4);
+}
+
+.exec-post .post-title {
+  font-size: 1.5rem;
+}
+
+.exec-content {
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.exec-content h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+}
+
+.exec-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.exec-content th {
+  background: var(--color-surface);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
+.exec-content td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.exec-content tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
+.exec-cross-link {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+}
+
+.exec-cross-link a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.exec-cross-link a:hover {
+  color: var(--color-accent);
+}
+
+.exec-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .header-inner { flex-direction: column; align-items: flex-start; }

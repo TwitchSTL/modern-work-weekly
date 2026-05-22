@@ -33,6 +33,14 @@
     <script src="/js/sidebar-dates.js"></script>
 
     <footer class="post-footer">
+      {{/* Subtle cross-link to Executive's Guide for the same week */}}
+      {{ $execPost := site.GetPage (printf "/exec/%s" (.Date.Format "2006-01-02")) }}
+      {{ if $execPost }}
+      <p class="exec-cross-link">Sharing with leadership?
+        <a href="{{ $execPost.Permalink }}">Executive's Guide for this week →</a>
+      </p>
+      {{ end }}
+
       <div class="share-block">
         <p>Found this useful? Share it:</p>
         <a class="share-btn share-li"
