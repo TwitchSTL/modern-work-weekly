@@ -1,12 +1,13 @@
 /**
  * calendar.js — Deadline calendar for the homepage sidebar.
  *
- * Reads deadline data from #deadline-calendar[data-deadlines],
- * renders a mini month grid starting from today's week,
- * and an upcoming-deadlines list (next 5) below.
+ * Renders a rolling 5-week grid starting from today's week (no month boundaries),
+ * plus an upcoming-deadlines list (next 3) below.
  */
 
 (function () {
+  const WEEKS_TO_SHOW = 5; // today's week + 4 more
+
   const PILLAR_COLORS = {
     'Identity':                '#a78bfa',
     'Devices':                 '#3fb950',
@@ -30,83 +31,69 @@
     return `${y}-${m}-${d}`;
   }
 
-  function buildMonthGrid(year, month, deadlineMap, today, trimPast) {
-    const firstDay   = new Date(year, month, 1);
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const monthName  = firstDay.toLocaleString('default', { month: 'long', year: 'numeric' });
-
+  /**
+   * Builds a rolling week-based grid — no month boundaries, continuous days.
+   * Starts from Sunday of today's week, runs for WEEKS_TO_SHOW weeks.
+   * Past days in the current week are blanked out.
+   */
+  function buildWeekGrid(today, numWeeks, deadlineMap) {
     // Sunday of the week containing today
-    const todayWeekStart = new Date(today);
-    todayWeekStart.setDate(today.getDate() - today.getDay());
-    todayWeekStart.setHours(0, 0, 0, 0);
+    const gridStart = new Date(today);
+    gridStart.setDate(today.getDate() - today.getDay());
+    gridStart.setHours(0, 0, 0, 0);
 
-    // Build flat array of day values (null = empty cell)
-    const startOffset = firstDay.getDay();
-    const allDays = [];
-    for (let i = 0; i < startOffset; i++) allDays.push(null);
-    for (let d = 1; d <= daysInMonth; d++) allDays.push(d);
-    while (allDays.length % 7 !== 0) allDays.push(null);
+    // Last day in the grid
+    const gridEnd = new Date(gridStart);
+    gridEnd.setDate(gridStart.getDate() + numWeeks * 7 - 1);
 
-    let html = `<div class="cal-month">`;
-    html += `<div class="cal-month-name">${monthName}</div>`;
-    html += `<div class="cal-grid">`;
-    for (const h of ['S','M','T','W','T','F','S']) {
+    // Header: date range label
+    const fmt     = { month: 'short', day: 'numeric' };
+    const fmtYear = { month: 'short', day: 'numeric', year: 'numeric' };
+    const startLabel = gridStart.toLocaleString('default', fmt);
+    const endLabel   = gridEnd.toLocaleString('default', fmtYear);
+
+    let html = '<div class="cal-month">';
+    html += `<div class="cal-month-name">${startLabel} – ${endLabel}</div>`;
+    html += '<div class="cal-grid">';
+
+    for (const h of ['S', 'M', 'T', 'W', 'T', 'F', 'S']) {
       html += `<div class="cal-dow">${h}</div>`;
     }
 
-    for (let w = 0; w < allDays.length; w += 7) {
-      const week = allDays.slice(w, w + 7);
+    for (let i = 0; i < numWeeks * 7; i++) {
+      const date = new Date(gridStart);
+      date.setDate(gridStart.getDate() + i);
+      date.setHours(0, 0, 0, 0);
 
-      if (trimPast) {
-        // Find last real day in this row
-        const lastReal = [...week].reverse().find(d => d !== null);
-        if (lastReal === undefined) continue; // trailing empty row
+      const dateStr = toKey(date);
+      const isToday = dateStr === toKey(today);
+      const isPast  = date < today && !isToday;
 
-        const lastDate = new Date(year, month, lastReal);
-        lastDate.setHours(0, 0, 0, 0);
-        // Skip rows entirely before today's week
-        if (lastDate < todayWeekStart) continue;
+      // Blank past days so the grid reads left-to-right from today
+      if (isPast) {
+        html += '<div class="cal-day cal-day-empty"></div>';
+        continue;
       }
 
-      for (const d of week) {
-        if (d === null) {
-          html += `<div class="cal-day cal-day-empty"></div>`;
-          continue;
-        }
+      const events = deadlineMap[dateStr];
+      const cls = [
+        'cal-day',
+        isToday ? 'cal-today'      : '',
+        events  ? 'cal-has-events' : '',
+      ].filter(Boolean).join(' ');
 
-        const date    = new Date(year, month, d);
-        date.setHours(0, 0, 0, 0);
-        const dateStr = toKey(date);
-        const isToday = dateStr === toKey(today);
-        const isPast  = date < today && !isToday;
-
-        // In trimPast mode, blank out past days within the current week row
-        if (trimPast && isPast) {
-          html += `<div class="cal-day cal-day-empty"></div>`;
-          continue;
-        }
-
-        const events = deadlineMap[dateStr];
-        const cls = [
-          'cal-day',
-          isToday ? 'cal-today'      : '',
-          isPast  ? 'cal-past'       : '',
-          events  ? 'cal-has-events' : '',
-        ].filter(Boolean).join(' ');
-
-        let dots = '';
-        if (events) {
-          dots = '<div class="cal-dots">' +
-            events.map(e =>
-              `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" data-tip="${e.title}"></span>`
-            ).join('') + '</div>';
-        }
-
-        html += `<div class="${cls}" data-date="${dateStr}">${d}${dots}</div>`;
+      let dots = '';
+      if (events) {
+        dots = '<div class="cal-dots">' +
+          events.map(e =>
+            `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" data-tip="${e.title}"></span>`
+          ).join('') + '</div>';
       }
+
+      html += `<div class="${cls}" data-date="${dateStr}">${date.getDate()}${dots}</div>`;
     }
 
-    html += `</div></div>`;
+    html += '</div></div>';
     return html;
   }
 
@@ -127,14 +114,10 @@
       deadlineMap[d.date].push(d);
     });
 
-    // Current month only — trimmed to start from today's week, past days blanked
-    const thisYear  = today.getFullYear();
-    const thisMonth = today.getMonth();
-    const calHtml = buildMonthGrid(thisYear, thisMonth, deadlineMap, today, true);
+    // Render rolling 5-week grid
+    calEl.innerHTML = buildWeekGrid(today, WEEKS_TO_SHOW, deadlineMap);
 
-    calEl.innerHTML = calHtml;
-
-    // Upcoming list — next 5 deadlines from today
+    // Upcoming list — next 3 deadlines from today
     const upcoming = deadlines
       .map(function (d) { return { ...d, _date: toLocal(d.date) }; })
       .filter(function (d) { return d._date >= today; })
@@ -168,7 +151,7 @@
       }
     }
 
-    // Clicking a day scrolls/highlights its list item
+    // Clicking a calendar day highlights its entry in the upcoming list
     calEl.querySelectorAll('.cal-day.cal-has-events').forEach(function (cell) {
       cell.addEventListener('click', function () {
         const dateStr = this.dataset.date;
@@ -181,7 +164,7 @@
       });
     });
 
-    // Dot hover tooltip — follows mouse, avoids grid overflow clipping
+    // Dot hover tooltip — appended to body to avoid grid overflow clipping
     const tip = document.createElement('div');
     tip.id = 'cal-dot-tip';
     tip.setAttribute('aria-hidden', 'true');
