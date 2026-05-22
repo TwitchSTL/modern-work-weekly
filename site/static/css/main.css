@@ -1246,33 +1246,61 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 /* ── Article headlines inside expanded category sections ── */
+
+/*
+ * Two formats exist depending on how Claude structured the markdown:
+ *   (A) li with a leading <strong> — the standard format
+ *   (B) standalone <h3> followed by <p> — override to match (A) visually
+ * Both render identically: bold white title block + muted body text.
+ */
+
+/* Shared title treatment — applied to both formats */
+.section-collapsible li > strong:first-child,
+.section-collapsible li > b:first-child,
+.section-collapsible h3 {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  /* Reset h3-specific decorations from .post-content h3 */
+  border-left: none;
+  padding-left: 0;
+  margin: 0 0 0.2rem;
+}
+
+/* Row separation for li items (format A) */
 .section-collapsible li {
-  padding: 0.55rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   list-style: none;
   margin-left: 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 .section-collapsible li:last-child {
   border-bottom: none;
 }
 
-/* Bold span = article title — make it stand out from the summary text */
-.section-collapsible li > strong:first-child,
-.section-collapsible li > b:first-child {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 0.2rem;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
+/* Row separation for h3 + p items (format B) */
+.section-collapsible h3 {
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.section-collapsible h3:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 
-/* Everything else in the li (inline text / links after the title) inherits this */
-.section-collapsible li {
+/* Body / paragraph text after an h3 title (format B) */
+.section-collapsible h3 + p,
+.section-collapsible h3 ~ p {
   font-size: 0.82rem;
   color: var(--color-text-muted);
   line-height: 1.6;
+  margin: 0.15rem 0 0.5rem;
 }
 
 /* ── Post page wide container ────────────────────────────────────────── */
