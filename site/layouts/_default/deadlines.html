@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{ with .Site.Data.deadlines }}
+<div class="container deadlines-page">
+
+  <header class="deadlines-header">
+    <h1 class="deadlines-title">Deadline Calendar</h1>
+    <p class="deadlines-sub">Upcoming Microsoft 365 compliance deadlines, feature retirements, and rollout milestones.</p>
+    <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
+  </header>
+
+  {{/* ── 12-week rolling calendar ── */}}
+  <section class="deadlines-calendar-section">
+    <div id="deadline-calendar"
+         data-deadlines='{{ .deadlines | jsonify }}'
+         data-weeks="12">
+    </div>
+    <div id="deadline-upcoming" style="display:none"></div>
+  </section>
+
+  {{/* ── All deadlines, grouped by pillar ── */}}
+  {{ $pillars := slice "Identity" "Devices" "Apps" "Data" "Network" "Visibility & Automation" }}
+  {{ $deadlines := .deadlines }}
+
+  <section class="deadlines-list">
+    {{ range $pillars }}
+      {{ $pillar := . }}
+      {{ $items := where $deadlines "pillar" $pillar }}
+      {{ if $items }}
+      <div class="deadlines-pillar-group">
+        <h2 class="deadlines-pillar-heading">{{ $pillar }}</h2>
+        <div class="deadlines-cards">
+          {{ range sort $items "date" }}
+          <div class="deadline-card">
+            <div class="deadline-card-date">{{ .date }}</div>
+            <div class="deadline-card-title">{{ .title }}</div>
+            <div class="deadline-card-action">{{ .action }}</div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    {{ end }}
+  </section>
+
+</div>
+
+<script src="/js/calendar.js?v={{ now.Unix }}"></script>
+{{ end }}
+{{ end }}

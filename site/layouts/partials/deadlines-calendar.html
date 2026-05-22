@@ -2,12 +2,13 @@
 <div class="sidebar-panel calendar-sidebar">
   <div class="sidebar-panel-header">
     <span class="sidebar-panel-label sidebar-label-calendar">Upcoming Deadlines</span>
+    <a class="sidebar-panel-ext" href="/deadlines/">Full calendar →</a>
   </div>
 
-  <!-- JS builds the calendar grid here -->
-  <div id="deadline-calendar" data-deadlines='{{ .deadlines | jsonify }}'></div>
+  <!-- JS builds the 5-week rolling grid here -->
+  <div id="deadline-calendar" data-deadlines='{{ .deadlines | jsonify }}' data-weeks="5"></div>
 
-  <!-- JS builds the upcoming list here -->
+  <!-- JS builds the upcoming list here (next 3) -->
   <div id="deadline-upcoming"></div>
 
   <div class="sidebar-panel-footer">Updated {{ .updated }}</div>

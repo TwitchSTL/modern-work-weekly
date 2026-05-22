@@ -104,6 +104,9 @@
 
     const deadlines = JSON.parse(calEl.dataset.deadlines || '[]');
 
+    // Allow the template to override week count via data-weeks attribute
+    const weeksToShow = parseInt(calEl.dataset.weeks, 10) || WEEKS_TO_SHOW;
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -114,8 +117,8 @@
       deadlineMap[d.date].push(d);
     });
 
-    // Render rolling 5-week grid
-    calEl.innerHTML = buildWeekGrid(today, WEEKS_TO_SHOW, deadlineMap);
+    // Render rolling week grid (configurable width)
+    calEl.innerHTML = buildWeekGrid(today, weeksToShow, deadlineMap);
 
     // Upcoming list — next 3 deadlines from today
     const upcoming = deadlines
