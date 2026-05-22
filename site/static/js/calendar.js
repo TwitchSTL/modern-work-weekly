@@ -1,9 +1,9 @@
 /**
- * calendar.js — 30-day deadline calendar for the homepage sidebar.
+ * calendar.js — Deadline calendar for the homepage sidebar.
  *
  * Reads deadline data from #deadline-calendar[data-deadlines],
- * renders a mini month grid with colored event dots,
- * and a clickable upcoming-deadlines list below.
+ * renders a mini month grid starting from today's week,
+ * and an upcoming-deadlines list (next 5) below.
  */
 
 (function () {
@@ -17,7 +17,6 @@
   };
 
   function toLocal(dateStr) {
-    // Parse "YYYY-MM-DD" as local midnight to avoid UTC-shift issues
     const [y, m, d] = dateStr.split('-').map(Number);
     const dt = new Date(y, m - 1, d);
     dt.setHours(0, 0, 0, 0);
@@ -31,48 +30,80 @@
     return `${y}-${m}-${d}`;
   }
 
-  function buildMonthGrid(year, month, deadlineMap, today) {
-    const firstDay  = new Date(year, month, 1);
+  function buildMonthGrid(year, month, deadlineMap, today, trimPast) {
+    const firstDay   = new Date(year, month, 1);
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const monthName = firstDay.toLocaleString('default', { month: 'long', year: 'numeric' });
+    const monthName  = firstDay.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+    // Sunday of the week containing today
+    const todayWeekStart = new Date(today);
+    todayWeekStart.setDate(today.getDate() - today.getDay());
+    todayWeekStart.setHours(0, 0, 0, 0);
+
+    // Build flat array of day values (null = empty cell)
+    const startOffset = firstDay.getDay();
+    const allDays = [];
+    for (let i = 0; i < startOffset; i++) allDays.push(null);
+    for (let d = 1; d <= daysInMonth; d++) allDays.push(d);
+    while (allDays.length % 7 !== 0) allDays.push(null);
 
     let html = `<div class="cal-month">`;
     html += `<div class="cal-month-name">${monthName}</div>`;
     html += `<div class="cal-grid">`;
-
-    // Day-of-week headers
     for (const h of ['S','M','T','W','T','F','S']) {
       html += `<div class="cal-dow">${h}</div>`;
     }
 
-    // Leading empty cells
-    for (let i = 0; i < firstDay.getDay(); i++) {
-      html += `<div class="cal-day cal-day-empty"></div>`;
-    }
+    for (let w = 0; w < allDays.length; w += 7) {
+      const week = allDays.slice(w, w + 7);
 
-    for (let d = 1; d <= daysInMonth; d++) {
-      const date    = new Date(year, month, d);
-      const dateStr = toKey(date);
-      const isToday = dateStr === toKey(today);
-      const isPast  = date < today && !isToday;
-      const events  = deadlineMap[dateStr];
+      if (trimPast) {
+        // Find last real day in this row
+        const lastReal = [...week].reverse().find(d => d !== null);
+        if (lastReal === undefined) continue; // trailing empty row
 
-      const cls = [
-        'cal-day',
-        isToday          ? 'cal-today'      : '',
-        isPast           ? 'cal-past'       : '',
-        events           ? 'cal-has-events' : '',
-      ].filter(Boolean).join(' ');
-
-      let dots = '';
-      if (events) {
-        dots = '<div class="cal-dots">' +
-          events.map(e =>
-            `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" title="${e.title}"></span>`
-          ).join('') + '</div>';
+        const lastDate = new Date(year, month, lastReal);
+        lastDate.setHours(0, 0, 0, 0);
+        // Skip rows entirely before today's week
+        if (lastDate < todayWeekStart) continue;
       }
 
-      html += `<div class="${cls}" data-date="${dateStr}">${d}${dots}</div>`;
+      for (const d of week) {
+        if (d === null) {
+          html += `<div class="cal-day cal-day-empty"></div>`;
+          continue;
+        }
+
+        const date    = new Date(year, month, d);
+        date.setHours(0, 0, 0, 0);
+        const dateStr = toKey(date);
+        const isToday = dateStr === toKey(today);
+        const isPast  = date < today && !isToday;
+
+        // In trimPast mode, blank out past days within the current week row
+        if (trimPast && isPast) {
+          html += `<div class="cal-day cal-day-empty"></div>`;
+          continue;
+        }
+
+        const events = deadlineMap[dateStr];
+        const cls = [
+          'cal-day',
+          isToday ? 'cal-today'      : '',
+          isPast  ? 'cal-past'       : '',
+          events  ? 'cal-has-events' : '',
+        ].filter(Boolean).join(' ');
+
+        let dots = '';
+        if (events) {
+          dots = '<div class="cal-dots">' +
+            events.map(e =>
+              `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" title="${e.title}"></span>`
+            ).join('') + '</div>';
+        }
+
+        html += `<div class="${cls}" data-date="${dateStr}">${d}${dots}</div>`;
+      }
     }
 
     html += `</div></div>`;
@@ -80,16 +111,14 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    const calEl    = document.getElementById('deadline-calendar');
-    const listEl   = document.getElementById('deadline-upcoming');
+    const calEl  = document.getElementById('deadline-calendar');
+    const listEl = document.getElementById('deadline-upcoming');
     if (!calEl) return;
 
     const deadlines = JSON.parse(calEl.dataset.deadlines || '[]');
 
-    const today  = new Date();
+    const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const cutoff = new Date(today);
-    cutoff.setDate(cutoff.getDate() + 60);
 
     // Build date → deadlines map
     const deadlineMap = {};
@@ -98,26 +127,40 @@
       deadlineMap[d.date].push(d);
     });
 
-    // Build calendar grid(s) — current month, plus next if 30-day window crosses
+    // Current month — trimmed to start from today's week, past days blanked
     const thisYear  = today.getFullYear();
     const thisMonth = today.getMonth();
-    let calHtml = buildMonthGrid(thisYear, thisMonth, deadlineMap, today);
+    let calHtml = buildMonthGrid(thisYear, thisMonth, deadlineMap, today, true);
 
-    if (cutoff.getMonth() !== thisMonth || cutoff.getFullYear() !== thisYear) {
-      calHtml += buildMonthGrid(cutoff.getFullYear(), cutoff.getMonth(), deadlineMap, today);
-    }
+    // Find additional months that have upcoming deadlines (up to 2 more)
+    const shownKey = `${thisYear}-${thisMonth}`;
+    const futureMonthKeys = new Set();
+    deadlines.forEach(function (d) {
+      const dt = toLocal(d.date);
+      if (dt >= today) {
+        const key = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}`;
+        const rawKey = `${dt.getFullYear()}-${dt.getMonth()}`;
+        if (rawKey !== shownKey) futureMonthKeys.add(rawKey);
+      }
+    });
+
+    [...futureMonthKeys].sort().slice(0, 2).forEach(function (key) {
+      const [y, m] = key.split('-').map(Number);
+      calHtml += buildMonthGrid(y, m, deadlineMap, today, false);
+    });
 
     calEl.innerHTML = calHtml;
 
-    // Upcoming list — deadlines in the next 30 days
+    // Upcoming list — next 5 deadlines from today
     const upcoming = deadlines
       .map(function (d) { return { ...d, _date: toLocal(d.date) }; })
-      .filter(function (d) { return d._date >= today && d._date <= cutoff; })
-      .sort(function (a, b) { return a._date - b._date; });
+      .filter(function (d) { return d._date >= today; })
+      .sort(function (a, b) { return a._date - b._date; })
+      .slice(0, 5);
 
     if (listEl) {
       if (upcoming.length === 0) {
-        listEl.innerHTML = '<p class="sidebar-empty">No deadlines in the next 30 days</p>';
+        listEl.innerHTML = '<p class="sidebar-empty">No upcoming deadlines</p>';
       } else {
         const items = upcoming.map(function (d) {
           const diff  = Math.round((d._date - today) / 86400000);
@@ -125,9 +168,9 @@
 
           let urgencyLabel = '';
           let urgencyClass = '';
-          if (diff === 0)        { urgencyLabel = ' — TODAY';      urgencyClass = 'is-urgent'; }
-          else if (diff <= 14)   { urgencyLabel = ` — ${diff}d`;   urgencyClass = 'is-urgent'; }
-          else if (diff <= 30)   { urgencyLabel = ` — ${diff}d`;   urgencyClass = 'is-soon';   }
+          if (diff === 0)       { urgencyLabel = ' — TODAY';    urgencyClass = 'is-urgent'; }
+          else if (diff <= 14)  { urgencyLabel = ` — ${diff}d`; urgencyClass = 'is-urgent'; }
+          else if (diff <= 30)  { urgencyLabel = ` — ${diff}d`; urgencyClass = 'is-soon';   }
 
           return `
 <div class="cal-upcoming-item ${urgencyClass}" data-date="${d.date}" style="border-left-color:${color}">
@@ -142,19 +185,14 @@
       }
     }
 
-    // Clicking a day with events scrolls/highlights its list item
+    // Clicking a day scrolls/highlights its list item
     calEl.querySelectorAll('.cal-day.cal-has-events').forEach(function (cell) {
       cell.addEventListener('click', function () {
         const dateStr = this.dataset.date;
         if (!listEl) return;
-
-        // Toggle highlight on matching list item
         listEl.querySelectorAll('.cal-upcoming-item').forEach(function (item) {
-          const match = item.dataset.date === dateStr;
-          item.classList.toggle('cal-highlighted', match);
+          item.classList.toggle('cal-highlighted', item.dataset.date === dateStr);
         });
-
-        // Scroll the first match into view
         const match = listEl.querySelector(`.cal-upcoming-item[data-date="${dateStr}"]`);
         if (match) match.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });

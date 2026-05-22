@@ -1,0 +1,47 @@
+{{/* ── Digest right sidebar: TOC, tags, related posts ── */}}
+
+{{/* Table of Contents */}}
+{{ with .TableOfContents }}
+<div class="sidebar-panel digest-toc-panel">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label">In this digest</span>
+  </div>
+  <nav class="digest-toc">
+    {{ . }}
+  </nav>
+</div>
+{{ end }}
+
+{{/* Tags from this post */}}
+{{ with .Params.tags }}
+<div class="sidebar-panel digest-tags-panel">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label">Topics covered</span>
+  </div>
+  <div class="digest-tag-cloud">
+    {{ range . }}
+    <a class="topic-chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{/* Related digests — posts sharing tags with this one */}}
+{{ $related := first 3 (where (.Site.RegularPages.Related .) "Section" "posts") }}
+{{ if $related }}
+<div class="sidebar-panel digest-related-panel">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label">Related digests</span>
+  </div>
+  <ul class="digest-related-list">
+    {{ range $related }}
+    <li class="digest-related-item">
+      <a class="digest-related-link" href="{{ .Permalink }}">{{ .Date.Format "Jan 2, 2006" }}</a>
+      {{ with .Description }}
+      <p class="digest-related-desc">{{ . }}</p>
+      {{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

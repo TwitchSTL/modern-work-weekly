@@ -1745,6 +1745,111 @@ details[open] .toc-label::before { content: "▼ "; }
   color: var(--color-text-muted);
 }
 
+/* ── Digest right sidebar ────────────────────────────────────────────── */
+.digest-toc-panel nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.digest-toc-panel nav ul li {
+  border-left: 2px solid var(--color-border);
+  padding: 0.15rem 0 0.15rem 0.75rem;
+  margin: 0.15rem 0;
+  transition: border-color 0.15s;
+}
+
+.digest-toc-panel nav ul li:hover {
+  border-left-color: var(--color-accent);
+}
+
+.digest-toc-panel nav ul li a {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  line-height: 1.4;
+  display: block;
+}
+
+.digest-toc-panel nav ul li a:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.digest-tags-panel {
+  margin-top: 0.75rem;
+}
+
+.digest-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.75rem 1rem;
+}
+
+.digest-related-panel {
+  margin-top: 0.75rem;
+}
+
+.digest-related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.digest-related-item {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.digest-related-item:last-child {
+  border-bottom: none;
+}
+
+.digest-related-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.digest-related-link:hover {
+  text-decoration: underline;
+}
+
+.digest-related-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0.2rem 0 0;
+  line-height: 1.4;
+}
+
+/* Sources list (front-matter rendered) */
+.sources-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sources-list li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.sources-list li:last-child {
+  border-bottom: none;
+}
+
+.sources-list li a {
+  color: var(--color-text-muted);
+}
+
+.sources-list li a:hover {
+  color: var(--color-accent);
+}
+
 /* ── Executive's Guide ───────────────────────────────────────────────── */
 .exec-list-header {
   padding: 2rem 0 1.5rem;

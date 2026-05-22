@@ -55,7 +55,7 @@ Format rules:
 - Title format must be exactly: "Modern Work Weekly — Week of YYYY-MM-DD"
 - Per-category sections: h2 headings, bullet points per item, bold the item title, include phase tag (GA/Preview/etc)
 - Action Required section: any items with deadlines or required admin steps, with dates
-- End with a {{< sources >}} shortcode listing the source URLs
+- List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 
 Tags must use lowercase-hyphenated format. Use only from this standard set (pick what applies):
 intune, entra-id, defender-xdr, defender-for-endpoint, defender-for-office-365,

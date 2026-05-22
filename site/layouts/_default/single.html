@@ -29,6 +29,18 @@
       {{ .Content }}
     </div>
 
+    {{/* Sources from front matter — rendered here so placement is always consistent */}}
+    {{ with .Params.sources }}
+    <details class="sources-block">
+      <summary class="sources-label">Sources</summary>
+      <div class="sources-content">
+        <ul class="sources-list">
+          {{ range . }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></li>{{ end }}
+        </ul>
+      </div>
+    </details>
+    {{ end }}
+
     <script src="/js/collapsible.js"></script>
     <script src="/js/sidebar-dates.js"></script>
 
@@ -63,9 +75,9 @@
     </footer>
   </article>
 
-  <!-- Right sidebar: Deadlines -->
+  <!-- Right sidebar: TOC, tags, related digests -->
   <aside class="post-sidebar post-sidebar-right">
-    {{ partial "deadlines-sidebar.html" . }}
+    {{ partial "sidebar-digest.html" . }}
   </aside>
 
 </div>
