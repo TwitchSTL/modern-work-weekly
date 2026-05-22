@@ -7,11 +7,12 @@ Estimated time: 2–3 hours the first time.
 
 ## Prerequisites checklist
 
-- [ ] Proxmox 9.1.1 running, accessible on your network
-- [ ] Servers VLAN (10.127.31.0/24) configured, LXC can reach internet
+- [ ] Proxmox running, accessible on your network
+- [ ] LXC can reach the internet (outbound 443/TCP at minimum)
 - [ ] GitHub account with this repo cloned or forked
-- [ ] Cloudflare account (free tier) — create at cloudflare.com
-- [ ] Domain registered at Cloudflare Registrar (e.g. `firstlast.dev`, ~$10-12/yr)
+- [ ] Cloudflare account (free tier) — [cloudflare.com](https://cloudflare.com)
+- [ ] Domain registered and managed in Cloudflare (e.g. `yourdomain.com`)
+- [ ] Anthropic API key — [console.anthropic.com](https://console.anthropic.com)
 
 ---
 
@@ -19,22 +20,18 @@ Estimated time: 2–3 hours the first time.
 
 In the Proxmox web UI:
 
-1. Download Ubuntu 24.04 LXC template if not already present:
+1. Download the Ubuntu 24.04 LXC template if not already present:
    `Datacenter → your node → local storage → CT Templates → Download`
    Template: `ubuntu-24.04-standard`
 
 2. Create container:
-   - CT ID: pick any available (e.g. 200)
+   - CT ID: pick any available
    - Hostname: `mww`
    - Template: ubuntu-24.04-standard
-   - Root disk: 8GB minimum (20GB recommended)
+   - Root disk: 8 GB minimum (20 GB recommended)
    - CPU: 1 core
-   - Memory: 512MB RAM, 512MB swap
-   - Network:
-     - Bridge: your Servers VLAN bridge (vmbr0 or whichever bridges to VLAN 31)
-     - IP: `10.127.31.35/24`
-     - Gateway: `10.127.31.1` (or your VLAN gateway)
-     - DNS: your Pi-hole IP or `1.1.1.1` temporarily
+   - Memory: 512 MB RAM, 512 MB swap
+   - Network: set a static IP and gateway appropriate for your network
 
 3. Start the container.
 
@@ -44,50 +41,63 @@ In the Proxmox web UI:
 
 ```bash
 # SSH into the LXC as root
-ssh root@10.127.31.35
+ssh root@<your-lxc-ip>
 
 # Download and run bootstrap
-curl -sO https://raw.githubusercontent.com/yourusername/modern-work-weekly/main/infra/lxc/bootstrap.sh
+curl -sO https://raw.githubusercontent.com/TwitchSTL/modern-work-weekly/master/infra/lxc/bootstrap.sh
 chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
-The script installs: Hugo, Caddy, cloudflared, Python 3 + venv, SSH, logrotate.
+The script installs: Hugo, Caddy, cloudflared, Python 3 + venv tools, logrotate.
 
 ---
 
-## Step 3 — Set up Cloudflare
+## Step 3 — Clone the repo
 
-### 3a. Register your domain
-1. Go to cloudflare.com → sign up (free)
-2. Go to `Domain Registration → Register Domains`
-3. Search for your domain (e.g. `firstlast.dev`)
-4. Purchase (~$10-12/yr, no markup — at-cost pricing)
-
-### 3b. Create the tunnel
 ```bash
-# On the LXC:
+git clone https://github.com/TwitchSTL/modern-work-weekly /opt/modern-work-weekly/repo
+```
+
+---
+
+## Step 4 — Set up Cloudflare Tunnel
+
+### 4a. Authenticate and create the tunnel
+
+```bash
 cloudflared tunnel login
-# Opens a browser URL — visit it, authorize your Cloudflare account
+# Opens a browser URL — visit it and authorize your Cloudflare account
 
 cloudflared tunnel create modern-work-weekly
-# Note the tunnel ID from the output — you'll need it
-
-cloudflared tunnel route dns modern-work-weekly firstlast.dev
-cloudflared tunnel route dns modern-work-weekly www.firstlast.dev
+# Note the Tunnel ID from the output — you'll need it next
 ```
 
-### 3c. Configure the tunnel
+### 4b. Add DNS routes in your Cloudflare dashboard
+
+In the Cloudflare dashboard for your domain, add CNAME records pointing to your tunnel:
+
+| Type | Name | Target |
+|---|---|---|
+| CNAME | `@` (apex) | `<tunnel-id>.cfargotunnel.com` |
+| CNAME | `www` | `<tunnel-id>.cfargotunnel.com` |
+
+Enable **Proxied** (orange cloud) on both records.
+
+> **Note:** `cloudflared tunnel route dns` may create records in the wrong zone if your
+> tunnel was authorized under a different domain. Use the dashboard to be certain.
+
+### 4c. Configure the tunnel
+
 ```bash
-# Copy tunnel config
 mkdir -p /etc/cloudflared
 cp /opt/modern-work-weekly/repo/infra/cloudflare/tunnel.yml /etc/cloudflared/config.yml
-
-# Edit it — replace YOUR_TUNNEL_ID with the actual ID from step 3b
 nano /etc/cloudflared/config.yml
+# Replace YOUR_TUNNEL_ID with the actual ID from step 4a
 ```
 
-### 3d. Install and start the tunnel service
+### 4d. Install and start the tunnel service
+
 ```bash
 cloudflared service install
 systemctl enable cloudflared
@@ -97,16 +107,11 @@ systemctl status cloudflared
 
 ---
 
-## Step 4 — Configure and start Caddy
+## Step 5 — Configure and start Caddy
 
 ```bash
-# Copy Caddyfile
 cp /opt/modern-work-weekly/repo/infra/caddy/Caddyfile /etc/caddy/Caddyfile
-
-# Verify config
 caddy validate --config /etc/caddy/Caddyfile
-
-# Start Caddy
 systemctl enable caddy
 systemctl start caddy
 systemctl status caddy
@@ -114,119 +119,137 @@ systemctl status caddy
 
 ---
 
-## Step 5 — Deploy the Hugo site
+## Step 6 — Build and deploy the Hugo site
 
 ```bash
-# Clone your repo onto the LXC
-git clone https://github.com/yourusername/modern-work-weekly /opt/modern-work-weekly/repo
-
-# Build the site manually for the first time
 cd /opt/modern-work-weekly/repo/site
-hugo --minify --baseURL "https://firstlast.dev"
+hugo --minify --baseURL "https://yourdomain.com"
 
-# Copy built output to Caddy's serve directory
 rsync -av public/ /opt/modern-work-weekly/site/public/
-
-# Set permissions
-chown -R mww:mww /opt/modern-work-weekly/site/public/
+chown -R www-data:www-data /opt/modern-work-weekly/site/public/
 ```
 
-Open your browser → `https://firstlast.dev`
-If the tunnel is active and Caddy is running, your site is live. 🎉
+Open your browser → `https://yourdomain.com`. If the tunnel is active and Caddy
+is running, your site is live.
 
 ---
 
-## Step 6 — Set up GitHub Actions for auto-deploy
+## Step 7 — Set up GitHub Actions for auto-deploy
 
-Every time you push a new digest post to GitHub, the site rebuilds and deploys automatically.
+Every push to `master` that touches `site/**` triggers a Hugo rebuild and deploy.
 
-### 6a. Generate a deploy SSH key
+### 7a. Generate a deploy SSH key
+
 ```bash
-# On the LXC:
 ssh-keygen -t ed25519 -C "github-actions-deploy" -f /tmp/deploy_key -N ""
-cat /tmp/deploy_key.pub >> /home/mww/.ssh/authorized_keys
-chmod 600 /home/mww/.ssh/authorized_keys
-chown mww:mww /home/mww/.ssh/authorized_keys
+cat /tmp/deploy_key.pub >> /root/.ssh/authorized_keys
+chmod 600 /root/.ssh/authorized_keys
 
-# Copy the private key — you'll paste it into GitHub Secrets
+# Copy the private key — you'll paste it into GitHub Secrets next
 cat /tmp/deploy_key
 ```
 
-### 6b. Add GitHub Secrets
+### 7b. Add GitHub Secrets
+
 Go to your repo → `Settings → Secrets and variables → Actions → New repository secret`:
 
 | Secret name | Value |
 |---|---|
-| `HOMELAB_HOST` | `10.127.31.35` |
-| `HOMELAB_USER` | `mww` |
-| `HOMELAB_SSH_KEY` | The private key from `/tmp/deploy_key` (full content including BEGIN/END lines) |
+| `HOMELAB_HOST` | Your LXC's IP address |
+| `HOMELAB_USER` | `root` (or whichever user runs the deploy) |
+| `HOMELAB_SSH_KEY` | The private key from `/tmp/deploy_key` (full content including header/footer lines) |
 
-### 6c. Test the workflow
-Push any change to `site/` in the `main` branch → GitHub Actions tab → watch the build run.
+### 7c. Test the workflow
+
+Push any change to `site/` on `master` → GitHub Actions tab → watch the build.
 
 ---
 
-## Step 7 — Set up the scraper and digest pipeline
+## Step 8 — Set up the scraper and digest pipeline
+
+### 8a. Create the venv
+
+The venv lives outside the repo so it persists across repo resets and `git pull` operations:
 
 ```bash
-# Activate venv and install deps
-cd /opt/modern-work-weekly/repo/scraper
+mkdir -p /opt/modern-work-weekly/scraper
+cd /opt/modern-work-weekly/scraper
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
-
-# Test scraper (single source)
-python scraper.py --source Intune
+pip install -r /opt/modern-work-weekly/repo/scraper/requirements.txt
 ```
 
-### 7b. Add your Anthropic API key
-
-The digest pipeline calls the Claude API. Get a key at [console.anthropic.com](https://console.anthropic.com)
-and store it on the LXC — never in the repo:
+### 8b. Add your Anthropic API key
 
 ```bash
 echo 'ANTHROPIC_API_KEY=sk-ant-...' > /opt/modern-work-weekly/.env
 chmod 600 /opt/modern-work-weekly/.env
 ```
 
-Test the full pipeline:
+### 8c. Configure git identity on the LXC
+
+Automated commits need an identity set:
 
 ```bash
-python scraper.py          # Accumulate items into pending_draft.json
-python digest.py --dry-run # Verify prompt builds correctly (no API call)
-python digest.py           # Generate the draft post
+git config --global user.name "mww-bot"
+git config --global user.email "bot@yourdomain.com"
 ```
 
-### 7c. Schedule the weekly cron
+### 8d. Test the pipeline
 
 ```bash
+source /opt/modern-work-weekly/scraper/.venv/bin/activate
+cd /opt/modern-work-weekly/repo/scraper
+
+python scraper.py --source Intune          # Test single source
+python digest.py --dry-run                 # Verify prompt builds correctly (no API call)
+python digest.py                           # Full run — generates digest + Executive's Guide
+```
+
+### 8e. Schedule the crons
+
+```bash
+chmod +x /opt/modern-work-weekly/repo/scraper/weekly-run.sh
+chmod +x /opt/modern-work-weekly/repo/scraper/health-run.sh
 crontab -e
 ```
 
-Add:
+Add both entries:
+
 ```
-55 5 * * 2 /opt/modern-work-weekly/repo/scraper/weekly-run.sh >> /opt/modern-work-weekly/logs/cron.log 2>&1
+# Full digest pipeline — every Tuesday at 5:55 AM CST (11:55 UTC)
+55 11 * * 2 /opt/modern-work-weekly/repo/scraper/weekly-run.sh
+
+# Known issues refresh — every 8 hours
+0 */8 * * * /opt/modern-work-weekly/repo/scraper/health-run.sh
 ```
 
-This fires every Tuesday at 5:55 AM (adjust to your timezone).
+Verify:
+```bash
+crontab -l
+```
 
 ---
 
-## Step 8 — Firewall notes (your environment)
+## Step 9 — Firewall notes
 
-Since your Proxmox is behind a VLAN with firewall zones, verify:
+Verify your LXC can reach:
+- `443/TCP` outbound to the internet — for Cloudflare Tunnel, scraper HTTP requests, and Claude API
+- `22/TCP` inbound from GitHub Actions runner IPs — for the deploy SSH step (see [GitHub's IP list](https://api.github.com/meta) under `actions`)
 
-- LXC (10.127.31.35) can reach `443/TCP` outbound to the internet — for cloudflared tunnel and scraper HTTP requests
-- LXC can reach `22/TCP` from wherever your GitHub Actions runner egress IPs are — OR allow from `0.0.0.0/0` on port 22 for the deploy user only (mww), locked to key auth
-- No inbound ports need to be opened on your router/firewall — the Cloudflare Tunnel is entirely outbound
-
-GitHub Actions egress IPs: https://api.github.com/meta (under `actions`)
+No inbound ports need to be opened on your router — the Cloudflare Tunnel is entirely outbound.
 
 ---
 
 ## You're done
 
-- Site live at `https://yourdomain.com`
-- Pushes to `master` auto-deploy via GitHub Actions
-- Scraper + digest run automatically via Tuesday cron (see `docs/WEEKLY_WORKFLOW.md`)
-- Dedup state persists in `/opt/modern-work-weekly/repo/state/seen_items.json`
+| What | Where |
+|---|---|
+| Live site | `https://yourdomain.com` |
+| Digest posts auto-publish | Every Tuesday ~5:55 AM CST |
+| Known issues auto-refresh | Every 8 hours |
+| Pushes to `master` auto-deploy | Via GitHub Actions (~2 min build) |
+| Dedup state | `/opt/modern-work-weekly/repo/state/seen_items.json` |
+| Logs | `/var/log/mww-weekly.log` and `/opt/modern-work-weekly/logs/` |
+
+See [`docs/WEEKLY_WORKFLOW.md`](WEEKLY_WORKFLOW.md) for the ongoing weekly process.
