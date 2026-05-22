@@ -7,6 +7,7 @@ set -euo pipefail
 
 REPO_DIR="/opt/modern-work-weekly/repo"
 SCRAPER_DIR="$REPO_DIR/scraper"
+VENV_DIR="/opt/modern-work-weekly/scraper/.venv"
 LOG_DIR="/opt/modern-work-weekly/logs"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
@@ -18,7 +19,7 @@ cd "$REPO_DIR"
 git pull --quiet >> "$LOG_DIR/health.log" 2>&1
 
 # Activate venv and run health-only scrape
-source "$SCRAPER_DIR/.venv/bin/activate"
+source "$VENV_DIR/bin/activate"
 python "$SCRAPER_DIR/scraper.py" --health-only >> "$LOG_DIR/health.log" 2>&1
 
 # Only push if health.json actually changed — avoids noisy empty commits
