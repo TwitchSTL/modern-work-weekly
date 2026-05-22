@@ -14,8 +14,8 @@
 <div class="container deadlines-page">
 
   <header class="deadlines-header">
-    <h1 class="deadlines-title">Deadline Calendar</h1>
-    <p class="deadlines-sub">Upcoming Microsoft 365 compliance deadlines, feature retirements, and rollout milestones — organized by Zero Trust pillar.</p>
+    <h1 class="deadlines-title">Key Dates</h1>
+    <p class="deadlines-sub">Upcoming Microsoft 365 rollout milestones, feature retirements, and compliance windows — organized by Zero Trust pillar. Not everything here requires action; use the <strong>Applies to</strong> note to decide if it's relevant to your environment.</p>
     <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
   </header>
 
@@ -53,6 +53,7 @@
           <div class="deadline-card">
             <div class="deadline-card-date">{{ $dateLabel }}</div>
             <div class="deadline-card-title">{{ .title }}</div>
+            {{ with .applies_to }}<div class="deadline-card-applies"><span class="deadline-applies-label">Applies to</span> {{ . }}</div>{{ end }}
             <div class="deadline-card-action">{{ .action }}</div>
           </div>
           {{ end }}

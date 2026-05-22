@@ -1,3 +1,16 @@
+{{/*
+  Search index — outputs /index.json at build time.
+
+  The digest markdown format puts the article title on one line:
+    - **Title** `GA`
+  and the description on the NEXT indented line:
+    Description text here...
+    [Link](url)
+
+  We use a two-variable state machine:
+    $category     — current h2 section name
+    $pendingTitle — an article title waiting for its description line
+*/}}
 {{- $results := slice -}}
 {{- range (where .Site.RegularPages "Section" "posts").ByDate.Reverse -}}
   {{- $url          := .RelPermalink -}}
@@ -9,45 +22,53 @@
     {{- $line    := . | strings.TrimRight "\r" -}}
     {{- $trimmed := strings.TrimSpace $line -}}
 
-    {{/* ── h2 = category section boundary ── */}}
+    {{/* ── h2 = new category section ── */}}
     {{- if hasPrefix $trimmed "## " -}}
-      {{/* Flush any h3 that never got a snippet */}}
       {{- if and $pendingTitle $category (not (strings.Contains ($category | lower) "top 5")) -}}
         {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" "") -}}
       {{- end -}}
       {{- $pendingTitle = "" -}}
       {{- $category = strings.TrimPrefix "## " $trimmed -}}
 
-    {{/* ── h3 = article title (format B) ── */}}
-    {{- else if hasPrefix $trimmed "### " -}}
-      {{/* Flush previous pending h3 without snippet */}}
+    {{/* ── h3 heading or bullet with bold title ── */}}
+    {{- else if or (hasPrefix $trimmed "### ") (findRE `^\s*[-*\d]+\.?\s+\*\*` $trimmed) -}}
+      {{/* Flush any previous pending title without a description */}}
       {{- if and $pendingTitle $category (not (strings.Contains ($category | lower) "top 5")) -}}
         {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" "") -}}
       {{- end -}}
-      {{- $pendingTitle = strings.TrimPrefix "### " $trimmed -}}
-
-    {{/* ── First non-empty content after an h3 = its snippet ── */}}
-    {{- else if and $pendingTitle (not (eq $trimmed "")) -}}
-      {{- if and $category (not (strings.Contains ($category | lower) "top 5")) -}}
-        {{/* Strip leading phase tag and dash/em-dash separator */}}
-        {{- $snippet := $trimmed | replaceRE `^(GA|Preview|Private Preview|Public Preview|Deprecated)\s*[—–\-]?\s*` "" | strings.TrimSpace -}}
-        {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" $snippet) -}}
-      {{- end -}}
       {{- $pendingTitle = "" -}}
-
-    {{/* ── Bullet format: - **Title** — snippet (format A) ── */}}
-    {{- else if and $category (not (strings.Contains ($category | lower) "top 5")) (findRE `\*\*` $line) -}}
-      {{- $titleMatches := findRE `\*\*(.+?)\*\*` $line -}}
-      {{- if $titleMatches -}}
-        {{- $itemTitle := index $titleMatches 0 | replaceRE `^\*\*|\*\*$` "" -}}
-        {{- $rest      := replaceRE `^.*?\*\*[^*]+\*\*` "" $line | strings.TrimSpace | replaceRE `^[—–\-\.]+\s*` "" | strings.TrimSpace -}}
-        {{- $results = $results | append (dict "title" $itemTitle "category" $category "date" $date "url" $url "snippet" $rest) -}}
+      {{/* Only index non-Top-5 items */}}
+      {{- if and $category (not (strings.Contains ($category | lower) "top 5")) -}}
+        {{- if hasPrefix $trimmed "### " -}}
+          {{- $pendingTitle = strings.TrimPrefix "### " $trimmed -}}
+        {{- else -}}
+          {{- $matches := findRE `\*\*(.+?)\*\*` $trimmed -}}
+          {{- if $matches -}}
+            {{- $pendingTitle = index $matches 0 | replaceRE `^\*\*|\*\*$` "" -}}
+          {{- end -}}
+        {{- end -}}
       {{- end -}}
-    {{- end -}}
 
+    {{/* ── First real content line after a title = the description ── */}}
+    {{- else if and $pendingTitle (not (eq $trimmed "")) -}}
+      {{/* Skip link lines, hr lines, and phase-tag-only lines */}}
+      {{- $isLink    := hasPrefix $trimmed "[" -}}
+      {{- $isSep     := eq $trimmed "---" -}}
+      {{- $isTagOnly := and (hasPrefix $trimmed "`") (le (len $trimmed) 30) -}}
+      {{- if not (or $isLink $isSep $isTagOnly) -}}
+        {{/* Strip leading backtick phase tags: `GA`, `GA — July CY2026`, etc. */}}
+        {{- $snippet := replaceRE "^`[^`]+`\\s*[—–-]?\\s*" $trimmed "" | strings.TrimSpace -}}
+        {{- if eq $snippet "" -}}{{- $snippet = $trimmed -}}{{- end -}}
+        {{- if and $category (not (strings.Contains ($category | lower) "top 5")) -}}
+          {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" $snippet) -}}
+        {{- end -}}
+        {{- $pendingTitle = "" -}}
+      {{- end -}}
+
+    {{- end -}}
   {{- end -}}
 
-  {{/* Flush any trailing pending h3 at end of post */}}
+  {{/* Flush any trailing pending title at end of post */}}
   {{- if and $pendingTitle $category (not (strings.Contains ($category | lower) "top 5")) -}}
     {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" "") -}}
   {{- end -}}

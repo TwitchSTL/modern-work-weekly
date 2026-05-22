@@ -1,5 +1,5 @@
 ---
-title: "Deadline Calendar"
-description: "Upcoming Microsoft 365 compliance deadlines, feature retirements, and rollout milestones — organized by date and Zero Trust pillar."
+title: "Key Dates"
+description: "Upcoming Microsoft 365 rollout milestones, feature retirements, and compliance windows — organized by Zero Trust pillar. Check the 'Applies to' note on each entry to see if it's relevant to your environment."
 layout: "deadlines"
 ---

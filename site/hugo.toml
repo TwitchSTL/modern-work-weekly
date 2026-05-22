@@ -61,7 +61,7 @@ title = "Modern Work Weekly"
     url = "/exec/"
     weight = 3
   [[menu.main]]
-    name = "Deadlines"
+    name = "Key Dates"
     url = "/deadlines/"
     weight = 4
   [[menu.main]]

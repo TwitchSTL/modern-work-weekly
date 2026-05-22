@@ -5,55 +5,64 @@
       "date": "2026-06-01",
       "title": "Entra Hard-Match Restriction",
       "action": "Audit role-holding cloud accounts and validate sync rules before this silently breaks provisioning pipelines.",
-      "pillar": "Identity"
+      "pillar": "Identity",
+      "applies_to": "Hybrid identity orgs (Entra Connect + AD)"
     },
     {
       "date": "2026-06-01",
       "title": "Work IQ Researcher Agent Preview",
       "action": "Enroll dev teams in preview to test agentic workflow integrations ahead of July GA.",
-      "pillar": "Visibility & Automation"
+      "pillar": "Visibility & Automation",
+      "applies_to": "Microsoft 365 Copilot subscribers"
     },
     {
       "date": "2026-06-15",
       "title": "CA Resource Exclusion Enforcement",
       "action": "Test apps with 'All resources' CA exclusions before enforcement. Run CA What-If in non-prod.",
-      "pillar": "Identity"
+      "pillar": "Identity",
+      "applies_to": "All tenants with Conditional Access policies"
     },
     {
       "date": "2026-06-30",
       "title": "Secure Boot 2023 Certificates",
       "action": "Check Secure Score. Deploy May 2026 CU across fleet before cert expiry.",
-      "pillar": "Devices"
+      "pillar": "Devices",
+      "applies_to": "Windows device fleets (Intune or SCCM managed)"
     },
     {
       "date": "2026-07-01",
       "title": "Entra Connect → Cloud Sync Migration",
       "action": "Begin readiness assessment now, especially if you have write-back scenarios or custom sync rules.",
-      "pillar": "Identity"
+      "pillar": "Identity",
+      "applies_to": "Hybrid identity orgs running Entra Connect"
     },
     {
       "date": "2026-07-01",
       "title": "Purview Lifecycle Archiving GA",
       "action": "Scope retention policies for OneDrive/SharePoint now to maximize benefit at GA.",
-      "pillar": "Data"
+      "pillar": "Data",
+      "applies_to": "Orgs with Purview E3 or E5 licensing"
     },
     {
       "date": "2026-07-01",
       "title": "Purview Lifecycle Insights GA",
       "action": "Plan review of Purview recommendations; align with DLP and labeling strategy.",
-      "pillar": "Data"
+      "pillar": "Data",
+      "applies_to": "Orgs with Purview E3 or E5 licensing"
     },
     {
       "date": "2026-07-01",
       "title": "Work IQ Researcher Agent GA",
       "action": "Have agentic workflow integrations tested from the June preview window.",
-      "pillar": "Visibility & Automation"
+      "pillar": "Visibility & Automation",
+      "applies_to": "Microsoft 365 Copilot subscribers"
     },
     {
       "date": "2026-08-01",
       "title": "Ubuntu 22.04 LTS EOS (Intune)",
       "action": "Identify 22.04 devices in Intune and start upgrade comms. New enrollments blocked after EOS.",
-      "pillar": "Devices"
+      "pillar": "Devices",
+      "applies_to": "Intune-managed Linux fleets"
     }
   ]
 }

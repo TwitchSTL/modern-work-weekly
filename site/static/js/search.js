@@ -126,12 +126,21 @@
     if (input) { input.value = ''; input.focus(); }
     var results = document.getElementById('search-results');
     if (results) results.innerHTML = '';
-    // Lazy-load index on first open
+    // Lazy-load index on first open. Cache-bust so Cloudflare serves the
+    // latest /index.json rather than a stale build from a previous deploy.
     if (!searchIndex) {
-      fetch(INDEX_URL)
-        .then(function (r) { return r.json(); })
-        .then(function (data) { searchIndex = data; })
-        .catch(function () { /* silently fail */ });
+      fetch(INDEX_URL + '?v=' + (window._siteBuildTime || Date.now()))
+        .then(function (r) {
+          if (!r.ok) throw new Error('index fetch failed: ' + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          searchIndex = Array.isArray(data) ? data : [];
+        })
+        .catch(function (err) {
+          console.warn('[search] Could not load search index:', err);
+          searchIndex = [];
+        });
     }
   }
 

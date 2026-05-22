@@ -2425,10 +2425,29 @@ details[open] .toc-label::before { content: "▼ "; }
   line-height: 1.35;
 }
 
+.deadline-card-applies {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.deadline-applies-label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.6rem;
+  color: var(--pillar-color, var(--color-accent));
+  margin-right: 0.25rem;
+}
+
 .deadline-card-action {
   font-size: 0.76rem;
   color: var(--color-text-muted);
   line-height: 1.5;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 0.4rem;
+  margin-top: 0.1rem;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────── */
