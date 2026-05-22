@@ -1591,10 +1591,32 @@ details[open] .toc-label::before { content: "▼ "; }
 
 .cal-dot {
   display: block;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
+  cursor: help;
+}
+
+/* Deadline dot tooltip — rendered as a fixed body element via JS */
+#cal-dot-tip {
+  position: fixed;
+  z-index: 9999;
+  background: #161b22;
+  color: #e6edf3;
+  border: 1px solid rgba(99, 110, 123, 0.45);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  max-width: 240px;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+#cal-dot-tip.is-visible {
+  opacity: 1;
 }
 
 /* Upcoming deadlines list (below calendar grid) */
@@ -1887,6 +1909,30 @@ details[open] .toc-label::before { content: "▼ "; }
 
 .exec-card {
   border-left: 3px solid rgba(245, 166, 35, 0.4);
+}
+
+/* Work-in-progress banner for exec pages */
+.wip-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: rgba(245, 166, 35, 0.07);
+  border: 1px solid rgba(245, 166, 35, 0.28);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.wip-banner-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+.wip-banner strong {
+  color: #f5a623;
+  font-weight: 600;
 }
 
 .exec-post .post-title {

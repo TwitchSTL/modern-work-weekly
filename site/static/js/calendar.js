@@ -98,7 +98,7 @@
         if (events) {
           dots = '<div class="cal-dots">' +
             events.map(e =>
-              `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" title="${e.title}"></span>`
+              `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" data-tip="${e.title}"></span>`
             ).join('') + '</div>';
         }
 
@@ -127,27 +127,10 @@
       deadlineMap[d.date].push(d);
     });
 
-    // Current month — trimmed to start from today's week, past days blanked
+    // Current month only — trimmed to start from today's week, past days blanked
     const thisYear  = today.getFullYear();
     const thisMonth = today.getMonth();
-    let calHtml = buildMonthGrid(thisYear, thisMonth, deadlineMap, today, true);
-
-    // Find additional months that have upcoming deadlines (up to 2 more)
-    const shownKey = `${thisYear}-${thisMonth}`;
-    const futureMonthKeys = new Set();
-    deadlines.forEach(function (d) {
-      const dt = toLocal(d.date);
-      if (dt >= today) {
-        const key = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, '0')}`;
-        const rawKey = `${dt.getFullYear()}-${dt.getMonth()}`;
-        if (rawKey !== shownKey) futureMonthKeys.add(rawKey);
-      }
-    });
-
-    [...futureMonthKeys].sort().slice(0, 2).forEach(function (key) {
-      const [y, m] = key.split('-').map(Number);
-      calHtml += buildMonthGrid(y, m, deadlineMap, today, false);
-    });
+    const calHtml = buildMonthGrid(thisYear, thisMonth, deadlineMap, today, true);
 
     calEl.innerHTML = calHtml;
 
@@ -156,7 +139,7 @@
       .map(function (d) { return { ...d, _date: toLocal(d.date) }; })
       .filter(function (d) { return d._date >= today; })
       .sort(function (a, b) { return a._date - b._date; })
-      .slice(0, 5);
+      .slice(0, 3);
 
     if (listEl) {
       if (upcoming.length === 0) {
@@ -195,6 +178,24 @@
         });
         const match = listEl.querySelector(`.cal-upcoming-item[data-date="${dateStr}"]`);
         if (match) match.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+
+    // Dot hover tooltip — follows mouse, avoids grid overflow clipping
+    const tip = document.createElement('div');
+    tip.id = 'cal-dot-tip';
+    tip.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(tip);
+
+    calEl.querySelectorAll('.cal-dot[data-tip]').forEach(function (dot) {
+      dot.addEventListener('mousemove', function (e) {
+        tip.textContent = this.dataset.tip;
+        tip.classList.add('is-visible');
+        tip.style.left = (e.clientX + 12) + 'px';
+        tip.style.top  = (e.clientY - 36) + 'px';
+      });
+      dot.addEventListener('mouseleave', function () {
+        tip.classList.remove('is-visible');
       });
     });
   });
