@@ -1,26 +1,56 @@
 {{- $results := slice -}}
 {{- range (where .Site.RegularPages "Section" "posts").ByDate.Reverse -}}
-  {{- $url      := .RelPermalink -}}
-  {{- $date     := .Date.Format "2006-01-02" -}}
-  {{- $category := "" -}}
+  {{- $url          := .RelPermalink -}}
+  {{- $date         := .Date.Format "2006-01-02" -}}
+  {{- $category     := "" -}}
+  {{- $pendingTitle := "" -}}
+
   {{- range split .RawContent "\n" -}}
-    {{- $line := . | strings.TrimRight "\r" -}}
-    {{- if hasPrefix $line "## " -}}
-      {{- $category = strings.TrimPrefix "## " $line | strings.TrimSpace -}}
+    {{- $line    := . | strings.TrimRight "\r" -}}
+    {{- $trimmed := strings.TrimSpace $line -}}
+
+    {{/* ── h2 = category section boundary ── */}}
+    {{- if hasPrefix $trimmed "## " -}}
+      {{/* Flush any h3 that never got a snippet */}}
+      {{- if and $pendingTitle $category (not (strings.Contains ($category | lower) "top 5")) -}}
+        {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" "") -}}
+      {{- end -}}
+      {{- $pendingTitle = "" -}}
+      {{- $category = strings.TrimPrefix "## " $trimmed -}}
+
+    {{/* ── h3 = article title (format B) ── */}}
+    {{- else if hasPrefix $trimmed "### " -}}
+      {{/* Flush previous pending h3 without snippet */}}
+      {{- if and $pendingTitle $category (not (strings.Contains ($category | lower) "top 5")) -}}
+        {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" "") -}}
+      {{- end -}}
+      {{- $pendingTitle = strings.TrimPrefix "### " $trimmed -}}
+
+    {{/* ── First non-empty content after an h3 = its snippet ── */}}
+    {{- else if and $pendingTitle (not (eq $trimmed "")) -}}
+      {{- if and $category (not (strings.Contains ($category | lower) "top 5")) -}}
+        {{/* Strip leading phase tag and dash/em-dash separator */}}
+        {{- $snippet := $trimmed | replaceRE `^(GA|Preview|Private Preview|Public Preview|Deprecated)\s*[—–\-]?\s*` "" | strings.TrimSpace -}}
+        {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" $snippet) -}}
+      {{- end -}}
+      {{- $pendingTitle = "" -}}
+
+    {{/* ── Bullet format: - **Title** — snippet (format A) ── */}}
     {{- else if and $category (not (strings.Contains ($category | lower) "top 5")) (findRE `\*\*` $line) -}}
       {{- $titleMatches := findRE `\*\*(.+?)\*\*` $line -}}
       {{- if $titleMatches -}}
         {{- $itemTitle := index $titleMatches 0 | replaceRE `^\*\*|\*\*$` "" -}}
         {{- $rest      := replaceRE `^.*?\*\*[^*]+\*\*` "" $line | strings.TrimSpace | replaceRE `^[—–\-\.]+\s*` "" | strings.TrimSpace -}}
-        {{- $entry := dict
-              "title"    $itemTitle
-              "category" $category
-              "date"     $date
-              "url"      $url
-              "snippet"  $rest -}}
-        {{- $results = $results | append $entry -}}
+        {{- $results = $results | append (dict "title" $itemTitle "category" $category "date" $date "url" $url "snippet" $rest) -}}
       {{- end -}}
     {{- end -}}
+
   {{- end -}}
+
+  {{/* Flush any trailing pending h3 at end of post */}}
+  {{- if and $pendingTitle $category (not (strings.Contains ($category | lower) "top 5")) -}}
+    {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" "") -}}
+  {{- end -}}
+
 {{- end -}}
 {{- $results | jsonify -}}

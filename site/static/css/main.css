@@ -131,8 +131,10 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   font-size: 0.875rem;
 }
 
-.site-nav a {
+.site-nav a,
+.site-nav button {
   color: var(--color-text-muted);
+  white-space: nowrap;
 }
 
 .site-nav a:hover,
@@ -1254,23 +1256,33 @@ details[open] .toc-label::before { content: "▼ "; }
  * Both render identically: bold white title block + muted body text.
  */
 
-/* Shared title treatment — applied to both formats */
-.section-collapsible li > strong:first-child,
-.section-collapsible li > b:first-child,
-.section-collapsible h3 {
+/*
+ * Shared title treatment — four formats Claude may emit:
+ *   (A) tight list:  li > strong            (li items with no blank line between)
+ *   (B) loose list:  li > p > strong        (li items separated by blank lines)
+ *   (C) h3 heading:  standalone <h3>
+ *   (D) h4 heading:  standalone <h4>        (occasional fallback)
+ * All render identically: bold white block title, separator between items.
+ */
+.section-collapsible li > strong:first-of-type,
+.section-collapsible li > b:first-of-type,
+.section-collapsible li > p:first-of-type > strong:first-of-type,
+.section-collapsible li > p:first-of-type > b:first-of-type,
+.section-collapsible h3,
+.section-collapsible h4 {
   display: block;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--color-text);
   line-height: 1.4;
   letter-spacing: 0.01em;
-  /* Reset h3-specific decorations from .post-content h3 */
+  /* Reset h3/h4-specific decorations from .post-content h3 */
   border-left: none;
   padding-left: 0;
   margin: 0 0 0.2rem;
 }
 
-/* Row separation for li items (format A) */
+/* Row separation for li items (formats A + B) */
 .section-collapsible li {
   padding: 0.6rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -1282,6 +1294,14 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 .section-collapsible li:last-child {
   border-bottom: none;
+}
+
+/* Loose list: goldmark wraps each li's content in a <p> — mute it to match */
+.section-collapsible li > p {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0.1rem 0 0;
 }
 
 /* Row separation for h3 + p items (format B) */
@@ -2288,18 +2308,30 @@ details[open] .toc-label::before { content: "▼ "; }
 
 /* Month-separated calendars on the deadlines page */
 .deadlines-calendar-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
   margin-bottom: 3rem;
 }
 
+/* #deadline-calendar holds all the .cal-month divs — lay them out as a
+   horizontal wrapping row so multiple months sit side by side */
+.deadlines-calendar-section #deadline-calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
 .deadlines-calendar-section .cal-month {
-  flex: 1 1 260px;
+  flex: 0 0 auto;
+  width: 296px;           /* 7 cols × 40px day + padding */
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1rem;
+}
+
+/* Months are side-by-side cards now — no extra top border between them */
+.deadlines-calendar-section .cal-month + .cal-month {
+  border-top: none;
 }
 
 .deadlines-calendar-section .cal-day {
