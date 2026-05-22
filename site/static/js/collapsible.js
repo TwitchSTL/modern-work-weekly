@@ -156,6 +156,8 @@ function makeSectionsCollapsible(content) {
     const details = document.createElement('details');
     details.className = 'section-collapsible';
     details.style.borderLeftColor = color;
+    // Preserve the h2's ID so Hugo TOC anchor links (#section-name) still work
+    if (h2.id) details.id = h2.id;
 
     // Auto-expand action sections
     const tl = titleText.toLowerCase();

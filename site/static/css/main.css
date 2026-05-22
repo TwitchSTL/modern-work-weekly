@@ -1238,6 +1238,43 @@ details[open] .toc-label::before { content: "▼ "; }
   margin: 0;
 }
 
+/* Strip default list indentation — we apply our own li padding */
+.section-collapsible ul,
+.section-collapsible ol {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* ── Article headlines inside expanded category sections ── */
+.section-collapsible li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  list-style: none;
+  margin-left: 0;
+}
+.section-collapsible li:last-child {
+  border-bottom: none;
+}
+
+/* Bold span = article title — make it stand out from the summary text */
+.section-collapsible li > strong:first-child,
+.section-collapsible li > b:first-child {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+/* Everything else in the li (inline text / links after the title) inherits this */
+.section-collapsible li {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
 /* ── Post page wide container ────────────────────────────────────────── */
 .main-wide {
   max-width: 1380px;
