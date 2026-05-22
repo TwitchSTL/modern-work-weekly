@@ -244,7 +244,47 @@ def write_health_data(health_items: list[dict]):
     log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items across {len(grouped)} sources)")
 
 
+def run_health_only():
+    """Scrape only health/known-issues sources and update health.json.
+
+    Intentionally lightweight — no dedup, no draft, no state changes.
+    Called by the every-8-hours health cron job.
+    """
+    log.info("Health-only mode — scraping known issues sources.")
+    health_sources = [s for s in SOURCES if s.get("health")]
+    if not health_sources:
+        log.warning("No health sources defined in sources.py.")
+        return
+
+    health_raw = []
+    for source in health_sources:
+        log.info(f"Fetching: {source['name']}")
+        try:
+            if source.get("rss"):
+                raw_items = fetch_rss(source)
+            else:
+                raw_items = fetch_html(source)
+        except Exception as e:
+            log.warning(f"  Error on {source['name']}: {e}")
+            raw_items = []
+        log.info(f"  → {len(raw_items)} items")
+        health_raw.extend(raw_items)
+        time.sleep(REQUEST_DELAY)
+
+    if health_raw:
+        health_items = [enrich_item(r) for r in health_raw]
+        write_health_data(health_items)
+    else:
+        log.warning("Health sources returned 0 items — health.json not updated.")
+
+    log.info("Health-only run complete.")
+
+
 def run_scraper(args):
+    if args.health_only:
+        run_health_only()
+        return
+
     state = load_state()
     seen_ids = set(state.get("seen_ids", []))
     log.info(f"State loaded — {len(seen_ids)} previously seen items.")
@@ -393,5 +433,7 @@ if __name__ == "__main__":
                         help="Ignore seen_items state and pull all available items")
     parser.add_argument("--source", type=str, default=None,
                         help="Only scrape a specific source by name (e.g. 'Intune')")
+    parser.add_argument("--health-only", action="store_true",
+                        help="Scrape only health/known-issues sources and update health.json (no draft changes)")
     args = parser.parse_args()
     run_scraper(args)
