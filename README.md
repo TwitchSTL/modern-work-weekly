@@ -4,12 +4,32 @@
 
 [![Hugo Build](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml/badge.svg)](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml)
 [![Site](https://img.shields.io/badge/site-modernworkweekly.com-0078d4?style=flat&logo=microsoftedge&logoColor=white)](https://modernworkweekly.com)
-[![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
+[![Python](https://img.shields.io/badge/python-3.12-3776ab?style=flat&logo=python&logoColor=white)](https://python.org)
+[![Hugo](https://img.shields.io/badge/hugo-0.128+-ff4088?style=flat&logo=hugo&logoColor=white)](https://gohugo.io)
+[![Last Commit](https://img.shields.io/github/last-commit/TwitchSTL/modern-work-weekly?color=0078d4&style=flat)](https://github.com/TwitchSTL/modern-work-weekly/commits/master)
+[![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat)](LICENSE)
+[![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
 **A self-hosted, fully automated Microsoft 365 change digest.**  
-Scraped from 15+ Microsoft portals, drafted by Claude, published weekly as a Hugo blog.
+Scraped from 15+ Microsoft portals · Drafted by Claude · Published every Tuesday
 
 </div>
+
+---
+
+![Site preview](docs/screenshots/homepage.png)
+
+---
+
+## Contents
+
+- [What this is](#what-this-is)
+- [⚙️ How it works](#️-how-it-works)
+- [🔍 Sources scraped](#-sources-scraped)
+- [📁 Repository layout](#-repository-layout)
+- [🛠️ Tech stack](#️-tech-stack)
+- [📋 Requirements](#-requirements)
+- [☕ Support](#-support)
 
 ---
 
@@ -17,65 +37,58 @@ Scraped from 15+ Microsoft portals, drafted by Claude, published weekly as a Hug
 
 **Modern Work** is Microsoft's framework for secure, cloud-connected productivity — built around Microsoft 365 and the **Zero Trust** security model. Modern Work engineers are responsible for the full stack: identity (Entra ID), device compliance (Intune), data protection (Purview), threat detection (Defender), and network access (Global Secure Access).
 
-Microsoft ships updates across all of it continuously. **Modern Work Weekly** scrapes the official portals, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without spending hours across portals manually.
-
-No marketing. No executive summaries. Operational signal only.
+Microsoft ships updates across all of it continuously. **Modern Work Weekly** scrapes the official portals, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without manually tracking across portals.
 
 A companion **Executive's Guide** is generated alongside each digest — plain-language briefings for leadership, compliance officers, and IT directors.
 
----
-
-## How it works
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  TUESDAY  5:55 AM CST — weekly-run.sh                               │
-│                                                                     │
-│  scraper.py  →  Fetches 15+ Microsoft portals                       │
-│                 Deduplicates against seen_items.json                │
-│                 Appends new items to rolling pending_draft.json     │
-│                 Writes known issues to site/data/health.json        │
-│                                                                     │
-│  digest.py   →  Reads pending_draft.json                            │
-│                 Calls Claude API — generates technical digest       │
-│                 Calls Claude API — generates Executive's Guide      │
-│                 Writes site/content/posts/YYYY-MM-DD.md             │
-│                 Writes site/content/exec/YYYY-MM-DD.md              │
-│                 Archives pending_draft.json                         │
-│                                                                     │
-│  git push    →  GitHub Actions builds Hugo site                     │
-│                 Deployed via Cloudflare Tunnel                      │
-└─────────────────────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────────────┐
-│  EVERY 8 HOURS — health-run.sh                                      │
-│                                                                     │
-│  scraper.py --health-only  →  Fetches known-issues sources only     │
-│                               Overwrites site/data/health.json      │
-│                               Pushes only if content changed        │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
-**Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run. When the Tuesday digest fires, it consumes everything accumulated since the last publish — nothing gets lost between runs.
+No marketing. No filler. Operational signal only.
 
 ---
 
-## Sources scraped
+## ⚙️ How it works
+
+```mermaid
+flowchart LR
+    A["🔍 scraper.py"] --> B[("pending_draft.json")]
+    A --> C[("health.json")]
+    B --> D["🤖 digest.py"]
+    D --> E{{"Claude API\n× 2 calls"}}
+    E --> F["📰 Technical Digest"]
+    E --> G["📋 Executive's Guide"]
+    F --> H["git push"]
+    G --> H
+    H --> I["⚡ GitHub Actions\nHugo Build"]
+    I --> J["🌐 modernworkweekly.com"]
+```
+
+Two cron jobs run on a self-hosted LXC:
+
+| Schedule | Script | What it does |
+|---|---|---|
+| **Every Tuesday 5:55 AM CST** | `weekly-run.sh` | Full pipeline — scrape → draft → push |
+| **Every 8 hours** | `health-run.sh` | Known issues only → push if changed |
+
+> [!NOTE]
+> **Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run. When Tuesday fires, it consumes everything since the last publish — nothing gets lost between runs.
+
+---
+
+## 🔍 Sources scraped
 
 | Category | Sources |
 |---|---|
-| Identity & Access | Entra ID |
-| Endpoint Management | Intune, Autopilot, Windows 365 |
-| Security | Defender XDR, Defender for Endpoint, Defender for Office 365 |
-| Collaboration | Teams, SharePoint / OneDrive, Exchange Online |
-| Data | Purview |
-| Network | Global Secure Access |
-| Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog |
-| Known Issues *(health, every 8h)* | Intune, Autopilot, Windows 365, Defender for Endpoint, Defender XDR, Purview, Entra ID, Teams, Windows Release Health |
+| 🪪 Identity & Access | Entra ID |
+| 💻 Endpoint Management | Intune, Autopilot, Windows 365 |
+| 🛡️ Security | Defender XDR, Defender for Endpoint, Defender for Office 365 |
+| 💬 Collaboration | Teams, SharePoint / OneDrive, Exchange Online |
+| 🗄️ Data | Purview |
+| 🌐 Network | Global Secure Access |
+| 📊 Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog |
+| 🩺 Known Issues *(every 8h)* | Intune, Autopilot, Windows 365, Defender for Endpoint, Defender XDR, Purview, Entra ID, Teams, Windows Release Health |
 
 ---
 
-## Repository layout
+## 📁 Repository layout
 
 <details>
 <summary><strong>scraper/</strong> — Data collection and digest drafting</summary>
@@ -141,7 +154,7 @@ A companion **Executive's Guide** is generated alongside each digest — plain-l
 
 ---
 
-## Tech stack
+## 🛠️ Tech stack
 
 | Component | Tool |
 |---|---|
@@ -155,10 +168,14 @@ A companion **Executive's Guide** is generated alongside each digest — plain-l
 
 ---
 
-## Requirements
+## 📋 Requirements
 
 - Python 3.12+ with dependencies from `scraper/requirements.txt`
 - `ANTHROPIC_API_KEY` stored in `/opt/modern-work-weekly/.env` on the LXC
+
+> [!IMPORTANT]
+> The API key is never committed to the repo. Store it only in `/opt/modern-work-weekly/.env` on the LXC with `chmod 600`.
+
 - Hugo Extended v0.128+
 - Cloudflare Tunnel configured for your domain
 
@@ -166,6 +183,6 @@ See [`docs/SETUP.md`](docs/SETUP.md) for the full walkthrough.
 
 ---
 
-## Support
+## ☕ Support
 
 This project is free and open. If it saves you time, [contributions on Ko-fi](https://ko-fi.com/ryanarbuckle) help offset the API costs and keep it running.
