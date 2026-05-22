@@ -46,6 +46,19 @@ document.addEventListener('DOMContentLoaded', function () {
   makeTop5Collapsible(content);
   makeSectionsCollapsible(content);
   content.querySelectorAll('hr').forEach(hr => hr.style.display = 'none');
+
+  // If navigating here from a search result, auto-open the target section.
+  // The hash matches the <details id="..."> that replaced the original h2.
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    const target = document.getElementById(decodeURIComponent(hash));
+    if (target && target.tagName === 'DETAILS') {
+      target.open = true;
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 80);
+    }
+  }
 });
 
 

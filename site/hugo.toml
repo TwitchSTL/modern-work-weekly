@@ -40,7 +40,7 @@ title = "Modern Work Weekly"
     weight = 10
 
 [outputs]
-  home = ["HTML", "RSS"]
+  home = ["HTML", "RSS", "JSON"]
   page = ["HTML"]
   section = ["HTML", "RSS"]
 

@@ -1,0 +1,26 @@
+{{- $results := slice -}}
+{{- range (where .Site.RegularPages "Section" "posts").ByDate.Reverse -}}
+  {{- $url      := .RelPermalink -}}
+  {{- $date     := .Date.Format "2006-01-02" -}}
+  {{- $category := "" -}}
+  {{- range split .RawContent "\n" -}}
+    {{- $line := . | strings.TrimRight "\r" -}}
+    {{- if hasPrefix $line "## " -}}
+      {{- $category = strings.TrimPrefix "## " $line | strings.TrimSpace -}}
+    {{- else if and $category (not (strings.Contains ($category | lower) "top 5")) (findRE `\*\*` $line) -}}
+      {{- $titleMatches := findRE `\*\*(.+?)\*\*` $line -}}
+      {{- if $titleMatches -}}
+        {{- $itemTitle := index $titleMatches 0 | replaceRE `^\*\*|\*\*$` "" -}}
+        {{- $rest      := replaceRE `^.*?\*\*[^*]+\*\*` "" $line | strings.TrimSpace | replaceRE `^[—–\-\.]+\s*` "" | strings.TrimSpace -}}
+        {{- $entry := dict
+              "title"    $itemTitle
+              "category" $category
+              "date"     $date
+              "url"      $url
+              "snippet"  $rest -}}
+        {{- $results = $results | append $entry -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $results | jsonify -}}
