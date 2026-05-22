@@ -2028,7 +2028,7 @@ details[open] .toc-label::before { content: "▼ "; }
 
 /* ── Deadlines page ──────────────────────────────────────────────────── */
 .deadlines-page {
-  max-width: 860px;
+  max-width: 900px;
   padding: 2rem 1.25rem 4rem;
 }
 
@@ -2056,71 +2056,101 @@ details[open] .toc-label::before { content: "▼ "; }
   color: var(--color-text-muted);
 }
 
-/* 12-week calendar on the deadlines page — wider, no sidebar constraints */
+/* Month-separated calendars on the deadlines page */
 .deadlines-calendar-section {
-  margin-bottom: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
 }
 
 .deadlines-calendar-section .cal-month {
+  flex: 1 1 260px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1rem;
 }
 
-.deadlines-calendar-section .cal-grid {
-  grid-template-columns: repeat(7, 1fr);
-  gap: 3px;
-}
-
 .deadlines-calendar-section .cal-day {
-  font-size: 0.82rem;
-  min-height: 36px;
+  font-size: 0.8rem;
+  min-height: 34px;
 }
 
-/* Deadlines grouped by pillar */
+/* ── Deadlines grouped by pillar ── */
 .deadlines-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-.deadlines-pillar-group {}
+/* Each pillar block uses --pillar-color set inline by the template */
+.deadlines-pillar-group {
+  border-left: 3px solid var(--pillar-color, #6e7681);
+  padding-left: 1.25rem;
+}
+
+.deadlines-pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.deadlines-pillar-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--pillar-color, #6e7681);
+  flex-shrink: 0;
+}
 
 .deadlines-pillar-heading {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid var(--color-border);
+  color: var(--pillar-color, #6e7681);
+  margin: 0;
 }
 
+.deadlines-pillar-count {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1px 8px;
+  margin-left: auto;
+}
+
+/* Cards grid */
 .deadlines-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 0.75rem;
 }
 
 .deadline-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+  border-left: 3px solid var(--pillar-color, #6e7681);
   border-radius: var(--radius);
   padding: 0.85rem 1rem;
-  transition: border-color 0.15s;
+  transition: background 0.15s, border-color 0.15s;
 }
 
 .deadline-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--pillar-color, #6e7681);
 }
 
 .deadline-card-date {
   font-size: 0.65rem;
   font-weight: 700;
   font-family: var(--font-mono);
-  color: var(--color-accent);
+  color: var(--pillar-color, var(--color-accent));
   margin-bottom: 0.35rem;
   letter-spacing: 0.04em;
 }

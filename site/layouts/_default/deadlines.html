@@ -1,42 +1,63 @@
 {{ define "main" }}
 {{ with .Site.Data.deadlines }}
+
+{{/* Pillar → accent color map — matches PILLAR_COLORS in calendar.js */}}
+{{ $colors := dict
+  "Identity"                "#a78bfa"
+  "Devices"                 "#3fb950"
+  "Apps"                    "#58a6ff"
+  "Data"                    "#f0883e"
+  "Network"                 "#39d353"
+  "Visibility & Automation" "#d2a8ff"
+}}
+
 <div class="container deadlines-page">
 
   <header class="deadlines-header">
     <h1 class="deadlines-title">Deadline Calendar</h1>
-    <p class="deadlines-sub">Upcoming Microsoft 365 compliance deadlines, feature retirements, and rollout milestones.</p>
+    <p class="deadlines-sub">Upcoming Microsoft 365 compliance deadlines, feature retirements, and rollout milestones — organized by Zero Trust pillar.</p>
     <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
   </header>
 
-  {{/* ── 12-week rolling calendar ── */}}
+  {{/* ── Month-separated calendar ── */}}
   <section class="deadlines-calendar-section">
     <div id="deadline-calendar"
          data-deadlines='{{ .deadlines | jsonify }}'
-         data-weeks="12">
+         data-mode="months">
     </div>
+    {{/* Hidden — upcoming list only used in sidebar widget */}}
     <div id="deadline-upcoming" style="display:none"></div>
   </section>
 
-  {{/* ── All deadlines, grouped by pillar ── */}}
+  {{/* ── Deadlines by pillar ── */}}
   {{ $pillars := slice "Identity" "Devices" "Apps" "Data" "Network" "Visibility & Automation" }}
   {{ $deadlines := .deadlines }}
 
   <section class="deadlines-list">
     {{ range $pillars }}
       {{ $pillar := . }}
-      {{ $items := where $deadlines "pillar" $pillar }}
+      {{ $color  := index $colors $pillar | default "#6e7681" }}
+      {{ $items  := where $deadlines "pillar" $pillar }}
       {{ if $items }}
-      <div class="deadlines-pillar-group">
-        <h2 class="deadlines-pillar-heading">{{ $pillar }}</h2>
+      <div class="deadlines-pillar-group" style="--pillar-color: {{ $color }}">
+
+        <div class="deadlines-pillar-header">
+          <span class="deadlines-pillar-dot"></span>
+          <h2 class="deadlines-pillar-heading">{{ $pillar }}</h2>
+          <span class="deadlines-pillar-count">{{ len $items }} deadline{{ if gt (len $items) 1 }}s{{ end }}</span>
+        </div>
+
         <div class="deadlines-cards">
           {{ range sort $items "date" }}
+          {{ $dateLabel := time.Format "Jan 2, 2006" .date }}
           <div class="deadline-card">
-            <div class="deadline-card-date">{{ .date }}</div>
+            <div class="deadline-card-date">{{ $dateLabel }}</div>
             <div class="deadline-card-title">{{ .title }}</div>
             <div class="deadline-card-action">{{ .action }}</div>
           </div>
           {{ end }}
         </div>
+
       </div>
       {{ end }}
     {{ end }}
