@@ -41,8 +41,9 @@
     </details>
     {{ end }}
 
-    <script src="/js/collapsible.js"></script>
-    <script src="/js/sidebar-dates.js"></script>
+    <script src="/js/collapsible.js?v={{ now.Unix }}"></script>
+    <script src="/js/sidebar-dates.js?v={{ now.Unix }}"></script>
+    <script src="/js/top5-links.js?v={{ now.Unix }}"></script>
 
     <footer class="post-footer">
       {{/* Subtle cross-link to Executive's Guide for the same week */}}
