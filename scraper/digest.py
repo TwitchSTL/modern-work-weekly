@@ -51,6 +51,7 @@ Your output must be valid Hugo-flavored Markdown with YAML front matter. Be dire
 
 Format rules:
 - Front matter: title, date, description (1-2 punchy sentences matching the week's actual tone — highlight what's most notable whether that's a new feature, a deadline, a risk, or a capability unlock; not everything is a warning, some weeks are rich with feature enablements or reporting improvements), tags (see standard list below), categories (from the standard list)
+- Do NOT write an intro paragraph in the post body. The front matter description already serves that purpose and is rendered separately by the site template. Start the body directly with the first section heading.
 - Top 5 section: the 5 most important changes this week with a brief why-it-matters for each
 - Title format must be exactly: "Modern Work Weekly — Week of YYYY-MM-DD"
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:

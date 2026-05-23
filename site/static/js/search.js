@@ -126,20 +126,26 @@
     if (input) { input.value = ''; input.focus(); }
     var results = document.getElementById('search-results');
     if (results) results.innerHTML = '';
-    // Lazy-load index on first open. Cache-bust so Cloudflare serves the
-    // latest /index.json rather than a stale build from a previous deploy.
+    // Lazy-load index on first open. Cache-bust so Cloudflare doesn't serve
+    // a stale /index.json from a previous deploy.
     if (!searchIndex) {
-      fetch(INDEX_URL + '?v=' + (window._siteBuildTime || Date.now()))
+      var resultsEl2 = document.getElementById('search-results');
+      if (resultsEl2) resultsEl2.innerHTML = '<div class="search-empty search-loading">Loading index…</div>';
+      fetch(INDEX_URL + '?v=' + (window._siteBuildTime || Date.now()), { cache: 'no-store' })
         .then(function (r) {
-          if (!r.ok) throw new Error('index fetch failed: ' + r.status);
+          if (!r.ok) throw new Error('HTTP ' + r.status + ' fetching ' + INDEX_URL);
           return r.json();
         })
         .then(function (data) {
           searchIndex = Array.isArray(data) ? data : [];
+          if (resultsEl2) resultsEl2.innerHTML = '';
         })
         .catch(function (err) {
-          console.warn('[search] Could not load search index:', err);
+          console.error('[search] Could not load search index:', err);
           searchIndex = [];
+          if (resultsEl2) {
+            resultsEl2.innerHTML = '<div class="search-empty search-error">⚠ Search index unavailable — try reloading the page.<br><small>' + err.message + '</small></div>';
+          }
         });
     }
   }

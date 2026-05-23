@@ -1890,6 +1890,18 @@ details[open] .toc-label::before { content: "▼ "; }
   font-size: 0.875rem;
 }
 
+.search-error {
+  color: #ff6b6b;
+  line-height: 1.6;
+}
+.search-error small {
+  opacity: 0.6;
+  font-size: 0.75em;
+  font-family: var(--font-mono);
+  display: block;
+  margin-top: 0.4rem;
+}
+
 .search-result {
   display: block;
   padding: 0.7rem 1rem;

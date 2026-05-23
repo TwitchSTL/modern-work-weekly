@@ -57,7 +57,7 @@
       {{- $isTagOnly := and (hasPrefix $trimmed "`") (le (len $trimmed) 30) -}}
       {{- if not (or $isLink $isSep $isTagOnly) -}}
         {{/* Strip leading backtick phase tags: `GA`, `GA — July CY2026`, etc. */}}
-        {{- $snippet := replaceRE "^`[^`]+`\\s*[—–-]?\\s*" $trimmed "" | strings.TrimSpace -}}
+        {{- $snippet := $trimmed | replaceRE "^`[^`]+`\\s*[—–-]?\\s*" "" | strings.TrimSpace -}}
         {{- if eq $snippet "" -}}{{- $snippet = $trimmed -}}{{- end -}}
         {{- if and $category (not (strings.Contains ($category | lower) "top 5")) -}}
           {{- $results = $results | append (dict "title" $pendingTitle "category" $category "date" $date "url" $url "snippet" $snippet) -}}
