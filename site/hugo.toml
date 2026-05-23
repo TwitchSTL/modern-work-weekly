@@ -39,8 +39,15 @@ title = "Modern Work Weekly"
     name = "date"
     weight = 10
 
+[outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "search"
+  isHTML = false
+  isPlainText = true
+  notAlternative = true
+
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "SearchIndex"]
   page = ["HTML"]
   section = ["HTML", "RSS"]
 

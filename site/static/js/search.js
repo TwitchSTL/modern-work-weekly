@@ -15,7 +15,7 @@
 (function () {
   'use strict';
 
-  var INDEX_URL = '/index.json';
+  var INDEX_URL = '/search.json';
   var searchIndex = null;
 
   // Category name → accent color (matches PILLAR_COLORS in collapsible.js)
