@@ -28,7 +28,7 @@ source "$VENV"
 # Sync repo — discard any local health.json drift first so pull succeeds
 cd "$REPO"
 git checkout -- site/data/health.json 2>/dev/null || true
-git pull origin master >> "$LOG" 2>&1
+git pull origin main >> "$LOG" 2>&1
 log "Repo up to date"
 
 # Scrape all sources
@@ -49,7 +49,7 @@ if git diff --cached --quiet; then
   log "Nothing new to commit — skipping push"
 else
   git commit -m "digest: week of $DATE"
-  git push origin master >> "$LOG" 2>&1
+  git push origin main >> "$LOG" 2>&1
   log "Committed and pushed digest for $DATE"
 fi
 
