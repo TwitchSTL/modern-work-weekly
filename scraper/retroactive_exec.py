@@ -63,11 +63,15 @@ Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST C
 Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board."""
 
 
+SKIP_DATES = {
+    "2026-05-10",  # Welcome/intro post — not a digest, no exec guide needed
+}
+
 def get_missing_exec_dates() -> list[str]:
     """Return dates that have a digest post but no exec post."""
     post_dates = {p.stem for p in POSTS_DIR.glob("????-??-??.md")}
     exec_dates = {p.stem for p in EXEC_DIR.glob("????-??-??.md")}
-    missing = sorted(post_dates - exec_dates)
+    missing = sorted((post_dates - exec_dates) - SKIP_DATES)
     return missing
 
 
