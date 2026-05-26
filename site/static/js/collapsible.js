@@ -3,6 +3,10 @@
  *
  * Top 5 items: numbered badge + title visible, body expands on click
  * Category sections: title + item count + preview visible, list expands on click
+ *
+ * Front matter flags (via data attributes on .post-content):
+ *   data-expand-all="true"   — all sections open by default (intro/about posts)
+ *   data-no-counters="true"  — hide the (N items) badge
  */
 
 // Zero Trust pillar colors — ordered longest-key-first for partial matching
@@ -10,10 +14,10 @@ const PILLAR_COLORS = [
   { keys: ['visibility & automation', 'automation & ai', 'ai & automation'],  color: '#d2a8ff' },
   { keys: ['collaboration & productivity'],                                    color: '#58a6ff' },
   { keys: ['identity & access', 'identity'],                                  color: '#a78bfa' },
-  { keys: ['endpoint management', 'devices'],                                 color: '#3fb950' },
+  { keys: ['endpoint management', 'devices'],                                  color: '#3fb950' },
   { keys: ['security & compliance', 'data'],                                  color: '#f0883e' },
-  { keys: ['network'],                                                        color: '#39d353' },
-  { keys: ['apps'],                                                           color: '#58a6ff' },
+  { keys: ['network'],                                                         color: '#39d353' },
+  { keys: ['apps'],                                                            color: '#58a6ff' },
   { keys: ['action required', 'action items', 'recommended actions'],         color: '#ff6b6b' },
 ];
 
@@ -24,7 +28,7 @@ function categoryColor(name) {
       if (n.includes(key)) return color;
     }
   }
-  return '#6e7681'; // neutral gray fallback instead of blue
+  return '#6e7681'; // neutral gray fallback
 }
 
 // Detect ZT pillar from Top 5 item text
@@ -43,12 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const content = document.querySelector('.post-content');
   if (!content) return;
 
-  makeTop5Collapsible(content);
-  makeSectionsCollapsible(content);
+  const expandAll  = content.dataset.expandAll  === 'true';
+  const noCounters = content.dataset.noCounters === 'true';
+
+  makeTop5Collapsible(content, expandAll);
+  makeSectionsCollapsible(content, expandAll, noCounters);
   content.querySelectorAll('hr').forEach(hr => hr.style.display = 'none');
 
   // If navigating here from a search result, auto-open the target section.
-  // The hash matches the <details id="..."> that replaced the original h2.
   const hash = window.location.hash.slice(1);
   if (hash) {
     const target = document.getElementById(decodeURIComponent(hash));
@@ -64,9 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* ── Top 5 ────────────────────────────────────────────────────────────── */
 
-function makeTop5Collapsible(content) {
-  let top5OL = null;
-  let top5H2 = null;
+function makeTop5Collapsible(content, expandAll) {
+  let top5OL  = null;
+  let top5H2  = null;
 
   content.querySelectorAll('h2').forEach(h2 => {
     if (!h2.textContent.toLowerCase().includes('top 5')) return;
@@ -102,6 +108,7 @@ function makeTop5Collapsible(content) {
     const details = document.createElement('details');
     details.className = 'top5-item';
     details.style.borderLeftColor = color;
+    if (expandAll) details.open = true;
 
     const summary = document.createElement('summary');
     summary.className = 'top5-summary';
@@ -124,9 +131,9 @@ function makeTop5Collapsible(content) {
 
     const body = document.createElement('div');
     body.className = 'top5-body';
-    const fullHTML = li.innerHTML;
+    const fullHTML  = li.innerHTML;
     const afterStrong = fullHTML.slice(fullHTML.indexOf(strong.outerHTML) + strong.outerHTML.length);
-    body.innerHTML = afterStrong.replace(/^\s*[—–\-\.]\s*/, '').trim();
+    body.innerHTML  = afterStrong.replace(/^\s*[—–\-\.]\s*/, '').trim();
 
     details.appendChild(summary);
     details.appendChild(body);
@@ -142,7 +149,7 @@ function makeTop5Collapsible(content) {
 
 /* ── Category sections (h2) ───────────────────────────────────────────── */
 
-function makeSectionsCollapsible(content) {
+function makeSectionsCollapsible(content, expandAll, noCounters) {
   const h2s = Array.from(content.querySelectorAll('h2'));
 
   h2s.forEach(h2 => {
@@ -157,26 +164,27 @@ function makeSectionsCollapsible(content) {
     }
     if (siblings.length === 0) return;
 
-    // Preview: first 3 bold item titles
+    // Count items: li bullets (new format) + h3 headings (legacy format)
     const tempDiv = document.createElement('div');
     siblings.forEach(s => tempDiv.appendChild(s.cloneNode(true)));
-    const boldItems = Array.from(tempDiv.querySelectorAll('li strong, li b'));
-    const preview = boldItems.slice(0, 3).map(b => b.textContent.trim()).join('  ·  ');
-    const itemCount = tempDiv.querySelectorAll('li').length;
+    const itemCount = tempDiv.querySelectorAll('li, h3').length;
+
+    // Preview: first 3 bold item titles (or h3 headings for legacy format)
+    const boldItems = Array.from(tempDiv.querySelectorAll('li strong, li b, h3'));
+    const preview   = boldItems.slice(0, 3).map(b => b.textContent.trim()).join('  ·  ');
 
     const color = categoryColor(titleText);
 
     const details = document.createElement('details');
     details.className = 'section-collapsible';
     details.style.borderLeftColor = color;
-    // Preserve the h2's ID so Hugo TOC anchor links (#section-name) still work
+    // Preserve the h2's ID so anchor links still work
     if (h2.id) details.id = h2.id;
 
-    // Auto-expand action sections
+    // Auto-expand: action sections always open; everything open when expandAll is set
     const tl = titleText.toLowerCase();
-    if (tl.includes('action') || tl.includes('deadline') || tl.includes('required') || tl.includes('recommended')) {
-      details.open = true;
-    }
+    const isAction = tl.includes('action') || tl.includes('deadline') || tl.includes('required') || tl.includes('recommended');
+    if (expandAll || isAction) details.open = true;
 
     const summary = document.createElement('summary');
     summary.className = 'section-summary';
@@ -192,20 +200,22 @@ function makeSectionsCollapsible(content) {
     const right = document.createElement('div');
     right.className = 'section-right';
 
-    const count = document.createElement('span');
-    count.className = 'section-count';
-    count.textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
+    if (!noCounters) {
+      const count = document.createElement('span');
+      count.className = 'section-count';
+      count.textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
+      right.appendChild(count);
+    }
 
     const chevron = document.createElement('span');
     chevron.className = 'section-chevron';
-
-    right.appendChild(count);
     right.appendChild(chevron);
+
     row.appendChild(titleSpan);
     row.appendChild(right);
     summary.appendChild(row);
 
-    if (preview) {
+    if (preview && !noCounters) {
       const prev = document.createElement('span');
       prev.className = 'section-preview';
       prev.textContent = preview;
@@ -213,7 +223,12 @@ function makeSectionsCollapsible(content) {
     }
 
     details.appendChild(summary);
-    siblings.forEach(sib => details.appendChild(sib));
+
+    // Wrap all sibling content in a section-body div for consistent padding
+    const body = document.createElement('div');
+    body.className = 'section-body';
+    siblings.forEach(sib => body.appendChild(sib));
+    details.appendChild(body);
 
     h2.parentNode.insertBefore(details, h2);
     h2.remove();

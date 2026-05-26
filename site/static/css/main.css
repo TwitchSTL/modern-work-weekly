@@ -1248,15 +1248,13 @@ details[open] .toc-label::before { content: "▼ "; }
   border-bottom: 1px solid var(--color-border);
 }
 
-.section-collapsible > ul,
-.section-collapsible > ol,
-.section-collapsible > p,
-.section-collapsible > div {
+/* Content wrapper — gives consistent left/right padding inside expanded sections */
+.section-body {
   padding: 1rem 1.25rem;
   margin: 0;
 }
 
-/* Strip default list indentation — we apply our own li padding */
+/* Strip default browser list indentation (visual indent comes from .section-body padding) */
 .section-collapsible ul,
 .section-collapsible ol {
   padding-left: 0;

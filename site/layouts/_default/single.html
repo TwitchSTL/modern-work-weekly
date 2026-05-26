@@ -25,7 +25,9 @@
       {{ end }}
     </header>
 
-    <div class="post-content">
+    <div class="post-content"
+      {{ with .Params.expand_all }}data-expand-all="true"{{ end }}
+      {{ with .Params.no_counters }}data-no-counters="true"{{ end }}>
       {{ .Content }}
     </div>
 
