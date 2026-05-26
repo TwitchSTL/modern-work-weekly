@@ -100,6 +100,12 @@ Format rules:
 
 Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, cyber insurance requirements, GDPR, state privacy laws.
 
+Source citations — executives trust named references, not raw URLs:
+- At the end of each section (except "The Week at a Glance"), include a single line formatted exactly as:
+  `*Sources: [Descriptive Name](url) · [Descriptive Name](url)*`
+- Use 1–3 sources per section, drawn from the raw data URLs. Name them meaningfully: "Microsoft Threat Intelligence", "Entra What's New", "M365 Roadmap", "Intune What's New", "Microsoft Security Blog", etc. Never paste a raw URL as the link text.
+- Omit the Sources line if no relevant URLs are available for that section.
+
 Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board."""
 
 EXEC_DIGEST_PROMPT_TEMPLATE = """Here is this week's Microsoft 365 update data. Produce the Executive's Guide briefing.

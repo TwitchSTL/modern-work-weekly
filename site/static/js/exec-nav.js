@@ -58,10 +58,13 @@
       }
 
       // Build <details> wrapper
+      // "The Week at a Glance" (first section) is open by default; all others collapsed.
+      var isFirstSection = (idx === 0);
+
       var details = document.createElement('details');
       details.className = 'exec-section-collapsible';
       details.id = slug;
-      details.open = true; // open by default
+      details.open = isFirstSection;
 
       var risk = riskClass(label);
 

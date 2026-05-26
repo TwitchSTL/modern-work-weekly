@@ -2417,6 +2417,23 @@ details[open] .toc-label::before { content: "▼ "; }
   background: rgba(255,255,255,0.02);
 }
 
+/* Per-section source citations — italic em line at bottom of each section */
+.exec-section-body > p:last-child > em,
+.exec-section-body > p:last-child > em a {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+}
+.exec-section-body > p:last-child > em a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(139,148,158,0.4);
+}
+.exec-section-body > p:last-child > em a:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+
 /* ── Deadlines page ──────────────────────────────────────────────────── */
 .deadlines-page {
   max-width: 900px;
