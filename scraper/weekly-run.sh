@@ -43,7 +43,10 @@ log "Digest done"
 
 # Commit anything new
 cd "$REPO"
-git add site/content/posts/ site/data/health.json 2>/dev/null || true
+git add site/content/posts/ \
+        site/content/exec/ \
+        site/static/search.json \
+        site/data/health.json 2>/dev/null || true
 
 if git diff --cached --quiet; then
   log "Nothing new to commit — skipping push"
