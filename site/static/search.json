@@ -1,213 +1,486 @@
 [
   {
-    "title": "Hotpatch now default for all eligible Windows devices",
-    "category": "Top 5 changes modern work engineers should care about",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "GA, May 2026 Windows security update. Opt-out available at tenant level or per quality update policy. Review your rings before it hits."
+    "title": "Entra Connect Sync → Cloud Sync migration signal is live.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "Microsoft has formally announced the transition away from Entra Connect Sync toward cloud-native Entra Cloud Sync. This isn't a hard cutoff yet, but the directional signal is clear — start your assessment now before it b"
   },
   {
-    "title": "Entra hard-match restriction for role-holding accounts",
-    "category": "Top 5 changes modern work engineers should care about",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Action required before June 1. AD to cloud sync will be blocked for objects targeting Entra role-assigned accounts."
+    "title": "Entra Agent ID is GA.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "AI agents in your enterprise now have a first-class identity framework built on OAuth 2.0, MCP, and A2A. If you're standing up any agentic workloads, this is the governance foundation you should be building on — not ad-h"
   },
   {
-    "title": "Agent 365: Shadow AI page + Intune endpoint controls for local agents",
-    "category": "Top 5 changes modern work engineers should care about",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Preview. First real governance surface for endpoint-level AI activity. OpenClaw covered now; Claude Code and GitHub Copilot CLI on the roadmap."
+    "title": "Configurable Token Lifetime Policies are GA.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "You can now formally shorten access, ID, and SAML token lifetimes per application via policy. This is a meaningful Zero Trust lever — particularly for high-value apps where stale token exposure is a real risk."
   },
   {
-    "title": "Conditional Access enforcement for policies with resource exclusions",
-    "category": "Top 5 changes modern work engineers should care about",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Action required before June 15. Apps that don't handle CA challenges will break for affected tenants."
+    "title": "CBA on iOS fully unblocked and promoted in system-preferred MFA.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "Certificate-based auth on iOS native apps previously had known issues that pushed it to last place in the system-preferred MFA list. Those issues are resolved — CBA now works as a second factor and can be prioritized. PI"
   },
   {
-    "title": "Purview DSPM major evolution + IRM to Defender XDR integration",
-    "category": "Top 5 changes modern work engineers should care about",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Rolling. Biggest Purview release of 2026. Third-party signals, AI observability, Security Copilot agents."
+    "title": "SAP SuccessFactors provisioning must move off basic auth by November 2026.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "SAP is deprecating basic auth for SuccessFactors APIs. Entra now supports workload identity-based auth as the replacement. If you run SuccessFactors inbound provisioning, this is an active deadline — start the migration "
   },
   {
-    "title": "Hotpatch enabled by default for all eligible devices",
-    "category": "Endpoint management highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Starting with the May 2026 Windows security update, hotpatch is on by default for all devices managed via Windows Autopatch, Intune, or Graph API. No restart required. Opt out at tenant level or per quality update policy."
+    "title": "SAP SuccessFactors provisioning — migrate off basic auth",
+    "category": "Action Required",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Deadline: November 2026] — SAP is deprecating basic authentication for SuccessFactors APIs by November 2026. Entra now supports workload identity + short-lived tokens as the replacement. Begin migration planning immedia"
   },
   {
-    "title": "New Intune device view",
-    "category": "Endpoint management highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Redesigned single-pane device view replaces the old tabbed layout. All device actions, reports, and info from one surface. Enable via toggle in Devices > All Devices."
+    "title": "Autopilot Intune Connector for Active Directory — old connector deprecated late June 2025",
+    "category": "Action Required",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "If you're still running the legacy Intune Connector for AD for hybrid join flows, the old connector reaches end of life in late June 2025. The new low-privileged connector is available now — migrate before the cutoff."
   },
   {
-    "title": "Linux SSO broker replaced with microsoft-identity-broker (C++)",
-    "category": "Endpoint management highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "The Java-based Linux SSO broker is retired. The new C++ microsoft-identity-broker enables full device join and device-bound authentication tokens, unlocking phishing-resistant MFA for Linux endpoints in Intune."
+    "title": "TeamViewer connector migration — 12-month window",
+    "category": "Action Required",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "If you use the old TeamViewer connector in Intune for remote assistance, you must migrate to the new connector within 12 months of this release to maintain functionality. Put it on your project board now before it become"
   },
   {
-    "title": "Ubuntu 26.04 LTS support added; 22.04 end of support August 2026",
-    "category": "Endpoint management highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Intune now supports Ubuntu 26.04 LTS. Ubuntu 22.04 support ends August 2026 — enrolled devices stay enrolled but new enrollments will be blocked. Identify 22.04 devices now in Devices > All Devices."
+    "title": "Ubuntu 22.04 LTS — support ends August 2026",
+    "category": "Action Required",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "Intune now supports Ubuntu 26.04 LTS. Enrolled 22.04 devices stay enrolled but you should identify them (Devices → All Devices → filter Linux → add OS Version column) and notify users to upgrade before August."
   },
   {
-    "title": "Intune Data Warehouse beta connector retiring",
-    "category": "Endpoint management highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "The Power BI beta connector for the Intune Data Warehouse began its retirement transition April 20. Reports created before November 2025 may still use the beta connector and will return no data. Audit your Power BI reports and migrate."
+    "title": "Intune Data Warehouse Power BI beta connector v1 — retire your reports",
+    "category": "Action Required",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "The beta connector v1 for Power BI is retired. Reports created before November 2025 may still use it and need migration to connector v2 or the OData Feed connector. Audit your Power BI Intune reports now."
   },
   {
-    "title": "Android XR device management via Android Enterprise",
-    "category": "Endpoint management highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Intune now supports dedicated and fully managed enrollment for Android XR devices with OEMConfig. Requires Intune Plan 2 license. Supports remote delete, retire, restart, rename, sync, and enrollment-time group assignment."
+    "title": "Purview DLP policy sync SLA reduction",
+    "category": "Action Required",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA: June 2026] — Policy sync time drops from 2 hours to 30 minutes. No action required, but worth knowing for change management — your DLP policies will propagate significantly faster starting June."
   },
   {
-    "title": "Entra Connect Sync to Cloud Sync migration (July 2026 notifications)",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Microsoft is transitioning tenants from on-prem Entra Connect Sync to cloud-native Cloud Sync. Notification windows will be assigned starting July 2026. Begin readiness assessment now, especially for write-back scenarios and complex sync rules."
+    "title": "Entra Agent ID Platform",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — If you're deploying AI agents that access enterprise resources, Agent ID is the governance model you've been waiting for. It provides identity, OAuth 2.0-based authorization, and auditing for agents using standard"
   },
   {
-    "title": "Hard-match restriction for Entra role-holding accounts",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Beginning June 1, Entra Connect Sync and Cloud Sync will be blocked from hard-matching a new AD user object to an existing cloud-managed Entra ID account that holds an Entra role. Audit role-holding cloud accounts and validate sync rules."
+    "title": "Configurable Token Lifetime Policies",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Admins can now formally customize access token, ID token, and SAML token lifetimes per application and service principal. Use this to shorten token lifetimes on high-sensitivity apps and reduce the blast radius of"
   },
   {
-    "title": "External MFA now generally available",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "External Multifactor Authentication is now GA. Allows organizations to satisfy Entra MFA requirements using a third-party MFA provider while keeping Entra ID as the full policy evaluation plane."
+    "title": "Entra CBA on iOS — fully GA as second factor and in system-preferred MFA list",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Known iOS issues that previously forced CBA to last place in the system-preferred MFA list are resolved. CBA now works as a second factor in native iOS apps and can be ranked appropriately. If you operate a PIV/CA"
   },
   {
-    "title": "Global Secure Access: network-level file type filtering for GenAI/SaaS",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Admins can define policies in Global Secure Access to block or restrict transfers of specific file types to generative AI and SaaS apps at the network layer. Adds DLP enforcement upstream of the endpoint, complementing Purview endpoint DLP."
+    "title": "Entra CBA Certificate Authority (CA) Scoping",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Admins can now restrict which CAs are valid for specific user groups, preventing certificate sprawl from allowing unintended auth paths. Scope CAs to their intended populations and audit your current CBA trust con"
   },
   {
-    "title": "Prompt injection protection in AI Gateway",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Real-time protection against malicious prompt injection attacks on enterprise GenAI apps and agents, available in AI Gateway as part of Global Secure Access. For Copilot Studio agents with the Global Secure Access client installed."
+    "title": "Entra CBA Issuer Hints",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Reduces user confusion on multi-certificate devices by surfacing only certificates the tenant trusts during the selection prompt. Low-friction security improvement — no policy change required, but verify behavior "
   },
   {
-    "title": "Conditional Access enforcement for resource exclusion policies",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "CA policies targeting All resources with resource exclusions will begin enforcing against previously-exempt scopes on June 15. Apps that don't handle CA challenges will fail. Review your CA exclusion list and test app behavior in non-prod first."
+    "title": "Entra Connect Sync → Cloud Sync migration planned",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Plan for Change] — Microsoft is formally beginning the transition from Entra Connect Sync to cloud-native Entra Cloud Sync. No hard deprecation date announced yet, but the strategic direction is clear — document your cu"
   },
   {
-    "title": "Entra audit log improvement: only changed properties surfaced",
-    "category": "Identity & access highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Authentication Methods Policy audit log entries now show only modified properties rather than the full policy payload. Dramatically reduces log noise for SIEM ingestion and makes policy change tracking via Graph or Microsoft Sentinel significantly cleaner."
+    "title": "SCIM provisioning apps must move to modern authentication",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Plan for Change] — Older SCIM integrations using legacy auth patterns will be migrated to modern service-to-service auth over the coming months. Affected applications and customer deadlines will be published monthly via"
   },
   {
-    "title": "Defender XDR: automatic attack disruption now isolates compromised devices",
-    "category": "Security & compliance highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Attack disruption can now autonomously isolate devices identified as active attacker footholds, blocking lateral movement while keeping the device connected to security services. Time-limited, operator-reversible, high-confidence incidents only."
+    "title": "SAP SuccessFactors provisioning — workload identity auth GA",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Entra provisioning to SuccessFactors can now authenticate via workload identity and short-lived tokens instead of static username/password. SAP deprecates basic auth by November 2026 — migrate now, this is not opt"
   },
   {
-    "title": "Defender XDR: predictive shielding",
-    "category": "Security & compliance highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Uses predictive analytics and real-time insights to infer risk, anticipate attacker progression, and proactively harden the environment before threats materialize. Works alongside attack disruption."
+    "title": "Workday connector — termination lookahead GA",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Resolves termination processing delays for workers in APAC and ANZ regions. Admins can enable termination lookahead to prefetch data and customize deprovisioning logic. If you run Workday provisioning in these reg"
   },
   {
-    "title": "Identity Security dashboard in Defender XDR",
-    "category": "Security & compliance highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "New unified dashboard covering human and non-human identities across on-prem, SaaS, PAM, and IGA integrations. Includes a Coverage and Maturity page for gap analysis."
+    "title": "Account Discovery for connected apps",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Preview] — Entra ID Governance can now generate discovery reports showing all accounts in connected applications — including orphan accounts not assigned in Entra. Useful for identifying SaaS sprawl and unmanaged accoun"
   },
   {
-    "title": "Secure Boot 2023 certificates — June 2026 deadline",
-    "category": "Security & compliance highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Microsoft Secure Score now surfaces a recommendation to update devices to Secure Boot 2023 certificates ahead of the June 2026 expiration. The May 2026 cumulative update includes additional device targeting data. Check Secure Score and deploy the May 2026 CU."
+    "title": "Entra External ID federation with workforce tenants",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Preview] — Organizations can now let users authenticate to customer-facing External ID apps using their workforce Entra ID identity via standards-based federation. Reduces duplicate accounts for internal-to-external app"
   },
   {
-    "title": "Purview DSPM: unified posture management experience",
-    "category": "Security & compliance highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Rebuilt Data Security Posture Management experience: unified visibility across data estate, AI observability, posture reporting, Security Copilot agents, and third-party signal ingestion from BigID, Cyera, OneTrust, and Varonis. Insider Risk Management alerts now integrate into Defender XDR."
+    "title": "App-based branding themes in Entra",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Preview] — Beyond tenant-wide branding, you can now create per-application branding themes for distinct sign-in experiences. Useful for multibrand organizations or partner-facing applications requiring distinct visual i"
   },
   {
-    "title": "Agent 365 becomes the unified agent control plane",
-    "category": "AI & automation highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "The Entra admin center Agent Registry and Agent Collections blades were retired on May 1. Agent management moves entirely to Agent 365 in the Microsoft 365 Admin Center. Agents registered via the current API will need re-registration via the new Agent 365 API."
+    "title": "PIM activation — Conditional Access reauthentication enforcement",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — You can now require MFA or other CA controls on every PIM role activation, not just at sign-in. This closes a meaningful gap where users could activate privileged roles on a stale session — enforce this for all pr"
   },
   {
-    "title": "Shadow AI page: visibility into local AI agents on Windows devices",
-    "category": "AI & automation highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "A new Shadow AI page in Agent 365 surfaces local AI agent activity on Windows endpoints and lets admins apply Intune policies to block unsanctioned agent execution. Initial coverage is OpenClaw; GitHub Copilot CLI and Claude Code are on the roadmap."
+    "title": "License Usage page in Entra admin center",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Surfaces P1/P2/Suite license consumption alongside feature usage including Conditional Access and risk-based CA, with 6-month trends. Use this to rationalize license spend and identify underutilized premium featur"
   },
   {
-    "title": "Conditional Access extended to agents",
-    "category": "AI & automation highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Entra Conditional Access now enforces Zero Trust policies on AI agents. Delegated access agents (acting on behalf of a user) are GA. Own-access agents (operating with their own identity) are in public preview. Same policy model as users."
+    "title": "MIM 2016 Service Pack 3",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — SP3 adds SQL Server, SharePoint, and Exchange compatibility updates plus Azure SQL Database with managed identity auth for the Sync Service. If you're still running MIM in a hybrid identity scenario, this reduces "
   },
   {
-    "title": "Agent 365 policy templates for onboarding governance",
-    "category": "AI & automation highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Reusable policy templates in Agent 365 bundle Entra, Purview, Defender, and SharePoint policies into agent onboarding guardrails. Apply consistent security controls at agent approval time rather than configuring per-agent post-deployment."
+    "title": "macOS ADE + Platform SSO during enrollment",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Macs enrolled via ADE can now complete Platform SSO registration during the enrollment flow itself, giving users immediate access to Entra ID resources at desktop. Reduces the post-enrollment SSO setup friction th"
   },
   {
-    "title": "Copilot Calendar Agent + Outlook thread summarization",
-    "category": "AI & automation highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "The Copilot Calendar Agent lets users set plain-English scheduling rules that Copilot executes in the background, fully reviewable and adjustable. Outlook Copilot now summarizes full email threads and drafts context-aware replies."
+    "title": "Windows 365 Government — external identity support",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Government tenants can now provision Cloud PCs for external identity users, with connectivity via the Windows App on Windows. External identity support for macOS and Android clients is in preview."
   },
   {
-    "title": "SharePoint AI Charts web part + AI Citations Analytics",
-    "category": "AI & automation highlights",
-    "date": "2026-05-17",
-    "url": "/posts/2026-05-17/",
-    "snippet": "Page authors can generate interactive charts via plain-language prompts with the new AI Charts web part. AI Citations Analytics shows how often SharePoint content is referenced in Copilot responses org-wide."
+    "title": "Entitlement Management — approver visibility in My Access",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Requestors can now see the name and email of their approvers directly in My Access portal. Enabled by default for members (not guests), configurable per access package. Reduces help desk tickets asking \"who do I c"
+  },
+  {
+    "title": "Social Identity Providers in External ID Native Authentication",
+    "category": "Identity",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Google, Facebook, and Apple sign-in options are now GA in External ID native authentication flows via browser-delegated (web-view) SDKs. Relevant for customer-facing app teams integrating social login."
+  },
+  {
+    "title": "Intune Enhanced App Inventory",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Faster and more detailed app visibility across managed Windows devices, with improved data freshness, richer metadata, and new controls to scope which devices are included in inventory collection. Use this to iden"
+  },
+  {
+    "title": "EPM Support Approved Elevations from all device users",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Endpoint Privilege Management now allows any device user (not just the primary user or enrolling user) to submit support-approved elevation requests. Critical for shared device scenarios — review your EPM policies"
+  },
+  {
+    "title": "Android credential provider management for Enterprise devices",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Admins can now control which apps act as system-level credential providers (password autofill, passkey storage) on Android Enterprise managed devices running Android 14+. Configure this under Apps → Android → Conf"
+  },
+  {
+    "title": "Android XR device management",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Intune now supports Android XR devices via Android Enterprise dedicated and fully managed enrollment. Devices appear alongside standard Android in the admin center. For organizations piloting AR/VR hardware, this "
+  },
+  {
+    "title": "Apple Declarative Device Management (DDM) for required iOS/iPadOS LOB apps",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Required LOB apps on iOS/iPadOS 18+ can now be deployed via Apple's DDM framework, improving delivery efficiency and providing real-time app status. Opt in by changing the management type to DDM in the app's App i"
+  },
+  {
+    "title": "Direct Android LOB app management without Managed Google Play",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Upload APKs directly to Intune and deploy to COBO/COSU devices without going through Managed Google Play. Removes the dependency on the Play store approval pipeline for internal apps."
+  },
+  {
+    "title": "macOS Recovery OS password management",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Admins can configure and rotate a recovery OS password to prevent users from booting into recovery mode and reinstalling macOS. View recovery lock passwords in the per-setting status report — requires the \"Remote "
+  },
+  {
+    "title": "Autopatch Update Risk Visibility report",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — The new report extends the security update status dashboard with per-device risk classification (Current, Exposed, Critical) and highlights which policies are contributing to risk. Prioritize your remediation queu"
+  },
+  {
+    "title": "Microsoft Edge 139 Security Baseline",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — Latest Edge security baseline is available in Intune. Evaluate against your current baseline and plan the upgrade — staying on outdated baselines leaves known-misconfiguration risk on the table."
+  },
+  {
+    "title": "Ubuntu 26.04 LTS support in Intune",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Preview] — Intune now supports Ubuntu 26.04 LTS for Linux device management. Ubuntu 22.04 support ends August 2026 — identify affected devices now and begin migration planning."
+  },
+  {
+    "title": "TeamViewer connector replacement in Intune",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[GA] — A new, redesigned TeamViewer connector replaces the existing one with simpler onboarding and improved reliability. If you use TeamViewer for remote assistance, migrate within 12 months. Start now rather than scram"
+  },
+  {
+    "title": "Windows 365 Autopilot Device Preparation (DPP) for Reserve",
+    "category": "Devices",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "[Preview] — Autopilot Device Preparation is now available for Windows 365 Reserve provisioning in preview. Cloud PCs show \"Preparing\" status while apps and configurations install before the device is handed to the user."
+  },
+  {
+    "title": "Storm-2949 cloud breach anatomy",
+    "category": "Top 5 This Week",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "A real-world incident where stolen credentials alone enabled cloud-wide data exfiltration with zero malware. Read this. Then check your identity hygiene. This is the threat model you're defending against."
+  },
+  {
+    "title": "Purview Data Lifecycle: Retention-based archiving for OneDrive/SharePoint (July GA)",
+    "category": "Top 5 This Week",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Inactive files auto-migrate to low-cost storage while staying compliant and discoverable. Copilot result relevance improves as a side effect. Start sizing your retention policies now."
+  },
+  {
+    "title": "Purview Lifecycle Management insights + policy recommendations (July GA)",
+    "category": "Top 5 This Week",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Purview will surface sensitive data exposure across SharePoint/OneDrive and recommend retention policies. Free signal for hardening your compliance posture — no manual audit required."
+  },
+  {
+    "title": "Copilot in Word now supports Anthropic models (GA)",
+    "category": "Top 5 This Week",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Users can choose Anthropic models alongside OpenAI when editing in Word. This is a meaningful shift in the Copilot model layer — worth understanding licensing and data handling implications before users start experimenti"
+  },
+  {
+    "title": "Teams Rooms Pro: Enhanced issue detection + auto-remediation (GA)",
+    "category": "Top 5 This Week",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Audio, video, and display issues now self-heal during nightly maintenance windows. If you're managing Teams Rooms at scale, this directly reduces your support queue."
+  },
+  {
+    "title": "Storm-2949: Compromised Identity to Cloud-Wide Breach",
+    "category": "Security & Compliance",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "No malware. No novel exploits. Just stolen credentials and a patient attacker leveraging trusted systems to exfiltrate data at scale. Microsoft's detailed breakdown of Storm-2949's TTPs is required reading for anyone own"
+  },
+  {
+    "title": "Purview Data Lifecycle Management: Sensitive Data Insights + Retention Policy Recommendations",
+    "category": "Security & Compliance",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — July CY2026"
+  },
+  {
+    "title": "How to Better Protect Your Growing Business in an AI-Powered World",
+    "category": "Endpoint Management",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Microsoft Security Blog post targeting SMB/mid-market, but the underlying framework — built-in security defaults, Zero Trust principles at scale — applies regardless of org size. Useful talking points if you're making th"
+  },
+  {
+    "title": "Purview Data Security Investigations: Personal Data Examination",
+    "category": "Identity & Access",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — April CY2026"
+  },
+  {
+    "title": "Purview Data Lifecycle: Archive OneDrive/SharePoint Files Under Retention",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — July CY2026"
+  },
+  {
+    "title": "Microsoft Copilot in Word: Anthropic Model Selection",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — May CY2026"
+  },
+  {
+    "title": "Teams Rooms on Windows: Enhanced Issue Detection + Auto-Remediation",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — May CY2026"
+  },
+  {
+    "title": "Teams: Facilitator Agent AI Notes for In-Person Meetings (Teams Rooms on Android)",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — July CY2026"
+  },
+  {
+    "title": "Teams: Save Events as Templates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — June CY2026"
+  },
+  {
+    "title": "Teams: Video Recap in Intelligent Meeting Recap",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — April CY2026"
+  },
+  {
+    "title": "Teams: Human Interpreter Listening Mode in Teams Rooms on Windows",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — July CY2026"
+  },
+  {
+    "title": "Teams: Ad-Hoc Room Reservation from Teams Rooms on Windows Console",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — July CY2026"
+  },
+  {
+    "title": "Teams: Digital Signage in Teams Rooms on Android",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — April CY2026"
+  },
+  {
+    "title": "Teams: Resizable Gallery in Meetings",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "GA — April CY2026"
+  },
+  {
+    "title": "Outlook: Improved Handling of Disallowed and Failed Email Reactions",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Preview — April CY2026 / GA — May CY2026"
+  },
+  {
+    "title": "Work IQ APIs: Researcher Agent Access",
+    "category": "Automation & AI",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Preview — June CY2026 / GA — July CY2026"
+  },
+  {
+    "title": "Entra Agent ID Platform — GA.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Microsoft now has a first-class identity and authorization framework for AI agents using OAuth 2.0, MCP, and A2A. If you're deploying any Copilot Studio or custom agents in your tenant, this is the governance model you s"
+  },
+  {
+    "title": "SAP SuccessFactors basic auth deprecation — November 2026 deadline.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "SAP is pulling the plug on basic auth for SuccessFactors APIs. Microsoft Entra provisioning is introducing workload identity–based auth as the replacement. If you have Entra-to-SuccessFactors inbound provisioning, you ne"
+  },
+  {
+    "title": "Dirty Frag Linux LPE — actively exploited.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "A local privilege escalation vulnerability in Linux kernel networking components (esp4, esp6, rxrpc) is seeing limited in-the-wild exploitation. Any Linux endpoint or server reachable via SSH, web shell, or low-priv acco"
+  },
+  {
+    "title": "Entra Connect Sync → Cloud Sync migration announced.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Microsoft is formally beginning the transition away from on-premises Connect Sync to cloud-native Cloud Sync. No hard cutoff date yet, but the direction is unambiguous. Start your inventory of Connect Sync dependencies —"
+  },
+  {
+    "title": "macOS Platform SSO during ADE — GA.",
+    "category": "Top 5 This Week",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Users get Entra ID access the moment they hit the desktop on a freshly enrolled Mac, with no post-enrollment SSO setup required. If you're running ADE for macOS and haven't configured Platform SSO, this is now the baseli"
   },
   {
     "title": "macOS Platform SSO during Automated Device Enrollment",
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "PSSO can now run during ADE registration, giving users immediate Entra ID resource access at first desktop. Requires pre-enrollment configuration."
+    "snippet": "PSSO can now run during ADE registration, giving users immediate Entra ID resource access at first desktop. Requires pre-enrollment configuration. See: Configure PSSO during ADE for macOS."
   },
   {
     "title": "Enhanced App Inventory for Windows",
@@ -228,7 +501,7 @@
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Admins can now explicitly configure which apps act as credential providers on managed Android Enterprise devices. Navigate to Apps > Android > Configuration > Managed Devices."
+    "snippet": "Admins can now explicitly configure which apps act as credential providers (password autofill, passkey storage) on managed Android Enterprise devices. Navigate to Apps > Android > Configuration > Managed Devices. Note: G"
   },
   {
     "title": "Userless ADE for visionOS and tvOS",
@@ -242,24 +515,24 @@
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Ubuntu 26.04 LTS is now supported. Ubuntu 22.04 support ends August 2026. Enrolled 22.04 devices stay enrolled but you need to notify users to upgrade. Filter by OS version in Devices > All Devices > Linux to find your exposure."
+    "snippet": "Ubuntu 26.04 LTS is now supported. Ubuntu 22.04 support ends August 2026. Enrolled 22.04 devices stay enrolled but you need to notify users to upgrade. Filter by OS version in Devices > All Devices > Linux to find your e"
   },
   {
     "title": "Autopatch Update Risk Visibility Report",
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "New report classifies devices as Current, Exposed, or Critical and surfaces which policies are contributing to risk. Extends the Security Update Status dashboard. Good for prioritizing remediation conversations with device owners."
+    "snippet": "New report classifies devices as Current, Exposed, or Critical and surfaces which policies are contributing to risk. Extends the Security Update Status dashboard. Good for prioritizing remediation conversations with devi"
   },
   {
     "title": "Edge 139 Security Baseline available in Intune",
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Latest Edge browser security baseline is now available in Intune. Review and deploy alongside your existing Edge baseline profiles."
+    "snippet": "Latest Edge browser security baseline is now available. Review and deploy alongside your existing Edge baseline profiles."
   },
   {
-    "title": "Windows 11 25H2 Security Baseline",
+    "title": "Windows 11 25H2 Security Baseline — GA",
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
@@ -270,14 +543,14 @@
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Upload APK files directly to Intune and deploy to corporate-owned fully managed and dedicated devices without going through Managed Google Play. Streamlines workflows for apps that can't be published to the Play Store."
+    "snippet": "Upload APK files directly to Intune and deploy to corporate-owned fully managed and dedicated devices without going through Managed Google Play. Streamlines workflows for apps that can't or shouldn't be published to the "
   },
   {
     "title": "Android XR Device Management",
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Android XR devices can now be enrolled via dedicated and fully managed modes. Deploy apps via Managed Google Play and apply compliance policies."
+    "snippet": "Android XR devices (including Android-based XR headsets) can now be enrolled via dedicated and fully managed modes. Deploy apps via Managed Google Play and apply compliance policies."
   },
   {
     "title": "TeamViewer Connector Replacement",
@@ -291,7 +564,7 @@
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Reports created before November 2025 may still use the beta v1 connector. You must transition to connector v2 or the OData Feed connector."
+    "snippet": "Reports created before November 2025 may still use the beta v1 connector. You must transition to connector v2 or the OData Feed connector. Reports created after November 2025 already use v2."
   },
   {
     "title": "Apple DDM for Required LOB Apps (iOS/iPadOS 18+)",
@@ -305,49 +578,49 @@
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Admins can configure and rotate a recovery OS password to prevent users from booting company-owned Macs into recovery mode and bypassing MDM. Password visible in per-setting status report with appropriate RBAC permission."
+    "snippet": "Admins can configure and rotate a recovery OS password to prevent users from booting company-owned Macs into recovery mode and bypassing MDM. Password visible in per-setting status report with appropriate RBAC permission"
   },
   {
     "title": "Remote Help Connectivity Improvement + New IME Log",
     "category": "Endpoint Management",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "New endpoint added for Launch Remote Help — update firewall rules accordingly. New NotificationInfra.log added to IME logs for tracking real-time communication channel notifications."
+    "snippet": "New endpoint added for Launch Remote Help. Update firewall rules accordingly. New NotificationInfra.log added to IME logs for tracking real-time communication channel notifications."
   },
   {
     "title": "Microsoft Entra Agent ID Platform",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "First-class identity framework for AI agents in enterprise environments. Supports OAuth 2.0, MCP, and A2A protocols. Developers can create and manage agent identities with enterprise-grade auth and governance."
+    "snippet": "First-class identity framework for AI agents in enterprise environments. Supports OAuth 2.0, MCP, and A2A protocols. Developers can create and manage agent identities with enterprise-grade auth and governance. If you're "
   },
   {
-    "title": "Entra Connect Sync to Cloud Sync Migration",
+    "title": "Entra Connect Sync → Cloud Sync Migration",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Microsoft is formally transitioning away from on-premises Connect Sync to cloud-native Cloud Sync. No enforcement date announced yet. Begin auditing Connect Sync deployments, custom rules, and writeback dependencies."
+    "snippet": "Microsoft is formally transitioning away from on-premises Connect Sync to cloud-native Cloud Sync. No enforcement date announced yet, but posture is clear. Begin auditing Connect Sync deployments, custom rules, and write"
   },
   {
-    "title": "SAP SuccessFactors Provisioning: Basic Auth to Workload Identity",
+    "title": "SAP SuccessFactors Provisioning: Basic Auth → Workload Identity",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Hard deadline: November 2026 (SAP deprecation date). Microsoft Entra provisioning will authenticate using workload identities and short-lived tokens instead of static credentials. Migrate before SAP pulls the plug."
+    "snippet": "Hard deadline: November 2026 (SAP deprecation date). Microsoft Entra provisioning will authenticate using workload identities and short-lived tokens instead of static credentials. If you have Entra → SuccessFactors inbou"
   },
   {
     "title": "SCIM Provisioning Apps: Modern Authentication Migration",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Basic auth is being deprecated across SCIM provisioning integrations over the coming months. Timelines vary per application and will be communicated via monthly What's New articles and Message Center."
+    "snippet": "Basic auth is being deprecated across SCIM provisioning integrations over the coming months. Timelines vary per application and will be communicated via monthly What's New articles and Message Center. Watch for your spec"
   },
   {
     "title": "CBA on iOS + CBA as Second Factor",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Entra Certificate-Based Authentication is now GA on iOS. Eliminates unnecessary password/MFA prompts in native iOS apps. CBA can now be a second factor and system-preferred MFA method."
+    "snippet": "Entra Certificate-Based Authentication is now GA on iOS. Eliminates unnecessary password/MFA prompts in native iOS apps. CBA can now be a second factor and system-preferred MFA method. Review your auth policies if you're"
   },
   {
     "title": "Entra CBA Certificate Authority (CA) Scoping",
@@ -375,7 +648,7 @@
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Admins can now customize access token, ID token, and SAML token lifetimes per application/service principal via policy. Use this to tighten token windows for sensitive apps or accommodate legacy systems."
+    "snippet": "Admins can now customize access token, ID token, and SAML token lifetimes per application/service principal via policy. Use this to tighten token windows for sensitive apps or accommodate legacy systems that need longer "
   },
   {
     "title": "GSA iOS Client",
@@ -396,223 +669,447 @@
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "5-tuple based filtering for internet traffic from branch offices via GSA remote networks. Configurable from the admin center."
+    "snippet": "5-tuple (source IP, destination IP, protocol, source/destination port) based filtering for internet traffic from branch offices via GSA remote networks. Configurable from the admin center."
   },
   {
     "title": "Workday Connector: Termination Lookahead for APAC/ANZ",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Fixes termination processing delays for workers in APAC and ANZ regions. Admins can enable termination lookahead to prefetch data and tailor deprovisioning logic."
+    "snippet": "Fixes termination processing delays for workers in APAC and ANZ regions. Admins can enable termination lookahead to prefetch data and tailor deprovisioning logic. If you have Workday provisioning and operate in those reg"
   },
   {
     "title": "Account Discovery for Connected Apps (Entra ID Governance)",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Generates discovery reports to identify orphan accounts in connected applications that aren't assigned to the enterprise app in Entra. Good for access hygiene audits."
+    "snippet": "Generates discovery reports from the provisioning experience to identify orphan accounts in connected applications that aren't assigned to the enterprise app in Entra. Good for access hygiene audits."
   },
   {
     "title": "Entra External ID Federation with Workforce Identities",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Users can now sign in to customer-facing External ID apps using their workforce Entra ID identity via standards-based federation. Reduces duplicate accounts for internal-facing consumer apps."
+    "snippet": "Users can now sign in to customer-facing (External ID) apps using their workforce Entra ID identity via standards-based federation. Reduces duplicate accounts for internal-facing consumer apps."
+  },
+  {
+    "title": "App-based Branding Themes",
+    "category": "Identity & Access",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Assign different sign-in branding experiences to specific applications within a single tenant. Previously, branding was tenant-wide only."
+  },
+  {
+    "title": "MIM 2016 Service Pack 3",
+    "category": "Identity & Access",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "SP3 updates SQL Server, SharePoint, and Exchange compatibility, and adds Azure SQL Database with managed identity auth support for the Synchronization Service. If you're still running MIM, apply SP3."
   },
   {
     "title": "License Usage Page in Entra Admin Center",
     "category": "Identity & Access",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Visibility into Entra ID P1, P2, and Suite license consumption. Shows feature usage mapped to license type with 6-month trends. Useful for license right-sizing conversations."
+    "snippet": "Visibility into Entra ID P1, P2, and Suite license consumption. Shows feature usage (Conditional Access, risk-based CA) mapped to license type with 6-month trends. Useful for license right-sizing conversations."
+  },
+  {
+    "title": "Entitlement Management: Approver Visibility in My Access",
+    "category": "Identity & Access",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Requestors can now see the name and email of their approvers directly in My Access portal. Enabled by default for all members (non-guests). Controllable at tenant and access package level."
+  },
+  {
+    "title": "Universal Print Badge API",
+    "category": "Identity & Access",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Map employee badge credentials (card/NFC) to user identities for secure print job release. No app, PIN, or device sign-in required. GA target: July 2026."
   },
   {
     "title": "Dirty Frag Linux LPE — Actively Exploited",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Local privilege escalation in Linux kernel networking (esp4, esp6, rxrpc). Allows unprivileged to root escalation. In-the-wild exploitation observed. Patch your Linux kernels immediately. Attack vectors include SSH, web shells, containers, and low-privileged accounts."
+    "snippet": "Local privilege escalation in Linux kernel networking (esp4, esp6, rxrpc). Allows unprivileged → root escalation. In-the-wild exploitation observed. Microsoft Defender provides detection but patch your Linux kernels imme"
   },
   {
     "title": "Kazuar Nation-State Botnet Analysis (Secret Blizzard / Russia)",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Microsoft published detailed analysis of Kazuar, attributed to Russian state actor Secret Blizzard. Kazuar has evolved from a traditional backdoor into a modular P2P botnet designed for persistent covert access."
+    "snippet": "Microsoft published detailed analysis of Kazuar, attributed to Russian state actor Secret Blizzard. Kazuar has evolved from a traditional backdoor into a modular P2P botnet designed for persistent covert access. Read the"
   },
   {
     "title": "Third-Party Compromise / Supply Chain Intrusion Investigation",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Attack used legitimate administrative mechanisms to blend into routine operations. No loud exploits, no custom malware — just trusted tooling. Review your third-party access policies and privileged account monitoring."
+    "snippet": "Microsoft Incident Response documented an attack that used legitimate administrative mechanisms to blend into routine operations. No loud exploits, no custom malware — just trusted tooling. Worth reviewing your third-par"
   },
   {
-    "title": "AI App Misconfigurations leading to RCE and Data Leaks",
+    "title": "AI App Misconfigurations → RCE and Data Leaks",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Exposed UIs, weak auth, and risky defaults in cloud-native AI apps on Kubernetes lead to RCE and data exfiltration. If you're running self-hosted AI workloads, audit your Kubernetes configurations."
+    "snippet": "Research post covering how exposed UIs, weak auth, and risky defaults in cloud-native AI apps on Kubernetes lead to RCE and data exfiltration. If you're running self-hosted AI workloads, audit your Kubernetes configurati"
   },
   {
     "title": "Purview DLP: Count of Labeled Documents Condition (Exchange Online)",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "New DLP condition triggers when an email contains more than N attachments with a matching sensitivity label. Enables detection of bulk sensitive data exfiltration that individual file checks miss."
+    "snippet": "New DLP condition: \"Count of labeled documents is greater than [threshold].\" Triggers when an email contains more than N attachments with a matching sensitivity label. Enables detection of bulk sensitive data exfiltratio"
   },
   {
     "title": "Purview Data Lifecycle Management Billing Change",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "DLM billing is moving to volume-based (per GB retained) for non-Microsoft 365 generative AI prompts and responses. Rate: $0.25/GB/month. Model your cost exposure now if you have DLM policies covering AI data."
+    "snippet": "DLM billing is moving to volume-based (per GB retained) for non-Microsoft 365 generative AI prompts and responses. Rate: $0.25/GB/month. If you have DLM policies covering AI data, model your cost exposure now."
   },
   {
     "title": "Purview Endpoint DLP: Copilot+ PC Recall Snapshot Coverage",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Endpoint DLP can now evaluate whether Recall snapshots on Copilot+ PCs contain content restricted by sensitivity labels or SITs, and block capture accordingly. Requires coordinated policy authoring between Purview and Intune admins."
+    "snippet": "Endpoint DLP can now evaluate whether Recall snapshots on Copilot+ PCs contain content restricted by sensitivity labels or SITs, and block capture accordingly. Requires coordinated policy authoring between Purview and In"
   },
   {
     "title": "Purview DLP Additional Diagnostics (SPO, EXO, Auto-labeling)",
     "category": "Security & Compliance",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "New diagnostic tools for DLP SharePoint, DLP Exchange Online, and auto-labeling on SPO/OneDrive. Helps identify which SITs exist in a document, what labels are applied, and which policies triggered."
+    "snippet": "New diagnostic tools for DLP SharePoint, DLP Exchange Online, and auto-labeling on SPO/OneDrive. Helps identify which SITs exist in a document, what labels are applied, and which policies triggered. GA targeted February "
   },
   {
     "title": "Teams Facilitator Agent for In-Person Meetings (Teams Rooms on Windows)",
     "category": "Collaboration & Productivity",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "AI-powered notes, decisions, and action items for in-person meetings in Teams Rooms on Windows. Invite with one console tap. Notes appear on front-of-room display, available in meeting recap if shared. Requires Teams Rooms Pro."
+    "snippet": "AI-powered notes, decisions, and action items for in-person meetings in Teams Rooms on Windows. Invite with one console tap. Notes appear on front-of-room display, available in meeting recap if shared, auto-deleted if no"
   },
   {
     "title": "Teams Quick Share for Images",
     "category": "Collaboration & Productivity",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Extends Quick Share to images via hover, right-click, and overflow menus. Copies links or shares images while preserving permissions."
+    "snippet": "Extends Quick Share to images via hover, right-click, and overflow menus. Copies links or shares images while preserving permissions. GA target: June 2026."
   },
   {
-    "title": "Teams Shared and Delegate Mailbox Scheduling for Events",
+    "title": "Teams Shared & Delegate Mailbox Scheduling for Events",
     "category": "Collaboration & Productivity",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Send event invites from shared or delegated mailboxes in Teams. Addresses Chiefs of Staff and EA workflows directly."
+    "snippet": "Send event invites from shared or delegated mailboxes in Teams. Addresses Chiefs of Staff / EA workflows directly. GA target: June 2026."
+  },
+  {
+    "title": "Teams Searchable Keyboard Shortcuts",
+    "category": "Collaboration & Productivity",
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Search shortcuts by name or key combination in the shortcuts dialog. Low stakes, but reduces friction for power users and reduces support tickets. GA target: June 2026."
   },
   {
     "title": "Copilot Page: Suggested Edits from Copilot",
     "category": "Collaboration & Productivity",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Select Suggested edits in the Copilot Shortcuts menu to get inline content improvement suggestions on your Copilot Page."
+    "snippet": "Select \"Suggested edits\" in the Copilot Shortcuts menu to get inline content improvement suggestions on your Copilot Page. Preview: May 2026; GA: June 2026."
   },
   {
     "title": "Copilot Search: Match on People's Department",
     "category": "Collaboration & Productivity",
     "date": "2026-05-18",
     "url": "/posts/2026-05-18/",
-    "snippet": "Copilot Search can find all people in a given department when querying the people source. Improves people-finder scenarios."
+    "snippet": "Copilot Search can find all people in a given department when querying the people source. Improves people-finder scenarios. Already GA as of February 2026 — confirm in your tenant."
   },
   {
-    "title": "Storm-2949: Compromised Identity to Cloud-Wide Breach",
-    "category": "Security & Compliance",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "No malware. No novel exploits. Just stolen credentials and a patient attacker leveraging trusted systems to exfiltrate data at scale. Review your Conditional Access policies, PIM configurations, and anomalous OAuth app grants."
-  },
-  {
-    "title": "Purview Data Lifecycle Management: Sensitive Data Insights + Retention Policy Recommendations",
-    "category": "Security & Compliance",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Purview will analyze OneDrive and SharePoint content, surface sensitive data exposure, and recommend retention policies. Plan to review recommendations on rollout and align with your DLP and labeling strategy. GA July 2026."
-  },
-  {
-    "title": "How to Better Protect Your Growing Business in an AI-Powered World",
-    "category": "Endpoint Management",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Microsoft Security Blog post covering built-in security defaults and Zero Trust principles at scale. Useful talking points if you're making the case to leadership for security investment."
-  },
-  {
-    "title": "Purview Data Security Investigations: Personal Data Examination",
-    "category": "Identity & Access",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "DSI now identifies and extracts personal data (names, addresses, financial account numbers) from investigation items. If you're running DSI workflows for breach response or compliance investigations, update your runbooks. GA April 2026."
-  },
-  {
-    "title": "Purview Data Lifecycle: Archive OneDrive/SharePoint Files Under Retention",
+    "title": "Copilot People Connectors: ACL-based People Data Ingestion",
     "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Retention-based archiving ships to OneDrive and SharePoint, moving inactive content to lower-cost storage tiers automatically. Compliance and discoverability are preserved. Copilot gets cleaner, more relevant results as stale content gets tiered out. GA July 2026."
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Import people data from external systems with access control lists. Copilot respects source-system permissions for imported people data. GA target: August 2026."
   },
   {
-    "title": "Microsoft Copilot in Word: Anthropic Model Selection",
+    "title": "Viva Engage Community Feed Improvements",
     "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Users editing Word documents with Copilot can now select Anthropic models in addition to OpenAI. Understand your org's data handling posture with third-party model providers before this lands broadly."
+    "date": "2026-05-18",
+    "url": "/posts/2026-05-18/",
+    "snippet": "Default community feed experience updated to align with expected user behaviors; adds"
   },
   {
-    "title": "Teams Rooms on Windows: Enhanced Issue Detection + Auto-Remediation",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Pro Management now proactively monitors audio, video, and display signals and auto-remediates common software and config issues during nightly maintenance. Requires Teams Rooms Pro license. Verify your rooms are on Pro licensing to benefit."
+    "title": "Hotpatch now default for all eligible Windows devices",
+    "category": "Top 5 changes modern work engineers should care about",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "GA, May 2026 Windows security update. Opt-out available at tenant level or per quality update policy. Review your rings before it hits."
   },
   {
-    "title": "Teams: Facilitator Agent AI Notes for In-Person Meetings (Teams Rooms on Android)",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Facilitator now captures real-time notes, decisions, and action items for in-person meetings via a single tap on the room console. Notes display on the front-of-room screen. Data is deleted unless a participant explicitly saves it. GA July 2026."
+    "title": "Entra hard-match restriction for role-holding accounts",
+    "category": "Top 5 changes modern work engineers should care about",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Action required before June 1. AD → cloud sync will be blocked for objects targeting Entra role-assigned accounts."
   },
   {
-    "title": "Teams: Save Events as Templates",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Event organizers in the Teams Events app can now save event configurations as reusable templates. High value for teams running recurring events like town halls and training sessions."
+    "title": "Agent 365: Shadow AI page + Intune endpoint controls for local agents",
+    "category": "Top 5 changes modern work engineers should care about",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Preview. First real governance surface for endpoint-level AI activity. OpenClaw covered now; Claude Code and GitHub Copilot CLI on the roadmap."
   },
   {
-    "title": "Teams: Video Recap in Intelligent Meeting Recap",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Intelligent recap now includes AI-narrated video highlights with key takeaways and short clips from recorded meetings. Confirm your users have access and that meeting recording policies permit the feature."
+    "title": "Conditional Access enforcement for policies with resource exclusions",
+    "category": "Top 5 changes modern work engineers should care about",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Action required before June 15. Apps that don't handle CA challenges will break for affected tenants."
   },
   {
-    "title": "Teams: Human Interpreter Listening Mode in Teams Rooms on Windows",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "When meeting organizers enable language interpretation, Teams Rooms on Windows participants can now select a language and hear interpreter audio. Relevant for multilingual orgs or global meeting rooms."
+    "title": "Purview DSPM major evolution + IRM → Defender XDR integration",
+    "category": "Top 5 changes modern work engineers should care about",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Rolling. Biggest Purview release of 2026. Third-party signals, AI observability, Security Copilot agents."
   },
   {
-    "title": "Teams: Ad-Hoc Room Reservation from Teams Rooms on Windows Console",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Walk up to any Pro-licensed Teams Room and book it on the spot from the console. Requires Teams Rooms Pro and room resource accounts configured in Exchange/M365."
+    "title": "Hotpatch enabled by default for all eligible devices",
+    "category": "Endpoint management highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Starting with the May 2026 Windows security update, hotpatch is on by default for all devices managed via Windows Autopatch, Intune, or Graph API. No restart required — patches apply to running processes in memory. If yo"
   },
   {
-    "title": "Teams: Digital Signage in Teams Rooms on Android",
-    "category": "Collaboration & Productivity",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Android Teams Rooms now support digital signage on the front-of-room display when idle. Supports Appspace and XOGO. Configure via the Teams Rooms Pro Management portal."
+    "title": "New Intune device view (preview)",
+    "category": "Endpoint management highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Redesigned single-pane device view replaces the old tabbed layout. Overview → Tools and reports, Hardware → Details, Properties gets cleaner scope tag editing. All device actions, reports, and info from one surface — les"
   },
   {
-    "title": "Work IQ APIs: Researcher Agent Access",
-    "category": "Automation & AI",
-    "date": "2026-05-19",
-    "url": "/posts/2026-05-19/",
-    "snippet": "Developers can now invoke the Copilot Researcher agent via the Work IQ API endpoint to run multi-step analysis, deep reasoning, and synthesis across enterprise content inside agentic workflows. Preview June 2026, GA July 2026."
+    "title": "Linux SSO broker replaced with microsoft-identity-broker (C++)",
+    "category": "Endpoint management highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "The Java-based Linux SSO broker is retired. The new C++ microsoft-identity-broker enables full device join and device-bound authentication tokens, unlocking phishing-resistant MFA for Linux endpoints in Intune. Key chang"
+  },
+  {
+    "title": "Ubuntu 26.04 LTS support added; 22.04 end of support August 2026",
+    "category": "Endpoint management highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Intune now supports Ubuntu 26.04 LTS. Ubuntu 22.04 support ends August 2026 — currently enrolled devices stay enrolled but new enrollments will be blocked after EOS. Identify 22.04 devices now: Devices → All Devices, fil"
+  },
+  {
+    "title": "Intune Data Warehouse beta connector retiring",
+    "category": "Endpoint management highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "The Power BI beta connector for the Intune Data Warehouse began its retirement transition April 20 over a two-week rollout window. Reports created before November 2025 may still use the beta connector and will return no "
+  },
+  {
+    "title": "Android XR device management via Android Enterprise",
+    "category": "Endpoint management highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Intune now supports dedicated and fully managed enrollment for Android XR devices, with OEMConfig available in the Intune store. Full availability expected mid-May 2026. Requires Intune Plan 2 license (included in M365 E"
+  },
+  {
+    "title": "Entra Connect Sync → Cloud Sync migration (July 2026 notifications)",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Microsoft is transitioning tenants from on-prem Entra Connect Sync to cloud-native Cloud Sync. Notification windows will be assigned via Microsoft 365 Message Center, Entra Connect Health, and email starting July 2026. D"
+  },
+  {
+    "title": "Hard-match restriction for Entra role-holding accounts",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Beginning June 1, Entra Connect Sync and Cloud Sync will be blocked from hard-matching a new AD user object to an existing cloud-managed Entra ID account that holds an Entra role. Ongoing sync for previously hard-matched"
+  },
+  {
+    "title": "External MFA now generally available",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "External Multifactor Authentication (formerly External Authentication Methods) is now GA. Allows organizations to satisfy Entra MFA requirements using a third-party MFA provider while keeping Entra ID as the full policy "
+  },
+  {
+    "title": "Global Secure Access: network-level file type filtering for GenAI/SaaS",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Admins can define policies in Global Secure Access to block or restrict transfers of specific file types (documents, spreadsheets, PDFs) to generative AI and SaaS apps at the network layer. Adds DLP enforcement upstream "
+  },
+  {
+    "title": "Prompt injection protection in AI Gateway",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Real-time protection against malicious prompt injection attacks on enterprise GenAI apps and agents, available in AI Gateway (part of Global Secure Access). For Copilot Studio agents with the Global Secure Access client "
+  },
+  {
+    "title": "Conditional Access enforcement for resource exclusion policies",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "CA policies targeting \"All resources\" with one or more resource exclusions will begin enforcing against previously-exempt scopes on June 15. Apps that don't handle CA challenges (MFA, device compliance) will fail for aff"
+  },
+  {
+    "title": "Entra audit log improvement: only changed properties surfaced",
+    "category": "Identity & access highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Authentication Methods Policy audit log entries now show only modified properties rather than the full policy payload. Dramatically reduces log noise for SIEM ingestion and makes policy change tracking via Graph or Micro"
+  },
+  {
+    "title": "Defender XDR: automatic attack disruption now isolates compromised devices",
+    "category": "Security & compliance highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Attack disruption can now autonomously isolate devices identified as active attacker footholds — blocking lateral movement and attacker communication while keeping the device connected to security services. Time-limited,"
+  },
+  {
+    "title": "Defender XDR: predictive shielding",
+    "category": "Security & compliance highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Uses predictive analytics and real-time insights to infer risk, anticipate attacker progression, and proactively harden the environment before threats materialize. Works alongside attack disruption. Check the Activities "
+  },
+  {
+    "title": "Identity Security dashboard in Defender XDR",
+    "category": "Security & compliance highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "New unified dashboard covering human and non-human identities across on-prem, SaaS, PAM, and IGA integrations. Includes a Coverage and Maturity page for gap analysis. Rolling out gradually — worth enabling in preview if "
+  },
+  {
+    "title": "Secure Boot 2023 certificates — June 2026 deadline",
+    "category": "Security & compliance highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Microsoft Secure Score now surfaces a recommendation to update devices to Secure Boot 2023 certificates ahead of the June 2026 expiration of old certs. The May 2026 cumulative update includes additional device targeting "
+  },
+  {
+    "title": "Purview DSPM: unified posture management experience",
+    "category": "Security & compliance highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "The largest Purview release of 2026 delivers a rebuilt Data Security Posture Management experience: unified visibility across data estate, AI observability, posture reporting, Security Copilot agents, and third-party sig"
+  },
+  {
+    "title": "Agent 365 becomes the unified agent control plane",
+    "category": "AI & automation highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "The Entra admin center Agent Registry and Agent Collections blades were retired on May 1. Agent management moves entirely to Agent 365 in the Microsoft 365 Admin Center. The existing registry Graph API will be deprecated"
+  },
+  {
+    "title": "Shadow AI page: visibility into local AI agents on Windows devices",
+    "category": "AI & automation highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "A new Shadow AI page in Agent 365 (powered by Microsoft Defender + Intune) surfaces local AI agent activity on Windows endpoints and lets admins apply Intune policies to block unsanctioned agent execution. Initial covera"
+  },
+  {
+    "title": "Conditional Access extended to agents",
+    "category": "AI & automation highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Entra Conditional Access now enforces Zero Trust policies on AI agents. Delegated access agents (acting on behalf of a user) are GA. Own-access agents (operating with their own identity) are in public preview. Same polic"
+  },
+  {
+    "title": "Agent 365 policy templates for onboarding governance",
+    "category": "AI & automation highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Reusable policy templates in Agent 365 bundle Entra, Purview, Defender, and SharePoint policies into agent onboarding guardrails. Apply consistent security controls at agent approval time rather than configuring per-agen"
+  },
+  {
+    "title": "Copilot Calendar Agent + Outlook thread summarization",
+    "category": "AI & automation highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "The Copilot Calendar Agent lets users set plain-English scheduling rules that Copilot executes in the background — fully reviewable and adjustable. Outlook Copilot now summarizes full email threads and drafts context-awa"
+  },
+  {
+    "title": "SharePoint AI Charts web part + AI Citations Analytics",
+    "category": "AI & automation highlights",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Page authors can generate interactive charts via plain-language prompts with the new AI Charts web part. AI Citations Analytics shows how often SharePoint content is referenced in Copilot responses org-wide — a direct si"
+  },
+  {
+    "title": "Endpoint management",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "Intune for Windows, macOS, iOS/Android. Configuration policies, compliance, enrollment, Autopatch, and the Graph/PowerShell automation hooks underneath."
+  },
+  {
+    "title": "Identity & access",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "Entra ID, Conditional Access, External MFA, hybrid sync (Connect Sync → Cloud Sync), and the evolving agent identity model."
+  },
+  {
+    "title": "Defender for Endpoint & MDO",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "XDR updates, attack disruption, identity-based detections, and Defender for Office 365 changes that affect your mail flow and threat posture."
+  },
+  {
+    "title": "Purview",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "Sensitivity labels, DLP policy changes, Information Protection, Insider Risk, and AI data governance as Microsoft expands Purview's scope into the AI era."
+  },
+  {
+    "title": "Licensing",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "E3/E5 differences, Business Premium, Business Premium + Defender/Purview Suite Add-On, and Copilot licensing decisions — including the guardrails you should have in place before users go live."
+  },
+  {
+    "title": "Zero Trust",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "Not a framework slide. Practical changes to Conditional Access, device compliance, network access (Global Secure Access), and identity posture that move the needle."
+  },
+  {
+    "title": "AI & Copilot governance",
+    "category": "What's covered",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "Agent 365, Shadow AI controls, Copilot guardrails, and the fast-moving intersection of AI agents and enterprise security policy."
+  },
+  {
+    "title": "This site",
+    "category": "Where to follow",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "modernworkweekly.com — new posts every Monday"
+  },
+  {
+    "title": "RSS",
+    "category": "Where to follow",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "modernworkweekly.com/index.xml — subscribe in any reader"
+  },
+  {
+    "title": "LinkedIn",
+    "category": "Where to follow",
+    "date": "2026-05-10",
+    "url": "/posts/2026-05-10/",
+    "snippet": "coming soon"
   }
 ]
