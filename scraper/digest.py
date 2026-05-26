@@ -23,6 +23,7 @@ from pathlib import Path
 
 import anthropic
 from dotenv import load_dotenv
+import generate_search_index
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -304,6 +305,18 @@ def run(args):
     # starts a fresh accumulation.
     if not args.keep_pending and draft_path == PENDING_DRAFT_FILE:
         archive_pending_draft(week_of)
+
+    # Regenerate the static search index so /search.json stays current.
+    try:
+        entries = generate_search_index.build_index(POSTS_DIR)
+        generate_search_index.OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        import json as _json
+        generate_search_index.OUTPUT_PATH.write_text(
+            _json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        log.info(f"Search index updated — {len(entries)} entries → {generate_search_index.OUTPUT_PATH}")
+    except Exception as e:
+        log.warning(f"Search index regeneration failed (non-fatal): {e}")
 
     print(f"\n{'='*60}")
     print(f"  Digest drafted:      {post_path}")
