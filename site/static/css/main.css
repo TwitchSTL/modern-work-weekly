@@ -2288,6 +2288,135 @@ details[open] .toc-label::before { content: "▼ "; }
   border-top: 1px solid var(--color-border);
 }
 
+/* ── Exec jump-to nav ─────────────────────────────────────────────────── */
+.exec-toc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 2rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.exec-toc-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  margin-right: 0.25rem;
+  white-space: nowrap;
+}
+
+.exec-toc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.exec-toc-pill {
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.exec-toc-pill:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--color-text);
+}
+.exec-toc-pill.exec-risk-high {
+  color: #ff6b6b;
+  border-color: rgba(255,107,107,0.35);
+  background: rgba(255,107,107,0.08);
+}
+.exec-toc-pill.exec-risk-med {
+  color: #f0883e;
+  border-color: rgba(240,136,62,0.35);
+  background: rgba(240,136,62,0.08);
+}
+.exec-toc-pill.exec-risk-low {
+  color: #3fb950;
+  border-color: rgba(63,185,80,0.35);
+  background: rgba(63,185,80,0.08);
+}
+
+/* ── Exec collapsible sections ────────────────────────────────────────── */
+.exec-section-collapsible {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin: 0 0 1rem;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.exec-section-summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  user-select: none;
+  list-style: none;
+  gap: 0.5rem;
+}
+.exec-section-summary::-webkit-details-marker { display: none; }
+.exec-section-summary::before {
+  content: '▶';
+  font-size: 0.55rem;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.exec-section-collapsible[open] > .exec-section-summary::before {
+  transform: rotate(90deg);
+}
+.exec-section-summary.exec-risk-high { color: #ff6b6b; }
+.exec-section-summary.exec-risk-med  { color: #f0883e; }
+.exec-section-summary.exec-risk-low  { color: #3fb950; }
+
+.exec-section-body {
+  padding: 0 1.25rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+/* Tables inside exec sections */
+.exec-section-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+}
+.exec-section-body th {
+  background: rgba(255,255,255,0.04);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-border);
+}
+.exec-section-body td {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+.exec-section-body tr:nth-child(even) td {
+  background: rgba(255,255,255,0.02);
+}
+
 /* ── Deadlines page ──────────────────────────────────────────────────── */
 .deadlines-page {
   max-width: 900px;

@@ -19,7 +19,13 @@
       <span><strong>Work in Progress</strong> — The Executive's Guide is auto-generated and reviewed weekly. Content quality improves over time. Verify key details before sharing with leadership.</span>
     </div>
 
-    <div class="post-content exec-content">
+    {{/* Jump-to navigation — built from h2 headings by exec-nav.js */}}
+    <nav class="exec-toc" id="exec-toc" aria-label="Jump to section">
+      <span class="exec-toc-label">Jump to</span>
+      <div class="exec-toc-links" id="exec-toc-links"></div>
+    </nav>
+
+    <div class="post-content exec-content" id="exec-content">
       {{ .Content }}
     </div>
 
@@ -49,4 +55,5 @@
 
   </article>
 </div>
+<script src="/js/exec-nav.js"></script>
 {{ end }}

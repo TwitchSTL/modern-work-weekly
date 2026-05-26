@@ -56,8 +56,10 @@ Format rules:
 - Top 5 section: the 5 most important changes this week with a brief why-it-matters for each
 - Title format must be exactly: "Modern Work Weekly — Week of YYYY-MM-DD"
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
-  `- **[Title]** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
-- Action Required section: any items with deadlines or required admin steps, with dates
+  `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
+  Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
+- Section order must be: Top 5 → pillar category sections (Identity, Devices, Apps, Data, Network, Visibility & Automation) → Action Required → sources front matter. Do NOT place Action Required before the category sections.
+- Action Required section: any items with deadlines or required admin steps, with dates. Use the same bullet format as category sections, with the deadline date called out prominently at the start of the description.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 
 Tags must use lowercase-hyphenated format. Use only from this standard set (pick what applies):
