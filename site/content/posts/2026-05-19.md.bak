@@ -1,0 +1,138 @@
+---
+title: "Modern Work Weekly — Week of 2026-05-19"
+date: 2026-05-19
+description: "A credential-only breach wiped a cloud environment. No malware, no novel exploits — just identity left open. Read Storm-2949, then check your posture."
+tags: ["intune", "defender-xdr", "entra-id", "teams", "purview", "copilot", "identity", "zero-trust", "teams-rooms", "data-lifecycle", "modern-work"]
+categories: ["Identity", "Devices", "Apps", "Data", "Visibility & Automation"]
+---
+
+## Top 5 This Week
+
+1. **Storm-2949 cloud breach anatomy** — A real-world incident where stolen credentials alone enabled cloud-wide data exfiltration with zero malware. Read this. Then check your identity hygiene. This is the threat model you're defending against.
+
+2. **Purview Data Lifecycle: Retention-based archiving for OneDrive/SharePoint (July GA)** — Inactive files auto-migrate to low-cost storage while staying compliant and discoverable. Copilot result relevance improves as a side effect. Start sizing your retention policies now.
+
+3. **Purview Lifecycle Management insights + policy recommendations (July GA)** — Purview will surface sensitive data exposure across SharePoint/OneDrive and recommend retention policies. Free signal for hardening your compliance posture — no manual audit required.
+
+4. **Copilot in Word now supports Anthropic models (GA)** — Users can choose Anthropic models alongside OpenAI when editing in Word. This is a meaningful shift in the Copilot model layer — worth understanding licensing and data handling implications before users start experimenting.
+
+5. **Teams Rooms Pro: Enhanced issue detection + auto-remediation (GA)** — Audio, video, and display issues now self-heal during nightly maintenance windows. If you're managing Teams Rooms at scale, this directly reduces your support queue.
+
+---
+
+## Security & Compliance
+
+- **Storm-2949: Compromised Identity to Cloud-Wide Breach** `GA`
+  No malware. No novel exploits. Just stolen credentials and a patient attacker leveraging trusted systems to exfiltrate data at scale. Microsoft's detailed breakdown of Storm-2949's TTPs is required reading for anyone owning identity or cloud security. Review your Conditional Access policies, PIM configurations, and anomalous OAuth app grants. If you don't have UEBA/identity protection alerting tuned, this is the week to fix that.
+  [Read the blog](https://www.microsoft.com/en-us/security/blog/2026/05/18/storm-2949-turned-compromised-identity-into-cloud-wide-breach/)
+
+- **Purview Data Lifecycle Management: Sensitive Data Insights + Retention Policy Recommendations** `GA — July CY2026`
+  Purview will analyze OneDrive and SharePoint content, surface sensitive data exposure, and recommend retention policies. Directly useful for orgs that know they have a compliance gap but lack visibility into where. Plan to review recommendations on rollout and align with your DLP and labeling strategy.
+  [Roadmap #562343](https://www.microsoft.com/microsoft-365/roadmap?id=562343)
+
+---
+
+## Endpoint Management
+
+- **How to Better Protect Your Growing Business in an AI-Powered World** `GA`
+  Microsoft Security Blog post targeting SMB/mid-market, but the underlying framework — built-in security defaults, Zero Trust principles at scale — applies regardless of org size. Useful talking points if you're making the case to leadership for security investment.
+  [Read the blog](https://www.microsoft.com/en-us/security/blog/2026/05/18/how-to-better-protect-your-growing-business-in-an-ai-powered-world/)
+
+---
+
+## Identity & Access
+
+- **Purview Data Security Investigations: Personal Data Examination** `GA — April CY2026`
+  DSI now identifies and extracts personal data (names, addresses, financial account numbers, etc.) from investigation items. Works alongside existing AI categorization and risk examination features. If you're running DSI workflows for breach response or compliance investigations, this examination type is now available — update your runbooks.
+  [Roadmap #559388](https://www.microsoft.com/microsoft-365/roadmap?id=559388)
+
+---
+
+## Collaboration & Productivity
+
+- **Purview Data Lifecycle: Archive OneDrive/SharePoint Files Under Retention** `GA — July CY2026`
+  Retention-based archiving ships to OneDrive and SharePoint, moving inactive content to lower-cost storage tiers automatically. Compliance and discoverability are preserved. Copilot gets cleaner, more relevant results as stale content gets tiered out. Start planning retention policy coverage to maximize the benefit at GA.
+  [Roadmap #562345](https://www.microsoft.com/microsoft-365/roadmap?id=562345)
+
+- **Microsoft Copilot in Word: Anthropic Model Selection** `GA — May CY2026`
+  Users editing Word documents with Copilot can now select Anthropic models in addition to OpenAI. Understand your org's data handling posture with third-party model providers before this lands broadly — check your Copilot usage policies and communicate expectations to users.
+  [Roadmap #558440](https://www.microsoft.com/microsoft-365/roadmap?id=558440)
+
+- **Teams Rooms on Windows: Enhanced Issue Detection + Auto-Remediation** `GA — May CY2026`
+  Pro Management now proactively monitors audio, video, and display signals and auto-remediates common software/config issues during nightly maintenance. Requires Teams Rooms Pro license. Reduces manual intervention for IT significantly. Verify your rooms are on Pro licensing to benefit.
+  [Roadmap #557167](https://www.microsoft.com/microsoft-365/roadmap?id=557167)
+
+- **Teams: Facilitator Agent AI Notes for In-Person Meetings (Teams Rooms on Android)** `GA — July CY2026`
+  Facilitator now captures real-time notes, decisions, and action items for in-person meetings via a single tap on the room console. Notes display on the front-of-room screen; meeting recap is available post-meeting. Data is deleted unless a participant explicitly saves it. Requires Teams Rooms Pro. Start planning rollout communications — users need to know how to invoke and use it.
+  [Roadmap #560700](https://www.microsoft.com/microsoft-365/roadmap?id=560700)
+
+- **Teams: Save Events as Templates** `GA — June CY2026`
+  Event organizers in the Teams Events app can now save event configurations as reusable templates. Low friction, high value for teams running recurring events (town halls, training sessions, etc.). No admin action required, but worth flagging to power users.
+  [Roadmap #561915](https://www.microsoft.com/microsoft-365/roadmap?id=561915)
+
+- **Teams: Video Recap in Intelligent Meeting Recap** `GA — April CY2026`
+  Intelligent recap now includes AI-narrated video highlights with key takeaways and short clips from recorded meetings. Already rolling — confirm your users have access and that meeting recording policies permit the feature.
+  [Roadmap #558540](https://www.microsoft.com/microsoft-365/roadmap?id=558540)
+
+- **Teams: Human Interpreter Listening Mode in Teams Rooms on Windows** `GA — July CY2026`
+  When meeting organizers enable language interpretation in Meeting options, Teams Rooms on Windows participants can now select a language and hear interpreter audio. Relevant if you're supporting multilingual orgs or global meeting rooms.
+  [Roadmap #562050](https://www.microsoft.com/microsoft-365/roadmap?id=562050)
+
+- **Teams: Ad-Hoc Room Reservation from Teams Rooms on Windows Console** `GA — July CY2026`
+  Walk up to any Pro-licensed Teams Room and book it on the spot from the console. Avoids double-booking and supports spontaneous collaboration. Requires Teams Rooms Pro and room resource accounts configured in Exchange/M365.
+  [Roadmap #548648](https://www.microsoft.com/microsoft-365/roadmap?id=548648)
+
+- **Teams: Digital Signage in Teams Rooms on Android** `GA — April CY2026`
+  Android Teams Rooms now support digital signage on the front-of-room display when idle. Tenant-wide and room-specific config via Teams Rooms Pro Management portal. Supports Appspace and XOGO. Already GA — configure via the Pro Management portal if you haven't already.
+  [Roadmap #548647](https://www.microsoft.com/microsoft-365/roadmap?id=548647)
+
+- **Teams: Resizable Gallery in Meetings** `GA — April CY2026`
+  Users can resize the top video gallery during content sharing to see more participants simultaneously. Already rolling — no admin action, but worth noting in your Teams UX communications.
+  [Roadmap #554925](https://www.microsoft.com/microsoft-365/roadmap?id=554925)
+
+- **Outlook: Improved Handling of Disallowed and Failed Email Reactions** `Preview — April CY2026 / GA — May CY2026`
+  Two UI fixes: reactions button correctly grays out when disallowed by policy, and failed reaction attempts properly revert locally rather than staying stuck onscreen. Small but polished. No admin action required.
+  [Roadmap #558442](https://www.microsoft.com/microsoft-365/roadmap?id=558442)
+
+---
+
+## Automation & AI
+
+- **Work IQ APIs: Researcher Agent Access** `Preview — June CY2026 / GA — July CY2026`
+  Developers can now invoke the Copilot Researcher agent via the Work IQ API endpoint to run multi-step analysis, deep reasoning, and synthesis across enterprise content inside agentic workflows. Preview in June, GA in July. If you're building Copilot extensibility or custom agents, get hands on this in Preview — it's a meaningful capability for enterprise AI pipelines.
+  [Roadmap #559018](https://www.microsoft.com/microsoft-365/roadmap?id=559018)
+
+---
+
+## ⚠️ Action Required
+
+| Item | Deadline / Target | Action |
+|---|---|---|
+| **Storm-2949 Identity Review** | Now | Audit Conditional Access, PIM assignments, OAuth app consents, and UEBA alerting. This attack pattern is active. |
+| **Copilot Anthropic Model GA (Word)** | May CY2026 | Review data handling policies for third-party model providers. Communicate usage guidance to users before rollout. |
+| **Teams Rooms: Enhanced Auto-Remediation GA** | May CY2026 | Confirm Teams Rooms Pro licensing on all managed rooms to activate auto-remediation. |
+| **Teams Digital Signage (Android)** | Already GA | Configure via Teams Rooms Pro Management portal if not done. |
+| **Teams Video Recap** | Already GA | Verify meeting recording policies allow the feature for intended user populations. |
+| **Purview Lifecycle Archiving + Insights** | July CY2026 | Begin scoping retention policies for OneDrive/SharePoint now to be ready at GA. |
+| **Work IQ Researcher Agent API** | Preview: June CY2026 | Enroll dev teams in preview to test agentic workflow integrations ahead of July GA. |
+
+---
+
+{{< sources >}}
+- https://www.microsoft.com/en-us/security/blog/2026/05/18/storm-2949-turned-compromised-identity-into-cloud-wide-breach/
+- https://www.microsoft.com/en-us/security/blog/2026/05/18/how-to-better-protect-your-growing-business-in-an-ai-powered-world/
+- https://www.microsoft.com/microsoft-365/roadmap?id=562343
+- https://www.microsoft.com/microsoft-365/roadmap?id=562345
+- https://www.microsoft.com/microsoft-365/roadmap?id=562050
+- https://www.microsoft.com/microsoft-365/roadmap?id=561915
+- https://www.microsoft.com/microsoft-365/roadmap?id=560700
+- https://www.microsoft.com/microsoft-365/roadmap?id=559388
+- https://www.microsoft.com/microsoft-365/roadmap?id=559018
+- https://www.microsoft.com/microsoft-365/roadmap?id=558540
+- https://www.microsoft.com/microsoft-365/roadmap?id=558442
+- https://www.microsoft.com/microsoft-365/roadmap?id=558440
+- https://www.microsoft.com/microsoft-365/roadmap?id=557167
+- https://www.microsoft.com/microsoft-365/roadmap?id=554925
+- https://www.microsoft.com/microsoft-365/roadmap?id=548648
+- https://www.microsoft.com/microsoft-365/roadmap?id=548647
+{{< /sources >}}
