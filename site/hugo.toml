@@ -56,22 +56,14 @@ title = "Modern Work Weekly"
 
 [menu]
   [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-  [[menu.main]]
     name = "Archive"
     url = "/posts/"
-    weight = 2
+    weight = 1
   [[menu.main]]
     name = "Exec Guide"
     url = "/exec/"
-    weight = 3
+    weight = 2
   [[menu.main]]
     name = "Key Dates"
     url = "/deadlines/"
-    weight = 4
-  [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 5
+    weight = 3

@@ -99,7 +99,7 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 /* ── Header ─────────────────────────────────────────────────────────── */
 .site-header {
   border-bottom: 1px solid var(--color-border);
-  padding: 0.6rem 0;
+  padding: 0.9rem 0;
   background: var(--color-bg);
   position: relative;
   z-index: 10;
@@ -109,26 +109,27 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .site-title {
   display: flex;
   align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .site-logo {
-  height: 40px;
+  height: 56px;
   width: auto;
   display: block;
 }
 
 .site-nav {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.5rem;
   align-items: center;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
 }
 
 .site-nav a,
@@ -141,6 +142,21 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 .site-nav a.active {
   color: var(--color-text);
   text-decoration: none;
+}
+
+/* LinkedIn icon button */
+.nav-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  text-decoration: none !important;
+}
+.nav-icon-btn:hover {
+  color: var(--color-accent);
 }
 
 /* ── Portals dropdown ────────────────────────────────────────────────── */
