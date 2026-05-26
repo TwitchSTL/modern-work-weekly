@@ -1,5 +1,6 @@
-#!/usr/bin/env python3"""
-retroactive_exec.py — Generate missing Executive's Guide posts from existing digests.
+#!/usr/bin/env python3
+"""
+retroactive_exec.py - Generate missing Executive's Guide posts from existing digests.
 
 Reads each post in site/content/posts/ that doesn't have a matching exec post,
 sends the content to Claude with the exec system prompt, and writes the result
