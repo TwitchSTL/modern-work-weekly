@@ -108,6 +108,36 @@ Source citations — executives trust named references, not raw URLs:
 
 Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board."""
 
+LINKEDIN_SYSTEM_PROMPT = """You write the weekly LinkedIn newsletter edition of Modern Work Weekly — a digest for Microsoft 365 engineers, architects, and admins.
+
+Voice: peer-professional, direct, occasionally dry. No first-person "I". Speak to the reader's role — "Intune admins will want to flag this", "Security teams should note", "If your org runs hybrid identity...", "If your C-level asks about AI governance this week, here's the answer." Confident, not hype-y.
+
+Format — plain text optimised for LinkedIn's newsletter editor (no markdown syntax, no asterisks, no backtick code blocks). Use these conventions:
+- Section headers in ALL CAPS on their own line
+- Emoji sparingly as visual anchors (one per section max)
+- Bullet points with a dash and space: "- item"
+- Blank line between every section
+- Keep total length 400–600 words
+
+Structure (in order):
+1. Hook line — one punchy sentence that names the biggest story this week. No greeting, no "this week in M365". Just the hook.
+2. TOP 5 THIS WEEK — the 5 most important changes, one line each. Lead with the impact, not the feature name.
+3. WORTH YOUR ATTENTION — 2–3 items that aren't urgent but signal where things are heading. One sentence each.
+4. ONE FOR THE HELP DESK (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
+5. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions: [URL]"
+
+Do not include hashtags, emojis in the closing line, or a sign-off. Do not wrap output in code fences."""
+
+LINKEDIN_PROMPT_TEMPLATE = """Here is the week's digest content. Produce the LinkedIn newsletter edition.
+
+Week of: {week_of}
+Digest URL: https://modernworkweekly.com/posts/{week_of}/
+
+DIGEST CONTENT (Top 5 and category items):
+{digest_content}
+
+Output plain text only. No markdown syntax. No preamble."""
+
 EXEC_DIGEST_PROMPT_TEMPLATE = """Here is this week's Microsoft 365 update data. Produce the Executive's Guide briefing.
 
 Week of: {week_of}
@@ -220,6 +250,38 @@ def build_exec_prompt(draft: dict) -> str:
     )
 
 
+def build_linkedin_prompt(draft: dict, week_of: str) -> str:
+    """Build a compact digest summary to feed the LinkedIn draft."""
+    lines = []
+    for cat, items in draft.get("grouped_items", {}).items():
+        lines.append(f"[{cat}]")
+        for item in items:
+            lines.append(f"  - {item['title']}: {(item.get('body') or '')[:200]}")
+    return LINKEDIN_PROMPT_TEMPLATE.format(
+        week_of=week_of,
+        digest_content="\n".join(lines),
+    )
+
+
+def call_claude_linkedin(prompt: str) -> str:
+    client = anthropic.Anthropic()
+    log.info("Calling Claude API for LinkedIn newsletter draft...")
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1024,
+        system=LINKEDIN_SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return message.content[0].text
+
+
+def write_linkedin_draft(content: str, week_of: str) -> Path:
+    path = STATE_DIR / f"linkedin_draft_{week_of}.txt"
+    path.write_text(content, encoding="utf-8")
+    log.info(f"LinkedIn draft written → {path}")
+    return path
+
+
 def call_claude_exec(prompt: str) -> str:
     client = anthropic.Anthropic()
     log.info("Calling Claude API for Executive's Guide...")
@@ -309,6 +371,16 @@ def run(args):
         except Exception as e:
             log.warning(f"Executive's Guide generation failed (non-fatal): {e}")
 
+    # Generate LinkedIn newsletter draft unless skipped
+    linkedin_draft_path = None
+    if not args.skip_linkedin:
+        try:
+            li_prompt = build_linkedin_prompt(draft, week_of)
+            li_content = call_claude_linkedin(li_prompt)
+            linkedin_draft_path = write_linkedin_draft(li_content, week_of)
+        except Exception as e:
+            log.warning(f"LinkedIn draft generation failed (non-fatal): {e}")
+
     # Clear the pending draft now that it's been published — next scraper run
     # starts a fresh accumulation.
     if not args.keep_pending and draft_path == PENDING_DRAFT_FILE:
@@ -330,6 +402,8 @@ def run(args):
     print(f"  Digest drafted:      {post_path}")
     if exec_post_path:
         print(f"  Executive's Guide:   {exec_post_path}")
+    if linkedin_draft_path:
+        print(f"  LinkedIn draft:      {linkedin_draft_path}")
     print(f"  Next step:           Review posts, edit as needed, then:")
     print(f"                       git add . && git commit -m 'digest: {week_of}' && git push")
     print(f"{'='*60}\n")
@@ -345,5 +419,7 @@ if __name__ == "__main__":
                         help="Don't archive pending_draft.json after publishing (useful for testing)")
     parser.add_argument("--skip-exec", action="store_true",
                         help="Skip Executive's Guide generation (technical digest only)")
+    parser.add_argument("--skip-linkedin", action="store_true",
+                        help="Skip LinkedIn newsletter draft generation")
     args = parser.parse_args()
     run(args)
