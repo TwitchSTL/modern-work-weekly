@@ -33,6 +33,8 @@ EXEC_POSTS_DIR = BASE_DIR / "site" / "content" / "exec"
 ENV_FILE = Path("/opt/modern-work-weekly/.env")
 PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
 ARCHIVE_DIR = STATE_DIR / "archive"
+HEALTH_DATA_FILE = BASE_DIR / "site" / "data" / "health.json"
+HEALTH_BASELINE_FILE = STATE_DIR / "health_baseline.json"
 
 POSTS_DIR.mkdir(parents=True, exist_ok=True)
 EXEC_POSTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -158,6 +160,31 @@ RAW DATA:
 {grouped_items}
 
 Produce the complete Hugo markdown post. Start immediately with the YAML front matter (---). Do not wrap the output in code fences. Do not add any preamble or explanation outside the markdown."""
+
+
+def update_health_baseline():
+    """Snapshot the current health.json titles as the new baseline.
+
+    Called after a digest is published so next week's scraper run can diff
+    against these titles and mark only net-new issues as is_new=True.
+    """
+    if not HEALTH_DATA_FILE.exists():
+        log.info("health.json not found — skipping baseline update.")
+        return
+    try:
+        with open(HEALTH_DATA_FILE) as f:
+            health = json.load(f)
+        titles = [
+            item["title"]
+            for source in health.get("sources", [])
+            for item in source.get("items", [])
+        ]
+        STATE_DIR.mkdir(exist_ok=True)
+        with open(HEALTH_BASELINE_FILE, "w") as f:
+            json.dump({"updated": health.get("updated", ""), "titles": titles}, f, indent=2)
+        log.info(f"Health baseline updated — {len(titles)} titles recorded → {HEALTH_BASELINE_FILE}")
+    except Exception as e:
+        log.warning(f"Failed to update health baseline (non-fatal): {e}")
 
 
 def find_latest_draft() -> Path:
@@ -397,6 +424,10 @@ def run(args):
         log.info(f"Search index updated — {len(entries)} entries → {generate_search_index.OUTPUT_PATH}")
     except Exception as e:
         log.warning(f"Search index regeneration failed (non-fatal): {e}")
+
+    # Snapshot current known issues as the new baseline so next week's scraper
+    # can diff against them and mark only net-new issues in the sidebar.
+    update_health_baseline()
 
     print(f"\n{'='*60}")
     print(f"  Digest drafted:      {post_path}")

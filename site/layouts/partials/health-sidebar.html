@@ -5,25 +5,30 @@
     <a class="sidebar-panel-ext" href="{{ .status_url }}" target="_blank" rel="noopener">Live Status ↗</a>
   </div>
 
-  {{ with .sources }}
-    {{ range . }}
+  {{ $has_new := false }}
+  {{ range .sources }}{{ if gt .new_count 0 }}{{ $has_new = true }}{{ end }}{{ end }}
+
+  {{ if $has_new }}
+    {{ range .sources }}
+      {{ if gt .new_count 0 }}
     <details class="sidebar-source">
       <summary class="sidebar-source-summary">
         <span class="sidebar-source-name">{{ .name }}</span>
-        <span class="sidebar-source-badge">{{ .count }}</span>
+        <span class="sidebar-source-badge">{{ .new_count }} new</span>
       </summary>
       <ul class="sidebar-source-items">
-        {{ range .items }}
+        {{ range .items }}{{ if .is_new }}
         <li class="sidebar-source-item">
           <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
         </li>
-        {{ end }}
+        {{ end }}{{ end }}
       </ul>
     </details>
+      {{ end }}
     {{ end }}
     <a class="sidebar-view-all" href="/health/">View all known issues →</a>
   {{ else }}
-  <p class="sidebar-empty">No known issues at this time</p>
+  <p class="sidebar-empty">No new issues since last digest</p>
   {{ end }}
 
   <div class="sidebar-panel-footer">Scraped {{ .updated }}</div>

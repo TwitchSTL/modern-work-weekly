@@ -36,6 +36,7 @@ STATE_FILE = STATE_DIR / "seen_items.json"
 PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
 LOG_DIR = BASE_DIR / "logs"
 HEALTH_DATA_FILE = BASE_DIR / "site" / "data" / "health.json"
+HEALTH_BASELINE_FILE = STATE_DIR / "health_baseline.json"
 
 STATE_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
@@ -275,33 +276,59 @@ def enrich_item(raw: dict) -> dict:
     }
 
 
+def load_health_baseline() -> set:
+    """Load the set of issue titles recorded at the last digest publish.
+
+    Returns an empty set if no baseline exists yet (first run).
+    """
+    if not HEALTH_BASELINE_FILE.exists():
+        return set()
+    try:
+        with open(HEALTH_BASELINE_FILE) as f:
+            data = json.load(f)
+        return set(data.get("titles", []))
+    except Exception as e:
+        log.warning(f"Could not read health baseline: {e}")
+        return set()
+
+
 def write_health_data(health_items: list[dict]):
     """Write health/known-issues items to site/data/health.json for Hugo.
 
-    Groups items by source so the card and health page can render per-portal sections.
+    Groups items by source. Each item is tagged is_new=True when its title
+    was not present in the last-published baseline (health_baseline.json).
+    The sidebar uses this to show only net-new issues since the last digest.
     """
+    baseline = load_health_baseline()
+
     # Group items by source
     grouped = {}
     for item in health_items:
         src = item["source"]
         if src not in grouped:
-            grouped[src] = {"name": src, "url": item["url"], "count": 0, "items": []}
+            grouped[src] = {"name": src, "url": item["url"], "count": 0, "new_count": 0, "items": []}
+        is_new = item["title"] not in baseline
         grouped[src]["count"] += 1
+        if is_new:
+            grouped[src]["new_count"] += 1
         grouped[src]["items"].append({
             "title": item["title"],
             "body": item["body"][:300],
             "url": item["url"],
+            "is_new": is_new,
         })
 
+    total_new = sum(g["new_count"] for g in grouped.values())
     payload = {
         "updated": datetime.now(timezone.utc).date().isoformat(),
         "status_url": "https://status.cloud.microsoft",
         "total_count": len(health_items),
+        "total_new_count": total_new,
         "sources": list(grouped.values()),
     }
     with open(HEALTH_DATA_FILE, "w") as f:
         json.dump(payload, f, indent=2)
-    log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items across {len(grouped)} sources)")
+    log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items, {total_new} new since last digest)")
 
 
 def run_health_only():
