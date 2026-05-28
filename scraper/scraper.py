@@ -239,11 +239,16 @@ def fetch_html(source: dict) -> list[dict]:
             if len(body_parts) >= 4:
                 break
         body = " ".join(body_parts)[:800]
+        # Use the heading's id attribute (if present) to build a direct anchor URL.
+        # Microsoft Learn pages always set id on headings matching the URL slug,
+        # so this produces links like /autopilot/known-issues#issue-heading-slug.
+        heading_id = heading.get("id", "")
+        item_url = f"{source['url']}#{heading_id}" if heading_id else source["url"]
         items.append({
             "source": source["name"],
             "title": title,
             "body": body,
-            "url": source["url"],
+            "url": item_url,
             "date": datetime.now(timezone.utc).date().isoformat(),
         })
     return items
