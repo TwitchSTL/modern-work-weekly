@@ -1541,6 +1541,21 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 .sidebar-source-item a:hover { color: #f78166; }
 
+/* New-since-last-digest marker on homepage sidebar items */
+.sidebar-item-new {
+  border-left-color: #f78166;
+}
+.sidebar-item-new a {
+  color: var(--color-text);
+}
+.sidebar-item-new a::before {
+  content: "● ";
+  color: #f78166;
+  font-size: 0.6rem;
+  vertical-align: middle;
+  margin-right: 0.15rem;
+}
+
 /* ── Deadlines sidebar ───────────────────────────────────────────────── */
 .deadline-item {
   border-left: 3px solid #6e7681;

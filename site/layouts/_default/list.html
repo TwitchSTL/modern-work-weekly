@@ -5,7 +5,7 @@
 
   <!-- Left sidebar: Known Issues -->
   <aside class="post-sidebar post-sidebar-left">
-    {{ partial "health-sidebar.html" . }}
+    {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" false) }}
   </aside>
 
   <!-- Center: hero + post list -->
