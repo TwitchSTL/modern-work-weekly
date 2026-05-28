@@ -14,7 +14,7 @@
     <details class="sidebar-source">
       <summary class="sidebar-source-summary">
         <span class="sidebar-source-name">{{ .name }}</span>
-        <span class="sidebar-source-badge">{{ .new_count }} new</span>
+        <span class="sidebar-source-badge">{{ .new_count }} new ({{ .count }} total)</span>
       </summary>
       <ul class="sidebar-source-items">
         {{ range .items }}{{ if .is_new }}
