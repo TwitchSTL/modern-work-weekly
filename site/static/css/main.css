@@ -22,25 +22,6 @@
   --radius: 6px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-bg: #ffffff;
-    --color-surface: #f6f8fa;
-    --color-border: #d0d7de;
-    --color-text: #1f2328;
-    --color-text-muted: #656d76;
-    --color-accent: #0969da;
-    --color-accent-hover: #0550ae;
-    --color-badge-ep: #ddf4ff;
-    --color-badge-ep-text: #0550ae;
-    --color-badge-ia: #fbefff;
-    --color-badge-ia-text: #6639ba;
-    --color-badge-sc: #ffebe9;
-    --color-badge-sc-text: #82071e;
-    --color-badge-ai: #dafbe1;
-    --color-badge-ai-text: #116329;
-  }
-}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
