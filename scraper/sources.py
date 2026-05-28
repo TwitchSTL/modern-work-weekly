@@ -9,15 +9,33 @@ Each source has:
   - rss: RSS feed URL if available (preferred over HTML scraping)
   - selector: CSS selector for HTML fallback (if no RSS)
   - health: True if this is a known-issues/service-health source (routed separately)
+  - json_api: True if the rss field is a JSON endpoint (not RSS/Atom) — uses fetch_json_status()
+
+Last reviewed: 2026-05-28
+Changes from prior version:
+  - Teams: switched from /officeupdates/teams-admin (per-build admin changelog) to
+    TechCommunity Teams blog, which publishes monthly "What's New" feature digests
+  - SharePoint / OneDrive: switched from support.microsoft.com consumer article to
+    learn.microsoft.com admin-oriented page (static, scrapable)
+  - Global Secure Access: switched from Windows client release history to the service
+    what's-new page (/entra/global-secure-access/whats-new)
+  - Defender for Endpoint: URL slug verified — old slug is the LIVE page;
+    /whats-new-mde is the archive. No change made.
+  - Added rss= entries for 13 sources that previously had rss=None
+  - Added Windows Autopatch (was TODO with blank URL)
+  - Added Defender for Identity (separate what's-new page from Defender XDR)
+  - Added Azure Status and M365 Service Status as public health sources
+  - Updated comments on scoped known-issues pages (Purview, Entra, MDE)
 """
 
 SOURCES = [
+    # ── Release & Feature Update Sources ──────────────────────────────────────
     {
         "name": "Intune",
         "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
         "cadence": "weekly",
         "category": "Endpoint Management",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/bg-p/MicrosoftEndpointManagerBlog/rss/board?board.id=MicrosoftEndpointManagerBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -25,23 +43,27 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
         "cadence": "monthly",
         "category": "Security & Compliance",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
         "selector": "h2, h3, p",
     },
     {
         "name": "Entra ID",
         "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
-        "cadence": "irregular",
+        "cadence": "monthly",
         "category": "Identity & Access",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity/rss/board?board.id=Identity",
         "selector": "h2, h3, p",
     },
     {
         "name": "Teams",
-        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
-        "cadence": "rolling",
+        # Switched from /officeupdates/teams-admin (per-build admin changelog) to the
+        # TechCommunity Teams blog, which publishes monthly "What's New in Microsoft Teams"
+        # feature digests — the right content level for a weekly digest.
+        # Per-build release notes remain at: learn.microsoft.com/en-us/officeupdates/teams-admin
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/bg-p/MicrosoftTeamsBlog",
+        "cadence": "monthly",
         "category": "Collaboration & Productivity",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/bg-p/MicrosoftTeamsBlog/rss/board?board.id=MicrosoftTeamsBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -57,15 +79,18 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/purview/whats-new",
         "cadence": "monthly",
         "category": "Security & Compliance",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/security-compliance-and-identity/bg-p/MicrosoftSecurityandCompliance/rss/board?board.id=MicrosoftSecurityandCompliance",
         "selector": "h2, h3, p",
     },
     {
         "name": "SharePoint / OneDrive",
-        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        # Switched from support.microsoft.com consumer article (JS-heavy, not scrapable)
+        # to the learn.microsoft.com admin-oriented page — static, consistently structured,
+        # and aligned with the rest of the SOURCES entries.
+        "url": "https://learn.microsoft.com/en-us/sharepoint/what-s-new-in-sharepoint",
         "cadence": "rolling",
         "category": "Collaboration & Productivity",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/bg-p/SPBlog/rss/board?board.id=SPBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -78,18 +103,32 @@ SOURCES = [
     },
     {
         "name": "Agent 365",
+        # Using /category/ URL as no legacy /t5/ path was confirmed for this blog.
+        # RSS falls back to M365 blog feed — no dedicated Agent 365 RSS confirmed yet.
         "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog",
         "cadence": "monthly",
         "category": "Automation & AI",
-        "rss": None,
+        "rss": "https://www.microsoft.com/en-us/microsoft-365/blog/feed/",
         "selector": "h2, h3, p",
     },
     {
         "name": "Defender for Endpoint",
+        # URL slug verified: /whats-new-in-microsoft-defender-endpoint is the LIVE page
+        # (active content as of Dec 2025). /whats-new-mde is the ARCHIVE. No change.
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Defender for Identity",
+        # Has its own what's-new page separate from the Defender XDR rollup page.
+        # Actively updated — confirmed May 2026 content.
+        "url": "https://learn.microsoft.com/en-us/defender-for-identity/whats-new",
+        "cadence": "monthly",
+        "category": "Visibility & Automation",
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -97,7 +136,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -105,7 +144,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
         "cadence": "monthly",
         "category": "Apps",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/exchange-team-blog/bg-p/Exchange/rss/board?board.id=Exchange",
         "selector": "h2, h3, p",
     },
     {
@@ -113,7 +152,18 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
         "cadence": "monthly",
         "category": "Devices",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog/rss/board?board.id=Windows10Blog",
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Windows Autopatch",
+        # No year-specific what's-new page exists for Autopatch.
+        # Microsoft publishes monthly "Windows news you can use" posts on the Windows IT Pro
+        # blog that serve as the canonical Autopatch update digest.
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog",
+        "cadence": "monthly",
+        "category": "Devices",
+        "rss": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog/rss/board?board.id=Windows10Blog",
         "selector": "h2, h3, p",
     },
     {
@@ -121,11 +171,11 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
         "cadence": "monthly",
         "category": "Devices",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/bg-p/MicrosoftEndpointManagerBlog/rss/board?board.id=MicrosoftEndpointManagerBlog",
         "selector": "h2, h3, p",
     },
-    # Viva What's New — /viva/whats-new resolves but returns 0 parseable items (JS-rendered).
-    # No reliable static known-issues page found. Re-enable when a scrapable URL is confirmed.
+    # Viva What's New — JS-rendered, no static scrapable URL confirmed.
+    # Re-enable when Microsoft publishes a static page.
     # {
     #     "name": "Viva",
     #     "url": "TODO",
@@ -136,14 +186,16 @@ SOURCES = [
     # },
     {
         "name": "Global Secure Access",
-        # No dedicated "What's New" page exists; using the Windows client release history
-        # which publishes versioned release notes per build.
-        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        # Switched from Windows client release history (version numbers only) to the
+        # service-level what's-new page, which covers feature announcements and updates.
+        # Client version tracking (if needed): /entra/global-secure-access/reference-windows-client-release-history
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/whats-new",
         "cadence": "monthly",
         "category": "Network",
-        "rss": None,
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity/rss/board?board.id=Identity",
         "selector": "h2, h3, p",
     },
+
     # ── Service Health & Known Issues ──────────────────────────────────────────
     # health=True sources are routed to site/data/health.json, not the weekly draft
     {
@@ -173,7 +225,8 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    # Autopatch Known Issues — URL needs verification; disabled until confirmed
+    # Autopatch Known Issues — no dedicated known-issues page confirmed.
+    # Windows Release Health (below) covers Autopatch-related issues inline.
     # {
     #     "name": "Autopatch Known Issues",
     #     "url": "TODO",
@@ -185,6 +238,9 @@ SOURCES = [
     # },
     {
         "name": "Defender for Endpoint Known Issues",
+        # No MDE-wide known-issues page exists. This troubleshoot hub is the closest
+        # equivalent but covers Defender Antivirus specifically, not EDR/ASR/network protection.
+        # The what's-new page (above) also notes rollback/fix notices inline when issues resolve.
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
@@ -192,8 +248,8 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    # Defender for Office 365 Known Issues — no dedicated known-issues page found;
-    # /defender-office-365/known-issues returns 404. Re-enable if Microsoft publishes one.
+    # Defender for Office 365 Known Issues — no dedicated known-issues page confirmed.
+    # Re-enable if Microsoft publishes one.
     # {
     #     "name": "Defender for Office 365 Known Issues",
     #     "url": "TODO",
@@ -214,6 +270,9 @@ SOURCES = [
     },
     {
         "name": "Purview Known Issues",
+        # Scoped to data governance — does not cover DLP, IRM, or communication compliance.
+        # No broader /purview/known-issues page was confirmed. Update URL if Microsoft
+        # publishes a wider-scoped known-issues page.
         "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
@@ -223,6 +282,9 @@ SOURCES = [
     },
     {
         "name": "Entra ID Known Issues",
+        # Scoped to app provisioning — no single Entra-wide known-issues page exists.
+        # The what's-new page (/entra/fundamentals/whats-new) includes deprecation and
+        # breaking-change notices, which partially fills the gap.
         "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
@@ -239,8 +301,8 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    # SharePoint Known Issues — /sharepoint/troubleshoot/known-issues-sharepoint-online-suite 404s.
-    # Candidate URL (needs manual verification): https://learn.microsoft.com/en-us/troubleshoot/sharepoint/
+    # SharePoint Known Issues — candidate URL needs manual validation before enabling:
+    # https://learn.microsoft.com/en-us/troubleshoot/sharepoint/
     # {
     #     "name": "SharePoint Known Issues",
     #     "url": "TODO",
@@ -250,8 +312,8 @@ SOURCES = [
     #     "selector": "h2, h3, p",
     #     "health": True,
     # },
-    # OneDrive Known Issues — /sharepoint/troubleshoot/onedrive-errors/onedrive-known-issues 404s.
-    # No dedicated known-issues page found. Re-enable if Microsoft publishes one.
+    # OneDrive Known Issues — no dedicated page confirmed.
+    # Best proxy is the SharePoint troubleshoot index above.
     # {
     #     "name": "OneDrive Known Issues",
     #     "url": "TODO",
@@ -261,8 +323,8 @@ SOURCES = [
     #     "selector": "h2, h3, p",
     #     "health": True,
     # },
-    # Exchange Known Issues — /exchange/troubleshoot/known-issues/exchange-online-known-issues 404s.
-    # Candidate URL (needs manual verification): https://learn.microsoft.com/en-us/troubleshoot/exchange/exchange-online-welcome
+    # Exchange Known Issues — candidate URL needs manual validation before enabling:
+    # https://learn.microsoft.com/en-us/troubleshoot/exchange/exchange-online-welcome
     # {
     #     "name": "Exchange Known Issues",
     #     "url": "TODO",
@@ -272,8 +334,8 @@ SOURCES = [
     #     "selector": "h2, h3, p",
     #     "health": True,
     # },
-    # Viva Known Issues — /viva/known-issues 404s.
-    # Candidate URL (needs manual verification): https://learn.microsoft.com/en-us/troubleshoot/viva/
+    # Viva Known Issues — candidate URL needs manual validation before enabling:
+    # https://learn.microsoft.com/en-us/troubleshoot/viva/
     # {
     #     "name": "Viva Known Issues",
     #     "url": "TODO",
@@ -291,6 +353,30 @@ SOURCES = [
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
+    },
+    {
+        "name": "Azure Status",
+        # Public Atom feed, no auth required. Covers Azure infrastructure incidents that
+        # can affect M365-dependent services (Exchange Online, Teams, SharePoint).
+        "url": "https://status.azure.com",
+        "cadence": "rolling",
+        "category": "Service Health & Known Issues",
+        "rss": "https://azurestatuscdn.azureedge.net/en-us/status/feed/",
+        "selector": None,
+        "health": True,
+    },
+    {
+        "name": "Microsoft 365 Service Status",
+        # Public JSON endpoint, no auth required. Returns a messages array.
+        # json_api=True routes this to fetch_json_status() instead of feedparser.
+        # If Graph API access is added later, Message Center replaces this entirely.
+        "url": "https://status.office365.com",
+        "cadence": "rolling",
+        "category": "Service Health & Known Issues",
+        "rss": "https://status.office365.com/api/messages",
+        "selector": None,
+        "health": True,
+        "json_api": True,
     },
 ]
 

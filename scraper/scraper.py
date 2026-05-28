@@ -120,7 +120,7 @@ def detect_admin_action(body: str) -> str | None:
 
 
 def fetch_rss(source: dict) -> list[dict]:
-    """Fetch items from an RSS feed."""
+    """Fetch items from an RSS/Atom feed."""
     log.info(f"  RSS → {source['name']}")
     feed = feedparser.parse(source["rss"])
     items = []
@@ -136,6 +136,61 @@ def fetch_rss(source: dict) -> list[dict]:
             "url": entry.get("link", source["url"]),
             "date": entry.get("published", datetime.now(timezone.utc).isoformat()),
         })
+    return items
+
+
+def fetch_json_status(source: dict) -> list[dict]:
+    """Fetch items from a JSON status API (e.g. status.office365.com/api/messages).
+
+    The rss field holds the JSON endpoint URL. Field names vary by API — this
+    handler tries common patterns defensively.
+    """
+    log.info(f"  JSON API → {source['name']}")
+    try:
+        resp = SESSION.get(source["rss"], timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        log.warning(f"    Failed to fetch {source['name']}: {e}")
+        return []
+
+    # Unwrap envelope if needed
+    if isinstance(data, dict):
+        data = data.get("messages") or data.get("value") or data.get("items") or []
+
+    if not isinstance(data, list):
+        log.warning(f"    Unexpected JSON shape from {source['name']} — expected list, got {type(data).__name__}")
+        return []
+
+    items = []
+    for msg in data[:15]:
+        if not isinstance(msg, dict):
+            continue
+        title = (
+            msg.get("Title") or msg.get("title") or msg.get("name") or ""
+        ).strip()
+        body = (
+            msg.get("MessageText") or msg.get("description")
+            or msg.get("body") or msg.get("message") or ""
+        )
+        if isinstance(body, dict):
+            body = body.get("content") or body.get("text") or str(body)
+        body = str(body).strip()[:800]
+        url = msg.get("ExternalLink") or msg.get("link") or msg.get("url") or source["url"]
+        date = (
+            msg.get("LastModifiedTime") or msg.get("StartTime")
+            or msg.get("published") or datetime.now(timezone.utc).isoformat()
+        )
+        if not title:
+            continue
+        items.append({
+            "source": source["name"],
+            "title": title,
+            "body": body,
+            "url": url,
+            "date": date,
+        })
+    log.info(f"    → {len(items)} items from JSON API")
     return items
 
 
@@ -260,7 +315,9 @@ def run_health_only():
     for source in health_sources:
         log.info(f"Fetching: {source['name']}")
         try:
-            if source.get("rss"):
+            if source.get("json_api"):
+                raw_items = fetch_json_status(source)
+            elif source.get("rss"):
                 raw_items = fetch_rss(source)
             else:
                 raw_items = fetch_html(source)
@@ -302,7 +359,9 @@ def run_scraper(args):
     for source in sources_to_run:
         log.info(f"Fetching: {source['name']}")
         try:
-            if source.get("rss"):
+            if source.get("json_api"):
+                raw_items = fetch_json_status(source)
+            elif source.get("rss"):
                 raw_items = fetch_rss(source)
             else:
                 raw_items = fetch_html(source)
@@ -324,7 +383,24 @@ def run_scraper(args):
     elif any(s.get("health") for s in sources_to_run):
         log.warning("Health sources returned 0 items — health.json not updated.")
 
-    # Enrich and dedup digest items
+    # URL dedup — shared RSS feeds (e.g. MicrosoftSecurityBlog used by 4 Defender sources)
+    # can return the same article multiple times under different source names.
+    # Keep the first occurrence; subsequent duplicates are logged and dropped.
+    seen_urls: set = set()
+    deduped_raw = []
+    for item in all_raw:
+        url = item.get("url", "")
+        if url and url in seen_urls:
+            log.debug(f"  URL dedup: dropped '{item['title']}' from {item['source']} (already seen)")
+            continue
+        if url:
+            seen_urls.add(url)
+        deduped_raw.append(item)
+    if len(deduped_raw) < len(all_raw):
+        log.info(f"URL dedup removed {len(all_raw) - len(deduped_raw)} cross-source duplicate(s).")
+    all_raw = deduped_raw
+
+    # Enrich and dedup digest items against seen_ids
     new_items = []
     for raw in all_raw:
         enriched = enrich_item(raw)
