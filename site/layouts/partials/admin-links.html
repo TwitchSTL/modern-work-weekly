@@ -15,19 +15,18 @@
           Admin Center
           <span class="portals-badge">separate account</span>
         </div>
-        <!-- 2×2 grid: Chrome/Edge top, private modes bottom -->
+        <!-- Chrome/Edge top row, single Private button below -->
         <div class="portals-buttons portals-buttons-admin">
           <a class="portal-btn portal-btn-chrome"
              href="https://admin.cloud.microsoft"
              target="_blank" rel="noopener">Chrome</a>
           <a class="portal-btn portal-btn-edge"
              href="microsoft-edge:https://admin.cloud.microsoft">Edge</a>
-          <button class="portal-btn portal-btn-incognito"
-                  onclick="adminLaunchPrivate('https://admin.cloud.microsoft','incognito')"
-                  title="Copies URL — paste in Chrome Incognito (Ctrl+Shift+N)">Incognito</button>
-          <button class="portal-btn portal-btn-inprivate"
-                  onclick="adminLaunchPrivate('https://admin.cloud.microsoft','inprivate')"
-                  title="Copies URL — paste in Edge InPrivate (Ctrl+Shift+N)">InPrivate</button>
+          <button class="portal-btn portal-btn-private portal-btn-private-wide"
+                  onclick="adminLaunchPrivate('https://admin.cloud.microsoft')"
+                  title="Copies URL — open a private/incognito window in your browser (Ctrl+Shift+N) and paste">
+            Private window <span class="portal-private-hint">(copies URL — paste after Ctrl+Shift+N)</span>
+          </button>
         </div>
       </div>
 

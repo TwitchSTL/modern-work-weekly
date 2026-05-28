@@ -1,11 +1,11 @@
 /**
  * admin-links.js — Portals dropdown and private-mode launch helpers.
  *
- * togglePortals()            — open/close the nav dropdown
- * adminLaunchPrivate(url, mode) — copies URL + shows toast directing
- *   user to paste in Chrome Incognito (Ctrl+Shift+N) or Edge InPrivate
- *   (Ctrl+Shift+P). The microsoft-edge:?inprivate protocol is
- *   unreliable across Edge versions, so clipboard is used for both.
+ * togglePortals()         — open/close the nav dropdown
+ * adminLaunchPrivate(url) — copies URL to clipboard so the user can paste
+ *   into whichever private/incognito window they open (Ctrl+Shift+N).
+ *   Opening a specific browser's private mode from a web page is not
+ *   reliably possible — clipboard-paste is the only cross-browser approach.
  */
 
 // ── Dropdown toggle ──────────────────────────────────────────────────────────
@@ -53,21 +53,17 @@ document.addEventListener('keydown', function (e) {
 
 // ── Private-mode launch ──────────────────────────────────────────────────────
 
-function adminLaunchPrivate(url, mode) {
-  var label = mode === 'incognito'
-    ? 'Chrome Incognito (Ctrl+Shift+N)'
-    : 'Edge InPrivate (Ctrl+Shift+P)';
-
+function adminLaunchPrivate(url) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(url).then(function () {
-      showAdminToast('URL copied — open ' + label + ' and paste');
+      showAdminToast('URL copied — press Ctrl+Shift+N to open a private window, then paste');
     }).catch(function () {
       window.open(url, '_blank', 'noopener,noreferrer');
-      showAdminToast('Opened in new tab — switch to ' + label);
+      showAdminToast('Opened in new tab — use Ctrl+Shift+N for a private window with your admin account');
     });
   } else {
     window.open(url, '_blank', 'noopener,noreferrer');
-    showAdminToast('Opened in new tab — use ' + label + ' for your admin account');
+    showAdminToast('Opened in new tab — use Ctrl+Shift+N for a private window with your admin account');
   }
 }
 
