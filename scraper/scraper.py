@@ -150,6 +150,9 @@ def fetch_json_status(source: dict) -> list[dict]:
     try:
         resp = SESSION.get(source["rss"], timeout=15)
         resp.raise_for_status()
+        if not resp.content.strip():
+            log.info(f"    {source['name']} returned empty body — no active incidents.")
+            return []
         data = resp.json()
     except Exception as e:
         log.warning(f"    Failed to fetch {source['name']}: {e}")
