@@ -240,13 +240,15 @@ SOURCES = [
         "name": "Defender for Endpoint Known Issues",
         # No MDE-wide known-issues page exists. This troubleshoot hub is the closest
         # equivalent but covers Defender Antivirus specifically, not EDR/ASR/network protection.
-        # The what's-new page (above) also notes rollback/fix notices inline when issues resolve.
+        # The page uses bare event IDs (e.g. "1000") as headings. title_from_body tells
+        # fetch_html() to promote the "Message:" field value to the display title.
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
         "cadence": "rolling",
         "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
+        "title_from_body": "Message",
     },
     # Defender for Office 365 Known Issues — no dedicated known-issues page confirmed.
     # Re-enable if Microsoft publishes one.
@@ -292,15 +294,18 @@ SOURCES = [
         "selector": "h2, h3, p",
         "health": True,
     },
-    {
-        "name": "Teams Known Issues",
-        "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-    },
+    # Teams Known Issues — removed. The page's heading structure results in
+    # duplicate URLs across items (all pointing to the same anchor), making
+    # the sidebar entries redundant and unhelpful.
+    # {
+    #     "name": "Teams Known Issues",
+    #     "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
     # SharePoint Known Issues — candidate URL needs manual validation before enabling:
     # https://learn.microsoft.com/en-us/troubleshoot/sharepoint/
     # {

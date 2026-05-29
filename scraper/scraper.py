@@ -220,6 +220,8 @@ def fetch_html(source: dict) -> list[dict]:
         "in this article", "feedback", "additional resources", "next steps",
         "prerequisites", "see also", "related articles", "overview",
         "current version", "tip", "note", "important", "warning",
+        "questions?", "need help?", "was this page helpful?", "submit and view feedback",
+        "view all page feedback",
     }
 
     # Walk h2/h3 headings — each becomes a potential item
@@ -243,6 +245,20 @@ def fetch_html(source: dict) -> list[dict]:
             if len(body_parts) >= 4:
                 break
         body = " ".join(body_parts)[:800]
+
+        # Some sources (e.g. Defender Antivirus error-code pages) use a bare event
+        # ID or numeric code as the heading. If the source defines title_from_body,
+        # scan the body parts for that label and promote its value to the display title.
+        display_title = title
+        title_from_body = source.get("title_from_body")
+        if title_from_body:
+            for part in body_parts:
+                if part.lower().startswith(title_from_body.lower()):
+                    extracted = part[len(title_from_body):].lstrip(": ").strip()
+                    if extracted:
+                        display_title = f"{title} — {extracted}"
+                    break
+
         # Use the heading's id attribute (if present) to build a direct anchor URL.
         # Microsoft Learn pages always set id on headings matching the URL slug,
         # so this produces links like /autopilot/known-issues#issue-heading-slug.
@@ -250,7 +266,7 @@ def fetch_html(source: dict) -> list[dict]:
         item_url = f"{source['url']}#{heading_id}" if heading_id else source["url"]
         items.append({
             "source": source["name"],
-            "title": title,
+            "title": display_title,
             "body": body,
             "url": item_url,
             "date": datetime.now(timezone.utc).date().isoformat(),
