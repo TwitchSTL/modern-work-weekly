@@ -1,68 +1,77 @@
 {
-  "updated": "2026-05-19",
+  "updated": "2026-05-31",
   "deadlines": [
     {
       "date": "2026-06-01",
       "title": "Entra Hard-Match Restriction",
       "action": "Audit role-holding cloud accounts and validate sync rules before this silently breaks provisioning pipelines.",
       "pillar": "Identity",
-      "applies_to": "Hybrid identity orgs (Entra Connect + AD)"
+      "applies_to": "Hybrid identity orgs (Entra Connect + AD)",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-syncservice-duplicate-attribute-resiliency"
     },
     {
       "date": "2026-06-01",
       "title": "Work IQ Researcher Agent Preview",
       "action": "Enroll dev teams in preview to test agentic workflow integrations ahead of July GA.",
       "pillar": "Visibility & Automation",
-      "applies_to": "Microsoft 365 Copilot subscribers"
+      "applies_to": "Microsoft 365 Copilot subscribers",
+      "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog"
     },
     {
       "date": "2026-06-15",
       "title": "CA Resource Exclusion Enforcement",
       "action": "Test apps with 'All resources' CA exclusions before enforcement. Run CA What-If in non-prod.",
       "pillar": "Identity",
-      "applies_to": "All tenants with Conditional Access policies"
+      "applies_to": "All tenants with Conditional Access policies",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-conditional-access-cloud-apps"
     },
     {
       "date": "2026-06-30",
       "title": "Secure Boot 2023 Certificates",
       "action": "Check Secure Score. Deploy May 2026 CU across fleet before cert expiry.",
       "pillar": "Devices",
-      "applies_to": "Windows device fleets (Intune or SCCM managed)"
+      "applies_to": "Windows device fleets (Intune or SCCM managed)",
+      "url": "https://support.microsoft.com/en-us/topic/kb5025885-how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023-24932-41a975df-beb2-40c1-99a3-b3ff139f832d"
     },
     {
       "date": "2026-07-01",
       "title": "Entra Connect → Cloud Sync Migration",
       "action": "Begin readiness assessment now, especially if you have write-back scenarios or custom sync rules.",
       "pillar": "Identity",
-      "applies_to": "Hybrid identity orgs running Entra Connect"
+      "applies_to": "Hybrid identity orgs running Entra Connect",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/migrate-azure-ad-connect-to-cloud-sync"
     },
     {
       "date": "2026-07-01",
       "title": "Purview Lifecycle Archiving GA",
       "action": "Scope retention policies for OneDrive/SharePoint now to maximize benefit at GA.",
       "pillar": "Data",
-      "applies_to": "Orgs with Purview E3 or E5 licensing"
+      "applies_to": "Orgs with Purview E3 or E5 licensing",
+      "url": "https://learn.microsoft.com/en-us/purview/data-lifecycle-management"
     },
     {
       "date": "2026-07-01",
       "title": "Purview Lifecycle Insights GA",
       "action": "Plan review of Purview recommendations; align with DLP and labeling strategy.",
       "pillar": "Data",
-      "applies_to": "Orgs with Purview E3 or E5 licensing"
+      "applies_to": "Orgs with Purview E3 or E5 licensing",
+      "url": "https://learn.microsoft.com/en-us/purview/data-lifecycle-management"
     },
     {
       "date": "2026-07-01",
       "title": "Work IQ Researcher Agent GA",
       "action": "Have agentic workflow integrations tested from the June preview window.",
       "pillar": "Visibility & Automation",
-      "applies_to": "Microsoft 365 Copilot subscribers"
+      "applies_to": "Microsoft 365 Copilot subscribers",
+      "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog"
     },
     {
       "date": "2026-08-01",
       "title": "Ubuntu 22.04 LTS EOS (Intune)",
       "action": "Identify 22.04 devices in Intune and start upgrade comms. New enrollments blocked after EOS.",
       "pillar": "Devices",
-      "applies_to": "Intune-managed Linux fleets"
+      "applies_to": "Intune-managed Linux fleets",
+      "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/supported-devices-browsers#linux"
     }
   ]
 }

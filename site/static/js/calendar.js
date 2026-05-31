@@ -211,7 +211,7 @@
           return `
 <div class="cal-upcoming-item ${urgencyClass}" data-date="${d.date}" style="border-left-color:${color}">
   <div class="cal-upcoming-date">${d.date}${urgencyLabel}</div>
-  <div class="cal-upcoming-title">${d.title}</div>
+  <div class="cal-upcoming-title">${d.url ? `<a href="${d.url}" target="_blank" rel="noopener">${d.title}</a>` : d.title}</div>
   <div class="cal-upcoming-pillar" style="color:${color}">${d.pillar}</div>
   <div class="cal-upcoming-action">${d.action}</div>
 </div>`;

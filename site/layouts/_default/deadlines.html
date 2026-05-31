@@ -52,7 +52,7 @@
           {{ $dateLabel := time.Format "Jan 2, 2006" .date }}
           <div class="deadline-card">
             <div class="deadline-card-date">{{ $dateLabel }}</div>
-            <div class="deadline-card-title">{{ .title }}</div>
+            <div class="deadline-card-title">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
             {{ with .applies_to }}<div class="deadline-card-applies"><span class="deadline-applies-label">Applies to</span> {{ . }}</div>{{ end }}
             <div class="deadline-card-action">{{ .action }}</div>
           </div>

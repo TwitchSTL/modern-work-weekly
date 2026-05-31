@@ -31,7 +31,7 @@
           {{ range $items }}
           <div class="deadline-item" data-date="{{ .date }}" style="border-left-color:{{ $color }}">
             <div class="deadline-date">{{ .date }}</div>
-            <div class="deadline-title">{{ .title }}</div>
+            <div class="deadline-title">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
             <div class="deadline-action">{{ .action }}</div>
           </div>
           {{ end }}
