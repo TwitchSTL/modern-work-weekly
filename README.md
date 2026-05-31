@@ -11,7 +11,7 @@
 [![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
 **A self-hosted, fully automated Microsoft 365 change digest.**  
-Scraped from 15+ Microsoft portals · Drafted by Claude · Published every Tuesday
+Scraped from 17+ Microsoft sources · Drafted by Claude · Published every Tuesday
 
 </div>
 
@@ -52,9 +52,10 @@ flowchart LR
     A["🔍 scraper.py"] --> B[("pending_draft.json")]
     A --> C[("health.json")]
     B --> D["🤖 digest.py"]
-    D --> E{{"Claude API\n× 2 calls"}}
+    D --> E{{"Claude API\n× 3 calls"}}
     E --> F["📰 Technical Digest"]
     E --> G["📋 Executive's Guide"]
+    E --> L["✉️ LinkedIn Draft"]
     F --> H["git push"]
     G --> H
     H --> I["⚡ GitHub Actions\nHugo Build"]
@@ -78,13 +79,13 @@ Two cron jobs run on a self-hosted LXC:
 | Category | Sources |
 |---|---|
 | 🪪 Identity & Access | Entra ID |
-| 💻 Endpoint Management | Intune, Autopilot, Windows 365 |
-| 🛡️ Security | Defender XDR, Defender for Endpoint, Defender for Office 365 |
+| 💻 Endpoint Management | Intune, Autopilot, Windows 365, Windows Autopatch |
+| 🛡️ Security | Defender XDR, Defender for Endpoint, Defender for Identity, Defender for Office 365 |
 | 💬 Collaboration | Teams, SharePoint / OneDrive, Exchange Online |
 | 🗄️ Data | Purview |
 | 🌐 Network | Global Secure Access |
-| 📊 Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog |
-| 🩺 Known Issues *(every 8h)* | Intune, Autopilot, Windows 365, Defender for Endpoint, Defender XDR, Purview, Entra ID, Teams, Windows Release Health |
+| 📊 Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog, Agent 365 |
+| 🩺 Known Issues *(every 8h)* | Intune, Autopilot, Windows 365, Defender XDR, Purview, Entra ID, Windows Release Health, Azure Status, M365 Service Status |
 
 ---
 
@@ -95,11 +96,11 @@ Two cron jobs run on a self-hosted LXC:
 
 | File | Description |
 |---|---|
-| `scraper.py` | Fetches all portals, deduplicates against `seen_items.json`, appends to rolling draft |
-| `digest.py` | Reads `pending_draft.json`, calls Claude API (×2), writes Hugo posts, archives draft |
-| `sources.py` | Source URLs, RSS feeds, CSS selectors, and health-check flags for all portals |
+| `scraper.py` | Fetches all sources via RSS, JSON API, or HTML scraping; deduplicates; appends to rolling draft; refreshes `health.json` and `deadlines.json` |
+| `digest.py` | Reads `pending_draft.json`, calls Claude API (×3) for technical digest, Executive's Guide, and LinkedIn draft; updates health baseline |
+| `sources.py` | Source definitions — URLs, RSS feeds, health flags, and per-source scraping hints for all 17+ portals |
 | `weekly-run.sh` | Tuesday cron entrypoint — pull → scrape → draft → push |
-| `health-run.sh` | 8-hour cron entrypoint — health sources only → push if changed |
+| `health-run.sh` | 8-hour cron entrypoint — health sources + deadline purge → push if changed |
 
 </details>
 
@@ -110,6 +111,7 @@ Two cron jobs run on a self-hosted LXC:
 |---|---|
 | `pending_draft.json` | Rolling accumulator — items build across runs, cleared after each publish |
 | `seen_items.json` | Dedup tracker — SHA-256 hashes of all previously seen items |
+| `health_baseline.json` | Known issue titles at last digest publish — diff source for the "new since last digest" sidebar |
 | `weekly_draft_*.json` | Per-run snapshots retained for reference |
 | `archive/` | Pending drafts archived after each publish |
 
@@ -122,10 +124,10 @@ Two cron jobs run on a self-hosted LXC:
 |---|---|
 | `content/posts/` | Weekly technical digest posts (one `.md` per week) |
 | `content/exec/` | Executive's Guide posts (generated alongside each digest) |
-| `data/health.json` | Known issues — rendered in left sidebar, refreshed every 8 hours |
-| `data/deadlines.json` | Zero Trust deadline calendar |
-| `layouts/` | Hugo templates — 3-column digest layout with sticky sidebars |
-| `static/css/` | Custom dark-mode styles |
+| `data/health.json` | Known issues with `is_new` diff flags — homepage shows all, digest pages show new-only |
+| `data/deadlines.json` | Key dates calendar — auto-purged of expired entries every 8 hours |
+| `layouts/` | Hugo templates — 3-column digest layout with context-aware sidebars |
+| `static/css/` | Custom dark-theme styles |
 | `static/js/` | Collapsible sections, calendar logic, admin portal links |
 
 </details>
