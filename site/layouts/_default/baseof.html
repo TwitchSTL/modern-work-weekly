@@ -6,7 +6,7 @@
 
   {{- $title := cond .IsHome (printf "%s — %s" .Site.Title .Site.Params.description) (printf "%s | %s" .Title .Site.Title) }}
   {{- $desc  := cond (ne .Description "") .Description .Site.Params.description }}
-  {{- $ogimg := "images/banner.png" | absURL }}
+  {{- $ogimg := "/images/banner.png" | absURL }}
 
   <title>{{ $title }}</title>
   <meta name="description" content="{{ $desc }}">
