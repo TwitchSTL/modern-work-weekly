@@ -154,6 +154,10 @@ def fetch_json_status(source: dict) -> list[dict]:
             log.info(f"    {source['name']} returned empty body — no active incidents.")
             return []
         data = resp.json()
+    except (json.JSONDecodeError, ValueError):
+        # Non-JSON response (e.g. empty-ish body, HTML error page) — treat as no incidents
+        log.info(f"    {source['name']} returned non-JSON response — no active incidents.")
+        return []
     except Exception as e:
         log.warning(f"    Failed to fetch {source['name']}: {e}")
         return []
