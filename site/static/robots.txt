@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://modernworkweekly.com/sitemap.xml
