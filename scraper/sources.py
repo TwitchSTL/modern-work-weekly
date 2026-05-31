@@ -236,20 +236,18 @@ SOURCES = [
     #     "selector": "h2, h3, p",
     #     "health": True,
     # },
-    {
-        "name": "Defender for Endpoint Known Issues",
-        # No MDE-wide known-issues page exists. This troubleshoot hub is the closest
-        # equivalent but covers Defender Antivirus specifically, not EDR/ASR/network protection.
-        # The page uses bare event IDs (e.g. "1000") as headings. title_from_body tells
-        # fetch_html() to promote the "Message:" field value to the display title.
-        "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
-        "cadence": "rolling",
-        "category": "Service Health & Known Issues",
-        "rss": None,
-        "selector": "h2, h3, p",
-        "health": True,
-        "title_from_body": "Message",
-    },
+    # Defender for Endpoint Known Issues — removed. The troubleshoot-microsoft-defender-antivirus
+    # page is an event log reference (bare numeric event IDs as headings), not a known issues
+    # tracker. No MDE-wide known-issues page exists. Re-enable if Microsoft publishes one.
+    # {
+    #     "name": "Defender for Endpoint Known Issues",
+    #     "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
+    #     "cadence": "rolling",
+    #     "category": "Service Health & Known Issues",
+    #     "rss": None,
+    #     "selector": "h2, h3, p",
+    #     "health": True,
+    # },
     # Defender for Office 365 Known Issues — no dedicated known-issues page confirmed.
     # Re-enable if Microsoft publishes one.
     # {

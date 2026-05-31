@@ -215,14 +215,27 @@ def fetch_html(source: dict) -> list[dict]:
     if not article:
         return []
 
-    # Patterns that indicate page navigation / boilerplate, not real update content
+    # Exact-match boilerplate headings to skip
     NOISE_TITLES = {
         "in this article", "feedback", "additional resources", "next steps",
         "prerequisites", "see also", "related articles", "overview",
         "current version", "tip", "note", "important", "warning",
-        "questions?", "need help?", "was this page helpful?", "submit and view feedback",
-        "view all page feedback",
+        "known issues",       # page-level section header (e.g. top of Autopilot page)
+        "known issue",
     }
+    # Prefix-match for longer/variant boilerplate phrases
+    NOISE_PREFIXES = (
+        "questions",           # "Questions? Join office hours!", "Questions?" etc.
+        "submit feedback",     # "Submit feedback"
+        "submit and view",     # "Submit and view feedback"
+        "view all page",       # "View all page feedback"
+        "was this page",       # "Was this page helpful?"
+        "need help",           # "Need help?"
+        "additional versions", # Windows Release Health section footer
+        "review your",         # "Review your settings" — guidance, not a known issue
+        "implement required",  # "Implement required Enterprise Application permissions"
+        "join office hours",   # "Join office hours!"
+    )
 
     # Walk h2/h3 headings — each becomes a potential item
     headings = article.find_all(["h2", "h3"])
@@ -230,10 +243,13 @@ def fetch_html(source: dict) -> list[dict]:
         title = heading.get_text(strip=True)
         if len(title) < 10:
             continue
-        if title.lower() in NOISE_TITLES:
+        title_lower = title.lower()
+        if title_lower in NOISE_TITLES:
+            continue
+        if any(title_lower.startswith(p) for p in NOISE_PREFIXES):
             continue
         # Skip "Week of ..." date headings — they're section separators, not items
-        if title.lower().startswith("week of ") or title.lower().startswith("month of "):
+        if title_lower.startswith("week of ") or title_lower.startswith("month of "):
             continue
         # Collect following paragraphs until next heading
         body_parts = []
@@ -350,6 +366,35 @@ def write_health_data(health_items: list[dict]):
     log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items, {total_new} new since last digest)")
 
 
+def purge_expired_deadlines():
+    """Remove past deadlines from deadlines.json and refresh the updated date.
+
+    Called from run_health_only() so it runs automatically every 8 hours —
+    keeping the 'Last checked' date current and trimming expired entries.
+    """
+    deadline_file = BASE_DIR / "site" / "data" / "deadlines.json"
+    if not deadline_file.exists():
+        log.info("deadlines.json not found — skipping deadline purge.")
+        return
+    try:
+        with open(deadline_file) as f:
+            data = json.load(f)
+        today = datetime.now(timezone.utc).date().isoformat()
+        before = len(data.get("deadlines", []))
+        data["deadlines"] = [
+            d for d in data.get("deadlines", [])
+            if d.get("date", "9999-99-99") >= today
+        ]
+        after = len(data["deadlines"])
+        data["updated"] = today
+        with open(deadline_file, "w") as f:
+            json.dump(data, f, indent=2)
+        removed = before - after
+        log.info(f"Deadlines refreshed — {removed} expired removed, {after} remaining, updated → {today}")
+    except Exception as e:
+        log.warning(f"Failed to refresh deadlines.json (non-fatal): {e}")
+
+
 def run_health_only():
     """Scrape only health/known-issues sources and update health.json.
 
@@ -385,6 +430,7 @@ def run_health_only():
     else:
         log.warning("Health sources returned 0 items — health.json not updated.")
 
+    purge_expired_deadlines()
     log.info("Health-only run complete.")
 
 
