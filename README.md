@@ -55,7 +55,7 @@ flowchart LR
     D --> E{{"Claude API\n× 3 calls"}}
     E --> F["📰 Technical Digest"]
     E --> G["📋 Executive's Guide"]
-    E --> L["✉️ LinkedIn Draft"]
+    E --> L["📨 LinkedIn Draft"]
     F --> H["git push"]
     G --> H
     H --> I["⚡ GitHub Actions\nHugo Build"]
