@@ -178,40 +178,43 @@ SOURCES = [
         "name": "Microsoft 365 Copilot",
         # Monthly "What's New in Microsoft 365 Copilot" posts — the primary Copilot
         # feature update signal for Modern Work engineers.
-        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot/bg-p/Microsoft365CopilotBlog",
+        # Blog: techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog
+        "url": "https://techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog",
         "cadence": "monthly",
         "category": "Apps",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot/bg-p/Microsoft365CopilotBlog/rss/board?board.id=Microsoft365CopilotBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=Microsoft365CopilotBlog",
         "selector": "h2, h3, p",
     },
     {
         "name": "Copilot Studio",
         # TechCommunity blog for Copilot Studio (formerly Power Virtual Agents) —
-        # covers agent-building features, connectors, and platform updates.
-        "url": "https://techcommunity.microsoft.com/t5/microsoft-copilot-studio/bg-p/MicrosoftCopilotStudio",
+        # covers agent-building, connectors, and platform updates.
+        # Blog: techcommunity.microsoft.com/category/microsoft365copilot/blog/copilot-studio-blog
+        "url": "https://techcommunity.microsoft.com/category/microsoft365copilot/blog/copilot-studio-blog",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-copilot-studio/bg-p/MicrosoftCopilotStudio/rss/board?board.id=MicrosoftCopilotStudio",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=copilot-studio-blog",
         "selector": "h2, h3, p",
     },
     {
         "name": "Power Platform",
-        # Microsoft Power Platform TechCommunity blog — Power Automate, Power Apps,
-        # and Power BI updates relevant to Modern Work automation workflows.
-        "url": "https://techcommunity.microsoft.com/t5/microsoft-power-platform/bg-p/PowerPlatform",
+        # Microsoft Power Platform blog — Power Automate, Power Apps, Power BI updates
+        # relevant to Modern Work automation. Hosted at powerplatform.microsoft.com.
+        "url": "https://powerplatform.microsoft.com/en-us/blog/",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-power-platform/bg-p/PowerPlatform/rss/board?board.id=PowerPlatform",
-        "selector": "h2, h3, p",
+        "rss": "https://powerplatform.microsoft.com/en-us/blog/feed/",
+        "selector": None,
     },
     {
         "name": "Microsoft Viva",
         # TechCommunity blog covering Viva Insights, Viva Learning, Viva Engage,
-        # and other Viva suite updates — monthly cadence.
-        "url": "https://techcommunity.microsoft.com/t5/microsoft-viva-blog/bg-p/MicrosoftVivaBlog",
+        # and the broader Viva suite — monthly cadence.
+        # Blog: techcommunity.microsoft.com/category/microsoft-viva/blog/microsoftvivablog
+        "url": "https://techcommunity.microsoft.com/category/microsoft-viva/blog/microsoftvivablog",
         "cadence": "monthly",
         "category": "Apps",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-viva-blog/bg-p/MicrosoftVivaBlog/rss/board?board.id=MicrosoftVivaBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftVivaBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -231,7 +234,7 @@ SOURCES = [
         "url": "https://www.youtube.com/@MicrosoftMechanics",
         "cadence": "rolling",
         "category": "Visibility & Automation",
-        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ9905MRHxwLZ2jeNQGIWxQ",
+        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnUYZLuoy1rq1aVMwx4aTzw",
         "selector": None,
     },
     {
