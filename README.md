@@ -1,12 +1,12 @@
 <div align="center">
 
-![Modern Work Weekly](https://raw.githubusercontent.com/TwitchSTL/modern-work-weekly/master/site/static/images/banner.png)
+![Modern Work Weekly](https://raw.githubusercontent.com/TwitchSTL/modern-work-weekly/main/site/static/images/og-card.png)
 
 [![Hugo Build](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml/badge.svg)](https://github.com/TwitchSTL/modern-work-weekly/actions/workflows/hugo-build.yml)
 [![Site](https://img.shields.io/badge/site-modernworkweekly.com-0078d4?style=flat&logo=microsoftedge&logoColor=white)](https://modernworkweekly.com)
 [![Python](https://img.shields.io/badge/python-3.12-3776ab?style=flat&logo=python&logoColor=white)](https://python.org)
 [![Hugo](https://img.shields.io/badge/hugo-0.128+-ff4088?style=flat&logo=hugo&logoColor=white)](https://gohugo.io)
-[![Last Commit](https://img.shields.io/github/last-commit/TwitchSTL/modern-work-weekly?color=0078d4&style=flat)](https://github.com/TwitchSTL/modern-work-weekly/commits/master)
+[![Last Commit](https://img.shields.io/github/last-commit/TwitchSTL/modern-work-weekly?color=0078d4&style=flat)](https://github.com/TwitchSTL/modern-work-weekly/commits/main)
 [![License: MIT](https://img.shields.io/badge/license-MIT-22c55e?style=flat)](LICENSE)
 [![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
@@ -17,29 +17,13 @@ Scraped from 17+ Microsoft sources · Drafted by Claude · Published every Tuesd
 
 ---
 
-![Site preview](docs/screenshots/homepage.png)
-
----
-
-## Contents
-
-- [What this is](#what-this-is)
-- [⚙️ How it works](#️-how-it-works)
-- [🔍 Sources scraped](#-sources-scraped)
-- [📁 Repository layout](#-repository-layout)
-- [🛠️ Tech stack](#️-tech-stack)
-- [📋 Requirements](#-requirements)
-- [☕ Support](#-support)
-
----
-
 ## What this is
 
-**Modern Work** is Microsoft's framework for secure, cloud-connected productivity — built around Microsoft 365 and the **Zero Trust** security model. Modern Work engineers are responsible for the full stack: identity (Entra ID), device compliance (Intune), data protection (Purview), threat detection (Defender), and network access (Global Secure Access).
+**Modern Work** is Microsoft's framework for secure, cloud-connected productivity — built around Microsoft 365 and the **Zero Trust** security model. Modern Work engineers own the full stack: identity (Entra ID), device compliance (Intune), data protection (Purview), threat detection (Defender), and network access (Global Secure Access).
 
-Microsoft ships updates across all of it continuously. **Modern Work Weekly** scrapes the official portals, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without manually tracking across portals.
+Microsoft ships updates across all of it continuously. **Modern Work Weekly** scrapes the official portals, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without manually tracking a dozen portals.
 
-A companion **Executive's Guide** is generated alongside each digest — plain-language briefings for leadership, compliance officers, and IT directors.
+A companion **Executive's Guide** is generated alongside each digest — plain-language briefings for leadership, compliance officers, and IT directors. A **LinkedIn newsletter draft** is also produced, ready to post.
 
 No marketing. No filler. Operational signal only.
 
@@ -58,19 +42,21 @@ flowchart LR
     E --> L["📨 LinkedIn Draft"]
     F --> H["git push"]
     G --> H
+    C --> I
     H --> I["⚡ GitHub Actions\nHugo Build"]
     I --> J["🌐 modernworkweekly.com"]
 ```
 
-Two cron jobs run on a self-hosted LXC:
+Three cron jobs run automatically on a self-hosted LXC:
 
 | Schedule | Script | What it does |
 |---|---|---|
-| **Every Tuesday 5:55 AM CST** | `weekly-run.sh` | Full pipeline — scrape → draft → push |
-| **Every 8 hours** | `health-run.sh` | Known issues only → push if changed |
+| **Every 5 min** | `deploy.sh` | Git pull → Hugo build → deploy |
+| **Tuesday 5:55 AM CST** | `weekly-run.sh` | Full scrape → Claude draft → push |
+| **Every 8 hours** | `health-run.sh` | Known issues refresh + deadline purge → push if changed |
 
 > [!NOTE]
-> **Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run. When Tuesday fires, it consumes everything since the last publish — nothing gets lost between runs.
+> **Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run since the last publish. When Tuesday fires, it consumes everything accumulated — nothing gets lost between runs.
 
 ---
 
@@ -98,8 +84,9 @@ Two cron jobs run on a self-hosted LXC:
 |---|---|
 | `scraper.py` | Fetches all sources via RSS, JSON API, or HTML scraping; deduplicates; appends to rolling draft; refreshes `health.json` and `deadlines.json` |
 | `digest.py` | Reads `pending_draft.json`, calls Claude API (×3) for technical digest, Executive's Guide, and LinkedIn draft; updates health baseline |
-| `sources.py` | Source definitions — URLs, RSS feeds, health flags, and per-source scraping hints for all 17+ portals |
-| `weekly-run.sh` | Tuesday cron entrypoint — pull → scrape → draft → push |
+| `sources.py` | Source definitions — URLs, RSS feeds, health flags, and per-source scraping hints |
+| `deploy.sh` | Pulls latest commits, rebuilds Hugo, and rsyncs to the web root |
+| `weekly-run.sh` | Tuesday cron entrypoint — scrape → draft → push |
 | `health-run.sh` | 8-hour cron entrypoint — health sources + deadline purge → push if changed |
 
 </details>
@@ -111,7 +98,7 @@ Two cron jobs run on a self-hosted LXC:
 |---|---|
 | `pending_draft.json` | Rolling accumulator — items build across runs, cleared after each publish |
 | `seen_items.json` | Dedup tracker — SHA-256 hashes of all previously seen items |
-| `health_baseline.json` | Known issue titles at last digest publish — diff source for the "new since last digest" sidebar |
+| `health_baseline.json` | Known issue titles at last digest publish — used to diff what's new since last week |
 | `weekly_draft_*.json` | Per-run snapshots retained for reference |
 | `archive/` | Pending drafts archived after each publish |
 
@@ -138,19 +125,8 @@ Two cron jobs run on a self-hosted LXC:
 | File | Description |
 |---|---|
 | `lxc/bootstrap.sh` | Fresh Ubuntu 24.04 LXC setup — installs all dependencies |
-| `caddy/Caddyfile` | Caddy reverse proxy config |
+| `caddy/Caddyfile` | Caddy reverse proxy config (serves on :8080 behind Cloudflare Tunnel) |
 | `cloudflare/tunnel.yml` | Cloudflare Tunnel config reference |
-
-</details>
-
-<details>
-<summary><strong>docs/</strong> — Reference documentation</summary>
-
-| File | Description |
-|---|---|
-| `SETUP.md` | Full initial setup guide — LXC to live site |
-| `WEEKLY_WORKFLOW.md` | Weekly pipeline reference and troubleshooting |
-| `PIPELINE.md` | Claude API and digest pipeline internals |
 
 </details>
 
@@ -180,8 +156,6 @@ Two cron jobs run on a self-hosted LXC:
 
 - Hugo Extended v0.128+
 - Cloudflare Tunnel configured for your domain
-
-See [`docs/SETUP.md`](docs/SETUP.md) for the full walkthrough.
 
 ---
 
