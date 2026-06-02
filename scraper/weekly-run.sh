@@ -56,6 +56,15 @@ else
   git commit -m "digest: week of $DATE"
   git push origin main >> "$LOG" 2>&1
   log "Committed and pushed digest for $DATE"
+
+  # Build and deploy immediately — deploy.sh would skip this since the
+  # server itself just made the commit (git pull returns "already up to date")
+  log "Building Hugo site..."
+  cd "$REPO/site"
+  hugo --minify --baseURL "https://modernworkweekly.com" >> "$LOG" 2>&1
+  log "Syncing to web root..."
+  rsync -a --delete "$REPO/site/public/" /opt/modern-work-weekly/site/public/ >> "$LOG" 2>&1
+  log "Site deployed"
 fi
 
 log "===== Weekly run complete ====="
