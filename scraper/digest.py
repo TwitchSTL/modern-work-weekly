@@ -223,9 +223,14 @@ def load_draft(path: Path) -> dict:
 
 
 def build_prompt(draft: dict) -> str:
-    # Compact the grouped items to save tokens — keep title, body, phase, admin_action
+    # Compact the grouped items to save tokens — keep title, body, phase, admin_action.
+    # Cap at 8 items per category (most recent first) to keep input within model limits.
+    # With 6 pillars × 8 items the prompt stays well under 8k input tokens.
+    MAX_PER_CAT = 8
     compact = {}
     for cat, items in draft.get("grouped_items", {}).items():
+        # Sort by date descending so the cap keeps the most recent items
+        sorted_items = sorted(items, key=lambda x: x.get("date", ""), reverse=True)
         compact[cat] = [
             {
                 "title": item["title"],
@@ -235,7 +240,7 @@ def build_prompt(draft: dict) -> str:
                 "admin_action": item.get("admin_action"),
                 "url": item.get("url", ""),
             }
-            for item in items
+            for item in sorted_items[:MAX_PER_CAT]
         ]
 
     return DIGEST_PROMPT_TEMPLATE.format(
@@ -251,7 +256,7 @@ def call_claude(prompt: str) -> str:
     log.info("Calling Claude API (claude-sonnet-4-6)...")
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=8192,
+        max_tokens=16000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt}],
     )
