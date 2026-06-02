@@ -12,8 +12,8 @@
 set -euo pipefail
 
 REPO="/opt/modern-work-weekly/repo"
-SCRAPER="/opt/modern-work-weekly/scraper"
-VENV="$SCRAPER/.venv/bin/activate"
+SCRAPER_DIR="$REPO/scraper"
+VENV="/opt/modern-work-weekly/scraper/.venv/bin/activate"
 LOG="/var/log/mww-weekly.log"
 DATE=$(date +%Y-%m-%d)
 
@@ -28,17 +28,18 @@ source "$VENV"
 # Sync repo — discard any local health.json drift first so pull succeeds
 cd "$REPO"
 git checkout -- site/data/health.json 2>/dev/null || true
+git checkout -- site/data/deadlines.json 2>/dev/null || true
 git pull origin main >> "$LOG" 2>&1
 log "Repo up to date"
 
 # Scrape all sources
 log "Running scraper..."
-python3 "$SCRAPER/scraper.py" --force-all >> "$LOG" 2>&1
+python3 "$SCRAPER_DIR/scraper.py" --force-all >> "$LOG" 2>&1
 log "Scraper done"
 
 # Generate digest
 log "Running digest..."
-python3 "$SCRAPER/digest.py" >> "$LOG" 2>&1
+python3 "$SCRAPER_DIR/digest.py" >> "$LOG" 2>&1
 log "Digest done"
 
 # Commit anything new
@@ -46,7 +47,8 @@ cd "$REPO"
 git add site/content/posts/ \
         site/content/exec/ \
         site/static/search.json \
-        site/data/health.json 2>/dev/null || true
+        site/data/health.json \
+        state/health_baseline.json 2>/dev/null || true
 
 if git diff --cached --quiet; then
   log "Nothing new to commit — skipping push"
