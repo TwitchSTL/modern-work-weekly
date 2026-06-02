@@ -11,7 +11,7 @@ Each source has:
   - health: True if this is a known-issues/service-health source (routed separately)
   - json_api: True if the rss field is a JSON endpoint (not RSS/Atom) — uses fetch_json_status()
 
-Last reviewed: 2026-05-28
+Last reviewed: 2026-06-01
 Changes from prior version:
   - Teams: switched from /officeupdates/teams-admin (per-build admin changelog) to
     TechCommunity Teams blog, which publishes monthly "What's New" feature digests
@@ -174,16 +174,66 @@ SOURCES = [
         "rss": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/bg-p/MicrosoftEndpointManagerBlog/rss/board?board.id=MicrosoftEndpointManagerBlog",
         "selector": "h2, h3, p",
     },
-    # Viva What's New — JS-rendered, no static scrapable URL confirmed.
-    # Re-enable when Microsoft publishes a static page.
-    # {
-    #     "name": "Viva",
-    #     "url": "TODO",
-    #     "cadence": "monthly",
-    #     "category": "Apps",
-    #     "rss": None,
-    #     "selector": "h2, h3, p",
-    # },
+    {
+        "name": "Microsoft 365 Copilot",
+        # Monthly "What's New in Microsoft 365 Copilot" posts — the primary Copilot
+        # feature update signal for Modern Work engineers.
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot/bg-p/Microsoft365CopilotBlog",
+        "cadence": "monthly",
+        "category": "Apps",
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot/bg-p/Microsoft365CopilotBlog/rss/board?board.id=Microsoft365CopilotBlog",
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Copilot Studio",
+        # TechCommunity blog for Copilot Studio (formerly Power Virtual Agents) —
+        # covers agent-building features, connectors, and platform updates.
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-copilot-studio/bg-p/MicrosoftCopilotStudio",
+        "cadence": "monthly",
+        "category": "Visibility & Automation",
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-copilot-studio/bg-p/MicrosoftCopilotStudio/rss/board?board.id=MicrosoftCopilotStudio",
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Power Platform",
+        # Microsoft Power Platform TechCommunity blog — Power Automate, Power Apps,
+        # and Power BI updates relevant to Modern Work automation workflows.
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-power-platform/bg-p/PowerPlatform",
+        "cadence": "monthly",
+        "category": "Visibility & Automation",
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-power-platform/bg-p/PowerPlatform/rss/board?board.id=PowerPlatform",
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Microsoft Viva",
+        # TechCommunity blog covering Viva Insights, Viva Learning, Viva Engage,
+        # and other Viva suite updates — monthly cadence.
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-viva-blog/bg-p/MicrosoftVivaBlog",
+        "cadence": "monthly",
+        "category": "Apps",
+        "rss": "https://techcommunity.microsoft.com/t5/microsoft-viva-blog/bg-p/MicrosoftVivaBlog/rss/board?board.id=MicrosoftVivaBlog",
+        "selector": "h2, h3, p",
+    },
+    {
+        "name": "Microsoft Security Response Center",
+        # MSRC publishes CVE advisories and patch guidance for Windows, Edge, and
+        # M365 apps. High-signal source for security-conscious Modern Work engineers.
+        "url": "https://msrc.microsoft.com/update-guide/",
+        "cadence": "rolling",
+        "category": "Visibility & Automation",
+        "rss": "https://api.msrc.microsoft.com/update-guide/rss",
+        "selector": None,
+    },
+    {
+        "name": "Microsoft Mechanics",
+        # Microsoft's official technical how-to YouTube channel — step-by-step videos
+        # on deploying and configuring M365 services. YouTube Atom feed via feedparser.
+        "url": "https://www.youtube.com/@MicrosoftMechanics",
+        "cadence": "rolling",
+        "category": "Visibility & Automation",
+        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ9905MRHxwLZ2jeNQGIWxQ",
+        "selector": None,
+    },
     {
         "name": "Global Secure Access",
         # Switched from Windows client release history (version numbers only) to the
