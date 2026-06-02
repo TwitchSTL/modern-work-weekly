@@ -17,6 +17,10 @@ Scraped from 17+ Microsoft sources · Drafted by Claude · Published every Tuesd
 
 ---
 
+![Site preview](docs/screenshots/homepage.png)
+
+---
+
 ## What this is
 
 **Modern Work** is Microsoft's framework for secure, cloud-connected productivity — built around Microsoft 365 and the **Zero Trust** security model. Modern Work engineers own the full stack: identity (Entra ID), device compliance (Intune), data protection (Purview), threat detection (Defender), and network access (Global Secure Access).
@@ -127,6 +131,17 @@ Three cron jobs run automatically on a self-hosted LXC:
 | `lxc/bootstrap.sh` | Fresh Ubuntu 24.04 LXC setup — installs all dependencies |
 | `caddy/Caddyfile` | Caddy reverse proxy config (serves on :8080 behind Cloudflare Tunnel) |
 | `cloudflare/tunnel.yml` | Cloudflare Tunnel config reference |
+
+</details>
+
+<details>
+<summary><strong>docs/</strong> — Reference documentation</summary>
+
+| File | Description |
+|---|---|
+| `SETUP.md` | Full initial setup guide — LXC to live site |
+| `WEEKLY_WORKFLOW.md` | Weekly pipeline reference and troubleshooting |
+| `PIPELINE.md` | Claude API and digest pipeline internals |
 
 </details>
 
