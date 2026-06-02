@@ -102,11 +102,13 @@ Format rules:
 
 Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, cyber insurance requirements, GDPR, state privacy laws.
 
-Source citations — executives trust named references, not raw URLs:
-- At the end of each section (except "The Week at a Glance"), include a single line formatted exactly as:
+Source citations — REQUIRED. Executives trust named references, not raw URLs:
+- At the end of EVERY section (including Risk & Compliance, Planning Horizon, and If You Take No Action), you MUST include a line formatted exactly as:
   `*Sources: [Descriptive Name](url) · [Descriptive Name](url)*`
-- Use 1–3 sources per section, drawn from the raw data URLs. Name them meaningfully: "Microsoft Threat Intelligence", "Entra What's New", "M365 Roadmap", "Intune What's New", "Microsoft Security Blog", etc. Never paste a raw URL as the link text.
-- Omit the Sources line if no relevant URLs are available for that section.
+- Use 1–3 sources per section, drawn from the raw data URLs. Name them meaningfully: "Microsoft Threat Intelligence", "Entra What's New", "M365 Roadmap", "Intune What's New", "Microsoft Security Blog", "Intune What's New", "Purview What's New", etc. Never paste a raw URL as the link text.
+- In the Risk & Compliance table, hyperlink the item name in the Change column to its source URL: e.g. **[Storm-2949 breach via stolen identity](url)**
+- In the Planning Horizon table, hyperlink the item name in the Item column to its source URL where available.
+- Do NOT omit the Sources line from any section — if no URL is available for a section, link to the most relevant Microsoft documentation page for that topic.
 
 Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board."""
 

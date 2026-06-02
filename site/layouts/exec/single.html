@@ -12,12 +12,22 @@
       {{ with .Params.description }}
       <p class="post-description">{{ . }}</p>
       {{ end }}
+      {{/* Prominent link to the technical digest — shown in header, not just footer */}}
+      {{ $techPost := site.GetPage (printf "/posts/%s" (.Date.Format "2006-01-02")) }}
+      {{ if $techPost }}
+      <a class="exec-tech-link-header" href="{{ $techPost.Permalink }}">
+        🔧 Technical digest for this week →
+      </a>
+      {{ end }}
     </header>
 
     <div class="wip-banner">
       <span class="wip-banner-icon">🚧</span>
       <span><strong>Work in Progress</strong> — The Executive's Guide is auto-generated and reviewed weekly. Content quality improves over time. Verify key details before sharing with leadership.</span>
     </div>
+
+    {{/* Risk dashboard — HIGH / MED / LOW counts, populated by exec-nav.js */}}
+    <div class="exec-risk-dashboard" id="exec-risk-dashboard"></div>
 
     {{/* Jump-to navigation — built from h2 headings by exec-nav.js */}}
     <nav class="exec-toc" id="exec-toc" aria-label="Jump to section">
@@ -30,8 +40,6 @@
     </div>
 
     <footer class="post-footer exec-footer">
-      {{/* Cross-link to the technical digest for the same week */}}
-      {{ $techPost := site.GetPage (printf "/posts/%s" (.Date.Format "2006-01-02")) }}
       {{ if $techPost }}
       <p class="exec-cross-link">
         For your IT team: <a href="{{ $techPost.Permalink }}">technical digest for this week →</a>
@@ -55,5 +63,5 @@
 
   </article>
 </div>
-<script src="/js/exec-nav.js"></script>
+<script src="/js/exec-nav.js?v={{ now.Unix }}"></script>
 {{ end }}

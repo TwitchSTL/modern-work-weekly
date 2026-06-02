@@ -2167,6 +2167,117 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 /* ── Executive's Guide ───────────────────────────────────────────────── */
+
+/* Risk dashboard — HIGH / MED / LOW count chips above the jump-to nav */
+.exec-risk-dashboard {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  flex-wrap: wrap;
+}
+.exec-risk-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid;
+}
+.exec-risk-chip-high { color: #ff6b6b; border-color: rgba(255,107,107,0.3); background: rgba(255,107,107,0.08); }
+.exec-risk-chip-med  { color: #f0883e; border-color: rgba(240,136,62,0.3);  background: rgba(240,136,62,0.08);  }
+.exec-risk-chip-low  { color: #3fb950; border-color: rgba(63,185,80,0.3);   background: rgba(63,185,80,0.08);   }
+.exec-risk-chip-count { font-size: 0.95rem; font-weight: 800; line-height: 1; }
+
+/* Technical digest cross-link — shown in header, prominent */
+.exec-tech-link-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  border: 1px solid rgba(46,168,184,0.3);
+  padding: 0.3rem 0.85rem;
+  border-radius: 6px;
+  background: rgba(46,168,184,0.06);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.exec-tech-link-header:hover {
+  background: rgba(46,168,184,0.14);
+  text-decoration: none;
+}
+
+/* Expand / collapse all buttons inside the jump-to nav */
+.exec-toc-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.exec-toggle-btn {
+  font-size: 0.67rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.exec-toggle-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--color-text);
+}
+
+/* Risk-colored left-border on section cards */
+.exec-section-collapsible.exec-risk-high { border-left: 3px solid #ff6b6b; }
+.exec-section-collapsible.exec-risk-med  { border-left: 3px solid #f0883e; }
+.exec-section-collapsible.exec-risk-low  { border-left: 3px solid #3fb950; }
+
+/* Risk-colored table rows */
+.exec-row-high td { background: rgba(255,107,107,0.06) !important; }
+.exec-row-high td:first-child { border-left: 3px solid rgba(255,107,107,0.5); }
+.exec-row-med  td { background: rgba(240,136,62,0.06)  !important; }
+.exec-row-med  td:first-child { border-left: 3px solid rgba(240,136,62,0.5); }
+.exec-row-low  td { background: rgba(63,185,80,0.06)   !important; }
+.exec-row-low  td:first-child { border-left: 3px solid rgba(63,185,80,0.5); }
+
+/* Anchor share link on section summaries */
+.exec-section-anchor {
+  margin-left: auto;
+  font-size: 0.7rem;
+  opacity: 0;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0 0.3rem;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.exec-section-summary:hover .exec-section-anchor { opacity: 0.5; }
+.exec-section-anchor:hover { opacity: 1 !important; color: var(--color-accent); }
+
+/* Source citation block at the bottom of each section */
+.exec-sources-block {
+  margin-top: 1.1rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+.exec-sources-block a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.exec-sources-block a:hover { text-decoration: underline; }
+
 .exec-list-header {
   padding: 2rem 0 1.5rem;
   border-bottom: 1px solid var(--color-border);
