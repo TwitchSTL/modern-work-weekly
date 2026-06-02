@@ -51,7 +51,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
         "cadence": "monthly",
         "category": "Identity & Access",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity/rss/board?board.id=Identity",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-entra-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -245,7 +245,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/whats-new",
         "cadence": "monthly",
         "category": "Network",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bg-p/Identity/rss/board?board.id=Identity",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-entra-blog",
         "selector": "h2, h3, p",
     },
 
