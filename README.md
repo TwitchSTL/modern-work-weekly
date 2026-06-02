@@ -11,7 +11,7 @@
 [![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
 **A self-hosted, fully automated Microsoft 365 change digest.**  
-Scraped from 17+ Microsoft sources · Drafted by Claude · Published every Tuesday
+Scraped from 23+ Microsoft sources · Drafted by Claude · Published every Tuesday
 
 </div>
 
@@ -70,11 +70,12 @@ Three cron jobs run automatically on a self-hosted LXC:
 |---|---|
 | 🪪 Identity & Access | Entra ID |
 | 💻 Endpoint Management | Intune, Autopilot, Windows 365, Windows Autopatch |
-| 🛡️ Security | Defender XDR, Defender for Endpoint, Defender for Identity, Defender for Office 365 |
+| 🛡️ Security | Defender XDR, Defender for Endpoint, Defender for Identity, Defender for Office 365, Microsoft Security Response Center |
 | 💬 Collaboration | Teams, SharePoint / OneDrive, Exchange Online |
 | 🗄️ Data | Purview |
 | 🌐 Network | Global Secure Access |
-| 📊 Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog, Agent 365 |
+| 🤖 Apps & AI | Microsoft 365 Copilot, Microsoft Viva, Agent 365, Copilot Studio, Power Platform |
+| 📊 Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog, Microsoft Mechanics |
 | 🩺 Known Issues *(every 8h)* | Intune, Autopilot, Windows 365, Defender XDR, Purview, Entra ID, Windows Release Health, Azure Status, M365 Service Status |
 
 ---
