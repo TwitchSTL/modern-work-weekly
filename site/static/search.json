@@ -1,5 +1,208 @@
 [
   {
+    "title": "Active npm supply chain attacks targeting dev and CI/CD environments",
+    "category": "Top 5 This Week",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "Two separate campaigns (dependency confusion via 33 malicious packages, and the Mini Shai-Hulud typosquatting campaign) are actively harvesting credentials from GitHub, AWS, Kubernetes, Vault, npm, and 1Password. If your"
+  },
+  {
+    "title": "Microsoft Agent 365 is generally available",
+    "category": "Top 5 This Week",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "The control plane for governing, observing, and securing AI agents at scale has shipped. If you're running Copilot Studio agents in production, this is your primary tool for agent sprawl management and security posture. "
+  },
+  {
+    "title": "Computer-using agents in Copilot Studio are GA",
+    "category": "Top 5 This Week",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "Agents can now drive UI-based workflows in legacy web apps and vendor portals without APIs. This is a significant capability unlock, but it also means agents can take real actions in systems outside your normal governanc"
+  },
+  {
+    "title": "Three new AI model tiers land in M365 Copilot simultaneously",
+    "category": "Top 5 This Week",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "Claude Opus 4.8, GPT-5.5 Instant, and GPT-5.5 Thinking are all now available or rolling out. GPT-5.5 Thinking (Reasoning) is in Copilot Studio early release environments. Model availability affects data residency and com"
+  },
+  {
+    "title": "The Gentlemen ransomware: aggressive self-propagating Go encryptor",
+    "category": "Top 5 This Week",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "Storm-2697 affiliate ransomware combines per-file ephemeral key encryption with simultaneous lateral movement techniques across the entire network. Read the full analysis and validate your lateral movement detection rule"
+  },
+  {
+    "title": "Microsoft Entra: Account Discovery for Application Access Governance",
+    "category": "Identity",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[Preview] — If you have applications with local or orphaned accounts outside Entra ID Governance, this feature is the on-ramp to bringing that shadow access under control. Now in preview with GA targeting June 2026, it d"
+  },
+  {
+    "title": "Microsoft recognized as a Leader in The Forrester Wave™ for Workforce Identity Security Platforms",
+    "category": "Identity",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Highest scores in both current offering and strategy categories. Useful validation for ongoing platform consolidation conversations with stakeholders who still ask why Entra over point solutions."
+  },
+  {
+    "title": "Microsoft Security success stories: How St. Luke's and ManpowerGroup are securing AI foundations",
+    "category": "Identity",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Real-world case studies on embedding identity and governance controls as the foundation for AI expansion rather than bolting them on later. Worth reading if you're building the business case for tightening identit"
+  },
+  {
+    "title": "Microsoft is named a Leader in the 2026 Gartner® Magic Quadrant™ for Endpoint Protection",
+    "category": "Devices",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Continued Leader positioning in the MQ. If you're still running a third-party EPP alongside Defender for Endpoint, this is another data point for consolidation conversations — the integration story with the rest o"
+  },
+  {
+    "title": "Mini Shai Hulud: Compromised @antv npm packages enable CI/CD credential theft",
+    "category": "Devices",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Malware executes at npm install time on Linux-based build runners and exfiltrates credentials for GitHub, AWS, Kubernetes, Vault, npm, and 1Password. If your CI/CD agents run as identities with broad permissions, "
+  },
+  {
+    "title": "The Gentlemen ransomware: Dissecting a self-propagating Go-based encryptor",
+    "category": "Network",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Storm-2697 affiliate ransomware uses per-file ephemeral key encryption and launches simultaneous lateral movement techniques across the whole network, not sequential pivoting. Your detection rules need to account "
+  },
+  {
+    "title": "Microsoft Agent 365, now generally available, expands capabilities and integrations",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Your control plane for observing, governing, and securing AI agents at scale is now shipping. As agent sprawl becomes a real operational problem, this is the tool that gives you visibility into what agents exist, "
+  },
+  {
+    "title": "NEW UPDATES: Administering and Governing Agents whitepaper v3.2",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Version 3.2 adds security and observability guidance with Agent 365, plus agent discoverability coverage. If your governance documentation is based on an earlier version, update your internal runbooks — the agent "
+  },
+  {
+    "title": "Computer-using agents in Microsoft Copilot Studio are now generally available",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Agents can now automate UI-driven workflows in legacy systems and vendor portals without API access. This closes a major automation gap but introduces new risk: agents interacting with systems outside your API gov"
+  },
+  {
+    "title": "Agent Evaluation in Microsoft Copilot Studio is now generally available",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Systematic agent behavior testing at scale is now a first-class feature. For any agent handling sensitive data or high-stakes workflows, make structured evaluation runs part of your release gate — spot-checking is"
+  },
+  {
+    "title": "Automate agent evaluation with the Evaluation APIs",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Evaluation APIs let you integrate agent testing into your existing CI/CD pipelines. If you're shipping agents through a DevOps process, wire these up now to prevent regressions from reaching production."
+  },
+  {
+    "title": "Work IQ API public preview: Build Copilot powered agents with A2A",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[Preview] — Programmatic access to Copilot's grounding, context, and reasoning is now available via A2A, MCP, and REST. GA billing model (pay-as-you-go) is on the roadmap for June 2026. If your dev teams are building cus"
+  },
+  {
+    "title": "Microsoft Copilot (Microsoft 365): Work IQ APIs: Pay-As-You-Go Consumption",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Metered billing for Work IQ API access lands in June 2026, letting developers invoke agents without pre-assigned M365 Copilot licenses. Understand the billing model before usage scales — ensure you have cost contr"
+  },
+  {
+    "title": "Malicious npm packages abuse dependency confusion to profile developer environments",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — 33 packages used dependency confusion to collect reconnaissance from dev and build environments. Enforce private registry scoping, use lockfiles, and validate npm install operations in your build pipelines against"
+  },
+  {
+    "title": "Typosquatted npm packages used to steal cloud and CI/CD secrets",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — The Mini Shai-Hulud campaign targets cloud and CI/CD credentials via typosquatted package names. Cross-reference your package.json dependencies against the IOCs in this report and enforce package name allowlisting"
+  },
+  {
+    "title": "From poisoned search results to GPU mining: A cryptojacking campaign abusing ScreenConnect and Microsoft .NET utilities",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — SEO poisoning and AI chatbot result surfacing are being used to deliver ScreenConnect-based cryptojacking payloads to high-performance workstations. If your users have developer machines or GPU-enabled devices, en"
+  },
+  {
+    "title": "From edge appliance to enterprise compromise: Multi-stage Linux intrusion via F5 and Confluence",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Attack chain starts at an exposed F5 BIG-IP, pivots to Confluence for credential theft, then attempts Kerberos relay and lateral movement. If you have exposed F5 or Confluence instances, treat them as high-priorit"
+  },
+  {
+    "title": "What's new in Microsoft Security: May 2026",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Monthly rollup covering expanded visibility and control across AI and hybrid ecosystems. Worth bookmarking as a reference for the full feature delta if you need to brief leadership on the security posture improvem"
+  },
+  {
+    "title": "Microsoft 365 admin center: Organizational Data – Granular access policy controls for custom attributes",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[Preview] — Custom HR attributes in Organizational Data can now be released to specific users or groups rather than broadcast to all employees or all managers. This is a meaningful improvement for organizations handling "
+  },
+  {
+    "title": "Read-only analytics access and custom metrics now available in Microsoft Copilot Studio",
+    "category": "Visibility & Automation",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Stakeholders can now get analytics visibility without needing admin-level permissions in Copilot Studio. Use this to give business owners and security reviewers insight into agent behavior without expanding your a"
+  },
+  {
+    "title": "Available today: Anthropic Claude Opus 4.8 in Microsoft 365 Copilot",
+    "category": "Apps",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — Claude Opus 4.8 is live in Copilot Cowork (Frontier) and rolling out to Copilot Chat, Excel, PowerPoint, and Copilot Studio. Designed for complex multi-step coding and long-horizon agentic work. Verify your data g"
+  },
+  {
+    "title": "Available today: GPT-5.5 Instant in Microsoft 365 Copilot",
+    "category": "Apps",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — GPT-5.5 Instant is now the default everyday model in M365 Copilot and Copilot Studio with improved image analysis and STEM task performance. No admin action required, but worth communicating to users who may notic"
+  },
+  {
+    "title": "Available today: GPT-5.5 Thinking and ChatGPT Images 2.0 in Microsoft 365 Copilot",
+    "category": "Apps",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — GPT-5.5 Thinking (Reasoning) is rolling out across Copilot Chat, Word, Excel, and PowerPoint; ChatGPT Images 2.0 is live in Copilot in PowerPoint. If your environment restricts image generation features via Copilo"
+  },
+  {
+    "title": "Word: Legal Agent in Frontier",
+    "category": "Apps",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "[GA] — A purpose-built agent for contract redlining and counterparty review is now in Frontier. Legal teams will want to pilot this, but IT needs to ensure document sensitivity labels and DLP policies are configured to g"
+  },
+  {
     "title": "Entra Connect Sync → Cloud Sync migration signal is live.",
     "category": "Top 5 This Week",
     "date": "2026-05-26",
