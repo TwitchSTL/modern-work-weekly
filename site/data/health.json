@@ -1,723 +1,614 @@
 {
-  "updated": "2026-05-26",
+  "updated": "2026-06-02",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 131,
+  "total_count": 92,
+  "total_new_count": 0,
   "sources": [
     {
       "name": "Intune Known Issues",
-      "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#apps-deployed-with-configuration-manager-take-a-long-time-to-load-on-the-windows-apps-page-in-company-portal",
       "count": 21,
+      "new_count": 0,
       "items": [
         {
           "title": "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
           "body": "There's a known issue in Company Portal where Windows apps deployed with Configuration Manager might take multiple seconds (up to a few minutes) to load on the Windows apps page. Microsoft is investigating this issue and will update this article when more information becomes available.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#apps-deployed-with-configuration-manager-take-a-long-time-to-load-on-the-windows-apps-page-in-company-portal",
+          "is_new": false
         },
         {
           "title": "Azure enterprise applications aren't displayed in the Company Portal for Windows or the Intune Company Portal website",
           "body": "Microsoft is investigating this issue and will update this article when more information becomes available.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#azure-enterprise-applications-arent-displayed-in-the-company-portal-for-windows-or-the-intune-company-portal-website",
+          "is_new": false
         },
         {
           "title": "Remediation message doesn't list all valid builds in Company Portal for Windows 10/11",
           "body": "We are aware of an issue with the noncompliance messaging details that appear in Company Portal for Windows 10/11 devices. When a device is identified as noncompliant due to having a Windows build outside the ranges an admin specifies in the Intune compliance policy, a remediation message is display",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#remediation-message-doesnt-list-all-valid-builds-in-company-portal-for-windows-1011",
+          "is_new": false
         },
         {
           "title": "A limited number of macOS devices may be unexpectedly unenrolled from the Microsoft Intune service",
           "body": "There's a known issue (originally posted on the Service Health Dashboard as IT393575) where, occasionally, the enrollment of a macOS device fails or the device might become unenrolled because the MDM agent mishandles failed MDM certificate installations. When this issue occurs and the MDM agent does",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#a-limited-number-of-macos-devices-may-be-unexpectedly-unenrolled-from-the-microsoft-intune-service",
+          "is_new": false
         },
         {
           "title": "Android 12 clipboard data toast notification",
           "body": "Android 12 introduced a toast notification when an application accesses the clipboard, regardless of whether the device is MDM enrolled or if apps are protected by app protection policies. Users running Android Company Portal version 5.0.5450.0 or later may notice an unexpected toast notification wh",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#android-12-clipboard-data-toast-notification",
+          "is_new": false
         },
         {
           "title": "Android devices lose access to Intune-managed resources after upgrading to Android 12",
           "body": "The issue where customers lose access to Microsoft Intune-managed resources or are prevented from completing enrollment after upgrading certain devices from Android 11 to Android 12 has been resolved. The impacted brands included OPPO, OnePlus, and Realme devices enrolled as Android Enterprise perso",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#android-devices-lose-access-to-intune-managed-resources-after-upgrading-to-android-12",
+          "is_new": false
         },
         {
           "title": "Several Office settings in settings catalog do not automatically enable the parent setting",
           "body": "We recently identified several Office settings in the settings catalog that, when enabled, do not automatically enable the required parent setting. This can lead to the policy not applying as expected if you did not configure the parent setting. To help identify which configuration settings have thi",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#several-office-settings-in-settings-catalog-do-not-automatically-enable-the-parent-setting",
+          "is_new": false
         },
         {
           "title": "Android Enterprise device filtering not supported in some reports",
           "body": "We're aware of an issue where granular OS filtering isn't working as expected for corporate-owned Android Enterprise devices when exporting theAll devices reportfrom the Microsoft Intune admin center, when exporting theDevicesWithInventoryandDevicesreports using the Export API, or when making native",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#android-enterprise-device-filtering-not-supported-in-some-reports",
+          "is_new": false
         },
         {
           "title": "Missing certificates after updating Samsung work profile devices to Android 12",
           "body": "We're aware of an issue that affects Samsung devices enrolled with a work profile. After updating to Android 12, these devices are missing certificates when a user tries to access Gmail or AnyConnect VPN. For more information and temporary workarounds, seeKnown Issue: Missing certificates after upda",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#missing-certificates-after-updating-samsung-work-profile-devices-to-android-12",
+          "is_new": false
         },
         {
           "title": "Long sync times in Intune for Managed Google Play private apps and web apps",
           "body": "Admins who recently published a new Managed Google Play web or line-of-business (LOB) app will notice delays for those apps to sync to Intune. After selecting Sync from either the Microsoft Intune admin center or the Google Play console, it can take six hours or longer for the new apps to appear in ",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#long-sync-times-in-intune-for-managed-google-play-private-apps-and-web-apps",
+          "is_new": false
         },
         {
           "title": "Fully managed Samsung devices are noncompliant after managed update",
           "body": "Samsung devices provisioned as Android Enterprise fully managed devices running Android 11 and later show as noncompliant after a managed update is applied. This could potentially affect access to corporate resources, depending on the Conditional Access policies set by the IT administrator. For more",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#fully-managed-samsung-devices-are-noncompliant-after-managed-update",
+          "is_new": false
         },
         {
           "title": "Common issues with Intune policy reports",
           "body": "We are aware of some common issue with Intune policy reports, including multiple records for a single device, inaccurate \"pending\" status, and inconsistencies between data in report lists and in summary charts. We are working on reporting improvements for better performance and new capabilities for ",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#common-issues-with-intune-policy-reports",
+          "is_new": false
         },
         {
           "title": "Users are signed out of managed iOS Office apps",
           "body": "We are aware of an issue that can affect organization using app protection policies (APP, also known as MAM) to manage their mobile Office apps. In this scenario, users are signed out ofallOffice mobile apps once they sign out of a single Office app (or if they are automatically signed out of an app",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#users-are-signed-out-of-managed-ios-office-apps",
+          "is_new": false
         },
         {
           "title": "Known issues with filters in Microsoft Intune",
           "body": "There are some known issues with filters in Microsoft Intune. This feature became generally available in February 2021. We are tracking remaining known issues with this feature inFilters Public Preview - Overview and Known Issues, which also includes common questions and documentation links.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#known-issues-with-filters-in-microsoft-intune",
+          "is_new": false
         },
         {
           "title": "App install lifecycle or app install history status might be inaccurate",
           "body": "We are aware of an issue within the Troubleshooting + support blade where the Devices table > columnApp install lifecyclemight show a status of \"Failure\" even if there are no issues with the apps on the device. Additionally, if you load the Managed Apps view for the impacted device and select a targ",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#app-install-lifecycle-or-app-install-history-status-might-be-inaccurate",
+          "is_new": false
         },
         {
           "title": "Launching protected apps on Samsung A10 with biometric authorization cause the device to crash",
           "body": "There is a known issue with the Android 10 Samsung A10 biometric authorization (face recognition/thumbprint). Launching any apps with app protection policies (APP, also known as MAM) on an Android 10 Samsung A10 with biometric authorization enabled will cause the device to crash. We have disabled bi",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#launching-protected-apps-on-samsung-a10-with-biometric-authorization-cause-the-device-to-crash",
+          "is_new": false
         },
         {
           "title": "Password reset issues for Intune-enrolled devices with iOS 13+",
           "body": "Intune shared a known issue in MC203629, whereby approximately 1% of devices Intune enrolled with iOS 13+ do not return the token needed to allow a password reset. Apple addressed the bug in 13.3.1 and higher, however, simply updating to 13.3.1 cannot fix already-enrolled devices. Devices without a ",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#password-reset-issues-for-intune-enrolled-devices-with-ios-13",
+          "is_new": false
         },
         {
           "title": "Profile error enrolling iOS devices with Apple Configurator",
           "body": "We are aware of an issue whenenrolling and iOS devices with Apple Configuratorfor Setup Assistant enrollment. After acceptingApply configurationon the device, you might see the error: \"Invalid Profile: The configuration for your iPad/iPhone could not be downloaded from [Your Organization Name].\" Thi",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#profile-error-enrolling-ios-devices-with-apple-configurator",
+          "is_new": false
         },
         {
           "title": "iOS certificate-based authentication issue with Pulse Secure 7.0.0 and Check Point Capsule Connect versions 1.600",
           "body": "There are issues with certificate-based authentication when using the Pulse Secure VPN client for iOS, version 7.0 and Check Point Capsule Connect version 1.600 for iOS. Specifically, both VPN clients may report that the certificate is missing from the device, even when the certificate has been prop",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#ios-certificate-based-authentication-issue-with-pulse-secure-700-and-check-point-capsule-connect-versions-1600",
+          "is_new": false
         },
         {
           "title": "\"Rename device\" setting disabled for Microsoft Entra hybrid joined Windows devices",
           "body": "In the Intune admin center, we've disabled the \"Rename device setting\" for Windows devices that are Microsoft Entra hybrid joined. This is to prevent device single sign-on errors that might occur after a user changes their password. Device renaming is available for co-managed devices that are Micros",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#rename-device-setting-disabled-for-microsoft-entra-hybrid-joined-windows-devices",
+          "is_new": false
         },
         {
           "title": "iOS/iPadOS or macOS device unenrollment through management profile deletion may not be reflected in Microsoft Intune",
           "body": "There is a known issue where the enrollment status of an iOS/iPadOS or macOS device may not update correctly in Microsoft Intune if a user manually deletes the management profile. The device will be unenrolled from Intune, but it may not be reflected in Microsoft Intune admin center for 30 days.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#iosipados-or-macos-device-unenrollment-through-management-profile-deletion-may-not-be-reflected-in-microsoft-intune",
+          "is_new": false
         }
       ]
     },
     {
       "name": "Windows 365 Known Issues",
-      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#first-time-cloud-pc-sign-in-triggers-an-impossible-travel-location-alert",
       "count": 16,
+      "new_count": 0,
       "items": [
         {
           "title": "First-time Cloud PC sign-in triggers an impossible travel location alert",
           "body": "When you use Conditional Access, a user who signs in to a Cloud PC for the first time might trigger an impossible travel location alert.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#first-time-cloud-pc-sign-in-triggers-an-impossible-travel-location-alert",
+          "is_new": false
         },
         {
           "title": "Watermarking support in Windows 365",
           "body": "Watermarking support is configured on session hosts and enforced by the Remote Desktop client. You can configure Watermarking support by configuring a Group Policy Object (GPO) or the Intune Settings Catalog. The default for the QR code embedded content setting doesn't allow administrators to look u",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#watermarking-support-in-windows-365",
+          "is_new": false
         },
         {
           "title": "Missing Start menu and taskbar when using iPad and the Remote Desktop app to access a Cloud PC",
           "body": "When non-local admin users sign in to a Cloud PC by using an iPad and the Microsoft Remote Desktop app, the Start menu and taskbar might be missing from the Windows 11 user interface.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#missing-start-menu-and-taskbar-when-using-ipad-and-the-remote-desktop-app-to-access-a-cloud-pc",
+          "is_new": false
         },
         {
           "title": "Restore and automatic rolling credentials",
           "body": "Many devices registered with Active Directory might have a machine account password that is automatically updated. By default, these passwords are updated every 30 days. This automation applies to hybrid joined PCs but not Microsoft Entra Native PCs. The machine account password is maintained on the",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#restore-and-automatic-rolling-credentials",
+          "is_new": false
         },
         {
           "title": "Cursor's visible location is offset from the actual position",
           "body": "In a remote desktop session, when you select one position in a text file, the cursor in the Cloud PC has some offset with the actual position.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#cursors-visible-location-is-offset-from-the-actual-position",
+          "is_new": false
         },
         {
           "title": "Possible cause",
           "body": "In high DPI mode, both the server and Cloud PC browser scale the cursor. This conflict results in an offset between the visible cursor position and the actual cursor focus.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#possible-cause",
+          "is_new": false
         },
         {
           "title": "Outlook only downloads one month of mail",
           "body": "Outlook only downloads one month of previous mail, which can't be changed in Outlook settings.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#outlook-only-downloads-one-month-of-mail",
+          "is_new": false
         },
         {
           "title": "In-place Windows upgrade might change the computer name",
           "body": "Upgrading an existing Cloud PC between release versions of Windows 10 to Windows 11 might cause the computer name to change to a name that has a prefix of \"pps.\" The Intune device name remains unchanged.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#in-place-windows-upgrade-might-change-the-computer-name",
+          "is_new": false
         },
         {
           "title": "Windows 365 provisioning fails",
           "body": "Windows 365 provisioning might fail if both of the following conditions are met:",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#windows-365-provisioning-fails",
+          "is_new": false
         },
         {
           "title": "Cloud PC reports as not compliant with the compliance policy",
           "body": "The following device compliance settings report asNot applicablewhen being evaluated for a Cloud PC: The following device compliance settings might report asNot Compliantwhen being evaluated for a Cloud PC:",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#cloud-pc-reports-as-not-compliant-with-the-compliance-policy",
+          "is_new": false
         },
         {
           "title": "Single sign-on users see a dialog to allow remote desktop connection during the connection attempt",
           "body": "When you enable single sign-on, users see a prompt to authenticate to Microsoft Entra ID and allow the Remote Desktop connection when launching a connection to a new Cloud PC. Microsoft Entra remembers up to 15 devices for 30 days before prompting again. To connect, users selectYesin this dialog. To",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#single-sign-on-users-see-a-dialog-to-allow-remote-desktop-connection-during-the-connection-attempt-",
+          "is_new": false
         },
         {
           "title": "Single sign-on user connections are being denied through Microsoft Entra Conditional Access",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#single-sign-on-user-connections-are-being-denied-through-microsoft-entra-conditional-access-",
+          "is_new": false
         },
         {
           "title": "Possible cause",
           "body": "To sign in by using single sign-on, the Remote Desktop client requests an access token to the Microsoft Remote Desktop app from Microsoft Entra. In issue in this request process might cause the failed connection.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#possible-cause",
+          "is_new": false
         },
         {
           "title": "Troubleshooting steps",
           "body": "Follow the steps introubleshoot sign-in problems.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#troubleshooting-steps",
+          "is_new": false
         },
         {
           "title": "When a Cloud PC locks, it immediately disconnects single sign-on users",
           "body": "When single sign-on isn't used, users can see the Cloud PC lock screen and enter credentials to unlock their Windows session. However, when single sign-on is used, the Cloud PC fully disconnects the session to enable the following capabilities: ",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#when-a-cloud-pc-locks-it-immediately-disconnects-single-sign-on-users",
+          "is_new": false
         },
         {
           "title": "When single sign-on users connect from an unmanaged device, they aren't asked to reauthenticate to Microsoft Entra ID",
           "body": "When you use single sign-on, all authentication behavior (including supported credential types and sign-in frequency) is driven through Microsoft Entra ID.",
-          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise"
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#when-single-sign-on-users-connect-from-an-unmanaged-device-they-arent-asked-to-reauthenticate-to-microsoft-entra-id-",
+          "is_new": false
         }
       ]
     },
     {
       "name": "Autopilot Known Issues",
-      "url": "https://learn.microsoft.com/en-us/autopilot/known-issues",
-      "count": 24,
+      "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#microsoft-entra-hybrid-join-autopilot-deployments-time-out-with-error-code-0x80004005",
+      "count": 23,
+      "new_count": 0,
       "items": [
-        {
-          "title": "Known issues",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
-        },
         {
           "title": "Microsoft Entra hybrid join Autopilot deployments time out with error code 0x80004005",
           "body": "Date added:February 9, 2026 During Microsoft Entra hybrid join Autopilot deployments, devices might experience timeout errors with error code 0x80004005 in the deployment process. The issue is resolved in:",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#microsoft-entra-hybrid-join-autopilot-deployments-time-out-with-error-code-0x80004005",
+          "is_new": false
         },
         {
           "title": "Local Autopilot Reset can\u00e2\u0080\u0099t be triggered by local administrator when you deny access from network",
           "body": "Date added:January 16, 2026 When a device is configured with an Intune policy that setsDeny access to this computer from the networkfor the local account, the local Windows administrator account can't start a local Windows Autopilot Reset. This issue affects scenarios where administrators rely on th",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#local-autopilot-reset-cant-be-triggered-by-local-administrator-when-you-deny-access-from-network",
+          "is_new": false
         },
         {
           "title": "Devices don't get quality updates during Microsoft Entra hybrid joined deployments",
           "body": "Date added:January 13, 2026 Scans for quality updates offered during OOBE might time out during provisioning for Windows Autopilot Microsoft Entra hybrid joined deployments when theAllow OOBE Updatespolicy is configured in the enrollment status page profile. When this occurs, devices don't get the q",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#devices-dont-get-quality-updates-during-microsoft-entra-hybrid-joined-deployments",
+          "is_new": false
         },
         {
           "title": "Deployment duration in the Windows Autopilot deployment report might include the time for user to sign in at the Windows lock screen",
           "body": "Date added:August 13, 2025 The deployment duration value in the Windows Autopilot report includes the time between enrollment and completion of theAccount setupphase of the Enrollment status page (ESP). As a result, if the ESP is configured to show during theAccount setupphase and a reboot occurred ",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#deployment-duration-in-the-windows-autopilot-deployment-report-might-include-the-time-for-user-to-sign-in-at-the-windows-lock-screen",
+          "is_new": false
         },
         {
           "title": "Enrollment status page Account setup phase isn't shown when signing in via FIDO2 (YubiKey) during self-deploying mode",
           "body": "Date added:August 1, 2025 When Windows Autopilot is used in self-deploying mode with Shared PC mode configured, the Enrollment status page (ESP) Account setup phase isn't shown for users signing in with FIDO2 (YubiKey). Account setup is shown when users sign in via username/password sign-ins. The is",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#enrollment-status-page-account-setup-phase-isnt-shown-when-signing-in-via-fido2-yubikey-during-self-deploying-mode",
+          "is_new": false
         },
         {
           "title": "TPM attestation isn't working for some ST Micro and Nuvoton TPMs",
           "body": "Date added:May 9, 2025Date updated:August 1, 2025 The OEM has resolved the issue. Lenovo customers should work with Lenovo support if they encounter an issue. Platforms with the latest models of TPMs manufactured by ST Micro and Nuvoton that support RSA 3072bit might fail TPM attestation and cause f",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#tpm-attestation-isnt-working-for-some-st-micro-and-nuvoton-tpms",
+          "is_new": false
         },
         {
           "title": "Known issues with the Intune Connector for AD version 6.2501.2000.5",
           "body": "Date added:April 8, 2025Date updated:April 18, 2025 The following issues are under active investigation:",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#known-issues-with-the-intune-connector-for-ad-version-6250120005",
+          "is_new": false
         },
         {
           "title": "Setting up keyboard automatically doesn't accurately update keyboard language",
           "body": "Date added:April 4, 2025Date updated:December 16, 2025 The Windows Autopilot profile setting which enables automatic configuration of the keyboard language based on theLanguage (Region)setting might fail to apply during provisioning due to a known OS issue. To resolve this issue, useKB5072033or abov",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#setting-up-keyboard-automatically-doesnt-accurately-update-keyboard-language",
+          "is_new": false
         },
         {
           "title": "Windows Autopilot report incorrectly shows failure even though the deployment was successful",
           "body": "Date added:February 11, 2025Date updated:March 20, 2025 This issue is resolved. The Windows Autopilot report automatically updates deployment status fromIn progresstoFailedafter 4 hours if Intune didn't receive a success or failure status. It's possible that the report didn't receive the latest stat",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#windows-autopilot-report-incorrectly-shows-failure-even-though-the-deployment-was-successful",
+          "is_new": false
         },
         {
           "title": "Local Administrator Password Solution (LAPS) policy isn't being applied during the Technician Flow",
           "body": "Date added:December 9, 2024 During Windows Autopilot pre-provisioning technical flow, if a LAPS policy is targeted to the device or user, it isn't applied until the user phase begins.",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#local-administrator-password-solution-laps-policy-isnt-being-applied-during-the-technician-flow",
+          "is_new": false
         },
         {
           "title": "Windows Autopilot deployment report and AutopilotEvents Graph API only returns 50 records at a time",
           "body": "Date added:December 4, 2024 In Intune's 2411 release, we've updated the backend infrastructure of the Windows Autopilot deployment report for consistency with other Intune reports. With this change, the Windows Autopilot deployment report and theAutopilotEvents Microsoft Graph APInow return 50 recor",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#windows-autopilot-deployment-report-and-autopilotevents-graph-api-only-returns-50-records-at-a-time",
+          "is_new": false
         },
         {
           "title": "DFCI enrollment fails for Professional editions of Windows 11, version 24H2",
           "body": "Date added:October 9, 2024Date updated:January 15, 2025 DFCI can't currently be configured during the out-of-box experience (OOBE) on devices with Professional editions of Windows 11, version 24H2 For devices that have already been provisioned and have Professional editions of Windows 11, version 24",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#dfci-enrollment-fails-for-professional-editions-of-windows-11-version-24h2",
+          "is_new": false
         },
         {
           "title": "Windows Autopilot deployment report doesn't support sorting",
           "body": "Date added:August 29, 2024 The Windows Autopilot deployment report was updated to a new infrastructure that doesn't currently support column sorting. The issue will be addressed in the future.",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#windows-autopilot-deployment-report-doesnt-support-sorting",
+          "is_new": false
         },
         {
           "title": "Auto logon for Kiosk device profile is fixed",
           "body": "Date added:August 21, 2024Date updated:December 15, 2025 The known issue ofKiosk device profiles not auto logging in when auto logon was enabledwas previously reported as fixed. There were scenarios where the issue could still occur when using autologon with Kiosks andAssigned Access. If multiple re",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#auto-logon-for-kiosk-device-profile-is-fixed",
+          "is_new": false
         },
         {
           "title": "BitLocker encryption defaults to 128-bit when 256-bit encryption is configured",
           "body": "Date added:July 8, 2024 In some Windows Autopilot deployments of unregistered devices, BitLocker encryption might default to 128-bit even though the admin configured 256-bit encryption due to a known race condition. The issue is being investigated. Microsoft recommends that customers who need 256-bi",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#bitlocker-encryption-defaults-to-128-bit-when-256-bit-encryption-is-configured",
+          "is_new": false
         },
         {
           "title": "Required apps aren't shown on the Enrollment Status Page (ESP) after a Windows Autopilot Reset",
           "body": "Date added:May 17, 2024 When a Windows Autopilot Reset happens, the required apps aren't installed on the Enrollment Status Page (ESP) before the user reaches the desktop. The apps aren't tracked on the ESP, but the apps are installed when the user signs in to the desktop.",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#required-apps-arent-shown-on-the-enrollment-status-page-esp-after-a-windows-autopilot-reset",
+          "is_new": false
         },
         {
           "title": "Enrolled date for Windows Autopilot device is incorrect",
           "body": "Date added:November 1, 2023 TheEnrolled datein theDevices | All devicesandWindows | Windows devicespanes display the date the device was registered to Windows Autopilot instead of the date it was enrolled to Windows Autopilot. For a more accurate date for when the device enrolled to the tenant:",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#enrolled-date-for-windows-autopilot-device-is-incorrect",
+          "is_new": false
         },
         {
           "title": "Filtering Windows Autopilot devices not working as expected",
           "body": "Date added:July 14, 2023 Viewing Windows Autopilot devices within Intune might not work as expected if attempting to filter results. While this issue is being worked on, a workaround is to useMicrosoft Graph APIto properly query and filter necessary devices.",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#filtering-windows-autopilot-devices-not-working-as-expected",
+          "is_new": false
         },
         {
           "title": "TPM attestation isn't working on some platforms with Infineon SLB9672 discrete TPMs",
           "body": "Date added:June 2, 2023 Platforms with the Infineon SLB9672 TPM with firmware release 15.22 with EK certificate might fail with error messageSomething happened, and TPM attestation timed out.To resolve this issue, contact the OEM for an update.",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#tpm-attestation-isnt-working-on-some-platforms-with-infineon-slb9672-discrete-tpms",
+          "is_new": false
         },
         {
           "title": "Kiosk device profile not auto logging in",
           "body": "Date added:January 30, 2023Date updated:August 21, 2024,December 15, 2025 There was a known issue in the following Windows Updates released in January 2023: If these updates are installed on a device, Kiosk device profiles that have auto logon enabled won't auto log on. After Windows Autopilot compl",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#kiosk-device-profile-not-auto-logging-in",
+          "is_new": false
         },
         {
           "title": "TPM attestation isn't working on AMD platforms with ASP fTPM",
           "body": "Date added:December 1, 2022 TPM attestation for AMD platforms with ASP firmware TPM might fail with error code 0x80070490 on Windows systems. This issue is resolved on later versions of AMD firmware. Consult with device manufacturers and firmware release notes for which firmware versions contain the",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#tpm-attestation-isnt-working-on-amd-platforms-with-asp-ftpm",
+          "is_new": false
         },
         {
           "title": "TPM attestation failure with error code 0x81039001",
           "body": "Date added:October 6, 2022 Some devices might intermittently fail TPM attestation during Windows Autopilot pre-provisioning technician flow or self-deployment mode with the error code0x81039001 E_AUTOPILOT_CLIENT_TPM_MAX_ATTESTATION_RETRY_EXCEEDED. This failure occurs during theSecuring your hardwar",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#tpm-attestation-failure-with-error-code-0x81039001",
+          "is_new": false
         },
         {
           "title": "Windows Autopilot deployment report shows \"failure\" status on a successful deployment",
           "body": "Date added:September 22, 2022 The Windows Autopilot deployment report (preview) shows a failed status for any device that experiences an initial deployment failure. For subsequent deployment attempts, using theTry againorContinue to desktopoptions, the deployment state in the report doesn't update. ",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues"
-        }
-      ]
-    },
-    {
-      "name": "Defender for Endpoint Known Issues",
-      "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
-      "count": 24,
-      "items": [
-        {
-          "title": "How do I view a Microsoft Defender Antivirus event?",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1000",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1001",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1002",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1006",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1007",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1008",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1009",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1010",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1011",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1012",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1013",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1014",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1015",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1116",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1117",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1118",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1119",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1120",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1121",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1127",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1150",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 1151",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
-        },
-        {
-          "title": "Event ID 2000",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus"
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#windows-autopilot-deployment-report-shows-failure-status-on-a-successful-deployment",
+          "is_new": false
         }
       ]
     },
     {
       "name": "Defender XDR Known Issues",
-      "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot",
-      "count": 7,
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-xdr-content",
+      "count": 5,
+      "new_count": 0,
       "items": [
         {
           "title": "I don't see Microsoft Defender XDR content",
           "body": "If you don't see capabilities on the navigation pane such as the Incidents, Action center, or Hunting in your portal, you need to verify that your tenant has the appropriate licenses. For more information, seePrerequisites. ",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-xdr-content",
+          "is_new": false
         },
         {
           "title": "Microsoft Defender for Identity alerts are not showing up in the Microsoft Defender XDR incidents",
           "body": "If you have Microsoft Defender for Identity deployed in your environment but you're not seeing Defender for Identity alerts as part of Microsoft Defender XDR incidents, you need to ensure that the Microsoft Defender for Cloud Apps and Defender for Identity integration is enabled. For more informatio",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#microsoft-defender-for-identity-alerts-are-not-showing-up-in-the-microsoft-defender-xdr-incidents",
+          "is_new": false
         },
         {
           "title": "My legitimate file/URL is being detected as malicious",
           "body": "A false positive is a file or URL that is detected as malicious but isn't a threat. You can create indicators and define exclusions to unblock and allow certain files/URLs. SeeAddress false positives/negatives in Defender for Endpoint.",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#my-legitimate-fileurl-is-being-detected-as-malicious",
+          "is_new": false
         },
         {
           "title": "My ServiceNow tickets are no longer available in the Microsoft Defender portal",
           "body": "The Microsoft Defender XDR-ServiceNow connector is no longer available in the Microsoft Defender portal. However, you can still integrate Microsoft Defender XDR with ServiceNow by using the Microsoft Security Graph API. For more information, seeSecurity solution integrations using the Microsoft Grap",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#my-servicenow-tickets-are-no-longer-available-in-the-microsoft-defender-portal",
+          "is_new": false
         },
         {
           "title": "I can't submit files",
           "body": "In some instances, an administrator block might cause submission issues when you try to submit a potentially infected file to theMicrosoft Security intelligence websitefor analysis. The following process shows how to resolve this problem.",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
-        },
-        {
-          "title": "Review your settings",
-          "body": "Open your AzureEnterprise application settings. UnderEnterprise Applications>Users can consent to apps accessing company data on their behalf, check whether Yes or No is selected.",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
-        },
-        {
-          "title": "Implement required Enterprise Application permissions",
-          "body": "This process requires an Application Administrator or higher in the tenant. Microsoft Entra Administrators need to allow for users to request admin consent to apps. Verify the setting is configured toYesinEnterprise applications.  More information is available inConfigure Admin consent workflow.",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot"
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-cant-submit-files",
+          "is_new": false
         }
       ]
     },
     {
       "name": "Purview Known Issues",
-      "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues",
+      "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#browser-issues",
       "count": 4,
+      "new_count": 0,
       "items": [
         {
           "title": "Browser issues",
           "body": "To learn about browser issues that might affect use of data governance solutions, see these resources: If you need further assistance, contact Microsoft support.",
-          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues"
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#browser-issues",
+          "is_new": false
         },
         {
           "title": "Unified Catalog management issues",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues"
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#unified-catalog-management-issues",
+          "is_new": false
         },
         {
           "title": "Discovery issues",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues"
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#discovery-issues",
+          "is_new": false
         },
         {
           "title": "Health management issues",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues"
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#health-management-issues",
+          "is_new": false
         }
       ]
     },
     {
       "name": "Entra ID Known Issues",
-      "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#cross-tenant-synchronization",
       "count": 16,
+      "new_count": 0,
       "items": [
         {
           "title": "Cross-tenant synchronization",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#cross-tenant-synchronization",
+          "is_new": false
         },
         {
           "title": "Unsupported synchronization scenarios",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#unsupported-synchronization-scenarios",
+          "is_new": false
         },
         {
           "title": "Updating exchange attributes such as proxyAddresses and HiddenFromAddressListEnabled",
           "body": "Cross-tenant synchronization can manage user properties in Entra. It does not directly manage exchange attributes. For example:",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#updating-exchange-attributes-such-as-proxyaddresses-and-hiddenfromaddresslistenabled",
+          "is_new": false
         },
         {
           "title": "SMS sign-in enabled users are skipped",
           "body": "An external user from the source (home) tenant can't be provisioned into another tenant. Internal guest users from the source tenant can't be provisioned into another tenant. Only internal member users from the source tenant can be provisioned into the target tenant. For more information, seePropert",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#sms-sign-in-enabled-users-are-skipped",
+          "is_new": false
         },
         {
           "title": "Updating the showInAddressList property fails",
           "body": "For existing B2B collaboration users, the showInAddressList attribute is updated as long as the B2B collaboration user doesn't have a mailbox enabled in the target tenant. If the mailbox is enabled in the target tenant, use theSet-MailUserPowerShell cmdlet to set the HiddenFromAddressListsEnabled pr",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#updating-the-showinaddresslist-property-fails",
+          "is_new": false
         },
         {
           "title": "Mail attribute is not updated",
           "body": "If the user in the target tenant is assigned an exchange license, cross-tenant synchronization will not be able to update the mail attribute. To work around this, remove the exchange license for the user, update the mail attribute, and assign the license to the user again.",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#mail-attribute-is-not-updated",
+          "is_new": false
         },
         {
           "title": "Configuring synchronization from target tenant",
           "body": "Configuring synchronization from the target tenant isn't supported. All configurations must be done in the source tenant. The target administrator is able to turn off cross-tenant synchronization at any time.",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#configuring-synchronization-from-target-tenant",
+          "is_new": false
         },
         {
           "title": "Two users in the source tenant matched with the same user in the target tenant",
           "body": "When two users in the source tenant have the same mail, and they both need to be created in the target tenant, one user is created in the target and linked to the two users in the source. Ensure that the mail attribute is not shared among users in the source tenant. In addition, please ensure that t",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#two-users-in-the-source-tenant-matched-with-the-same-user-in-the-target-tenant",
+          "is_new": false
         },
         {
           "title": "Usage of Microsoft Entra B2B collaboration for cross-tenant access",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#usage-of-microsoft-entra-b2b-collaboration-for-cross-tenant-access",
+          "is_new": false
         },
         {
           "title": "Authorization",
           "body": "On configuring provisioning for the first time, you'll notice that the provisioning mode has switched from manual to automatic. You can't change it back to manual. But you can turn off provisioning through the UI. Turning off provisioning in the UI effectively does the same as setting the dropdown t",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#authorization",
+          "is_new": false
         },
         {
           "title": "Attribute mappings",
           "body": "The attributesSamAccountNameanduserTypearen't available as source attributes. You can instead use a directory extension attribute as a workaround. To learn more, seeMissing source attribute. Extensions to your schema can sometimes be missing from the source attribute dropdown in the UI. Go into the ",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#attribute-mappings",
+          "is_new": false
         },
         {
           "title": "Service issues",
           "body": "Thetimebetween provisioning cycles is currently not configurable.  The app provisioning service isn't aware of changes made in external apps. So, no action is taken to roll back. The app provisioning service relies on changes made in Microsoft Entra ID. After you change scope fromSync AlltoSync Assi",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#service-issues",
+          "is_new": false
         },
         {
           "title": "On-premises application provisioning",
           "body": "This is a current list of known limitations with the Microsoft Entra ECMA Connector Host and on-premises application provisioning.",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#on-premises-application-provisioning",
+          "is_new": false
         },
         {
           "title": "SQL Connector connectivity",
           "body": "The SQL Connector expects the DSN file to be encoded in UTF-8. Other encodings might not be read correctly and result in the error \"Data source name not found and no default driver specified.\"",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#sql-connector-connectivity",
+          "is_new": false
         },
         {
           "title": "Application and directories",
           "body": "The following applications and directories aren't yet supported.   By using on-premises provisioning, you can take a user already in Microsoft Entra ID and provision them into a third-party application.You can't bring a user into the directory from a third-party application.Customers will need to re",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#application-and-directories",
+          "is_new": false
         },
         {
           "title": "Attributes and objects",
           "body": "The following attributes and objects aren't supported: The Microsoft Entra ECMA Connector Host currently requires either an SSL certificate to be trusted by Azure or the provisioning agent to be used. The certificate subject must match the host name the Microsoft Entra ECMA Connector Host is install",
-          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues"
-        }
-      ]
-    },
-    {
-      "name": "Teams Known Issues",
-      "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues",
-      "count": 9,
-      "items": [
-        {
-          "title": "How-To Guide",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "Conferencing",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "How-To Guide",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "IM and presence",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "How-To Guide",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "Teams Rooms and devices",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "How-To Guide",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "How-To Guide",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
-        },
-        {
-          "title": "How-To Guide",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues"
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#attributes-and-objects",
+          "is_new": false
         }
       ]
     },
     {
       "name": "Windows Release Health",
       "url": "https://learn.microsoft.com/en-us/windows/release-health/",
-      "count": 10,
+      "count": 7,
+      "new_count": 0,
       "items": [
         {
           "title": "Message center",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         },
         {
           "title": "Windows 11, version 26H1",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         },
         {
           "title": "Windows 11, version 25H2",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         },
         {
           "title": "Windows 11, version 24H2",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         },
         {
           "title": "Windows 10, version 22H2",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         },
         {
           "title": "Windows Server 2025",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         },
         {
           "title": "Windows Server 2022",
           "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
-        },
-        {
-          "title": "Additional versions",
-          "body": "See details on known and resolved issues for other supported versions of Windows and Windows Server.",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
-        },
-        {
-          "title": "Questions? Join office hours!",
-          "body": "Get customized guidance, tips and tricks, and answers to your questions.",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
-        },
-        {
-          "title": "Submit feedback",
-          "body": "Share your thoughts on existing features -- or ideas for new ones through the feedback Hub.",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/"
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": false
         }
       ]
     }
