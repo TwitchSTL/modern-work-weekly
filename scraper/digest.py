@@ -61,7 +61,7 @@ Format rules:
   `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
 - Section order must be: Top 5 → pillar category sections (Identity, Devices, Apps, Data, Network, Visibility & Automation) → Action Required → sources front matter. Do NOT place Action Required before the category sections.
-- Action Required section: any items with deadlines or required admin steps, with dates. Use the same bullet format as category sections, with the deadline date called out prominently at the start of the description.
+- Action Required section: ALWAYS include this section — never omit it. Include any items with deadlines, required admin steps, patch obligations, CVE mitigations, governance decisions, or deprecation timelines. Use the same bullet format as category sections, with the deadline date or urgency called out prominently at the start of the description. If nothing is strictly time-sensitive this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 
 Tags must use lowercase-hyphenated format. Use only from this standard set (pick what applies):

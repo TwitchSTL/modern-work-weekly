@@ -2537,6 +2537,30 @@ details[open] .toc-label::before { content: "▼ "; }
   background: rgba(255,255,255,0.02);
 }
 
+/* Card-style paragraphs — each <p> in a section body becomes a visual block.
+   When Claude writes "**Bold topic:** explanation..." each paragraph reads as
+   a distinct item rather than a wall of text. */
+.exec-section-body > p {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin: 0 0 0.6rem;
+}
+/* Treat the opening bold as an inline label, give it a bit of separation */
+.exec-section-body > p > strong:first-child {
+  display: block;
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+  color: var(--color-text);
+}
+/* Don't card-style source citation paragraphs */
+.exec-section-body > p.exec-sources-block {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 /* Per-section source citations — italic em line at bottom of each section */
 .exec-section-body > p:last-child > em,
 .exec-section-body > p:last-child > em a {
