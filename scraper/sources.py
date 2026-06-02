@@ -35,7 +35,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
         "cadence": "weekly",
         "category": "Endpoint Management",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/bg-p/MicrosoftEndpointManagerBlog/rss/board?board.id=MicrosoftEndpointManagerBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftintuneblog",
         "selector": "h2, h3, p",
     },
     {
@@ -43,7 +43,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
         "cadence": "monthly",
         "category": "Security & Compliance",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -63,7 +63,7 @@ SOURCES = [
         "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/bg-p/MicrosoftTeamsBlog",
         "cadence": "monthly",
         "category": "Collaboration & Productivity",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/bg-p/MicrosoftTeamsBlog/rss/board?board.id=MicrosoftTeamsBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftteamsblog",
         "selector": "h2, h3, p",
     },
     {
@@ -79,7 +79,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/purview/whats-new",
         "cadence": "monthly",
         "category": "Security & Compliance",
-        "rss": "https://techcommunity.microsoft.com/t5/security-compliance-and-identity/bg-p/MicrosoftSecurityandCompliance/rss/board?board.id=MicrosoftSecurityandCompliance",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-purview-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -90,7 +90,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/sharepoint/what-s-new-in-sharepoint",
         "cadence": "rolling",
         "category": "Collaboration & Productivity",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/bg-p/SPBlog/rss/board?board.id=SPBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=SPBlog",
         "selector": "h2, h3, p",
     },
     {
@@ -118,7 +118,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -128,7 +128,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/defender-for-identity/whats-new",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -136,7 +136,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
         "cadence": "monthly",
         "category": "Visibility & Automation",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-security-blog/bg-p/MicrosoftSecurityBlog/rss/board?board.id=MicrosoftSecurityBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -144,7 +144,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
         "cadence": "monthly",
         "category": "Apps",
-        "rss": "https://techcommunity.microsoft.com/t5/exchange-team-blog/bg-p/Exchange/rss/board?board.id=Exchange",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=exchange",
         "selector": "h2, h3, p",
     },
     {
@@ -152,7 +152,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
         "cadence": "monthly",
         "category": "Devices",
-        "rss": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog/rss/board?board.id=Windows10Blog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=windows-itpro-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -163,7 +163,7 @@ SOURCES = [
         "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog",
         "cadence": "monthly",
         "category": "Devices",
-        "rss": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog/rss/board?board.id=Windows10Blog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=windows-itpro-blog",
         "selector": "h2, h3, p",
     },
     {
@@ -171,7 +171,7 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
         "cadence": "monthly",
         "category": "Devices",
-        "rss": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/bg-p/MicrosoftEndpointManagerBlog/rss/board?board.id=MicrosoftEndpointManagerBlog",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftintuneblog",
         "selector": "h2, h3, p",
     },
     {
