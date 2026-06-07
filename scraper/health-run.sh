@@ -30,5 +30,5 @@ fi
 
 git add site/data/health.json
 git commit -m "health: auto-update known issues"
-git push origin master >> "$LOG_DIR/health.log" 2>&1
+git push origin main >> "$LOG_DIR/health.log" 2>&1
 echo "[$TIMESTAMP] health.json updated and pushed." >> "$LOG_DIR/health.log"
