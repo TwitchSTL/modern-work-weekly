@@ -1,6 +1,6 @@
 # Weekly Workflow
 
-Two automated cron jobs keep the site current. Your only job is a brief review
+Three automated cron jobs keep the site current. Your only job is a brief review
 after the Tuesday digest publishes.
 
 ---
@@ -11,21 +11,37 @@ after the Tuesday digest publishes.
 
 `weekly-run.sh` runs end-to-end:
 
-1. **`git pull`** — syncs the repo to latest
-2. **`scraper.py`** — fetches 15+ Microsoft portals, deduplicates against `seen_items.json`,
-   appends new items to `state/pending_draft.json`, writes known issues to `health.json`
-3. **`digest.py`** — reads `pending_draft.json`, calls Claude API:
+1. **`git pull origin main`** — syncs the repo to latest (first discards any local
+   `health.json`/`deadlines.json` drift so the pull applies cleanly)
+2. **`scraper.py --force-all`** — fetches 15+ Microsoft portals, deduplicates against
+   `seen_items.json`, appends new items to `state/pending_draft.json`, writes known
+   issues to `health.json`
+3. **`digest.py`** — reads `pending_draft.json`, calls the Claude API three times:
    - Generates technical digest → `site/content/posts/YYYY-MM-DD.md`
    - Generates Executive's Guide → `site/content/exec/YYYY-MM-DD.md`
+   - Generates LinkedIn newsletter draft → `state/linkedin_draft_YYYY-MM-DD.txt`
+   - Regenerates the search index (`site/static/search.json`) and updates the health baseline
    - Archives `pending_draft.json` to `state/archive/`
-4. **`git push`** — triggers GitHub Actions → Hugo build → deploys to `modernworkweekly.com`
+4. **`git commit` + `git push origin main`** — if anything changed
+5. **Builds and deploys immediately** — runs `hugo --minify` and rsyncs to the web
+   root itself (rather than waiting on the 5-minute `deploy.sh` cron, since that cron
+   would see "already up to date" right after the LXC's own push)
+
+### Every 5 minutes — Deploy
+
+`deploy.sh` pulls `origin main`; if there are new commits, it rebuilds the Hugo site
+and rsyncs `site/public/` to the web root. This is what publishes ordinary `git push`
+commits (e.g. your editorial corrections) — **not** GitHub Actions. GitHub Actions only
+runs a CI build check on push to `main` (see `.github/workflows/hugo-build.yml`); it
+does not deploy to the LXC.
 
 ### Every 8 hours — Health/known issues refresh
 
 `health-run.sh` runs a lightweight update:
 
 1. **`git pull`** — syncs the repo to latest
-2. **`scraper.py --health-only`** — fetches known-issues sources only, overwrites `health.json`
+2. **`scraper.py --health-only`** — fetches known-issues sources, overwrites `health.json`,
+   and purges expired entries from `site/data/deadlines.json`
 3. **`git push`** — only if `health.json` content actually changed (no empty commits)
 
 ---
@@ -59,10 +75,11 @@ Check for:
 ```bash
 git add site/content/posts/YYYY-MM-DD.md site/content/exec/YYYY-MM-DD.md
 git commit -m "digest: YYYY-MM-DD — editorial pass"
-git push origin master
+git push origin main
 ```
 
-GitHub Actions rebuilds and redeploys within ~2 minutes.
+The `deploy.sh` cron picks up the new commit within 5 minutes, rebuilds with Hugo,
+and rsyncs to the web root.
 
 ---
 
@@ -84,8 +101,11 @@ python scraper.py
 # Run digest only — reads existing pending_draft.json
 python digest.py
 
-# Technical digest only — skip the Executive's Guide
+# Skip the Executive's Guide
 python digest.py --skip-exec
+
+# Skip the LinkedIn newsletter draft
+python digest.py --skip-linkedin
 
 # Dry run — see the prompt without making an API call
 python digest.py --dry-run
@@ -111,17 +131,20 @@ python scraper.py --health-only
 - Check spend limits at `console.anthropic.com → Billing`
 - Re-run `python digest.py` — `pending_draft.json` is intact until archiving succeeds
 
-**Executive's Guide fails but digest succeeds**
+**Executive's Guide or LinkedIn draft fails but digest succeeds**
 - Non-fatal — the pipeline continues and logs a warning
-- Re-run `python digest.py --keep-pending` to regenerate both without re-archiving
+- Re-run `python digest.py --keep-pending` to regenerate without re-archiving the pending draft
 
 **GitHub Action fails**
-- Check the Actions tab — look for rsync or Hugo build errors
-- Verify `HOMELAB_HOST`, `HOMELAB_USER`, `HOMELAB_SSH_KEY` secrets are current
-- Test SSH from a local machine: `ssh mww@10.127.31.35`
+- This is just a CI build check (`hugo --minify` on push to `main`, scoped to `site/**`)
+  — it does not deploy. A red check means the Hugo build itself is broken; check the
+  Actions tab for the build error
+- It does not affect the live site, which is deployed independently by `deploy.sh` on the LXC
 
 **Site not updating after push**
 - SSH to LXC: `ls -la /opt/modern-work-weekly/site/public/posts/` — did the file land?
+- Check the deploy log: `tail /var/log/mww-deploy.log` — confirm `deploy.sh` picked up the new commit
+- Verify the cron is registered: `crontab -l` (look for the `*/5 * * * *` entry)
 - Check Caddy: `systemctl status caddy`
 - Check tunnel: `systemctl status cloudflared`
 - Check tunnel health: `cloudflared tunnel info modern-work-weekly`
@@ -139,6 +162,7 @@ python scraper.py --health-only
 [ ] Tuesday cron fired (check: git log --oneline -5)
 [ ] Technical digest reviewed and edited if needed
 [ ] Executive's Guide reviewed if sharing with leadership
+[ ] LinkedIn draft reviewed (state/linkedin_draft_YYYY-MM-DD.txt) before posting manually
 [ ] Corrections pushed (if any)
 [ ] Site live at modernworkweekly.com
 ```

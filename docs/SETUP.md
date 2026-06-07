@@ -44,7 +44,7 @@ In the Proxmox web UI:
 ssh root@<your-lxc-ip>
 
 # Download and run bootstrap
-curl -sO https://raw.githubusercontent.com/TwitchSTL/modern-work-weekly/master/infra/lxc/bootstrap.sh
+curl -sO https://raw.githubusercontent.com/TwitchSTL/modern-work-weekly/main/infra/lxc/bootstrap.sh
 chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
@@ -134,34 +134,41 @@ is running, your site is live.
 
 ---
 
-## Step 7 — Set up GitHub Actions for auto-deploy
+## Step 7 — Set up auto-deploy
 
-Every push to `master` that touches `site/**` triggers a Hugo rebuild and deploy.
+Deployment is **pull-based**, not push-based: GitHub Actions only runs a CI build
+check on push to `main` (touching `site/**`) so you catch a broken Hugo build before
+it reaches the LXC — see `.github/workflows/hugo-build.yml`. No SSH keys or repo
+secrets are needed for this.
 
-### 7a. Generate a deploy SSH key
+The actual deploy happens on the LXC itself via `scraper/deploy.sh`, which polls
+GitHub every 5 minutes:
 
 ```bash
-ssh-keygen -t ed25519 -C "github-actions-deploy" -f /tmp/deploy_key -N ""
-cat /tmp/deploy_key.pub >> /root/.ssh/authorized_keys
-chmod 600 /root/.ssh/authorized_keys
-
-# Copy the private key — you'll paste it into GitHub Secrets next
-cat /tmp/deploy_key
+chmod +x /opt/modern-work-weekly/repo/scraper/deploy.sh
+crontab -e
 ```
 
-### 7b. Add GitHub Secrets
+Add:
 
-Go to your repo → `Settings → Secrets and variables → Actions → New repository secret`:
+```
+# Pull + rebuild + deploy — every 5 minutes
+*/5 * * * * /opt/modern-work-weekly/repo/scraper/deploy.sh >> /var/log/mww-deploy.log 2>&1
+```
 
-| Secret name | Value |
-|---|---|
-| `HOMELAB_HOST` | Your LXC's IP address |
-| `HOMELAB_USER` | `root` (or whichever user runs the deploy) |
-| `HOMELAB_SSH_KEY` | The private key from `/tmp/deploy_key` (full content including header/footer lines) |
+`deploy.sh` pulls `origin main`; if new commits landed, it runs `hugo --minify` and
+rsyncs `site/public/` to the web root. If nothing changed, it exits quietly. Logs land
+in `/var/log/mww-deploy.log`.
 
-### 7c. Test the workflow
+> **Note:** `weekly-run.sh` (Step 8) builds and deploys immediately after it pushes
+> the Tuesday digest, rather than waiting on this cron — since the LXC just made the
+> commit itself, `deploy.sh`'s next run would see "already up to date" and skip.
 
-Push any change to `site/` on `master` → GitHub Actions tab → watch the build.
+### Test it
+
+Push any change touching `site/**` to `main` → within 5 minutes, check
+`/var/log/mww-deploy.log` for a "New commits detected... Deploy done" entry, and
+confirm the change is live at your domain.
 
 ---
 
@@ -203,7 +210,7 @@ cd /opt/modern-work-weekly/repo/scraper
 
 python scraper.py --source Intune          # Test single source
 python digest.py --dry-run                 # Verify prompt builds correctly (no API call)
-python digest.py                           # Full run — generates digest + Executive's Guide
+python digest.py                           # Full run — generates digest + Executive's Guide + LinkedIn draft
 ```
 
 ### 8e. Schedule the crons
@@ -214,7 +221,8 @@ chmod +x /opt/modern-work-weekly/repo/scraper/health-run.sh
 crontab -e
 ```
 
-Add both entries:
+Add these two entries (alongside the `deploy.sh` entry you already added in Step 7,
+for three cron jobs total):
 
 ```
 # Full digest pipeline — every Tuesday at 5:55 AM CST (11:55 UTC)
@@ -224,7 +232,7 @@ Add both entries:
 0 */8 * * * /opt/modern-work-weekly/repo/scraper/health-run.sh
 ```
 
-Verify:
+Verify all three are registered:
 ```bash
 crontab -l
 ```
@@ -248,8 +256,9 @@ No inbound ports need to be opened on your router — the Cloudflare Tunnel is e
 | Live site | `https://yourdomain.com` |
 | Digest posts auto-publish | Every Tuesday ~5:55 AM CST |
 | Known issues auto-refresh | Every 8 hours |
-| Pushes to `master` auto-deploy | Via GitHub Actions (~2 min build) |
+| Pushes to `main` auto-deploy | Via `deploy.sh` cron on the LXC (within 5 min) |
+| GitHub Actions | CI build check only — does not deploy |
 | Dedup state | `/opt/modern-work-weekly/repo/state/seen_items.json` |
-| Logs | `/var/log/mww-weekly.log` and `/opt/modern-work-weekly/logs/` |
+| Logs | `/var/log/mww-weekly.log`, `/var/log/mww-deploy.log`, and `/opt/modern-work-weekly/logs/` |
 
 See [`docs/WEEKLY_WORKFLOW.md`](WEEKLY_WORKFLOW.md) for the ongoing weekly process.

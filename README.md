@@ -91,7 +91,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 | `digest.py` | Reads `pending_draft.json`, calls Claude API (×3) for technical digest, Executive's Guide, and LinkedIn draft; updates health baseline |
 | `sources.py` | Source definitions — URLs, RSS feeds, health flags, and per-source scraping hints |
 | `deploy.sh` | Pulls latest commits, rebuilds Hugo, and rsyncs to the web root |
-| `weekly-run.sh` | Tuesday cron entrypoint — scrape → draft → push |
+| `weekly-run.sh` | Tuesday cron entrypoint — scrape → draft → push → build & deploy |
 | `health-run.sh` | 8-hour cron entrypoint — health sources + deadline purge → push if changed |
 
 </details>
@@ -121,6 +121,16 @@ Three cron jobs run automatically on a self-hosted LXC:
 | `layouts/` | Hugo templates — 3-column digest layout with context-aware sidebars |
 | `static/css/` | Custom dark-theme styles |
 | `static/js/` | Collapsible sections, calendar logic, admin portal links |
+
+</details>
+
+<details>
+<summary><strong>linkedin/</strong> — LinkedIn newsletter formatting reference</summary>
+
+| File | Description |
+|---|---|
+| `template.md` | Article-format reference for posting the weekly LinkedIn newsletter edition |
+| `formatter.py` | Standalone CLI tool that converts a Hugo digest post (`site/content/posts/*.md`) into a plain-text, LinkedIn-ready paste with emoji section markers and a hashtag block |
 
 </details>
 
