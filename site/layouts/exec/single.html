@@ -21,11 +21,6 @@
       {{ end }}
     </header>
 
-    <div class="wip-banner">
-      <span class="wip-banner-icon">🚧</span>
-      <span><strong>Work in Progress</strong> — The Executive's Guide is auto-generated and reviewed weekly. Content quality improves over time. Verify key details before sharing with leadership.</span>
-    </div>
-
     {{/* Risk dashboard — HIGH / MED / LOW counts, populated by exec-nav.js */}}
     <div class="exec-risk-dashboard" id="exec-risk-dashboard"></div>
 
@@ -35,8 +30,17 @@
       <div class="exec-toc-links" id="exec-toc-links"></div>
     </nav>
 
-    <div class="post-content exec-content" id="exec-content">
-      {{ .Content }}
+    <div class="exec-layout">
+      <div class="exec-main">
+        <div class="post-content exec-content" id="exec-content">
+          {{ .Content }}
+        </div>
+      </div>
+      <aside class="exec-sidebar-col" id="exec-sidebar">
+        {{/* JS prepends: Planning Horizon, If You Take No Action, Help Desk, Cost & Licensing */}}
+        {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" false) }}
+        {{ partial "deadlines-sidebar.html" . }}
+      </aside>
     </div>
 
     <footer class="post-footer exec-footer">
