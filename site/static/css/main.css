@@ -2761,6 +2761,10 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 /* ── Exec Guide Two-Column Layout ────────────────────────────────────── */
+.exec-container {
+  max-width: 1100px;
+}
+
 .exec-layout {
   display: flex;
   gap: 1.75rem;
@@ -2774,7 +2778,7 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 .exec-sidebar-col {
-  width: 300px;
+  width: 340px;
   flex-shrink: 0;
   position: sticky;
   top: 4rem;
