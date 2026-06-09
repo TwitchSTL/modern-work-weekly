@@ -1,75 +1,73 @@
 {{ define "main" }}
 {{ $techPost := site.GetPage (printf "/posts/%s" (.Date.Format "2006-01-02")) }}
-<div class="container">
-  <div class="post-layout">
+<div class="post-layout">
 
-    <!-- Left sidebar: Planning Horizon, If You Take No Action, Known Issues -->
-    <aside class="post-sidebar post-sidebar-left" id="exec-sidebar-left">
-      {{/* JS prepends: Planning Horizon, If You Take No Action */}}
-      {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" false) }}
-    </aside>
+  <!-- Left sidebar: Planning Horizon, If You Take No Action, Known Issues -->
+  <aside class="post-sidebar post-sidebar-left" id="exec-sidebar-left">
+    {{/* JS prepends: Planning Horizon, If You Take No Action */}}
+    {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" false) }}
+  </aside>
 
-    <!-- Center: main content -->
-    <article class="post exec-article">
+  <!-- Center: main content -->
+  <article class="post exec-article">
 
-      <header class="post-header">
-        <div class="post-meta">
-          <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
-          <span class="meta-sep">·</span>
-          <span class="exec-badge">Leadership Edition</span>
-        </div>
-        <h1 class="post-title">{{ .Title }}</h1>
-        {{ with .Params.description }}
-        <p class="post-description">{{ . }}</p>
-        {{ end }}
-        {{ if $techPost }}
-        <a class="exec-tech-link-header" href="{{ $techPost.Permalink }}">
-          Technical digest for this week →
-        </a>
-        {{ end }}
-      </header>
-
-      <div class="exec-risk-dashboard" id="exec-risk-dashboard"></div>
-
-      <nav class="exec-toc" id="exec-toc" aria-label="Jump to section">
-        <span class="exec-toc-label">Jump to</span>
-        <div class="exec-toc-links" id="exec-toc-links"></div>
-      </nav>
-
-      <div class="post-content exec-content" id="exec-content">
-        {{ .Content }}
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="post-date">{{ .Date.Format "January 2, 2006" }}</span>
+        <span class="meta-sep">·</span>
+        <span class="exec-badge">Leadership Edition</span>
       </div>
+      <h1 class="post-title">{{ .Title }}</h1>
+      {{ with .Params.description }}
+      <p class="post-description">{{ . }}</p>
+      {{ end }}
+      {{ if $techPost }}
+      <a class="exec-tech-link-header" href="{{ $techPost.Permalink }}">
+        Technical digest for this week →
+      </a>
+      {{ end }}
+    </header>
 
-      <footer class="post-footer exec-footer">
-        {{ if $techPost }}
-        <p class="exec-cross-link">
-          For your IT team: <a href="{{ $techPost.Permalink }}">technical digest for this week →</a>
-        </p>
-        {{ end }}
-        <nav class="post-nav">
-          <a class="post-nav-btn post-nav-back" href="/exec/">← All Briefs</a>
-          <div class="post-nav-arrows">
-            {{ with .PrevInSection }}
-            <a class="post-nav-btn post-nav-prev" href="{{ .Permalink }}"
-               title="{{ .Title }}">← {{ .Date.Format "Jan 2" }}</a>
-            {{ end }}
-            {{ with .NextInSection }}
-            <a class="post-nav-btn post-nav-next" href="{{ .Permalink }}"
-               title="{{ .Title }}">{{ .Date.Format "Jan 2" }} →</a>
-            {{ end }}
-          </div>
-        </nav>
-      </footer>
+    <div class="exec-risk-dashboard" id="exec-risk-dashboard"></div>
 
-    </article>
+    <nav class="exec-toc" id="exec-toc" aria-label="Jump to section">
+      <span class="exec-toc-label">Jump to</span>
+      <div class="exec-toc-links" id="exec-toc-links"></div>
+    </nav>
 
-    <!-- Right sidebar: Help Desk Checklist, Cost & Licensing, Key Dates -->
-    <aside class="post-sidebar post-sidebar-right" id="exec-sidebar-right">
-      {{/* JS prepends: Help Desk Checklist, Cost & Licensing */}}
-      {{ partial "deadlines-sidebar.html" . }}
-    </aside>
+    <div class="post-content exec-content" id="exec-content">
+      {{ .Content }}
+    </div>
 
-  </div>
+    <footer class="post-footer exec-footer">
+      {{ if $techPost }}
+      <p class="exec-cross-link">
+        For your IT team: <a href="{{ $techPost.Permalink }}">technical digest for this week →</a>
+      </p>
+      {{ end }}
+      <nav class="post-nav">
+        <a class="post-nav-btn post-nav-back" href="/exec/">← All Briefs</a>
+        <div class="post-nav-arrows">
+          {{ with .PrevInSection }}
+          <a class="post-nav-btn post-nav-prev" href="{{ .Permalink }}"
+             title="{{ .Title }}">← {{ .Date.Format "Jan 2" }}</a>
+          {{ end }}
+          {{ with .NextInSection }}
+          <a class="post-nav-btn post-nav-next" href="{{ .Permalink }}"
+             title="{{ .Title }}">{{ .Date.Format "Jan 2" }} →</a>
+          {{ end }}
+        </div>
+      </nav>
+    </footer>
+
+  </article>
+
+  <!-- Right sidebar: Help Desk Checklist, Cost & Licensing, Key Dates -->
+  <aside class="post-sidebar post-sidebar-right" id="exec-sidebar-right">
+    {{/* JS prepends: Help Desk Checklist, Cost & Licensing */}}
+    {{ partial "deadlines-sidebar.html" . }}
+  </aside>
+
 </div>
 <script src="/js/exec-nav.js?v={{ now.Unix }}"></script>
 {{ end }}
