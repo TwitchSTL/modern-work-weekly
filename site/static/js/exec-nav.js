@@ -126,10 +126,15 @@
       item.appendChild(span);
       list.appendChild(item);
     });
-    body.querySelectorAll('ul, ol').forEach(function (ul) {
-      if (ul.parentNode) ul.parentNode.removeChild(ul);
-    });
-    body.appendChild(list);
+    // Insert checklist where the first ul/ol was, then remove all lists
+    var lists = body.querySelectorAll('ul, ol');
+    var firstList = lists[0];
+    if (firstList && firstList.parentNode) {
+      firstList.parentNode.insertBefore(list, firstList);
+    } else {
+      body.appendChild(list);
+    }
+    lists.forEach(function (ul) { if (ul.parentNode) ul.parentNode.removeChild(ul); });
   }
 
   function buildSidebarPanel(config, nodes) {
