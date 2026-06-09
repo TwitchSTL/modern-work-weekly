@@ -24,15 +24,13 @@
         {{ end }}
         {{ if $techPost }}
         <a class="exec-tech-link-header" href="{{ $techPost.Permalink }}">
-          🔧 Technical digest for this week →
+          Technical digest for this week →
         </a>
         {{ end }}
       </header>
 
-      {{/* Risk dashboard — HIGH / MED / LOW counts, populated by exec-nav.js */}}
       <div class="exec-risk-dashboard" id="exec-risk-dashboard"></div>
 
-      {{/* Jump-to navigation — built from h2 headings by exec-nav.js */}}
       <nav class="exec-toc" id="exec-toc" aria-label="Jump to section">
         <span class="exec-toc-label">Jump to</span>
         <div class="exec-toc-links" id="exec-toc-links"></div>
@@ -48,7 +46,6 @@
           For your IT team: <a href="{{ $techPost.Permalink }}">technical digest for this week →</a>
         </p>
         {{ end }}
-
         <nav class="post-nav">
           <a class="post-nav-btn post-nav-back" href="/exec/">← All Briefs</a>
           <div class="post-nav-arrows">
@@ -66,4 +63,13 @@
 
     </article>
 
-    <!-- Rig
+    <!-- Right sidebar: Help Desk Checklist, Cost & Licensing, Key Dates -->
+    <aside class="post-sidebar post-sidebar-right" id="exec-sidebar-right">
+      {{/* JS prepends: Help Desk Checklist, Cost & Licensing */}}
+      {{ partial "deadlines-sidebar.html" . }}
+    </aside>
+
+  </div>
+</div>
+<script src="/js/exec-nav.js?v={{ now.Unix }}"></script>
+{{ end }}
