@@ -2761,6 +2761,110 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 /* ── Exec Guide Two-Column Layout ────────────────────────────────────── */
+.exec-container { max-width: 1380px; }
+
+.exec-layout {
+  display: flex;
+  gap: 1.75rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.exec-main { flex: 1 1 0; min-width: 0; }
+
+.exec-sidebar-col {
+  width: 340px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 4rem;
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* ── Exec Sidebar Panels ─────────────────────────────────────────────── */
+.exec-sidebar-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left-width: 3px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.exec-sidebar-panel-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid;
+}
+
+.exec-sidebar-panel-body {
+  padding: 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.exec-sidebar-panel-body p { margin: 0 0 0.5rem; }
+.exec-sidebar-panel-body p:last-child { margin-bottom: 0; }
+.exec-sidebar-panel-body ul,
+.exec-sidebar-panel-body ol { padding-left: 1.2rem; margin: 0 0 0.5rem; }
+.exec-sidebar-panel-body li { margin-bottom: 0.35rem; }
+.exec-sidebar-panel-body table { font-size: 0.76rem; width: 100%; border-collapse: collapse; }
+.exec-sidebar-panel-body th { font-size: 0.68rem; text-align: left; padding: 0.3rem 0.4rem; color: var(--color-text-muted); border-bottom: 1px solid var(--color-border); }
+.exec-sidebar-panel-body td { padding: 0.3rem 0.4rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+.exec-sidebar-panel-body tr:last-child td { border-bottom: none; }
+.exec-sidebar-panel-body strong { color: var(--color-text); }
+
+.exec-sidebar-empty { color: var(--color-text-muted); font-style: italic; font-size: 0.8rem; margin: 0; }
+
+.exec-sidebar-panel .exec-sources-block {
+  font-size: 0.71rem;
+  margin-top: 0.6rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+/* ── Help Desk Checklist ─────────────────────────────────────────────── */
+.exec-checklist { display: flex; flex-direction: column; gap: 0.55rem; }
+
+.exec-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  line-height: 1.45;
+}
+
+.exec-checklist-cb {
+  margin-top: 0.18rem;
+  flex-shrink: 0;
+  accent-color: #f0883e;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
+
+.exec-checklist-item span { flex: 1; }
+
+.exec-checklist-item:has(.exec-checklist-cb:checked) span {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+/* ── Exec sidebar responsive ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .exec-layout { flex-direction: column; }
+  .exec-sidebar-col { width: 100%; position: static; max-height: none; overflow-y: visible; }
+}
+
+/* ── Exec Guide Two-Column Layout ────────────────────────────────────── */
 .exec-container {
   max-width: 1380px;
 }
