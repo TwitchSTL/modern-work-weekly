@@ -21,8 +21,10 @@
     LOW:  { emoji: '🟢', cls: 'exec-risk-low',  rowCls: 'exec-row-low',  label: 'Low' },
   };
 
-  // Sections to extract to the sidebar instead of rendering as collapsibles.
+  // Sections to extract to sidebars instead of rendering as collapsibles.
   // Matched against the lowercased h2 text content.
+  // side: 'left'  → injected into #exec-sidebar-left  (strategic/forward-looking)
+  // side: 'right' → injected into #exec-sidebar-right (operational/action-oriented)
   var SIDEBAR_SECTIONS = [
     {
       match: 'planning horizon',
@@ -31,7 +33,8 @@
       bg: 'rgba(88,166,255,0.08)',
       border: 'rgba(88,166,255,0.25)',
       checklist: false,
-      emptyMsg: null
+      emptyMsg: null,
+      side: 'left'
     },
     {
       match: 'if you take no action',
@@ -40,7 +43,8 @@
       bg: 'rgba(255,107,107,0.08)',
       border: 'rgba(255,107,107,0.25)',
       checklist: false,
-      emptyMsg: null
+      emptyMsg: null,
+      side: 'left'
     },
     {
       match: 'what your help desk should expect',
@@ -49,7 +53,8 @@
       bg: 'rgba(240,136,62,0.08)',
       border: 'rgba(240,136,62,0.25)',
       checklist: true,
-      emptyMsg: null
+      emptyMsg: null,
+      side: 'right'
     },
     {
       match: 'cost & licensing',
@@ -58,7 +63,8 @@
       bg: 'rgba(167,139,250,0.08)',
       border: 'rgba(167,139,250,0.25)',
       checklist: false,
-      emptyMsg: 'No cost or licensing updates this week.'
+      emptyMsg: 'No cost or licensing updates this week.',
+      side: 'right'
     }
   ];
 
@@ -171,18 +177,20 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var content  = document.getElementById('exec-content');
-    var tocLinks = document.getElementById('exec-toc-links');
-    var sidebar  = document.getElementById('exec-sidebar');
+    var content       = document.getElementById('exec-content');
+    var tocLinks      = document.getElementById('exec-toc-links');
+    var sidebarLeft   = document.getElementById('exec-sidebar-left');
+    var sidebarRight  = document.getElementById('exec-sidebar-right');
     if (!content || !tocLinks) return;
 
     var h2s = Array.from(content.querySelectorAll('h2'));
     if (!h2s.length) return;
 
-    var allDetails    = [];
-    var riskCounts    = { HIGH: 0, MED: 0, LOW: 0 };
-    var sidebarPanels = [];
-    var firstMain     = true;
+    var allDetails         = [];
+    var riskCounts         = { HIGH: 0, MED: 0, LOW: 0 };
+    var sidebarPanelsLeft  = [];
+    var sidebarPanelsRight = [];
+    var firstMain          = true;
 
     h2s.forEach(function (h2, idx) {
       var label = h2.textContent || '';
@@ -200,110 +208,11 @@
 
       if (sidebarConfig) {
         // ── Sidebar section ──────────────────────────────────────────────
-        sidebarPanels.push(buildSidebarPanel(sidebarConfig, nodes));
+        var panel = buildSidebarPanel(sidebarConfig, nodes);
+        if (sidebarConfig.side === 'left') {
+          sidebarPanelsLeft.push(panel);
+        } else {
+          sidebarPanelsRight.push(panel);
+        }
         nodes.forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
-        if (h2.parentNode) h2.parentNode.removeChild(h2);
-        return;
-      }
-
-      // ── Main collapsible section ─────────────────────────────────────
-      if (risk) riskCounts[risk.label === 'High' ? 'HIGH' : risk.label === 'Medium' ? 'MED' : 'LOW']++;
-
-      var details = document.createElement('details');
-      details.id = slug;
-      details.open = firstMain;
-      firstMain = false;
-      details.className = 'exec-section-collapsible' + (risk ? ' ' + risk.cls : '');
-
-      var summary = document.createElement('summary');
-      summary.className = 'exec-section-summary' + (risk ? ' ' + risk.cls : '');
-      summary.textContent = label;
-
-      var anchor = document.createElement('a');
-      anchor.href = '#' + slug;
-      anchor.className = 'exec-section-anchor';
-      anchor.title = 'Copy link to this section';
-      anchor.textContent = '🔗';
-      anchor.addEventListener('click', function (e) {
-        e.stopPropagation();
-        history.replaceState(null, '', '#' + slug);
-        navigator.clipboard && navigator.clipboard.writeText(window.location.href);
-      });
-      summary.appendChild(anchor);
-
-      var body = document.createElement('div');
-      body.className = 'exec-section-body';
-      nodes.forEach(function (n) { body.appendChild(n); });
-
-      details.appendChild(summary);
-      details.appendChild(body);
-      h2.parentNode.replaceChild(details, h2);
-
-      colorTableRows(body);
-      styleSourceLines(body);
-      allDetails.push(details);
-
-      // TOC pill
-      var pill = document.createElement('a');
-      pill.href = '#' + slug;
-      pill.className = 'exec-toc-pill' + (risk ? ' ' + risk.cls : '');
-      pill.textContent = stripEmoji(label).replace(/\s*—.*$/, '').trim();
-      pill.addEventListener('click', function (e) {
-        e.preventDefault();
-        details.open = true;
-        details.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.replaceState(null, '', '#' + slug);
-      });
-      tocLinks.appendChild(pill);
-    });
-
-    // ── Expand / Collapse all ────────────────────────────────────────────
-    var actions = document.createElement('div');
-    actions.className = 'exec-toc-actions';
-    var btnExpand = document.createElement('button');
-    btnExpand.className = 'exec-toggle-btn';
-    btnExpand.textContent = 'Expand all';
-    btnExpand.addEventListener('click', function () { allDetails.forEach(function (d) { d.open = true; }); });
-    var btnCollapse = document.createElement('button');
-    btnCollapse.className = 'exec-toggle-btn';
-    btnCollapse.textContent = 'Collapse all';
-    btnCollapse.addEventListener('click', function () { allDetails.forEach(function (d) { d.open = false; }); });
-    actions.appendChild(btnExpand);
-    actions.appendChild(btnCollapse);
-    document.getElementById('exec-toc').appendChild(actions);
-
-    // ── Risk dashboard ───────────────────────────────────────────────────
-    var dashboard = document.getElementById('exec-risk-dashboard');
-    if (dashboard) {
-      [
-        { key: 'HIGH', cls: 'exec-risk-chip-high', label: 'High' },
-        { key: 'MED',  cls: 'exec-risk-chip-med',  label: 'Medium' },
-        { key: 'LOW',  cls: 'exec-risk-chip-low',  label: 'Low' },
-      ].forEach(function (c) {
-        if (!riskCounts[c.key]) return;
-        var chip = document.createElement('span');
-        chip.className = 'exec-risk-chip ' + c.cls;
-        chip.innerHTML = '<span class="exec-risk-chip-count">' + riskCounts[c.key] + '</span> ' + c.label;
-        dashboard.appendChild(chip);
-      });
-    }
-
-    // ── Inject sidebar panels before health/deadlines partials ──────────
-    if (sidebar && sidebarPanels.length) {
-      var ref = sidebar.firstChild;
-      sidebarPanels.forEach(function (panel) {
-        sidebar.insertBefore(panel, ref);
-      });
-    }
-
-    // ── Auto-open hash target ────────────────────────────────────────────
-    var hash = window.location.hash.slice(1);
-    if (hash) {
-      var target = document.getElementById(decodeURIComponent(hash));
-      if (target && target.tagName === 'DETAILS') {
-        target.open = true;
-        setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
-      }
-    }
-  });
-})();
+  
