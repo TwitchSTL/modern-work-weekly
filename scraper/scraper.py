@@ -484,6 +484,10 @@ def run_scraper(args):
     elif any(s.get("health") for s in sources_to_run):
         log.warning("Health sources returned 0 items — health.json not updated.")
 
+    # Always refresh the deadlines.json updated timestamp (and purge expired entries)
+    # so the site's "Last checked" date stays current on every run, not just health-only runs.
+    purge_expired_deadlines()
+
     # URL dedup — shared RSS feeds (e.g. MicrosoftSecurityBlog used by 4 Defender sources)
     # can return the same article multiple times under different source names.
     # Keep the first occurrence; subsequent duplicates are logged and dropped.
