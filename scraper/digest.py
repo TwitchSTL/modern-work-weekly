@@ -76,7 +76,9 @@ Identity, Devices, Apps, Data, Network, Visibility & Automation
 
 Map content accordingly: Entra/MFA/PIM → Identity; Intune/Autopatch/MDM → Devices; Teams/SharePoint/Copilot features → Apps; Purview/DLP/Sensitivity Labels → Data; Global Secure Access/networking → Network; Defender/SIEM/Graph API/AI agents → Visibility & Automation
 
-Tone: confident, peer-to-peer, no fluff. Write like a senior engineer briefing their team."""
+Tone: confident, peer-to-peer, no fluff. Write like a senior engineer briefing their team.
+
+Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
 EXEC_SYSTEM_PROMPT = """You are a trusted technology advisor writing a weekly briefing for C-suite executives, IT directors, compliance officers, and business leaders at organizations using Microsoft 365.
 
@@ -110,7 +112,9 @@ Source citations — REQUIRED. Executives trust named references, not raw URLs:
 - In the Planning Horizon table, hyperlink the item name in the Item column to its source URL where available.
 - Do NOT omit the Sources line from any section — if no URL is available for a section, link to the most relevant Microsoft documentation page for that topic.
 
-Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board."""
+Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board.
+
+Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
 LINKEDIN_SYSTEM_PROMPT = """You write the weekly LinkedIn newsletter edition of Modern Work Weekly — a digest for Microsoft 365 engineers, architects, and admins.
 
@@ -134,7 +138,9 @@ Structure (in order):
 7. ONE FOR THE HELP DESK (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits. If included, follow with a * * * divider.
 8. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions: [URL]"
 
-Do not include hashtags, emojis anywhere, or a sign-off. Do not wrap output in code fences."""
+Do not include hashtags, emojis anywhere, or a sign-off. Do not wrap output in code fences.
+
+Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
 LINKEDIN_PROMPT_TEMPLATE = """Here is the week's digest content. Produce the LinkedIn newsletter edition.
 
