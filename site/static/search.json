@@ -1,5 +1,348 @@
 [
   {
+    "title": "CVE-2026-42897 — Exchange Server OWA XSS (Active Vulnerability):",
+    "category": "Top 5 This Week",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "All on-prem Exchange 2016, 2019, and SE versions are affected by an XSS flaw exploitable via a crafted email opened in OWA. Exchange Online is unaffected. Patch or mitigate immediately — no excuse to wait on this one."
+  },
+  {
+    "title": "Teams Live Events retirement — June 30, 2026:",
+    "category": "Top 5 This Week",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "Scheduling closes in three weeks. Any live events already on the calendar will run through February 28, 2027, but nothing new can be created after the deadline. If you have recurring large-format event workflows or Graph"
+  },
+  {
+    "title": "Computer-Using Agents in Copilot Studio now GA:",
+    "category": "Top 5 This Week",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "Agents can now drive UI in vendor portals, legacy line-of-business apps, and internal web tools without APIs or brittle RPA scripts. This materially expands the automation surface — and the governance surface. Review you"
+  },
+  {
+    "title": "Entra Tenant Governance — Shadow Tenant Discovery GA:",
+    "category": "Top 5 This Week",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "If your org has grown through acquisitions, dev projects, or regional expansion, there are almost certainly tenants outside your visibility. This feature surfaces them via B2B, multitenant app, and billing signals. Run d"
+  },
+  {
+    "title": "Purview Data Security Posture Reports GA + Custom Workspaces in Preview:",
+    "category": "Top 5 This Week",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "You can now produce executive-ready evidence that sensitivity labels and DLP policies are actually reducing risk at scale — not just that policies exist. The custom workspace/charts feature is in preview. Both are worth "
+  },
+  {
+    "title": "Retiring Teams Live Events",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Deadline: June 30, 2026. No new live events can be scheduled after this date; existing bookings run until February 28, 2027. Audit your Graph API integrations and scheduled events now, and migrate recurring large-"
+  },
+  {
+    "title": "Find Shadow Tenants with Microsoft Entra Tenant Governance",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Unmanaged tenants from acquisitions, dev projects, and partner engagements represent a real blind spot in most enterprise identity postures. Tenant Governance now discovers related tenants via B2B collaboration si"
+  },
+  {
+    "title": "Account Discovery in Entra ID Governance",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — When you connect a SaaS or on-premises app to Entra, pre-existing accounts created outside modern governance workflows remain invisible to access reviews and lifecycle policies. Account Discovery surfaces those ac"
+  },
+  {
+    "title": "Microsoft's Perspective on Agentic Identity Standards",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Microsoft has published its position on emerging IAM standards for agentic workloads, where software agents exhibit less predictable behavior than traditional service principals. This is directional guidance for I"
+  },
+  {
+    "title": "Adaptive Context-Based Redirections in Windows 365 — Public Preview",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — Windows App now supports granular device and resource redirection controls driven by compliance posture, device management state, group membership, and network conditions. This is the BYOD story for Cloud PCs"
+  },
+  {
+    "title": "Secure External Attachments with Purview Encryption — CA and Guest Account Interactions",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — If you're using Purview Information Protection to encrypt email attachments sent externally, the experience forks sharply based on whether guest accounts are provisioned: guests get seamless access but can generat"
+  },
+  {
+    "title": "Reducing NTLM Dependency: IAKerb and LocalKDC in Windows Insider Preview",
+    "category": "Identity",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — IAKerb and LocalKDC extend Kerberos to workgroup and local authentication scenarios that have historically required NTLM fallback. Currently Canary Channel only, but this is the foundational work for eventual"
+  },
+  {
+    "title": "Updated Secure Boot Status Report in Windows Autopatch",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — The Secure Boot report now surfaces certificate-level trust configuration, readiness for Secure Boot certificate updates, confidence levels, and alert timestamps — all directly integrated into the certificate roll"
+  },
+  {
+    "title": "Admin Insights for Windows 365 — Public Preview",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — A new insights surface in the Windows 365 admin experience that aggregates signals requiring attention across your Cloud PC estate into a single prioritized view. Enable it now in preview if you manage Cloud "
+  },
+  {
+    "title": "Browser-Based Work Protection on Agency-Managed Windows PCs",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Intune now supports data protection policies for browser-based work on Windows PCs your org doesn't own and can't fully enroll — specifically targeting contractor devices already enrolled in another agency's MDM. "
+  },
+  {
+    "title": "What's New in Microsoft Intune — March",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — March updates focus on faster check-in notifications (fixing delays from offline/low-battery states), improved compliance visibility, and expanded Apple device and mobile app management capabilities. Review the fu"
+  },
+  {
+    "title": "Admin Tasks in Microsoft Intune Now GA",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Admin Tasks aggregates high-impact approvals, privilege requests, security remediation actions, and configuration changes into a single workflow surface in the Intune console. This directly addresses audit readine"
+  },
+  {
+    "title": "Intune Suite Capabilities Coming to Microsoft 365 — CY26 Q3",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Advanced Intune Suite capabilities will be bundled into Microsoft 365 plans beginning CY26 Q3, with 30-day Message Center notice before tenant rollout. If you're licensing these capabilities standalone today, revi"
+  },
+  {
+    "title": "Intune Android Enterprise Support for Android XR",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Intune now manages Samsung Galaxy XR headsets via standard Android Enterprise enrollment, policy, and app management workflows. If your org is evaluating XR hardware for field or frontline scenarios, the managemen"
+  },
+  {
+    "title": "Three New Partners for Intune Multi-Tenant Management",
+    "category": "Devices",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Three new MSP-focused partners now integrate natively with Intune's multi-tenant management APIs, reducing the need for custom tooling or non-Microsoft platforms. Relevant if you're an MSP managing multiple custom"
+  },
+  {
+    "title": "CVE-2026-42897 — Exchange Server OWA XSS Vulnerability",
+    "category": "Apps",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Exchange 2016, 2019, and SE on-premises are all vulnerable to arbitrary JavaScript execution via a crafted email opened in OWA; Exchange Online is not affected. Patch immediately — the attack vector is email deliv"
+  },
+  {
+    "title": "Copilot in OneNote Now Understands Images, Tables, and Note Tags",
+    "category": "Apps",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Copilot's grounding in OneNote now extends beyond typed text to include images, tables, and note tags, improving accuracy of summarization and extraction across rich-content notebooks. No admin action required, bu"
+  },
+  {
+    "title": "Microsoft 365 Copilot Achieves ISO 42001 Recertification",
+    "category": "Apps",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Copilot and Copilot Chat completed their second consecutive ISO/IEC 42001:2023 recertification with zero non-conformities. If you're managing AI risk registers or responding to procurement questionnaires about AI "
+  },
+  {
+    "title": "Finance Agent in Microsoft 365 Copilot — Expanded Capabilities",
+    "category": "Apps",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — The Finance Agent now covers a broader range of finance workflows including record-to-report, source-to-pay, and forecast-to-plan scenarios. If your finance team is on M365 Copilot, this is worth a pilot — but ens"
+  },
+  {
+    "title": "Copilot in PowerPoint Agent Mode — Style Reference from Existing Deck",
+    "category": "Apps",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — Delayed in development; rolling out mid-June 2026. When available, Copilot Agent Mode in PowerPoint will apply an attached deck's theme and styles to newly generated presentations, reducing manual reformattin"
+  },
+  {
+    "title": "High Volume Email (HVE) Now GA in Exchange Online",
+    "category": "Apps",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Exchange Online HVE is now generally available in the worldwide multi-tenant service. If you run transactional or notification email through Exchange Online at scale, review the HVE pricing model and documentation"
+  },
+  {
+    "title": "Purview Data Security Posture Reports — GA",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Posture Reports deliver an outcome-based view of whether sensitivity labels and DLP policies are actually enforced consistently across M365 — not just whether they're configured. This is the answer to \"prove your "
+  },
+  {
+    "title": "Purview Data Security Posture Reports — Custom Workspaces and Charts in Preview",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — Custom workspaces let you tailor posture report views and charts for specific audiences — executives, compliance teams, or business unit owners. Built on Audit log telemetry. Enable the preview alongside the "
+  },
+  {
+    "title": "Purview DSPM for AI — Deep Dive",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — A comprehensive walkthrough of how Purview DSPM for AI monitors data exposure across Microsoft Copilot, Azure AI Foundry agents, and third-party LLM-connected apps. If you haven't scoped your DSPM for AI coverage "
+  },
+  {
+    "title": "Priority Cleanup V2 for Exchange Online — GA",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — V2 of Priority Cleanup improves approval workflows, deletion speed, and review processes for urgently purging mailbox content that's under retention or eDiscovery hold. If you've hit data spillage scenarios where "
+  },
+  {
+    "title": "AI-Powered DLM Diagnostics MCP Server — Open Source Release",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Microsoft has open-sourced a Model Context Protocol (MCP) server that enables AI-driven diagnosis of Data Lifecycle Management policy failures — retention not applying, archive mailboxes not expanding, inactive ma"
+  },
+  {
+    "title": "Microsoft Purview Referential Architecture Diagrams",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Updated reference architecture diagrams covering classification, sensitivity labeling, DLP, and Insider Risk signal flows across M365 workloads. Use these for design reviews, onboarding documentation, and communic"
+  },
+  {
+    "title": "Purview eDiscovery Premium Cases — Capability Overview",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — Detailed breakdown of E5 eDiscovery Premium advantages over E3: 50,000 case limit vs. 10,000, 5 TB per search vs. 2 TB, and a preview tenant-wide holds/process report. If your legal team is hitting scale limi"
+  },
+  {
+    "title": "Building a Curated Agent Store to Scale Agent Adoption",
+    "category": "Data",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Guidance on creating governed, curated agent catalogs that prevent ungoverned agent sprawl while enabling business adoption. Directly relevant to orgs trying to balance \"let teams build agents\" with \"don't let age"
+  },
+  {
+    "title": "What's New in Global Secure Access: Lock Down AI, Web, and Private Apps",
+    "category": "Network",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Internet Access and Private Access updates address the specific threat surface of generative AI adoption: identifying unsanctioned AI tool usage, preventing sensitive data upload to uncontrolled AI services, and b"
+  },
+  {
+    "title": "The Gentlemen Ransomware — Storm-2697 Go-Based Self-Propagating Encryptor",
+    "category": "Network",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Microsoft Threat Intelligence analysis of a Go-based ransomware using per-file ephemeral key encryption combined with simultaneous lateral movement techniques across target networks. Review the IOCs and lateral mo"
+  },
+  {
+    "title": "Computer-Using Agents in Copilot Studio — Now GA",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Agents can now directly interact with browser UIs, vendor portals, and legacy line-of-business systems without APIs or RPA tooling. This is a significant expansion of the automation attack surface: review your DLP"
+  },
+  {
+    "title": "Agent Governance at Scale with Microsoft Entra",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — As agents proliferate across admin portals without clear ownership or lifecycle management, Entra is positioning agent identity governance as a first-class capability. The post outlines accountability frameworks, "
+  },
+  {
+    "title": "Agent Evaluation in Copilot Studio — Now GA",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Automated evaluation runs test sets against agents at scale to validate behavior, tool usage, and response correctness continuously — not just at build time. For production agents handling sensitive workflows, thi"
+  },
+  {
+    "title": "Automate Agent Evaluation with Evaluation APIs",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — The Evaluation APIs extend the GA Agent Evaluation capability to CI/CD pipelines, enabling automated regression testing as agents evolve. If your dev team is shipping agent updates on a cadence, integrate these AP"
+  },
+  {
+    "title": "Exchange 2016/2019 ESU Period 2 — May 2026 Through October 2026",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Period 1 ESU ended April 2026; Period 2 runs May through October 2026 for orgs that couldn't complete migration to Exchange SE. If you're still running 2016/2019, enroll in Period 2 now — and given CVE-2026-42897,"
+  },
+  {
+    "title": "Windows Autopatch Secure Boot Status Report — Updated",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — The updated report adds certificate-level detail, trust configuration visibility, and confidence scoring that fits directly into Secure Boot certificate rollout planning. Use this as your primary readiness assessm"
+  },
+  {
+    "title": "Microsoft Edge Security Update Alerts in Edge Management Service",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[Preview] — Admins will be able to set a severity threshold and receive alerts when an Edge update contains security fixes at or above that level, including zero-days. GA targeted July 2026; preview available now. Enroll"
+  },
+  {
+    "title": "Windows 365 at Build 2026 — Developer and Agent Workload Expansions",
+    "category": "Visibility & Automation",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Build 2026 announcements position Windows 365 as compute infrastructure for both developers (streamlined onboarding, flexible SKUs) and autonomous agents (secure, governed execution environments). If your org is p"
+  },
+  {
+    "title": "CVE-2026-42897 — Exchange Server OWA XSS — PATCH NOW",
+    "category": "Action Required",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Immediate action required. All on-premises Exchange 2016, 2019, and SE installations are vulnerable to JavaScript injection via crafted email in OWA. Exchange Online is not affected. Apply the May 2026 security up"
+  },
+  {
+    "title": "Teams Live Events Retirement — Deadline June 30, 2026",
+    "category": "Action Required",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — 21 days remaining. New live event scheduling closes permanently on June 30, 2026. Audit all scheduled live events, identify Graph API integrations that create or manage live events, and migrate event workflows to "
+  },
+  {
+    "title": "Exchange 2016/2019 ESU Period 2 Enrollment",
+    "category": "Action Required",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Active now through October 2026. If you're still running Exchange 2016 or 2019 and Period 1 ESU has lapsed, enroll in Period 2 immediately — both to receive security patches (including CVE-2026-42897 mitigations) "
+  },
+  {
+    "title": "Computer-Using Agents in Copilot Studio — Governance Review Required",
+    "category": "Action Required",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Review within 30 days. With computer-use agents now GA, agents can interact with any web UI including internal systems holding sensitive data. Audit your Copilot Studio environment, Conditional Access policies, an"
+  },
+  {
+    "title": "Intune Suite Capabilities Rolling Into Microsoft 365 — CY26 Q3",
+    "category": "Action Required",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "[GA] — Plan within 30 days. Advanced Intune Suite features will begin appearing in M365 tenants in CY26 Q3 with 30-day Message Center notice. Review your current Intune Suite add-on licensing — if you're paying for stand"
+  },
+  {
     "title": "CVE-2026-42897 — Patch Exchange Server on-prem now.",
     "category": "Top 5 This Week",
     "date": "2026-06-02",
