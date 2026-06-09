@@ -65,7 +65,7 @@
 </head>
 <body>
   {{ partial "header.html" . }}
-  <main class="{{ if or .IsHome (and .IsPage (in .File.Path "posts")) (and .IsPage (in .File.Path "exec")) }}main-wide{{ else }}container{{ end }}">
+  <main class="{{ if or .IsHome (and .IsPage (in .File.Path "posts")) }}main-wide{{ else }}container{{ end }}">
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
@@ -86,6 +86,4 @@
     </div>
   </div>
   <script>window._siteBuildTime = {{ now.Unix }};</script>
-  <script src="/js/search.js?v={{ now.Unix }}"></script>
-</body>
-</html>
+  <script src="/js/search.js?v={{ now.U
