@@ -131,7 +131,7 @@ Format — optimised for pasting into LinkedIn's newsletter article editor. Use 
 Structure (in order):
 1. Title — format exactly as: "Modern Work Weekly — Week of YYYY-MM-DD" (this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
 2. Hook line — one punchy sentence that names the biggest story this week. No greeting, no "this week in M365". Just the hook.
-3. **TOP 5 THIS WEEK** — the 5 most important changes, numbered, one line each. Lead with the impact, not the feature name.
+3. **TOP 5 THIS WEEK** — the 5 most important changes, numbered, one line each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
 4. **WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
 6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions: [URL]"
