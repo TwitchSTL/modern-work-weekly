@@ -6,7 +6,7 @@ title = "Modern Work Weekly"
   author = "Ryan Arbuckle"
   description = "Weekly Microsoft 365 and Modern Work change digest for engineers, architects, and admins."
   subtitle = "by Ryan Arbuckle"
-  github = "https://github.com/TwitchSTL"
+  github = "https://github.com/TwitchSTL/modern-work-weekly"
   linkedin = "https://www.linkedin.com/in/ryanarbuckle/"
   keywords = ["Microsoft 365", "Intune", "Entra", "Defender", "Modern Work", "IT Admin"]
 
