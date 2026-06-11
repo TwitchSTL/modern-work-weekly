@@ -15,7 +15,7 @@ Zero Trust is the principle that no user, device, or network connection should b
 
 Modern Work Weekly is a weekly digest of changes across that stack — built for the engineers doing the actual work.
 
-Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly pulls from the source, filters the noise, and surfaces what actually matters.
+Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly pulls from 30+ official Microsoft sources, filters the noise, and surfaces what actually matters.
 
 No marketing. No executive summaries. Operational signal only.
 

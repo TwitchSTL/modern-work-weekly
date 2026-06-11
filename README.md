@@ -11,7 +11,7 @@
 [![Support on Ko-fi](https://img.shields.io/badge/support-Ko--fi-ff5e5b?style=flat&logo=ko-fi&logoColor=white)](https://ko-fi.com/ryanarbuckle)
 
 **A self-hosted, fully automated Microsoft 365 change digest.**  
-Scraped from 23+ Microsoft sources · Drafted by Claude · Published every Tuesday
+Scraped from 30+ Microsoft sources · Drafted by Claude · Published every Tuesday
 
 </div>
 
@@ -56,7 +56,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 | Schedule | Script | What it does |
 |---|---|---|
 | **Every 5 min** | `deploy.sh` | Git pull → Hugo build → deploy |
-| **Tuesday 5:55 AM CST** | `weekly-run.sh` | Full scrape → Claude draft → push |
+| **Tuesday mornings** | `weekly-run.sh` | Full scrape → Claude draft → push |
 | **Every 8 hours** | `health-run.sh` | Known issues refresh + deadline purge → push if changed |
 
 > [!NOTE]
