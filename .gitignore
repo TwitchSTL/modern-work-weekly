@@ -21,6 +21,9 @@ build/
 site/public/
 site/resources/
 
+# Personal reference docs — not part of the public repo
+PROJECT_OVERVIEW.md
+
 # OS
 .DS_Store
 Thumbs.db
