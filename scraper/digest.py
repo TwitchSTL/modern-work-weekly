@@ -140,6 +140,8 @@ Structure (in order):
 
 Do not include any hashtags in your output. Hashtags are appended automatically after generation, derived from the tags already assigned to this week's technical post — do not invent your own. Do not add a sign-off. Do not wrap output in code fences.
 
+Do not include hyperlinks or Markdown link syntax (no `[text](url)`) anywhere in the output — write plain bolded headline text only, e.g. "**Item title:**". Source links for each item are added automatically after generation by matching your headlines against the links already present in this week's technical post — inventing your own URL here would risk linking to the wrong (or a nonexistent) page.
+
 Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
 LINKEDIN_PROMPT_TEMPLATE = """Here is the week's digest content. Produce the LinkedIn newsletter edition.
@@ -379,6 +381,92 @@ def build_hashtags(tags: list, max_tags: int = 3) -> list:
     return hashtags
 
 
+# ── LinkedIn source links ────────────────────────────────────────────────────
+# The technical post already cites a real source URL for every item, in the
+# form **[Title](url)**. Rather than letting the LinkedIn-drafting call invent
+# its own links (risking a hallucinated or mismatched URL), we extract every
+# (title, url) pair already present in the published post and match the
+# LinkedIn draft's headlines against them by word overlap. A headline only
+# gets linked if a confident match is found — otherwise it stays plain bold.
+_LINK_STOPWORDS = {
+    "ga", "preview", "now", "microsoft", "new", "for", "in", "the", "and",
+    "of", "with", "is", "to", "a", "on", "public", "general", "availability",
+    "announced", "announces", "update", "updates", "released", "this",
+    "your", "are", "an", "at", "from", "via",
+}
+
+
+def _title_words(title: str) -> set:
+    """Normalize a headline into a set of significant (stopword-free) words."""
+    cleaned = re.sub(r"[^\w\s]", " ", title.lower())
+    return {w for w in cleaned.split() if w and w not in _LINK_STOPWORDS}
+
+
+def extract_post_links(content: str) -> list:
+    """Pull every **[Title](url)** markdown link out of the technical post body.
+
+    Returns a list of (title, url, wordset) tuples covering every item in
+    every section — Top 5 and category sections alike — since the LinkedIn
+    draft's "Worth Your Attention" and "Help Desk" items are pulled from
+    anywhere in the digest, not just Top 5.
+    """
+    links = []
+    for title, url in re.findall(r"\*\*\[([^\]]+)\]\(([^)]+)\)\*\*", content):
+        links.append((title, url, _title_words(title)))
+    return links
+
+
+def _best_link_match(headline: str, links: list, min_overlap: float = 0.45):
+    """Find the source URL whose title best overlaps with a LinkedIn headline.
+
+    Uses Jaccard similarity over stopword-filtered word sets. Returns None
+    (never a guess) if nothing clears the overlap threshold.
+    """
+    headline_words = _title_words(headline)
+    if not headline_words:
+        return None
+    best_url, best_score = None, 0.0
+    for _title, url, title_words in links:
+        if not title_words:
+            continue
+        union = headline_words | title_words
+        if not union:
+            continue
+        score = len(headline_words & title_words) / len(union)
+        if score > best_score:
+            best_score, best_url = score, url
+    return best_url if best_score >= min_overlap else None
+
+
+def linkify_linkedin_draft(li_content: str, content: str) -> str:
+    """Hyperlink bolded headlines in the LinkedIn draft using source links
+    already present in this week's technical post.
+
+    Skips section headers (the three anchor emoji), short/all-caps bold runs,
+    and anything already a markdown link. Never invents a URL — a headline
+    with no confident match is left as plain bold text.
+    """
+    links = extract_post_links(content)
+    if not links:
+        return li_content
+
+    def replace_bold(match):
+        inner = match.group(1)
+        if inner.startswith("[") or any(e in inner for e in ("⚡", "👀", "🛠️")):
+            return match.group(0)
+        if inner.isupper() or len(inner) < 10:
+            return match.group(0)
+        trailing_colon = inner.rstrip().endswith(":")
+        title_part = inner.rstrip(":").strip() if trailing_colon else inner.strip()
+        url = _best_link_match(title_part, links)
+        if url:
+            suffix = ":" if trailing_colon else ""
+            return f"**[{title_part}]({url}){suffix}**"
+        return match.group(0)
+
+    return re.sub(r"\*\*([^*]+)\*\*", replace_bold, li_content)
+
+
 def build_linkedin_prompt(draft: dict, week_of: str) -> str:
     """Build a compact digest summary to feed the LinkedIn draft."""
     lines = []
@@ -506,6 +594,7 @@ def run(args):
         try:
             li_prompt = build_linkedin_prompt(draft, week_of)
             li_content = call_claude_linkedin(li_prompt)
+            li_content = linkify_linkedin_draft(li_content, content)
             hashtags = build_hashtags(extract_post_tags(content))
             if hashtags:
                 li_content = li_content.rstrip() + "\n\n" + " ".join(hashtags)
