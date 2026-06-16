@@ -17,6 +17,7 @@ import argparse
 import json
 import logging
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -121,22 +122,23 @@ LINKEDIN_SYSTEM_PROMPT = """You write the weekly LinkedIn newsletter edition of 
 Voice: peer-professional, direct, occasionally dry. No first-person "I". Speak to the reader's role — "Intune admins will want to flag this", "Security teams should note", "If your org runs hybrid identity...", "If your C-level asks about AI governance this week, here's the answer." Confident, not hype-y.
 
 Format — optimised for pasting into LinkedIn's newsletter article editor. Use these conventions:
-- Section headers in ALL CAPS and bold (wrap in double asterisks: **HEADER**)
-- Top 5 items numbered (1. 2. 3. etc.)
+- Section headers in ALL CAPS and bold (wrap in double asterisks: **HEADER**), each prefixed with its fixed emoji anchor (see structure below). These three emoji are the ONLY emoji allowed anywhere in the output — never use emoji in the hook line, body text, bullets, or closing line.
+- Top 5 items numbered (1. 2. 3. etc.). Each numbered item is followed by a blank line before the next one starts — never run two numbered items together with no break.
 - Secondary bullet points with a dash and space: "- item"
 - Blank line between every item and section
-- No asterisk dividers, no markdown horizontal rules, no emojis, no backtick code blocks
+- Place a standalone divider line — "⸻" on its own line — between major sections: after the hook line, and between each of TOP 5 / WORTH YOUR ATTENTION / HELP DESK / closing line
+- No asterisk dividers, no markdown horizontal rules (---), no backtick code blocks
 - Keep total length 400–600 words
 
 Structure (in order):
 1. Title — format exactly as: "Modern Work Weekly — Week of YYYY-MM-DD" (this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
 2. Hook line — one punchy sentence that names the biggest story this week. No greeting, no "this week in M365". Just the hook.
-3. **TOP 5 THIS WEEK** — the 5 most important changes, numbered, one line each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
-4. **WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
-5. **ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
+3. **⚡ TOP 5 THIS WEEK** — the 5 most important changes, numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
+4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
+5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
 6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions: [URL]"
 
-Do not include hashtags, emojis anywhere, or a sign-off. Do not wrap output in code fences.
+Do not include any hashtags in your output. Hashtags are appended automatically after generation, derived from the tags already assigned to this week's technical post — do not invent your own. Do not add a sign-off. Do not wrap output in code fences.
 
 Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
@@ -292,6 +294,91 @@ def build_exec_prompt(draft: dict) -> str:
     )
 
 
+# ── LinkedIn hashtags ────────────────────────────────────────────────────────
+# Maps the standard tag taxonomy (the same one used in the technical post's
+# front matter — see SYSTEM_PROMPT above) to clean, readable hashtags. Keeps
+# hashtag selection deterministic: derived from the tags Claude actually
+# assigned to this week's post, not a separate free-form guess by the
+# LinkedIn-drafting call.
+TAG_HASHTAGS = {
+    "intune": "#Intune",
+    "entra-id": "#EntraID",
+    "defender-xdr": "#DefenderXDR",
+    "defender-for-endpoint": "#DefenderForEndpoint",
+    "defender-for-office-365": "#DefenderForOffice365",
+    "windows-autopatch": "#WindowsAutopatch",
+    "autopilot": "#Autopilot",
+    "windows-365": "#Windows365",
+    "purview": "#Purview",
+    "teams": "#MicrosoftTeams",
+    "sharepoint": "#SharePoint",
+    "onedrive": "#OneDrive",
+    "exchange": "#Exchange",
+    "copilot": "#Copilot",
+    "copilot-studio": "#CopilotStudio",
+    "zero-trust": "#ZeroTrust",
+    "modern-work": "#ModernWork",
+    "identity": "#Identity",
+    "endpoint-management": "#EndpointManagement",
+    "conditional-access": "#ConditionalAccess",
+    "global-secure-access": "#GlobalSecureAccess",
+    "viva": "#Viva",
+    "windows": "#Windows",
+    "teams-rooms": "#TeamsRooms",
+    "data-lifecycle": "#DataLifecycle",
+    "shadow-ai": "#ShadowAI",
+    "dspm": "#DSPM",
+    "hotpatch": "#Hotpatch",
+    "power-platform": "#PowerPlatform",
+}
+
+
+def extract_post_tags(content: str) -> list:
+    """Pull the `tags:` list out of a generated post's YAML front matter.
+
+    Expects the block form Claude actually produces:
+        tags:
+          - intune
+          - copilot
+    Falls back to inline list form `tags: [intune, copilot]` if present.
+    Returns tag slugs in the order they appear (front matter tags are
+    typically already ordered by relevance).
+    """
+    front_matter_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+    if not front_matter_match:
+        return []
+    front_matter = front_matter_match.group(1)
+
+    block_match = re.search(r"^tags:\s*\n((?:[ \t]*-[ \t]*.+\n?)+)", front_matter, re.MULTILINE)
+    if block_match:
+        return [
+            line.strip().lstrip("-").strip().strip('"\'')
+            for line in block_match.group(1).splitlines()
+            if line.strip()
+        ]
+
+    inline_match = re.search(r"^tags:\s*\[(.*?)\]", front_matter, re.MULTILINE)
+    if inline_match:
+        return [t.strip().strip('"\'') for t in inline_match.group(1).split(",") if t.strip()]
+
+    return []
+
+
+def build_hashtags(tags: list, max_tags: int = 3) -> list:
+    """Convert post tags into hashtags via the compiled TAG_HASHTAGS map.
+
+    Preserves order, dedupes, skips anything not in the map, caps at max_tags.
+    """
+    hashtags = []
+    for tag in tags:
+        hashtag = TAG_HASHTAGS.get(tag)
+        if hashtag and hashtag not in hashtags:
+            hashtags.append(hashtag)
+        if len(hashtags) >= max_tags:
+            break
+    return hashtags
+
+
 def build_linkedin_prompt(draft: dict, week_of: str) -> str:
     """Build a compact digest summary to feed the LinkedIn draft."""
     lines = []
@@ -419,6 +506,11 @@ def run(args):
         try:
             li_prompt = build_linkedin_prompt(draft, week_of)
             li_content = call_claude_linkedin(li_prompt)
+            hashtags = build_hashtags(extract_post_tags(content))
+            if hashtags:
+                li_content = li_content.rstrip() + "\n\n" + " ".join(hashtags)
+            else:
+                log.warning("No matching tags found for hashtag compilation — draft has none.")
             linkedin_draft_path = write_linkedin_draft(li_content, week_of)
         except Exception as e:
             log.warning(f"LinkedIn draft generation failed (non-fatal): {e}")
