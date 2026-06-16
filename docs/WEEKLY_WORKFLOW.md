@@ -154,6 +154,20 @@ python scraper.py --health-only
 - Run manually: `/opt/modern-work-weekly/repo/scraper/health-run.sh`
 - Verify cron is registered: `crontab -l`
 
+**Editing this repo from a sandboxed/cloud-synced clone (e.g. Claude's OneDrive working copy)**
+- File edit tools can silently truncate a file mid-write on this mount, even for small
+  in-place edits — always verify after editing (`wc -l`, `tail -c 200`, or
+  `python3 -c "compile(open(path).read(), path, 'exec')"` for `.py` files) before
+  committing. If truncated, recover from git (`git show HEAD:path > /tmp/restore`,
+  committed blobs are unaffected) and reapply the edit via a script/heredoc instead.
+- `git commit`/`status` can leave stale `.git/index.lock`, `.git/HEAD.lock`, or
+  `.git/objects/*/tmp_obj_*` files that block the next git command with "Unable to
+  create '...lock': File exists." `rm -f` fails with "Operation not permitted" on this
+  mount — `mv` the lock file to a different name instead, then retry immediately
+  (don't run another git command in between, or it can re-leave a fresh lock).
+- The sandbox has no GitHub credentials — `git push` must be run from a real terminal
+  with stored auth, same as the manual-review push in Step 3 above.
+
 ---
 
 ## Quick checklist
@@ -163,6 +177,8 @@ python scraper.py --health-only
 [ ] Technical digest reviewed and edited if needed
 [ ] Executive's Guide reviewed if sharing with leadership
 [ ] LinkedIn draft reviewed (state/linkedin_draft_YYYY-MM-DD.txt) before posting manually
+    (headlines are auto-linked to their source URL from the technical post — verify a
+    few resolve correctly; an unmatched headline is left as plain bold, not a broken link)
 [ ] Corrections pushed (if any)
 [ ] Site live at modernworkweekly.com
 ```
