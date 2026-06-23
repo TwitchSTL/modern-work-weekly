@@ -1,136 +1,199 @@
 [
   {
-    "title": "Entra ID retiring Custom Controls, enforcing CA during credential registration, and requiring explicit SSPR method registration.",
-    "category": "Top 5 This Week",
+    "title": "EWS retirement final phase, October 2026 deadline.",
+    "category": "Top 5",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "Existing configs continue working during transition, but migration planning must start now. Read the details in the Identity section."
+    "snippet": "Exchange Web Services disablement in Exchange Online is now approaching. Microsoft has introduced EWSAllowedAppIDs as a controlled allow-list bridge, but the clock is ticking. Any workload still on EWS that is not catalo"
   },
   {
-    "title": "Computer-using agents in Copilot Studio are now GA.",
-    "category": "Top 5 This Week",
+    "title": "Entra ID retiring Custom Controls, unenforced CA during registration, and unregistered SSPR methods.",
+    "category": "Top 5",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "Agents can now drive UI-based workflows in vendor portals and legacy line-of-business systems without RPA scripts or API dependencies. Governance and oversight policies should be in place before broad rollout."
+    "snippet": "Three legacy identity gaps are closing simultaneously. Custom Controls are being replaced by External MFA, Conditional Access will be enforced consistently during credential registration, and SSPR will require explicitly"
   },
   {
-    "title": "Copilot Studio gets a rebuilt authoring experience (Preview).",
-    "category": "Top 5 This Week",
+    "title": "Intune Suite advanced capabilities arrive in M365 E3/E5 by August 1.",
+    "category": "Top 5",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "The new AI core and streamlined canvas target multi-step, multi-agent workflows. Evaluate for your internal makers now while it's in preview, before it becomes the default surface."
+    "snippet": "Packaging changes are effective July 1; eligible tenants receive capabilities by August 1. If you are not already scoping which Intune Suite features apply to your environment, do it before the rollout lands so you can c"
   },
   {
-    "title": "Purview DSPM for AI is GA with cross-cloud coverage.",
-    "category": "Top 5 This Week",
+    "title": "AutoJack: AI browsing agents can be turned into RCE vectors via a single malicious webpage.",
+    "category": "Top 5",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "It now extends to AWS Bedrock agents and Azure AI Foundry workloads, giving you a single governance pane across cloud AI deployments. If you have AI workloads outside Azure, this changes your posture reporting story."
+    "snippet": "The exploit chain abuses localhost trust, missing authentication, and unsafe parameter handling in AutoGen Studio's MCP WebSocket. If your organization is piloting or running AI agents that browse untrusted content, this"
   },
   {
-    "title": "Exchange 2016/2019 ESU Period 2 announced (May–October 2026).",
-    "category": "Top 5 This Week",
+    "title": "Windows 11 version 26H2 preparation guide is live.",
+    "category": "Top 5",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "If you're still on Exchange 2016 or 2019, you now have a Period 2 ESU window, but this is borrowed time. Migration to Exchange SE should be the active priority, not the fallback plan."
+    "snippet": "The next annual Windows 11 update is in Insider channels now. Microsoft is positioning it as a low-disruption update for devices already on recent 11 releases. Start your compatibility testing cycle and review your Autop"
   },
   {
     "title": "Microsoft Entra ID security updates: What organizations need to do now",
     "category": "Identity",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Three legacy capabilities are on the retirement path: Custom Controls are being replaced by External MFA, Conditional Access will be enforced consistently during credential registration, and SSPR will require expl"
+    "snippet": "[GA] — Three retirement tracks are running in parallel: Custom Controls replaced by External MFA, Conditional Access enforcement gaps during credential registration are closing, and SSPR is being locked to explicitly reg"
   },
   {
     "title": "AI is accelerating cyberattacks — here's how to stay ahead",
     "category": "Identity",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Microsoft details how AI is compressing the attack chain, specifically around credential analysis, privileged account targeting, and adaptive social engineering at scale. Identity remains the primary entry point. "
+    "snippet": "[GA] — Microsoft's latest identity security posture guidance emphasizes that AI is compressing attacker timelines across the full kill chain: automated credential analysis, scaled social engineering, and real-time tactic"
   },
   {
-    "title": "Securing the new risk surface: local agents, claws, and open runtimes",
+    "title": "AutoJack: How a single page can RCE the host running your AI agent",
+    "category": "Identity",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — A malicious webpage can weaponize an AI browsing agent running AutoGen Studio against the host machine by exploiting unauthenticated MCP WebSocket access and unsafe parameter handling. Localhost is no longer a tru"
+  },
+  {
+    "title": "IT experts weigh in: Advanced Intune capabilities coming to Microsoft 365 E3 and E5",
     "category": "Devices",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Local AI agents running persistently on endpoints, described here as \"claws,\" represent a new class of risk with deep data and system access and limited built-in oversight. The post outlines the threat model and m"
+    "snippet": "[GA] — Advanced Intune Suite capabilities become part of M365 E3 and E5 effective July 1, with eligible tenants receiving them in-tenant by August 1. This includes capabilities like Remote Help, Endpoint Privilege Manage"
   },
   {
-    "title": "Announcing three new partners for multi-tenant management with Microsoft Intune",
+    "title": "Get ready for Windows 11, version 26H2",
     "category": "Devices",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Three new MSP partners are now integrated with Intune's multi-tenant management capabilities, expanding the options for service providers managing multiple customer tenants without custom tooling. MSPs currently r"
+    "snippet": "[GA] — Windows 11 26H2 is in Insider channels now, with the annual update positioned as low-disruption for devices already on recent 11 versions. For devices still on Windows 10 or older 11 releases, the delta is larger."
   },
   {
-    "title": "How Workday and Microsoft are redefining the agentic workplace",
+    "title": "Introducing EWSAllowedAppIDs: Preparing for the Final Phase of EWS Retirement",
     "category": "Apps",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Workday agents are now surfacing directly in Microsoft 365 Copilot, allowing users to check PTO balances, tax forms, and HR data from within Teams without switching applications. For orgs running Workday as their "
+    "snippet": "[GA] — EWS disablement in Exchange Online arrives in October 2026, and Microsoft has introduced EWSAllowedAppIDs as a controlled allow-list to give administrators a predictable path through the cutover. Use this now to e"
   },
   {
-    "title": "Microsoft Purview: Endpoint DLP — Policy Sync & Device Health AI-Powered Investigation",
-    "category": "Data",
+    "title": "Copilot Cowork is now GA",
+    "category": "Apps",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[Preview] — An AI agent skill for Endpoint DLP that detects unhealthy policy sync and device configuration issues is targeting preview in July 2026 and GA in August 2026. Plan to validate DLP policy deployment coverage i"
+    "snippet": "[GA] — Copilot Cowork, the agentic multi-step task execution system, is now generally available worldwide. The M365 Copilot app has been redesigned with a toggle between everyday chat and Cowork, and a new home page surf"
   },
   {
-    "title": "Level up your Azure Network Security Skills with our Upcoming Webinar Series",
-    "category": "Network",
+    "title": "A new SharePoint Look and Feel: What's Changing and Why It Matters",
+    "category": "Apps",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — The Azure Network Security team is running a scenario-driven webinar series covering Azure WAF, Azure Firewall, DDoS Protection, and Azure Bastion. For engineers responsible for hybrid connectivity and perimeter s"
+    "snippet": "[GA] — SharePoint's visual refresh is rolling out, targeting reduced visual noise, improved readability, and a more consistent interface. Microsoft states that existing organizational branding investments are preserved. "
   },
   {
-    "title": "Meet the new Copilot Studio: rebuilt for more complex, multi-step work",
+    "title": "Microsoft Teams: Block all identified external bots automatically from joining your meetings",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Teams will add an admin control to automatically block all identified external AI bots from joining meetings, extending existing bot governance capabilities. GA is targeted for August 2026. If your organization ha"
+  },
+  {
+    "title": "CVE-2026-45469 Microsoft Excel Remote Code Execution Vulnerability",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — RCE vulnerability in Microsoft Office for Mac. Security updates are available now. Mac users running affected Office software must install the update; no action is required for Windows Office users. Verify your Ma"
+  },
+  {
+    "title": "CVE-2026-45475 Microsoft Office Remote Code Execution Vulnerability",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — A second RCE vulnerability in Microsoft Office for Mac, addressed in the same update cycle as CVE-2026-45469. Apply the Mac Office security update via your MDM patching workflow and verify compliance reporting sho"
+  },
+  {
+    "title": "CVE-2025-4574 Crossbeam-channel: double free on drop vulnerability",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Memory safety vulnerability in the crossbeam-channel Rust crate. Relevant if your organization develops or deploys software that uses this dependency. Review your internal software supply chain for crossbeam-chann"
+  },
+  {
+    "title": "Microsoft Signing Transparency (MST) now GA",
     "category": "Visibility & Automation",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[Preview] — Copilot Studio has been rebuilt with a new AI core and streamlined authoring canvas designed for reliable multi-step and multi-agent workflows. This is in preview now; evaluate with your internal makers so yo"
+    "snippet": "[GA] — Microsoft is now recording production software builds for critical cloud services into a publicly verifiable SCITT-compliant blockchain ledger, starting with Azure Attestation, Azure Managed HSM, and Azure confide"
   },
   {
-    "title": "Crypto Clipper uses Tor and worm-like propagation for persistence and control",
+    "title": "Guarding AI memory",
     "category": "Visibility & Automation",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Microsoft Threat Intelligence documented a cryptocurrency clipper campaign combining clipboard hijacking, Tor-based C2, and worm-like lateral propagation, with a persistent backdoor capability beyond the primary t"
+    "snippet": "[GA] — Microsoft Security Blog breaks down attacker techniques targeting AI memory and persistent context stores, including prompt injection through memory and cross-session data leakage. For organizations running Copilo"
   },
   {
-    "title": "Beyond the benchmark: Advancing security at AI speed",
+    "title": "One intrusion, two cyberattackers: Uncovering parallel threat activity",
     "category": "Visibility & Automation",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Microsoft's MDASH agentic vulnerability detection system is now integrated into real-world security workflows across Windows, Azure, and identity systems, finding vulnerabilities faster than traditional methods. F"
+    "snippet": "[GA] — A ransomware case analysis showing two parallel threat actors operating within the same compromised environment simultaneously, blending TTPs and evasion techniques in ways that defeat alert-by-alert triage. The k"
   },
   {
-    "title": "Microsoft Entra ID security updates: Custom Controls, CA enforcement, and SSPR changes",
+    "title": "CVE-2026-44967 opentelemetry-cpp: unbounded HTTP response read",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Vulnerability in OTLP HTTP exporters in opentelemetry-cpp. Relevant for teams running observability pipelines or custom telemetry exporters built on this library. Audit your observability tooling for this dependen"
+  },
+  {
+    "title": "CVE-2026-46331 net/sched: pedit partial COW page cache corruption",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Linux kernel networking scheduler vulnerability affecting page cache integrity. Relevant for Linux-based infrastructure in your M365 adjacent environment, including any Linux VMs, containers, or edge nodes. Ensure"
+  },
+  {
+    "title": "CVE-2026-34180 and CVE-2026-7383: ASN.1 heap buffer vulnerabilities",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Two memory safety vulnerabilities in ASN.1 parsing, one a heap buffer over-read in content parsing and one a possible heap buffer overflow in multibyte string conversion. ASN.1 is foundational to certificate and c"
+  },
+  {
+    "title": "EWS disablement in Exchange Online — October 2026 deadline",
     "category": "Action Required",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Begin migration planning now. Three retirement tracks are active: Custom Controls to External MFA, CA enforcement during credential registration, and explicit method registration for SSPR. Existing configs work du"
+    "snippet": "[GA] — Deadline: October 2026. Use the newly available EWSAllowedAppIDs allow-list feature immediately to audit which applications in your tenant are still calling EWS. Build a migration-to-Graph plan for each identified"
   },
   {
-    "title": "Exchange 2016/2019 ESU Period 2: May–October 2026 deadline",
+    "title": "Entra ID: Migrate off Custom Controls, fix CA registration gaps, enforce SSPR method registration",
     "category": "Action Required",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — October 2026 is the hard stop. Period 2 ESU requires active enrollment and covers May through October 2026 only. Any Exchange 2016 or 2019 servers still on-premises after October 2026 will be unpatched. If you hav"
+    "snippet": "[GA] — No single published cutoff date, but enforcement is coming. Map every Conditional Access policy that uses Custom Controls and begin the transition to External MFA. Audit CA policies for registration enforcement ga"
   },
   {
-    "title": "Purview Endpoint DLP — Policy Sync & Device Health AI-Powered Investigation (Preview July 2026)",
+    "title": "Intune Suite advanced capabilities in M365 E3/E5 — effective July 1, in-tenant by August 1",
     "category": "Action Required",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[Preview] — Preview arrives July 2026, GA August 2026. Before this tooling lands, establish a baseline of your current Endpoint DLP policy sync health and device coverage. Admins who don't have a clear picture of current"
+    "snippet": "[GA] — Deadline: August 1, 2026. Packaging change is effective July 1. Identify which Intune Suite capabilities are newly included for your license tier, plan configuration for features like Endpoint Privilege Management"
   },
   {
-    "title": "Securing local AI agents on endpoints",
+    "title": "CVE-2026-45469 and CVE-2026-45475: Office for Mac RCE patches",
     "category": "Action Required",
     "date": "2026-06-23",
     "url": "/posts/2026-06-23/",
-    "snippet": "[GA] — Governance gap requiring immediate attention. Local AI agents running persistently on endpoints operate with deep system access and currently have minimal standardized oversight. Before your organization sees broa"
+    "snippet": "[GA] — Immediate action required for Mac fleets. Apply the Microsoft Office for Mac security update via your MDM patching workflow now. Verify compliance reporting shows full coverage across all managed Mac devices befor"
+  },
+  {
+    "title": "AI agent security review: AutoJack RCE exploit chain",
+    "category": "Action Required",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Urgent architecture review recommended for any environment running AI agents with web browsing capability and local service access. Enforce network segmentation between agent processes and local interfaces, requir"
   },
   {
     "title": "CVE-2026-54411: Linux-PAM Timing Side-Channel Leaks Plaintext Passwords",
