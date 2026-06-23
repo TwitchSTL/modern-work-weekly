@@ -1,0 +1,3228 @@
+{
+  "week_of": "2026-05-26",
+  "last_updated": "2026-05-26",
+  "runs": [
+    "2026-05-26"
+  ],
+  "total_new_items": 212,
+  "sources_checked": [
+    "Intune",
+    "Defender XDR",
+    "Entra ID",
+    "Teams",
+    "Microsoft Security Blog (Zero Trust)",
+    "Purview",
+    "SharePoint / OneDrive",
+    "Microsoft 365 Roadmap",
+    "Agent 365",
+    "Defender for Endpoint",
+    "Defender for Office 365",
+    "Exchange Online",
+    "Windows 365",
+    "Autopilot",
+    "Global Secure Access",
+    "Intune Known Issues",
+    "Windows 365 Known Issues",
+    "Autopilot Known Issues",
+    "Defender for Endpoint Known Issues",
+    "Defender XDR Known Issues",
+    "Purview Known Issues",
+    "Entra ID Known Issues",
+    "Teams Known Issues",
+    "Windows Release Health"
+  ],
+  "grouped_items": {
+    "Data": [
+      {
+        "id": "1262c9d31de9e479",
+        "source": "Intune",
+        "title": "Device security",
+        "body": "We updated documentation to clarify how to interpret device-reported values in compliance reports. Some compliance reports include aSettingcolumn with values reported directly by the device, providing additional context for noncompliance in scenarios such as custom compliance and Android app configuration reporting. This update adds guidance on treating these values as informational only and highlights security considerations for reviewing device-reported data. For more information, seeDevice-reported values in compliance reports.",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d3767e776020f977",
+        "source": "Purview",
+        "title": "What's planned for Microsoft Purview",
+        "body": "Microsoft Purview continues to add new solutions and features to help with data governance, data security, and risk and compliance in your organization. Check out the following roadmap sites to learn more about what's planned for Microsoft Purview:",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9f0583fe40727148",
+        "source": "Purview",
+        "title": "Data Governance",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "54df33b49dedc4e7",
+        "source": "Purview",
+        "title": "Data Loss Prevention",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6859f39984889b93",
+        "source": "Purview",
+        "title": "Information protection scanner",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e4c3663d485635ec",
+        "source": "Purview",
+        "title": "Sensitivity labels",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9f0583fe40727148",
+        "source": "Purview",
+        "title": "Data Governance",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "54df33b49dedc4e7",
+        "source": "Purview",
+        "title": "Data Loss Prevention",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "93d6b1a0a62e025f",
+        "source": "Purview",
+        "title": "eDiscovery",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "13f9580d57a22f9a",
+        "source": "Purview",
+        "title": "Insider Risk Management",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e4c3663d485635ec",
+        "source": "Purview",
+        "title": "Sensitivity labels",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9f0583fe40727148",
+        "source": "Purview",
+        "title": "Data Governance",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "54df33b49dedc4e7",
+        "source": "Purview",
+        "title": "Data Loss Prevention",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "270811fb6862356b",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Purview: Insider Risk Management – Ability to create cases without content in IRM",
+        "body": "Insider Risk Management is providing the ability to create a case without content. With this, we will introduce a new active case limit (2000). This new functionality will allow customers to create more cases particularly when content download is unnecessary. If a case is created without content download, content download can be initiated anytime the case is active pending available content download limits. There is no change to the active content download limit (100). \n\nMicrosoft Purview Insider Risk Management correlates various signals to identify potential malicious or inadvertent insider ",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=554940",
+        "date": "Wed, 04 Feb 2026 00:15:25 Z",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "bd3b471bae4ff000",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Purview: Data Loss Prevention - Reduce policy sync status SLA on the Purview UI from 2 hours to 30 mins",
+        "body": "Policy updates in Microsoft Purview now sync faster, reducing wait times from up to 2 hours to just 30 minutes, so your protections stay up to date and take effect more quickly across your organization. GA date: June CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562994",
+        "date": "Thu, 21 May 2026 23:15:57 Z",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Identity": [
+      {
+        "id": "7f70de4d2a98b730",
+        "source": "Entra ID",
+        "title": "General Availability - As an AP requestor, I can see in My Access who my approver(s) are if the access package owner allows me to",
+        "body": "Type:General AvailabilityService category:Entitlement ManagementProduct capability:Entitlement Management In May, requestors will be able to see the name and email address of approvers for their pending access package requests directly in the My Access portal will be in General Availability. This feature improves transparency and helps streamline communication between requestors and approvers. At the tenant level, approver visibility is enabled by default for all members (non-guests) and can be controlled through the Entitlement Management settings in the Microsoft Entra Admin Center. At the a",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "478d1013b8060a2d",
+        "source": "Entra ID",
+        "title": "General Availability â Enabling Social Identity Providers in Entra External ID Native Authentication via browserâdelegated (webâview) flows using SDKs for applications",
+        "body": "Type:General AvailabilityService category:B2C - Consumer Identity ManagementProduct capability:Developer Experience Build secure signâin and signâup experiences for applications in Entra External ID using Native Authentication, with Social Identity Provider support such as Google, Facebook, and Apple available through browserâdelegated (webâview) authentication using developerâfriendly SDKs. For more information, see:Native authentication in Microsoft Entra External ID.",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d2a58bb56b0e446e",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Microsoft recognized as a Leader in The Forrester Wave™ for Workforce Identity Security Platforms",
+        "body": "Microsoft has been recognized as a Leader in The Forrester Wave™: Workforce Identity Security Platforms, Q2 2026, receiving the highest scores in both the current offering and strategy categories. The post Microsoft recognized as a Leader in The Forrester Wave™ for Workforce Identity Security Platforms appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/22/microsoft-recognized-as-a-leader-in-the-forrester-wave-for-workforce-identity-security-platforms/",
+        "date": "Fri, 22 May 2026 17:00:00 +0000",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "80a820e3562323ad",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Microsoft Security success stories: How St. Luke’s and ManpowerGroup are securing AI foundations",
+        "body": "How Frontier firms secure AI at scale: read how Microsoft customers embed governance, identity, and cloud security to make protection an enabler of AI growth. The post Microsoft Security success stories: How St. Luke’s and ManpowerGroup are securing AI foundations appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/22/microsoft-security-success-stories-how-st-lukes-and-manpowergroup-are-securing-ai-foundations/",
+        "date": "Fri, 22 May 2026 16:00:00 +0000",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "96e74a693a8d1767",
+        "source": "Windows 365",
+        "title": "Userâinitiated provisioning for Windows 365 Reserve (public preview)",
+        "body": "Windows 365 Reserve now supports userâinitiated provisioning in public preview, giving eligible users the ability to set up their Reserve Cloud PC directly from the Windows App when they need secure access quicklyâsuch as during device failures or while traveling. This capability is off by default and fully governed by IT. Admins can enable user provisioning through Windows App settings for Windows 365 in Microsoft Intune and scope it to specific Microsoft Entra ID user groups. When enabled, users can start provisioning on demand while IT continues to manage policies, licensing, and overal",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9a76d484e40dd094",
+        "source": "Windows 365",
+        "title": "Windows 365 Government support for external identities",
+        "body": "You can now provision a Cloud PC for an external identity in Windows 365 Government. External identity users can connect to the service using the latestWindows App on Windows. For more information, seeExternal identity, along with appropriateWindows 365 licensing guidance.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "25ea04982b47bff4",
+        "source": "Windows 365",
+        "title": "Additional client support for external identities",
+        "body": "External identity support is now in preview for the Windows App on macOS and Android. For more information on client versions and capabilities, seeCompare Windows App features across platforms and devices. For latest information on external identity support, seeExternal identity.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "02ca2cac8552d55f",
+        "source": "Autopilot",
+        "title": "Updated build for the low privileged account for Intune Connector for Active Directory",
+        "body": "Date added:April 18, 2025 We've updated the low-privileged Intune Connector for Active Directory build. New in build6.2504.2001.8: Download and install the latest version to get these changes.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "54dabf77e66c80b7",
+        "source": "Autopilot",
+        "title": "Low privileged account for Intune Connector for Active Directory for Hybrid join Windows Autopilot flows",
+        "body": "Date added:February 27, 2025 We've updated the Intune Connector for Active Directory to use a low privileged account to increase the security of your environment. The old connector will continue to work until deprecation in late June 2025. For more information, seeDeploy Microsoft Entra hybrid joined devices by using Intune and Windows Autopilot.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "dda8731cc303be85",
+        "source": "Autopilot",
+        "title": "Device rename occurs during technician phase for pre-provisioning",
+        "body": "Date added:March 28, 2023Date updated:April 17, 2023 Starting in 2303, a new functional change forces the device rename to occur during the technician phase for pre-provisioning for Microsoft Entra join devices. After the technician selects the provision button, we'll immediately perform the device rename and reboot the device, then transition to the device ESP. During the user flow, the device rename is then skipped keeping resources that depend on device name (such as System Center Endpoint Protection (SCEP) certs) intact. To apply this change, for Windows 10, install quality updateKB5023773",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3c086a2ee04281e7",
+        "source": "Autopilot",
+        "title": "Support for Temporary Access Pass",
+        "body": "Date added:January 3, 2023Date updated:February 15, 2023 Starting with 2301 Windows Autopilot, Windows Autopilot supports the use ofTemporary Access Passfor Microsoft Entra joined user driven, pre-provisioning and self-deploying mode for shared devices. A Temporary Access Pass is a time-limited passcode that can be configured for multi or single use to allow users to onboard other authentication methods. These authentication methods include passwordless methods such as Microsoft Authenticator, FIDO2, or Windows Hello for Business. For more information on supported scenarios, seeTemporary Acces",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8c0d8ca0691f7617",
+        "source": "Global Secure Access",
+        "title": "Download the latest version",
+        "body": "You can download the current version of the Global Secure Access client from the Microsoft Entra admin center.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Devices": [
+      {
+        "id": "e12d2ac9775c587a",
+        "source": "Intune",
+        "title": "Device enrollment",
+        "body": "You can now use Apple access management settings in Apple Business Manager and Apple School Manager to configure service access for Apple accounts on organization-owned devices. These controls let you choose what devices users can sign in to and which apps and services are available to them. For more information, seeConfigure service access for Apple accounts. Microsoft Intune has added support for userless Apple automated device enrollment (ADE) for visionOS and tvOS devices, enabling you to enroll and manage Apple Vision Pro and Apple TV through Apple Business Manager or Apple School Manager",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1262c9d31de9e479",
+        "source": "Intune",
+        "title": "Device security",
+        "body": "New guidance has been added to the Microsoft Intune compliance policy reporting documentation to help explain how device compliance results appear in Intune reports. This update clarifies expected reporting behavior related to device check-in timing and user association, helping you better interpret compliance policy reports. For more information, seeKnown reporting behaviors.",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "380da3baccb0704a",
+        "source": "Intune",
+        "title": "Monitor and troubleshoot",
+        "body": "The Intune Data Warehouse (beta) connector v1 in Power BI is retired. If you use Power BI reports that rely on this connector, you need to transition to Intune connector v2 or the OData Feed connector before the transition completes. Power BI reports created after November 2025 already use connector v2, while reports created before that date may still use the beta connector and need updating. This change improves the long-term reliability and supportability of Intune data access. Customer impact: This change does not introduce new user interface experiences. Customers who still rely on the Int",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7b88951e434978de",
+        "source": "Intune",
+        "title": "Device management",
+        "body": "We've improved connectivity when using theLaunch Remote Helpcapability in the Intune admin center for Windows devices. For the best experience, we recommend updating firewall rules to include this new endpoint: For the current list of required network endpoints, seeNetwork requirements for PowerShell scripts and Win32 appsandRemote Helpin the Intune endpoints documentation. With this endpoint addition, we've also added a newIntune Management Extension log, NotificationInfra.log, which tracks notifications sent through the Microsoft real-time communication channel. Microsoft Intune supports Red",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "89444f4c172a13c5",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Mini Shai Hulud: Compromised @antv npm packages enable CI/CD credential theft",
+        "body": "Compromised @antv npm packages deploy the Mini Shai-Hulud payload to steal CI/CD secrets from Linux-based automation environments. The malware executes during npm install and targets credentials across GitHub, AWS, Kubernetes, Vault, npm, and 1Password platforms. The post Mini Shai Hulud: Compromised @antv npm packages enable CI/CD credential theft appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/mini-shai-hulud-compromised-antv-npm-packages-enable-ci-cd-credential-theft/",
+        "date": "Wed, 20 May 2026 17:48:44 +0000",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9c86a1926b8dd0e7",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Copilot (Microsoft 365): Chat History Filtering by Copilot Experience",
+        "body": "Users will now see chat history scoped to their current Copilot Chat endpoint, with the option to see ‘All chats’ view. GA date: June CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559601",
+        "date": "Fri, 22 May 2026 22:15:37 Z",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "382c36ce7fd53101",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Outlook: Navigate Your Favorite Folders Without Expanding the Folder Pane",
+        "body": "You can now quickly switch between your favorite folders without opening the full folder pane. When the pane is collapsed, your favorite folders appear as a vertical list, giving you one-click access to the folders you use most. Each folder shows unread or total counts so you always know what needs attention. Right-click any favorite for the same options you're used to, and your selections stay put across sessions. It's a familiar experience for anyone who loved favorites in classic Outlook, now built right into the new Outlook. #newoutlookforwindows GA date: September CY2026 Preview date: Aug",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=563810",
+        "date": "Thu, 21 May 2026 23:15:57 Z",
+        "category": "Devices",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f756025b3945738c",
+        "source": "Windows 365",
+        "title": "Windows Autopilot support for Windows 365 Reserve (Public Preview)",
+        "body": "Autopilot Device Preparation is now available in Public Preview for Windows 365 Reserve. With DPP enabled, provisioning completes only after required applications and configurations are installed and validated - improving reliability and security while reducing the need for custom images. Admins can optionally linkAutopilot Device Preparationwith Reserve provisioning policies in Microsoft Intune. Cloud PCs provisioned with DPP show a Preparing status while device setup is in progress. There are no changes to Reserve licensing, usage limits, or the end-user experience.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a62f16912d464213",
+        "source": "Windows 365",
+        "title": "Admin Insights for Windows 365",
+        "body": "Admin Insights for Windows 365 is now in public preview, designed to help IT administrators quickly understand whatâs happening in their environment and where to focus.\nIT administrators managing Windows 365 Cloud PCs rely on a range of signals across the Microsoft Intune admin centerâincluding reports, alerts, and device viewsâto understand the health of their environment. These tools provide valuable visibility, but as environments scale, quickly surfacing what needs attention becomes more important. Admin Insights builds on existing reporting, monitoring, and alerting by bringing impo",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "db7e338cfccff729",
+        "source": "Windows 365",
+        "title": "Updates to Windows 365 navigation in the Microsoft Intune admin center now generally available",
+        "body": "The Windows 365 experience in the Microsoft Intune admin center has been updated with a new, dedicated navigation area underDevicescalledManage Windows 365 Cloud PCs. The Windows 365 entry point has moved from theDevices > Device onboardingsection to this new location, where existing management optionsâsuch as Overview, All Cloud PCs, All Cloud Apps, and Settingsâare now organized in a vertical navigation menu.Provision Cloud PCscontains Provisioning policies, Custom images, and Azure Network Connections. In addition, a new Windows 365 administration section is available underTenant admini",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3288df797ff5df94",
+        "source": "Windows 365",
+        "title": "Cloud PC Monitoring (Public Preview)",
+        "body": "Cloud PC Monitoring is now available in public preview for Windows 365. This feature provides IT admins with enhanced visibility into Cloud PC health, performance, and configuration through integrated dashboards in the Microsoft Intune admin center. Admins can view connection health trends, Cloud PC reliability data, and userâ and deviceâlevel insights to support troubleshooting and helpâdesk scenarios across their Cloud PC environment. Cloud PC Monitoring helps organizations monitor endâtoâend configuration and more quickly identify and investigate performance and connection issues.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1f8ca3b76a999351",
+        "source": "Windows 365",
+        "title": "Azure Network Connection health checks now enforce required Windows 365 endpoints",
+        "body": "Beginning in April 2026, Azure Network Connection (ANC) health checks will return an Error instead of a Warning if the following required endpoints aren't reachable, blocking new Cloud PC provisioning until resolved: No new endpoints are being added. Existing Cloud PCs and Microsoft-hosted network deployments aren't affected. For more information, seeAzure Network Connection health checksandAzure Network Connection connectivity requirements.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0f53c053cdd3e41e",
+        "source": "Windows 365",
+        "title": "Additional regions for Windows 365 Flex (shared)",
+        "body": "Windows 365 Flex in Shared mode is now available in the following regions: These regions are now selectable in Windows 365 Flex (shared) provisioning policies in Microsoft Intune.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4224f4ee9996b435",
+        "source": "Windows 365",
+        "title": "Azure Network Connections now show available IP capacity",
+        "body": "Administrators can now view available IP capacity for each Azure network connection (ANC) directly in the Azure network connections experience in the Microsoft Intune admin center. This visibility helps you plan subnet capacity before provisioning and scaling Cloud PCs, and it can help identify capacity constraints that may affect provisioning success. The value surfaces as an IP availability count and is intended for troubleshooting and planning without exposing individual IP addresses.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "de932b08defb7406",
+        "source": "Autopilot",
+        "title": "Enrollment Status Page support for installing Windows security updates during Windows OOBE",
+        "body": "Date added:September 3, 2025Date updated:January 26, 2026 The Windows out-of-box experience (OOBE) by default installs the latest available monthly security update releases to help ensure devices are secure and up to date from day one. Windows OOBE is used by Intune and by Windows Autopilot scenarios through the Intune enrollment status page (ESP) configurations. Intune refers to these monthly security update releases as quality updates. To help manage this behavior, the Intune enrollment status page (ESP) is updated with a new setting that can be used to allow or block the automatic installat",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d4288cbf98c900ce",
+        "source": "Autopilot",
+        "title": "Deliver Enterprise App Catalog (EAM) apps during the Enrollment status page",
+        "body": "Date added:June 26, 2025 Windows Autopilot now supports Enterprise App Catalog apps. Microsoft Intune Enterprise App Management enables IT admins to easily manage applications from the Enterprise App Catalog. With Intune's 2506 release, you can now select apps from the Enterprise App Catalog as blocking apps in the Enrollment status page (ESP) profile. This allows you to ensure those apps are delivered before the user can access the desktop. For related information, seeAdd an Enterprise App Catalog app to Microsoft Intune.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "130843ef7ac66302",
+        "source": "Autopilot",
+        "title": "Update to enrollmentProfileName property for devices deployed via Windows Autopilot for existing devices",
+        "body": "Date added:June 24, 2024 Devices deployed via Windows Autopilot for existing devices which are also registered for Windows Autopilot would previously have anenrollmentProfileNameproperty incorrectly set asOfflineAutoPilotProfile-<ZtdCorrelationId>. With a recent change,enrollmentProfileNamehas been updated to correctly display the assigned Windows Autopilot profile. This may impact customers who are usingenrollmentProfileNamefor Microsoft Entra dynamic groups or Microsoft Intune assignment filters to distinguish devices deployed via Windows Autopilot for existing devices. For more information,",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "18958e7b7b72e7de",
+        "source": "Autopilot",
+        "title": "Devices are no longer re-enrolled after a motherboard change",
+        "body": "Date added:June 4, 2024 When a device previously changed its motherboard and the OS remained intact, Windows Autopilot attempted to re-enroll the device to Intune. This re-enrollment no longer occurs if a motherboard swap occurs on a device due to a change in Windows Autopilot. If a motherboard is changed on a device, the new motherboard needs to be re-registered so that Windows Autopilot continues to work upon a reset.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ac2761f51aac808a",
+        "source": "Autopilot",
+        "title": "Windows Autopilot self-deploying mode is now generally available",
+        "body": "Date added:February 23, 2024 Windows Autopilot self-deploying mode is now generally available and out of preview. Windows Autopilot self-deploying mode enables deployment of Windows devices with little to no user interaction. Once the device connects to network, the device provisioning process starts automatically: the device joins Microsoft Entra ID, enrolls in Intune, and syncs all device-based configurations targeted to the device. Self-deploying mode ensures that the user can't access desktop until all device-based configuration is applied. The Enrollment Status Page (ESP) is displayed dur",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "cce34d6f28ded787",
+        "source": "Autopilot",
+        "title": "Updates to error message for manual device uploads",
+        "body": "Date added:October 31, 2023 The 2310 release of Intune adds more clarity to the manual hardware hash upload in the console. If a device couldn't be imported, a notification shows the import error along with the specific lines of the CSV file that received the error. The error codes also include more details on why the device failed to upload, whether the device is assigned to another tenant, or the device already registered to the tenant.  ",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f96013f8f2aaa490",
+        "source": "Autopilot",
+        "title": "Unblock fix pending state for self-deploying and pre-provisioning mode for disabled OEMs",
+        "body": "Date added:October 10, 2023 Starting in 2310, we're making an update to the self-deployment and pre-provisioning modes for manufacturers that have not opted-in to attesting to removal of Windows Autopilot refurbished devices. Customers using these manufacturers were still subjected to the one-time device-based enrollment block in the self-deployment and pre-provisioning modes. This block means that the device could go through self-deployment or pre-provisioning mode once and then get blocked from doing it again. This behavior could cause problems if the device needed to be reset or redeployed.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c34f1b0fd5d18873",
+        "source": "Autopilot",
+        "title": "Update to BitLocker Recovery Key Process for Windows Autopilot",
+        "body": "Date added:August 23, 2023 Microsoft Intune is changing how BitLocker resets occur for reused Windows Autopilot devices in the September (2309) service release. Previously, users could access the BitLocker recovery key via BitLocker self-service when reusing devices that were configured through Windows Autopilot. However, after the change, users will need to contact their IT admin to request a restore or to access the BitLocker recovery key. IT admins will continue to have full access to recovery keys both before and after this change.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "40b15fad7c64a6d0",
+        "source": "Autopilot",
+        "title": "Win32 app configurable installation time impacts the Enrollment Status Page",
+        "body": "Starting in Intune 2308, Win32 apps allow configuration of an installation time on a per app basis. This time is expressed in minutes. If the app takes longer to install than the set installation time, the deployment fails the app install. To avoid Enrollment Status Page (ESP) timeout failures, any changes made to timeouts for Win32 apps also needs an increase in the ESP timeout to reflect those changes.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "18e4f6d4bf99bc86",
+        "source": "Autopilot",
+        "title": "One step removal of Windows Autopilot registration",
+        "body": "Date added:July 3, 2023 Starting in 2307, Windows Autopilot is making it easier to manage devices by adding one step removal of a device in Windows Autopilot devices in Intune. One step removal of a device means that the Windows Autopilot registration of a device can now be removed without needing to delete the record in Intune. If the device is still active in Intune, the deletion just removes the registration, but it continues to be managed. To use this feature in Intune:",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fa9db59fb8543f6d",
+        "source": "Autopilot",
+        "title": "Install required apps during pre-provisioning",
+        "body": "Date added: March 17, 2023* A new toggle is available in the Enrollment Status Page (ESP) profile that allows selection to attempt to install required applications during pre-provisioning technician phase. We understand that installing as many applications as possible during pre-provisioning is desired to reduce the end user setup time. To help achieve installing as many applications as possible during pre-provisioning, an option has been implemented to attempt the installation of all the required apps assigned to a device during technician phase. If there's app install failure, ESP continues ",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fd38a89b55495a16",
+        "source": "Autopilot",
+        "title": "New Microsoft Store apps now supported with the Enrollment Status Page",
+        "body": "Date added:March 17, 2023 The Enrollment Status Page (ESP) now supports the new Microsoft store applications during Windows Autopilot. This update enables better support for the new Microsoft Store experience and should be rolling out to all tenants starting with Intune 2303. For related information, seeSet up the Enrollment Status Page.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Devices",
+        "phase": "Broad",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Visibility & Automation": [
+      {
+        "id": "20316ce40eb3974a",
+        "source": "Intune",
+        "title": "Tenant administration",
+        "body": "TheChange Review Agentnow provides risk-based recommendations directly in the Multi Admin Approval experience for Windows PowerShell scripts. On theMy requestsandAll requeststabs, a newAgent Responsecolumn displays when a suggestion is available. You can then select the suggestion to open and complete the Change Review Agent's approval workflow for that request without leaving the Multi Admin Approval node. Change Review Agent suggestions continue to be available in the agent's primary experience as well. For more information, seeChange Review Agent suggestions in Multi Admin Approval.",
+        "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7b46273209e28a51",
+        "source": "Defender XDR",
+        "title": "April 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "20ac285be47c86b7",
+        "source": "Defender XDR",
+        "title": "March 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b1495e065ddb2fa2",
+        "source": "Defender XDR",
+        "title": "February 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a3184c35885d635f",
+        "source": "Defender XDR",
+        "title": "January 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c81cd2551867b0be",
+        "source": "Defender XDR",
+        "title": "December 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "344a8b03b469f730",
+        "source": "Defender XDR",
+        "title": "November 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "990bf1d64dcdae50",
+        "source": "Defender XDR",
+        "title": "October 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "35fa754c7e8aff29",
+        "source": "Defender XDR",
+        "title": "September 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1f857e6a8fc4be63",
+        "source": "Defender XDR",
+        "title": "August 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5f50eb4cef9c4b95",
+        "source": "Entra ID",
+        "title": "April 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7eff99bc2b431e34",
+        "source": "Entra ID",
+        "title": "Public Preview - $count filtering in sign-ins API",
+        "body": "Type:Public PreviewService category:MS GraphProduct capability:Monitoring & Reporting The ability to use $count in sign-ins API requests is now here, allowing customers to perform count computations directly in API requests. For more information, see:Customize Microsoft Graph responses with query parameters.",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "16d7084a7f846ac5",
+        "source": "Entra ID",
+        "title": "March 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ac9932901380a548",
+        "source": "Teams",
+        "title": "May 20, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9c9384676b46baad",
+        "source": "Teams",
+        "title": "May 06, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1704af5db4fcb711",
+        "source": "Teams",
+        "title": "April 22, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5e77133960e23dad",
+        "source": "Teams",
+        "title": "April 08, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "423a645347ee5d24",
+        "source": "Teams",
+        "title": "March 25, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4d9784d62d7fb4f5",
+        "source": "Teams",
+        "title": "March 11, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d20102675c010514",
+        "source": "Teams",
+        "title": "February 25, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3a20becf254c4ce9",
+        "source": "Teams",
+        "title": "February 11, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "648941431e010a12",
+        "source": "Teams",
+        "title": "January 28, 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8a384278d1c2a00d",
+        "source": "Teams",
+        "title": "December 11, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9778ce96c35bcf70",
+        "source": "Teams",
+        "title": "December 01, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "338f930e6ab969d0",
+        "source": "Teams",
+        "title": "November 13, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9b0941a2688a1a35",
+        "source": "Teams",
+        "title": "October 23, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b5d4a43ded2a14b8",
+        "source": "Teams",
+        "title": "October 14, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "39064945ee34a19b",
+        "source": "Teams",
+        "title": "August 28, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "436e33f69a7904a0",
+        "source": "Teams",
+        "title": "August 13, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "89361a6236aa3aaa",
+        "source": "Teams",
+        "title": "July 24, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a9c0f08ff34c5ba2",
+        "source": "Teams",
+        "title": "July 10, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "92b8a8f6480d9eea",
+        "source": "Teams",
+        "title": "July 03, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "bac412761a1e1b92",
+        "source": "Teams",
+        "title": "June 13, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "891a3ea42f1b1425",
+        "source": "Teams",
+        "title": "May 22, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4a86726b42c71645",
+        "source": "Teams",
+        "title": "May 09, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "266212be56776b98",
+        "source": "Teams",
+        "title": "April 24, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e9e13739ac2b006a",
+        "source": "Teams",
+        "title": "April 11, 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/officeupdates/teams-admin",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "89e64039de5fbfac",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "From edge appliance to enterprise compromise: Multi-stage Linux intrusion via F5 and Confluence",
+        "body": "A multi-stage attack on Linux devices began with an exposed F5 BIG-IP edge appliance and pivoted to an internal Confluence server for credential theft and identity compromise. Learn how the threat actor attempted Kerberos relay and lateral movement, and how Microsoft Defender detected, blocked, and unraveled the attack. The post From edge appliance to enterprise compromise: Multi-stage Linux intrusion via F5 and Confluence appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/22/from-edge-appliance-to-enterprise-compromise-multi-stage-linux-intrusion-via-f5-and-confluence/",
+        "date": "Fri, 22 May 2026 16:53:39 +0000",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "637b368233e559b8",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "What’s new in Microsoft Security: May 2026",
+        "body": "Microsoft Security’s latest updates extend visibility, control, and protection across expanding ecosystems as organizations accelerate AI adoption. The post What’s new in Microsoft Security: May 2026 appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/21/whats-new-in-microsoft-security-may-2026/",
+        "date": "Thu, 21 May 2026 16:00:00 +0000",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8a36d4f5ec6d5089",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Introducing RAMPART and Clarity: Open source tools to bring safety into Agent development workflow",
+        "body": "The AI systems shipping inside enterprises today are fundamentally different from the ones we were building even two years ago, because they have moved well past answering questions and into accessing your email, retrieving records from your CRM, writing and executing code, and taking actions on your behalf across dozens of connected systems. The post Introducing RAMPART and Clarity: Open source tools to bring safety into Agent development workflow appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/introducing-rampart-and-clarity-open-source-tools-to-bring-safety-into-agent-development-workflow/",
+        "date": "Wed, 20 May 2026 15:00:00 +0000",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "dbc4aae2c2de637b",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Exposing Fox Tempest: A malware-signing service operation",
+        "body": "Fox Tempest is a financially motivated threat actor operating a malware‑signing‑as‑a‑service (MSaaS) used by other cybercriminals, including Vanilla Tempest and Storm groups, to more effectively distribute malicious code, including ransomware. The post Exposing Fox Tempest: A malware-signing service operation appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/19/exposing-fox-tempest-a-malware-signing-service-operation/",
+        "date": "Tue, 19 May 2026 15:07:01 +0000",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8058a8370397d34a",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "How to better protect your growing business in an AI-powered world",
+        "body": "See how built-in security helps keep your growing business running, protect customer trust, and support growth. The post How to better protect your growing business in an AI-powered world appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/18/how-to-better-protect-your-growing-business-in-an-ai-powered-world/",
+        "date": "Mon, 18 May 2026 16:00:00 +0000",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0380fb90e1af02dd",
+        "source": "Purview",
+        "title": "Data Security Posture Management",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6ccda4fafb52a745",
+        "source": "Purview",
+        "title": "April 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "136db8065c9b9c59",
+        "source": "Purview",
+        "title": "Collection Policies",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f51509657428eb7d",
+        "source": "Purview",
+        "title": "Data Security Investigations",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "dee366e71456892c",
+        "source": "Purview",
+        "title": "Data Security Posture Management (preview)",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fd80550bbc7ae2de",
+        "source": "Purview",
+        "title": "Developers",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0c6977b35146d1d6",
+        "source": "Purview",
+        "title": "March 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f51509657428eb7d",
+        "source": "Purview",
+        "title": "Data Security Investigations",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "dee366e71456892c",
+        "source": "Purview",
+        "title": "Data Security Posture Management (preview)",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "df31b5e9dfe1699b",
+        "source": "Purview",
+        "title": "Deployment models",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/purview/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Purview"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "add69212a8e42c59",
+        "source": "SharePoint / OneDrive",
+        "title": "Microsoft 365 Roadmap",
+        "body": "TheMicrosoft 365 Roadmapis the official site for Microsoft 365 updates and changes, including Microsoft 365. See what's in development, rolling out, and launched.",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "77abeb262c00817a",
+        "source": "SharePoint / OneDrive",
+        "title": "For Admins",
+        "body": "Administrators and IT Professionals should readStay on top of Microsoft 365 changeswhich covers how to configure update messages delivered through the Microsoft 365 admin center.",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d2ce83001a5cdb04",
+        "source": "SharePoint / OneDrive",
+        "title": "Need more help?",
+        "body": "",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "bebf13d905b7a5a3",
+        "source": "SharePoint / OneDrive",
+        "title": "Want more options?",
+        "body": "",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e72c8434c7db6456",
+        "source": "Agent 365",
+        "title": "Recent Blogs",
+        "body": "",
+        "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Agent 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "64134ebe4d5f2b49",
+        "source": "Defender for Endpoint",
+        "title": "April 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b8e5dbc286891caf",
+        "source": "Defender for Endpoint",
+        "title": "March 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "93856a52ca19ef72",
+        "source": "Defender for Endpoint",
+        "title": "February 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "125d4721fd7fa555",
+        "source": "Defender for Endpoint",
+        "title": "January 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1536f8afc5852e6e",
+        "source": "Defender for Endpoint",
+        "title": "December 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3972249a16cf5551",
+        "source": "Defender for Endpoint",
+        "title": "November 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2a74f659a0139b32",
+        "source": "Defender for Endpoint",
+        "title": "October 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "058001d1a74043f8",
+        "source": "Defender for Endpoint",
+        "title": "September 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5390875ef028baf5",
+        "source": "Defender for Office 365",
+        "title": "March 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "654bb37de0a72211",
+        "source": "Defender for Office 365",
+        "title": "February 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f613a2de065757e3",
+        "source": "Defender for Office 365",
+        "title": "January 2026",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a11b602b3d11ec37",
+        "source": "Defender for Office 365",
+        "title": "October 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e669ccf9b968a589",
+        "source": "Defender for Office 365",
+        "title": "March 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fb2d2374ea595c5c",
+        "source": "Defender for Office 365",
+        "title": "January 2025",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "18bf9cf6fb09cbc4",
+        "source": "Defender for Office 365",
+        "title": "December 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c59fde74081e22aa",
+        "source": "Defender for Office 365",
+        "title": "November 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c1ed3e6310fc70de",
+        "source": "Defender for Office 365",
+        "title": "October 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "903c99d5a7d229db",
+        "source": "Defender for Office 365",
+        "title": "September 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b31f11ff28e27830",
+        "source": "Defender for Office 365",
+        "title": "August 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "dc3a80fe10cd8b55",
+        "source": "Defender for Office 365",
+        "title": "April 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8c1172b09bcaafb2",
+        "source": "Defender for Office 365",
+        "title": "March 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "709d26ded6f45f77",
+        "source": "Defender for Office 365",
+        "title": "February 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a892bb0227a350c6",
+        "source": "Defender for Office 365",
+        "title": "January 2024",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4b6e62bb71a23cf3",
+        "source": "Defender for Office 365",
+        "title": "December 2023",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9ddc99a4f6b8ac5c",
+        "source": "Defender for Office 365",
+        "title": "November 2023",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6365683036ecfb16",
+        "source": "Exchange Online",
+        "title": "September 2021",
+        "body": "Here are some of the changes and new features we introduced in the modern EAC in September 2021.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "053612d227cbaee0",
+        "source": "Exchange Online",
+        "title": "Announcement of ECP Deprecation",
+        "body": "With the new EAC providing most admin capabilities, we are now at the next stage of our journey, and we have announced the retirement of the classic EAC in our WW deployment. The classic EAC will be fully deprecated bySeptember 2022. The Classic EAC deprecation timeline is planned as follows:  You can read more about the Classic EAC deprecation here:Deprecation of the classic Exchange admin center in WW service - Microsoft Tech Community",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "89258ec2656a440a",
+        "source": "Exchange Online",
+        "title": "August 2021",
+        "body": "Here are some of the changes and new features we introduced in the modern EAC in August 2021.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "439b9eca1a701bba",
+        "source": "Exchange Online",
+        "title": "Customizable Settings: Normal/Compact list view",
+        "body": "In our efforts to provide customizable settings to admins, the new EAC has introduced a feature, 'Settings', located in the left navigation panel.  Currently, it has one customizable setting for admins; 'List view preference'. This setting allows users to select the normal view or compact view as the preferred list view for the entire EAC portal. Once the user selects either of the views, it is applied to all the list pages in the new EAC. ",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3c62964dcde772ff",
+        "source": "Exchange Online",
+        "title": "Hide from GAL feature in resources",
+        "body": "The Hide from GAL [Global Address List] feature in resources is now available. Click on any of the resource mailboxes, and this feature setting can be found under General settings. ",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b37f65f4734db3b2",
+        "source": "Exchange Online",
+        "title": "Dynamic distribution list [DDL] created through PowerShell can now be seen in new EAC",
+        "body": "The admins could always create a Dynamic distribution list/group from PowerShell. If the user creates a DDL with different recipient filters, this PowerShell-created DDL can now be viewed in new EAC by admins.  Reflection of the created DDL in new EAC: ",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a783431c37d38c60",
+        "source": "Exchange Online",
+        "title": "Hide from GAL feature in mailbox & groups",
+        "body": "Hide from GAL [Global Address List] was a long-awaited feature and is now live for use.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b8299b423816df46",
+        "source": "Exchange Online",
+        "title": "New EAC is now Generally Available in GCC",
+        "body": "The new Exchange admin center (EAC)https://admin.exchange.microsoft.comis a modern, accessible, web-based management portal for managing Exchange Online based on the Microsoft 365 admin center experience. The new EAC was made generally available to our WW users in April 2021. Today, we are excited to announce that the new EAC is generally available for our GCC customers. The GCC customers now have access to a new dashboard, new usability features, and several intelligent reports to help them be more productive in their work.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "734826f31415bcb5",
+        "source": "Exchange Online",
+        "title": "UX Enhancement in new EAC: Coherence with Microsoft 365 admin center",
+        "body": "To provide a more coherent experience, the new EAC team made efforts to enhance the UX to become close to the Microsoft 365 admin center experience. The command bars and the detail panels now have similar control and navigation experiences in both the portals.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2102cd09b913eeb6",
+        "source": "Exchange Online",
+        "title": "Custom Attributes in Mailboxes",
+        "body": "  The new EAC now includes 15 extension attributes that you can use to add information about a recipient, such as an employee ID, organizational unit (OU), or some other custom value for which there isn't an existing attribute. You can use the EAC to manage the attributes, and you don't need to build custom controls or write scripts to populate and display these attributes.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "828d85811747c567",
+        "source": "Exchange Online",
+        "title": "Missing \"Member of\" attribute in mailboxes view",
+        "body": "  New EAC now offers a view of the Groups that a particular mailbox is a part of.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2e03472723968fed",
+        "source": "Exchange Online",
+        "title": "Easier role group creation for new tenants",
+        "body": "Our new customers were facing an issue while creating a new role group. The users ended up with a warning text that they would have to Enable-OrganizationCustomization at their end by using PowerShell. This issue has been fixed now, and all our users can create Role groups without any extra step.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "625c4d4ef5570667",
+        "source": "Exchange Online",
+        "title": "April 2021",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4c946ce5fcd4c892",
+        "source": "Exchange Online",
+        "title": "New EAC is now Generally Available in Worldwide (WW)",
+        "body": "The newExchange admin center (EAC)is a modern, accessible, web-based management portal for managing Exchange Online based on the Microsoft 365 admin center experience. Since entering Public Preview in June 2020, over half a million admins worldwide have used it. Today, we are excited to announce that the new EAC is generally available for customers in 10 languages. With this announcement, we are also releasing a new dashboard, new usability features, and several intelligent reports to help admins be more productive in their work. Here are some highlights: You can read more about it here:Announ",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "05c4a1e49e1e709e",
+        "source": "Exchange Online",
+        "title": "February 2021",
+        "body": "Here are some of the changes and new features we introduced in the modern EAC in February 2021.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "418d638ce5b416c9",
+        "source": "Exchange Online",
+        "title": "Three more reasons to love the modern Exchange admin center (EAC)",
+        "body": "Exchange admin center, the digital workspace for IT admins, is where work gets done. The new EAC portal (https://admin.exchange.microsoft.com) now brings together more features, such as Rules, Organization, and Public Folders. Also new to the modern EAC are the Another User feature (which has been a major Help desk admin demand) and support for flow for all of our delegated admins.  Having access to the tools we need without context switching is essential. The power of new features we've introduced in the modern EAC is tremendous and exciting. Rules, Organization, and Public Folders from the c",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": "Admins can take actions on messages that flow through their Exchange Online organization through Rules",
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b480aa056257b87f",
+        "source": "Exchange Online",
+        "title": "December 2020",
+        "body": "Here are some of the changes and new features we introduced in the modern EAC in December 2020.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "82d6cde6ddefff99",
+        "source": "Exchange Online",
+        "title": "Groups - creation and management",
+        "body": "Admins can now create and manage four kinds of groups from the modern EAC: Microsoft 365 Groups, distribution lists, mail-enabled security groups, and dynamic distribution lists. The groups experience has now reached parity with that of the classic EAC. The new group type that we recently introduced in the modern EAC isdynamic distribution lists. The pivot experience (different pivots for different group types) makes groups management even easier.  Dynamic distribution lists are mail-enabled Active Directory group objects, created to expedite the mass sending of email messages and other inform",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5a5194471c5e969a",
+        "source": "Exchange Online",
+        "title": "September 2020",
+        "body": "Here are some of the changes and new features we introduced in the modern EAC in September 2020.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "afde2b977843e0f8",
+        "source": "Exchange Online",
+        "title": "Group creation and management",
+        "body": "Admins can now create groups from the modern EAC. Currently, they can create and manage Microsoft 365 Groups, distribution groups, and mail-enabled security groups.  The three types of groups that Microsoft 365 administrators can now create and manage are: Administrators can now choose to view the list of groups in their organization in either normal or compact list view. The compact list option allows administrators to view more entries on a single page.",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "346c41cdf8fd2199",
+        "source": "Windows 365",
+        "title": "Improved licensing assignment logic for Cloud PC resize operations is now available",
+        "body": "Windows 365 now features enhanced licensing assignment logic for group-based license (GBL) resize operations. The system validates both source license removal and target license assignmentâregardless of orderâbefore triggering a resize. This update prevents accidental Cloud PC provisioning, reduces policy-related reprovisioning errors, and ensures resizes occur predictably without creating duplicate Cloud PCs. If a userâs policy changes during a license transition, the resize fails gracefully with a clear error, allowing admins to correct the configuration before retrying. No new admin a",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f26682505c7ec53c",
+        "source": "Windows 365",
+        "title": "Autopilot device preparation for Cloud PC provisioning is now available",
+        "body": "Windows 365 now supports Autopilot device preparation with Cloud PC provisioning, enabling admins to define readiness criteria and ensure apps and scripts are installed before a Cloud PC is marked as provisioned. For more information, seeUse Autopilot device preparation with Cloud PCs.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ec052511f6e0da79",
+        "source": "Windows 365",
+        "title": "Windows 365 Frontline is now Windows 365 Flex",
+        "body": "Windows 365 Frontline is renamed toWindows 365 Flex. The product, licensing, and capabilities are unchangedâonly the name is different. For more information about the rebrand, seeExpanding access to Windows 365on the Windows IT Pro Blog.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "bd0a6d29aadc9bd9",
+        "source": "Windows 365",
+        "title": "Snapshot-based reset for Windows 365 Flex shared Cloud PCs (Public Preview)",
+        "body": "Snapshot-based reset is in public preview for Windows 365 Flex shared Cloud PCs. When a user signs out, the Cloud PC reverts to a known-good snapshot before the next user signs in. No files, settings, or app changes from the previous session carry over. Use snapshot-based reset to: For more information, seeSnapshot-based reset for Windows 365 Flex shared Cloud PCs.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ddcfd022e6a86b21",
+        "source": "Windows 365",
+        "title": "Windows 365 Power Platform connector (Public Preview)",
+        "body": "We are excited to announce the Public Preview of the Windows 365 connector for Power Platform and Azure Logic Apps! With prebuilt actions and triggers for Windows 365 built on top of Graph, IT and operations teams can use Power Automate and Azure Logic Apps to build Cloud PC workflows, such as sending emails to users when Cloud PCs are provisioned. For more information on the triggers and actions, seeWindows 365 - ConnectorsandWindows 365 Power Platform connector.",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a7144ae7d5a40664",
+        "source": "Windows 365",
+        "title": "Intelligent preâstart for Windows 365 Flex (Dedicated mode) is now generally available",
+        "body": "This capability uses predictive insights to determine when a user is likely to connect and proactively starts their Cloud PC in advance, so itâs ready when they sign in. By reducing the time required for the Cloud PC to boot, Intelligent preâstart helps minimize connection delays and improves the overall login experience for Windows 365 Flex users. This enhancement is designed to support taskâbased and timeâbound work patterns, enabling faster access to Cloud PCs without requiring any changes to user or admin workflows. For more information, seeIntelligent preâstart for Windows 365 F",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5b361c37a9c62129",
+        "source": "Autopilot",
+        "title": "Windows Autopilot for pre-provisioned deployment is now generally available",
+        "body": "Date added:February 23, 2024 Windows Autopilot for pre-provisioned deployment is now generally available and out of preview. Windows Autopilot for pre-provisioned deployment is used by organizations that want to ensure devices are business-ready before the user accesses them. With pre-provisioning, admins, partners, or OEMs can access a technician flow from the Out-of-box experience (OOBE) and kick off device setup. Next, the device is sent to the user who completes provisioning in the user phase. Pre-provisioning delivers most the configuration in advance so the end user can get to the deskto",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "14ce71da9949b8a2",
+        "source": "Autopilot",
+        "title": "How to unblock devices",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "665c8db51664de6e",
+        "source": "Autopilot",
+        "title": "What needs to be done to prepare?",
+        "body": "To ensure a smooth transition, notify the organization's help desk of this change. Additionally, update documentation to one of the following options:",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0dbe36a492e368ec",
+        "source": "Autopilot",
+        "title": "Update: Temporary change",
+        "body": "Date added:August 23, 2023 When devices that utilize Windows Autopilot are reused, and there's a new device owner, that new device owner must contact an administrator to acquire the BitLocker recovery key for that device. Administrative unit scoped administrators will lose access to BitLocker recovery keys after device ownership changes. These scoped administrators need to contact a non-scoped administrator for the recovery keys. This change is a temporary change for scoped administrators and will be updated once a solution is in place.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d6cf7a7f25942d0c",
+        "source": "Autopilot",
+        "title": "Win32 App Supersedence ESP improvements",
+        "body": "Date added:February 10, 2023 Starting in January 2023, we're currently in the process of rolling out Win32 app supersedence GA, which introduces enhancements to ESP behavior around app tracking and app processing. Specifically, admins might notice a change in app counts. For more information, seeWin32 app supersedence improvementsandAdd Win32 app supersedence.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9698a172e6c69e48",
+        "source": "Global Secure Access",
+        "title": "Version 2.28.96",
+        "body": "Released for download on April 27, 2026.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9da240c36848f958",
+        "source": "Global Secure Access",
+        "title": "Version 2.26.108",
+        "body": "Released for download on February 9, 2026.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "66cbf19d6477cd60",
+        "source": "Global Secure Access",
+        "title": "Version 2.24.117",
+        "body": "Released for download on December 3, 2025.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "79693af9eca57f07",
+        "source": "Global Secure Access",
+        "title": "Version 2.22.90",
+        "body": "Released for download on November 5, 2025.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8deed4683728b8aa",
+        "source": "Global Secure Access",
+        "title": "Version 2.20.56",
+        "body": "Released for download on June 24, 2025.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4f9e48d999c46402",
+        "source": "Global Secure Access",
+        "title": "Version 2.18.62",
+        "body": "Released for download on April 29, 2025.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c20577658daf0aef",
+        "source": "Global Secure Access",
+        "title": "Version 2.14.80",
+        "body": "Released for download on February 26, 2025.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d13a9b8d5cc43d3",
+        "source": "Global Secure Access",
+        "title": "Other changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e3d265d1c2f9ba5f",
+        "source": "Global Secure Access",
+        "title": "Version 2.8.45",
+        "body": "Released for download on November 26, 2024.",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f19004c9264830ac",
+        "source": "Global Secure Access",
+        "title": "Functional changes",
+        "body": "",
+        "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/reference-windows-client-release-history",
+        "date": "2026-05-26",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Global Secure Access"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Network": [
+      {
+        "id": "74f4ebbaf8ed0bfe",
+        "source": "Entra ID",
+        "title": "General Availability - GSA iOS client support",
+        "body": "Type:General AvailabilityService category:iOS clientProduct capability:Network Access We are excited to announce the general availability of the iOS Global Secure Access (GSA) client. The Global Secure Access client on iOS and iPadOS requires no new agent installation. It leverages the existing Microsoft Defender for Endpoint (MDE) to route traffic through Microsoft SSE for Microsoft 365, internet access, and private access.",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Network",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "64c8b6d5a8d8be77",
+        "source": "Entra ID",
+        "title": "General Availability - Network Content Filtering based on File Types",
+        "body": "Type:General AvailabilityService category:Internet AccessProduct capability:Network Access Global Secure Access supports network-based content filtering based on file types. This allows you to monitor and control file transfers across the network to GenAI and SaaS apps to prevent unauthorized exfiltration of content. For more information, see:Create a content policy to filter network file content.",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Network",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3e6c142d7b9c0936",
+        "source": "Entra ID",
+        "title": "General Availability - GSA Cloud Firewall for Remote Networks",
+        "body": "Type:General AvailabilityService category:Internet AccessProduct capability:Network Access Customer can use GSA cloud firewall to apply admin configurable, 5-tuple (source IP, destination IP, protocol, source port, destination port) based filtering for all internet traffic acquired from branch offices through GSA remote networks capability. For more information, see:Configure Global Secure Access cloud firewall.",
+        "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+        "date": "2026-05-26",
+        "category": "Network",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "78ce20a11de42342",
+        "source": "Windows 365",
+        "title": "RDP Multipath with redundant TCP transport paths begins GA rollout",
+        "body": "Windowsâ¯365 has started the general availability (GA) rollout ofRDP Multipath with redundant TCP transport paths. This enhancement improves connection resiliency toWindowsâ¯365 Cloud PCsby enabling multiple TCP transport paths and automatically switching between them when network degradation is detected. Redundant TCP transport paths complement existing UDPâbased RDP Multipath and help maintain reliable connectivity in environments where UDP connectivity is unreliable or unavailable. The feature is being enabled through aphased, qualityâdriven rollout. Until rollout is complete, redunda",
+        "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
+        "date": "2026-05-26",
+        "category": "Network",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f47d55622370ed50",
+        "source": "Autopilot",
+        "title": "Windows Autopilot profile resiliency",
+        "body": "Date added:July 26, 2023 Downloading the Windows Autopilot policy just got more resilient! A new update is being rolled out that increases the retry attempts for applying the Windows Autopilot policy when a network connection might not be fully initialized. The increased retry attempts help ensure that the profile is applied before the user begins the setup experience and improves the time sync. Install the following quality updates for this feature:",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Network",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Apps": [
+      {
+        "id": "5f5b9a4a2f2873ad",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Securing the gaming culture of cultures",
+        "body": "Read about the unique challenges and rewards of securing gaming platforms and how to better protect gaming communities. The post Securing the gaming culture of cultures appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/05/20/securing-the-gaming-culture-of-cultures/",
+        "date": "Wed, 20 May 2026 16:00:00 +0000",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f54864b503999915",
+        "source": "SharePoint / OneDrive",
+        "title": "SharePoint updates on the SharePoint Community Blog",
+        "body": "Read theSharePoint Community Bloganytime to learn best practices, news, and trends directly from the SharePoint team. Two recurring updates on the SharePoint Community Blog specifically highlight what's new.",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "date": "2026-05-26",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fd45214e6ae5788c",
+        "source": "SharePoint / OneDrive",
+        "title": "SharePoint updates on the Office Blog",
+        "body": "TheOffice Blogcovers updates to Microsoft 365 and how the updates enable new scenarios. TheSharePoint categoryfilters the Office Blog to posts about SharePoint only.",
+        "url": "https://support.microsoft.com/en-us/office/what-s-new-in-sharepoint-02449ef0-027e-4089-8717-f0ae7ea58029",
+        "date": "2026-05-26",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "31bd0c09c179be70",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Interpreter - Simultaneous mode enhancements",
+        "body": "We’re introducing 3 enhancements to AI Interpreter’s Simultaneous mode. First, the interpreter audio and live captions now match exactly, with both using the same language the user selects. Second, admins can fully disable voice simulation if needed. Third, users will have more platform voice options, with dynamic voice assignments that help distinguish each speaker and make conversations easier to follow. GA date: July CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562035",
+        "date": "Wed, 13 May 2026 23:00:44 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f452b2e45a27de8f",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Enhanced bookable desk experience with Teams panel-based desk dock devices",
+        "body": "Users have better experiences in flexible work environments with Microsoft Teams panel-based desk dock devices coming later this year. The Teams panel app now enables devices, such as the Yealink Linkhub, to enhance bookable desk experiences by indicating at-a-glance availability and letting visitors book directly on the device. Each device requires a Teams Shared Space license. GA date: July CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561031",
+        "date": "Wed, 06 May 2026 23:15:10 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5da1bab9e4dfeafb",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Facilitator detects and answers questions",
+        "body": "Facilitator now automatically detects open questions raised during a Teams meeting and offers to help answer them using web search. When a participant asks a question (e.g., “What is an LLM?”) and no one answers, Facilitator posts a prompt offering to find an answer. Participants can select “Yes” to have the agent retrieve and share the information. GA date: July CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558341",
+        "date": "Wed, 01 Apr 2026 23:15:50 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6024d697d1e00606",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Copilot (Microsoft 365): Mind Maps in Copilot Notebooks",
+        "body": "Mind Maps in Copilot Notebooks are interactive visual artifacts that help users understand notebook content through a grounded map of key topics, themes, and relationships. Users can explore the Mind Map, view summaries for individual nodes, and use Notebook chat to get more detail about a node. Available across OneNote and Microsoft 365 Copilot App. GA date: May CY2026 Preview date: March CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559029",
+        "date": "Tue, 24 Mar 2026 23:15:57 Z",
+        "category": "Apps",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7964cc2f4cd417bf",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Copilot (Microsoft 365): Surveys Agent and Copilot Chat in Microsoft Forms",
+        "body": "Microsoft 365 Copilot Chat is now integrated in Microsoft Forms, including enabling the Surveys Agent from within Forms. Surveys Agent provides specialized capabilities to help with your form - from recommending and applying improvements to your form or quiz, to helping draft and send invitations, to analyzing your results. Surveys Agent is available to users with a Microsoft 365 Copilot license, and can be accessed by clicking the \"Copilot\" icon in Forms. GA date: May CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=553136",
+        "date": "Thu, 29 Jan 2026 00:15:19 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b0a556113c1b1a3c",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Copilot (Microsoft 365): Project Manager Agent in M365 Copilot",
+        "body": "The new Project Manager agent in Microsoft 365 will help you plan, organize, and manage work more efficiently. We’re starting with core task and plan management features to simplify project tracking and will introduce additional advanced project management capabilities over time. Updated May 21, 2026: We previously launched in Preview and GA is expected in June. We apologize for any inconvenience. GA date: June CY2026 Preview date: March CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=516576",
+        "date": "Tue, 18 Nov 2025 17:15:10 Z",
+        "category": "Apps",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "06cdabbb60c95216",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Copilot (Microsoft 365): Lists in Context IQ",
+        "body": "Users will be able to search for and select SharePoint Lists through the Context IQ menu to help ground their prompts when using Copilot Chat. GA date: March CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=422308",
+        "date": "Wed, 02 Jul 2025 23:15:48 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "094671c650d29e05",
+        "source": "Microsoft 365 Roadmap",
+        "title": "SharePoint: Microsoft 365 Archive file-level archiving",
+        "body": "This introduces archiving at the file level for Microsoft 365 Archive. GA date: June CY2026 Preview date: March CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=477371",
+        "date": "Wed, 19 Feb 2025 00:00:11 Z",
+        "category": "Apps",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "280413aa7d917d90",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Outlook: Choose to Show Unread or Total Count for Each Folder",
+        "body": "You can now pick whether each folder in your folder pane shows the unread count or the total item count. Until now, Outlook only displayed unread counts, but sometimes you need to see how many items are in a folder overall. Just right-click any folder and choose whether to show the total or unread count. It gives you more control over how you keep track of your email without changing how anything else works. #newoutlookforwindows GA date: October CY2026 Preview date: September CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=563807",
+        "date": "Thu, 21 May 2026 23:15:57 Z",
+        "category": "Apps",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4fd46906f3c68c03",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Outlook: Emails marked with External to be supported as Rules conditions",
+        "body": "The External tag on an email, set by the ExternalInOutlook feature, will now be usable as a condition in Outlook Inbox Rules. This change also makes available the ability to create or modify these Rules on the new Outlook for Windows, Outlook Web, and Outlook for Mac. GA date: June CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=563806",
+        "date": "Thu, 21 May 2026 23:15:57 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b3283f8963a14b2e",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Connect Teams meeting to existing Planner Plans",
+        "body": "Teams meetings automatically create a corresponding Planner plan to capture meeting tasks. However, when teams use meetings as their primary collaboration surface for long-running initiatives, tasks from the same project can become scattered across multiple auto-generated plans. With this capability, users can now connect Teams meetings to existing Planner plans, so all related tasks across meetings can be tracked in one place. GA date: July CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561490",
+        "date": "Mon, 11 May 2026 23:15:11 Z",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6659f3620a2292df",
+        "source": "Defender for Office 365",
+        "title": "September 2025",
+        "body": "User reported settingsdetermine whether reported messages are sent to the specified reporting mailbox, to Microsoft, or both. Also added support for Teams message reporting on Teams mobile client.",
+        "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
+        "date": "2026-05-26",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ef8961444b65d388",
+        "source": "Exchange Online",
+        "title": "New EAC is now Generally Available in GCC-H",
+        "body": "The new Exchange admin center (EAC) is a modern, accessible, web-based management portal for managing Exchange Online based on the Microsoft 365 admin center experience. The new EAC was made generally available to our worldwide (WW) users in April 2021 and our GCC customers in June 2021. Today, we are excited to announce that the new EAC is now generally available for our GCC-H customers. The EAC URL for GCC-H customers ishttps://admin.exchange.office365.us",
+        "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
+        "date": "2026-05-26",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "591b4321b6713417",
+        "source": "Autopilot",
+        "title": "Windows Autopilot support for Microsoft Teams Rooms",
+        "body": "Date added:June 4, 2024 Windows Autopilot streamlines provisioning for laptops. Now Windows Autopilot adds the same support forMicrosoft Teams Rooms! With this combination, Teams Rooms devices can now be deployed and provisioned without needing physical access to the device. Policies and apps are configured and the Teams Rooms console automatically signed in without needing to enter credentials. For more information on supported scenarios and setup, seeWindows Autopilot and Autologin for Teams Rooms on Windows.",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5f3b1aa5f6bdde24",
+        "source": "Autopilot",
+        "title": "User impact",
+        "body": "This change affects new primary users of the Windows Autopilot device who are allowed self-service recovery of BitLocker keys to that device. There's no impact if the devices' primary user doesn't change across the device restore or reset. Self-service BitLocker access can continue to work the same if the IT admin performs either: If the new primary user is unable to access BitLocker self-service after changing from a previous primary user, then the IT admin should update the primary user in the device properties. The primary user on the device then updates to the new user upon the next check-",
+        "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
+        "date": "2026-05-26",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Autopilot"
+        ],
+        "is_updated": false
+      }
+    ]
+  }
+}
