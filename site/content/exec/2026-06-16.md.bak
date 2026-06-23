@@ -1,0 +1,114 @@
+---
+title: "Executive's Guide — Week of 2026-06-16"
+date: 2026-06-16
+description: "A wave of AI agent capabilities, identity security enforcement deadlines, and active Exchange Server vulnerabilities converge this week — each carrying real consequences for compliance, operations, and risk posture."
+categories: ["Executive Guide"]
+tags: ["security", "compliance", "identity", "ai", "devices", "data-protection", "licensing", "user-impact"]
+---
+
+## The Week at a Glance
+
+- 🔴 **High — Exchange Server vulnerability requires immediate patching.** A June 2026 security update addresses a confirmed vulnerability in Exchange Server (CVE-2026-42897) that could allow attackers to execute malicious code through Outlook Web Access. Organizations running on-premises Exchange must act now.
+- 🔴 **High — Entra ID authentication policy changes are enforced by end of 2026.** Microsoft is retiring legacy authentication controls and requiring migration of custom MFA configurations. Organizations that delay risk losing consistent security policy enforcement across their workforce.
+- 🟡 **Medium — Exchange ActiveSync certificate-based authentication retires by end of 2026.** Mobile email clients using direct certificate authentication to Exchange Online must be reconfigured through Entra ID. New tenants are blocked immediately; existing tenants have until year-end.
+- 🟢 **Low — AI capabilities are accelerating rapidly across Microsoft 365.** New AI agents, models (GPT-5.5 Instant, Claude Opus 4.8, Claude Fable 5), and agentic governance tools are now generally available. No immediate action required, but these shape your AI strategy and licensing planning for the second half of 2026.
+
+*Sources: [Exchange Team Blog — June 2026 Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491) · [Entra ID Security Updates Blog](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to/ba-p/4522024) · [Exchange ActiveSync CBA Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/retirement-of-direct-exchange-activesync-certificate-based/ba-p/4517896)*
+
+---
+
+## Why This Week Matters
+
+Microsoft's on-premises Exchange vulnerability and the Entra ID authentication enforcement timeline represent two different flavors of the same underlying risk: organizations that have deferred infrastructure modernization are now facing hard deadlines with measurable security consequences. Simultaneously, Microsoft is placing big bets on AI agents becoming operational infrastructure — not just productivity tools — which means governance, data security, and licensing decisions made in the next 90 days will define your AI risk posture for the coming year.
+
+The one thing leadership must understand: **deferring patching and identity modernization while simultaneously adopting AI agents creates compounding risk** — attackers are already using AI to accelerate phishing and credential theft, and a vulnerable email server or bypassed MFA policy is exactly the gap they exploit.
+
+*Sources: [Microsoft Security Blog — AI Brands as Bait](https://www.microsoft.com/en-us/security/blog/2026/06/08/ai-brands-as-bait-how-threat-actors-are-using-the-ai-hype-in-social-engineering/) · [Entra ID Security Updates Blog](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to/ba-p/4522024)*
+
+---
+
+## Risk & Compliance
+
+| Change | Business Risk | Regulatory Angle | Act By |
+|---|---|---|---|
+| **[Exchange Server CVE-2026-42897 — June Security Update](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491)** | Unpatched Exchange servers can be exploited via a crafted email in Outlook Web Access, enabling arbitrary code execution. Applies to Exchange SE, 2019, and 2016 (ESU). | HIPAA (breach notification), CMMC (patch management), SOC 2 (vulnerability response), cyber insurance policy compliance | **Immediately** |
+| **[Entra ID Security Updates — Legacy MFA and Custom Controls Retirement](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to/ba-p/4522024)** | Three legacy authentication mechanisms are being retired: custom MFA controls, Conditional Access during credential registration, and SSPR authentication method enforcement. Gaps in enforcement could allow authentication policy bypass. | NIST CSF (identity protection), SOC 2 (access controls), CMMC (MFA requirements), cyber insurance MFA attestation | **Plan within 30 days; enforcement timeline is end of 2026** |
+| **[Exchange ActiveSync Certificate-Based Authentication Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/retirement-of-direct-exchange-activesync-certificate-based/ba-p/4517896)** | Mobile devices and apps using direct certificate-based authentication to Exchange Online will stop working. New tenants are blocked today; existing tenants are blocked by end of 2026. | HIPAA (access controls for mobile health data), CMMC (authentication compliance) | **End of 2026; begin inventory now** |
+| **[Legacy TLS Deprecation for POP3/IMAP4 in Exchange Online](https://techcommunity.microsoft.com/t5/exchange-team-blog/deprecating-legacy-tls-and-endpoints-for-pop-and-imap-in/ba-p/4515201)** | Email clients using TLS 1.0/1.1 for POP or IMAP access to Exchange Online will lose connectivity. Primarily affects legacy email applications and service accounts. | HIPAA, CMMC, FedRAMP (encryption in transit standards), SOC 2 | **Confirm timeline; audit legacy clients now** |
+| **[npm Supply Chain Attack — Red Hat Miasma Campaign](https://www.microsoft.com/en-us/security/blog/2026/06/02/preinstall-persistence-inside-red-hat-npm-miasma-credential-stealing-campaign/)** | Over 90 compromised npm package versions stole credentials from CI/CD pipelines, cloud platforms, and developer machines. Relevant to any organization with software development teams using open-source package ecosystems. | SOC 2 (third-party risk), CMMC (supply chain risk management), NIST CSF (identify/protect) | **Immediately — direct your development teams to audit dependencies** |
+| **[Microsoft Agent 365 — AI Agent Governance Now GA](https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/)** | As AI agents move into production workflows, ungoverned agents may access sensitive data, execute actions without audit trails, or create compliance gaps. Agent 365 provides the control plane to observe and govern agents. | SOC 2 (change management, access controls), GDPR (automated decision-making), HIPAA (access to PHI by automated systems) | **Plan within 30 days if AI agents are in production or planned** |
+| **[Purview Data Security Posture Management (DSPM) for AI — GA](https://techcommunity.microsoft.com/t5/microsoft-purview-blog/data-security-posture-management-for-ai/ba-p/4484148)** | Organizations deploying Copilot or custom AI agents without DSPM oversight risk data oversharing — AI can surface content that is over-permissioned or ungoverned at scale. | GDPR, state privacy laws (data minimization), HIPAA (minimum necessary access), SOC 2 | **Plan within 30 days for organizations actively using Copilot** |
+
+*Sources: [Exchange Team Blog — June 2026 Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491) · [Microsoft Security Blog — npm Miasma Campaign](https://www.microsoft.com/en-us/security/blog/2026/06/02/preinstall-persistence-inside-red-hat-npm-miasma-credential-stealing-campaign/) · [Entra What's New — June 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-june-2026/ba-p/4517885)*
+
+---
+
+## What Your Employees Will Notice
+
+- **Teams is faster and more responsive.** Microsoft has shipped significant performance improvements to Teams, meaning quicker load times, faster message delivery, and more reliable calls. Users who have complained about Teams being slow may notice a meaningful difference.
+- **Copilot looks different.** The Microsoft 365 Copilot app has a redesigned interface — cleaner and more integrated across Word, Excel, PowerPoint, and Teams. Expect questions from users unfamiliar with the new layout.
+- **New AI models available in Copilot.** Users with Microsoft 365 Copilot licenses will see options to use newer AI models including GPT-5.5 Instant and Claude Opus 4.8. Some users may ask what the differences are between models.
+- **Copilot can now answer and schedule follow-ups for Teams calls.** Through the new "call delegation" feature (available via Frontier program), Copilot can screen incoming calls and schedule follow-ups on a user's behalf. This is opt-in and may generate questions about privacy and what Copilot is "doing" with calls.
+- **Teams Phone users can now have up to 10 phone numbers.** Users who need to represent multiple lines of business in Teams Phone no longer need separate accounts or workarounds.
+- **Office location auto-updates via Wi-Fi.** Employees who opt in will have their workplace location in Teams and Microsoft Places updated automatically when they connect to a company Wi-Fi network — no manual check-in required.
+- **Windows Do Not Disturb now pauses Teams notifications.** When employees enable Windows Do Not Disturb, Teams notifications will automatically pause. This may reduce help desk tickets about unwanted interruptions but could also cause some users to miss messages.
+- **Copilot Notebooks now available to more users.** Previously restricted to full Microsoft 365 Copilot subscribers, Copilot Notebooks is rolling out to Copilot Chat users — a broader population may now be able to collaborate in AI-powered shared notebooks.
+
+*Sources: [Teams Blog — Making Teams More Responsive](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/making-microsoft-teams-more-responsive-reliable-and-ready-for/ba-p/4526527) · [What's New in Microsoft 365 Copilot — May 2026](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/what-s-new-in-microsoft-365-copilot-may-2026/ba-p/4522010) · [Copilot Notebooks June 2026](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/what-s-new-in-notebooks-june-2026/ba-p/4525625)*
+
+---
+
+## What Your Help Desk Should Expect
+
+- **"Why does Copilot look different?"** The redesigned Copilot interface will prompt a wave of "what happened to Copilot?" tickets. Prepare a brief communication in advance of the change reaching your users.
+- **"I'm not getting Teams notifications."** The new Windows Do Not Disturb integration may confuse users who unintentionally enabled DND and can't figure out why Teams has gone quiet.
+- **"I can't send email from my phone anymore."** If any users are on legacy mobile mail clients using certificate-based authentication to Exchange Online, they may begin experiencing failures. Help desk staff should be briefed on the EAS CBA retirement.
+- **"My email client can't connect / I'm getting TLS errors."** Legacy POP3/IMAP4 clients using TLS 1.0 or 1.1 will lose connectivity as deprecation takes effect. Identify affected users proactively before this becomes a ticket storm.
+- **Copilot call delegation confusion.** Users enrolled in the Frontier program who enable Copilot call delegation may generate tickets asking what happened to their missed calls or why Copilot responded on their behalf.
+- **Exchange Server patching-related downtime.** If your organization applies the June Exchange security update, brief the help desk on expected maintenance windows and potential short-term mail flow disruptions.
+- **New model choices in Copilot.** Power users will ask which model to use, whether model selection affects data privacy, and how to switch between models.
+
+*Sources: [What's New in Teams — May 2026](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-may-2026-build-edition/ba-p/4524613) · [Exchange Team Blog — EAS CBA Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/retirement-of-direct-exchange-activesync-certificate-based/ba-p/4517896) · [Exchange Team Blog — Legacy TLS Deprecation](https://techcommunity.microsoft.com/t5/exchange-team-blog/deprecating-legacy-tls-and-endpoints-for-pop-and-imap-in/ba-p/4515201)*
+
+---
+
+## Cost & Licensing
+
+- **New Microsoft 365 Business with Copilot SKUs launch July 1.** Microsoft is introducing new small-business SKUs with Copilot built in, replacing standalone Copilot add-on purchases for qualifying plans. Organizations purchasing or renewing Microsoft 365 Business plans on or after July 1 should evaluate whether the bundled SKUs represent better value than current configurations. This may affect renewal negotiations in progress now.
+- **Advanced Intune capabilities are being bundled into Microsoft 365 at scale.** Beginning in CY26 Q3, select Intune Suite advanced endpoint management capabilities will be added to qualifying Microsoft 365 plans. Tenants will receive 30-day Message Center notice before rollout. Organizations currently paying separately for Intune Suite add-ons should assess whether this changes their licensing cost structure.
+- **Teams Premium license required for call queue recording.** The new automatic call queue recording and transcription feature requires a Teams Premium license. Organizations wanting to record contact center or support call queues automatically will need to confirm Teams Premium coverage for affected users.
+- **Copilot Chat users now get Copilot Notebooks.** This expands a previously premium feature to a broader user base at no additional cost, increasing the value of existing Copilot Chat entitlements.
+- **Exchange Server 2016/2019 ESU Period 2 is available through October 2026.** Organizations still running Exchange 2016 or 2019 that did not complete migration by April 2026 must enroll in the Period 2 Extended Security Update program to continue receiving security patches. This program has an associated cost and a hard end date.
+
+*Sources: [Microsoft 365 Business with Copilot Announcement](https://www.microsoft.com/en-us/microsoft-365/blog/2026/05/28/introducing-microsoft-365-business-with-copilot-the-new-standard-for-small-business/) · [Microsoft 365 Adds Advanced Intune Solutions at Scale](https://techcommunity.microsoft.com/t5/microsoft-intune-blog/microsoft-365-adds-advanced-microsoft-intune-solutions-at-scale/ba-p/4474272) · [Exchange ESU Period 2 Announcement](https://techcommunity.microsoft.com/t5/exchange-team-blog/announcing-period-2-exchange-2016-2019-extended-security-update/ba-p/4511603)*
+
+---
+
+## Planning Horizon
+
+| Timeframe | Item | Decision Required | Owner |
+|---|---|---|---|
+| **Immediately** | **[Exchange Server June 2026 Security Update](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491)** | Authorize emergency patching for all on-premises Exchange servers | IT Director / CISO |
+| **Immediately** | **[npm Supply Chain Audit — Miasma Campaign](https://www.microsoft.com/en-us/security/blog/2026/06/02/preinstall-persistence-inside-red-hat-npm-miasma-credential-stealing-campaign/)** | Direct development teams to audit open-source dependencies for compromised Red Hat npm packages | CISO / Engineering Lead |
+| **By July 1** | **[Microsoft 365 Business with Copilot — New SKUs](https://www.microsoft.com/en-us/microsoft-365/blog/2026/05/28/introducing-microsoft-365-business-with-copilot-the-new-standard-for-small-business/)** | Evaluate impact on pending renewals and purchasing; determine if bundled SKUs are preferred | IT Director / Finance |
+| **30 days** | **[Entra ID Legacy MFA and Custom Controls Migration](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to/ba-p/4522024)** | Approve migration plan for custom MFA controls, Conditional Access registration policy, and SSPR method enforcement | CISO / IT Director |
+| **30 days** | **[Exchange ActiveSync CBA Inventory and Migration Plan](https://techcommunity.microsoft.com/t5/exchange-team-blog/retirement-of-direct-exchange-activesync-certificate-based/ba-p/4517896)** | Authorize discovery of affected mobile devices and clients; approve migration to Entra ID-based authentication | IT Director |
+| **30 days** | **[AI Agent Governance — Agent 365 and Purview DSPM for AI](https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/)** | Decide whether to deploy Agent 365 and DSPM for AI before agents proliferate in production; assign ownership of AI governance | CISO / Compliance Officer |
+| **60 days** | **[Legacy TLS Deprecation for POP3/IMAP4 — Exchange Online](https://techcommunity.microsoft.com/t5/exchange-team-blog/deprecating-legacy-tls-and-endpoints-for-pop-and-imap-in/ba-p/4515201)** | Inventory legacy email clients; approve remediation or migration for affected users and service accounts | IT Director |
+| **60 days** | **[Secure Boot Certificate Expiration — Windows Autopatch](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/updated-secure-boot-status-report-in-windows-autopatch/ba-p/4517920)** | Review Secure Boot status report; ensure certificate update rollout plan is in place for affected devices | IT Director |
+| **90 days** | **[Exchange Server 2016/2019 Migration — ESU Period 2 ends October 2026](https://techcommunity.microsoft.com/t5/exchange-team-blog/announcing-period-2-exchange-2016-2019-extended-security-update/ba-p/4511603)** | Finalize migration timeline to Exchange Subscription Edition; budget for ESU Period 2 enrollment if migration cannot complete in time | IT Director / Finance |
+| **CY26 Q3** | **[Advanced Intune Suite Capabilities Added to Microsoft 365](https://techcommunity.microsoft.com/t5/microsoft-intune-blog/microsoft-365-adds-advanced-microsoft-intune-solutions-at-scale/ba-p/4474272)** | Assess current Intune Suite add-on subscriptions against incoming bundled capabilities to avoid duplicate spend | IT Director / Finance |
+
+*Sources: [Exchange Team Blog — June 2026 Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491) · [Entra What's New — June 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-june-2026/ba-p/4517885) · [M365 Roadmap](https://www.microsoft.com/microsoft-365/roadmap)*
+
+---
+
+## If You Take No Action
+
+**Exchange Server CVE-2026-42897 remains unpatched:** An attacker can send a specially crafted email to any user with access to Outlook Web Access. If the user opens that email, the attacker can execute arbitrary code in the browser context — potentially harvesting credentials, installing malware, or pivoting to internal systems. This vulnerability is publicly disclosed, meaning the attack window is actively shortening. Cyber insurance carriers increasingly deny claims where known, patchable vulnerabilities were left unaddressed.
+
+**Entra ID legacy MFA migration is not completed:** When Microsoft enforces retirement of custom MFA controls and legacy Conditional Access patterns, security policies you believe are protecting your organization will stop applying uniformly. Attackers who have already mapped your authentication flows may find gaps that did not exist before. For organizations under CMMC, SOC 2, or cyber insurance requirements mandating MFA coverage, this could create audit findings or policy violations at the moment Microsoft enforces the change — leaving no runway to remediate before consequences arrive.
+
+**Exchange ActiveSync certificate-based authentication is not remediated:** At year-end, mobile users and automated systems relying on direct certificate authentication to Exchange Online will lose email access without warning. In environments where field workers, executives, or automated notification systems depend on mobile email, this creates operational disruption that is entirely preventable with planning started now.
+
+*Sources: [Exchange Team Blog — Addressing CVE-2026-42897](https://techcommunity.microsoft.com/t5/exchange-team-blog/addressing-exchange-server-may-2026-vulnerability-cve-2026-42897/ba-p/4518498) · [Entra ID Security Updates Blog](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-security-updates-what-organizations-need-to/ba-p/4522024) · [Exchange ActiveSync CBA Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/retirement-of-direct-exchange-activesync-certificate-based/ba-p/4517896)*

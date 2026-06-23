@@ -1,297 +1,619 @@
 [
   {
+    "title": "Entra ID retiring Custom Controls, enforcing CA on credential registration, and requiring explicit SSPR method registration",
+    "category": "Top 5 This Week",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "Three legacy auth gaps are closing simultaneously. If your MFA or SSPR configurations rely on Custom Controls or unregistered methods, you have an active migration obligation, not a future one. Read the security updates "
+  },
+  {
     "title": "Computer-using agents in Copilot Studio hit GA",
     "category": "Top 5 This Week",
-    "date": "2026-06-16",
-    "url": "/posts/2026-06-16/",
-    "snippet": "UI-driven automation without brittle RPA scripts or API dependencies is now production-ready. If you have legacy LOB apps or vendor portals that have resisted automation, this changes the calculus. Evaluate governance an"
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "Agents can now interact with any UI-driven application, vendor portal, or legacy line-of-business system without RPA scripts or exposed APIs. This is a significant automation surface expansion; your governance and data-h"
   },
   {
-    "title": "Entra Tenant Governance discovers shadow tenants",
+    "title": "Purview DSPM for AI is GA, with cross-cloud coverage extending to AWS Bedrock",
     "category": "Top 5 This Week",
-    "date": "2026-06-16",
-    "url": "/posts/2026-06-16/",
-    "snippet": "Acquired companies, dev projects, and partner collaborations routinely leave orphaned tenants outside central IT visibility. This GA capability uses B2B collaboration signals, multitenant app registrations, and billing r"
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "You can now apply a single Purview policy engine across Microsoft, Azure, and AWS Bedrock AI workloads. If your org is running AI agents outside Azure, this is the governance story to evaluate this quarter."
   },
   {
-    "title": "Purview Data Security Posture Reports GA + Custom Workspaces in Preview",
+    "title": "Purview Data Security Posture Reports are GA, with custom workspaces in preview",
     "category": "Top 5 This Week",
-    "date": "2026-06-16",
-    "url": "/posts/2026-06-16/",
-    "snippet": "You can now produce outcome-based reporting that answers \"are our controls working?\" rather than just streaming alert counts. The GA tier covers sensitivity label and DLP coverage; the preview tier adds custom workspaces"
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "Out-of-the-box reports now give you an outcome-based view of sensitivity label and DLP coverage across M365. This is your audit-readiness and executive reporting tool; if you haven't looked at Posture Reports yet, now is"
   },
   {
-    "title": "Exchange 2016/2019 ESU Period 2 announced (May–October 2026)",
+    "title": "Exchange 2016/2019 ESU Period 2 announced (May 2026 through April 2027)",
     "category": "Top 5 This Week",
-    "date": "2026-06-16",
-    "url": "/posts/2026-06-16/",
-    "snippet": "If you're still running on-prem Exchange 2016 or 2019, Period 1 ESU coverage ended April 2026. Period 2 buys you through October 2026 — but this is the last runway. Migration to Exchange SE or Exchange Online needs to be"
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "If you're still on Exchange 2016 or 2019 and missed the Period 1 ESU window, there's a second program available. Enrollment is required; this doesn't happen automatically, and running unpatched on end-of-support Exchange"
   },
   {
-    "title": "Entra ID Governance Account Discovery GA",
-    "category": "Top 5 This Week",
+    "title": "Microsoft Entra ID security updates: What organizations need to do now",
+    "category": "Identity",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Three breaking changes are converging: Custom Controls retirement (migrate to External MFA providers), Conditional Access enforcement during credential registration, and a requirement that SSPR users have explicit"
+  },
+  {
+    "title": "Find shadow tenants and reduce risk fast with Microsoft Entra Tenant Governance",
+    "category": "Identity",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Entra Tenant Governance can now surface related tenants connected via B2B collaboration, multitenant apps, and shared billing, giving central IT visibility into acquisition, dev, and partner tenants that have drif"
+  },
+  {
+    "title": "AI is accelerating cyberattacks — here's how to stay ahead",
+    "category": "Identity",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Microsoft's position is that AI is enabling attackers to automate reconnaissance, credential analysis, and social engineering at scale, making identity the highest-value target. The practical takeaway: phishing-re"
+  },
+  {
+    "title": "Secure external attachments with Purview encryption",
+    "category": "Identity",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Purview-encrypted attachments sent externally behave very differently depending on whether guest accounts are provisioned: with guests enabled, access is smooth but you can generate thousands of guest accounts rap"
+  },
+  {
+    "title": "Reducing NTLM Dependency: IAKerb and LocalKDC in Windows Insider Preview",
+    "category": "Identity",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[Preview] — IAKerb and LocalKDC extend Kerberos to scenarios that previously required NTLM fallback, coming to the Canary Channel this month. For orgs actively working to block NTLM, this is the technology path forward, "
+  },
+  {
+    "title": "Admin tasks in Microsoft Intune: Centralized control today, AI-ready for tomorrow",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Admin Tasks is now GA in Intune, aggregating high-impact approvals, privilege requests, and security remediation actions into a single queue. This reduces context-switching across consoles and strengthens audit re"
+  },
+  {
+    "title": "Updated Secure Boot status report in Windows Autopatch",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — The Secure Boot status report now includes certificate-level detail, trust configuration, and rollout confidence scores, giving you the granularity needed to plan Secure Boot certificate updates without guesswork."
+  },
+  {
+    "title": "Admin Insights for Windows 365: Stay on top of what needs attention — now in public preview",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[Preview] — Admin Insights surfaces prioritized, actionable signals across your Windows 365 Cloud PC fleet so you can see what needs attention without manually querying multiple reports. Now in public preview; enroll you"
+  },
+  {
+    "title": "Protect browser-based work on agency-managed Windows PCs",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Intune now supports app protection policies scoped to browser-based work on Windows PCs enrolled and managed by a contractor's home agency, without requiring full device enrollment by your org. This closes a meani"
+  },
+  {
+    "title": "Microsoft Intune announces Android Enterprise management support for Android XR",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Intune now supports Android XR devices, including Samsung Galaxy XR, using existing Android Enterprise enrollment, policy, and app management workflows. If your org is piloting XR hardware for field or specialized"
+  },
+  {
+    "title": "Securing the new risk surface: local agents, claws, and open runtimes",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Local AI agents running persistently on endpoints with deep access to data and systems represent a new attack surface that traditional EDR and policy controls weren't designed for. The article frames \"claws\" as su"
+  },
+  {
+    "title": "What's new in Microsoft Intune – March",
+    "category": "Devices",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — March updates focus on more timely device check-in notifications, improved compliance visibility, and expanded Apple device and mobile app management capabilities. Review the full changelog to identify any policy "
+  },
+  {
+    "title": "What's New in Microsoft 365 Copilot | April 2026",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — April ships a broad set of Copilot updates: mobile app and grounding improvements for the Copilot app, Notebooks updates, Plan mode and Python support in Excel, image editing and public website grounding in PowerP"
+  },
+  {
+    "title": "Recertified: How Microsoft 365 Copilot continues to earn trust and What Changed in a Year",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Copilot has achieved ISO/IEC 42001:2023 recertification for the second consecutive year with zero non-conformities. For organizations with compliance requirements around AI system governance, this certification pr"
+  },
+  {
+    "title": "Power Fx: User Defined Types Generally Available",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — User Defined Types (UDTs) are GA in Power Apps Studio 3.26044 and enabled by default for new apps; existing apps require an opt-in under Settings > Updates > New. This is a structural change to how Power Fx handle"
+  },
+  {
+    "title": "Scaling the reach of finance: what's next with Finance Agent in Microsoft 365 Copilot",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Finance Agent in M365 Copilot is expanding to cover more of the record-to-report and forecast-to-plan workflow surface. If you're managing Copilot rollout for finance teams, review which Finance Agent capabilities"
+  },
+  {
+    "title": "How Workday and Microsoft are redefining the agentic workplace",
+    "category": "Apps",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Workday agents are now accessible from within Teams and M365 Copilot, allowing HR and finance workflows to surface without leaving the collaboration layer. For environments using Workday, assess the data-sharing a"
+  },
+  {
+    "title": "Data Security Posture Management for AI",
+    "category": "Data",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Purview DSPM for AI provides a unified monitoring surface for Copilot, Azure AI Foundry agents, and third-party LLM-based AI applications, covering data access, oversharing, and governance gaps across your AI foot"
+  },
+  {
+    "title": "Data Security Posture Reports",
+    "category": "Data",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Purview Posture Reports are GA and deliver an outcome-based view of sensitivity label application and DLP policy enforcement across M365, answering the executive-level question of whether controls are consistently"
+  },
+  {
+    "title": "Data Security Posture Reports (Custom Workspace and Charts)",
+    "category": "Data",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[Preview] — Custom workspaces and chart configurations for Purview Posture Reports are now in public preview, allowing you to build executive-ready dashboards tailored to your specific label taxonomy and DLP policy set. "
+  },
+  {
+    "title": "Extend Microsoft Purview data protection to AWS Bedrock agents for cross-cloud AI governance",
+    "category": "Data",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Purview can now act as the central policy engine for AI agents running on AWS Bedrock, extending sensitivity labels, DLP, and governance controls to cross-cloud AI workloads. If your organization runs AI on AWS al"
+  },
+  {
+    "title": "Microsoft Purview: Endpoint DLP - Policy Sync & Device Health AI-Powered Investigation",
+    "category": "Data",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[Preview] — AI-powered investigation of DLP policy sync health and device configuration is entering preview in July 2026, with GA in August. Start reviewing your current Endpoint DLP deployment health now so you have a b"
+  },
+  {
+    "title": "Bulk Deletion in Microsoft Dataverse: New Capabilities for Data Lifecycle Management",
+    "category": "Data",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Dataverse Bulk Deletion has expanded capabilities for administrators managing accumulated data and storage capacity. If Dataverse storage costs are a concern in your tenant, review the updated bulk deletion option"
+  },
+  {
+    "title": "Lock down AI, web, and private apps: what's new in Internet Access and Private Access",
+    "category": "Network",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Global Secure Access Internet Access and Private Access have new controls targeting AI service access, including visibility into which AI tools employees are using, controls to block sensitive data uploads to unsa"
+  },
+  {
+    "title": "Level up your Azure Network Security Skills with our Upcoming Webinar Series",
+    "category": "Network",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — The Azure Network Security team is running a technical webinar series covering Azure WAF, Azure Firewall, Azure DDoS Protection, and Azure Bastion, with a focus on demos and operational design decisions. Register "
+  },
+  {
+    "title": "Computer-using agents in Microsoft Copilot Studio are now generally available",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Copilot Studio agents can now control UI-driven applications directly, eliminating the need for brittle RPA scripts or waiting on APIs from legacy systems. This is a significant automation capability unlock; befor"
+  },
+  {
+    "title": "Meet the new Copilot Studio: rebuilt for more complex, multi-step work",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[Preview] — Copilot Studio has a rebuilt authoring experience with a modernized AI core designed for multi-step, multi-agent workflows. The new studio is available now in preview; pilot it for any net-new agent builds an"
+  },
+  {
+    "title": "Agent Evaluation in Microsoft Copilot Studio is now generally available",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Agent Evaluation is GA, giving makers a structured way to define test sets, run them at scale, and assess agent behavior for correctness and consistency before and after changes. For any agents already in producti"
+  },
+  {
+    "title": "Automate agent evaluation with the Evaluation APIs",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — The Evaluation APIs allow you to integrate Copilot Studio agent testing into CI/CD pipelines, making evaluation a continuous part of the agent development lifecycle rather than a manual pre-release step. If you ha"
+  },
+  {
+    "title": "Announcing Period 2 Exchange 2016/2019 Extended Security Update (ESU) program",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Period 2 ESU for Exchange 2016 and 2019 runs from May 2026 through April 2027 for organizations that couldn't complete migration during Period 1. Enrollment is required and the program is not automatic; if you hav"
+  },
+  {
+    "title": "Crypto Clipper uses Tor and worm-like propagation for persistence and control",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Microsoft Threat Intelligence documented a cryptocurrency clipper combining clipboard theft, Tor C2, and worm-like propagation, with a lightweight backdoor for follow-on access. Review Defender for Endpoint alerts"
+  },
+  {
+    "title": "Beyond the benchmark: Advancing security at AI speed",
+    "category": "Visibility & Automation",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Microsoft's MDASH agentic vulnerability detection system is now integrated into real-world workflows across Windows, Azure, and identity systems. This is directional signal that AI-driven vulnerability discovery i"
+  },
+  {
+    "title": "Entra ID: Migrate away from Custom Controls and audit SSPR method registrations",
+    "category": "Action Required",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Start immediately. Custom Controls retirement, CA enforcement during credential registration, and explicit SSPR method registration requirements are all in motion. Existing configurations have a transition window,"
+  },
+  {
+    "title": "Exchange 2016/2019 ESU Period 2: Enroll now if you're still on-premises",
+    "category": "Action Required",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — Deadline: running without ESU enrollment means unpatched, end-of-support Exchange in production. Period 2 runs May 2026 through April 2027. If you did not enroll in Period 1 and still have Exchange 2016 or 2019 on"
+  },
+  {
+    "title": "Purview Endpoint DLP Policy Sync & Device Health AI Investigation: prepare your baseline",
+    "category": "Action Required",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[Preview] — Preview arrives July 2026, GA August 2026. The AI-powered investigation capability for Endpoint DLP policy sync health will surface problems you may not currently know you have. Before it ships, pull your cur"
+  },
+  {
+    "title": "Copilot Studio computer-using agents: establish governance before broad deployment",
+    "category": "Action Required",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "[GA] — GA means makers can deploy these now. Computer-using agents have broad access to UI-driven systems and can submit data on behalf of users. Define and publish your organizational policy for approved target systems,"
+  },
+  {
+    "title": "Entra Tenant Governance: Shadow Tenant Discovery GA",
+    "category": "Top 5",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "Apps connected to Entra already contain pre-existing users and permissions created outside governance workflows. Account Discovery surfaces those accounts from day one of connection, closing the visibility gap that lets "
+    "snippet": "If your org has grown through acquisitions or has a history of ad-hoc tenant creation, this is the tool you've been waiting for. Entra Tenant Governance now discovers related tenants via B2B signals, multitenant app regi"
+  },
+  {
+    "title": "Computer-Using Agents in Copilot Studio GA",
+    "category": "Top 5",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Agents can now interact with web UIs, vendor portals, and legacy line-of-business apps without requiring an API — this is GA and it fundamentally changes the automation calculus for workflows that were previously RPA-onl"
+  },
+  {
+    "title": "Purview DSPM for AI GA",
+    "category": "Top 5",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "A unified monitoring plane for data exposure across Microsoft Copilot, Azure AI Foundry agents, and third-party LLM-backed apps is now generally available. If you don't have a clear answer to \"what sensitive data are our"
+  },
+  {
+    "title": "Exchange 2016/2019 ESU Period 2 Announced",
+    "category": "Top 5",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Period 1 ESU ended April 2026; Period 2 runs May 2026 through April 2027 for orgs still migrating to Exchange SE. If you have on-premises Exchange 2016/2019, you need to be enrolled or you're running unpatched. This is a"
+  },
+  {
+    "title": "IAKerb and LocalKDC Preview: NTLM Reduction in Windows",
+    "category": "Top 5",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Windows Insider Canary channel is previewing IAKerb and LocalKDC, which extend Kerberos to scenarios that previously fell back to NTLM. This is a critical long-term dependency reduction for Zero Trust posture — watch the"
   },
   {
     "title": "Find Shadow Tenants and Reduce Risk Fast with Microsoft Entra Tenant Governance",
     "category": "Identity",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Orphaned tenants from acquisitions, dev projects, and regional ops represent real, unmonitored attack surface. Entra Tenant Governance now discovers related tenants via B2B collaboration signals, multitenant app r"
+    "snippet": "[GA] — Ungoverned tenants are a real and underappreciated attack surface — Entra Tenant Governance's tenant discovery capability surfaces related tenants via B2B collaboration, multitenant app registrations, and billing "
   },
   {
-    "title": "You Can't Govern What You Can't See: Closing the Identity Visibility Gap for Apps",
+    "title": "Account Discovery for Entra ID Governance",
     "category": "Identity",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Apps connected to Entra arrive with pre-existing accounts and permissions that were never provisioned through governance workflows — Account Discovery brings those into view immediately on connection. This directl"
+    "snippet": "[GA] — When you connect a SaaS or on-prem app to Entra, existing accounts created outside governance workflows are now surfaced via account discovery, closing the visibility gap that's made legacy app onboarding a govern"
   },
   {
     "title": "Reducing NTLM Dependency: IAKerb and LocalKDC in Windows Insider Preview",
     "category": "Identity",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[Preview] — IAKerb and LocalKDC extend Kerberos authentication to scenarios that previously forced NTLM fallback, including local account and workgroup authentication. This is in Windows Insider Canary Channel now, targe"
+    "snippet": "[Preview] — IAKerb and LocalKDC extend Kerberos to workgroup and direct-IP auth scenarios that previously required NTLM fallback, landing in Windows Insider Canary channel this month. Start auditing your NTLM usage now w"
   },
   {
     "title": "Secure External Attachments with Purview Encryption",
     "category": "Identity",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — When Purview encryption is applied to email attachments, the recipient experience is entirely dependent on your Conditional Access policies and guest account configuration. Enabling guest accounts gives a seamless"
+    "snippet": "[GA] — Purview-encrypted attachments sent to external recipients behave very differently depending on whether guest accounts are provisioned — without guest accounts, external users hit access barriers, but enabling them"
   },
   {
-    "title": "Microsoft 365 Apps: Cloud Update — Enhanced Rollout Waves",
+    "title": "M365 Apps Cloud Update: Enhanced Rollout Waves",
     "category": "Identity",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[Preview] — Cloud Update for Microsoft 365 Apps is getting support for more than three rollout waves and configurable inter-wave delays, using Entra ID groups. Now in preview as of May 2026, targeting GA in June 2026. If"
+    "snippet": "[Preview] — Cloud Update for M365 Apps is moving out of the three-wave limit, adding support for more Entra ID group-based waves and configurable inter-wave delays. Preview is live in May, GA targets June — review your c"
+  },
+  {
+    "title": "CVE-2026-54411: Linux-PAM Timing Side-Channel in pam_userdb",
+    "category": "Identity",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[GA] — A timing discrepancy in pam_userdb's plaintext comparison path allows a local or network-adjacent attacker to recover plaintext passwords when pam_userdb is configured with crypt=none or an unrecognized crypt meth"
   },
   {
     "title": "Updated Secure Boot Status Report in Windows Autopatch",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — The improved report now surfaces certificate-level details including trust configuration, certificate status, and rollout readiness directly within the Autopatch workflow. This gives you the visibility to run targ"
+    "snippet": "[GA] — The Secure Boot status report in Autopatch now surfaces certificate-level details including trust configuration, confidence level, and freshness timestamps — exactly what you need to plan and validate a Secure Boo"
+  },
+  {
+    "title": "Admin Insights for Windows 365 — Public Preview",
+    "category": "Devices",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[Preview] — A new aggregated insights surface for Windows 365 is now in public preview, designed to surface the highest-priority environmental signals without requiring admins to hunt across multiple reports. Enable the "
   },
   {
     "title": "Protect Browser-Based Work on Agency-Managed Windows PCs",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — When employees or contractors work from a Windows PC enrolled in a third-party MDM (e.g., a contractor's home agency), full Intune enrollment isn't viable — but browser-based work still needs data protection. Intu"
+    "snippet": "[GA] — Intune now supports app protection policies scoped to browser-based work on Windows PCs that are already enrolled in a third-party MDM (e.g., a contractor's agency MDM), without requiring full re-enrollment. This "
   },
   {
-    "title": "Admin Insights for Windows 365 — Now in Public Preview",
+    "title": "Admin Tasks in Microsoft Intune GA",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[Preview] — Admin Insights surfaces prioritized action items for Cloud PC environments, helping admins quickly identify what requires attention without manually correlating signals across reports. This is a meaningful im"
+    "snippet": "[GA] — Intune now aggregates high-impact approval actions — privilege requests, security remediations, configuration changes — into a single admin tasks view rather than scattering them across multiple console blades. Wi"
   },
   {
-    "title": "Admin Tasks in Microsoft Intune: Centralized Control Today, AI-Ready for Tomorrow",
+    "title": "Microsoft Intune: Android Enterprise Management Support for Android XR",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Admin Tasks aggregates high-impact approvals and remediation actions — privilege requests, security remediations, configuration changes — into a single pane in the Intune console. This reduces the time between det"
+    "snippet": "[GA] — Intune now supports Android Enterprise enrollment, policy, and app management for Android XR devices including the Samsung Galaxy XR headset. If your org is evaluating XR hardware for field or productivity use cas"
   },
   {
-    "title": "Microsoft Intune Announces Android Enterprise Management Support for Android XR",
+    "title": "Microsoft 365 Adds Advanced Intune Solutions at Scale",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Intune now supports Android XR devices (including Samsung Galaxy XR headsets) using existing Android Enterprise enrollment, policy, and app management workflows. If your organization is piloting or deploying XR de"
+    "snippet": "[GA] — Advanced Intune Suite capabilities are being bundled into broader M365 plans rolling out in CY26 Q3 — 30-day Message Center notice will precede tenant enablement. Review your current Intune Suite licensing and det"
   },
   {
-    "title": "Microsoft 365 Adds Advanced Microsoft Intune Solutions at Scale",
+    "title": "What's New in Microsoft Intune — March",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Advanced Intune Suite capabilities are being bundled into Microsoft 365 plans at scale, rolling out in CY26 Q3 with 30-day Message Center notice. Watch for the MC notification in your tenant and plan license recon"
+    "snippet": "[GA] — March's Intune update focuses on compliance visibility improvements, timelier device check-in notifications, and expanded Apple device and mobile app management capabilities. Review the full changelog and map the "
   },
   {
-    "title": "Announcing Three New Partners for Multi-Tenant Management with Microsoft Intune",
+    "title": "Three New Partners for Multi-Tenant Management with Intune",
     "category": "Devices",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Three new ISV partners now offer deep Intune integration for MSP multi-tenant management, reducing the need for custom tooling or third-party platforms with shallow Microsoft integration. If you're an MSP or manag"
+    "snippet": "[GA] — Microsoft has added three new ISV partners to the Intune multi-tenant management ecosystem, giving MSPs additional options for delivering managed Intune at scale without building custom tooling. MSPs managing M365"
   },
   {
-    "title": "Computer-Using Agents in Microsoft Copilot Studio Are Now Generally Available",
+    "title": "Computer-Using Agents in Microsoft Copilot Studio GA",
     "category": "Apps",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Agents can now interact with UI-driven applications — vendor portals, internal web apps, legacy LOB systems — without requiring APIs or RPA scripts. For enterprise IT, the immediate concern is governance: what dat"
+    "snippet": "[GA] — Agents can now autonomously interact with web UIs, vendor portals, and legacy apps without API dependencies, going GA this week after filling the automation gap that RPA tools have struggled with at scale. Before "
+  },
+  {
+    "title": "Agent Evaluation in Microsoft Copilot Studio GA",
+    "category": "Apps",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[GA] — Structured evaluation with test sets and automated scoring is now GA in Copilot Studio, providing a repeatable quality gate for agents moving into production. Mandate evaluation runs as part of your agent deployme"
   },
   {
     "title": "Automate Agent Evaluation with the Evaluation APIs",
     "category": "Apps",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — The Evaluation APIs let you integrate Copilot Studio agent testing into CI/CD pipelines, running defined test sets automatically against each build rather than spot-checking manually. If your org is moving agents "
+    "snippet": "[GA] — The Evaluation APIs let you integrate Copilot Studio agent testing into CI/CD pipelines, making evaluation a continuous rather than one-time gate. If your team is building or managing agents in Copilot Studio, plu"
   },
   {
     "title": "What's New in Microsoft 365 Copilot — April 2026",
     "category": "Apps",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — The April wave includes Copilot Notebooks updates, Python support and Plan mode in Excel, image editing and public website grounding in PowerPoint, Claude model availability, and mobile app improvements. Review th"
+    "snippet": "[GA] — April's Copilot wave includes Copilot Notebooks updates, Plan mode and Python support in Excel, image editing and public website grounding in PowerPoint, and Claude model availability in Copilot Chat. Review the f"
   },
   {
-    "title": "Microsoft Teams: Interpreter — Simultaneous Mode Enhancements",
+    "title": "Microsoft 365 Copilot: ISO/IEC 42001 Recertification",
     "category": "Apps",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Admins gain the ability to fully disable voice simulation via PowerShell; distinct voices are auto-assigned per speaker, and shimmer effects are scoped to interpreter users only. Targeting GA in July 2026. If you'"
+    "snippet": "[GA] — M365 Copilot achieved back-to-back ISO 42001 AI management system recertification with zero non-conformities, providing independently validated assurance for compliance and procurement conversations. Use this as s"
+  },
+  {
+    "title": "Teams Interpreter: Simultaneous Mode Enhancements",
+    "category": "Apps",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[GA] — Teams Interpreter gains per-speaker distinct voice assignment, admin control to disable voice simulation via PowerShell, shimmer effects scoped to interpreter users only, and audio activation confirmations — GA ta"
   },
   {
     "title": "Power Fx: User Defined Types Generally Available",
     "category": "Apps",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — UDTs are now on by default in Power Apps Studio 3.26044 for new apps, and can be enabled for existing apps under Settings > Updates > New. This is a meaningful developer productivity improvement for complex canvas"
+    "snippet": "[GA] — User Defined Types are now on by default for new Power Apps as of Studio version 3.26044, with opt-in for existing apps via Settings > Updates > New. Review existing apps before enabling UDTs — test for behavioral"
   },
   {
-    "title": "Recertified: How Microsoft 365 Copilot Continues to Earn Trust",
+    "title": "Finance Agent in Microsoft 365 Copilot",
     "category": "Apps",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — M365 Copilot and Copilot Chat have achieved ISO/IEC 42001:2023 recertification for the second consecutive year with zero non-conformities. This matters for organizations in regulated industries where AI governance"
-  },
-  {
-    "title": "Data Security Posture Reports",
-    "category": "Data",
-    "date": "2026-06-16",
-    "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Purview Posture Reports shift the compliance conversation from individual alert counts to outcome-based questions: are sensitivity labels and DLP policies consistently applied and enforced across the tenant? This "
-  },
-  {
-    "title": "Data Security Posture Reports (Custom Workspace and Charts)",
-    "category": "Data",
-    "date": "2026-06-16",
-    "url": "/posts/2026-06-16/",
-    "snippet": "[Preview] — Custom workspaces let you build role-specific posture dashboards drawing from Audit log telemetry — executive summaries, team-level views, or control-specific drill-downs. Now in public preview. Pilot this wi"
+    "snippet": "[GA] — The Finance Agent extends Copilot into record-to-report, source-to-pay, and forecast-to-plan workflows, GA as part of M365 Copilot. Finance teams piloting this should work with compliance to confirm data residency"
   },
   {
     "title": "Data Security Posture Management for AI",
     "category": "Data",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Purview DSPM for AI provides unified monitoring across Microsoft Copilot, Azure AI Foundry, AI Agents, and third-party LLM-backed applications. If your org has AI workloads running outside the Microsoft stack, thi"
+    "snippet": "[GA] — Purview DSPM for AI provides a unified console to monitor sensitive data exposure across Microsoft Copilot, Azure AI Foundry, custom AI agents, and third-party LLM applications — this is the single pane you need t"
   },
   {
-    "title": "Extend Microsoft Purview Data Protection to AWS Bedrock Agents for Cross-Cloud AI Governance",
+    "title": "Extend Microsoft Purview Data Protection to AWS Bedrock Agents",
     "category": "Data",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Organizations running AI agents on AWS Bedrock can now apply Purview sensitivity labels and DLP policies as the policy engine, maintaining a single governance framework across clouds. This is a significant capabil"
+    "snippet": "[GA] — Purview can now act as the central policy engine for AI workloads running on AWS Bedrock, enabling consistent sensitivity label enforcement and DLP controls across cloud boundaries. If your org runs hybrid AI (M36"
   },
   {
-    "title": "Microsoft Purview: Data Security Investigations — Investigation Templates for Common Data Security Scenarios",
+    "title": "Purview Data Security Posture Reports GA",
     "category": "Data",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Pre-built search templates let investigators scope common data security investigations (by user, site, or scenario) in a few clicks rather than manually constructing queries. Targeting GA in June 2026. Update your"
+    "snippet": "[GA] — Posture Reports deliver an outcome-based view of sensitivity label and DLP policy effectiveness across M365 — answering \"are controls consistently applied?\" rather than just surfacing individual alerts. Use these "
   },
   {
-    "title": "The Advantages of Premium Cases in Purview eDiscovery",
+    "title": "Data Security Posture Reports: Custom Workspace and Charts — Public Preview",
     "category": "Data",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[Preview] — E5 eDiscovery now supports up to 50,000 cases and 5 TB per search (vs. 10,000 cases and 2 TB in E3), plus tenant-wide holds reports in preview. If you're running large-scale litigation or regulatory investiga"
+    "snippet": "[Preview] — Custom workspaces and charts for Purview Posture Reports are now in public preview, enabling teams to build executive-ready dashboards from Audit telemetry without exporting raw data. Enable the preview and s"
   },
   {
-    "title": "Bulk Deletion in Microsoft Dataverse: New Capabilities for Data Lifecycle Management",
+    "title": "Purview Data Security Investigations: Pre-Built Search Templates",
     "category": "Data",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Dataverse bulk deletion has been enhanced for admins managing accumulated data that consumes storage capacity. If Dataverse storage costs are creeping up, evaluate the new bulk deletion capabilities as part of you"
+    "snippet": "[GA] — Pre-configured search templates for common data security investigation scenarios are GA in June 2026, reducing investigation setup from manual query-building to a few clicks. Update your IR playbooks to reference "
+  },
+  {
+    "title": "Purview eDiscovery Premium Cases",
+    "category": "Data",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[Preview] — E5 eDiscovery Premium now supports up to 50,000 cases and 5 TB per search versus E3's 10,000/2 TB limits, plus tenant-wide holds reporting in preview. If your legal team is hitting case or volume ceilings in "
+  },
+  {
+    "title": "Bulk Deletion in Microsoft Dataverse",
+    "category": "Data",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[GA] — Native Dataverse bulk deletion capabilities have been expanded, giving admins better tools to manage storage consumption from accumulated data at scale. Audit your high-volume Dataverse environments for stale reco"
   },
   {
     "title": "Lock Down AI, Web, and Private Apps: What's New in Internet Access and Private Access",
     "category": "Network",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Global Secure Access now provides controls to identify unsanctioned AI tool usage, block sensitive data uploads to shadow AI services, and defend against prompt injection attacks — alongside private app access imp"
+    "snippet": "[GA] — Global Secure Access now includes controls specifically targeting unsanctioned AI service access, prompt injection protection, and private app security without backhauling traffic — all addressable from the Entra "
   },
   {
-    "title": "CVE-2026-12012: Chromium Use After Free — Network",
+    "title": "CVE-2026-12012: Chromium Use-After-Free in Edge",
     "category": "Network",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Use-after-free vulnerability in Chromium's network stack, assigned by Chrome and ingested by Microsoft Edge. Ensure Edge is patched to the latest Chromium-based release. If you manage Edge via Intune or Group Poli"
+    "snippet": "[GA] — A Chromium use-after-free vulnerability affecting the network stack has been patched in the upstream Chromium release ingested by Microsoft Edge. Validate your Edge update rings are current — managed devices shoul"
   },
   {
-    "title": "Computer-Using Agents in Copilot Studio — GA (What's New May 2026)",
+    "title": "Exchange 2016/2019 ESU Period 2 Announced",
     "category": "Visibility & Automation",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — The May 2026 Copilot Studio release also includes a redesigned workflows experience and real-time voice capabilities alongside the computer-using agents GA. For automation architects, the redesigned workflows surf"
+    "snippet": "[GA] — Period 1 ESU ended April 2026; Period 2 covers May 2026 through April 2027 for orgs still running Exchange 2016 or 2019 on-premises. If you have not enrolled in Period 2 and are not yet on Exchange SE, you are cur"
   },
   {
-    "title": "Agent Evaluation in Microsoft Copilot Studio Is Now Generally Available",
+    "title": "Computer-Using Agents in Copilot Studio — May 2026 Roundup",
     "category": "Visibility & Automation",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Every maker now has a structured way to assess agent behavior at scale using defined test sets rather than manual spot-checking. For security and governance teams, this is the audit capability that makes agent pro"
+    "snippet": "[GA] — The May Copilot Studio update bundles computer-using agents GA, a redesigned workflows experience, and Work IQ extensibility into a single release. Review the redesigned workflows surface against any automation wo"
   },
   {
-    "title": "Announcing Period 2 Exchange 2016/2019 Extended Security Update Program",
+    "title": "ASSERT: Open-Source Framework for Agent Evaluation",
     "category": "Visibility & Automation",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Period 2 ESU coverage runs May through October 2026 for organizations that missed the Exchange SE/Online migration deadline. This is the last scheduled ESU period — there is no indication of a Period 3. If you're "
+    "snippet": "[GA] — Microsoft's ASSERT framework converts natural language behavioral specifications into executable evaluations for AI models and agents, published as open source. If your team is building agents, ASSERT gives you a "
   },
   {
-    "title": "ASSERT: Turn Specs into Evals for Any Agent",
+    "title": "Windows on Arm: Print Readiness Improvements",
     "category": "Visibility & Automation",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — ASSERT is an open-source framework from the Microsoft Security team that converts natural language behavior requirements into executable regression tests for AI models and agents. For teams building or governing a"
+    "snippet": "[GA] — Print driver compatibility for Arm64 Windows has expanded, reducing one of the key blockers for commercial Arm device adoption. If printing gaps have held back Arm device pilots in your org, re-evaluate compatibil"
   },
   {
-    "title": "Advancing Print Readiness Across the Windows on Arm Ecosystem",
+    "title": "Made for Developers and Agents — Windows 365 at Build 2026",
     "category": "Visibility & Automation",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Print compatibility on Arm64 Windows devices has been a persistent deployment blocker. Microsoft is actively expanding native Arm64 print driver coverage. If Arm device adoption is blocked in your environment by p"
+    "snippet": "[GA] — Build 2026 brings developer-focused Windows 365 enhancements including streamlined Cloud PC onboarding for dev scenarios and agent hosting capabilities backed by the same security posture as standard Cloud PCs. If"
   },
   {
-    "title": "Exchange 2016/2019 ESU Period 2 — Hard Deadline October 2026",
+    "title": "Admin Insights for Windows 365 — Public Preview",
+    "category": "Visibility & Automation",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "[Preview] — Admin Insights consolidates the highest-priority Cloud PC health and action signals into a single view, reducing the time admins spend correlating across multiple Windows 365 reports. Enroll in the preview an"
+  },
+  {
+    "title": "Exchange 2016/2019 ESU Period 2 — Immediate Enrollment Required",
     "category": "Action Required",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Deadline: October 2026. Period 1 ESU ended April 2026; Period 2 (May–October 2026) is now available and is expected to be the final extension. If you are still running Exchange 2016 or 2019, enroll in Period 2 ESU"
+    "snippet": "[GA] — Deadline: May 2026 start / April 2027 end for Period 2. If you are running Exchange 2016 or 2019 on-premises and Period 1 ESU has lapsed, you are currently unprotected. Enroll in Period 2 ESU immediately or commit"
   },
   {
-    "title": "CVE-2026-12012: Chromium Use After Free in Edge — Patch Now",
+    "title": "CVE-2026-12012: Patch Edge Now",
     "category": "Action Required",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Urgency: Immediate. Use-after-free vulnerability in the Chromium network stack affects all Edge (Chromium-based) releases that haven't ingested the patched Chromium build. Verify your managed Edge fleet has receiv"
+    "snippet": "[GA] — Action within current patch cycle. A use-after-free vulnerability in the Chromium network stack affects Edge — verify all managed devices are running the latest Edge build via Intune compliance policy or Defender "
   },
   {
-    "title": "Microsoft 365 Apps Cloud Update — Enhanced Rollout Waves Now in Preview, GA June 2026",
+    "title": "CVE-2026-54411: Audit pam_userdb Configurations on Linux Workloads",
     "category": "Action Required",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[Preview] — Action by June 2026. The enhanced rollout waves capability is in preview now and targeting GA this month. If you currently manage M365 Apps update waves via Cloud Update, review your existing wave configurati"
+    "snippet": "[GA] — Action immediately if applicable. Linux-PAM through 1.7.2 with crypt=none or no crypt= argument leaks plaintext passwords via timing analysis. Audit all Linux systems in your environment for pam_userdb usage, swit"
   },
   {
-    "title": "Entra Tenant Governance — Shadow Tenant Discovery",
+    "title": "Intune Advanced Suite Bundling — CY26 Q3 Rollout Incoming",
     "category": "Action Required",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Action within 30 days. If you've never run a formal tenant inventory, this GA capability is your fastest path to identifying unmanaged tenants. Unmonitored tenants represent unchecked identity and data exposure. R"
+    "snippet": "[GA] — 30-day Message Center notice precedes tenant enablement. Advanced Intune Suite capabilities are being added to broader M365 plans starting CY26 Q3. Review your licensing, determine whether newly bundled capabiliti"
   },
   {
-    "title": "Purview DSPM for AI — Map Your AI Application Coverage",
+    "title": "Computer-Using Agents: Establish Governance Before Business Unit Deployment",
     "category": "Action Required",
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
-    "snippet": "[GA] — Action within 30 days. With computer-using agents now GA and cross-cloud AI governance extended to AWS Bedrock, the surface area for ungoverned AI data access is expanding rapidly. Use DSPM for AI to inventory all"
+    "snippet": "[GA] — 30-day governance window. Computer-using agents are GA and accessible to makers in Copilot Studio — without proactive governance, business units will deploy agents with broad UI access and no audit controls. Defin"
   },
   {
     "title": "CVE-2026-42897 — Exchange Server OWA XSS (Active Vulnerability):",
