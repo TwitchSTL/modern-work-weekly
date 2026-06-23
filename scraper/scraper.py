@@ -37,6 +37,7 @@ PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
 LOG_DIR = BASE_DIR / "logs"
 HEALTH_DATA_FILE = BASE_DIR / "site" / "data" / "health.json"
 HEALTH_BASELINE_FILE = STATE_DIR / "health_baseline.json"
+POSTS_DIR = BASE_DIR / "site" / "content" / "posts"
 
 STATE_DIR.mkdir(exist_ok=True)
 LOG_DIR.mkdir(exist_ok=True)
@@ -60,6 +61,48 @@ SESSION.headers.update({
     "Accept-Language": "en-US,en;q=0.9",
 })
 REQUEST_DELAY = 2  # seconds between requests — be polite
+
+
+def load_published_urls(posts_dir: Path) -> set[str]:
+    """Collect every source URL already published in a prior post's category
+    sections (Identity, Devices, Apps, Data, Network, Visibility & Automation).
+
+    This is a backstop against seen_items.json losing entries between runs —
+    it's gitignored and lives only on the LXC, so it has no second copy to
+    recover from if it gets corrupted or written inconsistently. The post
+    archive in site/content/posts/ is git-tracked and can't silently revert,
+    so cross-checking against it catches anything the primary seen_ids check
+    misses.
+
+    Deliberately excludes 'Top 5' and 'Action Required' sections: those
+    intentionally re-list still-unresolved high-priority items week over
+    week with freshly-written prose and updated urgency framing. That
+    recurrence is by design, not a duplicate-content bug, so URLs that only
+    ever appear there must not be treated as permanently "published."
+    """
+    urls: set[str] = set()
+    if not posts_dir.exists():
+        return urls
+    url_re = re.compile(r'https?://\S+')
+    for md_file in posts_dir.glob("*.md"):
+        try:
+            text = md_file.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        parts = text.split("---", 2)
+        body = parts[2] if len(parts) >= 3 else text
+        sections = re.split(r'(?m)^## ', body)
+        kept = []
+        for section in sections:
+            heading = section.split("\n", 1)[0].strip().lower()
+            if heading.startswith("top 5") or heading.startswith("action required"):
+                continue
+            kept.append(section)
+        category_body = "\n".join(kept)
+        for match in url_re.findall(category_body):
+            cleaned = match.rstrip(")]}>,.'\"*`").split("#")[0]
+            urls.add(cleaned)
+    return urls
 
 
 def load_state() -> dict:
@@ -505,15 +548,31 @@ def run_scraper(args):
         log.info(f"URL dedup removed {len(all_raw) - len(deduped_raw)} cross-source duplicate(s).")
     all_raw = deduped_raw
 
-    # Enrich and dedup digest items against seen_ids
+    # Enrich and dedup digest items against seen_ids, with a published-post
+    # backstop (see load_published_urls) in case seen_items.json missed it.
+    published_urls = load_published_urls(POSTS_DIR)
+    log.info(f"Backstop dedup — {len(published_urls)} URLs already published in category sections.")
+
     new_items = []
+    backstop_dropped = 0
     for raw in all_raw:
         enriched = enrich_item(raw)
-        if args.force_all or enriched["id"] not in seen_ids:
+        if args.force_all:
             new_items.append(enriched)
-        # else: already seen, skip
+            continue
+        if enriched["id"] in seen_ids:
+            continue  # already seen, skip
+        bare_url = enriched["url"].split("#")[0]
+        if bare_url in published_urls:
+            backstop_dropped += 1
+            log.info(f"  Backstop dedup: '{enriched['title']}' already published — seen_items.json missed it, skipping.")
+            seen_ids.add(enriched["id"])  # repair state while we're here
+            continue
+        new_items.append(enriched)
 
     log.info(f"New items after dedup: {len(new_items)}")
+    if backstop_dropped:
+        log.info(f"Backstop dedup caught {backstop_dropped} item(s) that seen_items.json missed.")
 
     if not new_items:
         log.info("No new items this cycle. Nothing to draft.")
