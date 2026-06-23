@@ -481,11 +481,22 @@ def extract_post_links(content: str) -> list:
     return links
 
 
-def _best_link_match(headline: str, links: list, min_overlap: float = 0.45):
+def _best_link_match(headline: str, links: list, min_overlap: float = 0.6):
     """Find the source URL whose title best overlaps with a LinkedIn headline.
 
-    Uses Jaccard similarity over stopword-filtered word sets. Returns None
-    (never a guess) if nothing clears the overlap threshold.
+    Uses an overlap coefficient (shared words / smaller word-set size) over
+    stopword-filtered word sets, rather than Jaccard. Jaccard divides by the
+    union of both sets, which punishes a short, punchy LinkedIn headline
+    against a long, specific post title even when every word in the short
+    one appears in the long one. The overlap coefficient only cares whether
+    the smaller set is mostly contained in the larger one, which is what
+    "same story, reworded" actually looks like.
+
+    Requires both word sets to have at least 2 significant words unless they
+    match exactly — guards against one-word coincidental overlap inflating
+    the score on very short headlines.
+
+    Returns None (never a guess) if nothing clears the overlap threshold.
     """
     headline_words = _title_words(headline)
     if not headline_words:
@@ -494,24 +505,48 @@ def _best_link_match(headline: str, links: list, min_overlap: float = 0.45):
     for _title, url, title_words in links:
         if not title_words:
             continue
-        union = headline_words | title_words
-        if not union:
+        shared = headline_words & title_words
+        smaller = min(len(headline_words), len(title_words))
+        if smaller < 2 and headline_words != title_words:
             continue
-        score = len(headline_words & title_words) / len(union)
+        score = len(shared) / smaller
         if score > best_score:
             best_score, best_url = score, url
     return best_url if best_score >= min_overlap else None
 
 
-def linkify_linkedin_draft(li_content: str, content: str) -> str:
+def _draft_links(draft: dict) -> list:
+    """Pull (title, url, wordset) triples straight from the raw scraped items
+    in this week's draft.
+
+    These titles come straight from the source (Microsoft's changelog/blog),
+    before either the technical post or the LinkedIn edition paraphrased
+    them. Matching a LinkedIn headline against this title is one paraphrase
+    hop; matching it against the post's already-Claude-rewritten title is
+    two independent paraphrase hops of the same original story, which is
+    why topically-identical headlines can share almost no literal words.
+    """
+    links = []
+    for items in draft.get("grouped_items", {}).values():
+        for item in items:
+            title, url = item.get("title"), item.get("url")
+            if title and url:
+                links.append((title, url, _title_words(title)))
+    return links
+
+
+def linkify_linkedin_draft(li_content: str, content: str, draft: dict | None = None) -> str:
     """Hyperlink bolded headlines in the LinkedIn draft using source links
-    already present in this week's technical post.
+    already present in this week's technical post, plus the raw source
+    titles/URLs from this week's draft if provided (see _draft_links).
 
     Skips section headers (the three anchor emoji), short/all-caps bold runs,
     and anything already a markdown link. Never invents a URL — a headline
     with no confident match is left as plain bold text.
     """
     links = extract_post_links(content)
+    if draft:
+        links = links + _draft_links(draft)
     if not links:
         return li_content
 
@@ -670,7 +705,7 @@ def run(args):
         try:
             li_prompt = build_linkedin_prompt(draft, week_of)
             li_content = call_claude_linkedin(li_prompt)
-            li_content = linkify_linkedin_draft(li_content, content)
+            li_content = linkify_linkedin_draft(li_content, content, draft)
             hashtags = build_hashtags(extract_post_tags(content))
             li_content = li_content.rstrip() + "\n\n" + " ".join(hashtags)
             if len(hashtags) <= 1:
