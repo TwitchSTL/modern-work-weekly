@@ -25,6 +25,7 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 import generate_search_index
+from dateutils import parse_item_date, item_age_days
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -240,15 +241,62 @@ def load_draft(path: Path) -> dict:
         return json.load(f)
 
 
+# pending_draft.json accumulates across however many scraper runs happen
+# before the next digest publishes, and scraper.py's own backstop is
+# deliberately loose (21 days, see MAX_PENDING_AGE_DAYS in scraper.py) to
+# tolerate irregular cron cadence. This is the tighter gate that actually
+# decides what's allowed into a published digest, exec briefing, or LinkedIn
+# draft: confirmed real examples (Oct 2025, Nov 2025, Mar 2026 posts) were
+# sitting in this same accumulated data with zero filtering at prompt-build
+# time before this existed.
+MAX_AGE_DAYS = 7
+
+
+def filter_recent(items: list, max_age_days: int = MAX_AGE_DAYS) -> list:
+    """Drop items older than max_age_days based on a parsed publish date.
+
+    Items with an unparseable date are kept (and logged) rather than
+    silently dropped — an item we can't date is not evidence it's stale.
+    """
+    fresh = []
+    for item in items:
+        age = item_age_days(item.get("date"))
+        if age is None:
+            log.warning(
+                f"Could not parse date for '{item.get('title', '?')[:60]}' "
+                f"(source={item.get('source')}, raw date={item.get('date')!r}) — "
+                f"keeping it rather than risk dropping real content."
+            )
+            fresh.append(item)
+            continue
+        if age <= max_age_days:
+            fresh.append(item)
+        else:
+            log.info(
+                f"Freshness filter: excluding '{item.get('title', '?')[:60]}' "
+                f"from {item.get('source')} — {age:.0f} days old."
+            )
+    return fresh
+
+
 def build_prompt(draft: dict) -> str:
     # Compact the grouped items to save tokens — keep title, body, phase, admin_action.
-    # Cap at 8 items per category (most recent first) to keep input within model limits.
-    # With 6 pillars × 8 items the prompt stays well under 8k input tokens.
+    # Filter to the last MAX_AGE_DAYS days first (parsed dates, not raw string
+    # comparison — see dateutils.py), then cap at 8 items per category, most
+    # recent first, to keep input within model limits. With 6 pillars × 8
+    # items the prompt stays well under 8k input tokens.
     MAX_PER_CAT = 8
     compact = {}
     for cat, items in draft.get("grouped_items", {}).items():
-        # Sort by date descending so the cap keeps the most recent items
-        sorted_items = sorted(items, key=lambda x: x.get("date", ""), reverse=True)
+        fresh_items = filter_recent(items)
+        # Sort by parsed date descending so the cap keeps the genuinely most
+        # recent items — the old raw-string sort didn't sort correctly across
+        # ISO 8601 vs RFC 822 vs RFC-822-with-" Z" date formats.
+        sorted_items = sorted(
+            fresh_items,
+            key=lambda x: parse_item_date(x.get("date")) or datetime.min.replace(tzinfo=timezone.utc),
+            reverse=True,
+        )
         compact[cat] = [
             {
                 "title": item["title"],
@@ -282,8 +330,13 @@ def call_claude(prompt: str) -> str:
 
 
 def build_exec_prompt(draft: dict) -> str:
+    # Unlike build_prompt(), this previously had no recency filter or cap at
+    # all — every accumulated item, however old, was handed straight to
+    # Claude. Apply the same MAX_AGE_DAYS gate so the Executive's Guide can't
+    # drift stale independently of the technical post.
     compact = {}
     for cat, items in draft.get("grouped_items", {}).items():
+        fresh_items = filter_recent(items)
         compact[cat] = [
             {
                 "title": item["title"],
@@ -293,7 +346,7 @@ def build_exec_prompt(draft: dict) -> str:
                 "admin_action": item.get("admin_action"),
                 "url": item.get("url", ""),
             }
-            for item in items
+            for item in fresh_items
         ]
     return EXEC_DIGEST_PROMPT_TEMPLATE.format(
         week_of=draft.get("week_of", datetime.now(timezone.utc).date().isoformat()),
@@ -480,11 +533,22 @@ def linkify_linkedin_draft(li_content: str, content: str) -> str:
 
 
 def build_linkedin_prompt(draft: dict, week_of: str) -> str:
-    """Build a compact digest summary to feed the LinkedIn draft."""
+    """Build a compact digest summary to feed the LinkedIn draft.
+
+    This previously had zero recency filtering — every item ever
+    accumulated in pending_draft.json was dumped into the prompt with no
+    date signal at all, which is why the LinkedIn edition could end up
+    citing entirely different (and much older) stories than the technical
+    post: it was drawing from a far larger, completely unfiltered pool.
+    Apply the same MAX_AGE_DAYS gate used everywhere else.
+    """
     lines = []
     for cat, items in draft.get("grouped_items", {}).items():
+        fresh_items = filter_recent(items)
+        if not fresh_items:
+            continue
         lines.append(f"[{cat}]")
-        for item in items:
+        for item in fresh_items:
             lines.append(f"  - {item['title']}: {(item.get('body') or '')[:200]}")
     return LINKEDIN_PROMPT_TEMPLATE.format(
         week_of=week_of,

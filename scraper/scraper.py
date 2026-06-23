@@ -28,6 +28,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS
+from dateutils import item_age_days
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,6 +62,16 @@ SESSION.headers.update({
     "Accept-Language": "en-US,en;q=0.9",
 })
 REQUEST_DELAY = 2  # seconds between requests — be polite
+
+# An item that's never been scraped before (new source, or a low-volume feed
+# whose "latest 15 entries" reach back months) still carries its real,
+# possibly old, publish date. digest.py applies a tighter 7-day freshness
+# filter at draft-build time regardless, but without a backstop here,
+# genuinely dead items (confirmed examples: Oct 2025, Nov 2025 posts) sit in
+# pending_draft.json indefinitely, growing the backlog for no reason. This is
+# deliberately looser than digest.py's filter to tolerate irregular cron
+# cadence between digest publishes.
+MAX_PENDING_AGE_DAYS = 21
 
 
 def load_published_urls(posts_dir: Path) -> set[str]:
@@ -173,12 +184,26 @@ def fetch_rss(source: dict) -> list[dict]:
         body = BeautifulSoup(
             entry.get("summary", entry.get("description", "")), "html.parser"
         ).get_text(separator=" ", strip=True)[:800]
+        # feedparser normalizes the publish date into a UTC struct_time at
+        # published_parsed regardless of the feed's original date format
+        # (RFC 822, ISO 8601, the M365 Roadmap feed's non-standard " Z"
+        # suffix, etc.) — prefer that over the raw string so every item
+        # written to pending_draft.json carries one consistent, directly
+        # comparable date format instead of whatever format that particular
+        # feed happened to use.
+        parsed = entry.get("published_parsed") or entry.get("updated_parsed")
+        if parsed:
+            date_str = datetime(*parsed[:6], tzinfo=timezone.utc).isoformat()
+        else:
+            date_str = entry.get(
+                "published", entry.get("updated", datetime.now(timezone.utc).isoformat())
+            )
         items.append({
             "source": source["name"],
             "title": title,
             "body": body,
             "url": entry.get("link", source["url"]),
-            "date": entry.get("published", datetime.now(timezone.utc).isoformat()),
+            "date": date_str,
         })
     return items
 
@@ -574,6 +599,26 @@ def run_scraper(args):
     if backstop_dropped:
         log.info(f"Backstop dedup caught {backstop_dropped} item(s) that seen_items.json missed.")
 
+    # Age backstop — a title/source hash that's never been seen before isn't
+    # necessarily new content. Low-volume feeds can return entries months
+    # old the first time they're scraped (or right after a source is added
+    # to sources.py). Drop those here instead of letting them accumulate in
+    # pending_draft.json; still mark them seen so they aren't re-evaluated
+    # every run.
+    stale_dropped = 0
+    age_filtered = []
+    for item in new_items:
+        age = item_age_days(item.get("date"))
+        if age is not None and age > MAX_PENDING_AGE_DAYS:
+            log.info(f"  Age backstop: dropping '{item['title'][:60]}' from {item['source']} — {age:.0f} days old.")
+            seen_ids.add(item["id"])
+            stale_dropped += 1
+            continue
+        age_filtered.append(item)
+    new_items = age_filtered
+    if stale_dropped:
+        log.info(f"Age backstop dropped {stale_dropped} item(s) older than {MAX_PENDING_AGE_DAYS} days.")
+
     if not new_items:
         log.info("No new items this cycle. Nothing to draft.")
         return
@@ -609,6 +654,25 @@ def run_scraper(args):
     if PENDING_DRAFT_FILE.exists():
         with open(PENDING_DRAFT_FILE) as f:
             pending = json.load(f)
+
+        # Prune items that have aged out since they were added. The pending
+        # draft accumulates across however many scraper runs happen before
+        # the next digest publishes, so an item added when it was fresh can
+        # still be sitting here weeks later if publishing is delayed.
+        pruned = 0
+        for cat in list(pending.get("grouped_items", {}).keys()):
+            kept = []
+            for item in pending["grouped_items"][cat]:
+                age = item_age_days(item.get("date"))
+                if age is not None and age > MAX_PENDING_AGE_DAYS:
+                    log.info(f"  Pruned stale pending item ({age:.0f}d): '{item['title'][:60]}' from {item['source']}")
+                    pruned += 1
+                    continue
+                kept.append(item)
+            pending["grouped_items"][cat] = kept
+        if pruned:
+            log.info(f"Pruned {pruned} item(s) from pending draft that aged out (>{MAX_PENDING_AGE_DAYS}d).")
+
         # Collect IDs already in the pending draft to avoid double-adding
         existing_ids = {
             item["id"]
