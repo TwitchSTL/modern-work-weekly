@@ -1,6 +1,7 @@
 # State — stays on LXC only, never pushed
 state/seen_items.json
 state/weekly_draft_*.json
+state/linkedin_draft_*.txt
 
 # Secrets
 .env
