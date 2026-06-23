@@ -1,8 +1,8 @@
 {
-  "updated": "2026-06-22",
+  "updated": "2026-06-23",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 92,
-  "total_new_count": 1,
+  "total_new_count": 2,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -244,10 +244,16 @@
     },
     {
       "name": "Autopilot Known Issues",
-      "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#microsoft-entra-hybrid-join-autopilot-deployments-time-out-with-error-code-0x80004005",
+      "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#odj-connector-configuration-fails-with-a-selogonasserviceprivilege-error-when-using-your-own-gmsa",
       "count": 23,
-      "new_count": 0,
+      "new_count": 1,
       "items": [
+        {
+          "title": "ODJ Connector configuration fails with a SeLogonAsServicePrivilege error when using your own gMSA",
+          "body": "Date added:June 18, 2026 When you configure the Intune Connector for Active Directory, also known as the Offline Domain Join (ODJ) Connector, to use your own group managed service account (gMSA) instead of the account automatically provisioned by the connector, enrollment or configuration might fail",
+          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#odj-connector-configuration-fails-with-a-selogonasserviceprivilege-error-when-using-your-own-gmsa",
+          "is_new": true
+        },
         {
           "title": "Microsoft Entra hybrid join Autopilot deployments time out with error code 0x80004005",
           "body": "Date added:February 9, 2026 During Microsoft Entra hybrid join Autopilot deployments, devices might experience timeout errors with error code 0x80004005 in the deployment process. The issue is resolved in:",
@@ -378,12 +384,6 @@
           "title": "TPM attestation failure with error code 0x81039001",
           "body": "Date added:October 6, 2022 Some devices might intermittently fail TPM attestation during Windows Autopilot pre-provisioning technician flow or self-deployment mode with the error code0x81039001 E_AUTOPILOT_CLIENT_TPM_MAX_ATTESTATION_RETRY_EXCEEDED. This failure occurs during theSecuring your hardwar",
           "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#tpm-attestation-failure-with-error-code-0x81039001",
-          "is_new": false
-        },
-        {
-          "title": "Windows Autopilot deployment report shows \"failure\" status on a successful deployment",
-          "body": "Date added:September 22, 2022 The Windows Autopilot deployment report (preview) shows a failed status for any device that experiences an initial deployment failure. For subsequent deployment attempts, using theTry againorContinue to desktopoptions, the deployment state in the report doesn't update. ",
-          "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#windows-autopilot-deployment-report-shows-failure-status-on-a-successful-deployment",
           "is_new": false
         }
       ]
