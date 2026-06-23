@@ -1,0 +1,31 @@
+Microsoft Agent 365 reaching general availability this week redraws the map for every admin trying to keep up with agent sprawl.
+
+
+TOP 5 THIS WEEK 🗂️
+
+- Agent sprawl gets a control plane: Microsoft Agent 365 is now GA, giving admins a single place to observe, govern, and secure agents and their interactions across the environment — this is the answer when your C-level asks about AI governance.
+
+- Copilot agentic capabilities in Word, Excel, and PowerPoint are generally available: agents now take action inside core productivity apps, not just chat windows — user behaviour is about to shift, and so will support volumes.
+
+- Teams live events retire June 30, 2026: any org still running live events or using the associated Graph APIs needs to act now, not after the deadline.
+
+- Exchange ActiveSync certificate-based authentication is being deprecated by end of 2026: hybrid and mobile-heavy environments should audit EAS CBA dependencies before this becomes an incident.
+
+- CVE-2026-42897 disclosed for Exchange OWA: a specially crafted email can exploit this — patch or apply mitigations immediately if you are running Exchange Server on-premises.
+
+
+WORTH YOUR ATTENTION 📡
+
+- Windows 365 for Agents is now in public preview, letting organisations run AI agents on dedicated Cloud PCs with isolated identities — the infrastructure layer for enterprise agentic workloads is taking shape faster than most security teams are ready for.
+
+- Microsoft Entra Tenant Governance adds shadow tenant discovery, a quiet but significant capability for organisations that have accumulated tenants through acquisitions or lapsed projects and have no visibility into what those tenants expose.
+
+- Secure Boot certificate expiry is arriving in waves starting June 2026 — the updated Secure Boot status report in Windows Autopatch gives you device-level readiness visibility, and the Ask Microsoft Anything session on June 4 is worth pulling the replay if your estate is large.
+
+
+ONE FOR THE HELP DESK 🎫
+
+Teams live events retire June 30. Users who have recurring events or scheduled broadcasts on that infrastructure will hit a wall with no warning. Get ahead of this now by identifying active live events in your tenant and routing organisers toward the new unified Teams events experience before the cutoff.
+
+
+Full digest with sources and admin actions: https://modernworkweekly.com/posts/2026-06-09/

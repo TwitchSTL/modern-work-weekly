@@ -1,0 +1,90 @@
+2026-05-22 00:00:02,062 [INFO] Health-only mode — scraping known issues sources.
+2026-05-22 00:00:02,063 [INFO] Fetching: Intune Known Issues
+2026-05-22 00:00:02,063 [INFO]   HTML → Intune Known Issues
+2026-05-22 00:00:02,485 [INFO]   → 21 items
+2026-05-22 00:00:04,487 [INFO] Fetching: Windows 365 Known Issues
+2026-05-22 00:00:04,488 [INFO]   HTML → Windows 365 Known Issues
+2026-05-22 00:00:04,633 [INFO]   → 16 items
+2026-05-22 00:00:06,635 [INFO] Fetching: Autopilot Known Issues
+2026-05-22 00:00:06,635 [INFO]   HTML → Autopilot Known Issues
+2026-05-22 00:00:07,298 [INFO]   → 24 items
+2026-05-22 00:00:09,300 [INFO] Fetching: Defender for Endpoint Known Issues
+2026-05-22 00:00:09,301 [INFO]   HTML → Defender for Endpoint Known Issues
+2026-05-22 00:00:09,729 [INFO]   → 24 items
+2026-05-22 00:00:11,732 [INFO] Fetching: Defender XDR Known Issues
+2026-05-22 00:00:11,732 [INFO]   HTML → Defender XDR Known Issues
+2026-05-22 00:00:12,059 [INFO]   → 7 items
+2026-05-22 00:00:14,062 [INFO] Fetching: Purview Known Issues
+2026-05-22 00:00:14,062 [INFO]   HTML → Purview Known Issues
+2026-05-22 00:00:14,996 [INFO]   → 4 items
+2026-05-22 00:00:16,999 [INFO] Fetching: Entra ID Known Issues
+2026-05-22 00:00:16,999 [INFO]   HTML → Entra ID Known Issues
+2026-05-22 00:00:17,949 [INFO]   → 16 items
+2026-05-22 00:00:19,951 [INFO] Fetching: Teams Known Issues
+2026-05-22 00:00:19,951 [INFO]   HTML → Teams Known Issues
+2026-05-22 00:00:21,154 [INFO]   → 9 items
+2026-05-22 00:00:23,156 [INFO] Fetching: Windows Release Health
+2026-05-22 00:00:23,157 [INFO]   HTML → Windows Release Health
+2026-05-22 00:00:23,280 [INFO]   → 10 items
+2026-05-22 00:00:25,288 [INFO] Health data written → /opt/modern-work-weekly/repo/site/data/health.json (131 items across 9 sources)
+2026-05-22 00:00:25,288 [INFO] Health-only run complete.
+2026-05-22 08:00:02,292 [INFO] Health-only mode — scraping known issues sources.
+2026-05-22 08:00:02,292 [INFO] Fetching: Intune Known Issues
+2026-05-22 08:00:02,292 [INFO]   HTML → Intune Known Issues
+2026-05-22 08:00:02,489 [INFO]   → 21 items
+2026-05-22 08:00:04,491 [INFO] Fetching: Windows 365 Known Issues
+2026-05-22 08:00:04,491 [INFO]   HTML → Windows 365 Known Issues
+2026-05-22 08:00:04,617 [INFO]   → 16 items
+2026-05-22 08:00:06,619 [INFO] Fetching: Autopilot Known Issues
+2026-05-22 08:00:06,619 [INFO]   HTML → Autopilot Known Issues
+2026-05-22 08:00:06,922 [INFO]   → 24 items
+2026-05-22 08:00:08,924 [INFO] Fetching: Defender for Endpoint Known Issues
+2026-05-22 08:00:08,924 [INFO]   HTML → Defender for Endpoint Known Issues
+2026-05-22 08:00:09,106 [INFO]   → 24 items
+2026-05-22 08:00:11,108 [INFO] Fetching: Defender XDR Known Issues
+2026-05-22 08:00:11,109 [INFO]   HTML → Defender XDR Known Issues
+2026-05-22 08:00:11,219 [INFO]   → 7 items
+2026-05-22 08:00:13,221 [INFO] Fetching: Purview Known Issues
+2026-05-22 08:00:13,222 [INFO]   HTML → Purview Known Issues
+2026-05-22 08:00:13,326 [INFO]   → 4 items
+2026-05-22 08:00:15,328 [INFO] Fetching: Entra ID Known Issues
+2026-05-22 08:00:15,328 [INFO]   HTML → Entra ID Known Issues
+2026-05-22 08:00:15,533 [INFO]   → 16 items
+2026-05-22 08:00:17,535 [INFO] Fetching: Teams Known Issues
+2026-05-22 08:00:17,535 [INFO]   HTML → Teams Known Issues
+2026-05-22 08:00:18,107 [INFO]   → 9 items
+2026-05-22 08:00:20,109 [INFO] Fetching: Windows Release Health
+2026-05-22 08:00:20,109 [INFO]   HTML → Windows Release Health
+2026-05-22 08:00:20,577 [INFO]   → 10 items
+2026-05-22 08:00:22,586 [INFO] Health data written → /opt/modern-work-weekly/repo/site/data/health.json (131 items across 9 sources)
+2026-05-22 08:00:22,586 [INFO] Health-only run complete.
+2026-05-22 16:00:02,233 [INFO] Health-only mode — scraping known issues sources.
+2026-05-22 16:00:02,233 [INFO] Fetching: Intune Known Issues
+2026-05-22 16:00:02,233 [INFO]   HTML → Intune Known Issues
+2026-05-22 16:00:02,427 [INFO]   → 21 items
+2026-05-22 16:00:04,430 [INFO] Fetching: Windows 365 Known Issues
+2026-05-22 16:00:04,430 [INFO]   HTML → Windows 365 Known Issues
+2026-05-22 16:00:04,568 [INFO]   → 16 items
+2026-05-22 16:00:06,570 [INFO] Fetching: Autopilot Known Issues
+2026-05-22 16:00:06,570 [INFO]   HTML → Autopilot Known Issues
+2026-05-22 16:00:06,702 [INFO]   → 24 items
+2026-05-22 16:00:08,704 [INFO] Fetching: Defender for Endpoint Known Issues
+2026-05-22 16:00:08,704 [INFO]   HTML → Defender for Endpoint Known Issues
+2026-05-22 16:00:09,073 [INFO]   → 24 items
+2026-05-22 16:00:11,075 [INFO] Fetching: Defender XDR Known Issues
+2026-05-22 16:00:11,075 [INFO]   HTML → Defender XDR Known Issues
+2026-05-22 16:00:11,227 [INFO]   → 7 items
+2026-05-22 16:00:13,229 [INFO] Fetching: Purview Known Issues
+2026-05-22 16:00:13,229 [INFO]   HTML → Purview Known Issues
+2026-05-22 16:00:13,601 [INFO]   → 4 items
+2026-05-22 16:00:15,604 [INFO] Fetching: Entra ID Known Issues
+2026-05-22 16:00:15,604 [INFO]   HTML → Entra ID Known Issues
+2026-05-22 16:00:15,779 [INFO]   → 16 items
+2026-05-22 16:00:17,782 [INFO] Fetching: Teams Known Issues
+2026-05-22 16:00:17,782 [INFO]   HTML → Teams Known Issues
+2026-05-22 16:00:18,567 [INFO]   → 9 items
+2026-05-22 16:00:20,569 [INFO] Fetching: Windows Release Health
+2026-05-22 16:00:20,569 [INFO]   HTML → Windows Release Health
+2026-05-22 16:00:20,727 [INFO]   → 10 items
+2026-05-22 16:00:22,735 [INFO] Health data written → /opt/modern-work-weekly/repo/site/data/health.json (131 items across 9 sources)
+2026-05-22 16:00:22,735 [INFO] Health-only run complete.

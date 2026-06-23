@@ -2,7 +2,7 @@
   "updated": "2026-06-23",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 92,
-  "total_new_count": 2,
+  "total_new_count": 0,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -246,13 +246,13 @@
       "name": "Autopilot Known Issues",
       "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#odj-connector-configuration-fails-with-a-selogonasserviceprivilege-error-when-using-your-own-gmsa",
       "count": 23,
-      "new_count": 1,
+      "new_count": 0,
       "items": [
         {
           "title": "ODJ Connector configuration fails with a SeLogonAsServicePrivilege error when using your own gMSA",
           "body": "Date added:June 18, 2026 When you configure the Intune Connector for Active Directory, also known as the Offline Domain Join (ODJ) Connector, to use your own group managed service account (gMSA) instead of the account automatically provisioned by the connector, enrollment or configuration might fail",
           "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#odj-connector-configuration-fails-with-a-selogonasserviceprivilege-error-when-using-your-own-gmsa",
-          "is_new": true
+          "is_new": false
         },
         {
           "title": "Microsoft Entra hybrid join Autopilot deployments time out with error code 0x80004005",
@@ -392,7 +392,7 @@
       "name": "Defender XDR Known Issues",
       "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-xdr-content",
       "count": 5,
-      "new_count": 1,
+      "new_count": 0,
       "items": [
         {
           "title": "I don't see Microsoft Defender XDR content",
@@ -404,7 +404,7 @@
           "title": "Microsoft Defender for Identity alerts aren't showing up in Microsoft Defender XDR incidents",
           "body": "If you have Microsoft Defender for Identity deployed in your environment but you're not seeing Defender for Identity alerts as part of Microsoft Defender XDR incidents, you need to ensure that the Microsoft Defender for Cloud Apps and Defender for Identity integration is enabled. For more informatio",
           "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#microsoft-defender-for-identity-alerts-arent-showing-up-in-microsoft-defender-xdr-incidents",
-          "is_new": true
+          "is_new": false
         },
         {
           "title": "My legitimate file/URL is being detected as malicious",

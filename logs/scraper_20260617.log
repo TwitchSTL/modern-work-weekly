@@ -1,0 +1,96 @@
+2026-06-17 00:00:01,708 [INFO] Health-only mode — scraping known issues sources.
+2026-06-17 00:00:01,708 [INFO] Fetching: Intune Known Issues
+2026-06-17 00:00:01,708 [INFO]   HTML → Intune Known Issues
+2026-06-17 00:00:01,902 [INFO]   → 21 items
+2026-06-17 00:00:03,904 [INFO] Fetching: Windows 365 Known Issues
+2026-06-17 00:00:03,904 [INFO]   HTML → Windows 365 Known Issues
+2026-06-17 00:00:04,420 [INFO]   → 16 items
+2026-06-17 00:00:06,422 [INFO] Fetching: Autopilot Known Issues
+2026-06-17 00:00:06,422 [INFO]   HTML → Autopilot Known Issues
+2026-06-17 00:00:06,569 [INFO]   → 23 items
+2026-06-17 00:00:08,571 [INFO] Fetching: Defender XDR Known Issues
+2026-06-17 00:00:08,571 [INFO]   HTML → Defender XDR Known Issues
+2026-06-17 00:00:08,673 [INFO]   → 5 items
+2026-06-17 00:00:10,675 [INFO] Fetching: Purview Known Issues
+2026-06-17 00:00:10,675 [INFO]   HTML → Purview Known Issues
+2026-06-17 00:00:10,935 [INFO]   → 4 items
+2026-06-17 00:00:12,937 [INFO] Fetching: Entra ID Known Issues
+2026-06-17 00:00:12,937 [INFO]   HTML → Entra ID Known Issues
+2026-06-17 00:00:13,131 [INFO]   → 16 items
+2026-06-17 00:00:15,134 [INFO] Fetching: Windows Release Health
+2026-06-17 00:00:15,134 [INFO]   HTML → Windows Release Health
+2026-06-17 00:00:15,231 [INFO]   → 7 items
+2026-06-17 00:00:17,233 [INFO] Fetching: Azure Status
+2026-06-17 00:00:17,233 [INFO]   RSS → Azure Status
+2026-06-17 00:00:17,312 [INFO]   → 0 items
+2026-06-17 00:00:19,314 [INFO] Fetching: Microsoft 365 Service Status
+2026-06-17 00:00:19,314 [INFO]   JSON API → Microsoft 365 Service Status
+2026-06-17 00:00:19,640 [INFO]     Microsoft 365 Service Status returned non-JSON response — no active incidents.
+2026-06-17 00:00:19,640 [INFO]   → 0 items
+2026-06-17 00:00:21,648 [INFO] Health data written → /opt/modern-work-weekly/repo/site/data/health.json (92 items, 0 new since last digest)
+2026-06-17 00:00:21,648 [INFO] Deadlines refreshed — 0 expired removed, 6 remaining, updated → 2026-06-17
+2026-06-17 00:00:21,648 [INFO] Health-only run complete.
+2026-06-17 08:00:02,018 [INFO] Health-only mode — scraping known issues sources.
+2026-06-17 08:00:02,018 [INFO] Fetching: Intune Known Issues
+2026-06-17 08:00:02,018 [INFO]   HTML → Intune Known Issues
+2026-06-17 08:00:02,388 [INFO]   → 21 items
+2026-06-17 08:00:04,391 [INFO] Fetching: Windows 365 Known Issues
+2026-06-17 08:00:04,391 [INFO]   HTML → Windows 365 Known Issues
+2026-06-17 08:00:04,532 [INFO]   → 16 items
+2026-06-17 08:00:06,534 [INFO] Fetching: Autopilot Known Issues
+2026-06-17 08:00:06,534 [INFO]   HTML → Autopilot Known Issues
+2026-06-17 08:00:06,692 [INFO]   → 23 items
+2026-06-17 08:00:08,694 [INFO] Fetching: Defender XDR Known Issues
+2026-06-17 08:00:08,694 [INFO]   HTML → Defender XDR Known Issues
+2026-06-17 08:00:08,792 [INFO]   → 5 items
+2026-06-17 08:00:10,794 [INFO] Fetching: Purview Known Issues
+2026-06-17 08:00:10,794 [INFO]   HTML → Purview Known Issues
+2026-06-17 08:00:10,951 [INFO]   → 4 items
+2026-06-17 08:00:12,953 [INFO] Fetching: Entra ID Known Issues
+2026-06-17 08:00:12,953 [INFO]   HTML → Entra ID Known Issues
+2026-06-17 08:00:13,067 [INFO]   → 16 items
+2026-06-17 08:00:15,069 [INFO] Fetching: Windows Release Health
+2026-06-17 08:00:15,069 [INFO]   HTML → Windows Release Health
+2026-06-17 08:00:15,154 [INFO]   → 7 items
+2026-06-17 08:00:17,157 [INFO] Fetching: Azure Status
+2026-06-17 08:00:17,157 [INFO]   RSS → Azure Status
+2026-06-17 08:00:17,253 [INFO]   → 0 items
+2026-06-17 08:00:19,255 [INFO] Fetching: Microsoft 365 Service Status
+2026-06-17 08:00:19,255 [INFO]   JSON API → Microsoft 365 Service Status
+2026-06-17 08:00:19,587 [INFO]     Microsoft 365 Service Status returned non-JSON response — no active incidents.
+2026-06-17 08:00:19,587 [INFO]   → 0 items
+2026-06-17 08:00:21,596 [INFO] Health data written → /opt/modern-work-weekly/repo/site/data/health.json (92 items, 0 new since last digest)
+2026-06-17 08:00:21,596 [INFO] Deadlines refreshed — 0 expired removed, 6 remaining, updated → 2026-06-17
+2026-06-17 08:00:21,596 [INFO] Health-only run complete.
+2026-06-17 16:00:02,343 [INFO] Health-only mode — scraping known issues sources.
+2026-06-17 16:00:02,343 [INFO] Fetching: Intune Known Issues
+2026-06-17 16:00:02,343 [INFO]   HTML → Intune Known Issues
+2026-06-17 16:00:02,532 [INFO]   → 21 items
+2026-06-17 16:00:04,535 [INFO] Fetching: Windows 365 Known Issues
+2026-06-17 16:00:04,535 [INFO]   HTML → Windows 365 Known Issues
+2026-06-17 16:00:04,691 [INFO]   → 16 items
+2026-06-17 16:00:06,694 [INFO] Fetching: Autopilot Known Issues
+2026-06-17 16:00:06,694 [INFO]   HTML → Autopilot Known Issues
+2026-06-17 16:00:06,815 [INFO]   → 23 items
+2026-06-17 16:00:08,817 [INFO] Fetching: Defender XDR Known Issues
+2026-06-17 16:00:08,817 [INFO]   HTML → Defender XDR Known Issues
+2026-06-17 16:00:08,918 [INFO]   → 5 items
+2026-06-17 16:00:10,920 [INFO] Fetching: Purview Known Issues
+2026-06-17 16:00:10,920 [INFO]   HTML → Purview Known Issues
+2026-06-17 16:00:11,044 [INFO]   → 4 items
+2026-06-17 16:00:13,046 [INFO] Fetching: Entra ID Known Issues
+2026-06-17 16:00:13,046 [INFO]   HTML → Entra ID Known Issues
+2026-06-17 16:00:13,170 [INFO]   → 16 items
+2026-06-17 16:00:15,172 [INFO] Fetching: Windows Release Health
+2026-06-17 16:00:15,172 [INFO]   HTML → Windows Release Health
+2026-06-17 16:00:15,253 [INFO]   → 7 items
+2026-06-17 16:00:17,255 [INFO] Fetching: Azure Status
+2026-06-17 16:00:17,255 [INFO]   RSS → Azure Status
+2026-06-17 16:00:17,351 [INFO]   → 0 items
+2026-06-17 16:00:19,354 [INFO] Fetching: Microsoft 365 Service Status
+2026-06-17 16:00:19,354 [INFO]   JSON API → Microsoft 365 Service Status
+2026-06-17 16:00:19,733 [INFO]     Microsoft 365 Service Status returned non-JSON response — no active incidents.
+2026-06-17 16:00:19,733 [INFO]   → 0 items
+2026-06-17 16:00:21,740 [INFO] Health data written → /opt/modern-work-weekly/repo/site/data/health.json (92 items, 0 new since last digest)
+2026-06-17 16:00:21,741 [INFO] Deadlines refreshed — 0 expired removed, 6 remaining, updated → 2026-06-17
+2026-06-17 16:00:21,741 [INFO] Health-only run complete.

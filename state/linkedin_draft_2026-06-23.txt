@@ -1,0 +1,39 @@
+TITLE: Modern Work Weekly — Week of 2026-06-23
+
+Advanced Intune Suite capabilities land in M365 E3 and E5 on July 1st, and that deadline is closer than it looks.
+
+⸻
+
+**⚡ TOP 5 THIS WEEK**
+
+1. **Intune Suite capabilities move into M365 E3 and E5:** Effective July 1st, advanced Intune Suite features are included in M365 E3 and E5 licenses. Intune admins will want to flag this to procurement and confirm which capabilities unlock automatically versus which require configuration before the change takes effect.
+
+2. **Microsoft Agent 365 is generally available:** The control plane for observing, governing, and securing agents across your tenant is now GA. Security teams should note this alongside the updated Administering and Governing Agents whitepaper v3.2, which maps exactly what IT needs to enforce at scale.
+
+3. **EWS retirement enters its final phase:** Microsoft has introduced EWSAllowedAppIDs as a mechanism to manage the last remaining EWS-dependent apps before Exchange Web Services is retired in Exchange Online. If your org has any remaining EWS dependencies, the clock is running.
+
+4. **Exchange ActiveSync certificate-based authentication deprecated:** Direct CBA to Exchange Online via EAS will be unsupported by end of 2026. Hybrid identity teams should audit any device enrollment or mobile mail profiles still relying on this path now, not in December.
+
+5. **Microsoft 365 Business with Copilot launches July 1st:** New SMB-focused SKUs with Copilot built in are available from July 1st. Partners and admins supporting small business tenants should review licensing implications before the date hits.
+
+⸻
+
+**👀 WORTH YOUR ATTENTION**
+
+- Platform SSO during automated device enrollment is now generally available for macOS, removing one of the last rough edges in zero-touch Mac provisioning for Entra-joined environments.
+
+- Windows 365 for Agents is in public preview, letting organizations run AI agents on dedicated Cloud PCs with full Intune management and isolation controls rather than on shared infrastructure.
+
+- Purview Data Security Posture Reports are in public preview, giving compliance teams an outcome-based view of whether data protection controls are actually working, a useful artifact when governance questions reach the C-level.
+
+⸻
+
+**🛠️ ONE FOR THE HELP DESK**
+
+Copilot Memory is generally available and Copilot now personalizes responses using M365 activity data. Updated settings allow users to view and manage what Copilot retains. Expect tickets from users who notice behavioral changes in Copilot responses and want to understand or reset their personalization preferences before your org has communicated the change.
+
+⸻
+
+Full digest with sources and admin actions: https://modernworkweekly.com/posts/2026-06-23/
+
+#ModernWork #EntraID #ConditionalAccess #Intune
