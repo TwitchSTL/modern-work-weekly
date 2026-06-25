@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-24",
+  "updated": "2026-06-25",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 92,
   "total_new_count": 0,
@@ -402,7 +402,7 @@
         },
         {
           "title": "Microsoft Defender for Identity alerts aren't showing up in Microsoft Defender XDR incidents",
-          "body": "If you have Microsoft Defender for Identity deployed in your environment but you're not seeing Defender for Identity alerts as part of Microsoft Defender XDR incidents, you need to ensure that the Microsoft Defender for Cloud Apps and Defender for Identity integration is enabled. For more informatio",
+          "body": "If you deployed Microsoft Defender for Identity but don't see its alerts in Microsoft Defender XDR incidents, check that the Defender for Cloud Apps and Defender for Identity integration is turned on. For more information, seeMicrosoft Defender for Identity integration.",
           "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#microsoft-defender-for-identity-alerts-arent-showing-up-in-microsoft-defender-xdr-incidents",
           "is_new": false
         },
@@ -414,7 +414,7 @@
         },
         {
           "title": "My ServiceNow tickets are no longer available in the Microsoft Defender portal",
-          "body": "The Microsoft Defender XDR-ServiceNow connector is no longer available in the Microsoft Defender portal. However, you can still integrate Microsoft Defender XDR with ServiceNow by using the Microsoft Security Graph API. For more information, seeSecurity solution integrations using the Microsoft Grap",
+          "body": "The ServiceNow connector is no longer in the Microsoft Defender portal. To connect Microsoft Defender XDR with ServiceNow, use the Microsoft Graph Security API instead. For details, seeSecurity solution integrations using the Microsoft Graph Security API. The ServiceNow connector was offered in the ",
           "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#my-servicenow-tickets-are-no-longer-available-in-the-microsoft-defender-portal",
           "is_new": false
         },
