@@ -2,7 +2,7 @@
   "updated": "2026-06-26",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 92,
-  "total_new_count": 0,
+  "total_new_count": 2,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -390,21 +390,21 @@
     },
     {
       "name": "Defender XDR Known Issues",
-      "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-xdr-content",
+      "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-content",
       "count": 5,
-      "new_count": 0,
+      "new_count": 2,
       "items": [
         {
-          "title": "I don't see Microsoft Defender XDR content",
-          "body": "If you don't see capabilities on the navigation pane such as the Incidents, Action center, or Hunting in your portal, verify that your tenant has the appropriate licenses. For more information, seePrerequisites.  ",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-xdr-content",
-          "is_new": false
+          "title": "I don't see Microsoft Defender content",
+          "body": "If you don't see capabilities on the navigation pane such as the Incidents, Action center, or Hunting in your portal, verify that your tenant has the appropriate licenses. For more information, seePrerequisites. ",
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-content",
+          "is_new": true
         },
         {
-          "title": "Microsoft Defender for Identity alerts aren't showing up in Microsoft Defender XDR incidents",
-          "body": "If you deployed Microsoft Defender for Identity but don't see its alerts in Microsoft Defender XDR incidents, check that the Defender for Cloud Apps and Defender for Identity integration is turned on. For more information, seeMicrosoft Defender for Identity integration.",
-          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#microsoft-defender-for-identity-alerts-arent-showing-up-in-microsoft-defender-xdr-incidents",
-          "is_new": false
+          "title": "Microsoft Defender for Identity alerts are not showing up in the Microsoft Defender incidents",
+          "body": "If you deployed Microsoft Defender for Identity but don't see its alerts in Microsoft Defender incidents, check that the Defender for Cloud Apps and Defender for Identity integration is turned on. For more information, seeMicrosoft Defender for Identity integration.",
+          "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#microsoft-defender-for-identity-alerts-are-not-showing-up-in-the-microsoft-defender-incidents",
+          "is_new": true
         },
         {
           "title": "My legitimate file/URL is being detected as malicious",
