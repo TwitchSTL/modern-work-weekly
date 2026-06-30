@@ -582,10 +582,7 @@ def run_scraper(args):
     backstop_dropped = 0
     for raw in all_raw:
         enriched = enrich_item(raw)
-        if args.force_all:
-            new_items.append(enriched)
-            continue
-        if enriched["id"] in seen_ids:
+        if not args.force_all and enriched["id"] in seen_ids:
             continue  # already seen, skip
         bare_url = enriched["url"].split("#")[0]
         if bare_url in published_urls:
