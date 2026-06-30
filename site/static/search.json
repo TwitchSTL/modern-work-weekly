@@ -1,185 +1,199 @@
 [
   {
-    "title": "EWS retirement enters final phase, October 2026 deadline confirmed.",
+    "title": "EWS retirement enters final phase, October 2026 deadline is real.",
     "category": "Top 5 This Week",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "Microsoft has introduced EWSAllowedAppIDs as a controlled allow-list mechanism ahead of phased EWS disablement in Exchange Online. If you still have workloads on EWS that have not migrated to Microsoft Graph, this is you"
+    "snippet": "Microsoft introduced EWSAllowedAppIDs as a controlled allow-list mechanism ahead of phased EWS disablement in Exchange Online. If you still have apps hitting EWS, now is your last structured window to manage the cutover "
   },
   {
-    "title": "Six new CVEs published across libxml2, GNU gzip, Nmap, ACL, and AGP/AMD64.",
+    "title": "Six CVEs published across libxml2, GNU gzip, attr, and acl.",
     "category": "Top 5 This Week",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "The mix of buffer overflows, symlink traversal privilege escalations, and an integer underflow spans both Linux subsystem components surfaced in Microsoft's MSRC and Windows-adjacent tooling. Review exposure across your "
+    "snippet": "These open-source components surface in Linux-adjacent and hybrid workloads. Review your exposure, especially on Azure Arc-connected Linux machines and any custom Docker images running in your environment."
   },
   {
-    "title": "Teams gets automated bot protection for meetings.",
+    "title": "Intune June release focuses on AI-era endpoint hygiene.",
     "category": "Top 5 This Week",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "Microsoft is shipping detection and controls to block uninvited bots from joining Teams meetings, directly addressing the scenario where third-party AI note-takers re-join future meetings without explicit approval. Revie"
+    "snippet": "Application currency, compliance at enrollment, and reduced vulnerability exposure are the headline themes. Review the release notes for new app management capabilities that can close version drift at scale."
   },
   {
-    "title": "June Intune release ships with AI-agent-readiness framing.",
+    "title": "Malicious Chromium extension spoofing Perplexity AI confirmed.",
     "category": "Top 5 This Week",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "The June Intune update centers compliance, patch currency, and secure enrollment as the three fundamentals required for trustworthy AI agent operation on endpoints. Application currency improvements and reduced vulnerabi"
+    "snippet": "The extension hijacks browser search using MV3 APIs. If you allow unmanaged browser extensions in your environment, this is a concrete case for tightening extension allowlisting policy in Intune or Defender for Endpoint."
   },
   {
-    "title": "Malicious Chromium extension spoofing Perplexity AI confirmed hijacking browser search.",
+    "title": "Sentinel table insights panel now GA.",
     "category": "Top 5 This Week",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "The extension uses MV3 APIs and intermediary infrastructure to redirect search traffic. If your organization allows unmanaged browser extension installs, this is a concrete example of why that policy needs review."
+    "snippet": "Silent data connector failures and cost spikes are two of the most common Sentinel operational failures. This new 30-day ingestion view with anomaly detection and per-table cost estimates addresses both from a single pan"
   },
   {
     "title": "Secure AI at Scale: Join the Microsoft Entra + Purview Webinar Series",
     "category": "Identity",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — If your team is trying to get ahead of non-human identity sprawl and AI data exposure, this webinar series is worth blocking time for. Microsoft is framing Entra and Purview as a unified strategy covering identity"
+    "snippet": "[GA] — If your organization is scaling Copilot or custom AI agents, the identity and data governance gaps are compounding faster than most teams have budgeted for. This webinar series covers unifying identity access gove"
   },
   {
     "title": "What's New in Microsoft Intune – June",
     "category": "Devices",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — This month's Intune release explicitly ties endpoint compliance, patch currency, and secure enrollment to the trust model required for AI agents acting on behalf of users. Application lifecycle improvements reduce"
+    "snippet": "[GA] — This release targets the three fundamentals that AI-era endpoints require: compliance at enrollment, application currency, and reduced vulnerability surface. New app management capabilities address manual packagin"
   },
   {
     "title": "Best Practices for Deploying Secure Boot Certificate Updates",
     "category": "Devices",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Secure Boot certificate rotation is ongoing across clients, servers, and VMs, with OEM firmware support and automatic installation via Windows Update now available for many devices. If you have devices that are no"
+    "snippet": "[GA] — Secure Boot certificate updates are rolling out across client devices, servers, and VMs via Windows Update, with OEM firmware support expanding in parallel. If you manage hybrid-joined servers or VMs with custom S"
   },
   {
-    "title": "Microsoft a Leader in The Forrester Wave for Endpoint Management Platforms",
+    "title": "Microsoft a Leader in the Forrester Wave for Endpoint Management Platforms",
     "category": "Devices",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Microsoft earned the top scores in both current offering and strategy in the Forrester Wave Q2 2026. Useful analyst validation if you are making the case internally for consolidating endpoint management on Intune "
+    "snippet": "[GA] — Microsoft received the highest scores in both current offering and strategy in the Forrester Wave Q2 2026. Useful reference material for internal roadmap discussions or procurement justifications where you need th"
   },
   {
     "title": "Introducing EWSAllowedAppIDs: Preparing for the Final Phase of EWS Retirement",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Phased EWS disablement in Exchange Online is targeting October 2026. The new EWSAllowedAppIDs allow-list lets you explicitly permit specific app IDs to continue using EWS during your migration window, giving you a"
+    "snippet": "[GA] — Phased EWS disablement in Exchange Online is coming in October 2026. The new EWSAllowedAppIDs setting lets admins explicitly allow specific app IDs to continue using EWS during the transition, giving you a control"
   },
   {
     "title": "Introducing Smarter Bot Protection in Microsoft Teams Meetings",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Teams will now detect and surface controls to block bots that join meetings outside of explicit participant approval, targeting the specific scenario where third-party AI services auto-rejoin future meetings after"
+    "snippet": "[GA] — Third-party AI bots joining meetings without explicit per-meeting consent have been a recurring privacy and security complaint. Teams now provides smarter detection and controls to prevent unauthorized bot attenda"
   },
   {
     "title": "Learning Agent Now Generally Available",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Learning Agent in Microsoft 365 Copilot delivers personalized AI and Copilot skill recommendations based on each user's role, tasks, and work patterns, surfaced directly in Teams, Word, Excel, and PowerPoint. For "
+    "snippet": "[GA] — Learning Agent in Microsoft 365 Copilot delivers personalized AI and Copilot skill recommendations based on each user's role and work patterns, surfaced directly in Teams, Word, Excel, and PowerPoint. For orgs mid"
   },
   {
     "title": "Microsoft Teams: IntelliFrame People Labels in Teams Rooms on Windows",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA, targeting August CY2026] — Remote participants will see real-time name labels on in-room attendees using voice and face profiles, with a hover-over contact card. Requires Teams Rooms Pro licensing and intelligent ca"
+    "snippet": "[GA] — Remote participants will see AI-generated name labels on in-room attendees using voice and face profiles, with hover-over contact cards. Requires Teams Rooms Pro licensing and compatible intelligent cameras. Targe"
   },
   {
-    "title": "Microsoft Copilot in PowerPoint Coming to Government Clouds",
+    "title": "Microsoft Copilot in PowerPoint: Edit Your Document in Government Clouds",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA, targeting September CY2026] — Full Copilot editing capabilities in PowerPoint, including brand kit integration and brand compliance checking, are coming to GCC and other government cloud tenants in September. GCC ad"
+    "snippet": "[GA] — GCC and sovereign cloud tenants will get Copilot-driven slide generation, layout updates, and brand kit integration in PowerPoint. GA target is September 2026. If you're running GCC-H or GCC, add this to your Copi"
   },
   {
     "title": "How to Determine Which Resource Mailboxes Are Being Actively Used",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — No native utilization report exists for Room, Equipment, and Workspace mailboxes, but the Exchange team has documented PowerShell approaches using Get-CalendarV... and related cmdlets. With EWS retirement approach"
+    "snippet": "[GA] — No native utilization report exists for Room, Equipment, or Workspace mailboxes. The Exchange team documents PowerShell-based approaches using Get-CalendarViewing and related cmdlets to surface actual booking acti"
   },
   {
-    "title": "Business Applications Built for Microsoft 365 – Cubic Logics SharePoint Partner Showcase",
+    "title": "Business Applications Built for Microsoft 365: Cubic Logics SharePoint Partner Showcase",
     "category": "Apps",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Cubic Logics' Apps365 portfolio covers contract management, HR, and help desk solutions built on SharePoint. Relevant if your organization is evaluating SharePoint-native alternatives to standalone SaaS tools as p"
+    "snippet": "[GA] — Cubic Logics' Apps365 portfolio covers contract management, HR, help desk, and related workflows built on SharePoint and the M365 ecosystem. Low engineering interest unless you're evaluating SharePoint-native app "
   },
   {
     "title": "How Karambit.AI and Microsoft Bring Software Authenticity to 14 Billion Files Per Month",
     "category": "Network",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Karambit.AI's integration with Microsoft uses ecosystem-level behavioral context to move beyond static signature matching, assessing whether a binary's behavior is normal for its software lineage rather than just "
+    "snippet": "[GA] — Karambit.AI's ecosystem-context approach augments static file analysis by determining whether a binary's behavior is normal for its software lineage, not just whether it matches known signatures. At 14 billion fil"
+  },
+  {
+    "title": "Sentinel Table Insights: Monitor Ingestion Volume and Cost at a Glance",
+    "category": "Visibility & Automation",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "[GA] — The new Table Insights panel on the Sentinel Tables page shows 30-day ingestion volume by tier, day-over-week fluctuations, top 5 tables by volume, last-data-received timestamps, estimated daily cost, and volume a"
   },
   {
     "title": "Chromium Extension Uses AI-Related Branding to Redirect Browser Search",
     "category": "Visibility & Automation",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — A malicious extension spoofing Perplexity AI uses MV3 APIs and intermediary infrastructure to silently redirect search traffic. If your Defender for Endpoint or Intune policies do not control which browser extensi"
+    "snippet": "[GA] — A malicious extension spoofing Perplexity AI uses MV3 APIs and intermediary infrastructure to redirect browser search queries. This is an active threat targeting environments where users can install unvetted Chrom"
   },
   {
     "title": "CVE-2026-11979: Stack-Based Buffer Overflow in libxml2",
     "category": "Visibility & Automation",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Stack-based buffer overflow in libxml2 published by MSRC. Assess exposure across any Windows or Linux workloads parsing XML via libxml2, including WSL environments and containerized apps. Apply available patches w"
+    "snippet": "[GA] — Stack-based buffer overflow in libxml2, a library widely bundled in Linux distributions and containerized workloads. Assess exposure on Arc-connected Linux machines and container images. Apply vendor patches as th"
   },
   {
-    "title": "CVE-2026-41992 / CVE-2026-41991: Global Buffer Overflow and Predictable Temporary File in GNU gzip",
+    "title": "CVE-2026-41992 and CVE-2026-41991: Global Buffer Overflow and Predictable Temp File in GNU gzip",
     "category": "Visibility & Automation",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Two gzip vulnerabilities published together: a global buffer overflow and a predictable temp file issue that could be exploited for privilege escalation. Both affect GNU gzip and are relevant to Linux-based worklo"
+    "snippet": "[GA] — Two vulnerabilities in GNU gzip: a global buffer overflow and a predictable temporary file issue. Both affect Linux-based systems and pipeline workloads that process compressed archives. Patch gzip on all managed "
   },
   {
-    "title": "CVE-2026-54371 / CVE-2026-54369: Symlink Traversal Privilege Escalation via attr and acl Libraries",
+    "title": "CVE-2026-54371 and CVE-2026-54369: Symlink Traversal Privilege Escalation in attr and acl",
     "category": "Visibility & Automation",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Two symlink traversal privilege escalation CVEs affecting attr < 2.6.0 and acl < 2.4.0. These are Linux filesystem attribute and access control libraries present in most distributions. Verify versions on any Linux"
+    "snippet": "[GA] — Privilege escalation via symlink traversal in attr (below 2.6.0) and acl (below 2.4.0) using getfattr, setfattr, and libacl functions. Any Linux system running affected versions is at risk of local privilege escal"
   },
   {
-    "title": "CVE-2026-53325: Broken Error Propagation in agp/amd64",
+    "title": "CVE-2026-53325: Broken Error Propagation in agp/amd64 Kernel Module",
     "category": "Visibility & Automation",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Kernel-level issue in the AGP/AMD64 driver affecting error propagation. Scope is narrower than the other CVEs this week but relevant for environments running older AMD64 systems with AGP. Review applicability and "
+    "snippet": "[GA] — Kernel-level issue in the AMD64 AGP driver affecting Linux systems. Scope is likely narrow for most M365 enterprise environments, but review if you run Linux VMs on AMD64 hardware with AGP exposed. Apply available"
   },
   {
-    "title": "CVE-2026-58058: Integer Underflow in Nmap IPv6 Extension Header Parsing",
-    "category": "Visibility & Automation",
-    "date": "2026-06-30",
-    "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Integer underflow in Nmap's IPv6 extension header parsing. Relevant if your team uses Nmap for network scanning from managed endpoints or in automation pipelines. Update Nmap to a patched version and validate any "
-  },
-  {
-    "title": "EWS Disablement Targeting October 2026 — Configure EWSAllowedAppIDs Now",
+    "title": "EWS Disablement Deadline: October 2026",
     "category": "Action Required",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Deadline: October 2026. Phased EWS disablement in Exchange Online begins in October. Use the new EWSAllowedAppIDs allow-list to explicitly permit any EWS-dependent apps that cannot be migrated in time, then accele"
+    "snippet": "[GA] — Deadline: October 2026. Immediately audit all applications and service accounts authenticating to Exchange Online via EWS. Configure EWSAllowedAppIDs to protect any app not yet migrated to Graph, then set hard int"
   },
   {
-    "title": "Six CVEs Published This Week — Triage libxml2, gzip, acl, attr, and Nmap Exposure",
+    "title": "Malicious Chromium Extension: Active Threat Requiring Policy Review",
     "category": "Action Required",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Immediate triage required. CVE-2026-11979 (libxml2), CVE-2026-41992 and CVE-2026-41991 (GNU gzip), CVE-2026-54371 and CVE-2026-54369 (attr/acl symlink traversal), and CVE-2026-58058 (Nmap) all published this week."
+    "snippet": "[GA] — Active threat. Review and tighten browser extension policies in Intune and Defender for Endpoint this week. Block installation of extensions outside an approved allow list, and hunt for the Perplexity AI-spoofing "
   },
   {
-    "title": "Malicious Chromium Extension Actively Redirecting Search — Review Extension Policies",
+    "title": "CVE-2026-54371 and CVE-2026-54369: Privilege Escalation in attr and acl",
     "category": "Action Required",
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Act within 30 days. A confirmed malicious extension is in the wild using AI branding to hijack browser search. If unmanaged extension installs are permitted in your environment, push a browser extension control po"
+    "snippet": "[GA] — Patch urgency: high for any environment with managed Linux endpoints. Update attr to 2.6.0+ and acl to 2.4.0+ across all Linux systems. Validate patched versions in Arc-connected machines and container base images"
+  },
+  {
+    "title": "CVE-2026-11979 and CVE-2026-41992/41991: libxml2 and gzip Vulnerabilities on Linux Workloads",
+    "category": "Action Required",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "[GA] — Patch as vendor updates land. Prioritize internet-facing Linux systems and any data pipeline workloads that parse XML or process compressed archives. Inventory affected package versions across Arc-connected machin"
+  },
+  {
+    "title": "Intune June Release: Application Currency and Enrollment Compliance",
+    "category": "Action Required",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "[GA] — Within the next 30 days, review the June Intune release notes and identify new app management capabilities that address version drift in your environment. With AI agents increasingly acting on behalf of users, end"
   },
   {
     "title": "EWS retirement final phase, October 2026 deadline.",
