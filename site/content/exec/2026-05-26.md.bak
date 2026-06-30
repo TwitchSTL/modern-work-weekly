@@ -1,0 +1,94 @@
+---
+title: "Executive's Guide — Week of 2026-05-26"
+date: 2026-05-26
+description: "A week dominated by identity security hardening, AI agent governance, and mandatory authentication upgrades — decisions that directly affect compliance posture, breach risk, and operational continuity."
+categories: ["Executive Guide"]
+tags: ["security", "identity", "compliance", "data-protection", "devices", "licensing", "cost", "user-impact"]
+---
+
+## The Week at a Glance
+
+- 🔴 **High — Stolen credentials, no malware needed.** Microsoft's own threat intelligence this week documented how attackers turned a single compromised identity into a cloud-wide data breach — no malicious software required. Organizations without strong multi-factor authentication controls are directly in scope.
+- 🔴 **High — SAP SuccessFactors integration must be re-secured before November 2026.** SAP is retiring the older username/password authentication method for its HR APIs. Any organization syncing employee data from SuccessFactors into Microsoft Entra must plan and execute a technical migration or face provisioning failures for new hires, transfers, and terminations.
+- 🟡 **Medium — AI agents now get their own corporate identities.** Microsoft has formally launched a platform that gives AI agents managed identities — the same way employees have user accounts. Organizations deploying AI automation need governance decisions about what those agents are allowed to access and do.
+- 🟢 **Low — Ubuntu Linux support window is narrowing.** Intune now supports Ubuntu 26.04. Support for Ubuntu 22.04 ends in August 2026. Organizations with Linux devices under management should plan user notifications and upgrade timelines.
+
+---
+
+## Why This Week Matters
+
+The most significant story this week is not a product feature — it is Microsoft's published account of how Storm-2949 converted a single stolen password into enterprise-wide data theft, operating entirely through legitimate cloud services and leaving no malware trail. This is precisely the attack pattern that cyber insurers, SOC 2 auditors, and CMMC assessors are asking about, and it is exactly what modern identity controls — conditional access, privileged identity management, and phishing-resistant authentication — are designed to stop. The good news is that several of those controls reached full general availability this week. **The one thing leadership must understand: identity is now the primary attack surface, and the tools to defend it are ready — the question is whether your organization has deployed them.**
+
+---
+
+## Risk & Compliance
+
+| Change | Business Risk | Regulatory Angle | Act By |
+|---|---|---|---|
+| **Storm-2949 cloud breach via stolen identity** — published case study of credential-only, malware-free cloud compromise | Data theft at scale with no forensic malware trail; harder to detect and prove scope for breach notification | HIPAA breach notification, SOC 2 CC6, NIST CSF ID.AM / PR.AC, cyber insurance MFA requirements | Immediate — review MFA coverage gaps now |
+| **SAP SuccessFactors basic auth deprecation (Nov 2026)** — Microsoft must migrate HR provisioning integrations to modern authentication before SAP retires passwords | HR provisioning failures: new hires may not receive accounts, terminated employees may retain access beyond their last day | SOC 2 CC6.2 (access provisioning), HIPAA workforce access controls, CMMC AC.1 | Plan within 60 days; technical work needed before November 2026 |
+| **Entra Agent ID — AI agents get enterprise identities (GA)** — AI automation tools now receive OAuth 2.0–based managed identities | Ungoverned AI agents with excessive permissions represent a new insider-risk and data-exfiltration vector | SOC 2 CC6.3 (access control for non-human entities), NIST CSF PR.AC-4, GDPR data minimization | 30-day decision: establish governance policy before agent deployments expand |
+| **Configurable token lifetime policies (GA)** — administrators can now shorten how long authentication tokens remain valid | Long-lived tokens are a known attacker persistence mechanism; failure to tighten them prolongs breach windows | NIST CSF PR.AC, cyber insurance controls, CMMC IA.3 | 30 days — schedule a review of current token lifetime settings |
+| **Conditional Access enforcement on every privileged role activation (GA)** — re-authentication now required each time an admin elevates privileges | Without this, a stolen admin session can be reused indefinitely; high-value target for attackers | SOC 2 CC6.1, CMMC AC.2, HIPAA technical safeguards | 30 days — enable for all privileged roles |
+| **SCIM provisioning apps must migrate to modern authentication** — older authentication patterns for app-to-app provisioning are being retired on a rolling basis | Applications that stop provisioning will fail to create or remove user accounts automatically | SOC 2 CC6.2, HIPAA access management | Rolling — check Message Center for your specific application deadlines |
+| **Ubuntu 22.04 LTS support ends in Intune — August 2026** | Devices on an unsupported OS version may fall out of compliance posture, affecting compliance reports and potentially network access | SOC 2 CC7.1, CMMC CM.2 | Notify affected users within 30 days; upgrade by August 2026 |
+| **Intune Data Warehouse beta connector (v1) retired** | Power BI compliance and device reports built on the old connector will break | Audit evidence gaps if compliance dashboards go dark | Identify and migrate affected reports before transition completes |
+
+---
+
+## What Your Employees Will Notice
+
+- **iOS users authenticating with certificates** will no longer be prompted for passwords or a second factor unnecessarily — sign-in will be smoother and faster. No user action required.
+- **Employees requesting access to systems** through the company's access portal (My Access) can now see who is reviewing their request by name and email — reducing the need to contact IT to ask "who has my request?"
+- **Copilot users in Microsoft Forms** will see a new Surveys Agent that can help draft, improve, and analyze surveys. This requires a Microsoft 365 Copilot license.
+- **Copilot Notebook users** (OneNote and the M365 Copilot app) will see a new Mind Maps feature rolling out now — an interactive visual summary of notebook content.
+- **Outlook users** will gain additional folder management options (showing total vs. unread counts, faster access to favorite folders) rolling out through late 2026 — no action needed, changes appear automatically.
+- **Windows 365 Flex (formerly Frontline) users** will benefit from intelligent pre-start, meaning their Cloud PC will boot before they log in, reducing wait time when starting their workday.
+- **TeamViewer remote support sessions** may behave slightly differently as IT migrates to the new connector — users should expect no visible change, but brief connectivity adjustments are possible during the transition.
+
+---
+
+## What Your Help Desk Should Expect
+
+- **Increase in certificate authentication questions on iOS.** As the iOS certificate-based sign-in experience changes (smoother prompts, fewer MFA interruptions), some users may be confused by the new flow or report that "something changed." Prepare a brief FAQ.
+- **Access request transparency questions.** Now that employees can see their approver's name in the My Access portal, help desk may receive calls asking how to contact approvers directly. Update guidance accordingly.
+- **BitLocker recovery key requests will remain elevated.** Policy requires new device owners to contact IT for BitLocker keys — self-service is not available when device ownership changes. Ensure the process is documented and staffed.
+- **Ubuntu upgrade inquiries.** If you have Linux device users, expect questions after communications go out about the Ubuntu 22.04 end-of-support deadline.
+- **TeamViewer remote assistance tickets** may see a brief uptick if the new connector migration creates any interruption in remote help sessions. Coordinate migration timing with support team awareness.
+- **Power BI report failures** if the old Intune Data Warehouse connector is in use. Reports that go blank or error out should be escalated to IT immediately for connector migration.
+
+---
+
+## Cost & Licensing
+
+- **Entra License Usage dashboard (now GA).** A new page in the Microsoft Entra admin center shows exactly how many Entra P1, P2, and Suite licenses you own versus how many are actively using paid features such as Conditional Access. This is a direct tool for right-sizing your identity license spend — worth a monthly review by your IT finance or procurement lead.
+- **AI Agent identities (Entra Agent ID).** AI agents operating under the new identity framework consume identity governance resources. As agent deployments scale, understand whether your current Entra licensing tier covers the governance controls (such as access reviews and entitlement management) you'll want to apply to agent identities.
+- **Windows 365 Flex shared mode** is now available in additional geographic regions, which may open cost optimization opportunities for shift-worker or frontline deployments previously constrained by region availability.
+- **Teams Shared Space license required** for new panel-based bookable desk devices (coming July 2026). Budget accordingly if your organization is planning hybrid workspace upgrades.
+
+---
+
+## Planning Horizon
+
+| Deadline | Item | Decision Required |
+|---|---|---|
+| **Now — 30 days** | Review MFA and Conditional Access coverage in light of Storm-2949 breach pattern | CISO / IT Director: identify gaps, approve remediation plan |
+| **30 days** | Establish AI agent identity governance policy (Entra Agent ID is live) | Leadership: define what AI agents may access; IT to implement controls |
+| **30 days** | Enable Conditional Access re-authentication for privileged role activation | IT Director approval; minimal user impact for admins |
+| **30 days** | Review and shorten token lifetime policies where feasible | IT Security: schedule configuration review |
+| **60 days** | Begin SAP SuccessFactors provisioning migration planning | IT + HR + Vendor coordination; November 2026 hard deadline |
+| **60 days** | Audit SCIM provisioning applications for modern authentication readiness | IT: check Message Center for application-specific deadlines |
+| **60 days** | Notify Linux device users of Ubuntu 22.04 end-of-support; plan upgrade | IT communications; August 2026 deadline |
+| **60 days** | Identify Power BI reports using Intune Data Warehouse v1 connector; migrate | IT / BI team: no external budget required, internal effort only |
+| **12 months** | Migrate TeamViewer connector to new integration | IT: schedule within the year to avoid remote support disruption |
+| **November 2026** | SAP SuccessFactors basic authentication retired by SAP | Hard deadline — HR provisioning breaks if not migrated |
+
+---
+
+## If You Take No Action
+
+**On the Storm-2949 identity breach pattern:** Attackers who obtain a single employee's credentials — through phishing, a third-party data breach, or password reuse — can move laterally through your cloud environment, access sensitive data, and exfiltrate it without triggering traditional malware alerts. Without phishing-resistant authentication and Conditional Access policies in place, your organization has limited ability to detect or stop this class of attack. The scenario Microsoft documented this week is not theoretical — it is an active technique used against Microsoft 365 tenants right now.
+
+**On the SAP SuccessFactors authentication deadline:** If no action is taken before SAP retires basic authentication in November 2026, the automated connection between SuccessFactors and Microsoft Entra will stop working. New hires will not receive accounts automatically. Employees who leave will not be deprovisioned on schedule. Both outcomes create compliance exposure under SOC 2, HIPAA, and most cyber insurance policies — and will generate significant manual IT and HR remediation work.
+
+**On AI agent governance:** AI agents that are deployed without formal identity governance — scoped permissions, access reviews, and audit logging — are functionally ungoverned users with system-level access. As agent use grows, the absence of a governance policy creates audit findings, potential data exposure, and limited ability to answer the question "what did that agent access and when?" Establishing policy now, while deployments are early, is substantially easier than retrofitting controls later.

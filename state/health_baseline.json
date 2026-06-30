@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-23",
+  "updated": "2026-06-30",
   "titles": [
     "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
     "Azure enterprise applications aren't displayed in the Company Portal for Windows or the Intune Company Portal website",
@@ -61,8 +61,8 @@
     "Kiosk device profile not auto logging in",
     "TPM attestation isn't working on AMD platforms with ASP fTPM",
     "TPM attestation failure with error code 0x81039001",
-    "I don't see Microsoft Defender XDR content",
-    "Microsoft Defender for Identity alerts aren't showing up in Microsoft Defender XDR incidents",
+    "I don't see Microsoft Defender content",
+    "Microsoft Defender for Identity alerts are not showing up in the Microsoft Defender incidents",
     "My legitimate file/URL is being detected as malicious",
     "My ServiceNow tickets are no longer available in the Microsoft Defender portal",
     "I can't submit files",
