@@ -1,10 +1,241 @@
 [
   {
-    "title": "EWS retirement enters final phase, October 2026 deadline is real.",
-    "category": "Top 5 This Week",
-    "date": "2026-06-30",
-    "url": "/posts/2026-06-30/",
-    "snippet": "Microsoft introduced EWSAllowedAppIDs as a controlled allow-list mechanism ahead of phased EWS disablement in Exchange Online. If you still have apps hitting EWS, now is your last structured window to manage the cutover "
+    "title": "Microsoft Entra Backup and Recovery is now generally available",
+    "category": "Top 5",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Rolling out to all workforce tenants this week for Entra ID P1/P2 subscribers, this closes a longstanding gap in identity disaster recovery. Daily automated backups cover users, groups, apps, service principals, managed "
+  },
+  {
+    "title": "Advanced Intune Suite capabilities now available in M365 E3 and E5",
+    "category": "Top 5",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "The December 2025 packaging changes took effect July 1. Capabilities covering endpoint privilege management, certificate management, and AI-assisted operations are now included in your existing M365 E5 SKU, with a subset"
+  },
+  {
+    "title": "Eight MSRC CVEs published across curl and SSH libraries",
+    "category": "Top 5",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "A coordinated batch of vulnerabilities covers UAF conditions in socket callbacks and HTTP/2 stream trees, credential leaks via netrc URL parsing, STARTTLS connection reuse bugs, mTLS config matching gaps, and HTTP/3 earl"
+  },
+  {
+    "title": "Protect sensitive data in motion with Purview and Entra",
+    "category": "Top 5",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Microsoft is GA-shipping network-layer DLP that extends Purview sensitivity signal through Entra's Global Secure Access tunnel, covering unmanaged SaaS and generative AI destinations. If your users are pasting sensitive "
+  },
+  {
+    "title": "Unified alert experience for Purview Insider Risk Management",
+    "category": "Top 5",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "A consolidated alert queue, expanded user context, and connected case notes reduce analyst context-switching during IRM investigations. If your SOC runs Purview IRM, expect workflow changes; brief analysts before the upd"
+  },
+  {
+    "title": "Microsoft Entra Backup and Recovery is now generally available",
+    "category": "Identity",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Daily automated backups of users, groups, apps, service principals, managed identities, Conditional Access policies, named locations, and authentication methods are now available to all Entra ID P1/P2 tenants. Rol"
+  },
+  {
+    "title": "Bring business logic into PIM role activation workflows",
+    "category": "Identity",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[Preview] — Custom extensions for Entra PIM are now in preview, letting you call external logic apps or APIs at activation time to validate ticket IDs, HR status, on-call schedules, or compliance state before granting el"
+  },
+  {
+    "title": "What's new in Microsoft Security: June 2026",
+    "category": "Identity",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Microsoft's June security roundup covers identity hardening, multicloud posture improvements, and developer workflow security for AI pipelines. Worth a full read for any items affecting your Entra, Defender, or Pu"
+  },
+  {
+    "title": "Authentication in 2026: A guide to passkeys, digital credentials and more",
+    "category": "Identity",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Session from I/O Connect covering passkey implementation patterns, digital credentials API, identity federation, and cross-platform UX considerations for phishing-resistant auth. Useful reference material if you a"
+  },
+  {
+    "title": "Advanced Microsoft Intune capabilities now available in Microsoft 365 E3 and E5",
+    "category": "Devices",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — As of July 1, the Intune Suite add-on capabilities are bundled into M365 E5, with select features included in M365 E3 at no additional cost. Capabilities include endpoint privilege management, enterprise certifica"
+  },
+  {
+    "title": "Windows news you can use: June 2026",
+    "category": "Devices",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Windows 11 26H2 is now available in the Windows Insider Program for early validation; it will share a servicing branch with 25H2 and 24H2 and deploy via an enablement package, meaning low-disruption updates for ma"
+  },
+  {
+    "title": "Outlook: Notification when not responding to most recent message of email thread",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — New Outlook for Windows and Outlook on the web will warn users when they are replying to a non-latest message in a thread, targeting GA in August 2026. Low admin overhead, but flag it to helpdesk teams so they can"
+  },
+  {
+    "title": "Microsoft Copilot: M365 admin center Copilot Chat usage reports for GCC, GCC High, and DoD",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Copilot Chat usage reporting covering total active users, per-app breakdowns, and anonymized user-level activity is landing in the M365 admin center for sovereign cloud tenants in July 2026. GCC/GCC High/DoD admin"
+  },
+  {
+    "title": "Microsoft 365 Copilot: New M365 Copilot usage report for GCC High and DoD",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — A dedicated M365 Copilot usage report showing enabled vs. active users with per-app breakdowns and anonymized user-level insights targets GA in July 2026 for GCC High and DoD tenants. Pair with the Copilot Chat re"
+  },
+  {
+    "title": "Planner: Task Details Side Pane experience",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — The new side pane lets users view and edit task details without leaving their Board, Grid, or My Tasks view, targeting GA in July 2026. No admin configuration required; note it for productivity-focused change comm"
+  },
+  {
+    "title": "SharePoint Showcase: Copilot in SharePoint use cases and new GA functionality",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Microsoft's own internal SharePoint+Copilot deployment patterns are documented here, covering AI skills design, agent configuration, and a recap of all platform features that hit GA in June. Useful reference for t"
+  },
+  {
+    "title": "CVE-2026-39827: Memory leak in golang.org/x/crypto/ssh can lead to DoS",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — A memory leak triggered when rejecting SSH channels can cause denial of service in services using golang.org/x/crypto/ssh. Audit any Go-based internal tooling, pipelines, or containers that expose SSH endpoints an"
+  },
+  {
+    "title": "CVE-2026-54886: SSH SFTP server DoS via extended channel data infinite loop",
+    "category": "Apps",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — An infinite loop in SFTP server handling of extended channel data enables denial of service. Any SFTP endpoints running affected SSH library versions need patching; check your file transfer infrastructure and any "
+  },
+  {
+    "title": "Protect sensitive data in motion across SaaS and AI apps with Microsoft Purview and Microsoft Entra",
+    "category": "Data",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Purview DLP policies can now enforce on data transiting through Entra's Global Secure Access network layer, covering uploads and prompts to unmanaged SaaS apps and generative AI tools outside Microsoft's app estat"
+  },
+  {
+    "title": "Extend data security to the network with Microsoft Purview and Microsoft Entra",
+    "category": "Data",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Companion technical deep-dive on the same Purview-plus-Entra network DLP capability, with architecture detail on how sensitivity labels and DLP rules propagate from endpoint context into network-layer enforcement."
+  },
+  {
+    "title": "Introducing a unified alert experience for Microsoft Purview Insider Risk Management",
+    "category": "Data",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Three changes land together: a unified alert queue that consolidates previously scattered views, expanded user context surfaced inline, and connected case notes that persist across the investigation workflow. Anal"
+  },
+  {
+    "title": "5 insights from Frost & Sullivan's 2025 Frost Radar for Cloud Security Posture Management",
+    "category": "Data",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — CSPM is shifting from point-in-time compliance snapshots to continuous risk management, and this Frost radar positions Microsoft's DSPM/CSPM offering in that context. Useful as supporting material if you are build"
+  },
+  {
+    "title": "Protect sensitive data in motion across SaaS and AI apps with Microsoft Purview and Microsoft Entra",
+    "category": "Network",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Network-layer DLP enforcement through Global Secure Access is now GA. This requires GSA's Internet Access profile to be deployed and targeted at the user population you want to cover; without it, Purview sensitivi"
+  },
+  {
+    "title": "CVE-2026-9080: UAF after pause in socket callback",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Use-after-free in a socket callback pause condition in libcurl. Any service embedding libcurl is potentially affected; review your container base images and dependency manifests and prioritize patching."
+  },
+  {
+    "title": "CVE-2026-10536: HTTP/2 stream-dependency tree UAF",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Use-after-free in HTTP/2 stream-dependency tree handling in libcurl. Exploitable in HTTP/2-enabled services; assess exposure in any API gateways, proxy services, or custom integrations using affected libcurl versi"
+  },
+  {
+    "title": "CVE-2026-8926: Password leak with netrc and user in URL",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — libcurl can leak credentials stored in netrc when a username is also present in the URL. Audit any automation scripts or pipeline agents using libcurl with netrc-based credential storage and rotate affected creden"
+  },
+  {
+    "title": "CVE-2026-8286: Wrong STARTTLS connection reuse",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — libcurl may incorrectly reuse a STARTTLS-upgraded connection for a request that should use a different security context. Services relying on STARTTLS for SMTP or IMAP integrations need to assess and patch."
+  },
+  {
+    "title": "CVE-2026-8458: Wrong reuse for different services",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — Connection reuse logic in libcurl can match connections across different services when it should not, potentially routing requests or leaking data to unintended endpoints. Patch and review any multi-service proxy "
+  },
+  {
+    "title": "CVE-2026-8924: Trailing dot domain super cookie",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — libcurl can set a \"super cookie\" scoped to a trailing-dot domain, potentially allowing a server to set cookies that affect requests to other domains. Relevant for any web-facing services or automation using libcur"
+  },
+  {
+    "title": "CVE-2026-8932: Incomplete mTLS config matching in connection reuse",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — libcurl may reuse a connection where mTLS client certificate configuration does not fully match, potentially presenting incorrect client identity to a server. Any service using mTLS for mutual authentication shoul"
+  },
+  {
+    "title": "CVE-2026-9545: Exposing HTTP/3 early data",
+    "category": "Visibility & Automation",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "[GA] — HTTP/3 early data (0-RTT) can be exposed inappropriately in libcurl, potentially enabling replay attacks. Assess any HTTP/3-enabled endpoints or client integrations using libcurl."
+  },
+  {
+    "title": "Advanced Intune Suite capabilities: activate now for M365 E3/E5",
+    "category": "Action Required",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Effective July 1, 2026. The entitlement change is live but most capabilities require explicit policy configuration to activate. Pull the entitlement matrix, identify newly included capabilities for your SKU, and schedule"
+  },
+  {
+    "title": "MSRC curl CVE batch: assess and patch immediately",
+    "category": "Action Required",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Eight CVEs published this week covering libcurl (CVE-2026-9080, CVE-2026-8926, CVE-2026-10536, CVE-2026-8286, CVE-2026-8458, CVE-2026-8924, CVE-2026-8932, CVE-2026-9545) and SSH libraries (CVE-2026-39827, CVE-2026-54886)"
+  },
+  {
+    "title": "Entra Backup and Recovery: validate rollout and test restore",
+    "category": "Action Required",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Rolling out to all P1/P2 tenants this week. Confirm the feature is active in your tenant, review which object types are covered, and perform a test restore on a non-critical user or group object before you have a real in"
   },
   {
     "title": "Six CVEs published across libxml2, GNU gzip, attr, and acl.",
@@ -61,13 +292,6 @@
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
     "snippet": "[GA] — Microsoft received the highest scores in both current offering and strategy in the Forrester Wave Q2 2026. Useful reference material for internal roadmap discussions or procurement justifications where you need th"
-  },
-  {
-    "title": "Introducing EWSAllowedAppIDs: Preparing for the Final Phase of EWS Retirement",
-    "category": "Apps",
-    "date": "2026-06-30",
-    "url": "/posts/2026-06-30/",
-    "snippet": "[GA] — Phased EWS disablement in Exchange Online is coming in October 2026. The new EWSAllowedAppIDs setting lets admins explicitly allow specific app IDs to continue using EWS during the transition, giving you a control"
   },
   {
     "title": "Introducing Smarter Bot Protection in Microsoft Teams Meetings",
