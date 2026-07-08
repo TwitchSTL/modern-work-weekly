@@ -1,8 +1,8 @@
 {
   "updated": "2026-07-08",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 92,
-  "total_new_count": 0,
+  "total_count": 93,
+  "total_new_count": 1,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -609,6 +609,20 @@
           "body": "",
           "url": "https://learn.microsoft.com/en-us/windows/release-health/",
           "is_new": false
+        }
+      ]
+    },
+    {
+      "name": "Azure Status",
+      "url": "https://azurestatusprodcus.azurewebsites.net/en-us/status/",
+      "count": 1,
+      "new_count": 1,
+      "items": [
+        {
+          "title": "GitHub Issue",
+          "body": "GitHub Enterprise Cloud with Data Residency is experiencing a service outage impacting all services, issue identified and mitigation in progress. For details please go here: : https://us.githubstatus.com/posts/details/PBJ0QTY",
+          "url": "https://azurestatusprodcus.azurewebsites.net/en-us/status/",
+          "is_new": true
         }
       ]
     }
