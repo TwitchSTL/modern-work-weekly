@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09",
+  "updated": "2026-07-10",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 92,
   "total_new_count": 0,
@@ -194,7 +194,7 @@
         },
         {
           "title": "Windows 365 provisioning fails",
-          "body": "Windows 365 provisioning might fail if both of the following conditions are met:",
+          "body": "Windows 365 provisioning might fail if the Desired State Configuration (DSC) extension is used and the PowerShell\nexecution policy is set toAllSignedthrough Group Policy. Windows 365 sets the PowerShell execution policy toRemoteSignedat theLocalMachinescope during provisioning.\nThis policy allows lo",
           "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#windows-365-provisioning-fails",
           "is_new": false
         },
