@@ -1,171 +1,136 @@
 [
   {
-    "title": "Passkeys are now the default Entra ID authentication method.",
+    "title": "OWA Light retirement in Exchange Server",
     "category": "Top 5 This Week",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "Microsoft flipped the switch: passkeys replace passwords as the default sign-in experience in Entra ID, and SMS/voice authentication moves to a new model. If you haven't mapped your auth policy and user readiness yet, th"
+    "snippet": "Microsoft has announced plans to disable OWA Light in a future Exchange Server update. If any users or helpdesk workflows still rely on the light client, start migration planning now before the update lands."
   },
   {
-    "title": "GPT-5.6 is live in Microsoft 365 Copilot today.",
+    "title": "Three gawk buffer overflow CVEs (CVE-2026-40468, CVE-2026-40469, CVE-2026-40553)",
     "category": "Top 5 This Week",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "OpenAI's GPT-5.6 family is now the preferred model in Word, Excel, PowerPoint, Chat, and Cowork. Stronger multi-step reasoning means agentic workflows behave differently — validate your Copilot governance and prompt poli"
+    "snippet": "Heap and stack buffer overflows published for gawk. Review whether gawk is present in any managed Linux endpoints or server workloads and track patch availability."
   },
   {
-    "title": "ShinyHunters OAuth abuse targeting SaaS apps.",
+    "title": "node-tar DoS vulnerabilities (CVE-2026-59873, CVE-2026-59871)",
     "category": "Top 5 This Week",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "Microsoft Threat Intelligence published a detailed breakdown of vishing, supply-chain compromise, and misconfigured guest access being weaponized against SaaS OAuth flows. Review your OAuth app consent policies and guest"
+    "snippet": "Two CVEs covering decompression/parse DoS and process crash via PAX path type confusion in node-tar. Any build pipelines, automation agents, or services using node-tar need patching."
   },
   {
-    "title": "Cross-Tenant Message Recall hits GA in Exchange Online.",
+    "title": "Chromium CVE-2026-14428 insufficient input validation in Dawn",
     "category": "Top 5 This Week",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "Recall now works across organization boundaries, not just within a single tenant. This is one of the most-requested recall enhancements and has immediate operational implications for multi-tenant and partner-connected en"
+    "snippet": "Edge (Chromium-based) inherits this GPU/graphics pipeline vulnerability. Ensure Edge is on the latest stable release across your managed fleet."
   },
   {
-    "title": "RDP Multipath with redundant TCP is GA for Windows 365 and AVD.",
+    "title": "CVE-2026-15308 HTMLParser CPU-exhaustion DoS",
     "category": "Top 5 This Week",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "Session resilience over TCP-constrained networks is now production-ready. Organizations running Cloud PCs over VPN or proxy-restricted paths should plan rollout to reduce session drops."
+    "snippet": "Repeated unterminated markup declarations can exhaust CPU. Relevant for any Python-based backend services or automation tooling parsing untrusted HTML."
   },
   {
-    "title": "Passkeys are the default authentication method in Entra ID",
-    "category": "Identity",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Passkeys are now the default sign-in experience in Entra ID, and the SMS/voice authentication model has changed. Audit your authentication methods policies, identify users still reliant on SMS/voice, and accelerat"
-  },
-  {
-    "title": "Defending SaaS-based applications against ShinyHunters OAuth abuse",
-    "category": "Identity",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Microsoft Threat Intelligence mapped active ShinyHunters tradecraft: vishing, supply-chain compromise, and misconfigured guest access used to abuse OAuth in SaaS apps. Tighten OAuth app consent policies, review gu"
-  },
-  {
-    "title": "Authentication in 2026: Passkeys, digital credentials, and identity federation",
-    "category": "Identity",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — A concise walkthrough of phishing-resistant auth patterns including passkeys, digital credentials, and identity federation for modern identity flows. Useful as supporting material when briefing stakeholders on the"
-  },
-  {
-    "title": "Understanding Windows monthly updates: Servicing explained",
-    "category": "Devices",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[Preview] — Microsoft published a structured guide to the Windows update servicing model, covering monthly security updates, optional non-security preview updates, and the relationship between them. Reference this when a"
-  },
-  {
-    "title": "CVE-2022-4543 \"EntryBleed\" — Linux Kernel KPTI KASLR base leak via prefetch side-channels",
-    "category": "Devices",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Intel systems running Linux with KPTI are vulnerable to local KASLR base address leakage via TLB timing side-channels. If you manage Linux workloads on Azure or hybrid infrastructure, confirm kernel patch status f"
-  },
-  {
-    "title": "GPT-5.6 available today in Microsoft 365 Copilot",
+    "title": "Upcoming retirement of OWA Light in Exchange Server",
     "category": "Apps",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — GPT-5.6 is now the preferred model in Word, Excel, PowerPoint, Copilot Chat, and Cowork, replacing the previous default. The model delivers stronger reasoning for multi-step agentic tasks, which means outputs and "
+    "snippet": "[GA] — Microsoft will retire and disable OWA Light in a future Exchange Server cumulative update; no specific date is given yet, but the direction is firm. Audit your organization for any users, browser policies, or help"
   },
   {
-    "title": "Cross-Tenant Message Recall in Exchange Online",
+    "title": "Solutions for document-centric business processes - Portal Systems - SharePoint Partner Spotlight",
     "category": "Apps",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Message Recall now works across tenant boundaries, closing the gap that previously limited recall to single-tenant scenarios. Organizations operating in multi-tenant or federated-partner configurations should upda"
+    "snippet": "[GA] — Portal Systems AG showcases ECM solutions built on SPFx for SharePoint and Microsoft 365. Worth reviewing if your organization is evaluating document-centric workflow tooling on top of SharePoint rather than a thi"
   },
   {
-    "title": "SharePoint Showcase: Copilot in SharePoint real-world usage and new GA features",
+    "title": "Proven intranet framework - Involv Intranet - SharePoint Partner Spotlight",
     "category": "Apps",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Microsoft published its internal use cases for Copilot in SharePoint alongside a monthly \"Product Drops\" recap of newly GA SharePoint features. Use this as a structured reference for SharePoint AI skill deployment"
+    "snippet": "[GA] — Involv Intranet provides a branded, mobile-ready intranet built on SPFx with 50-plus configurable components. If your organization has an intranet refresh on the roadmap, this is a reference point for what the SPF"
   },
   {
-    "title": "Protecting Microsoft at AI speed: How SFI proactively hardens cloud services",
+    "title": "Streamlining business processes with Microsoft 365 - ShareCloud - SharePoint Partner Spotlight",
     "category": "Apps",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Microsoft details how the Secure Future Initiative uses AI-driven continuous evaluation to measure live services against security requirements at scale. Relevant context for engineers building AI-assisted security"
+    "snippet": "[GA] — ShareCloud demonstrates productized SharePoint-based business application solutions built on Microsoft 365 and Power Platform. Relevant context if you are evaluating partners to extend SharePoint into line-of-busi"
   },
   {
-    "title": "CVE-2026-59874 node-tar: Negative tar entry size causes infinite loop",
-    "category": "Apps",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — A malformed tar archive with a negative entry size can cause an infinite loop in node-tar. If your M365 extensibility, SPFx, or DevOps pipelines use node-tar in any build or deploy step, verify you are on a patche"
-  },
-  {
-    "title": "RDP Multipath with redundant TCP — GA for Windows 365 and Azure Virtual Desktop",
-    "category": "Network",
-    "date": "2026-07-14",
-    "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — RDP Multipath now extends session resilience to TCP-only paths, covering environments where UDP is blocked by firewalls, proxies, or VPN configurations. This directly addresses one of the most common causes of Clo"
-  },
-  {
-    "title": "CVE-2026-45489 Microsoft Edge (Chromium-based) Spoofing Vulnerability",
+    "title": "CVE-2026-40468 Heap buffer overflow in gawk",
     "category": "Visibility & Automation",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — An informational update adding CWE classification to this Edge spoofing CVE; no new patch or severity change. Confirm your Edge update channels are current and that this CVE is already closed in your environment."
+    "snippet": "[GA] — Heap buffer overflow in gawk published by MSRC this week. Inventory managed Linux endpoints and any Windows Subsystem for Linux environments where gawk may be installed, and apply vendor patches when available."
   },
   {
-    "title": "CVE-2026-14461 Out-of-bound read in mtr",
+    "title": "CVE-2026-40469 Heap buffer overflow in gawk",
     "category": "Visibility & Automation",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Out-of-bounds read published in MSRC for the mtr network diagnostic tool. Relevant for Linux-based monitoring or network tooling in your environment; verify the mtr package is patched on affected systems."
+    "snippet": "[GA] — A second heap buffer overflow CVE in gawk, tracked separately from CVE-2026-40468. Treat both together when assessing exposure; patch the same gawk installations identified for the previous CVE."
   },
   {
-    "title": "CVE-2026-40467 / 40468 / 40469 / 40553 — Multiple memory safety issues in gawk",
+    "title": "CVE-2026-40553 Stack-based buffer overflow in gawk",
     "category": "Visibility & Automation",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Four CVEs cover use-after-free, heap buffer overflow (two instances), and stack-based buffer overflow in gawk. If gawk is present in Linux-based automation, log processing, or CI/CD pipelines touching M365 workloa"
+    "snippet": "[GA] — Stack-based buffer overflow in gawk completes a trio of gawk CVEs this week. Stack overflows carry elevated exploitation risk relative to heap variants; prioritize remediation accordingly."
   },
   {
-    "title": "CVE-2025-38096 wifi: iwlwifi firmware error handling",
+    "title": "CVE-2026-59873 node-tar: Decompression/parse DoS via unlimited input",
     "category": "Visibility & Automation",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Linux kernel iwlwifi driver warning suppression on firmware error; low operational risk but relevant for Surface or Intel Wi-Fi endpoints running Linux. Check kernel patch status if applicable."
+    "snippet": "[GA] — Unlimited input during decompression or parsing in node-tar can cause a denial of service. Identify any CI/CD pipelines, automation agents, or Node.js services consuming node-tar and validate they are running a pa"
   },
   {
-    "title": "CVE-2025-71072 shmem: fix recovery on rename failures",
+    "title": "CVE-2026-59871 node-tar: Process crash via PAX numeric path type confusion",
     "category": "Visibility & Automation",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Linux shared memory subsystem fix for rename failure recovery. Applicable to Linux workloads on Azure or hybrid infrastructure; patch as part of your standard kernel update cycle."
+    "snippet": "[GA] — Type confusion in PAX numeric path handling causes a process crash in node-tar. This pairs with CVE-2026-59873; remediate both in the same pass when updating node-tar dependencies."
   },
   {
-    "title": "Passkeys as default Entra ID auth — review SMS/voice policy and user readiness NOW",
+    "title": "CVE-2026-15308 Incremental HTMLParser feed() CPU-exhaustion DoS",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Repeated unterminated markup declarations passed to the incremental HTMLParser feed() method can exhaust CPU. Review Python-based services, automation scripts, or backend tools that parse untrusted HTML and update"
+  },
+  {
+    "title": "Chromium: CVE-2026-14428 Insufficient validation of untrusted input in Dawn",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Insufficient input validation in Chromium's Dawn graphics layer affects Microsoft Edge. Confirm your Edge deployment is on the current stable channel build; if you manage Edge updates via Intune or a software upda"
+  },
+  {
+    "title": "Upcoming retirement of OWA Light in Exchange Server",
     "category": "Action Required",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Deadline: already in effect. Passkeys are the new default and the SMS/voice model has changed. Identify users still dependent on SMS/voice authentication, update authentication methods policies, and accelerate pas"
+    "snippet": "[GA] — Plan within 30 days: No specific retirement date is published yet, but Microsoft has confirmed this feature will be disabled in an upcoming Exchange Server update. Identify users relying on OWA Light, update helpd"
   },
   {
-    "title": "ShinyHunters OAuth abuse — tighten SaaS OAuth consent and guest access controls",
+    "title": "CVE-2026-40553 Stack-based buffer overflow in gawk",
     "category": "Action Required",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — Active threat, no fixed deadline. Review and restrict OAuth app consent policies in Entra ID, audit third-party SaaS app authorizations, and reduce guest access scope to the minimum required. Vishing and supply-ch"
+    "snippet": "[GA] — Patch when available: Stack-based overflow in gawk is the highest-risk of the three gawk CVEs this week. Inventory gawk across managed Linux endpoints, WSL environments, and any server workloads, and prioritize pa"
   },
   {
-    "title": "gawk CVEs (CVE-2026-40467/40468/40469/40553) — patch Linux automation and pipeline tooling",
+    "title": "CVE-2026-59871 and CVE-2026-59873 node-tar vulnerabilities",
     "category": "Action Required",
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
-    "snippet": "[GA] — No vendor-specified deadline, but four memory safety CVEs in a single component warrants prompt action. Audit Linux systems and CI/CD pipelines for gawk presence, apply available patches, and consider removing gaw"
+    "snippet": "[GA] — Audit and patch within 30 days: Both node-tar CVEs affect process stability and availability. Scan your Node.js dependency trees across CI/CD pipelines and deployed services for node-tar versions below the patched"
   },
   {
     "title": "Copilot Cowork is GA worldwide.",
