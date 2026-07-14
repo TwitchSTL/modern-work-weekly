@@ -1,5 +1,173 @@
 [
   {
+    "title": "Passkeys are now the default Entra ID authentication method.",
+    "category": "Top 5 This Week",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "Microsoft flipped the switch: passkeys replace passwords as the default sign-in experience in Entra ID, and SMS/voice authentication moves to a new model. If you haven't mapped your auth policy and user readiness yet, th"
+  },
+  {
+    "title": "GPT-5.6 is live in Microsoft 365 Copilot today.",
+    "category": "Top 5 This Week",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "OpenAI's GPT-5.6 family is now the preferred model in Word, Excel, PowerPoint, Chat, and Cowork. Stronger multi-step reasoning means agentic workflows behave differently — validate your Copilot governance and prompt poli"
+  },
+  {
+    "title": "ShinyHunters OAuth abuse targeting SaaS apps.",
+    "category": "Top 5 This Week",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "Microsoft Threat Intelligence published a detailed breakdown of vishing, supply-chain compromise, and misconfigured guest access being weaponized against SaaS OAuth flows. Review your OAuth app consent policies and guest"
+  },
+  {
+    "title": "Cross-Tenant Message Recall hits GA in Exchange Online.",
+    "category": "Top 5 This Week",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "Recall now works across organization boundaries, not just within a single tenant. This is one of the most-requested recall enhancements and has immediate operational implications for multi-tenant and partner-connected en"
+  },
+  {
+    "title": "RDP Multipath with redundant TCP is GA for Windows 365 and AVD.",
+    "category": "Top 5 This Week",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "Session resilience over TCP-constrained networks is now production-ready. Organizations running Cloud PCs over VPN or proxy-restricted paths should plan rollout to reduce session drops."
+  },
+  {
+    "title": "Passkeys are the default authentication method in Entra ID",
+    "category": "Identity",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Passkeys are now the default sign-in experience in Entra ID, and the SMS/voice authentication model has changed. Audit your authentication methods policies, identify users still reliant on SMS/voice, and accelerat"
+  },
+  {
+    "title": "Defending SaaS-based applications against ShinyHunters OAuth abuse",
+    "category": "Identity",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Microsoft Threat Intelligence mapped active ShinyHunters tradecraft: vishing, supply-chain compromise, and misconfigured guest access used to abuse OAuth in SaaS apps. Tighten OAuth app consent policies, review gu"
+  },
+  {
+    "title": "Authentication in 2026: Passkeys, digital credentials, and identity federation",
+    "category": "Identity",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — A concise walkthrough of phishing-resistant auth patterns including passkeys, digital credentials, and identity federation for modern identity flows. Useful as supporting material when briefing stakeholders on the"
+  },
+  {
+    "title": "Understanding Windows monthly updates: Servicing explained",
+    "category": "Devices",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[Preview] — Microsoft published a structured guide to the Windows update servicing model, covering monthly security updates, optional non-security preview updates, and the relationship between them. Reference this when a"
+  },
+  {
+    "title": "CVE-2022-4543 \"EntryBleed\" — Linux Kernel KPTI KASLR base leak via prefetch side-channels",
+    "category": "Devices",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Intel systems running Linux with KPTI are vulnerable to local KASLR base address leakage via TLB timing side-channels. If you manage Linux workloads on Azure or hybrid infrastructure, confirm kernel patch status f"
+  },
+  {
+    "title": "GPT-5.6 available today in Microsoft 365 Copilot",
+    "category": "Apps",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — GPT-5.6 is now the preferred model in Word, Excel, PowerPoint, Copilot Chat, and Cowork, replacing the previous default. The model delivers stronger reasoning for multi-step agentic tasks, which means outputs and "
+  },
+  {
+    "title": "Cross-Tenant Message Recall in Exchange Online",
+    "category": "Apps",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Message Recall now works across tenant boundaries, closing the gap that previously limited recall to single-tenant scenarios. Organizations operating in multi-tenant or federated-partner configurations should upda"
+  },
+  {
+    "title": "SharePoint Showcase: Copilot in SharePoint real-world usage and new GA features",
+    "category": "Apps",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Microsoft published its internal use cases for Copilot in SharePoint alongside a monthly \"Product Drops\" recap of newly GA SharePoint features. Use this as a structured reference for SharePoint AI skill deployment"
+  },
+  {
+    "title": "Protecting Microsoft at AI speed: How SFI proactively hardens cloud services",
+    "category": "Apps",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Microsoft details how the Secure Future Initiative uses AI-driven continuous evaluation to measure live services against security requirements at scale. Relevant context for engineers building AI-assisted security"
+  },
+  {
+    "title": "CVE-2026-59874 node-tar: Negative tar entry size causes infinite loop",
+    "category": "Apps",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — A malformed tar archive with a negative entry size can cause an infinite loop in node-tar. If your M365 extensibility, SPFx, or DevOps pipelines use node-tar in any build or deploy step, verify you are on a patche"
+  },
+  {
+    "title": "RDP Multipath with redundant TCP — GA for Windows 365 and Azure Virtual Desktop",
+    "category": "Network",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — RDP Multipath now extends session resilience to TCP-only paths, covering environments where UDP is blocked by firewalls, proxies, or VPN configurations. This directly addresses one of the most common causes of Clo"
+  },
+  {
+    "title": "CVE-2026-45489 Microsoft Edge (Chromium-based) Spoofing Vulnerability",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — An informational update adding CWE classification to this Edge spoofing CVE; no new patch or severity change. Confirm your Edge update channels are current and that this CVE is already closed in your environment."
+  },
+  {
+    "title": "CVE-2026-14461 Out-of-bound read in mtr",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Out-of-bounds read published in MSRC for the mtr network diagnostic tool. Relevant for Linux-based monitoring or network tooling in your environment; verify the mtr package is patched on affected systems."
+  },
+  {
+    "title": "CVE-2026-40467 / 40468 / 40469 / 40553 — Multiple memory safety issues in gawk",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Four CVEs cover use-after-free, heap buffer overflow (two instances), and stack-based buffer overflow in gawk. If gawk is present in Linux-based automation, log processing, or CI/CD pipelines touching M365 workloa"
+  },
+  {
+    "title": "CVE-2025-38096 wifi: iwlwifi firmware error handling",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Linux kernel iwlwifi driver warning suppression on firmware error; low operational risk but relevant for Surface or Intel Wi-Fi endpoints running Linux. Check kernel patch status if applicable."
+  },
+  {
+    "title": "CVE-2025-71072 shmem: fix recovery on rename failures",
+    "category": "Visibility & Automation",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Linux shared memory subsystem fix for rename failure recovery. Applicable to Linux workloads on Azure or hybrid infrastructure; patch as part of your standard kernel update cycle."
+  },
+  {
+    "title": "Passkeys as default Entra ID auth — review SMS/voice policy and user readiness NOW",
+    "category": "Action Required",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Deadline: already in effect. Passkeys are the new default and the SMS/voice model has changed. Identify users still dependent on SMS/voice authentication, update authentication methods policies, and accelerate pas"
+  },
+  {
+    "title": "ShinyHunters OAuth abuse — tighten SaaS OAuth consent and guest access controls",
+    "category": "Action Required",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — Active threat, no fixed deadline. Review and restrict OAuth app consent policies in Entra ID, audit third-party SaaS app authorizations, and reduce guest access scope to the minimum required. Vishing and supply-ch"
+  },
+  {
+    "title": "gawk CVEs (CVE-2026-40467/40468/40469/40553) — patch Linux automation and pipeline tooling",
+    "category": "Action Required",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "[GA] — No vendor-specified deadline, but four memory safety CVEs in a single component warrants prompt action. Audit Linux systems and CI/CD pipelines for gawk presence, apply available patches, and consider removing gaw"
+  },
+  {
     "title": "Copilot Cowork is GA worldwide.",
     "category": "Top 5 This Week",
     "date": "2026-07-07",
