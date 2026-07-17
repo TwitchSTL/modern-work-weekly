@@ -192,7 +192,14 @@ def fetch_rss(source: dict) -> list[dict]:
         # comparable date format instead of whatever format that particular
         # feed happened to use.
         parsed = entry.get("published_parsed") or entry.get("updated_parsed")
-        if parsed:
+        if source.get("no_item_dates"):
+            # This feed doesn't carry a real per-item date — recording None
+            # (rather than falling back to "now") lets item_age_days() report
+            # unknown age honestly, so downstream freshness filters keep the
+            # item instead of either wrongly aging it out or wrongly treating
+            # a scrape-time stamp as if it were a real publish date.
+            date_str = None
+        elif parsed:
             date_str = datetime(*parsed[:6], tzinfo=timezone.utc).isoformat()
         else:
             date_str = entry.get(
@@ -365,6 +372,15 @@ def fetch_html(source: dict) -> list[dict]:
 def enrich_item(raw: dict) -> dict:
     """Add classification, phase, action fields to a raw item."""
     category = classify_item(raw["title"], raw["body"])
+    # Microsoft Viva's "Research Drop" posts are WorkLab-style workplace/AI
+    # research essays, not product feature updates. Keyword-classifying them
+    # into the six Zero Trust pillars was why they never surfaced: they don't
+    # carry admin actions or engineer-relevant substance, so they lost out to
+    # Teams/Copilot/Defender volume in whichever pillar they landed in.
+    # Routing them to their own bucket lets digest.py give them dedicated,
+    # exec-only treatment instead of silently dropping them.
+    if raw["source"] == "Microsoft Viva" and raw["title"].startswith("Research Drop"):
+        category = "Research & Trends"
     phase = detect_phase(raw["title"], raw["body"])
     action = detect_admin_action(raw["body"])
     iid = item_id(raw["source"], raw["title"])

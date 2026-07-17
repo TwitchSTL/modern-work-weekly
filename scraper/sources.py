@@ -100,6 +100,13 @@ SOURCES = [
         "category": "Cross-platform",
         "rss": "https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS",
         "selector": None,
+        # Confirmed 2026-07-17: this feed has no per-entry publish date — every
+        # item comes back stamped with the scrape time itself, which made the
+        # freshness filter think every item was brand new regardless of true
+        # age. no_item_dates tells fetch_rss() to record date=None instead of
+        # faking "now", so age-based filtering correctly treats these items as
+        # unknown-age (kept, never wrongly aged out) rather than falsely fresh.
+        "no_item_dates": True,
     },
     {
         "name": "Agent 365",

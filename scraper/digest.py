@@ -99,6 +99,7 @@ Format rules:
 - Front matter: title (must be exactly "Executive's Guide — Week of YYYY-MM-DD"), date, description (1-2 sentences on the week's business significance — not technical), categories: ["Executive Guide"], tags (business-level: compliance, security, cost, user-impact, licensing, identity, devices, data-protection)
 - ## The Week at a Glance — 3-4 risk-labeled bullets in plain English
 - ## Why This Week Matters — 2-3 sentences of leadership-level context; the one thing leadership must understand
+- ## What Microsoft's Research Is Saying — OPTIONAL. Include only when "Research & Trends" items are present in the raw data; omit the entire section, heading included, if there are none this week. 1-3 bullets translating Microsoft's own workplace/AI research (Viva/WorkLab research essays) into what it means for this organization's planning. This is context, not an action item, so do not add it to Risk & Compliance or Planning Horizon.
 - ## Risk & Compliance — markdown table with columns: Change | Business Risk | Regulatory Angle | Act By
 - ## What Your Employees Will Notice — bullets of user-facing changes; what to communicate proactively
 - ## What Your Help Desk Should Expect — specific ticket types or support volume changes to anticipate
@@ -288,6 +289,12 @@ def build_prompt(draft: dict) -> str:
     MAX_PER_CAT = 8
     compact = {}
     for cat, items in draft.get("grouped_items", {}).items():
+        # "Research & Trends" (Viva WorkLab research essays) is exec-only
+        # content — the technical digest's six pillar sections and its
+        # prompt format have no place for it, so it's excluded here rather
+        # than forced into a mismatched category.
+        if cat == "Research & Trends":
+            continue
         fresh_items = filter_recent(items)
         # Sort by parsed date descending so the cap keeps the genuinely most
         # recent items — the old raw-string sort didn't sort correctly across
@@ -335,8 +342,14 @@ def build_exec_prompt(draft: dict) -> str:
     # Claude. Apply the same MAX_AGE_DAYS gate so the Executive's Guide can't
     # drift stale independently of the technical post.
     compact = {}
+    # Viva "Research Drop" essays publish roughly monthly, so the standard
+    # 7-day window (MAX_AGE_DAYS) almost always misses them between one
+    # weekly digest run and the next. Give this bucket alone a 30-day window
+    # so it actually gets a fair chance to reach the Executive's Guide.
+    RESEARCH_MAX_AGE_DAYS = 30
     for cat, items in draft.get("grouped_items", {}).items():
-        fresh_items = filter_recent(items)
+        max_age = RESEARCH_MAX_AGE_DAYS if cat == "Research & Trends" else MAX_AGE_DAYS
+        fresh_items = filter_recent(items, max_age_days=max_age)
         compact[cat] = [
             {
                 "title": item["title"],
@@ -579,6 +592,9 @@ def build_linkedin_prompt(draft: dict, week_of: str) -> str:
     """
     lines = []
     for cat, items in draft.get("grouped_items", {}).items():
+        # Exec-only content (see build_prompt) — no place in the LinkedIn edition either.
+        if cat == "Research & Trends":
+            continue
         fresh_items = filter_recent(items)
         if not fresh_items:
             continue

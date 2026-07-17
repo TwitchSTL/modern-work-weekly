@@ -35,6 +35,7 @@ This is my attempt to solve that for myself, and share it with anyone else who f
 
 - **Endpoint management** — Intune for Windows, macOS, iOS, and Android. Configuration policies, compliance, enrollment, and the PowerShell and Graph API hooks underneath.
 - **Identity & access** — Entra ID, Conditional Access, External MFA, hybrid sync, Privileged Identity Management, and the expanding agent identity model.
+- **Collaboration & productivity** — Teams, SharePoint, OneDrive, and Exchange feature changes, plus Microsoft 365 Copilot updates as they land in these apps. This is the single largest category of weekly content.
 - **Defender for Endpoint** — XDR updates, attack disruption, identity-based detections, vulnerability management, and endpoint security policy changes.
 - **Defender for Office 365 (MDO)** — Anti-phishing, safe links, safe attachments, threat policies, and mail flow changes that affect your tenant's security posture.
 - **Microsoft Purview** — Sensitivity labels, DLP, Information Protection, Insider Risk Management, Communications Compliance, AI data governance, and the expanding Purview compliance surface.
