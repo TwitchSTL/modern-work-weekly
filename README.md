@@ -25,9 +25,9 @@ Scraped from 30+ Microsoft sources · Drafted by Claude · Published every Tuesd
 
 **Modern Work** is Microsoft's umbrella for identity and access, endpoint and device management, collaboration and productivity, AI and Copilot, employee experience, and security and compliance. Microsoft ships updates across all six continuously.
 
-**Modern Work Weekly** scrapes the official portals across all six, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without manually tracking a dozen portals.
+**Modern Work Weekly** scrapes the official portals across all six, uses the Claude API to draft a structured digest, and publishes it every Tuesday - so engineers can stay current without manually tracking a dozen portals.
 
-A companion **Executive's Guide** is generated alongside each digest — plain-language briefings for leadership, compliance officers, and IT directors. A **LinkedIn newsletter draft** is also produced, ready to post.
+A companion **Executive's Guide** is generated alongside each digest - plain-language briefings for leadership, compliance officers, and IT directors. A **LinkedIn newsletter draft** is also produced, ready to post.
 
 No marketing. No filler. Operational signal only.
 
@@ -57,7 +57,7 @@ flowchart LR
     class M labelbox
 ```
 
-`git push` triggers two independent things: GitHub Actions runs a build check (does `hugo --minify` still succeed?) and stops there — it does **not** deploy. The actual publish path is pull-based: a cron on the LXC itself polls GitHub and does the real build + deploy, entirely separate from GitHub Actions.
+`git push` triggers two independent things: GitHub Actions runs a build check (does `hugo --minify` still succeed?) and stops there - it does **not** deploy. The actual publish path is pull-based: a cron on the LXC itself polls GitHub and does the real build + deploy, entirely separate from GitHub Actions.
 
 The dashed line is the one manual step in the whole pipeline: Claude drafts the LinkedIn edition, but it doesn't get auto-published. Reviewing it, linking the content, and writing the summary before posting is done by hand.
 
@@ -70,10 +70,10 @@ Three cron jobs run automatically on a self-hosted LXC:
 | **Every 8 hours** | `health-run.sh` | Known issues refresh + deadline purge → push if changed |
 
 > [!NOTE]
-> **Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run since the last publish. When Tuesday fires, it consumes everything accumulated — nothing gets lost between runs.
+> **Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run since the last publish. When Tuesday fires, it consumes everything accumulated - nothing gets lost between runs.
 
 > [!NOTE]
-> **Why polling instead of a webhook:** the LXC has zero inbound ports open — Cloudflare Tunnel only makes outbound connections, by design. A webhook-triggered deploy would need an inbound endpoint to receive it, which breaks that model. Polling every 5 minutes keeps deployment entirely pull-based, at the cost of up to a 5-minute publish delay — a deliberate tradeoff, not an oversight.
+> **Why polling instead of a webhook:** the LXC has zero inbound ports open - Cloudflare Tunnel only makes outbound connections, by design. A webhook-triggered deploy would need an inbound endpoint to receive it, which breaks that model. Polling every 5 minutes keeps deployment entirely pull-based, at the cost of up to a 5-minute publish delay - a deliberate tradeoff, not an oversight.
 
 ---
 
@@ -95,49 +95,49 @@ Three cron jobs run automatically on a self-hosted LXC:
 ## 📁 Repository layout
 
 <details>
-<summary><strong>scraper/</strong> — Data collection and digest drafting</summary>
+<summary><strong>scraper/</strong> - Data collection and digest drafting</summary>
 
 | File | Description |
 |---|---|
 | `scraper.py` | Fetches all sources via RSS, JSON API, or HTML scraping; deduplicates; appends to rolling draft; refreshes `health.json` and `deadlines.json` |
 | `digest.py` | Reads `pending_draft.json`, calls Claude API (×3) for technical digest, Executive's Guide, and LinkedIn draft; updates health baseline |
-| `sources.py` | Source definitions — URLs, RSS feeds, health flags, and per-source scraping hints |
+| `sources.py` | Source definitions - URLs, RSS feeds, health flags, and per-source scraping hints |
 | `deploy.sh` | Pulls latest commits, rebuilds Hugo, and rsyncs to the web root |
-| `weekly-run.sh` | Tuesday cron entrypoint — scrape → draft → push → build & deploy |
-| `health-run.sh` | 8-hour cron entrypoint — health sources + deadline purge → push if changed |
+| `weekly-run.sh` | Tuesday cron entrypoint - scrape → draft → push → build & deploy |
+| `health-run.sh` | 8-hour cron entrypoint - health sources + deadline purge → push if changed |
 
 </details>
 
 <details>
-<summary><strong>state/</strong> — Persisted on LXC, gitignored</summary>
+<summary><strong>state/</strong> - Persisted on LXC, gitignored</summary>
 
 | File | Description |
 |---|---|
-| `pending_draft.json` | Rolling accumulator — items build across runs, cleared after each publish |
-| `seen_items.json` | Dedup tracker — SHA-256 hashes of all previously seen items |
-| `health_baseline.json` | Known issue titles at last digest publish — used to diff what's new since last week |
+| `pending_draft.json` | Rolling accumulator - items build across runs, cleared after each publish |
+| `seen_items.json` | Dedup tracker - SHA-256 hashes of all previously seen items |
+| `health_baseline.json` | Known issue titles at last digest publish - used to diff what's new since last week |
 | `weekly_draft_*.json` | Per-run snapshots retained for reference |
 | `archive/` | Pending drafts archived after each publish |
 
 </details>
 
 <details>
-<summary><strong>site/</strong> — Hugo static site</summary>
+<summary><strong>site/</strong> - Hugo static site</summary>
 
 | Path | Description |
 |---|---|
 | `content/posts/` | Weekly technical digest posts (one `.md` per week) |
 | `content/exec/` | Executive's Guide posts (generated alongside each digest) |
-| `data/health.json` | Known issues with `is_new` diff flags — homepage shows all, digest pages show new-only |
-| `data/deadlines.json` | Key dates calendar — auto-purged of expired entries every 8 hours |
-| `layouts/` | Hugo templates — 3-column digest layout with context-aware sidebars |
+| `data/health.json` | Known issues with `is_new` diff flags - homepage shows all, digest pages show new-only |
+| `data/deadlines.json` | Key dates calendar - auto-purged of expired entries every 8 hours |
+| `layouts/` | Hugo templates - 3-column digest layout with context-aware sidebars |
 | `static/css/` | Custom dark-theme styles |
 | `static/js/` | Collapsible sections, calendar logic, admin portal links |
 
 </details>
 
 <details>
-<summary><strong>linkedin/</strong> — LinkedIn newsletter formatting reference</summary>
+<summary><strong>linkedin/</strong> - LinkedIn newsletter formatting reference</summary>
 
 | File | Description |
 |---|---|
@@ -147,22 +147,22 @@ Three cron jobs run automatically on a self-hosted LXC:
 </details>
 
 <details>
-<summary><strong>infra/</strong> — Infrastructure configuration</summary>
+<summary><strong>infra/</strong> - Infrastructure configuration</summary>
 
 | File | Description |
 |---|---|
-| `lxc/bootstrap.sh` | Fresh Ubuntu 24.04 LXC setup — installs all dependencies |
+| `lxc/bootstrap.sh` | Fresh Ubuntu 24.04 LXC setup - installs all dependencies |
 | `caddy/Caddyfile` | Caddy reverse proxy config (serves on :8080 behind Cloudflare Tunnel) |
 | `cloudflare/tunnel.yml` | Cloudflare Tunnel config reference |
 
 </details>
 
 <details>
-<summary><strong>docs/</strong> — Reference documentation</summary>
+<summary><strong>docs/</strong> - Reference documentation</summary>
 
 | File | Description |
 |---|---|
-| `SETUP.md` | Full initial setup guide — LXC to live site |
+| `SETUP.md` | Full initial setup guide - LXC to live site |
 | `WEEKLY_WORKFLOW.md` | Weekly pipeline reference and troubleshooting |
 | `PIPELINE.md` | Claude API and digest pipeline internals |
 
@@ -178,9 +178,9 @@ Three cron jobs run automatically on a self-hosted LXC:
 | Web server | Caddy |
 | Tunnel | Cloudflare Tunnel → `modernworkweekly.com` |
 | Static site | Hugo v0.128+ |
-| Scraper | Python 3.12 — requests, BeautifulSoup, feedparser |
+| Scraper | Python 3.12 - requests, BeautifulSoup, feedparser |
 | Digest drafting | Claude API (`claude-sonnet-4-6`) |
-| CI | GitHub Actions — build check only (`hugo --minify` on push); deploy is pull-based via the LXC cron above, not GitHub Actions |
+| CI | GitHub Actions - build check only (`hugo --minify` on push); deploy is pull-based via the LXC cron above, not GitHub Actions |
 
 ---
 
