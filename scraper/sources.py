@@ -2,17 +2,35 @@
 sources.py — Microsoft portal source definitions for the scraper.
 
 Each source has:
-  - name: display name
+  - name: display name (also used as the "source" field on scraped items,
+    the item_id hash input, and the name shown in Exec Guide citations)
   - url: the "What's New" or release notes page
   - cadence: how often it updates
-  - category: default classification bucket
   - rss: RSS feed URL if available (preferred over HTML scraping)
   - selector: CSS selector for HTML fallback (if no RSS)
   - health: True if this is a known-issues/service-health source (routed separately)
   - json_api: True if the rss field is a JSON endpoint (not RSS/Atom) — uses fetch_json_status()
+  - no_item_dates: True if this feed has no real per-item publish date (see
+    Microsoft 365 Roadmap below) — tells fetch_rss() to record date=None
+    instead of faking "now"
 
-Last reviewed: 2026-06-01
+Note: sources used to carry a "category" field ("default classification
+bucket"). It was removed 2026-07-17 — it was never actually read anywhere;
+classify_item() in scraper.py always classifies from the item's title/body
+text against CLASSIFICATION_KEYWORDS below, regardless of which source it
+came from. The field had drifted into a stale mix of old and new taxonomy
+labels across different sources, which was confusing to read and implied a
+behavior it didn't have. If you want a source's likely pillar for reference,
+see the README's "Sources scraped" table instead — that's curated by hand
+and isn't tied to any code path.
+
+Last reviewed: 2026-07-17
 Changes from prior version:
+  - Removed the unused per-source "category" field (see note above)
+  - Renamed "Microsoft Security Blog (Zero Trust)" to "Microsoft Security
+    Blog" — the parenthetical was left over from the old Zero Trust pillar
+    taxonomy and no longer reflects how the site is organized
+Changes from 2026-06-01 version:
   - Teams: switched from /officeupdates/teams-admin (per-build admin changelog) to
     TechCommunity Teams blog, which publishes monthly "What's New" feature digests
   - SharePoint / OneDrive: switched from support.microsoft.com consumer article to
@@ -34,7 +52,6 @@ SOURCES = [
         "name": "Intune",
         "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new",
         "cadence": "weekly",
-        "category": "Endpoint Management",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftintuneblog",
         "selector": "h2, h3, p",
     },
@@ -42,7 +59,6 @@ SOURCES = [
         "name": "Defender XDR",
         "url": "https://learn.microsoft.com/en-us/defender-xdr/whats-new",
         "cadence": "monthly",
-        "category": "Security & Compliance",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
@@ -50,7 +66,6 @@ SOURCES = [
         "name": "Entra ID",
         "url": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
         "cadence": "monthly",
-        "category": "Identity & Access",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-entra-blog",
         "selector": "h2, h3, p",
     },
@@ -62,15 +77,13 @@ SOURCES = [
         # Per-build release notes remain at: learn.microsoft.com/en-us/officeupdates/teams-admin
         "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/bg-p/MicrosoftTeamsBlog",
         "cadence": "monthly",
-        "category": "Collaboration & Productivity",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftteamsblog",
         "selector": "h2, h3, p",
     },
     {
-        "name": "Microsoft Security Blog (Zero Trust)",
+        "name": "Microsoft Security Blog",
         "url": "https://www.microsoft.com/en-us/security/blog/",
         "cadence": "rolling",
-        "category": "Security & Compliance",
         "rss": "https://www.microsoft.com/en-us/security/blog/feed/",
         "selector": None,
     },
@@ -78,7 +91,6 @@ SOURCES = [
         "name": "Purview",
         "url": "https://learn.microsoft.com/en-us/purview/whats-new",
         "cadence": "monthly",
-        "category": "Security & Compliance",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-purview-blog",
         "selector": "h2, h3, p",
     },
@@ -89,7 +101,6 @@ SOURCES = [
         # and aligned with the rest of the SOURCES entries.
         "url": "https://learn.microsoft.com/en-us/sharepoint/what-s-new-in-sharepoint",
         "cadence": "rolling",
-        "category": "Collaboration & Productivity",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=SPBlog",
         "selector": "h2, h3, p",
     },
@@ -97,7 +108,6 @@ SOURCES = [
         "name": "Microsoft 365 Roadmap",
         "url": "https://www.microsoft.com/en-us/microsoft-365/roadmap",
         "cadence": "rolling",
-        "category": "Cross-platform",
         "rss": "https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS",
         "selector": None,
         # Confirmed 2026-07-17: this feed has no per-entry publish date — every
@@ -114,7 +124,6 @@ SOURCES = [
         # RSS falls back to M365 blog feed — no dedicated Agent 365 RSS confirmed yet.
         "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog",
         "cadence": "monthly",
-        "category": "Automation & AI",
         "rss": "https://www.microsoft.com/en-us/microsoft-365/blog/feed/",
         "selector": "h2, h3, p",
     },
@@ -124,7 +133,6 @@ SOURCES = [
         # (active content as of Dec 2025). /whats-new-mde is the ARCHIVE. No change.
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
         "cadence": "monthly",
-        "category": "Visibility & Automation",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
@@ -134,7 +142,6 @@ SOURCES = [
         # Actively updated — confirmed May 2026 content.
         "url": "https://learn.microsoft.com/en-us/defender-for-identity/whats-new",
         "cadence": "monthly",
-        "category": "Visibility & Automation",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
@@ -142,7 +149,6 @@ SOURCES = [
         "name": "Defender for Office 365",
         "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
         "cadence": "monthly",
-        "category": "Visibility & Automation",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
     },
@@ -150,7 +156,6 @@ SOURCES = [
         "name": "Exchange Online",
         "url": "https://learn.microsoft.com/en-us/exchange/whats-new",
         "cadence": "monthly",
-        "category": "Apps",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=exchange",
         "selector": "h2, h3, p",
     },
@@ -158,7 +163,6 @@ SOURCES = [
         "name": "Windows 365",
         "url": "https://learn.microsoft.com/en-us/windows-365/whats-new",
         "cadence": "monthly",
-        "category": "Devices",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=windows-itpro-blog",
         "selector": "h2, h3, p",
     },
@@ -169,7 +173,6 @@ SOURCES = [
         # blog that serve as the canonical Autopatch update digest.
         "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/bg-p/Windows10Blog",
         "cadence": "monthly",
-        "category": "Devices",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=windows-itpro-blog",
         "selector": "h2, h3, p",
     },
@@ -177,7 +180,6 @@ SOURCES = [
         "name": "Autopilot",
         "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
         "cadence": "monthly",
-        "category": "Devices",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftintuneblog",
         "selector": "h2, h3, p",
     },
@@ -188,7 +190,6 @@ SOURCES = [
         # Blog: techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog
         "url": "https://techcommunity.microsoft.com/category/microsoft365copilot/blog/microsoft365copilotblog",
         "cadence": "monthly",
-        "category": "Apps",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=Microsoft365CopilotBlog",
         "selector": "h2, h3, p",
     },
@@ -199,7 +200,6 @@ SOURCES = [
         # Blog: techcommunity.microsoft.com/category/microsoft365copilot/blog/copilot-studio-blog
         "url": "https://techcommunity.microsoft.com/category/microsoft365copilot/blog/copilot-studio-blog",
         "cadence": "monthly",
-        "category": "Visibility & Automation",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=copilot-studio-blog",
         "selector": "h2, h3, p",
     },
@@ -209,7 +209,6 @@ SOURCES = [
         # relevant to Modern Work automation. Hosted at powerplatform.microsoft.com.
         "url": "https://powerplatform.microsoft.com/en-us/blog/",
         "cadence": "monthly",
-        "category": "Visibility & Automation",
         "rss": "https://powerplatform.microsoft.com/en-us/blog/feed/",
         "selector": None,
     },
@@ -220,7 +219,6 @@ SOURCES = [
         # Blog: techcommunity.microsoft.com/category/microsoft-viva/blog/microsoftvivablog
         "url": "https://techcommunity.microsoft.com/category/microsoft-viva/blog/microsoftvivablog",
         "cadence": "monthly",
-        "category": "Apps",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftVivaBlog",
         "selector": "h2, h3, p",
     },
@@ -230,7 +228,6 @@ SOURCES = [
         # M365 apps. High-signal source for security-conscious Modern Work engineers.
         "url": "https://msrc.microsoft.com/update-guide/",
         "cadence": "rolling",
-        "category": "Visibility & Automation",
         "rss": "https://api.msrc.microsoft.com/update-guide/rss",
         "selector": None,
     },
@@ -240,7 +237,6 @@ SOURCES = [
         # on deploying and configuring M365 services. YouTube Atom feed via feedparser.
         "url": "https://www.youtube.com/@MicrosoftMechanics",
         "cadence": "rolling",
-        "category": "Visibility & Automation",
         "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnUYZLuoy1rq1aVMwx4aTzw",
         "selector": None,
     },
@@ -251,7 +247,6 @@ SOURCES = [
         # Client version tracking (if needed): /entra/global-secure-access/reference-windows-client-release-history
         "url": "https://learn.microsoft.com/en-us/entra/global-secure-access/whats-new",
         "cadence": "monthly",
-        "category": "Network",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-entra-blog",
         "selector": "h2, h3, p",
     },
@@ -262,7 +257,6 @@ SOURCES = [
         "name": "Intune Known Issues",
         "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -271,7 +265,6 @@ SOURCES = [
         "name": "Windows 365 Known Issues",
         "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -280,7 +273,6 @@ SOURCES = [
         "name": "Autopilot Known Issues",
         "url": "https://learn.microsoft.com/en-us/autopilot/known-issues",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -291,7 +283,6 @@ SOURCES = [
     #     "name": "Autopatch Known Issues",
     #     "url": "TODO",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -303,7 +294,6 @@ SOURCES = [
     #     "name": "Defender for Endpoint Known Issues",
     #     "url": "https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-microsoft-defender-antivirus",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -314,7 +304,6 @@ SOURCES = [
     #     "name": "Defender for Office 365 Known Issues",
     #     "url": "TODO",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -323,7 +312,6 @@ SOURCES = [
         "name": "Defender XDR Known Issues",
         "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -335,7 +323,6 @@ SOURCES = [
         # publishes a wider-scoped known-issues page.
         "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -347,7 +334,6 @@ SOURCES = [
         # breaking-change notices, which partially fills the gap.
         "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -359,7 +345,6 @@ SOURCES = [
     #     "name": "Teams Known Issues",
     #     "url": "https://learn.microsoft.com/en-us/microsoftteams/known-issues",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -370,7 +355,6 @@ SOURCES = [
     #     "name": "SharePoint Known Issues",
     #     "url": "TODO",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -381,7 +365,6 @@ SOURCES = [
     #     "name": "OneDrive Known Issues",
     #     "url": "TODO",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -392,7 +375,6 @@ SOURCES = [
     #     "name": "Exchange Known Issues",
     #     "url": "TODO",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -403,7 +385,6 @@ SOURCES = [
     #     "name": "Viva Known Issues",
     #     "url": "TODO",
     #     "cadence": "rolling",
-    #     "category": "Service Health & Known Issues",
     #     "rss": None,
     #     "selector": "h2, h3, p",
     #     "health": True,
@@ -412,7 +393,6 @@ SOURCES = [
         "name": "Windows Release Health",
         "url": "https://learn.microsoft.com/en-us/windows/release-health/",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": None,
         "selector": "h2, h3, p",
         "health": True,
@@ -423,7 +403,6 @@ SOURCES = [
         # can affect M365-dependent services (Exchange Online, Teams, SharePoint).
         "url": "https://status.azure.com",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": "https://azurestatuscdn.azureedge.net/en-us/status/feed/",
         "selector": None,
         "health": True,
@@ -435,7 +414,6 @@ SOURCES = [
         # If Graph API access is added later, Message Center replaces this entirely.
         "url": "https://status.office365.com",
         "cadence": "rolling",
-        "category": "Service Health & Known Issues",
         "rss": "https://status.office365.com/api/messages",
         "selector": None,
         "health": True,
