@@ -14,9 +14,21 @@ TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 mkdir -p "$LOG_DIR"
 echo "[$TIMESTAMP] Health scraper starting..." >> "$LOG_DIR/health.log"
 
-# Pull latest code
+# Pull latest code — discard any local health.json/deadlines.json drift
+# first, same as weekly-run.sh. Without this, a routine purge write here
+# (purge_expired_deadlines() rewrites deadlines.json's "updated" timestamp
+# on every run, even a no-op purge) leaves that file locally modified.
+# That's harmless in isolation, but the instant any commit on origin/main
+# also touches deadlines.json, this pull refuses to fast-forward — and
+# since deploy.sh's 5-minute pull hits the identical conflict with no
+# error surfaced, the whole site silently stops receiving updates until
+# someone notices and clears the drift by hand. See MAINTENANCE.md.
 cd "$REPO_DIR"
-git pull --quiet >> "$LOG_DIR/health.log" 2>&1
+git checkout -- site/data/health.json site/data/deadlines.json 2>/dev/null || true
+if ! git pull --quiet >> "$LOG_DIR/health.log" 2>&1; then
+    echo "[$TIMESTAMP] ERROR: git pull failed — check for local drift on tracked files (git status) or a merge conflict. Site will not receive updates until this is resolved." >> "$LOG_DIR/health.log"
+    exit 1
+fi
 
 # Activate venv and run health-only scrape
 source "$VENV_DIR/bin/activate"

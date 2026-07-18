@@ -244,6 +244,50 @@ If links to the site work fine in a browser but show "content blocked" or fail t
 
 This affects all social preview crawlers, not just LinkedIn.
 
+### Site changes pushed but not appearing live ("stuck" deploy)
+
+Happened for real on 2026-07-17: production sat 13 commits behind `origin/main`
+for weeks — the whole Modern Work taxonomy reframe plus everything after it —
+with no error visible anywhere until someone went looking.
+
+**Root cause:** `site/data/deadlines.json` gets rewritten by every
+`purge_expired_deadlines()` run (its `"updated"` timestamp changes even when
+nothing actually expired), but nothing on the LXC ever commits that file. It
+sits as harmless local drift — until a commit on `origin/main` *also* touches
+`deadlines.json` (e.g. adding a new Key Date from the local repo), at which
+point `git pull` refuses to fast-forward. `weekly-run.sh` already discards
+this drift before pulling; `health-run.sh` didn't (fixed 2026-07-17). Once one
+cron's pull starts failing this way, every other cron hits the identical
+conflict, and `deploy.sh`'s pull failure was silent (also hardened
+2026-07-17) — so the site just quietly stops updating with nothing in the
+log to flag it.
+
+🖥️ **LXC — check first, whenever "I pushed X but the site doesn't show it":**
+```bash
+cd /opt/modern-work-weekly/repo
+git status                    # anything modified/untracked on a tracked file?
+git log --oneline -3          # compare HEAD against the latest commit on GitHub
+```
+If `git status` shows local changes to a tracked file (`site/data/deadlines.json`
+is the usual suspect) and `HEAD` is behind GitHub's `main`:
+```bash
+git checkout -- site/data/deadlines.json site/data/health.json
+git pull
+```
+Then force the build once, since you just pulled manually and `deploy.sh`'s
+own next pull will see nothing new to fast-forward and skip the rebuild:
+```bash
+cd /opt/modern-work-weekly/repo/site
+hugo --minify --baseURL "https://modernworkweekly.com"
+rsync -av --delete public/ /opt/modern-work-weekly/site/public/
+```
+
+**Also check** whenever debugging a stuck deploy: any script written
+directly on the LXC (outside the repo's normal edit-locally-push-pull flow)
+stays untracked and invisible to the repo — `git status` surfaces those too
+under "Untracked files." Commit anything worth keeping (`git add`, `git commit`,
+`git push`), then `git pull` on your local machine so both clones agree.
+
 ---
 
 ## API / cost management
@@ -286,4 +330,5 @@ cat /opt/modern-work-weekly/.env   # should show ANTHROPIC_API_KEY=sk-ant-...
 [ ] As needed: add/retire sources in sources.py when Microsoft changes portals
 [ ] As needed: check df -h / free -h if the LXC starts feeling sluggish
 [ ] Periodically: confirm all 3 crons still registered (`crontab -l`) and logs are rotating (logrotate)
+[ ] Weekly: after pushing anything that touches site/data/deadlines.json specifically, confirm it actually landed live (curl modernworkweekly.com/data/deadlines.json) — see "Site changes pushed but not appearing live" above
 ```

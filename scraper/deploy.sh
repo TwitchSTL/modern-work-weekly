@@ -17,7 +17,10 @@ log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 # Pull latest — exit quietly if already up to date
 cd "$REPO"
 BEFORE=$(git rev-parse HEAD)
-git pull origin main >> "$LOG" 2>&1
+if ! git pull origin main >> "$LOG" 2>&1; then
+  log "ERROR: git pull failed — this box will not receive any updates until this is fixed. Likely cause: local uncommitted changes on a tracked file (run 'git status' on the box) conflicting with an incoming commit. See MAINTENANCE.md."
+  exit 1
+fi
 AFTER=$(git rev-parse HEAD)
 
 if [ "$BEFORE" = "$AFTER" ]; then

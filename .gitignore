@@ -3,6 +3,11 @@ state/seen_items.json
 state/weekly_draft_*.json
 state/linkedin_draft_*.txt
 
+# Logs — stays on LXC only. ~30 of these got committed before this line
+# existed (2026-05-17 through 2026-06-22); those were detracked via
+# `git rm --cached` and stay on disk untouched. Do not re-add them.
+logs/*.log
+
 # Secrets
 .env
 *.env
