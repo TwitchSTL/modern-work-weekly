@@ -49,10 +49,20 @@ flowchart LR
     C --> H
     H --> I["⚡ GitHub Actions\nbuild check only"]
     H --> K["🔁 deploy.sh\nLXC cron, every 5 min"]
-    K --> J["🌐 modernworkweekly.com"]
+
+    subgraph Published [" "]
+        direction TB
+        J["🌐 modernworkweekly.com"]
+        M["📣 LinkedIn newsletter\n(posted manually)"]
+    end
+
+    K --> J
+    L -.->|"✍️ manual: review,\nlink content, write summary"| M
 ```
 
 `git push` triggers two independent things: GitHub Actions runs a build check (does `hugo --minify` still succeed?) and stops there — it does **not** deploy. The actual publish path is pull-based: a cron on the LXC itself polls GitHub and does the real build + deploy, entirely separate from GitHub Actions.
+
+The dashed line is the one manual step in the whole pipeline: Claude drafts the LinkedIn edition, but it doesn't get auto-published. Reviewing it, linking the content, and writing the summary before posting is done by hand.
 
 Three cron jobs run automatically on a self-hosted LXC:
 
