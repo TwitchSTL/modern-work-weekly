@@ -27,7 +27,7 @@ import feedparser
 import requests
 from bs4 import BeautifulSoup
 
-from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS
+from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS, DEFAULT_CATEGORY
 from dateutils import item_age_days
 
 # ── Paths ──────────────────────────────────────────────────────────────────
@@ -76,7 +76,8 @@ MAX_PENDING_AGE_DAYS = 21
 
 def load_published_urls(posts_dir: Path) -> set[str]:
     """Collect every source URL already published in a prior post's category
-    sections (Identity, Devices, Apps, Data, Network, Visibility & Automation).
+    sections (Identity & Access, Endpoint & Device Management, Collaboration
+    & Productivity, AI & Copilot, Employee Experience, Security & Compliance).
 
     This is a backstop against seen_items.json losing entries between runs —
     it's gitignored and lives only on the LXC, so it has no second copy to
@@ -135,8 +136,14 @@ def item_id(source_name: str, title: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:16]
 
 
-def classify_item(title: str, body: str) -> str:
-    """Classify an item into a category based on keyword matching."""
+def classify_item(title: str, body: str) -> tuple[str, bool]:
+    """Classify an item into a category based on keyword matching.
+
+    Returns (category, matched). matched=False means no keyword scored above
+    zero and the category is DEFAULT_CATEGORY — a guess, not a real signal.
+    Callers should track this rather than treat every item as equally
+    confident; see write_classification_stats().
+    """
     combined = (title + " " + body).lower()
     scores = {cat: 0 for cat in CLASSIFICATION_KEYWORDS}
     for cat, keywords in CLASSIFICATION_KEYWORDS.items():
@@ -144,7 +151,9 @@ def classify_item(title: str, body: str) -> str:
             if kw in combined:
                 scores[cat] += 1
     best = max(scores, key=scores.get)
-    return best if scores[best] > 0 else "Visibility & Automation"
+    if scores[best] > 0:
+        return best, True
+    return DEFAULT_CATEGORY, False
 
 
 def detect_phase(title: str, body: str) -> str:
@@ -371,16 +380,18 @@ def fetch_html(source: dict) -> list[dict]:
 
 def enrich_item(raw: dict) -> dict:
     """Add classification, phase, action fields to a raw item."""
-    category = classify_item(raw["title"], raw["body"])
+    category, matched = classify_item(raw["title"], raw["body"])
     # Microsoft Viva's "Research Drop" posts are WorkLab-style workplace/AI
     # research essays, not product feature updates. Keyword-classifying them
-    # into the six Zero Trust pillars was why they never surfaced: they don't
-    # carry admin actions or engineer-relevant substance, so they lost out to
+    # into the six pillars was why they never surfaced: they don't carry
+    # admin actions or engineer-relevant substance, so they lost out to
     # Teams/Copilot/Defender volume in whichever pillar they landed in.
     # Routing them to their own bucket lets digest.py give them dedicated,
-    # exec-only treatment instead of silently dropping them.
+    # exec-only treatment instead of silently dropping them. This is an
+    # intentional override, not a fallback, so matched stays True.
     if raw["source"] == "Microsoft Viva" and raw["title"].startswith("Research Drop"):
         category = "Research & Trends"
+        matched = True
     phase = detect_phase(raw["title"], raw["body"])
     action = detect_admin_action(raw["body"])
     iid = item_id(raw["source"], raw["title"])
@@ -392,6 +403,7 @@ def enrich_item(raw: dict) -> dict:
         "url": raw["url"],
         "date": raw["date"],
         "category": category,
+        "category_matched": matched,
         "phase": phase,
         "admin_action": action,
         "impacted_workloads": [raw["source"]],
@@ -452,6 +464,47 @@ def write_health_data(health_items: list[dict]):
     with open(HEALTH_DATA_FILE, "w") as f:
         json.dump(payload, f, indent=2)
     log.info(f"Health data written → {HEALTH_DATA_FILE} ({len(health_items)} items, {total_new} new since last digest)")
+
+
+CLASSIFICATION_STATS_FILE = STATE_DIR / "classification_stats.json"
+CLASSIFICATION_STATS_HISTORY_LIMIT = 52  # roughly a year of weekly runs
+
+
+def write_classification_stats(new_items: list[dict], grouped: dict, run_date: str):
+    """Append this run's classification breakdown to a rolling stats file.
+
+    Tracks per-category item counts and how many items fell back to
+    DEFAULT_CATEGORY (category_matched=False) instead of a real keyword hit.
+    A rising fallback rate, or a pillar that stays empty run after run, is
+    the signal that the keyword lists in sources.py need new terms — visible
+    here instead of requiring manual inspection of pending_draft.json, which
+    is how the Viva/Roadmap issues were originally found.
+    """
+    history = []
+    if CLASSIFICATION_STATS_FILE.exists():
+        try:
+            with open(CLASSIFICATION_STATS_FILE) as f:
+                history = json.load(f).get("history", [])
+        except Exception as e:
+            log.warning(f"Could not read {CLASSIFICATION_STATS_FILE}, starting fresh: {e}")
+
+    fallback_items = [it for it in new_items if not it.get("category_matched", True)]
+    entry = {
+        "run_date": run_date,
+        "total_items": len(new_items),
+        "by_category": {cat: len(items) for cat, items in grouped.items()},
+        "fallback_count": len(fallback_items),
+        "fallback_titles": [it["title"] for it in fallback_items][:10],
+    }
+    history.append(entry)
+    history = history[-CLASSIFICATION_STATS_HISTORY_LIMIT:]
+
+    with open(CLASSIFICATION_STATS_FILE, "w") as f:
+        json.dump({"history": history}, f, indent=2)
+    log.info(
+        f"Classification stats recorded — {entry['total_items']} items, "
+        f"{entry['fallback_count']} fallback → {CLASSIFICATION_STATS_FILE}"
+    )
 
 
 def purge_expired_deadlines():
@@ -644,6 +697,8 @@ def run_scraper(args):
 
     run_date = datetime.now(timezone.utc).date().isoformat()
     sources_this_run = [s["name"] for s in sources_to_run]
+
+    write_classification_stats(new_items, grouped, run_date)
 
     # ── Per-run snapshot (dated, for reference / manual replay) ───────────────
     snapshot = {

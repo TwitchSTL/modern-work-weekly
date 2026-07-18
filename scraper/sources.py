@@ -443,48 +443,85 @@ SOURCES = [
     },
 ]
 
-# Classification keywords — Zero Trust pillar alignment
-# Pillars: Identity, Devices, Apps, Data, Network, Visibility & Automation
+# Classification keywords — Modern Work practice-area alignment
+# Pillars: Identity & Access, Endpoint & Device Management, Collaboration &
+# Productivity, AI & Copilot, Employee Experience, Security & Compliance
+#
+# Reframed 2026-07 from the prior Zero Trust security-pillar taxonomy
+# (Identity, Devices, Apps, Data, Network, Visibility & Automation) so the
+# site's categories reflect Modern Work practice areas rather than a purely
+# security lens. Every keyword from the old taxonomy was preserved and
+# redistributed below — nothing was dropped, only regrouped — plus new
+# Employee Experience terms since "viva"/"yammer" alone weren't enough
+# surface area for that pillar to reliably trigger. Historical posts (through
+# 2026-07-14) keep their original Zero Trust category labels; this taxonomy
+# applies starting with the next digest (forward-only, no retroactive
+# relabeling — avoids breaking links into already-published category
+# sections).
 CLASSIFICATION_KEYWORDS = {
-    "Identity": [
+    "Identity & Access": [
+        # unchanged from prior "Identity"
         "entra", "azure ad", "conditional access", "mfa", "passwordless",
         "passkey", "sso", "saml", "oauth", "identity", "authentication",
         "hard-match", "cloud sync", "connect sync", "privileged", "pim",
         "lifecycle workflows", "external mfa", "certificate-based", "cba",
         "entitlement management", "access review", "identity governance",
     ],
-    "Devices": [
+    "Endpoint & Device Management": [
+        # unchanged from prior "Devices"
         "intune", "autopatch", "mdm", "enrollment", "compliance policy",
         "configuration profile", "remediation", "hotpatch", "windows update",
         "endpoint", "device management", "managed device", "linux", "macos",
         "android enterprise", "apple", "tvos", "visionos", "epm",
         "endpoint privilege", "laps", "firmware",
     ],
-    "Apps": [
-        "teams", "sharepoint", "onedrive", "outlook", "copilot", "calendar",
-        "meeting", "channel", "viva", "loop", "planner", "yammer",
-        "forms", "power apps", "microsoft 365 apps", "office", "ai charts",
+    "Collaboration & Productivity": [
+        # from prior "Apps", minus copilot/viva/yammer/power apps (moved below)
+        "teams", "sharepoint", "onedrive", "outlook", "calendar",
+        "meeting", "channel", "loop", "planner", "forms",
+        "microsoft 365 apps", "office",
     ],
-    "Data": [
+    "AI & Copilot": [
+        # copilot/ai charts/power apps from prior "Apps" + the AI/agent/Power
+        # Platform terms from prior "Visibility & Automation"
+        "copilot", "ai charts", "power apps", "copilot studio", "agent 365",
+        "shadow ai", "ai gateway", "prompt injection", "llm", "generative ai",
+        "power automate", "power platform",
+    ],
+    "Employee Experience": [
+        # viva/yammer moved from prior "Apps"; rest are new additions
+        "viva", "yammer", "viva engage", "viva insights", "viva learning",
+        "viva goals", "employee experience", "engagement", "wellbeing",
+        "workplace analytics", "worklab",
+    ],
+    "Security & Compliance": [
+        # prior "Data" + "Network" + the security-ops portion of prior
+        # "Visibility & Automation" (everything except AI/agent terms, which
+        # moved to "AI & Copilot" above)
         "purview", "dlp", "sensitivity label", "insider risk", "dspm",
         "information protection", "data loss", "data governance",
         "compliance", "retention", "ediscovery", "communications compliance",
         "records management", "data lifecycle",
-    ],
-    "Network": [
-        "global secure access", "network", "vpn", "firewall", "ztna",
+        "global secure access", "gsa", "network", "vpn", "firewall", "ztna",
         "remote network", "traffic forwarding", "private access",
         "internet access", "cloud firewall", "network segmentation",
-    ],
-    "Visibility & Automation": [
         "defender", "sentinel", "attack disruption", "predictive shielding",
         "secure score", "vulnerability", "threat", "incident", "hunting",
+        "secure boot", "security baseline",
         "xdr", "siem", "soar", "graph api", "powershell", "rest api",
-        "automation", "agent", "copilot studio", "agent 365", "shadow ai",
-        "ai gateway", "prompt injection", "llm", "generative ai", "logic app",
-        "workflow", "api", "sdk", "webhook", "power automate", "power platform",
+        "automation", "logic app", "workflow", "api", "sdk", "webhook",
     ],
 }
+
+# Fallback category for an item that scores zero keyword hits across every
+# pillar above. Kept security-leaning on purpose — better to have an
+# unrecognized item surface under Security & Compliance for a human to
+# reclassify than have it silently disappear into a busy, unrelated pillar.
+# See classify_item() in scraper.py: it now reports whether an item's
+# category came from a real keyword match or this fallback, and
+# write_classification_stats() tracks the fallback rate per run so a rising
+# trend is visible instead of discovered by accident.
+DEFAULT_CATEGORY = "Security & Compliance"
 
 # Rollout phase keywords
 PHASE_KEYWORDS = {

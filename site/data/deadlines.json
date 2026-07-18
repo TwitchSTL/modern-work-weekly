@@ -5,7 +5,7 @@
       "date": "2026-06-30",
       "title": "Secure Boot 2023 Certificates",
       "action": "Check Secure Score. Deploy May 2026 CU across fleet before cert expiry.",
-      "pillar": "Devices",
+      "pillar": "Endpoint & Device Management",
       "applies_to": "Windows device fleets (Intune or SCCM managed)",
       "url": "https://support.microsoft.com/en-us/topic/kb5025885-how-to-manage-the-windows-boot-manager-revocations-for-secure-boot-changes-associated-with-cve-2023-24932-41a975df-beb2-40c1-99a3-b3ff139f832d"
     },
@@ -13,7 +13,7 @@
       "date": "2026-07-01",
       "title": "Entra Connect \u2192 Cloud Sync Migration",
       "action": "Begin readiness assessment now, especially if you have write-back scenarios or custom sync rules.",
-      "pillar": "Identity",
+      "pillar": "Identity & Access",
       "applies_to": "Hybrid identity orgs running Entra Connect",
       "url": "https://learn.microsoft.com/en-us/entra/identity/hybrid/cloud-sync/migrate-azure-ad-connect-to-cloud-sync"
     },
@@ -21,7 +21,7 @@
       "date": "2026-07-01",
       "title": "Purview Lifecycle Archiving GA",
       "action": "Scope retention policies for OneDrive/SharePoint now to maximize benefit at GA.",
-      "pillar": "Data",
+      "pillar": "Security & Compliance",
       "applies_to": "Orgs with Purview E3 or E5 licensing",
       "url": "https://learn.microsoft.com/en-us/purview/data-lifecycle-management"
     },
@@ -29,7 +29,7 @@
       "date": "2026-07-01",
       "title": "Purview Lifecycle Insights GA",
       "action": "Plan review of Purview recommendations; align with DLP and labeling strategy.",
-      "pillar": "Data",
+      "pillar": "Security & Compliance",
       "applies_to": "Orgs with Purview E3 or E5 licensing",
       "url": "https://learn.microsoft.com/en-us/purview/data-lifecycle-management"
     },
@@ -37,7 +37,7 @@
       "date": "2026-07-01",
       "title": "Work IQ Researcher Agent GA",
       "action": "Have agentic workflow integrations tested from the June preview window.",
-      "pillar": "Visibility & Automation",
+      "pillar": "AI & Copilot",
       "applies_to": "Microsoft 365 Copilot subscribers",
       "url": "https://techcommunity.microsoft.com/category/microsoft365/blog/agent-365-blog"
     },
@@ -45,7 +45,7 @@
       "date": "2026-08-01",
       "title": "Ubuntu 22.04 LTS EOS (Intune)",
       "action": "Identify 22.04 devices in Intune and start upgrade comms. New enrollments blocked after EOS.",
-      "pillar": "Devices",
+      "pillar": "Endpoint & Device Management",
       "applies_to": "Intune-managed Linux fleets",
       "url": "https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/supported-devices-browsers#linux"
     }

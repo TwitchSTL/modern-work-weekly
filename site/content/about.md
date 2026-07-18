@@ -9,11 +9,7 @@ _build:
 
 ## What this is
 
-**Modern Work** is Microsoft's framework for how organizations work in the cloud era — built around Microsoft 365, Teams, and the broader suite of productivity and security tools that keep people connected and data protected. At its core, Modern Work isn't just about apps. It's about enabling secure, productive work from anywhere, underpinned by Microsoft's **Zero Trust** security model.
-
-Zero Trust is the principle that no user, device, or network connection should be implicitly trusted — even inside a corporate perimeter. Microsoft has built their entire platform stack around it: identity verification through Entra ID, device health enforcement through Intune, data protection through Purview, threat detection through Defender, and network access control through Global Secure Access. Together, these form the pillars that Modern Work engineers are responsible for deploying, maintaining, and hardening every day.
-
-Modern Work Weekly is a weekly digest of changes across that stack — built for the engineers doing the actual work.
+**Modern Work** is Microsoft's umbrella for how organizations work in the cloud era: identity and access, endpoint and device management, collaboration and productivity, AI and Copilot, employee experience, and security and compliance. Modern Work Weekly is a weekly digest of changes across all six, built for the engineers doing the work.
 
 Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly pulls from 30+ official Microsoft sources, filters the noise, and surfaces what actually matters.
 
@@ -33,15 +29,14 @@ This is my attempt to solve that for myself, and share it with anyone else who f
 
 ## What's covered
 
-- **Endpoint management** — Intune for Windows, macOS, iOS, and Android. Configuration policies, compliance, enrollment, and the PowerShell and Graph API hooks underneath.
-- **Identity & access** — Entra ID, Conditional Access, External MFA, hybrid sync, Privileged Identity Management, and the expanding agent identity model.
-- **Collaboration & productivity** — Teams, SharePoint, OneDrive, and Exchange feature changes, plus Microsoft 365 Copilot updates as they land in these apps. This is the single largest category of weekly content.
-- **Defender for Endpoint** — XDR updates, attack disruption, identity-based detections, vulnerability management, and endpoint security policy changes.
-- **Defender for Office 365 (MDO)** — Anti-phishing, safe links, safe attachments, threat policies, and mail flow changes that affect your tenant's security posture.
-- **Microsoft Purview** — Sensitivity labels, DLP, Information Protection, Insider Risk Management, Communications Compliance, AI data governance, and the expanding Purview compliance surface.
-- **Security & Zero Trust** — Practical Zero Trust posture changes spanning Conditional Access, device compliance, Global Secure Access, Secure Score, and identity hardening — not framework theory.
-- **Licensing** — E3/E5 differences, Business Premium, Business Premium + Defender/Purview Suite Add-On, and Copilot licensing and guardrails before users go live.
-- **AI & Copilot governance** — Agent 365, Shadow AI controls, Copilot guardrails, and the intersection of AI agents and enterprise security policy.
+- **Identity & Access** — Entra ID, Conditional Access, External MFA, hybrid sync, Privileged Identity Management, and the expanding agent identity model.
+- **Endpoint & Device Management** — Intune for Windows, macOS, iOS, and Android; Autopatch, Autopilot, Windows 365; configuration policies, compliance, and the PowerShell/Graph API hooks underneath.
+- **Collaboration & Productivity** — Teams, SharePoint, OneDrive, and Exchange feature changes. Currently the largest single category of weekly content.
+- **AI & Copilot** — Microsoft 365 Copilot, Copilot Studio, Agent 365, and Power Platform automation, plus the licensing and governance guardrails that come with them.
+- **Employee Experience** — Viva Insights, Learning, Engage, and Goals, plus Microsoft's own workplace research translated into what it means for your organization's planning.
+- **Security & Compliance** — Defender (XDR, Endpoint, Identity, Office 365), Microsoft Purview (DLP, sensitivity labels, insider risk, data governance), Global Secure Access, and the practical Zero Trust posture work underneath: Conditional Access, device compliance, Secure Score.
+
+Licensing and cost implications (E3/E5, Business Premium, Copilot add-ons) get called out wherever they're relevant, rather than tracked as a separate category.
 
 ---
 

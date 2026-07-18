@@ -15,12 +15,12 @@
   const WEEKS_DEFAULT = 5;
 
   const PILLAR_COLORS = {
-    'Identity':                '#a78bfa',
-    'Devices':                 '#3fb950',
-    'Apps':                    '#58a6ff',
-    'Data':                    '#f0883e',
-    'Network':                 '#39d353',
-    'Visibility & Automation': '#d2a8ff',
+    'Identity & Access':             '#a78bfa',
+    'Endpoint & Device Management':  '#3fb950',
+    'Collaboration & Productivity':  '#58a6ff',
+    'AI & Copilot':                  '#f0883e',
+    'Employee Experience':           '#f778ba',
+    'Security & Compliance':         '#d2a8ff',
   };
 
   function toLocal(dateStr) {

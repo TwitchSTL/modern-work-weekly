@@ -9,15 +9,25 @@
  *   data-no-counters="true"  — hide the (N items) badge
  */
 
-// Zero Trust pillar colors — ordered longest-key-first for partial matching
+// Modern Work pillar colors (2026-07 taxonomy) — checked first, exact-ish keys.
+// Legacy Zero Trust pillar names follow below: posts published before
+// 2026-07-14 keep their original category headings (forward-only rename, not
+// retroactively relabeled), so those keys stay mapped to their original
+// colors indefinitely rather than being removed.
 const PILLAR_COLORS = [
-  { keys: ['visibility & automation', 'automation & ai', 'ai & automation'],  color: '#d2a8ff' },
-  { keys: ['collaboration & productivity'],                                    color: '#58a6ff' },
-  { keys: ['identity & access', 'identity'],                                  color: '#a78bfa' },
-  { keys: ['endpoint management', 'devices'],                                  color: '#3fb950' },
-  { keys: ['security & compliance', 'data'],                                  color: '#f0883e' },
-  { keys: ['network'],                                                         color: '#39d353' },
+  { keys: ['identity & access'],            color: '#a78bfa' },
+  { keys: ['endpoint & device management'], color: '#3fb950' },
+  { keys: ['collaboration & productivity'], color: '#58a6ff' },
+  { keys: ['ai & copilot'],                 color: '#f0883e' },
+  { keys: ['employee experience'],          color: '#f778ba' },
+  { keys: ['security & compliance'],        color: '#d2a8ff' },
+  // Legacy — Zero Trust pillar names on pre-2026-07-14 posts only
+  { keys: ['identity'],                                                        color: '#a78bfa' },
+  { keys: ['devices'],                                                         color: '#3fb950' },
   { keys: ['apps'],                                                            color: '#58a6ff' },
+  { keys: ['data'],                                                            color: '#f0883e' },
+  { keys: ['network'],                                                         color: '#39d353' },
+  { keys: ['visibility & automation', 'automation & ai', 'ai & automation'],   color: '#d2a8ff' },
   { keys: ['action required', 'action items', 'recommended actions'],         color: '#ff6b6b' },
 ];
 
@@ -31,16 +41,18 @@ function categoryColor(name) {
   return '#6e7681'; // neutral gray fallback
 }
 
-// Detect ZT pillar from Top 5 item text
+// Detect Modern Work pillar from Top 5 item text — mirrors CLASSIFICATION_KEYWORDS
+// in scraper/sources.py. Kept in sync manually since this runs client-side; if the
+// Python keyword lists change, update this to match.
 function detectPillar(text) {
   const t = text.toLowerCase();
-  if (/entra|azure ad|\bmfa\b|passkey|\bsso\b|\bpim\b|identity|conditional access|\bcba\b|entitlement/.test(t)) return 'identity';
-  if (/intune|autopatch|\bmdm\b|device|endpoint|macos|android|apple|windows update|\bepm\b|laps/.test(t)) return 'devices';
-  if (/teams|sharepoint|onedrive|outlook|copilot|viva|loop|planner|yammer|forms/.test(t)) return 'apps';
-  if (/purview|\bdlp\b|sensitivity label|insider risk|compliance|data governance|retention|ediscovery/.test(t)) return 'data';
-  if (/global secure access|\bztna\b|firewall|network|private access|internet access/.test(t)) return 'network';
-  if (/defender|sentinel|threat|incident|hunting|\bxdr\b|\bsiem\b|secure score|vulnerability|agent|api|automation/.test(t)) return 'visibility & automation';
-  return 'visibility & automation';
+  if (/entra|azure ad|\bmfa\b|passkey|\bsso\b|\bpim\b|identity|conditional access|\bcba\b|entitlement|passwordless|\bsaml\b|\boauth\b/.test(t)) return 'identity & access';
+  if (/intune|autopatch|\bmdm\b|device|endpoint|macos|android|apple|windows update|\bepm\b|laps|autopilot|windows 365|hotpatch/.test(t)) return 'endpoint & device management';
+  if (/teams|sharepoint|onedrive|outlook|loop|planner|forms|calendar|meeting|channel/.test(t)) return 'collaboration & productivity';
+  if (/copilot|agent 365|shadow ai|ai gateway|prompt injection|\bllm\b|generative ai|power automate|power platform|power apps/.test(t)) return 'ai & copilot';
+  if (/viva|yammer|employee experience|engagement|wellbeing|workplace analytics|worklab/.test(t)) return 'employee experience';
+  if (/purview|\bdlp\b|sensitivity label|insider risk|compliance|data governance|retention|ediscovery|defender|sentinel|threat|incident|hunting|\bxdr\b|\bsiem\b|secure score|vulnerability|global secure access|\bztna\b|firewall|network|private access|internet access/.test(t)) return 'security & compliance';
+  return 'security & compliance';
 }
 
 document.addEventListener('DOMContentLoaded', function () {

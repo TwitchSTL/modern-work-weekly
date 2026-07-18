@@ -1,14 +1,14 @@
 {{ with .Site.Data.deadlines }}
 {{ $allDeadlines := .deadlines }}
 {{ $pillarColors := dict
-  "Identity"               "#a78bfa"
-  "Devices"                "#3fb950"
-  "Apps"                   "#58a6ff"
-  "Data"                   "#f0883e"
-  "Network"                "#39d353"
-  "Visibility & Automation" "#d2a8ff"
+  "Identity & Access"            "#a78bfa"
+  "Endpoint & Device Management" "#3fb950"
+  "Collaboration & Productivity" "#58a6ff"
+  "AI & Copilot"                 "#f0883e"
+  "Employee Experience"          "#f778ba"
+  "Security & Compliance"        "#d2a8ff"
 }}
-{{ $pillars := slice "Identity" "Devices" "Apps" "Data" "Network" "Visibility & Automation" }}
+{{ $pillars := slice "Identity & Access" "Endpoint & Device Management" "Collaboration & Productivity" "AI & Copilot" "Employee Experience" "Security & Compliance" }}
 
 <div class="sidebar-panel deadlines-sidebar">
   <div class="sidebar-panel-header">

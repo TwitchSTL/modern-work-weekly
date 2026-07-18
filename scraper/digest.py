@@ -62,7 +62,7 @@ Format rules:
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
   `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
-- Section order must be: Top 5 → pillar category sections (Identity, Devices, Apps, Data, Network, Visibility & Automation) → Action Required → sources front matter. Do NOT place Action Required before the category sections.
+- Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → sources front matter. Do NOT place Action Required before the category sections.
 - Action Required section: ALWAYS include this section — never omit it. Include any items with deadlines, required admin steps, patch obligations, CVE mitigations, governance decisions, or deprecation timelines. Use the same bullet format as category sections, with the deadline date or urgency called out prominently at the start of the description. If nothing is strictly time-sensitive this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 
@@ -73,10 +73,10 @@ exchange, copilot, copilot-studio, zero-trust, modern-work, identity,
 endpoint-management, conditional-access, global-secure-access, viva, windows,
 teams-rooms, data-lifecycle, shadow-ai, dspm, hotpatch, power-platform
 
-Categories align to Microsoft Zero Trust pillars — use exactly these names:
-Identity, Devices, Apps, Data, Network, Visibility & Automation
+Categories align to Modern Work practice areas — use exactly these names:
+Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance
 
-Map content accordingly: Entra/MFA/PIM → Identity; Intune/Autopatch/MDM → Devices; Teams/SharePoint/Copilot features → Apps; Purview/DLP/Sensitivity Labels → Data; Global Secure Access/networking → Network; Defender/SIEM/Graph API/AI agents → Visibility & Automation
+Map content accordingly: Entra/MFA/PIM → Identity & Access; Intune/Autopatch/MDM → Endpoint & Device Management; Teams/SharePoint/OneDrive/Exchange → Collaboration & Productivity; Microsoft 365 Copilot/Copilot Studio/Agent 365/Power Platform → AI & Copilot; Viva/employee engagement or wellbeing content → Employee Experience; Purview/DLP/Defender/Global Secure Access/SIEM/Graph API → Security & Compliance
 
 Tone: confident, peer-to-peer, no fluff. Write like a senior engineer briefing their team.
 
@@ -108,6 +108,8 @@ Format rules:
 - ## If You Take No Action — plain-language consequences for the 2-3 highest-risk items only
 
 Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, cyber insurance requirements, GDPR, state privacy laws.
+
+Strategic framing: when a change affects identity, device, or network access controls, frame its significance in Zero Trust maturity terms where it helps leadership understand posture, e.g. "closes an implicit-trust gap," "strengthens least-privilege enforcement," "extends verification to a previously trusted zone." This is a strategy lens for identity/device/network/security items specifically, used where it adds insight, not a label to attach to every row. Collaboration, AI/Copilot, and employee-experience items don't need it.
 
 Source citations — REQUIRED. Executives trust named references, not raw URLs:
 - At the end of EVERY section (including Risk & Compliance, Planning Horizon, and If You Take No Action), you MUST include a line formatted exactly as:

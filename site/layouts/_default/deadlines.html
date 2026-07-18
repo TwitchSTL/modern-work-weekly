@@ -3,19 +3,19 @@
 
 {{/* Pillar → accent color map — matches PILLAR_COLORS in calendar.js */}}
 {{ $colors := dict
-  "Identity"                "#a78bfa"
-  "Devices"                 "#3fb950"
-  "Apps"                    "#58a6ff"
-  "Data"                    "#f0883e"
-  "Network"                 "#39d353"
-  "Visibility & Automation" "#d2a8ff"
+  "Identity & Access"            "#a78bfa"
+  "Endpoint & Device Management" "#3fb950"
+  "Collaboration & Productivity" "#58a6ff"
+  "AI & Copilot"                 "#f0883e"
+  "Employee Experience"          "#f778ba"
+  "Security & Compliance"        "#d2a8ff"
 }}
 
 <div class="container deadlines-page">
 
   <header class="deadlines-header">
     <h1 class="deadlines-title">Key Dates</h1>
-    <p class="deadlines-sub">Upcoming Microsoft 365 rollout milestones, feature retirements, and compliance windows — organized by Zero Trust pillar. Not everything here requires action; use the <strong>Applies to</strong> note to decide if it's relevant to your environment.</p>
+    <p class="deadlines-sub">Upcoming Microsoft 365 rollout milestones, feature retirements, and compliance windows — organized by Modern Work practice area. Not everything here requires action; use the <strong>Applies to</strong> note to decide if it's relevant to your environment.</p>
     <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
   </header>
 
@@ -30,7 +30,7 @@
   </section>
 
   {{/* ── Deadlines by pillar ── */}}
-  {{ $pillars := slice "Identity" "Devices" "Apps" "Data" "Network" "Visibility & Automation" }}
+  {{ $pillars := slice "Identity & Access" "Endpoint & Device Management" "Collaboration & Productivity" "AI & Copilot" "Employee Experience" "Security & Compliance" }}
   {{ $deadlines := .deadlines }}
 
   <section class="deadlines-list">
