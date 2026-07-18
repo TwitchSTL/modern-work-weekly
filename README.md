@@ -94,7 +94,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 
 ## 📁 Repository layout
 
-<details>
+<details open>
 <summary><strong>scraper/</strong> - Data collection and digest drafting</summary>
 
 | File | Description |
@@ -108,7 +108,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 
 </details>
 
-<details>
+<details open>
 <summary><strong>state/</strong> - Persisted on LXC, gitignored</summary>
 
 | File | Description |
@@ -121,7 +121,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 
 </details>
 
-<details>
+<details open>
 <summary><strong>site/</strong> - Hugo static site</summary>
 
 | Path | Description |
@@ -136,7 +136,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 
 </details>
 
-<details>
+<details open>
 <summary><strong>linkedin/</strong> - LinkedIn newsletter formatting reference</summary>
 
 | File | Description |
@@ -146,7 +146,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 
 </details>
 
-<details>
+<details open>
 <summary><strong>infra/</strong> - Infrastructure configuration</summary>
 
 | File | Description |
@@ -157,7 +157,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 
 </details>
 
-<details>
+<details open>
 <summary><strong>docs/</strong> - Reference documentation</summary>
 
 | File | Description |
