@@ -23,9 +23,9 @@ Scraped from 30+ Microsoft sources · Drafted by Claude · Published every Tuesd
 
 ## What this is
 
-**Modern Work** is Microsoft's framework for secure, cloud-connected productivity — built around Microsoft 365 and the **Zero Trust** security model. Modern Work engineers own the full stack: identity (Entra ID), device compliance (Intune), data protection (Purview), threat detection (Defender), and network access (Global Secure Access).
+**Modern Work** is Microsoft's umbrella for identity and access, endpoint and device management, collaboration and productivity, AI and Copilot, employee experience, and security and compliance. Microsoft ships updates across all six continuously.
 
-Microsoft ships updates across all of it continuously. **Modern Work Weekly** scrapes the official portals, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without manually tracking a dozen portals.
+**Modern Work Weekly** scrapes the official portals across all six, uses the Claude API to draft a structured digest, and publishes it every Tuesday — so engineers can stay current without manually tracking a dozen portals.
 
 A companion **Executive's Guide** is generated alongside each digest — plain-language briefings for leadership, compliance officers, and IT directors. A **LinkedIn newsletter draft** is also produced, ready to post.
 
@@ -46,21 +46,27 @@ flowchart LR
     E --> L["📨 LinkedIn Draft"]
     F --> H["git push"]
     G --> H
-    C --> I
-    H --> I["⚡ GitHub Actions\nHugo Build"]
-    I --> J["🌐 modernworkweekly.com"]
+    C --> H
+    H --> I["⚡ GitHub Actions\nbuild check only"]
+    H --> K["🔁 deploy.sh\nLXC cron, every 5 min"]
+    K --> J["🌐 modernworkweekly.com"]
 ```
+
+`git push` triggers two independent things: GitHub Actions runs a build check (does `hugo --minify` still succeed?) and stops there — it does **not** deploy. The actual publish path is pull-based: a cron on the LXC itself polls GitHub and does the real build + deploy, entirely separate from GitHub Actions.
 
 Three cron jobs run automatically on a self-hosted LXC:
 
 | Schedule | Script | What it does |
 |---|---|---|
-| **Every 5 min** | `deploy.sh` | Git pull → Hugo build → deploy |
+| **Every 5 min** | `deploy.sh` | Git pull → if new commits, Hugo build → deploy. No-op (near-instant) if nothing changed. |
 | **Tuesday mornings** | `weekly-run.sh` | Full scrape → Claude draft → push |
 | **Every 8 hours** | `health-run.sh` | Known issues refresh + deadline purge → push if changed |
 
 > [!NOTE]
 > **Rolling draft:** The scraper accumulates new items into `pending_draft.json` across every run since the last publish. When Tuesday fires, it consumes everything accumulated — nothing gets lost between runs.
+
+> [!NOTE]
+> **Why polling instead of a webhook:** the LXC has zero inbound ports open — Cloudflare Tunnel only makes outbound connections, by design. A webhook-triggered deploy would need an inbound endpoint to receive it, which breaks that model. Polling every 5 minutes keeps deployment entirely pull-based, at the cost of up to a 5-minute publish delay — a deliberate tradeoff, not an oversight.
 
 ---
 
@@ -69,13 +75,12 @@ Three cron jobs run automatically on a self-hosted LXC:
 | Category | Sources |
 |---|---|
 | 🪪 Identity & Access | Entra ID |
-| 💻 Endpoint Management | Intune, Autopilot, Windows 365, Windows Autopatch |
-| 🛡️ Security | Defender XDR, Defender for Endpoint, Defender for Identity, Defender for Office 365, Microsoft Security Response Center |
-| 💬 Collaboration | Teams, SharePoint / OneDrive, Exchange Online |
-| 🗄️ Data | Purview |
-| 🌐 Network | Global Secure Access |
-| 🤖 Apps & AI | Microsoft 365 Copilot, Microsoft Viva, Agent 365, Copilot Studio, Power Platform |
-| 📊 Cross-platform | Microsoft 365 Roadmap, Microsoft Security Blog, Microsoft Mechanics |
+| 💻 Endpoint & Device Management | Intune, Autopilot, Windows 365, Windows Autopatch |
+| 💬 Collaboration & Productivity | Teams, SharePoint / OneDrive, Exchange Online |
+| 🤖 AI & Copilot | Microsoft 365 Copilot, Copilot Studio, Agent 365, Power Platform |
+| 🌱 Employee Experience | Microsoft Viva |
+| 🛡️ Security & Compliance | Defender XDR, Defender for Endpoint, Defender for Identity, Defender for Office 365, Microsoft Security Response Center, Purview, Global Secure Access, Microsoft Security Blog |
+| 📊 Spans multiple pillars | Microsoft 365 Roadmap, Microsoft Mechanics |
 | 🩺 Known Issues *(every 8h)* | Intune, Autopilot, Windows 365, Defender XDR, Purview, Entra ID, Windows Release Health, Azure Status, M365 Service Status |
 
 ---
@@ -168,7 +173,7 @@ Three cron jobs run automatically on a self-hosted LXC:
 | Static site | Hugo v0.128+ |
 | Scraper | Python 3.12 — requests, BeautifulSoup, feedparser |
 | Digest drafting | Claude API (`claude-sonnet-4-6`) |
-| CI/CD | GitHub Actions |
+| CI | GitHub Actions — build check only (`hugo --minify` on push); deploy is pull-based via the LXC cron above, not GitHub Actions |
 
 ---
 
