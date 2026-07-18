@@ -1,0 +1,16 @@
+{{- /*
+  render-link.html — Hugo markdown render hook.
+
+  Overrides how every markdown [text](url) link renders across the site.
+  External links (source citations to techcommunity.microsoft.com,
+  msrc.microsoft.com, etc.) open in a new tab so readers don't get carried
+  off modernworkweekly.com. Internal/relative links (e.g. "/exec/",
+  "/deadlines/", anchor links within the same post) render as plain links
+  with no target override, since they're supposed to navigate in-place.
+*/ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- if $u.Host -}}
+<a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- else -}}
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- end -}}
