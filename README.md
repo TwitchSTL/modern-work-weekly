@@ -58,6 +58,9 @@ flowchart LR
 
     K --> J
     L -.->|"✍️ manual review & post"| M
+
+    classDef manual fill:#3a2a15,stroke:#f0883e,color:#f0883e;
+    class M manual
 ```
 
 `git push` triggers two independent things: GitHub Actions runs a build check (does `hugo --minify` still succeed?) and stops there — it does **not** deploy. The actual publish path is pull-based: a cron on the LXC itself polls GitHub and does the real build + deploy, entirely separate from GitHub Actions.
