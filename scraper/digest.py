@@ -255,6 +255,101 @@ def load_draft(path: Path) -> dict:
 MAX_AGE_DAYS = 7
 
 
+DEADLINE_CANDIDATES_FILE = STATE_DIR / "deadline_candidates.json"
+
+# site/data/deadlines.json only ever loses entries automatically — the 8-hour
+# purge in scraper.py drops anything past its date. Nothing adds to it
+# automatically, which is how it quietly shrank to a single entry after
+# three weeks of digests (06-30, 07-07, 07-14) had real dated items — an EWS
+# disablement deadline, two Teams Rooms GA targets, a Copilot GCC GA target —
+# that never got manually added. This is a lightweight, human-in-the-loop
+# net: it flags items that *sound* dated so they get a look during the
+# Step 2 weekly review (see docs/WEEKLY_WORKFLOW.md), it does not write to
+# deadlines.json itself, since "target availability August 2026" needs a
+# human to pick a real date, and some items ("a future update", no date
+# given) can't be dated at all yet.
+# Retirement/deprecation language is inherently forward-looking even before
+# Microsoft names an exact date (see OWA Light: "will retire... no specific
+# date is given yet") — always worth a look.
+DEADLINE_KEYWORDS_ALWAYS = [
+    "retire", "retirement", "retiring", "deprecat", "end of support",
+    "end of life", "eos", "eol", "disablement", "disabl", "sunset",
+    "discontinue",
+]
+
+# Rollout/availability language is only a "key date" if a date was actually
+# found nearby — "Sales Agent is now generally available" with no date is a
+# normal GA announcement (already happened, nothing to calendar), not a
+# future deadline. Requiring a date here is what keeps this list from
+# flooding with every routine GA item each week.
+DEADLINE_KEYWORDS_NEEDS_DATE = [
+    "generally available", "general availability", "target availability",
+    "target ga", "ga target", "targeted for", "rolling out", "coming to",
+    "will be available", "available starting", "begins rolling out",
+    "starts rolling out",
+]
+
+_MONTH_YEAR_RE = re.compile(
+    r"\b(January|February|March|April|May|June|July|August|September"
+    r"|October|November|December)\s+(\d{1,2},?\s+)?(20\d{2})\b",
+    re.IGNORECASE,
+)
+_QUARTER_YEAR_RE = re.compile(r"\bQ([1-4])\s+(20\d{2})\b", re.IGNORECASE)
+
+
+def detect_deadline_candidates(draft: dict) -> list[dict]:
+    """Scan this week's accumulated items for retirement/deprecation/GA-date
+    language so nothing dated silently misses site/data/deadlines.json.
+
+    Returns a list of {title, url, source, pillar, signal, extracted_date}.
+    extracted_date is the raw matched text (e.g. "August 2026") or None if a
+    retirement/deprecation signal hit but no date-like text was found nearby
+    — those still get surfaced as a "watch for a date" item rather than
+    dropped, since Microsoft often confirms the direction before the date.
+    """
+    candidates = []
+    for cat, items in draft.get("grouped_items", {}).items():
+        for item in items:
+            text = f"{item.get('title', '')} {item.get('body', '')}"
+            text_lower = text.lower()
+            date_match = _MONTH_YEAR_RE.search(text) or _QUARTER_YEAR_RE.search(text)
+            extracted_date = date_match.group(0) if date_match else None
+
+            matched_kw = next(
+                (kw for kw in DEADLINE_KEYWORDS_ALWAYS if kw in text_lower), None
+            )
+            if not matched_kw and extracted_date:
+                matched_kw = next(
+                    (kw for kw in DEADLINE_KEYWORDS_NEEDS_DATE if kw in text_lower), None
+                )
+            if not matched_kw:
+                continue
+
+            candidates.append({
+                "title": item.get("title", ""),
+                "url": item.get("url", ""),
+                "source": item.get("source", ""),
+                "pillar": cat,
+                "signal": matched_kw.strip(),
+                "extracted_date": extracted_date,
+            })
+    return candidates
+
+
+def write_deadline_candidates(candidates: list[dict]) -> Path:
+    STATE_DIR.mkdir(exist_ok=True)
+    with open(DEADLINE_CANDIDATES_FILE, "w") as f:
+        json.dump(
+            {
+                "generated": datetime.now(timezone.utc).date().isoformat(),
+                "candidates": candidates,
+            },
+            f,
+            indent=2,
+        )
+    return DEADLINE_CANDIDATES_FILE
+
+
 def filter_recent(items: list, max_age_days: int = MAX_AGE_DAYS) -> list:
     """Drop items older than max_age_days based on a parsed publish date.
 
@@ -693,6 +788,7 @@ def run(args):
         week_of = draft.get("week_of", datetime.now(timezone.utc).date().isoformat())
 
     prompt = build_prompt(draft)
+    deadline_candidates = detect_deadline_candidates(draft)
 
     if args.dry_run:
         print("\n" + "="*60)
@@ -701,6 +797,12 @@ def run(args):
         print("\nUSER PROMPT:")
         print(prompt[:2000] + "..." if len(prompt) > 2000 else prompt)
         print("="*60)
+        if deadline_candidates:
+            print(f"\nKey Date candidates ({len(deadline_candidates)}):")
+            for c in deadline_candidates:
+                print(f"  - [{c['pillar']}] {c['title']} — signal: '{c['signal']}', date: {c['extracted_date']}")
+        else:
+            print("\nKey Date candidates: none flagged this week.")
         log.info("Dry run complete — no API call made.")
         return
 
@@ -753,12 +855,18 @@ def run(args):
     # can diff against them and mark only net-new issues in the sidebar.
     update_health_baseline()
 
+    candidates_path = write_deadline_candidates(deadline_candidates)
+
     print(f"\n{'='*60}")
     print(f"  Digest drafted:      {post_path}")
     if exec_post_path:
         print(f"  Executive's Guide:   {exec_post_path}")
     if linkedin_draft_path:
         print(f"  LinkedIn draft:      {linkedin_draft_path}")
+    if deadline_candidates:
+        print(f"  Key Date candidates: {len(deadline_candidates)} flagged for review → {candidates_path}")
+    else:
+        print(f"  Key Date candidates: none flagged this week")
     print(f"  Next step:           Review posts, edit as needed, then:")
     print(f"                       git add . && git commit -m 'digest: {week_of}' && git push")
     print(f"{'='*60}\n")

@@ -68,6 +68,7 @@ Check for:
 - **Top 5 ranking** — reorder if your judgment disagrees with Claude's
 - **Thin items** — any item that's vague or low-signal, cut it or expand it
 - **Deadlines** — confirm any action-required items have accurate dates
+- **Key Dates** — `digest.py` prints a "Key Date candidates" count after every run (dated retirement/deprecation/GA-target language auto-flagged from this week's items) and writes the detail to `state/deadline_candidates.json`. Site data → `site/data/deadlines.json` (rendered on the Key Dates page) is never updated automatically — only the 8-hour cron purge removes expired entries from it. Check the candidates file each week and manually add anything real to `site/data/deadlines.json` with a concrete `date`.
 - **Sources** — listed in the YAML front matter under `sources:` and rendered at the bottom of each post
 
 ### Step 3 — Edit and push corrections
@@ -153,6 +154,38 @@ python scraper.py --health-only
 - Check the health log: `tail /opt/modern-work-weekly/logs/health.log`
 - Run manually: `/opt/modern-work-weekly/repo/scraper/health-run.sh`
 - Verify cron is registered: `crontab -l`
+
+**A past week's post/exec content looks incomplete or truncated on the live site**
+- This is more likely a silently-failed cron run than a content-generation bug. Check
+  whether that week's `weekly-run.sh` invocation actually finished:
+  ```bash
+  grep -n "=====\|ERROR\|Traceback" /var/log/mww-weekly.log
+  ```
+  A "Weekly run starting" line with no matching "Weekly run complete" right after it
+  means the script died mid-run (it runs under `set -euo pipefail`, so any failed step
+  aborts everything after it — including the git commit/push, so nothing reaches the
+  live site for that week from that run).
+- Pull the first few lines after the failed run's start line to see exactly where it
+  died:
+  ```bash
+  sed -n '<start-line>,<+8>p' /var/log/mww-weekly.log
+  ```
+- Root cause seen 2026-05-19: `weekly-run.sh` referenced `/opt/modern-work-weekly/scraper/scraper.py`
+  (missing the `/repo/` segment), so the scraper step failed immediately with
+  `No such file or directory` and the whole run aborted before digest.py ever ran.
+  The script has used `SCRAPER_DIR="$REPO/scraper"` since 2026-06-02 and runs since
+  then have completed cleanly — but if a similar path/env issue resurfaces, this is
+  where it'll show up.
+- Don't trust the cron schedule documented in `weekly-run.sh`'s own header comment over
+  the real installed entry — compare against:
+  ```bash
+  crontab -l       # as the user the script is meant to run as (root or mww)
+  date              # confirm server timezone — the schedule is in local time, not UTC
+  ```
+- If content from a failed run was patched by hand afterward (as happened for
+  2026-05-19), check `git log --oneline -- <file>` for a string of small "fix:" commits
+  on that file — that's the signature of a manual recovery rather than a clean
+  automated digest.
 
 **Editing this repo from a sandboxed/cloud-synced clone (e.g. Claude's OneDrive working copy)**
 - File edit tools can silently truncate a file mid-write on this mount, even for small
