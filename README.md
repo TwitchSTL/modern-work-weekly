@@ -53,11 +53,11 @@ flowchart LR
     subgraph Published [" "]
         direction TB
         J["🌐 modernworkweekly.com"]
-        M["📣 LinkedIn newsletter\n(posted manually)"]
+        J ~~~ M["📣 LinkedIn newsletter"]
     end
 
     K --> J
-    L -.->|"✍️ manual: review,\nlink content, write summary"| M
+    L -.->|"✍️ manual review & post"| M
 ```
 
 `git push` triggers two independent things: GitHub Actions runs a build check (does `hugo --minify` still succeed?) and stops there — it does **not** deploy. The actual publish path is pull-based: a cron on the LXC itself polls GitHub and does the real build + deploy, entirely separate from GitHub Actions.
