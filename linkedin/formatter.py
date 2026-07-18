@@ -129,7 +129,7 @@ def md_to_linkedin(md_text: str) -> str:
         output.append(hashtags)
 
     output.append("")
-    output.append("🔗 Read the full digest: https://modernworkweekly.com")
+    output.append("🔗 Full digest with sources and admin actions - link in the comments.")
     output.append("")
 
     # Collapse excessive blank lines
@@ -152,6 +152,7 @@ def main():
 
     md_text = input_path.read_text(encoding="utf-8")
     linkedin_text = md_to_linkedin(md_text)
+    post_url = f"https://modernworkweekly.com/posts/{input_path.stem}/"
 
     if args.output:
         Path(args.output).write_text(linkedin_text, encoding="utf-8")
@@ -160,6 +161,8 @@ def main():
         print(f"Character count: {char_count:,} (LinkedIn post limit: 3,000 for posts, 120,000 for articles)")
     else:
         print(linkedin_text)
+
+    print(f"\nPost first, then paste this as the first comment: {post_url}")
 
 
 if __name__ == "__main__":

@@ -144,7 +144,7 @@ Structure (in order):
 3. **⚡ TOP 5 THIS WEEK** — the 5 most important changes, numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
-6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions: [URL]"
+6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions - link in the comments." Do not include a URL in this line - the URL gets posted separately as the first comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
 
 Do not include any hashtags in your output. Hashtags are appended automatically after generation, derived from the tags already assigned to this week's technical post — do not invent your own. Do not add a sign-off. Do not wrap output in code fences.
 
