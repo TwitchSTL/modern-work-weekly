@@ -1,5 +1,236 @@
 [
   {
+    "title": "Admin control for SSO prompts in Windows (KB5101650):",
+    "category": "Top 5 This Week",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "The July 2026 security update for Windows 11 24H2 and 25H2 ships a registry key letting admins silently accept SSO permissions on managed devices, ending the EEA-driven prompt interruptions. Deploy the update and set the"
+  },
+  {
+    "title": "Entra passwordless resource accounts for Teams Rooms on Windows (August GA):",
+    "category": "Top 5 This Week",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Teams Rooms on Windows gains native Entra Resource Account support with a migration wizard and Pro Management portal dashboard. If you manage a Teams Rooms estate, start planning migration from local accounts before Augu"
+  },
+  {
+    "title": "Unified app and agent installation across M365 admin center and Teams admin center (August GA):",
+    "category": "Top 5 This Week",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Changes made in either admin center will now enforce consistently across Teams, Outlook, and M365 Copilot. If you have divergent policies between the two consoles today, they will converge — audit your settings before th"
+  },
+  {
+    "title": "AI agent identity and least-privilege guidance is out:",
+    "category": "Top 5 This Week",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Microsoft published concrete guidance on identity, access, and tool binding for autonomous agents. With peers reporting thousands of unmanaged agents, this is the week to define your agent governance baseline."
+  },
+  {
+    "title": "Azure AD B2C Migration Policy Analyzer is GA:",
+    "category": "Top 5 This Week",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "If your org still runs Azure AD B2C, this tool automates scope assessment for migration to Entra External ID. Start here before your next migration planning conversation."
+  },
+  {
+    "title": "Plan your Azure AD B2C migration with the Migration Policy Analyzer",
+    "category": "Identity & Access",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — If you have Azure AD B2C tenants with custom user journeys, federation integrations, or claims transformations, manual scope assessment has been the bottleneck; the Migration Policy Analyzer now automates this, gi"
+  },
+  {
+    "title": "Now available: Admin control for SSO prompts in Windows",
+    "category": "Identity & Access",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — The July 2026 monthly security update (KB5101650) for Windows 11 24H2 and 25H2 introduces a registry setting that lets IT automatically accept SSO permissions on managed devices, eliminating the EEA-mandated sign-"
+  },
+  {
+    "title": "Least privilege for AI agents: Identity, access, and tool binding",
+    "category": "Identity & Access",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Autonomous agents need scoped identities and auditable tool bindings just like service accounts do; this post lays out the Microsoft-recommended model for applying least-privilege principles to agent workloads. Us"
+  },
+  {
+    "title": "AI agents are everywhere. Are your access controls ready?",
+    "category": "Identity & Access",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Field data from Identiverse 2026 confirms that most organizations have unmanaged agents in production, with identity and access controls not keeping pace. Treat this as a benchmark: if you cannot enumerate your ag"
+  },
+  {
+    "title": "Microsoft Teams: Shared & Delegate Mailbox Scheduling for Events",
+    "category": "Identity & Access",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Chiefs of Staff and delegated roles can now send Teams event invitations from shared or delegated mailboxes, maintaining a consistent identity for leadership scheduling. No specific admin configuration is required"
+  },
+  {
+    "title": "Microsoft Teams: Entra passwordless resource account support for Teams Rooms on Windows devices",
+    "category": "Identity & Access",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Teams Rooms on Windows will support Entra Resource Accounts for passwordless, certificate-based sign-in with a migration wizard and Pro Management portal tracking dashboard, targeting August GA. Start inventorying"
+  },
+  {
+    "title": "What's New in Copilot in SharePoint: July 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Copilot in SharePoint became on-by-default for all M365 Copilot license holders starting June 16, and this wave adds natural-language creation of Word, Excel, and PowerPoint files directly from SharePoint. If you "
+  },
+  {
+    "title": "Focus on the Teams Phone calls that matter most with intelligent call delegation",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Intelligent call delegation is an AI-powered feature that can answer incoming Teams calls and schedule follow-up appointments on a user's behalf, available now through the Frontier program. Evaluate whether this f"
+  },
+  {
+    "title": "SharePoint: Flexible Section Authoring Improvements",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Flexible Sections in SharePoint Pages gain visual column layout guides, persistent gridlines during editing, and one-click conversion from existing sections, targeting August GA. No admin configuration is needed; "
+  },
+  {
+    "title": "Microsoft Teams: Unified Agent and App Installation Management Across Microsoft 365 and Teams Admin Center",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — App and agent installation policies will be unified so a change in either the M365 admin center or Teams admin center enforces consistently across Teams, Outlook, and M365 Copilot, targeting August GA. Audit any p"
+  },
+  {
+    "title": "Microsoft Teams: Teams events attendance and engagement report policy",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — A new dedicated policy will separate Teams events attendance reporting from the meeting-level CsTeamsMeetingPolicy, letting you grant event organizers report access without opening up meeting-level reporting, targ"
+  },
+  {
+    "title": "Microsoft Teams: Multi-line Calling on Teams Mobile",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Teams Mobile now supports multiple assigned phone numbers with per-line selection, unified call history, and seamless line switching, rolling out in July. Useful for users with shared-line appearances or multiple "
+  },
+  {
+    "title": "Microsoft Teams: Save your event as template to reuse event configurations",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Event organizers in the Teams Events app can now save and reuse event configurations as templates, reducing setup overhead for recurring event formats. This landed in June and is available to all users with access"
+  },
+  {
+    "title": "Microsoft Teams: Room availability signal for Teams events",
+    "category": "Collaboration & Productivity",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — The Teams Events app now surfaces room and space availability at event scheduling time for organizers with a Teams Enterprise license, landing in June. Verify that room mailboxes are properly configured in Exchang"
+  },
+  {
+    "title": "Join Us Live: Understanding Copilot Cowork and Managing Copilot Credits",
+    "category": "AI & Copilot",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Microsoft is running a live AMA on July 21 covering Copilot Cowork capabilities and consumption-based Copilot Credits management. If your org is budgeting for AI consumption or evaluating Cowork, this is a direct "
+  },
+  {
+    "title": "Microsoft Copilot (Microsoft 365): Power BI integration in M365 Copilot",
+    "category": "AI & Copilot",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[Preview] — M365 Copilot will reason directly over Power BI enterprise data and return grounded answers from reports and semantic models via natural language, currently in preview since June with GA targeting August. Con"
+  },
+  {
+    "title": "Microsoft Copilot Studio: Share Autonomous Agents to End Users (Run-Only)",
+    "category": "AI & Copilot",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[Preview] — Run-only sharing for autonomous agents in Copilot Studio is entering preview in August, with GA in January 2027, allowing makers to share agents with end users without granting edit permissions. Define your a"
+  },
+  {
+    "title": "OneNote: Multimodal capture in Copilot Notebooks (Android)",
+    "category": "AI & Copilot",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[Preview] — Multimodal capture, combining audio transcription, image capture, and typed notes into a single Copilot-structured notebook page, enters preview on Android in August with GA in September. Already GA on iOS an"
+  },
+  {
+    "title": "CVE-2026-63796: ocfs2 oversized group bitmap descriptor rejection",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Informational publication for a Linux kernel ocfs2 vulnerability involving oversized group bitmap descriptors. Assess relevance if your environment includes Azure or hybrid workloads running Linux with ocfs2 files"
+  },
+  {
+    "title": "CVE-2026-3842: QEMU-KVM Hyper-V syndbg OOB write",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Informational publication for a QEMU-KVM vulnerability where a missing mapped-length guard in the Hyper-V synthetic debugger path can allow a host out-of-bounds write. Relevant if you run QEMU-KVM-based workloads "
+  },
+  {
+    "title": "CVE-2026-38754: BusyBox heap overflow in ifsbreakup()",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Informational publication for a heap overflow DoS in BusyBox v1.38.0 triggered by crafted input to the shell's ash component. Relevant for container base images and embedded Linux environments; audit your containe"
+  },
+  {
+    "title": "CVE-2026-62299: CoreDNS EDNS0 nil-pointer panic (remote DoS)",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Informational publication for a remote DoS in CoreDNS via the rewrite-plugin when a downstream plugin returns a response without an OPT record. AKS and other Kubernetes environments using CoreDNS with rewrite rule"
+  },
+  {
+    "title": "CVE-2026-60081 / CVE-2026-60082: Perl DBI path index and row handle vulnerabilities",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Two informational publications for Perl DBI versions before 1.651, covering an unconstrained path index in DBI::ProfileData and statement handle inconsistency. If any of your automation or legacy tooling relies on"
+  },
+  {
+    "title": "CVE-2026-48863: Libsolv stack-based buffer overflow in EDDSA PGP verification",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Informational publication for a stack-based buffer overflow in libsolv's EDDSA PGP signature verification path that can cause a DoS. Relevant for Linux environments using RPM-based package management; patch libsol"
+  },
+  {
+    "title": "CVE-2026-63828: AppArmor TCP Fast Open sendmsg mediation gap",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Informational publication for a missing AppArmor mediation on the implicit connect path in TCP Fast Open sendmsg calls. Linux workloads with AppArmor profiles that restrict network access should review whether TCP"
+  },
+  {
+    "title": "Deploy KB5101650 and configure the SSO registry key",
+    "category": "Action Required",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Deadline: available now, act before users on Windows 11 24H2/25H2 in EEA regions continue hitting SSO prompts. Apply the July 2026 cumulative update via Windows Update or Intune, then push the registry setting via config"
+  },
+  {
+    "title": "Audit admin center app/agent policies before unified installation enforcement lands",
+    "category": "Action Required",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Deadline: August GA, roughly 4-6 weeks out. Review and reconcile any differences between your Teams admin center and M365 admin center app installation policies now; when unification rolls out, the merged state may not m"
+  },
+  {
+    "title": "Review Power BI semantic model sensitivity labels ahead of M365 Copilot integration GA",
+    "category": "Action Required",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Deadline: August GA. M365 Copilot will answer natural-language questions directly from Power BI reports and semantic models; ensure sensitivity labels, row-level security, and sharing permissions on those models reflect "
+  },
+  {
     "title": "OWA Light retirement in Exchange Server",
     "category": "Top 5 This Week",
     "date": "2026-07-14",
