@@ -2339,26 +2339,92 @@ details[open] .toc-label::before { content: "▼ "; }
    above, ported to the bulleted Risk & Compliance / Planning Horizon format
    (2026-07-21). Keeps the marker outside (default) so wrapped lines still
    align under the first line's text. */
-.exec-content li.exec-item-high {
-  background: rgba(255,107,107,0.06);
-  border-left: 3px solid rgba(255,107,107,0.7);
+/* Adaptive cards — 2026-07-21 follow-up. Every list item / lead-bold
+   paragraph in the exec guide becomes a click-to-expand card: title (and
+   risk color, if any) visible at a glance, full sentence collapsed until
+   clicked. Built for a reader with ~30 seconds who wants to scan titles
+   and only open what's actually relevant to them. Neutral by default;
+   .exec-item-high/med/low layer color + glow on top when risk emoji is
+   present in the source bullet. */
+.exec-content .exec-card {
+  display: block;
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
   border-radius: 0 8px 8px 0;
   padding: 0.65rem 0.85rem;
+  margin: 0 0 0.6rem;
+  cursor: pointer;
+}
+.exec-content .exec-card:last-child { margin-bottom: 0; }
+
+.exec-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.exec-card-head-text { flex: 1; }
+.exec-card-head-text a { color: inherit; text-decoration: underline; text-decoration-color: rgba(240,246,252,0.35); }
+.exec-card-chevron {
+  color: var(--color-text-muted);
+  transition: transform 0.15s;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+.exec-card-open .exec-card-chevron { transform: rotate(90deg); }
+
+.exec-card-anchor {
+  opacity: 0;
+  font-size: 0.72rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+  padding: 0 0.15rem;
+}
+.exec-card:hover .exec-card-anchor { opacity: 0.55; }
+.exec-card-anchor:hover { opacity: 1 !important; }
+
+.exec-card-body {
+  display: none;
+  margin-top: 0.55rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+.exec-card-body a { color: var(--color-accent); }
+.exec-card-open .exec-card-body { display: block; }
+
+.exec-card.exec-item-high {
+  border-left-color: rgba(255,107,107,0.7);
   box-shadow: 0 0 10px rgba(255,107,107,0.12);
+  background: rgba(255,107,107,0.06);
 }
-.exec-content li.exec-item-med {
-  background: rgba(240,136,62,0.06);
-  border-left: 3px solid rgba(240,136,62,0.7);
-  border-radius: 0 8px 8px 0;
-  padding: 0.65rem 0.85rem;
+.exec-card.exec-item-med {
+  border-left-color: rgba(240,136,62,0.7);
   box-shadow: 0 0 10px rgba(240,136,62,0.12);
+  background: rgba(240,136,62,0.06);
 }
-.exec-content li.exec-item-low {
-  background: rgba(63,185,80,0.06);
-  border-left: 3px solid rgba(63,185,80,0.7);
-  border-radius: 0 8px 8px 0;
-  padding: 0.65rem 0.85rem;
+.exec-card.exec-item-low {
+  border-left-color: rgba(63,185,80,0.7);
   box-shadow: 0 0 10px rgba(63,185,80,0.12);
+  background: rgba(63,185,80,0.06);
+}
+
+/* Standalone lead paragraphs (e.g. "Why This Week Matters") that aren't
+   cards — pull-quote treatment so they don't read as flat body text.
+   These live inside .exec-section-body (JS wraps every section), not
+   directly under .exec-content, so this must be a descendant selector. */
+.exec-section-body > p:not(.exec-card):not(.exec-sources-block) {
+  border-left: 3px solid var(--color-border);
+  padding-left: 0.9rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 /* Anchor share link on section summaries */
