@@ -1,185 +1,150 @@
 [
   {
-    "title": "Entra Backup and Recovery is GA",
+    "title": "Exchange 2016/2019 ESU ends October 2026, no extension coming.",
     "category": "Top 5 This Week",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "Critical identity objects (users, groups, apps, Conditional Access policies, and more) are now automatically backed up daily and restorable. If you hold Entra ID P1 or P2, this is live in your tenant now. Review recovery"
+    "snippet": "The Exchange team has confirmed there will be no Period 3. If you have on-premises Exchange 2016 or 2019, your migration or upgrade timeline now has a hard floor."
   },
   {
-    "title": "Passkeys become the default authentication method in Entra ID",
+    "title": "ACR Stealer ClickFix campaigns are actively targeting enterprise environments.",
     "category": "Top 5 This Week",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "Microsoft has shifted the default sign-in experience to passkeys and overhauled the SMS/voice authentication model. If you haven't started a passkey rollout, you're now behind the platform default. Plan your communicatio"
+    "snippet": "From late April through mid-June 2026, Defender Experts observed sustained campaigns stealing browser credentials, auth tokens, and sensitive documents. User awareness and endpoint controls need to be current."
   },
   {
-    "title": "Advanced Intune Suite capabilities now included in M365 E3/E5",
+    "title": "AsyncAPI npm supply chain compromise used CI/CD pipelines to deliver malware.",
     "category": "Top 5 This Week",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "The December 2025 licensing restructure took effect July 1. Endpoint Privilege Management, cloud PKI, and other Suite features are now part of E5 with select capabilities in E3. Audit your current add-on spend and update"
+    "snippet": "Threat actors weaponized trusted workflows for import-time payload delivery. Any organization running Node.js-based tooling or pipelines pulling npm packages should audit dependencies now."
   },
   {
-    "title": "Cross-Tenant Message Recall in Exchange Online is GA",
+    "title": "Microsoft Entra Internet Access and Private Access extend Zero Trust to AI agents.",
     "category": "Top 5 This Week",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "Recall now works across organizational boundaries, not just within your tenant. If you manage inter-org mail flow or have data handling policies around misdirected email, validate whether this capability changes your inc"
+    "snippet": "The preview update covers AI-agent-originated traffic, not just user and device sessions. If you are deploying AI workflows that make outbound calls, this is the access control layer to evaluate."
   },
   {
-    "title": "GPT-5.6 live in Microsoft 365 Copilot",
+    "title": "Eight Linux kernel CVEs published across GPU, KVM, netfilter, and audio subsystems.",
     "category": "Top 5 This Week",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "OpenAI's GPT-5.6 is available today in Word, Excel, PowerPoint, Chat, and Cowork. Stronger multi-step reasoning means agentic Copilot tasks perform meaningfully better. No admin action required, but expect users to notic"
+    "snippet": "All are informational publications this week. Scope is Linux-side, but relevant to any Defender for Endpoint Linux deployments or Azure-hosted Linux workloads."
   },
   {
-    "title": "Microsoft Entra Backup and Recovery is now generally available",
-    "category": "Identity & Access",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Rolling out to all workforce tenants this week for Entra ID P1/P2 licensed customers, this capability automatically backs up core directory objects daily, including users, groups, apps, service principals, managed"
-  },
-  {
-    "title": "Microsoft Entra ID security updates: Passkeys are the default authentication method in Entra ID",
-    "category": "Identity & Access",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Passkeys are now the platform default sign-in experience in Entra ID, and the SMS/voice authentication model has been restructured. Read the full post to understand the new SMS gating model before users start hitt"
-  },
-  {
-    "title": "Bring business logic into PIM role activation workflows",
-    "category": "Identity & Access",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[Preview] — Custom extensions for Entra PIM are now in preview, letting you gate role activation on external context such as ticket validity, HR status, compliance posture, or on-call schedules via Logic Apps or custom A"
-  },
-  {
-    "title": "Defending SaaS-based applications against ShinyHunters OAuth abuse",
-    "category": "Identity & Access",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Microsoft Threat Intelligence has tied ShinyHunters activity to vishing, supply-chain compromise, and misconfigured guest access targeting SaaS OAuth flows. Review your app consent policies, audit OAuth grants for"
-  },
-  {
-    "title": "Windows 365 for Agents: A secured execution environment for AI agents",
-    "category": "Identity & Access",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Windows 365 now offers dedicated Cloud PCs purpose-built for running enterprise AI agents, with consistent identity, policy enforcement, and visibility baked in. For security teams struggling to govern agents runn"
-  },
-  {
-    "title": "Advanced Microsoft Intune capabilities now available in Microsoft 365 E3 and E5",
-    "category": "Endpoint & Device Management",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Effective July 1, the December 2025 packaging changes are live: advanced Intune Suite capabilities including Endpoint Privilege Management, cloud-based PKI, and AI-assisted operations are now included in M365 E5, "
-  },
-  {
-    "title": "Understanding Windows monthly updates: Servicing explained",
-    "category": "Endpoint & Device Management",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[Preview] — Microsoft published an updated guide on Windows monthly servicing, distinguishing mandatory security updates from optional non-security preview releases. Useful as a reference for onboarding new admins or re-"
-  },
-  {
-    "title": "Windows news you can use: June 2026",
-    "category": "Endpoint & Device Management",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Windows 11 version 26H2 is available for testing via the Windows Insider Program, sharing the same servicing branch as 25H2 and 24H2, meaning deployment uses an enablement package with minimal user disruption. Win"
-  },
-  {
-    "title": "Cross-Tenant Message Recall in Exchange Online",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Message Recall now works across tenant boundaries, one of the most-requested Exchange Online enhancements since cloud-based recall launched in April 2023. If your organization handles sensitive inter-org mail and "
-  },
-  {
-    "title": "Available today: OpenAI's GPT-5.6 in Microsoft 365 Copilot",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — GPT-5.6 is the new preferred model for M365 Copilot, available now in Word, Excel, PowerPoint, Chat, and Cowork, with stronger reasoning for agentic and multi-step tasks. No admin action is required to enable it, "
-  },
-  {
-    "title": "SharePoint Showcase: How Microsoft uses Copilot in SharePoint, and how you can get started",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Microsoft published real internal use cases for Copilot in SharePoint alongside a recap of all recently GA'd SharePoint platform functionality. The companion post on building AI skills is worth reviewing if you're"
-  },
-  {
-    "title": "Dataverse Is Your Agent Data Platform: Here's What's New in July 2026",
-    "category": "AI & Copilot",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — July Dataverse updates include expanded coding agent marketplace coverage, broader MCP tool connectivity, certified partner MCPs for trusted adoption, and enterprise governance controls for internal MCPs. If you'r"
-  },
-  {
-    "title": "Native Dataverse Authorization (Public Preview) for Stronger Security in Power Pages",
-    "category": "AI & Copilot",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "[Preview] — Authorization for external users in Power Pages is now enforced directly within Dataverse rather than at the portal layer, providing stronger security and improved visibility without changing the maker experi"
-  },
-  {
-    "title": "CVE-2026-63801: tipc — fix slab-use-after-free Read in tipc_aead_decrypt_done",
+    "title": "CVE-2026-60082: DBI versions before 1.651 for Perl - statement handle consistency",
     "category": "Security & Compliance",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — MSRC published this Linux kernel TIPC subsystem vulnerability this week. Review applicability if your environment includes Linux workloads managed through Defender for Endpoint or Azure-hosted Linux VMs. Apply ven"
+    "snippet": "[GA] - Information published by MSRC this week. Relevant if your environment includes Perl-based tooling or automation that uses DBI; check your DBI version and update to 1.651 or later."
   },
   {
-    "title": "CVE-2026-60082: DBI versions before 1.651 for Perl do not enforce statement handle consistency",
+    "title": "CVE-2026-63801: tipc - slab-use-after-free in tipc_aead_decrypt_done",
     "category": "Security & Compliance",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Affects Perl DBI library versions prior to 1.651. Relevant if your organization runs Perl-based automation or scripts in managed or monitored environments. Inventory Perl DBI usage and update to 1.651 or later."
+    "snippet": "[GA] - Information published. TIPC is a Linux kernel networking protocol; relevant to Linux workloads running Defender for Endpoint or hosted on Azure. Monitor for kernel patch availability from your distribution."
   },
   {
-    "title": "CVE batch: drm/amdkfd, drm/amdgpu, drm/amd/display, netfilter ebtables, KVM SEV, ALSA asihpi",
+    "title": "CVE-2026-63882: drm/amdkfd - NULL pointer bug in svm_range_set_attr",
     "category": "Security & Compliance",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — MSRC published six additional Linux kernel CVEs this week covering AMD GPU drivers, netfilter, KVM SEV, and ALSA audio. These affect Linux kernel components and are relevant for Linux endpoints, Azure VMs, and env"
+    "snippet": "[GA] - Information published. AMD GPU kernel driver issue; affects Linux hosts running AMD hardware. Relevant to Azure VMs or physical endpoints using AMD GPUs under Linux."
   },
   {
-    "title": "Protecting Microsoft at AI speed: How SFI proactively hardens our cloud",
+    "title": "CVE-2026-63879: drm/amdgpu - fix amdgpu_hmm_range_get_pages",
     "category": "Security & Compliance",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "[GA] — Microsoft published a detailed post on how the Secure Future Initiative uses AI-assisted continuous evaluation against its own live cloud services. No direct admin action is needed, but the post contains useful fr"
+    "snippet": "[GA] - Information published. A second AMD GPU driver issue in the same subsystem as CVE-2026-63882; evaluate both together when assessing patch applicability on AMD Linux hosts."
   },
   {
-    "title": "Passkey default authentication rollout: review Conditional Access and user communications now",
+    "title": "CVE-2026-64077: netfilter ebtables - two-stage removal scheme",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - Information published. Netfilter is foundational to Linux network filtering and containerized workload security. Track vendor patches for Linux distributions used in your environment."
+  },
+  {
+    "title": "CVE-2026-63940: KVM SEV - Ignore Port I/O requests of length '0'",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - Information published. Relevant to KVM-based virtualization with AMD SEV (Secure Encrypted Virtualization). If you operate or connect to KVM-hosted confidential compute workloads, track this against your hyperviso"
+  },
+  {
+    "title": "CVE-2026-64097: drm/amd/display - Validate GPIO pin LUT table size before iterating",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - Information published. AMD display driver bounds validation fix in the Linux kernel. Low direct enterprise risk unless AMD GPU Linux endpoints are in scope, but worth logging for your patch tracking."
+  },
+  {
+    "title": "CVE-2026-64133: ALSA asihpi - Fix potential OOB array access at reading cache",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - Information published. Out-of-bounds read in the ALSA HPI audio driver for Linux. Niche hardware scope, but any Linux endpoint running this driver should be queued for a kernel update."
+  },
+  {
+    "title": "Secure AI, web, and private apps with Zero Trust",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[Preview] - Microsoft Entra Internet Access and Private Access now extend Zero Trust policy enforcement to AI agent-originated traffic, not just user and device sessions. If your organization is deploying Copilot agents "
+  },
+  {
+    "title": "Reminder: Exchange 2016 and 2019 ESU Program Ends in October 2026",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - The Exchange team has confirmed there will be no Period 3 ESU extension: once October 2026 ends, no further updates ship for Exchange 2016 or 2019, period. If you still have on-premises Exchange, accelerate your m"
+  },
+  {
+    "title": "Microsoft at Black Hat USA 2026: Defending trust in the age of AI and supply chain attacks",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - Microsoft Security is presenting supply chain research and hands-on sessions at Black Hat USA 2026. Worth tracking the session content for threat intelligence on AI-era supply chain attack patterns that will influ"
+  },
+  {
+    "title": "ACR Stealer: Two observed intrusion chains amid increased threat activity",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - From late April through mid-June 2026, Defender Experts observed sustained ACR Stealer campaigns using ClickFix lures to harvest browser credentials, authentication tokens, and sensitive documents from enterprise "
+  },
+  {
+    "title": "Unpacking the AsyncAPI npm supply chain compromise and import-time payload delivery",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] - Threat actors compromised AsyncAPI npm packages and abused CI/CD pipelines to deliver malware at import time, bypassing typical runtime detection. If your organization uses Node.js tooling, developer pipelines, or"
+  },
+  {
+    "title": "Exchange 2016/2019 ESU - Hard Deadline: October 2026",
     "category": "Action Required",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "IMMEDIATE: Passkeys are now the Entra ID default sign-in experience and the SMS/voice authentication model has changed. Audit your Authentication Methods policies, update any Conditional Access policies that reference sp"
+    "snippet": "[GA] - Deadline is end of October 2026, and the Exchange team has explicitly ruled out any further extension. Identify every on-premises Exchange 2016/2019 server in your estate, assign a migration or upgrade owner, and "
   },
   {
-    "title": "Entra Backup and Recovery: assign ownership and build your recovery runbook",
+    "title": "ACR Stealer ClickFix campaigns - Active threat, immediate review advised",
     "category": "Action Required",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "ROLLING OUT NOW: Entra Backup and Recovery is live for P1/P2 tenants this week. Before you need it, assign explicit ownership of who can initiate restores, document the recovery procedure for each supported object type, "
+    "snippet": "[GA] - Active campaigns are successfully exfiltrating browser credentials and tokens from enterprise environments right now. Validate that Defender for Endpoint behavioral detections for ClickFix lures are enabled and al"
   },
   {
-    "title": "Intune Suite licensing in M365 E3/E5: audit add-on spend and update provisioning baselines",
+    "title": "AsyncAPI npm supply chain compromise - Audit pipelines within 30 days",
     "category": "Action Required",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
-    "snippet": "EFFECTIVE JULY 1: Advanced Intune Suite capabilities are now included in M365 E5 and select capabilities in M365 E3. Review your current Intune Suite add-on license assignments. Redundant standalone licenses represent un"
-  },
-  {
-    "title": "ShinyHunters OAuth abuse: audit app consent grants and guest access configurations",
-    "category": "Action Required",
-    "date": "2026-07-21",
-    "url": "/posts/2026-07-21/",
-    "snippet": "ACTIVE THREAT: Microsoft Threat Intelligence has active tracking on ShinyHunters targeting SaaS OAuth flows via vishing and supply-chain compromise. Within the next 30 days, run an OAuth app consent audit in Entra, restr"
+    "snippet": "[GA] - Any development or DevOps pipeline consuming npm packages is a potential exposure point. Within the next 30 days, audit CI/CD pipeline configurations for overly permissive package resolution, enforce lockfile inte"
   },
   {
     "title": "OWA Light retirement in Exchange Server",

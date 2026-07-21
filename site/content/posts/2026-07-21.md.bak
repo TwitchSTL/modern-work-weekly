@@ -1,14 +1,41 @@
 ---
 title: "Modern Work Weekly — Week of 2026-07-21"
 date: 2026-07-21
-description: "Eight Linux kernel and third-party CVEs land in the MSRC feed this week. No M365 feature updates, no deprecation deadlines — pure patch triage."
+description: "Entra Backup and Recovery hits GA, passkeys become the default sign-in method, and advanced Intune Suite capabilities land in M365 E3/E5 — a strong week for identity resilience and endpoint licensing."
 tags:
-  - defender-xdr
+  - entra-id
+  - intune
+  - conditional-access
+  - identity
+  - endpoint-management
+  - windows
+  - windows-365
+  - copilot
+  - exchange
+  - sharepoint
+  - power-platform
   - zero-trust
-  - modern-work
+  - hotpatch
 categories:
+  - Identity & Access
+  - Endpoint & Device Management
+  - Collaboration & Productivity
+  - AI & Copilot
   - Security & Compliance
 sources:
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-backup-and-recovery-is-now-generally-available/ba-p/4521997
+  - https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id/
+  - https://techcommunity.microsoft.com/t5/microsoft-intune-blog/advanced-microsoft-intune-capabilities-now-available-in/ba-p/4529335
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bring-business-logic-into-pim-role-activation-workflows/ba-p/4531380
+  - https://techcommunity.microsoft.com/t5/exchange-team-blog/cross-tenant-message-recall-in-exchange-online/ba-p/4535800
+  - https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-openai-s-gpt-5-6-in-microsoft-365-copilot/ba-p/4533152
+  - https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/
+  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-365-for-agents-a-secured-execution-environment-for-ai/ba-p/4529336
+  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/understanding-windows-monthly-updates-servicing-explained/ba-p/4532290
+  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-news-you-can-use-june-2026/ba-p/4532288
+  - https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-showcase-how-microsoft-uses-copilot-in-sharepoint-and/ba-p/4533156
+  - https://www.microsoft.com/en-us/power-platform/blog/power-pages/native-dataverse-authorization-public-preview-for-stronger-security-in-power-pages/
+  - https://www.microsoft.com/en-us/power-platform/blog/2026/07/06/dataverse-july2026/
   - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60082
   - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63801
   - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63882
@@ -17,42 +44,83 @@ sources:
   - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63940
   - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64097
   - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64133
+  - https://www.microsoft.com/en-us/security/blog/2026/07/08/protecting-microsoft-at-ai-speed-how-sfi-proactively-hardens-our-cloud/
 ---
 
-## Top 5
+## Top 5 This Week
 
-1. **CVE-2026-63801 — TIPC slab-use-after-free in Linux kernel:** Memory corruption in the TIPC networking subsystem is the highest-risk item this week. Any Linux-based workloads in your environment, including Azure VMs, ARC-managed servers, or Defender for Endpoint-monitored hosts, need patch status confirmed.
+1. **Entra Backup and Recovery is GA** — Critical identity objects (users, groups, apps, Conditional Access policies, and more) are now automatically backed up daily and restorable. If you hold Entra ID P1 or P2, this is live in your tenant now. Review recovery procedures before you need them.
 
-2. **CVE-2026-64133 — ALSA asihpi out-of-bounds array access:** An OOB read in audio subsystem cache handling is exploitable in kernel space. Confirm your Linux host images are on patched kernel versions, especially where those hosts run any media or audio processing workloads.
+2. **Passkeys become the default authentication method in Entra ID** — Microsoft has shifted the default sign-in experience to passkeys and overhauled the SMS/voice authentication model. If you haven't started a passkey rollout, you're now behind the platform default. Plan your communication and Conditional Access updates accordingly.
 
-3. **CVE-2026-63882 / CVE-2026-63879 — AMD GPU driver null pointer and HMM range bugs:** Two amdgpu/amdkfd driver defects affect systems with AMD GPUs. Relevant for AI/ML infrastructure nodes and any Copilot inference hardware running Linux with AMD accelerators.
+3. **Advanced Intune Suite capabilities now included in M365 E3/E5** — The December 2025 licensing restructure took effect July 1. Endpoint Privilege Management, cloud PKI, and other Suite features are now part of E5 with select capabilities in E3. Audit your current add-on spend and update your provisioning baselines.
 
-4. **CVE-2026-64077 — netfilter ebtables removal race:** A race condition in the netfilter ebtables subsystem could be leveraged for privilege escalation on Linux hosts. Review exposure on any Linux gateway or container host where ebtables rules are actively in use.
+4. **Cross-Tenant Message Recall in Exchange Online is GA** — Recall now works across organizational boundaries, not just within your tenant. If you manage inter-org mail flow or have data handling policies around misdirected email, validate whether this capability changes your incident response runbook.
 
-5. **CVE-2026-60082 — Perl DBI statement handle consistency enforcement missing:** Third-party Perl DBI library before version 1.651 does not enforce statement handle consistency. Relevant for any server-side Perl applications or automation scripts that interact with databases; update DBI to 1.651 or later.
+5. **GPT-5.6 live in Microsoft 365 Copilot** — OpenAI's GPT-5.6 is available today in Word, Excel, PowerPoint, Chat, and Cowork. Stronger multi-step reasoning means agentic Copilot tasks perform meaningfully better. No admin action required, but expect users to notice the quality delta and ask questions.
+
+---
+
+## Identity & Access
+
+- **[Microsoft Entra Backup and Recovery is now generally available](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-backup-and-recovery-is-now-generally-available/ba-p/4521997)** [GA] — Rolling out to all workforce tenants this week for Entra ID P1/P2 licensed customers, this capability automatically backs up core directory objects daily, including users, groups, apps, service principals, managed identities, Conditional Access policies, named locations, and authentication methods. Document your recovery runbook now and assign ownership to who can initiate a restore. This directly addresses accidental bulk-delete and ransomware-driven identity tampering scenarios.
+
+- **[Microsoft Entra ID security updates: Passkeys are the default authentication method in Entra ID](https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id/)** [GA] — Passkeys are now the platform default sign-in experience in Entra ID, and the SMS/voice authentication model has been restructured. Read the full post to understand the new SMS gating model before users start hitting friction. Update your Conditional Access policies and end-user guidance to align with this shift.
+
+- **[Bring business logic into PIM role activation workflows](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bring-business-logic-into-pim-role-activation-workflows/ba-p/4531380)** [Preview] — Custom extensions for Entra PIM are now in preview, letting you gate role activation on external context such as ticket validity, HR status, compliance posture, or on-call schedules via Logic Apps or custom APIs. For environments where PIM approvals are currently manual and context-blind, this closes a real governance gap. Start with your highest-privilege roles and design extension logic before broad rollout.
+
+- **[Defending SaaS-based applications against ShinyHunters OAuth abuse](https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/)** [GA] — Microsoft Threat Intelligence has tied ShinyHunters activity to vishing, supply-chain compromise, and misconfigured guest access targeting SaaS OAuth flows. Review your app consent policies, audit OAuth grants for third-party apps in your tenant, and verify guest access restrictions are configured intentionally. This is active threat actor tradecraft, not a theoretical risk.
+
+- **[Windows 365 for Agents: A secured execution environment for AI agents](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-365-for-agents-a-secured-execution-environment-for-ai/ba-p/4529336)** [GA] — Windows 365 now offers dedicated Cloud PCs purpose-built for running enterprise AI agents, with consistent identity, policy enforcement, and visibility baked in. For security teams struggling to govern agents running on shared or unmanaged infrastructure, this provides a managed execution plane. Evaluate this against your current agent deployment architecture if you're moving agents to production.
+
+---
+
+## Endpoint & Device Management
+
+- **[Advanced Microsoft Intune capabilities now available in Microsoft 365 E3 and E5](https://techcommunity.microsoft.com/t5/microsoft-intune-blog/advanced-microsoft-intune-capabilities-now-available-in/ba-p/4529335)** [GA] — Effective July 1, the December 2025 packaging changes are live: advanced Intune Suite capabilities including Endpoint Privilege Management, cloud-based PKI, and AI-assisted operations are now included in M365 E5, with select capabilities in M365 E3. If your organization was paying for Intune Suite as a standalone add-on, audit whether those licenses are now redundant. Update procurement and provisioning documentation to reflect the new entitlement model.
+
+- **[Understanding Windows monthly updates: Servicing explained](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/understanding-windows-monthly-updates-servicing-explained/ba-p/4532290)** [Preview] — Microsoft published an updated guide on Windows monthly servicing, distinguishing mandatory security updates from optional non-security preview releases. Useful as a reference for onboarding new admins or re-aligning stakeholders who conflate preview updates with production-required patches. Share with your patch management team to standardize terminology and update cadence decisions.
+
+- **[Windows news you can use: June 2026](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-news-you-can-use-june-2026/ba-p/4532288)** [GA] — Windows 11 version 26H2 is available for testing via the Windows Insider Program, sharing the same servicing branch as 25H2 and 24H2, meaning deployment uses an enablement package with minimal user disruption. Windows 365 also received Build 2026 updates including ready-to-code Cloud PCs and expanded AI agent support. Enroll test devices in Insider channels now if you need lead time before 26H2 reaches broad availability.
+
+---
+
+## Collaboration & Productivity
+
+- **[Cross-Tenant Message Recall in Exchange Online](https://techcommunity.microsoft.com/t5/exchange-team-blog/cross-tenant-message-recall-in-exchange-online/ba-p/4535800)** [GA] — Message Recall now works across tenant boundaries, one of the most-requested Exchange Online enhancements since cloud-based recall launched in April 2023. If your organization handles sensitive inter-org mail and has existing data loss incident response procedures around misdirected messages, update those procedures to account for this new recall capability. No admin enablement is documented as required, but verify behavior in your environment.
+
+- **[Available today: OpenAI's GPT-5.6 in Microsoft 365 Copilot](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-openai-s-gpt-5-6-in-microsoft-365-copilot/ba-p/4533152)** [GA] — GPT-5.6 is the new preferred model for M365 Copilot, available now in Word, Excel, PowerPoint, Chat, and Cowork, with stronger reasoning for agentic and multi-step tasks. No admin action is required to enable it, but expect users to notice performance improvements and increased reliance on Copilot for complex workflows. Update adoption materials to reflect the improved capability baseline.
+
+- **[SharePoint Showcase: How Microsoft uses Copilot in SharePoint, and how you can get started](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-showcase-how-microsoft-uses-copilot-in-sharepoint-and/ba-p/4533156)** [GA] — Microsoft published real internal use cases for Copilot in SharePoint alongside a recap of all recently GA'd SharePoint platform functionality. The companion post on building AI skills is worth reviewing if you're standing up Copilot agents grounded in SharePoint content. Use this as a reference for justifying and scoping SharePoint Copilot deployments with stakeholders.
+
+---
+
+## AI & Copilot
+
+- **[Dataverse Is Your Agent Data Platform: Here's What's New in July 2026](https://www.microsoft.com/en-us/power-platform/blog/2026/07/06/dataverse-july2026/)** [GA] — July Dataverse updates include expanded coding agent marketplace coverage, broader MCP tool connectivity, certified partner MCPs for trusted adoption, and enterprise governance controls for internal MCPs. If you're building or governing Power Platform agents, the MCP governance additions are the most operationally significant. Review the certified partner MCP list and establish an approval process before users start connecting uncertified MCPs.
+
+- **[Native Dataverse Authorization (Public Preview) for Stronger Security in Power Pages](https://www.microsoft.com/en-us/power-platform/blog/power-pages/native-dataverse-authorization-public-preview-for-stronger-security-in-power-pages/)** [Preview] — Authorization for external users in Power Pages is now enforced directly within Dataverse rather than at the portal layer, providing stronger security and improved visibility without changing the maker experience. For environments exposing Dataverse data to external users via Power Pages, this is a meaningful security architecture improvement. Evaluate the public preview in a non-production environment and plan migration from legacy authorization as the feature approaches GA.
+
+---
 
 ## Security & Compliance
 
-- **[CVE-2026-60082 — Perl DBI versions before 1.651 missing statement handle enforcement](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60082)** [GA] — If your environment includes Perl-based tooling or automation that calls database backends, this is a code-level vulnerability in the DBI library itself, not the OS. Audit any Perl scripts or pipelines and update the DBI module to 1.651 or later. Check Azure Automation runbooks and any custom Intune remediation scripts written in Perl.
+- **[CVE-2026-63801: tipc — fix slab-use-after-free Read in tipc_aead_decrypt_done](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63801)** [GA] — MSRC published this Linux kernel TIPC subsystem vulnerability this week. Review applicability if your environment includes Linux workloads managed through Defender for Endpoint or Azure-hosted Linux VMs. Apply vendor patches as they become available and monitor MSRC for severity ratings.
 
-- **[CVE-2026-63801 — Linux kernel TIPC slab-use-after-free in tipc_aead_decrypt_done](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63801)** [GA] — This use-after-free in the TIPC transparent inter-process communications stack can lead to kernel memory corruption. Linux hosts managed via Defender for Endpoint or Azure Arc should be triaged against your patched kernel baseline immediately. If TIPC is not required, consider disabling the module as a compensating control.
+- **[CVE-2026-60082: DBI versions before 1.651 for Perl do not enforce statement handle consistency](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60082)** [GA] — Affects Perl DBI library versions prior to 1.651. Relevant if your organization runs Perl-based automation or scripts in managed or monitored environments. Inventory Perl DBI usage and update to 1.651 or later.
 
-- **[CVE-2026-63882 — drm/amdkfd null pointer in svm_range_set_attr](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63882)** [GA] — A null pointer dereference in the AMD kernel fusion driver can be triggered during SVM range attribute operations. Affects Linux nodes with AMD GPUs, including AI inference infrastructure. Verify kernel patch level on any AMD-accelerated Linux hosts in your fleet.
+- **[CVE batch: drm/amdkfd, drm/amdgpu, drm/amd/display, netfilter ebtables, KVM SEV, ALSA asihpi](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63882)** [GA] — MSRC published six additional Linux kernel CVEs this week covering AMD GPU drivers, netfilter, KVM SEV, and ALSA audio. These affect Linux kernel components and are relevant for Linux endpoints, Azure VMs, and environments where AMD GPU passthrough is in use. Track these through your Linux patch pipeline and apply fixes as distributions package them.
 
-- **[CVE-2026-63879 — drm/amdgpu fix in amdgpu_hmm_range_get_pages](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63879)** [GA] — Paired with CVE-2026-63882, this amdgpu HMM range bug affects GPU memory management on Linux. Both AMD GPU CVEs should be addressed together in the same kernel patch cycle. Prioritize systems running GPU-accelerated containerized workloads.
+- **[Protecting Microsoft at AI speed: How SFI proactively hardens our cloud](https://www.microsoft.com/en-us/security/blog/2026/07/08/protecting-microsoft-at-ai-speed-how-sfi-proactively-hardens-our-cloud/)** [GA] — Microsoft published a detailed post on how the Secure Future Initiative uses AI-assisted continuous evaluation against its own live cloud services. No direct admin action is needed, but the post contains useful framing for organizations building or maturing their own cloud security validation programs.
 
-- **[CVE-2026-64077 — netfilter ebtables two-stage removal race condition](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64077)** [GA] — A race in ebtables teardown can be exploited by a local attacker for privilege escalation. Linux hosts acting as container runtimes, network gateways, or firewall nodes are most exposed. Apply the kernel fix and review whether ebtables can be replaced with nftables in your environment.
-
-- **[CVE-2026-63940 — KVM: SEV ignores zero-length port I/O requests](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63940)** [GA] — This KVM fix addresses improper handling of zero-length port I/O requests in SEV (Secure Encrypted Virtualization) guests. Relevant for any Azure or on-premises KVM hypervisor environments using AMD SEV. Validate hypervisor patch levels on confidential computing nodes.
-
-- **[CVE-2026-64097 — drm/amd/display GPIO pin LUT table size not validated](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64097)** [GA] — Lack of bounds validation before iterating a GPIO pin LUT table in the AMD display driver can lead to out-of-bounds access. Lower severity than the memory corruption bugs but still requires patching on affected Linux AMD display driver versions. Include in your next kernel maintenance window.
-
-- **[CVE-2026-64133 — ALSA asihpi potential out-of-bounds array access at cache read](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64133)** [GA] — An out-of-bounds read in the ALSA asihpi audio driver cache can be triggered during audio subsystem initialization. While typically lower in attack surface for server workloads, any Linux host with audio hardware exposed should be patched. Confirm this is addressed in your standard Linux kernel image build.
+---
 
 ## Action Required
 
-- **[CVE-2026-63801 — TIPC slab-use-after-free](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63801):** Memory corruption class vulnerability, review within the next 7 days. Identify all Linux hosts in your managed fleet via Defender for Endpoint's software inventory or Azure Arc, confirm the patched kernel version is deployed, and disable the TIPC kernel module as an immediate compensating control where patching cannot happen promptly. Run `lsmod | grep tipc` to check exposure.
+- **[Passkey default authentication rollout: review Conditional Access and user communications now](https://www.microsoft.com/en-us/security/blog/2026/07/13/microsoft-entra-id-security-updates-passkeys-are-the-default-authentication-method-in-entra-id/)** — IMMEDIATE: Passkeys are now the Entra ID default sign-in experience and the SMS/voice authentication model has changed. Audit your Authentication Methods policies, update any Conditional Access policies that reference specific auth method strengths, and prepare end-user communications before users encounter an unexpected prompt change. Organizations with legacy MFA dependencies on SMS/voice need to assess impact now.
 
-- **[CVE-2026-64077 — netfilter ebtables privilege escalation race](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64077):** Local privilege escalation on Linux hosts using ebtables; review within 14 days. Prioritize container hosts and network gateway nodes. If your environment has migrated to nftables, confirm ebtables is not loaded. For hosts still requiring ebtables, escalate kernel patching to your next available maintenance window.
+- **[Entra Backup and Recovery: assign ownership and build your recovery runbook](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-backup-and-recovery-is-now-generally-available/ba-p/4521997)** — ROLLING OUT NOW: Entra Backup and Recovery is live for P1/P2 tenants this week. Before you need it, assign explicit ownership of who can initiate restores, document the recovery procedure for each supported object type, and test a restore in a non-production tenant. Capability without a runbook is not a recovery plan.
 
-- **[CVE-2026-60082 — Perl DBI pre-1.651 statement handle enforcement](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60082):** Third-party library gap, not covered by OS patching. Run a dependency audit across any Perl-based automation, runbooks, or custom scripts in your tenant and infrastructure within 30 days. Update DBI to 1.651 or later wherever found. Add a DBI version check to your pipeline dependency scanning baseline going forward.
+- **[Intune Suite licensing in M365 E3/E5: audit add-on spend and update provisioning baselines](https://techcommunity.microsoft.com/t5/microsoft-intune-blog/advanced-microsoft-intune-capabilities-now-available-in/ba-p/4529335)** — EFFECTIVE JULY 1: Advanced Intune Suite capabilities are now included in M365 E5 and select capabilities in M365 E3. Review your current Intune Suite add-on license assignments. Redundant standalone licenses represent unnecessary spend. Update your device configuration baselines to enable newly entitled capabilities such as Endpoint Privilege Management if not already deployed.
+
+- **[ShinyHunters OAuth abuse: audit app consent grants and guest access configurations](https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/)** — ACTIVE THREAT: Microsoft Threat Intelligence has active tracking on ShinyHunters targeting SaaS OAuth flows via vishing and supply-chain compromise. Within the next 30 days, run an OAuth app consent audit in Entra, restrict user consent to verified publishers only, and review external guest access settings for unnecessary permissiveness. This is not a theoretical advisory.
