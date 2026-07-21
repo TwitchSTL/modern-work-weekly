@@ -771,6 +771,48 @@ def write_post(content: str, week_of: str) -> Path:
     return post_path
 
 
+PUBLISH_GAP_WARN_DAYS = 10
+
+def check_publish_gap(current_week_of: str, threshold_days: int = PUBLISH_GAP_WARN_DAYS):
+    """Warn loudly if it's been unusually long since the last published post.
+
+    Normal Tuesday cadence means at most ~7-8 days between posts. A bigger
+    gap is the earliest possible signal that a weekly run was skipped,
+    delayed, or silently failed somewhere upstream — this is exactly what
+    happened 2026-07-17 to 2026-07-21: production drift blocked git pulls
+    for weeks with no error anywhere, so 07-08 through 07-13 content that
+    should have gone out in the 07-14 digest sat unconsumed, aged past the
+    7-day freshness window, and produced a near-empty CVE-only digest by
+    the time 07-21 ran. See MAINTENANCE.md.
+
+    Catching the gap *here*, at the moment a new digest is about to
+    publish, surfaces it immediately in the run's own log/summary — instead
+    of relying on someone noticing a thin-looking live page days later and
+    reverse-engineering the cause after the fact.
+    """
+    existing_dates = sorted(
+        p.stem for p in POSTS_DIR.glob("????-??-??.md") if p.stem != current_week_of
+    )
+    if not existing_dates:
+        return None
+    try:
+        last_date = datetime.strptime(existing_dates[-1], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        current_date = datetime.strptime(current_week_of, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    gap_days = (current_date - last_date).days
+    if gap_days > threshold_days:
+        log.warning(
+            f"⚠️  {gap_days} days since the last published digest ({existing_dates[-1]}) — "
+            f"expected ~7. A run may have been skipped or delayed upstream (check git status "
+            f"on the LXC — see MAINTENANCE.md's 'Site changes pushed but not appearing live'). "
+            f"Consider whether this week's draft has a stale backlog needing --max-age-days "
+            f"before treating a thin section as a genuinely quiet week."
+        )
+        return gap_days
+    return None
+
+
 def run(args):
     # Load .env if present
     if ENV_FILE.exists():
@@ -802,6 +844,7 @@ def run(args):
     max_age_days = args.max_age_days if args.max_age_days else MAX_AGE_DAYS
     if args.max_age_days:
         log.info(f"Freshness window overridden to {max_age_days} days (default is {MAX_AGE_DAYS}) via --max-age-days")
+    publish_gap_days = check_publish_gap(week_of)
     prompt = build_prompt(draft, max_age_days=max_age_days)
     deadline_candidates = detect_deadline_candidates(draft)
 
@@ -882,6 +925,9 @@ def run(args):
         print(f"  Key Date candidates: {len(deadline_candidates)} flagged for review → {candidates_path}")
     else:
         print(f"  Key Date candidates: none flagged this week")
+    if publish_gap_days:
+        print(f"  ⚠️  PUBLISH GAP:      {publish_gap_days} days since the last digest (expected ~7) — a run may")
+        print(f"                       have been skipped/delayed upstream. See the log warning above.")
     print(f"  Next step:           Review posts, edit as needed, then:")
     print(f"                       git add . && git commit -m 'digest: {week_of}' && git push")
     print(f"{'='*60}\n")
