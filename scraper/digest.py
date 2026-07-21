@@ -377,12 +377,21 @@ def filter_recent(items: list, max_age_days: int = MAX_AGE_DAYS) -> list:
     return fresh
 
 
-def build_prompt(draft: dict) -> str:
+def build_prompt(draft: dict, max_age_days: int = MAX_AGE_DAYS) -> str:
     # Compact the grouped items to save tokens — keep title, body, phase, admin_action.
-    # Filter to the last MAX_AGE_DAYS days first (parsed dates, not raw string
+    # Filter to the last max_age_days days first (parsed dates, not raw string
     # comparison — see dateutils.py), then cap at 8 items per category, most
     # recent first, to keep input within model limits. With 6 pillars × 8
     # items the prompt stays well under 8k input tokens.
+    #
+    # max_age_days defaults to the standard 7-day window but can be widened
+    # via --max-age-days for a one-off regeneration when a real backlog has
+    # built up (e.g. 2026-07-21: production drift meant several genuinely
+    # new items from 07-08 through 07-13 never got consumed by the 07-14
+    # run, and by the time 07-21 ran they'd aged past 7 days). Don't lower
+    # the module-level MAX_AGE_DAYS default to "fix" a one-time backlog —
+    # that filter is what stops stale multi-week content from flooding a
+    # normal week.
     MAX_PER_CAT = 8
     compact = {}
     for cat, items in draft.get("grouped_items", {}).items():
@@ -392,7 +401,7 @@ def build_prompt(draft: dict) -> str:
         # than forced into a mismatched category.
         if cat == "Research & Trends":
             continue
-        fresh_items = filter_recent(items)
+        fresh_items = filter_recent(items, max_age_days=max_age_days)
         # Sort by parsed date descending so the cap keeps the genuinely most
         # recent items — the old raw-string sort didn't sort correctly across
         # ISO 8601 vs RFC 822 vs RFC-822-with-" Z" date formats.
@@ -433,19 +442,21 @@ def call_claude(prompt: str) -> str:
     return message.content[0].text
 
 
-def build_exec_prompt(draft: dict) -> str:
+def build_exec_prompt(draft: dict, max_age_days: int = MAX_AGE_DAYS) -> str:
     # Unlike build_prompt(), this previously had no recency filter or cap at
     # all — every accumulated item, however old, was handed straight to
-    # Claude. Apply the same MAX_AGE_DAYS gate so the Executive's Guide can't
-    # drift stale independently of the technical post.
+    # Claude. Apply the same freshness gate so the Executive's Guide can't
+    # drift stale independently of the technical post. max_age_days follows
+    # the same --max-age-days override as build_prompt() (see its comment).
     compact = {}
     # Viva "Research Drop" essays publish roughly monthly, so the standard
-    # 7-day window (MAX_AGE_DAYS) almost always misses them between one
-    # weekly digest run and the next. Give this bucket alone a 30-day window
-    # so it actually gets a fair chance to reach the Executive's Guide.
+    # 7-day window almost always misses them between one weekly digest run
+    # and the next. Give this bucket alone a 30-day window so it actually
+    # gets a fair chance to reach the Executive's Guide, regardless of
+    # whatever max_age_days is in effect for everything else.
     RESEARCH_MAX_AGE_DAYS = 30
     for cat, items in draft.get("grouped_items", {}).items():
-        max_age = RESEARCH_MAX_AGE_DAYS if cat == "Research & Trends" else MAX_AGE_DAYS
+        max_age = RESEARCH_MAX_AGE_DAYS if cat == "Research & Trends" else max_age_days
         fresh_items = filter_recent(items, max_age_days=max_age)
         compact[cat] = [
             {
@@ -677,7 +688,7 @@ def linkify_linkedin_draft(li_content: str, content: str, draft: dict | None = N
     return re.sub(r"\*\*([^*]+)\*\*", replace_bold, li_content)
 
 
-def build_linkedin_prompt(draft: dict, week_of: str) -> str:
+def build_linkedin_prompt(draft: dict, week_of: str, max_age_days: int = MAX_AGE_DAYS) -> str:
     """Build a compact digest summary to feed the LinkedIn draft.
 
     This previously had zero recency filtering — every item ever
@@ -685,14 +696,15 @@ def build_linkedin_prompt(draft: dict, week_of: str) -> str:
     date signal at all, which is why the LinkedIn edition could end up
     citing entirely different (and much older) stories than the technical
     post: it was drawing from a far larger, completely unfiltered pool.
-    Apply the same MAX_AGE_DAYS gate used everywhere else.
+    Apply the same freshness gate used everywhere else (same --max-age-days
+    override as build_prompt() / build_exec_prompt()).
     """
     lines = []
     for cat, items in draft.get("grouped_items", {}).items():
         # Exec-only content (see build_prompt) — no place in the LinkedIn edition either.
         if cat == "Research & Trends":
             continue
-        fresh_items = filter_recent(items)
+        fresh_items = filter_recent(items, max_age_days=max_age_days)
         if not fresh_items:
             continue
         lines.append(f"[{cat}]")
@@ -787,7 +799,10 @@ def run(args):
     else:
         week_of = draft.get("week_of", datetime.now(timezone.utc).date().isoformat())
 
-    prompt = build_prompt(draft)
+    max_age_days = args.max_age_days if args.max_age_days else MAX_AGE_DAYS
+    if args.max_age_days:
+        log.info(f"Freshness window overridden to {max_age_days} days (default is {MAX_AGE_DAYS}) via --max-age-days")
+    prompt = build_prompt(draft, max_age_days=max_age_days)
     deadline_candidates = detect_deadline_candidates(draft)
 
     if args.dry_run:
@@ -813,7 +828,7 @@ def run(args):
     exec_post_path = None
     if not args.skip_exec:
         try:
-            exec_prompt = build_exec_prompt(draft)
+            exec_prompt = build_exec_prompt(draft, max_age_days=max_age_days)
             exec_content = call_claude_exec(exec_prompt)
             exec_post_path = write_exec_post(exec_content, week_of)
         except Exception as e:
@@ -823,7 +838,7 @@ def run(args):
     linkedin_draft_path = None
     if not args.skip_linkedin:
         try:
-            li_prompt = build_linkedin_prompt(draft, week_of)
+            li_prompt = build_linkedin_prompt(draft, week_of, max_age_days=max_age_days)
             li_content = call_claude_linkedin(li_prompt)
             li_content = linkify_linkedin_draft(li_content, content, draft)
             hashtags = build_hashtags(extract_post_tags(content))
@@ -884,5 +899,10 @@ if __name__ == "__main__":
                         help="Skip Executive's Guide generation (technical digest only)")
     parser.add_argument("--skip-linkedin", action="store_true",
                         help="Skip LinkedIn newsletter draft generation")
+    parser.add_argument("--max-age-days", type=int, default=None,
+                        help=f"Override the freshness window (default {MAX_AGE_DAYS} days) for this run only. "
+                             f"Use for a one-off regeneration when a real backlog built up "
+                             f"(e.g. after a deploy/pull outage delayed a normal week's publish) — "
+                             f"don't use this to permanently loosen filtering.")
     args = parser.parse_args()
     run(args)
