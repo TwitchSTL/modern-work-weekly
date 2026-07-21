@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 """One-off: regenerate only the LinkedIn draft for a given week, reusing the
-existing (already-correct) post on disk instead of calling Claude for it again."""
+existing (already-correct) post on disk instead of calling Claude for it again.
+
+Usage: python regen_linkedin_only.py YYYY-MM-DD
+
+Takes the week as a CLI arg rather than a hardcoded constant -- editing a
+hardcoded WEEK in place caused a real merge conflict on 2026-07-21 (local
+edit on the LXC collided with an unrelated fix pushed to this same file),
+and left a stale week value in git history that had to be remembered and
+changed back. A CLI arg has no state to forget or collide over."""
 import os
 import sys
 from pathlib import Path
@@ -8,7 +16,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import digest
 
-WEEK = "2026-06-23"
+if len(sys.argv) != 2:
+    sys.exit("Usage: python regen_linkedin_only.py YYYY-MM-DD")
+WEEK = sys.argv[1]
 
 if digest.ENV_FILE.exists():
     from dotenv import load_dotenv
