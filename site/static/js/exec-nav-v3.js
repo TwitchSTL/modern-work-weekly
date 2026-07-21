@@ -41,6 +41,25 @@
     return null;
   }
 
+  // Section-type variants — 2026-07-21 rhythm pass. Every section past
+  // Risk & Compliance rendered as the same flat card list, which read as
+  // monotonous scrolling top to bottom ("still looks like an ordinance").
+  // These four sections get a distinct layout so the page has visual
+  // variety instead of repeating one pattern for its whole length.
+  var SECTION_TYPES = [
+    { match: /employees/i,        type: 'chips',    icon: '👥' },
+    { match: /help desk/i,        type: 'chips',    icon: '🎧' },
+    { match: /cost.*licens|licens.*cost/i, type: 'ledger',   icon: '💰' },
+    { match: /planning horizon/i, type: 'timeline', icon: '🗓️' },
+    { match: /take no action/i,   type: 'alert',    icon: '⚠️' },
+  ];
+  function detectSectionType(label) {
+    for (var i = 0; i < SECTION_TYPES.length; i++) {
+      if (SECTION_TYPES[i].match.test(label)) return SECTION_TYPES[i];
+    }
+    return null;
+  }
+
   function colorTableRows(container) {
     container.querySelectorAll('table tr').forEach(function (tr) {
       var text = tr.textContent || '';
@@ -239,6 +258,7 @@
       var label = h2.textContent || '';
       var slug  = h2.id || slugify(stripEmoji(label)) || ('section-' + idx);
       var risk  = detectRisk(label);
+      var typeMeta = detectSectionType(label);
 
       // Collect sibling nodes until next h2
       var nodes = [];
@@ -250,13 +270,17 @@
 
       var details = document.createElement('details');
       details.id = slug;
-      details.open = firstMain;
+      // "If You Take No Action" stays open by default — the consequence
+      // should be visible immediately, not hidden behind a click.
+      details.open = firstMain || (typeMeta && typeMeta.type === 'alert');
       firstMain = false;
-      details.className = 'exec-section-collapsible' + (risk ? ' ' + risk.cls : '');
+      details.className = 'exec-section-collapsible' + (risk ? ' ' + risk.cls : '') +
+        (typeMeta ? ' exec-section-type-' + typeMeta.type : '');
 
       var summary = document.createElement('summary');
-      summary.className = 'exec-section-summary' + (risk ? ' ' + risk.cls : '');
-      summary.textContent = label;
+      summary.className = 'exec-section-summary' + (risk ? ' ' + risk.cls : '') +
+        (typeMeta ? ' exec-section-type-' + typeMeta.type : '');
+      summary.textContent = (typeMeta ? typeMeta.icon + ' ' : '') + label;
 
       var anchor = document.createElement('a');
       anchor.href = '#' + slug;

@@ -2415,6 +2415,95 @@ details[open] .toc-label::before { content: "▼ "; }
   background: rgba(63,185,80,0.06);
 }
 
+/* Section-type variants — 2026-07-21 rhythm pass. Everything past Risk &
+   Compliance rendered as the same flat card list ("still looks like an
+   ordinance" scrolling top to bottom). These give four sections a distinct
+   shape so the page has visual variety instead of one repeated pattern.
+   Placed after the risk-glow rules above so equal-specificity overrides
+   win here for sections that carry no risk emoji (all four below). */
+
+/* Chips — Employees / Help Desk: short punchy items as a compact grid
+   instead of a full-width stack. */
+.exec-section-type-chips .exec-section-body > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.6rem;
+  margin: 0.75rem 0 1.25rem;
+}
+.exec-section-type-chips .exec-card {
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+}
+.exec-section-type-chips .exec-card-head { font-size: 0.9rem; }
+
+/* Ledger — Cost & Licensing: flat $ rows, not glowing risk cards, since
+   these items carry no risk color of their own. */
+.exec-section-type-ledger .exec-card {
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0.65rem 0.1rem;
+}
+.exec-section-type-ledger .exec-card:last-child { border-bottom: none; }
+.exec-section-type-ledger .exec-card-head-text::before {
+  content: "💰 ";
+}
+
+/* Timeline — Planning Horizon: connect items with a line + dot so "when"
+   reads visually, not just via a bold timeframe prefix in the text. */
+.exec-section-type-timeline .exec-section-body > ul {
+  position: relative;
+  margin: 0.75rem 0 1.25rem 0.3rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--color-border);
+}
+.exec-section-type-timeline .exec-card {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0.2rem 0 0.9rem 0.9rem;
+  position: relative;
+}
+.exec-section-type-timeline .exec-card::before {
+  content: "";
+  position: absolute;
+  left: -1.45rem;
+  top: 0.35rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+}
+
+/* Alert — If You Take No Action: the consequence should be visible
+   immediately, not hidden behind a click — force cards open, drop the
+   collapse affordance, and give it a stark, unmistakable warning look. */
+.exec-section-type-alert .exec-card {
+  cursor: default;
+  border-left-width: 4px;
+  border-left-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.07);
+}
+.exec-section-type-alert .exec-card-body {
+  display: block !important;
+  margin-top: 0.35rem;
+}
+.exec-section-type-alert .exec-card-chevron { display: none; }
+.exec-section-type-alert .exec-card-anchor { opacity: 0.45; }
+
+/* Section header color signature — so even the collapsed row hints at
+   what layout is inside before it's opened. */
+.exec-section-summary.exec-section-type-chips,
+.exec-section-summary.exec-section-type-timeline { color: var(--color-accent); }
+.exec-section-summary.exec-section-type-ledger { color: #d4a72c; }
+.exec-section-summary.exec-section-type-alert { color: #ff6b6b; }
+
 /* Standalone lead paragraphs (e.g. "Why This Week Matters") that aren't
    cards — pull-quote treatment so they don't read as flat body text.
    These live inside .exec-section-body (JS wraps every section), not
