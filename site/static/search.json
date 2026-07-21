@@ -1,5 +1,117 @@
 [
   {
+    "title": "CVE-2026-63801 — TIPC slab-use-after-free in Linux kernel:",
+    "category": "Top 5",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Memory corruption in the TIPC networking subsystem is the highest-risk item this week. Any Linux-based workloads in your environment, including Azure VMs, ARC-managed servers, or Defender for Endpoint-monitored hosts, ne"
+  },
+  {
+    "title": "CVE-2026-64133 — ALSA asihpi out-of-bounds array access:",
+    "category": "Top 5",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "An OOB read in audio subsystem cache handling is exploitable in kernel space. Confirm your Linux host images are on patched kernel versions, especially where those hosts run any media or audio processing workloads."
+  },
+  {
+    "title": "CVE-2026-63882 / CVE-2026-63879 — AMD GPU driver null pointer and HMM range bugs:",
+    "category": "Top 5",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Two amdgpu/amdkfd driver defects affect systems with AMD GPUs. Relevant for AI/ML infrastructure nodes and any Copilot inference hardware running Linux with AMD accelerators."
+  },
+  {
+    "title": "CVE-2026-64077 — netfilter ebtables removal race:",
+    "category": "Top 5",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "A race condition in the netfilter ebtables subsystem could be leveraged for privilege escalation on Linux hosts. Review exposure on any Linux gateway or container host where ebtables rules are actively in use."
+  },
+  {
+    "title": "CVE-2026-60082 — Perl DBI statement handle consistency enforcement missing:",
+    "category": "Top 5",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Third-party Perl DBI library before version 1.651 does not enforce statement handle consistency. Relevant for any server-side Perl applications or automation scripts that interact with databases; update DBI to 1.651 or l"
+  },
+  {
+    "title": "CVE-2026-60082 — Perl DBI versions before 1.651 missing statement handle enforcement",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — If your environment includes Perl-based tooling or automation that calls database backends, this is a code-level vulnerability in the DBI library itself, not the OS. Audit any Perl scripts or pipelines and update "
+  },
+  {
+    "title": "CVE-2026-63801 — Linux kernel TIPC slab-use-after-free in tipc_aead_decrypt_done",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — This use-after-free in the TIPC transparent inter-process communications stack can lead to kernel memory corruption. Linux hosts managed via Defender for Endpoint or Azure Arc should be triaged against your patche"
+  },
+  {
+    "title": "CVE-2026-63882 — drm/amdkfd null pointer in svm_range_set_attr",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — A null pointer dereference in the AMD kernel fusion driver can be triggered during SVM range attribute operations. Affects Linux nodes with AMD GPUs, including AI inference infrastructure. Verify kernel patch leve"
+  },
+  {
+    "title": "CVE-2026-63879 — drm/amdgpu fix in amdgpu_hmm_range_get_pages",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Paired with CVE-2026-63882, this amdgpu HMM range bug affects GPU memory management on Linux. Both AMD GPU CVEs should be addressed together in the same kernel patch cycle. Prioritize systems running GPU-accelerat"
+  },
+  {
+    "title": "CVE-2026-64077 — netfilter ebtables two-stage removal race condition",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — A race in ebtables teardown can be exploited by a local attacker for privilege escalation. Linux hosts acting as container runtimes, network gateways, or firewall nodes are most exposed. Apply the kernel fix and r"
+  },
+  {
+    "title": "CVE-2026-63940 — KVM: SEV ignores zero-length port I/O requests",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — This KVM fix addresses improper handling of zero-length port I/O requests in SEV (Secure Encrypted Virtualization) guests. Relevant for any Azure or on-premises KVM hypervisor environments using AMD SEV. Validate "
+  },
+  {
+    "title": "CVE-2026-64097 — drm/amd/display GPIO pin LUT table size not validated",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — Lack of bounds validation before iterating a GPIO pin LUT table in the AMD display driver can lead to out-of-bounds access. Lower severity than the memory corruption bugs but still requires patching on affected Li"
+  },
+  {
+    "title": "CVE-2026-64133 — ALSA asihpi potential out-of-bounds array access at cache read",
+    "category": "Security & Compliance",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "[GA] — An out-of-bounds read in the ALSA asihpi audio driver cache can be triggered during audio subsystem initialization. While typically lower in attack surface for server workloads, any Linux host with audio hardware "
+  },
+  {
+    "title": "CVE-2026-63801 — TIPC slab-use-after-free:",
+    "category": "Action Required",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Memory corruption class vulnerability, review within the next 7 days. Identify all Linux hosts in your managed fleet via Defender for Endpoint's software inventory or Azure Arc, confirm the patched kernel version is depl"
+  },
+  {
+    "title": "CVE-2026-64077 — netfilter ebtables privilege escalation race:",
+    "category": "Action Required",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Local privilege escalation on Linux hosts using ebtables; review within 14 days. Prioritize container hosts and network gateway nodes. If your environment has migrated to nftables, confirm ebtables is not loaded. For hos"
+  },
+  {
+    "title": "CVE-2026-60082 — Perl DBI pre-1.651 statement handle enforcement:",
+    "category": "Action Required",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Third-party library gap, not covered by OS patching. Run a dependency audit across any Perl-based automation, runbooks, or custom scripts in your tenant and infrastructure within 30 days. Update DBI to 1.651 or later whe"
+  },
+  {
     "title": "OWA Light retirement in Exchange Server",
     "category": "Top 5 This Week",
     "date": "2026-07-14",

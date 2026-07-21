@@ -1,0 +1,128 @@
+---
+title: "Modern Work Weekly — Week of 2026-07-21"
+date: 2026-07-21
+description: "Admin control for SSO prompts lands in the July Windows security update, AI agent identity governance moves from theory to practice, and a wave of Teams and SharePoint capabilities hits GA. Eight CVEs published this week are informational, but keep an eye on the Entra passwordless Teams Rooms rollout targeting August."
+tags:
+  - entra-id
+  - teams
+  - sharepoint
+  - copilot
+  - copilot-studio
+  - identity
+  - zero-trust
+  - teams-rooms
+  - windows
+  - conditional-access
+  - modern-work
+  - shadow-ai
+categories:
+  - Identity & Access
+  - Collaboration & Productivity
+  - AI & Copilot
+  - Security & Compliance
+sources:
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63796
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-3842
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-38754
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62299
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60081
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60082
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48863
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63828
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/plan-your-azure-ad-b2c-migration-with-the-migration-policy/ba-p/4532874
+  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-available-admin-control-for-sso-prompts-in-windows/ba-p/4534613
+  - https://www.microsoft.com/en-us/security/blog/2026/07/16/least-privilege-for-ai-agents-identity-access-and-tool-binding/
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/ai-agents-are-everywhere-are-your-access-controls-ready/ba-p/4531379
+  - https://www.microsoft.com/microsoft-365/roadmap?id=561912
+  - https://www.microsoft.com/microsoft-365/roadmap?id=558853
+  - https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/what-s-new-in-copilot-in-sharepoint-july-2026/ba-p/4535420
+  - https://techcommunity.microsoft.com/t5/microsoft-teams-blog/focus-on-the-teams-phone-calls-that-matter-most-with-intelligent/ba-p/4512533
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567889
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567883
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567466
+  - https://www.microsoft.com/microsoft-365/roadmap?id=565131
+  - https://www.microsoft.com/microsoft-365/roadmap?id=561915
+  - https://www.microsoft.com/microsoft-365/roadmap?id=561647
+  - https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/join-us-live-understanding-copilot-cowork-and-managing-copilot/ba-p/4537935
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567895
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567894
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567891
+---
+
+## Top 5 This Week
+
+1. **Admin control for SSO prompts in Windows (KB5101650):** The July 2026 security update for Windows 11 24H2 and 25H2 ships a registry key letting admins silently accept SSO permissions on managed devices, ending the EEA-driven prompt interruptions. Deploy the update and set the registry key before users start complaining.
+
+2. **Entra passwordless resource accounts for Teams Rooms on Windows (August GA):** Teams Rooms on Windows gains native Entra Resource Account support with a migration wizard and Pro Management portal dashboard. If you manage a Teams Rooms estate, start planning migration from local accounts before August to separate device and user identities cleanly.
+
+3. **Unified app and agent installation across M365 admin center and Teams admin center (August GA):** Changes made in either admin center will now enforce consistently across Teams, Outlook, and M365 Copilot. If you have divergent policies between the two consoles today, they will converge — audit your settings before this lands.
+
+4. **AI agent identity and least-privilege guidance is out:** Microsoft published concrete guidance on identity, access, and tool binding for autonomous agents. With peers reporting thousands of unmanaged agents, this is the week to define your agent governance baseline.
+
+5. **Azure AD B2C Migration Policy Analyzer is GA:** If your org still runs Azure AD B2C, this tool automates scope assessment for migration to Entra External ID. Start here before your next migration planning conversation.
+
+## Identity & Access
+
+- **[Plan your Azure AD B2C migration with the Migration Policy Analyzer](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/plan-your-azure-ad-b2c-migration-with-the-migration-policy/ba-p/4532874)** [GA] — If you have Azure AD B2C tenants with custom user journeys, federation integrations, or claims transformations, manual scope assessment has been the bottleneck; the Migration Policy Analyzer now automates this, giving you a structured view of what needs to move before you touch Entra External ID. Run it early to avoid late-stage surprises in your migration project.
+
+- **[Now available: Admin control for SSO prompts in Windows](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-available-admin-control-for-sso-prompts-in-windows/ba-p/4534613)** [GA] — The July 2026 monthly security update (KB5101650) for Windows 11 24H2 and 25H2 introduces a registry setting that lets IT automatically accept SSO permissions on managed devices, eliminating the EEA-mandated sign-in prompts that interrupted users. Apply the update and configure the registry key via Intune or GPO to restore the seamless SSO experience on managed endpoints.
+
+- **[Least privilege for AI agents: Identity, access, and tool binding](https://www.microsoft.com/en-us/security/blog/2026/07/16/least-privilege-for-ai-agents-identity-access-and-tool-binding/)** [GA] — Autonomous agents need scoped identities and auditable tool bindings just like service accounts do; this post lays out the Microsoft-recommended model for applying least-privilege principles to agent workloads. Use it to build or validate your agent governance framework before sprawl makes remediation painful.
+
+- **[AI agents are everywhere. Are your access controls ready?](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/ai-agents-are-everywhere-are-your-access-controls-ready/ba-p/4531379)** [GA] — Field data from Identiverse 2026 confirms that most organizations have unmanaged agents in production, with identity and access controls not keeping pace. Treat this as a benchmark: if you cannot enumerate your agents and their permissions today, that is the gap to close first.
+
+- **[Microsoft Teams: Shared & Delegate Mailbox Scheduling for Events](https://www.microsoft.com/microsoft-365/roadmap?id=561912)** [GA] — Chiefs of Staff and delegated roles can now send Teams event invitations from shared or delegated mailboxes, maintaining a consistent identity for leadership scheduling. No specific admin configuration is required, but confirm delegated mailbox permissions are correctly provisioned in Exchange for affected users.
+
+- **[Microsoft Teams: Entra passwordless resource account support for Teams Rooms on Windows devices](https://www.microsoft.com/microsoft-365/roadmap?id=558853)** [GA] — Teams Rooms on Windows will support Entra Resource Accounts for passwordless, certificate-based sign-in with a migration wizard and Pro Management portal tracking dashboard, targeting August GA. Start inventorying rooms still using local or legacy accounts so you can sequence migration waves before the feature lands.
+
+## Collaboration & Productivity
+
+- **[What's New in Copilot in SharePoint: July 2026](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/what-s-new-in-copilot-in-sharepoint-july-2026/ba-p/4535420)** [GA] — Copilot in SharePoint became on-by-default for all M365 Copilot license holders starting June 16, and this wave adds natural-language creation of Word, Excel, and PowerPoint files directly from SharePoint. If you have not reviewed your SharePoint Copilot governance posture, default-on means it is active for all licensed users right now.
+
+- **[Focus on the Teams Phone calls that matter most with intelligent call delegation](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/focus-on-the-teams-phone-calls-that-matter-most-with-intelligent/ba-p/4512533)** [GA] — Intelligent call delegation is an AI-powered feature that can answer incoming Teams calls and schedule follow-up appointments on a user's behalf, available now through the Frontier program. Evaluate whether this fits your Teams Phone user base and check Frontier enrollment requirements before rolling it out broadly.
+
+- **[SharePoint: Flexible Section Authoring Improvements](https://www.microsoft.com/microsoft-365/roadmap?id=567889)** [GA] — Flexible Sections in SharePoint Pages gain visual column layout guides, persistent gridlines during editing, and one-click conversion from existing sections, targeting August GA. No admin configuration is needed; this is a pure authoring experience improvement for page editors.
+
+- **[Microsoft Teams: Unified Agent and App Installation Management Across Microsoft 365 and Teams Admin Center](https://www.microsoft.com/microsoft-365/roadmap?id=567883)** [GA] — App and agent installation policies will be unified so a change in either the M365 admin center or Teams admin center enforces consistently across Teams, Outlook, and M365 Copilot, targeting August GA. Audit any policy differences between the two admin centers now, because divergent configurations will converge automatically when this rolls out.
+
+- **[Microsoft Teams: Teams events attendance and engagement report policy](https://www.microsoft.com/microsoft-365/roadmap?id=567466)** [GA] — A new dedicated policy will separate Teams events attendance reporting from the meeting-level CsTeamsMeetingPolicy, letting you grant event organizers report access without opening up meeting-level reporting, targeting August GA. Plan policy updates if you currently restrict meeting attendance reports but want event organizers to have visibility.
+
+- **[Microsoft Teams: Multi-line Calling on Teams Mobile](https://www.microsoft.com/microsoft-365/roadmap?id=565131)** [GA] — Teams Mobile now supports multiple assigned phone numbers with per-line selection, unified call history, and seamless line switching, rolling out in July. Useful for users with shared-line appearances or multiple Direct Routing numbers assigned; no additional admin configuration beyond existing phone number assignments is required.
+
+- **[Microsoft Teams: Save your event as template to reuse event configurations](https://www.microsoft.com/microsoft-365/roadmap?id=561915)** [GA] — Event organizers in the Teams Events app can now save and reuse event configurations as templates, reducing setup overhead for recurring event formats. This landed in June and is available to all users with access to the Teams Events app.
+
+- **[Microsoft Teams: Room availability signal for Teams events](https://www.microsoft.com/microsoft-365/roadmap?id=561647)** [GA] — The Teams Events app now surfaces room and space availability at event scheduling time for organizers with a Teams Enterprise license, landing in June. Verify that room mailboxes are properly configured in Exchange so the availability signal reflects accurate booking data.
+
+## AI & Copilot
+
+- **[Join Us Live: Understanding Copilot Cowork and Managing Copilot Credits](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/join-us-live-understanding-copilot-cowork-and-managing-copilot/ba-p/4537935)** [GA] — Microsoft is running a live AMA on July 21 covering Copilot Cowork capabilities and consumption-based Copilot Credits management. If your org is budgeting for AI consumption or evaluating Cowork, this is a direct line to the product team for questions on licensing and governance mechanics.
+
+- **[Microsoft Copilot (Microsoft 365): Power BI integration in M365 Copilot](https://www.microsoft.com/microsoft-365/roadmap?id=567891)** [Preview] — M365 Copilot will reason directly over Power BI enterprise data and return grounded answers from reports and semantic models via natural language, currently in preview since June with GA targeting August. Confirm that your Power BI semantic models are properly governed and sensitivity-labeled before GA enables broader user access to this data through Copilot.
+
+- **[Microsoft Copilot Studio: Share Autonomous Agents to End Users (Run-Only)](https://www.microsoft.com/microsoft-365/roadmap?id=567894)** [Preview] — Run-only sharing for autonomous agents in Copilot Studio is entering preview in August, with GA in January 2027, allowing makers to share agents with end users without granting edit permissions. Define your agent sharing and approval policies now so governance is in place before preview adoption picks up.
+
+- **[OneNote: Multimodal capture in Copilot Notebooks (Android)](https://www.microsoft.com/microsoft-365/roadmap?id=567895)** [Preview] — Multimodal capture, combining audio transcription, image capture, and typed notes into a single Copilot-structured notebook page, enters preview on Android in August with GA in September. Already GA on iOS and iPadOS, so this closes the cross-platform gap for field and frontline scenarios.
+
+## Security & Compliance
+
+- **[CVE-2026-63796: ocfs2 oversized group bitmap descriptor rejection](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63796)** [GA] — Informational publication for a Linux kernel ocfs2 vulnerability involving oversized group bitmap descriptors. Assess relevance if your environment includes Azure or hybrid workloads running Linux with ocfs2 filesystems.
+
+- **[CVE-2026-3842: QEMU-KVM Hyper-V syndbg OOB write](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-3842)** [GA] — Informational publication for a QEMU-KVM vulnerability where a missing mapped-length guard in the Hyper-V synthetic debugger path can allow a host out-of-bounds write. Relevant if you run QEMU-KVM-based workloads alongside Hyper-V emulation; check with your infrastructure team for patch availability.
+
+- **[CVE-2026-38754: BusyBox heap overflow in ifsbreakup()](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-38754)** [GA] — Informational publication for a heap overflow DoS in BusyBox v1.38.0 triggered by crafted input to the shell's ash component. Relevant for container base images and embedded Linux environments; audit your container image inventory for BusyBox versions at or near 1.38.0.
+
+- **[CVE-2026-62299: CoreDNS EDNS0 nil-pointer panic (remote DoS)](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62299)** [GA] — Informational publication for a remote DoS in CoreDNS via the rewrite-plugin when a downstream plugin returns a response without an OPT record. AKS and other Kubernetes environments using CoreDNS with rewrite rules should verify their CoreDNS version and check upstream patch status.
+
+- **[CVE-2026-60081 / CVE-2026-60082: Perl DBI path index and row handle vulnerabilities](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-60081)** [GA] — Two informational publications for Perl DBI versions before 1.651, covering an unconstrained path index in DBI::ProfileData and statement handle inconsistency. If any of your automation or legacy tooling relies on Perl DBI, verify you are running 1.651 or later.
+
+- **[CVE-2026-48863: Libsolv stack-based buffer overflow in EDDSA PGP verification](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48863)** [GA] — Informational publication for a stack-based buffer overflow in libsolv's EDDSA PGP signature verification path that can cause a DoS. Relevant for Linux environments using RPM-based package management; patch libsolv through your distro's update channel.
+
+- **[CVE-2026-63828: AppArmor TCP Fast Open sendmsg mediation gap](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-63828)** [GA] — Informational publication for a missing AppArmor mediation on the implicit connect path in TCP Fast Open sendmsg calls. Linux workloads with AppArmor profiles that restrict network access should review whether TCP Fast Open creates an unmediated path in their current policy set.
+
+## Action Required
+
+- **[Deploy KB5101650 and configure the SSO registry key](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-available-admin-control-for-sso-prompts-in-windows/ba-p/4534613)** — Deadline: available now, act before users on Windows 11 24H2/25H2 in EEA regions continue hitting SSO prompts. Apply the July 2026 cumulative update via Windows Update or Intune, then push the registry setting via configuration profile or GPO to managed devices.
+
+- **[Audit admin center app/agent policies before unified installation enforcement lands](https://www.microsoft.com/microsoft-365/roadmap?id=567883)** — Deadline: August GA, roughly 4-6 weeks out. Review and reconcile any differences between your Teams admin center and M365 admin center app installation policies now; when unification rolls out, the merged state may not match your intended governance posture and could expose agents or apps to unintended user surfaces.
+
+- **[Review Power BI semantic model sensitivity labels ahead of M365 Copilot integration GA](https://www.microsoft.com/microsoft-365/roadmap?id=567891)** — Deadline: August GA. M365 Copilot will answer natural-language questions directly from Power BI reports and semantic models; ensure sensitivity labels, row-level security, and sharing permissions on those models reflect what users should be able to query through Copilot before the feature reaches production.
