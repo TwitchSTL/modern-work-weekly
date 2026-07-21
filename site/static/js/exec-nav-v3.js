@@ -8,6 +8,8 @@
  * 5. Adds anchor share links to each section header
  * 6. Styles source citation lines as a distinct block
  * 7. Auto-opens section targeted by URL hash
+ * 8. Surfaces the single highest-priority item as a hero alert above the fold
+ * 9. Drives a thin scroll-progress bar fixed to the top of the viewport
  */
 
 (function () {
@@ -55,6 +57,36 @@
     });
   }
 
+  // Scroll progress bar — gives a sense of "almost done" on long pages.
+  function updateProgressBar() {
+    var bar = document.getElementById('exec-progress-bar');
+    if (!bar) return;
+    var doc = document.documentElement;
+    var scrollTop = window.pageYOffset || doc.scrollTop;
+    var height = doc.scrollHeight - doc.clientHeight;
+    var pct = height > 0 ? Math.min(100, Math.max(0, (scrollTop / height) * 100)) : 0;
+    bar.style.width = pct + '%';
+  }
+
+  // Surfaces the single highest-priority item above the fold — added
+  // 2026-07-21 so an exec sees the week's biggest risk in the first few
+  // seconds instead of reading down through six sections to find it.
+  // Reuses whatever the FIRST high-risk element in reading order is (Week
+  // at a Glance is always the first section, so its bullets win naturally).
+  function buildHeroAlert(content) {
+    var box = document.getElementById('exec-hero-alert');
+    if (!box) return;
+    var el = content.querySelector('li.exec-item-high, tr.exec-row-high');
+    if (!el) return;
+    var text = (el.innerHTML || '').split(RISK.HIGH.emoji).join('').trim();
+    if (!text) return;
+    box.innerHTML =
+      '<div class="exec-hero-icon" aria-hidden="true">' + RISK.HIGH.emoji + '</div>' +
+      '<div><div class="exec-hero-label">Highest priority this week</div>' +
+      '<div class="exec-hero-text">' + text + '</div></div>';
+    box.style.display = 'flex';
+  }
+
   function styleSourceLines(body) {
     body.querySelectorAll('p').forEach(function (p) {
       var em = p.querySelector('em');
@@ -77,7 +109,6 @@
     if (!h2s.length) return;
 
     var allDetails = [];
-    var riskCounts = { HIGH: 0, MED: 0, LOW: 0 };
     var firstMain  = true;
 
     h2s.forEach(function (h2, idx) {
@@ -92,8 +123,6 @@
         nodes.push(node);
         node = node.nextSibling;
       }
-
-      if (risk) riskCounts[risk.label === 'High' ? 'HIGH' : risk.label === 'Medium' ? 'MED' : 'LOW']++;
 
       var details = document.createElement('details');
       details.id = slug;
@@ -159,21 +188,32 @@
     actions.appendChild(btnCollapse);
     document.getElementById('exec-toc').appendChild(actions);
 
-    // Risk dashboard
+    // Stat strip — count actual risk-flagged bullets/rows now that
+    // colorTableRows/colorListItems have tagged them, rather than the old
+    // per-section-title check (which never matched anything, since H2s
+    // never contain emoji — only their bullets do). 2026-07-21.
+    var riskCounts = {
+      HIGH: content.querySelectorAll('.exec-item-high, .exec-row-high').length,
+      MED:  content.querySelectorAll('.exec-item-med, .exec-row-med').length,
+      LOW:  content.querySelectorAll('.exec-item-low, .exec-row-low').length,
+    };
     var dashboard = document.getElementById('exec-risk-dashboard');
     if (dashboard) {
       [
-        { key: 'HIGH', cls: 'exec-risk-chip-high', label: 'High' },
-        { key: 'MED',  cls: 'exec-risk-chip-med',  label: 'Medium' },
-        { key: 'LOW',  cls: 'exec-risk-chip-low',  label: 'Low' },
+        { key: 'HIGH', cls: 'exec-stat-card-high', label: 'High risk items' },
+        { key: 'MED',  cls: 'exec-stat-card-med',  label: 'Medium risk items' },
+        { key: 'LOW',  cls: 'exec-stat-card-low',  label: 'Low risk items' },
       ].forEach(function (c) {
         if (!riskCounts[c.key]) return;
-        var chip = document.createElement('span');
-        chip.className = 'exec-risk-chip ' + c.cls;
-        chip.innerHTML = '<span class="exec-risk-chip-count">' + riskCounts[c.key] + '</span> ' + c.label;
-        dashboard.appendChild(chip);
+        var card = document.createElement('div');
+        card.className = 'exec-stat-card ' + c.cls;
+        card.innerHTML = '<div class="exec-stat-number">' + riskCounts[c.key] + '</div>' +
+          '<div class="exec-stat-label">' + c.label + '</div>';
+        dashboard.appendChild(card);
       });
     }
+
+    buildHeroAlert(content);
 
     // Auto-open hash target
     var hash = window.location.hash.slice(1);
@@ -184,5 +224,8 @@
         setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
       }
     }
+
+    window.addEventListener('scroll', updateProgressBar);
+    updateProgressBar();
   });
 })();

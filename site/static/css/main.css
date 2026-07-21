@@ -2180,12 +2180,38 @@ details[open] .toc-label::before { content: "▼ "; }
 /* ── Executive's Guide ───────────────────────────────────────────────── */
 
 /* Risk dashboard — HIGH / MED / LOW count chips above the jump-to nav */
+/* Stat strip — big-number cards replacing the old small pill chips
+   (2026-07-21 redesign). Counts are real: JS tallies actual risk-flagged
+   bullets/rows across the page after building sections, not a per-section
+   guess. */
 .exec-risk-dashboard {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.6rem;
-  margin: 0 0 1rem;
-  flex-wrap: wrap;
+  margin: 0 0 1.25rem;
 }
+.exec-stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+}
+.exec-stat-number {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.exec-stat-card-high .exec-stat-number { color: #ff6b6b; }
+.exec-stat-card-med  .exec-stat-number { color: #f0883e; }
+.exec-stat-card-low  .exec-stat-number { color: #3fb950; }
+.exec-stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Legacy chip classes — unused after the redesign but left in place in
+   case any cached page or old JS still references them. */
 .exec-risk-chip {
   display: flex;
   align-items: center;
@@ -2200,6 +2226,54 @@ details[open] .toc-label::before { content: "▼ "; }
 .exec-risk-chip-med  { color: #f0883e; border-color: rgba(240,136,62,0.3);  background: rgba(240,136,62,0.08);  }
 .exec-risk-chip-low  { color: #3fb950; border-color: rgba(63,185,80,0.3);   background: rgba(63,185,80,0.08);   }
 .exec-risk-chip-count { font-size: 0.95rem; font-weight: 800; line-height: 1; }
+
+/* Hero alert — surfaces the single highest-priority item above the fold,
+   so an exec sees the stakes in the first few seconds instead of reading
+   down through six sections to find out what's actually urgent. */
+.exec-hero-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  background: rgba(255,107,107,0.08);
+  border: 1px solid rgba(255,107,107,0.6);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin: 0 0 1.25rem;
+  box-shadow: 0 0 16px rgba(255,107,107,0.15);
+}
+.exec-hero-icon {
+  font-size: 1.2rem;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.exec-hero-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ff9b9b;
+  margin-bottom: 0.2rem;
+}
+.exec-hero-text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}
+.exec-hero-text a { color: #ff9b9b; text-decoration: underline; }
+.exec-hero-text a:hover { color: #ffb3b3; }
+
+/* Scroll progress bar — thin sticky indicator so an exec has a sense of
+   "almost done" rather than an unbounded wall of sections. */
+.exec-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--color-accent);
+  z-index: 500;
+  transition: width 0.1s linear;
+}
 
 /* Technical digest cross-link — shown in header, prominent */
 .exec-tech-link-header {
@@ -2252,13 +2326,14 @@ details[open] .toc-label::before { content: "▼ "; }
 .exec-section-collapsible.exec-risk-med  { border-left: 3px solid #f0883e; }
 .exec-section-collapsible.exec-risk-low  { border-left: 3px solid #3fb950; }
 
-/* Risk-colored table rows */
+/* Risk-colored table rows (legacy — earlier exec guides used tables before
+   the 2026-07-21 switch to bulleted cards, kept working for old pages) */
 .exec-row-high td { background: rgba(255,107,107,0.06) !important; }
-.exec-row-high td:first-child { border-left: 3px solid rgba(255,107,107,0.5); }
+.exec-row-high td:first-child { border-left: 3px solid rgba(255,107,107,0.7); box-shadow: inset 0 0 10px rgba(255,107,107,0.08); }
 .exec-row-med  td { background: rgba(240,136,62,0.06)  !important; }
-.exec-row-med  td:first-child { border-left: 3px solid rgba(240,136,62,0.5); }
+.exec-row-med  td:first-child { border-left: 3px solid rgba(240,136,62,0.7); box-shadow: inset 0 0 10px rgba(240,136,62,0.08); }
 .exec-row-low  td { background: rgba(63,185,80,0.06)   !important; }
-.exec-row-low  td:first-child { border-left: 3px solid rgba(63,185,80,0.5); }
+.exec-row-low  td:first-child { border-left: 3px solid rgba(63,185,80,0.7); box-shadow: inset 0 0 10px rgba(63,185,80,0.08); }
 
 /* Risk-colored list items — same visual language as the colored table rows
    above, ported to the bulleted Risk & Compliance / Planning Horizon format
@@ -2266,21 +2341,24 @@ details[open] .toc-label::before { content: "▼ "; }
    align under the first line's text. */
 .exec-content li.exec-item-high {
   background: rgba(255,107,107,0.06);
-  border-left: 3px solid rgba(255,107,107,0.5);
-  padding: 0.5rem 0.6rem;
-  border-radius: 2px;
+  border-left: 3px solid rgba(255,107,107,0.7);
+  border-radius: 0 8px 8px 0;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 0 10px rgba(255,107,107,0.12);
 }
 .exec-content li.exec-item-med {
   background: rgba(240,136,62,0.06);
-  border-left: 3px solid rgba(240,136,62,0.5);
-  padding: 0.5rem 0.6rem;
-  border-radius: 2px;
+  border-left: 3px solid rgba(240,136,62,0.7);
+  border-radius: 0 8px 8px 0;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 0 10px rgba(240,136,62,0.12);
 }
 .exec-content li.exec-item-low {
   background: rgba(63,185,80,0.06);
-  border-left: 3px solid rgba(63,185,80,0.5);
-  padding: 0.5rem 0.6rem;
-  border-radius: 2px;
+  border-left: 3px solid rgba(63,185,80,0.7);
+  border-radius: 0 8px 8px 0;
+  padding: 0.65rem 0.85rem;
+  box-shadow: 0 0 10px rgba(63,185,80,0.12);
 }
 
 /* Anchor share link on section summaries */

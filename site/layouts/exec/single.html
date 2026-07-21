@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ $techPost := site.GetPage (printf "/posts/%s" (.Date.Format "2006-01-02")) }}
+<div class="exec-progress-bar" id="exec-progress-bar"></div>
 <article class="post post-simple exec-post exec-article">
 
   <header class="post-header">
@@ -18,6 +19,11 @@
     </a>
     {{ end }}
   </header>
+
+  {{/* Populated client-side with the single highest-priority item, so it's
+       the first thing an exec sees — added 2026-07-21 per feedback that the
+       page read like "a bulleted essay or ordinance" with no lead. */}}
+  <div class="exec-hero-alert" id="exec-hero-alert" style="display:none;"></div>
 
   <div class="exec-risk-dashboard" id="exec-risk-dashboard"></div>
 
