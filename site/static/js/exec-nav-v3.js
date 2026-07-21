@@ -67,6 +67,18 @@
   }
 
   function cardifyOne(el, idx) {
+    // Markdown renders a "loose" list (blank lines between bullets in the
+    // source — true for Risk & Compliance, Planning Horizon, etc.) by
+    // wrapping each <li>'s content in its own <p>. A "tight" list (no
+    // blank lines — true for Week at a Glance) doesn't. Unwrap the <p> so
+    // the rest of this function sees the same shape either way.
+    if (el.tagName === 'LI' && el.childNodes.length === 1 &&
+        el.firstElementChild && el.firstElementChild.tagName === 'P') {
+      var innerP = el.firstElementChild;
+      while (innerP.firstChild) el.appendChild(innerP.firstChild);
+      el.removeChild(innerP);
+    }
+
     var strong = el.querySelector('strong');
     if (!strong) return;
 
