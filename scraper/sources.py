@@ -457,14 +457,14 @@ CLASSIFICATION_KEYWORDS = {
         # from prior "Apps", minus copilot/viva/yammer/power apps (moved below)
         "teams", "sharepoint", "onedrive", "outlook", "calendar",
         "meeting", "channel", "loop", "planner", "forms",
-        "microsoft 365 apps", "office",
+        "microsoft 365 apps", "office", "exchange",
     ],
     "AI & Copilot": [
         # copilot/ai charts/power apps from prior "Apps" + the AI/agent/Power
         # Platform terms from prior "Visibility & Automation"
         "copilot", "ai charts", "power apps", "copilot studio", "agent 365",
         "shadow ai", "ai gateway", "prompt injection", "llm", "generative ai",
-        "power automate", "power platform",
+        "power automate", "power platform", "mcp", "ai agent",
     ],
     "Employee Experience": [
         # viva/yammer moved from prior "Apps"; rest are new additions
@@ -485,7 +485,7 @@ CLASSIFICATION_KEYWORDS = {
         "internet access", "cloud firewall", "network segmentation",
         "defender", "sentinel", "attack disruption", "predictive shielding",
         "secure score", "vulnerability", "threat", "incident", "hunting",
-        "secure boot", "security baseline",
+        "secure boot", "security baseline", "cve",
         "xdr", "siem", "soar", "graph api", "powershell", "rest api",
         "automation", "logic app", "workflow", "api", "sdk", "webhook",
     ],
