@@ -23,7 +23,7 @@ week_of = draft.get("week_of", WEEK)
 post_path = digest.POSTS_DIR / f"{week_of}.md"
 content = post_path.read_text()  # existing, already-correct post — NOT regenerated
 
-li_prompt = digest.build_linkedin_prompt(draft, week_of)
+li_prompt = digest.build_linkedin_prompt(draft, week_of, content)
 li_content = digest.call_claude_linkedin(li_prompt)
 # No hashtags — this is the newsletter article body, not the separate
 # announcement/teaser post. See feedback_linkedin_hashtags memory.

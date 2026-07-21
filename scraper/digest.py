@@ -141,7 +141,7 @@ Format — optimised for pasting into LinkedIn's newsletter article editor. Use 
 Structure (in order):
 1. Title — format exactly as: "Modern Work Weekly — Week of YYYY-MM-DD" (this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
 2. Hook line — one punchy sentence that names the biggest story this week. No greeting, no "this week in M365". Just the hook.
-3. **⚡ TOP 5 THIS WEEK** — the 5 most important changes, numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
+3. **⚡ TOP 5 THIS WEEK** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
 6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions - link in the comments." Do not include a URL in this line - the URL gets posted separately as the first comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
@@ -711,18 +711,67 @@ def linkify_linkedin_draft(li_content: str, content: str, draft: dict | None = N
     return re.sub(r"\*\*([^*]+)\*\*", replace_bold, li_content)
 
 
-def build_linkedin_prompt(draft: dict, week_of: str, max_age_days: int = MAX_AGE_DAYS) -> str:
+_TOP5_SECTION_RE = re.compile(r"## Top 5 This Week\s*\n(.*?)\n---", re.DOTALL)
+_TOP5_ITEM_RE = re.compile(
+    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*\s*-\s*(?P<body>.+?)(?=\n\n\d+\.\s+\*\*|\Z)",
+    re.MULTILINE | re.DOTALL,
+)
+
+
+def extract_top5(post_content: str) -> list[dict]:
+    """Pull the technical post's own Top 5 items (title + explanation).
+
+    This is what already went through editorial review (Step 2 of the
+    weekly workflow — "Top 5 ranking, reorder if your judgment disagrees").
+    The LinkedIn edition should be grounded in this same ranking, not
+    re-derive its own — see build_linkedin_prompt() for why.
+    """
+    section_match = _TOP5_SECTION_RE.search(post_content)
+    if not section_match:
+        return []
+    items = []
+    for m in _TOP5_ITEM_RE.finditer(section_match.group(1)):
+        items.append({"title": m.group("title").strip(), "body": " ".join(m.group("body").split())})
+    return items
+
+
+def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_days: int = MAX_AGE_DAYS) -> str:
     """Build a compact digest summary to feed the LinkedIn draft.
 
-    This previously had zero recency filtering — every item ever
-    accumulated in pending_draft.json was dumped into the prompt with no
-    date signal at all, which is why the LinkedIn edition could end up
-    citing entirely different (and much older) stories than the technical
-    post: it was drawing from a far larger, completely unfiltered pool.
-    Apply the same freshness gate used everywhere else (same --max-age-days
-    override as build_prompt() / build_exec_prompt()).
+    Freshness filtering (--max-age-days) previously fixed the LinkedIn
+    edition citing much older stories than the technical post, but a
+    second, subtler divergence remained: TOP 5 was independently
+    re-derived by the LinkedIn-drafting call from the full raw item pool
+    (draft["grouped_items"]), not from the technical post's own Top 5 —
+    so the two could legitimately disagree on which 5 items matter most,
+    or the LinkedIn edition could headline something that didn't even
+    make it into this week's published post. Confirmed 2026-07-21: 3 of
+    the LinkedIn draft's 5 items (including the hook-line lead story)
+    were absent from the actual published post anywhere — Top 5, category
+    sections, Action Required, or sources.
+    Now the technical post's Top 5 (already human-reviewed) is passed in
+    as a required, non-negotiable list; only WORTH YOUR ATTENTION and ONE
+    FOR THE HELP DESK still draw from the wider freshness-filtered pool,
+    since those are meant to surface extra items beyond the Top 5.
     """
+    top5 = extract_top5(post_content)
     lines = []
+    if top5:
+        lines.append(
+            "CONFIRMED TOP 5 (already reviewed and published in this week's "
+            "technical post — use exactly these 5 items, in this order, "
+            "reworded for LinkedIn voice and length. Do not substitute, "
+            "add, drop, or reorder them, and do not pull a different item "
+            "from below into TOP 5):"
+        )
+        for i, item in enumerate(top5, 1):
+            lines.append(f"  {i}. {item['title']}: {item['body'][:300]}")
+        lines.append("")
+        lines.append(
+            "ADDITIONAL ITEMS (pool for WORTH YOUR ATTENTION and ONE FOR "
+            "THE HELP DESK only — never for TOP 5):"
+        )
+
     for cat, items in draft.get("grouped_items", {}).items():
         # Exec-only content (see build_prompt) — no place in the LinkedIn edition either.
         if cat == "Research & Trends":
@@ -904,7 +953,7 @@ def run(args):
     linkedin_draft_path = None
     if not args.skip_linkedin:
         try:
-            li_prompt = build_linkedin_prompt(draft, week_of, max_age_days=max_age_days)
+            li_prompt = build_linkedin_prompt(draft, week_of, content, max_age_days=max_age_days)
             li_content = clean_dashes(call_claude_linkedin(li_prompt))
             # No hashtags here — this is the long-form newsletter article body,
             # pasted into LinkedIn's Newsletter editor, where hashtags aren't
