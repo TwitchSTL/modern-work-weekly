@@ -146,7 +146,7 @@ Structure (in order):
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
 6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions - link in the comments." Do not include a URL in this line - the URL gets posted separately as the first comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
 
-Do not include any hashtags in your output. Hashtags are appended automatically after generation, derived from the tags already assigned to this week's technical post — do not invent your own. Do not add a sign-off. Do not wrap output in code fences.
+Do not include any hashtags in your output — hashtags aren't functional inside LinkedIn's Newsletter article editor, so they're never added to this draft. Do not add a sign-off. Do not wrap output in code fences.
 
 Do not include hyperlinks or Markdown link syntax (no `[text](url)`) anywhere in the output — write plain bolded headline text only, e.g. "**Item title:**". Source links for each item are added automatically after generation by matching your headlines against the links already present in this week's technical post — inventing your own URL here would risk linking to the wrong (or a nonexistent) page.
 
@@ -906,11 +906,12 @@ def run(args):
         try:
             li_prompt = build_linkedin_prompt(draft, week_of, max_age_days=max_age_days)
             li_content = clean_dashes(call_claude_linkedin(li_prompt))
+            # No hashtags here — this is the long-form newsletter article body,
+            # pasted into LinkedIn's Newsletter editor, where hashtags aren't
+            # functional/linkable. build_hashtags()/TAG_HASHTAGS are still used
+            # for the separate short announcement/teaser post (drafted ad hoc,
+            # not by this pipeline) — see feedback_linkedin_hashtags memory.
             li_content = linkify_linkedin_draft(li_content, content, draft)
-            hashtags = build_hashtags(extract_post_tags(content))
-            li_content = li_content.rstrip() + "\n\n" + " ".join(hashtags)
-            if len(hashtags) <= 1:
-                log.warning("No matching content tags found for hashtag compilation — only the brand hashtag was included.")
             linkedin_draft_path = write_linkedin_draft(li_content, week_of)
         except Exception as e:
             log.warning(f"LinkedIn draft generation failed (non-fatal): {e}")

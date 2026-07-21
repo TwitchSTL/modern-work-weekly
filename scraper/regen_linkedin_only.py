@@ -25,9 +25,9 @@ content = post_path.read_text()  # existing, already-correct post — NOT regene
 
 li_prompt = digest.build_linkedin_prompt(draft, week_of)
 li_content = digest.call_claude_linkedin(li_prompt)
+# No hashtags — this is the newsletter article body, not the separate
+# announcement/teaser post. See feedback_linkedin_hashtags memory.
 li_content = digest.linkify_linkedin_draft(li_content, content)
-hashtags = digest.build_hashtags(digest.extract_post_tags(content))
-li_content = li_content.rstrip() + "\n\n" + " ".join(hashtags)
 
 path = digest.write_linkedin_draft(li_content, week_of)
 print(f"LinkedIn draft written → {path}")
