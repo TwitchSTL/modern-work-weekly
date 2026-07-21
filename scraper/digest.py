@@ -101,11 +101,11 @@ Format rules:
 - ## The Week at a Glance — 3-4 risk-labeled bullets in plain English
 - ## Why This Week Matters — 2-3 sentences of leadership-level context; the one thing leadership must understand
 - ## What Microsoft's Research Is Saying — OPTIONAL. Include only when "Research & Trends" items are present in the raw data; omit the entire section, heading included, if there are none this week. 1-3 bullets translating Microsoft's own workplace/AI research (Viva/WorkLab research essays) into what it means for this organization's planning. This is context, not an action item, so do not add it to Risk & Compliance or Planning Horizon.
-- ## Risk & Compliance — markdown table with columns: Change | Business Risk | Regulatory Angle | Act By
+- ## Risk & Compliance — a bulleted list, one item per bullet, in the same scannable style as "The Week at a Glance": risk emoji (🔴/🟡/🟢) + bold linked item title, then a colon and ONE punchy sentence covering the business risk. Fold the regulatory angle and act-by date into a short trailing clause in that same sentence, or a brief second sentence if needed. Do not use a markdown table for this section. Example: "🔴 **[ACR Stealer credential campaign](url):** Active attacks are stealing browser credentials, risking account takeover; relevant to SOC 2 and HIPAA, act immediately."
 - ## What Your Employees Will Notice — bullets of user-facing changes; what to communicate proactively
 - ## What Your Help Desk Should Expect — specific ticket types or support volume changes to anticipate
 - ## Cost & Licensing — licensing tier implications, new costs, or spend optimization opportunities (omit section if nothing applies)
-- ## Planning Horizon — deadlines in the next 30/60/90 days requiring leadership decisions, budget approval, or vendor coordination
+- ## Planning Horizon — a bulleted list grouped by urgency, one item per bullet: bold the timeframe first (e.g. "**Within 30 days:**"), then the bold linked item title, then a colon and ONE short sentence naming the decision, budget approval, or vendor coordination required. Do not use a markdown table for this section. Example: "**Within 30 days — [Passkeys as default authentication](url):** Plan employee communication and help desk readiness before rollout reaches your workforce."
 - ## If You Take No Action — plain-language consequences for the 2-3 highest-risk items only
 
 Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, cyber insurance requirements, GDPR, state privacy laws.
@@ -116,8 +116,7 @@ Source citations — REQUIRED. Executives trust named references, not raw URLs:
 - At the end of EVERY section (including Risk & Compliance, Planning Horizon, and If You Take No Action), you MUST include a line formatted exactly as:
   `*Sources: [Descriptive Name](url) · [Descriptive Name](url)*`
 - Use 1–3 sources per section, drawn from the raw data URLs. Name them meaningfully: "Microsoft Threat Intelligence", "Entra What's New", "M365 Roadmap", "Intune What's New", "Microsoft Security Blog", "Intune What's New", "Purview What's New", etc. Never paste a raw URL as the link text.
-- In the Risk & Compliance table, hyperlink the item name in the Change column to its source URL: e.g. **[Storm-2949 breach via stolen identity](url)**
-- In the Planning Horizon table, hyperlink the item name in the Item column to its source URL where available.
+- In Risk & Compliance and Planning Horizon, hyperlink each item's bold title directly within its bullet, as shown in the examples above, e.g. **[Storm-2949 breach via stolen identity](url)** — never as a separate raw URL.
 - Do NOT omit the Sources line from any section — if no URL is available for a section, link to the most relevant Microsoft documentation page for that topic.
 
 Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board.

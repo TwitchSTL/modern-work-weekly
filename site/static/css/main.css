@@ -2260,6 +2260,29 @@ details[open] .toc-label::before { content: "▼ "; }
 .exec-row-low  td { background: rgba(63,185,80,0.06)   !important; }
 .exec-row-low  td:first-child { border-left: 3px solid rgba(63,185,80,0.5); }
 
+/* Risk-colored list items — same visual language as the colored table rows
+   above, ported to the bulleted Risk & Compliance / Planning Horizon format
+   (2026-07-21). Keeps the marker outside (default) so wrapped lines still
+   align under the first line's text. */
+.exec-content li.exec-item-high {
+  background: rgba(255,107,107,0.06);
+  border-left: 3px solid rgba(255,107,107,0.5);
+  padding: 0.5rem 0.6rem;
+  border-radius: 2px;
+}
+.exec-content li.exec-item-med {
+  background: rgba(240,136,62,0.06);
+  border-left: 3px solid rgba(240,136,62,0.5);
+  padding: 0.5rem 0.6rem;
+  border-radius: 2px;
+}
+.exec-content li.exec-item-low {
+  background: rgba(63,185,80,0.06);
+  border-left: 3px solid rgba(63,185,80,0.5);
+  padding: 0.5rem 0.6rem;
+  border-radius: 2px;
+}
+
 /* Anchor share link on section summaries */
 .exec-section-anchor {
   margin-left: auto;
@@ -2395,6 +2418,24 @@ details[open] .toc-label::before { content: "▼ "; }
 
 .exec-content tr:nth-child(even) td {
   background: rgba(255,255,255,0.02);
+}
+
+/* Risk & Compliance / Planning Horizon moved from dense tables to bulleted
+   lists 2026-07-21 (dense multi-sentence table cells were hard to scan).
+   Give exec-content lists more breathing room than the default .post-content
+   list spacing since these bullets carry more weight per line. */
+.exec-content ul {
+  margin: 0.75rem 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.exec-content li {
+  margin-bottom: 0.85rem;
+  padding-left: 0.25rem;
+}
+
+.exec-content li:last-child {
+  margin-bottom: 0;
 }
 
 .exec-cross-link {

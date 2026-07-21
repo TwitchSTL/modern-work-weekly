@@ -4,7 +4,7 @@
  * 1. Wraps h2 sections in collapsible <details> cards with risk-color coding
  * 2. Builds a jump-to pill nav with expand/collapse all
  * 3. Builds a risk dashboard (HIGH / MED / LOW counts)
- * 4. Color-codes table rows containing risk emojis
+ * 4. Color-codes table rows and list items containing risk emojis
  * 5. Adds anchor share links to each section header
  * 6. Styles source citation lines as a distinct block
  * 7. Auto-opens section targeted by URL hash
@@ -14,9 +14,9 @@
   'use strict';
 
   var RISK = {
-    HIGH: { emoji: '🔴', cls: 'exec-risk-high', rowCls: 'exec-row-high', label: 'High' },
-    MED:  { emoji: '🟡', cls: 'exec-risk-med',  rowCls: 'exec-row-med',  label: 'Medium' },
-    LOW:  { emoji: '🟢', cls: 'exec-risk-low',  rowCls: 'exec-row-low',  label: 'Low' },
+    HIGH: { emoji: '🔴', cls: 'exec-risk-high', rowCls: 'exec-row-high', itemCls: 'exec-item-high', label: 'High' },
+    MED:  { emoji: '🟡', cls: 'exec-risk-med',  rowCls: 'exec-row-med',  itemCls: 'exec-item-med',  label: 'Medium' },
+    LOW:  { emoji: '🟢', cls: 'exec-risk-low',  rowCls: 'exec-row-low',  itemCls: 'exec-item-low',  label: 'Low' },
   };
 
   function slugify(text) {
@@ -42,6 +42,16 @@
       var text = tr.textContent || '';
       var risk = detectRisk(text);
       if (risk) tr.classList.add(risk.rowCls);
+    });
+  }
+
+  // Risk & Compliance / Planning Horizon moved from tables to bulleted lists
+  // 2026-07-21 — same idea as colorTableRows, but for <li> elements.
+  function colorListItems(container) {
+    container.querySelectorAll('li').forEach(function (li) {
+      var text = li.textContent || '';
+      var risk = detectRisk(text);
+      if (risk) li.classList.add(risk.itemCls);
     });
   }
 
@@ -116,6 +126,7 @@
       h2.parentNode.replaceChild(details, h2);
 
       colorTableRows(body);
+      colorListItems(body);
       styleSourceLines(body);
       allDetails.push(details);
 
