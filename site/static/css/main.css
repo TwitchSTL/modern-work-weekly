@@ -1332,10 +1332,21 @@ details[open] .toc-label::before { content: "▼ "; }
   align-items: start;
 }
 
+/* 2-column variant: digest posts dropped the left "Known Issues" sidebar
+   2026-07-21 (it was always empty there), so they're now center + right
+   only. Keeps .post-layout's shared rules (sticky sidebar, mobile
+   breakpoint, etc.) while overriding just the column count. */
+.post-layout-2col {
+  grid-template-columns: minmax(0, 1fr) 240px;
+}
+
 /* Tighten sidebar columns when viewport is narrower */
 @media (max-width: 1240px) {
   .post-layout {
     grid-template-columns: 200px minmax(0, 1fr) 200px;
+  }
+  .post-layout-2col {
+    grid-template-columns: minmax(0, 1fr) 200px;
   }
 }
 

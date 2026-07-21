@@ -1,12 +1,14 @@
 {{ define "main" }}
 {{ if eq .Section "posts" }}
-{{/* ── Digest post: 3-column layout with sidebars ── */}}
-<div class="post-layout">
-
-  <!-- Left sidebar: Known Issues -->
-  <aside class="post-sidebar post-sidebar-left">
-    {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" true) }}
-  </aside>
+{{/* ── Digest post: 2-column layout (center + right sidebar) ──
+     Known Issues used to run here too, filtered to "new since last
+     digest" only — but that filter meant it was permanently empty on
+     every single digest page, since new issues are rare within any one
+     week's window. Removed 2026-07-21; Known Issues now lives on the
+     homepage only (list.html, newOnly=false) and the dedicated /health/
+     page, both of which show the full current list where it's actually
+     populated. */}}
+<div class="post-layout post-layout-2col">
 
   <!-- Center: the digest -->
   <article class="post">

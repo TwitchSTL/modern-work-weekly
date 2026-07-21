@@ -65,6 +65,7 @@ Format rules:
 - Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → sources front matter. Do NOT place Action Required before the category sections.
 - Action Required section: ALWAYS include this section — never omit it. Include any items with deadlines, required admin steps, patch obligations, CVE mitigations, governance decisions, or deprecation timelines. Use the same bullet format as category sections, with the deadline date or urgency called out prominently at the start of the description. If nothing is strictly time-sensitive this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
+- Category sections must include EVERY item provided for that category in the input data. Do not selectively cover only some items and silently drop the rest — every item in the data has already been filtered for relevance and freshness upstream before it ever reaches you, so there is no such thing as a provided item that isn't worth including. A category with 7 items provided must produce 7 bullets, not your own trimmed-down selection of 5. This applies regardless of category size; do not artificially cap any section at a round number.
 
 Tags must use lowercase-hyphenated format. Use only from this standard set (pick what applies):
 intune, entra-id, defender-xdr, defender-for-endpoint, defender-for-office-365,
@@ -336,6 +337,22 @@ def detect_deadline_candidates(draft: dict) -> list[dict]:
     return candidates
 
 
+def clean_dashes(text: str) -> str:
+    """Deterministic backstop for the "never use em dashes" style rule.
+
+    Every SYSTEM_PROMPT in this file has told Claude not to use em dashes
+    since this rule was first added, but the live 2026-07-21 post proved
+    the model doesn't reliably follow it (em dashes throughout). Rather
+    than trust a prompt instruction a second time, strip them here so
+    compliance doesn't depend on the model's mood. Covers em dash (—,
+    U+2014) and en dash (–, U+2013); both are typically already surrounded
+    by spaces in Claude's output, so a straight character swap is enough.
+    Deliberately does NOT touch the three-em dash (⸻, U+2E3B) — that's the
+    intentional LinkedIn section divider character, a different glyph.
+    """
+    return text.replace("—", "-").replace("–", "-")
+
+
 def write_deadline_candidates(candidates: list[dict]) -> Path:
     STATE_DIR.mkdir(exist_ok=True)
     with open(DEADLINE_CANDIDATES_FILE, "w") as f:
@@ -380,9 +397,16 @@ def filter_recent(items: list, max_age_days: int = MAX_AGE_DAYS) -> list:
 def build_prompt(draft: dict, max_age_days: int = MAX_AGE_DAYS) -> str:
     # Compact the grouped items to save tokens — keep title, body, phase, admin_action.
     # Filter to the last max_age_days days first (parsed dates, not raw string
-    # comparison — see dateutils.py), then cap at 8 items per category, most
-    # recent first, to keep input within model limits. With 6 pillars × 8
-    # items the prompt stays well under 8k input tokens.
+    # comparison — see dateutils.py), then cap at MAX_PER_CAT items per
+    # category, most recent first. This was 8 until 2026-07-21, when a
+    # backlog-recovery week showed Claude producing only 5 of 7 available
+    # Identity & Access items — well under even the old cap — revealing the
+    # real ceiling was Claude's own selectivity, not this number. Raised to
+    # 20 as a generous token-budget safety valve (Sonnet's context window
+    # makes the old "keep prompt under 8k tokens" rationale obsolete) rather
+    # than removed outright, so a truly pathological accumulation still has
+    # *some* backstop. The SYSTEM_PROMPT now also explicitly instructs
+    # Claude to include every item provided, not a self-selected subset.
     #
     # max_age_days defaults to the standard 7-day window but can be widened
     # via --max-age-days for a one-off regeneration when a real backlog has
@@ -392,7 +416,7 @@ def build_prompt(draft: dict, max_age_days: int = MAX_AGE_DAYS) -> str:
     # the module-level MAX_AGE_DAYS default to "fix" a one-time backlog —
     # that filter is what stops stale multi-week content from flooding a
     # normal week.
-    MAX_PER_CAT = 8
+    MAX_PER_CAT = 20
     compact = {}
     for cat, items in draft.get("grouped_items", {}).items():
         # "Research & Trends" (Viva WorkLab research essays) is exec-only
@@ -864,7 +888,7 @@ def run(args):
         log.info("Dry run complete — no API call made.")
         return
 
-    content = call_claude(prompt)
+    content = clean_dashes(call_claude(prompt))
     post_path = write_post(content, week_of)
 
     # Generate Executive's Guide unless skipped
@@ -872,7 +896,7 @@ def run(args):
     if not args.skip_exec:
         try:
             exec_prompt = build_exec_prompt(draft, max_age_days=max_age_days)
-            exec_content = call_claude_exec(exec_prompt)
+            exec_content = clean_dashes(call_claude_exec(exec_prompt))
             exec_post_path = write_exec_post(exec_content, week_of)
         except Exception as e:
             log.warning(f"Executive's Guide generation failed (non-fatal): {e}")
@@ -882,7 +906,7 @@ def run(args):
     if not args.skip_linkedin:
         try:
             li_prompt = build_linkedin_prompt(draft, week_of, max_age_days=max_age_days)
-            li_content = call_claude_linkedin(li_prompt)
+            li_content = clean_dashes(call_claude_linkedin(li_prompt))
             li_content = linkify_linkedin_draft(li_content, content, draft)
             hashtags = build_hashtags(extract_post_tags(content))
             li_content = li_content.rstrip() + "\n\n" + " ".join(hashtags)
