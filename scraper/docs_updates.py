@@ -78,16 +78,28 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 # omitted, which avoids hardcoding a branch name that could be wrong (some
 # of these repos default to "main", others to "public"; letting GitHub
 # resolve it removes an entire class of silent-wrong-branch bugs).
+# 2026-07-28: windows365, OfficeDocs-SharePoint, OfficeDocs-Exchange,
+# OfficeDocs-SkypeForBusiness, and viva were all confirmed DEAD — none of
+# these repos exist publicly anymore (verified by browsing
+# github.com/orgs/MicrosoftDocs/repositories directly, not just an API
+# response, to rule out a rate-limit false negative). Their Learn pages'
+# github_feedback_content_git_url metadata still points to these names,
+# which is what the original repo mapping trusted — that metadata is
+# apparently not a reliable existence check, just a template GitHub's
+# publishing pipeline generates without verifying the target still exists.
+# Checked whether this content moved into the microsoft-365-docs monorepo
+# instead: it didn't, that repo only has two real content folders (copilot/
+# and microsoft-365/), neither of which is SharePoint/Exchange/Teams/Viva.
+# Net effect: Collaboration & Productivity and Employee Experience have NO
+# working Documentation Updates source right now, and Endpoint & Device
+# Management lost its Windows 365 source (Intune/Autopilot via memdocs
+# still work). Re-research where these products' public doc source repos
+# actually live (if anywhere) is a real follow-up, not done here.
 DOC_SOURCES = [
     {"pillar": "Identity & Access", "repo": "MicrosoftDocs/entra-docs", "path": None},
     {"pillar": "Endpoint & Device Management", "repo": "MicrosoftDocs/memdocs", "path": "intune"},
     {"pillar": "Endpoint & Device Management", "repo": "MicrosoftDocs/memdocs", "path": "autopilot"},
-    {"pillar": "Endpoint & Device Management", "repo": "MicrosoftDocs/windows365", "path": "Windows365"},
-    {"pillar": "Collaboration & Productivity", "repo": "MicrosoftDocs/OfficeDocs-SharePoint", "path": None},
-    {"pillar": "Collaboration & Productivity", "repo": "MicrosoftDocs/OfficeDocs-Exchange", "path": None},
-    {"pillar": "Collaboration & Productivity", "repo": "MicrosoftDocs/OfficeDocs-SkypeForBusiness", "path": "Teams"},
     {"pillar": "AI & Copilot", "repo": "MicrosoftDocs/microsoft-365-docs", "path": "copilot"},
-    {"pillar": "Employee Experience", "repo": "MicrosoftDocs/viva", "path": "Viva"},
     {"pillar": "Security & Compliance", "repo": "MicrosoftDocs/defender-docs", "path": None},
 ]
 
@@ -112,6 +124,18 @@ NOISE_MESSAGE_PATTERNS = [
     re.compile(r"^\[aira\] bot remediation", re.I),
     re.compile(r"^merge branch '(main|live)' into", re.I),
     re.compile(r"^update \.openpublishing", re.I),
+    # Added 2026-07-28 after reviewing the first real dry run against
+    # entra-docs and memdocs, which surfaced a lot of purely administrative
+    # commits these patterns didn't catch: author/reviewer metadata swaps
+    # (no content change at all) and a batch of unlinked "Recover ..."
+    # commits from a single author (mmacy-msft) restoring old Intune doc
+    # pages with no PR reference, look like pipeline cleanup rather than
+    # anything an engineer needs to know changed.
+    re.compile(r"^(add|update|change)\s+(author|reviewer)\b", re.I),
+    re.compile(r"^change reviewer to author\b", re.I),
+    re.compile(r"^update\s+metadata$", re.I),
+    re.compile(r"^learn editor:", re.I),
+    re.compile(r"^recover\b", re.I),
 ]
 
 
