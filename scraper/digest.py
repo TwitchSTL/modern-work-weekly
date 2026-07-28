@@ -145,7 +145,7 @@ Structure (in order):
 3. **⚡ TOP 5 THIS WEEK** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
-6. Closing line — one sentence pointing to the full digest. Format: "Full digest with sources and admin actions - link in the comments." Do not include a URL in this line - the URL gets posted separately as the first comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
+6. Closing line — one sentence pointing to both the full technical digest and the Executive's Guide. Format: "Full Technical Digest and Exec's Guide in the comments!" Do not include a URL in this line - the Technical Digest URL gets posted as the first comment and the Executive's Guide URL as the second comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
 
 Do not include any hashtags in your output — hashtags aren't functional inside LinkedIn's Newsletter article editor, so they're never added to this draft. Do not add a sign-off. Do not wrap output in code fences.
 
