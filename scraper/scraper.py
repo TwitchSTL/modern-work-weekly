@@ -29,6 +29,7 @@ from bs4 import BeautifulSoup
 
 from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS, DEFAULT_CATEGORY
 from dateutils import item_age_days
+import docs_updates
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -700,6 +701,24 @@ def run_scraper(args):
 
     write_classification_stats(new_items, grouped, run_date)
 
+    # ── Documentation Updates (GitHub commit tracking) ─────────────────────
+    # Separate from the RSS/HTML SOURCES list above — pulls commits to
+    # MicrosoftDocs source repos over the trailing 7 days, pre-filtered for
+    # bot/sync noise (see docs_updates.py). Only runs on full runs, not
+    # --source test runs, so testing a single RSS source doesn't also spend
+    # GitHub API calls every time.
+    doc_updates_by_pillar: dict[str, list] = {}
+    if not args.source:
+        try:
+            doc_updates_by_pillar = docs_updates.fetch_all_doc_updates(days=7)
+            total_docs = sum(len(v) for v in doc_updates_by_pillar.values())
+            log.info(
+                f"Documentation Updates — {total_docs} substantive doc commit(s) "
+                f"across {len(doc_updates_by_pillar)} pillar(s)."
+            )
+        except Exception as e:
+            log.warning(f"Documentation Updates fetch failed (non-fatal): {e}")
+
     # ── Per-run snapshot (dated, for reference / manual replay) ───────────────
     snapshot = {
         "run_date": run_date,
@@ -707,6 +726,7 @@ def run_scraper(args):
         "total_new_items": len(new_items),
         "sources_checked": sources_this_run,
         "grouped_items": grouped,
+        "doc_updates": doc_updates_by_pillar,
         "claude_prompt_hint": (
             "Paste this JSON into Claude.ai with your master prompt. "
             "Ask Claude to produce the weekly digest in the standard format: "
@@ -754,6 +774,42 @@ def run_scraper(args):
                 pending["grouped_items"].setdefault(cat, []).append(item)
                 existing_ids.add(item["id"])
                 added += 1
+
+        # Doc updates: same prune-then-dedup-merge pattern as grouped_items
+        # above, keyed by pillar instead of category. Each GitHub commit
+        # fetch re-pulls the trailing 7 days every run, so most of what
+        # comes back on any given run is stuff already accumulated from a
+        # prior run — dedup by commit SHA (the item's "id") is what keeps
+        # this from re-adding the same commit every single run.
+        pending.setdefault("doc_updates", {})
+        doc_pruned = 0
+        for pillar in list(pending["doc_updates"].keys()):
+            kept_docs = []
+            for item in pending["doc_updates"][pillar]:
+                age = item_age_days(item.get("date"))
+                if age is not None and age > MAX_PENDING_AGE_DAYS:
+                    doc_pruned += 1
+                    continue
+                kept_docs.append(item)
+            pending["doc_updates"][pillar] = kept_docs
+        if doc_pruned:
+            log.info(f"Pruned {doc_pruned} doc update item(s) from pending draft that aged out (>{MAX_PENDING_AGE_DAYS}d).")
+
+        existing_doc_ids = {
+            item["id"]
+            for pillar_items in pending["doc_updates"].values()
+            for item in pillar_items
+        }
+        doc_added = 0
+        for pillar, items in doc_updates_by_pillar.items():
+            for item in items:
+                if item["id"] not in existing_doc_ids:
+                    pending["doc_updates"].setdefault(pillar, []).append(item)
+                    existing_doc_ids.add(item["id"])
+                    doc_added += 1
+        if doc_added:
+            log.info(f"Pending draft — {doc_added} new doc update item(s) added.")
+
         pending["last_updated"] = run_date
         pending["runs"] = pending.get("runs", []) + [run_date]
         pending["total_new_items"] = sum(
@@ -776,6 +832,7 @@ def run_scraper(args):
             "total_new_items": len(new_items),
             "sources_checked": sources_this_run,
             "grouped_items": grouped,
+            "doc_updates": doc_updates_by_pillar,
         }
         log.info(f"Pending draft created — {len(new_items)} items.")
 

@@ -29,6 +29,7 @@ const PILLAR_COLORS = [
   { keys: ['network'],                                                         color: '#39d353' },
   { keys: ['visibility & automation', 'automation & ai', 'ai & automation'],   color: '#d2a8ff' },
   { keys: ['action required', 'action items', 'recommended actions'],         color: '#ff6b6b' },
+  { keys: ['documentation updates'],                                          color: '#e3b341' },
 ];
 
 function categoryColor(name) {

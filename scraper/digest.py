@@ -62,8 +62,9 @@ Format rules:
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
   `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
-- Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → sources front matter. Do NOT place Action Required before the category sections.
+- Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → Documentation Updates → sources front matter. Do NOT place Action Required before the category sections.
 - Action Required section: ALWAYS include this section — never omit it. Include any items with deadlines, required admin steps, patch obligations, CVE mitigations, governance decisions, or deprecation timelines. Use the same bullet format as category sections, with the deadline date or urgency called out prominently at the start of the description. If nothing is strictly time-sensitive this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days.
+- Documentation Updates section (## Documentation Updates): OPTIONAL — include only when the raw GitHub doc commit data has at least one substantive item; omit the entire section, heading included, if none qualify this week. This data is raw commits to Microsoft's documentation repos, and most commits are NOT worth surfacing: typo fixes, formatting passes, screenshot swaps, minor rewording, and editorial cleanup are all noise. Select only commits that represent a real content change an engineer would want to know about: a newly documented capability or setting, a changed default or behavior, an added or removed prerequisite, a retirement or deprecation notice, a corrected or clarified admin procedure, or a meaningfully rewritten guidance page. It is normal and expected for this section to be short or entirely absent most weeks; do not pad it with marginal commits to make it look substantial. Sub-group selected items under a bold pillar name on its own line (e.g. `**Identity & Access**`), then one bullet per item below it, in this format: `- **[Your own clear, engineer-facing title](commit-url)** — [1 sentence: what actually changed in the docs and why it matters].` Write your own title describing the actual change; do NOT reuse the raw commit message as the title, since commit messages are written for other doc authors, not engineers, and are often unclear standing alone.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 - Category sections must include EVERY item provided for that category in the input data. Do not selectively cover only some items and silently drop the rest — every item in the data has already been filtered for relevance and freshness upstream before it ever reaches you, so there is no such thing as a provided item that isn't worth including. A category with 7 items provided must produce 7 bullets, not your own trimmed-down selection of 5. This applies regardless of category size; do not artificially cap any section at a round number.
 
@@ -182,6 +183,9 @@ Sources checked: {sources}
 
 RAW DATA:
 {grouped_items}
+
+RAW GITHUB DOC COMMIT DATA (for the optional Documentation Updates section — most of these are noise, see the system prompt's selection criteria for which ones actually qualify):
+{doc_updates}
 
 Produce the complete Hugo markdown post. Start immediately with the YAML front matter (---). Do not wrap the output in code fences. Do not add any preamble or explanation outside the markdown."""
 
@@ -445,11 +449,35 @@ def build_prompt(draft: dict, max_age_days: int = MAX_AGE_DAYS) -> str:
             for item in sorted_items[:MAX_PER_CAT]
         ]
 
+    # Documentation Updates: same freshness filter and recency sort as
+    # category items above, capped per pillar (these lists are almost always
+    # much shorter than a category's item count, so a lower cap is enough
+    # of a token-budget safety valve without ever realistically being hit).
+    MAX_PER_PILLAR_DOCS = 15
+    doc_compact = {}
+    for pillar, items in draft.get("doc_updates", {}).items():
+        fresh_items = filter_recent(items, max_age_days=max_age_days)
+        sorted_items = sorted(
+            fresh_items,
+            key=lambda x: parse_item_date(x.get("date")) or datetime.min.replace(tzinfo=timezone.utc),
+            reverse=True,
+        )
+        if sorted_items:
+            doc_compact[pillar] = [
+                {
+                    "title": item["title"],
+                    "url": item.get("url", ""),
+                    "repo": item.get("repo", ""),
+                }
+                for item in sorted_items[:MAX_PER_PILLAR_DOCS]
+            ]
+
     return DIGEST_PROMPT_TEMPLATE.format(
         week_of=draft.get("week_of", datetime.now(timezone.utc).date().isoformat()),
         total_new_items=draft.get("total_new_items", 0),
         sources=", ".join(draft.get("sources_checked", [])),
         grouped_items=json.dumps(compact, indent=2),
+        doc_updates=json.dumps(doc_compact, indent=2) if doc_compact else "(none this week)",
     )
 
 
