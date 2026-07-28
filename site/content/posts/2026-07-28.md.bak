@@ -1,22 +1,16 @@
 ---
 title: "Modern Work Weekly - Week of 2026-07-28"
 date: 2026-07-28
-description: "A thin week on raw volume but two items demand attention: Purview DLM billing shifts to a data-volume model, and RDP Multipath with redundant TCP hits GA for Windows 365 and AVD."
+description: "A light week for feature volume, but meaningful signal on Purview billing model changes and RDP Multipath GA - plus a new admin control that gives you a clean offboard path from People Skills."
 tags:
   - purview
-  - data-lifecycle
   - windows-365
+  - data-lifecycle
   - modern-work
-  - sharepoint
+  - security & compliance
 categories:
   - Security & Compliance
-  - Collaboration & Productivity
-  - Endpoint & Device Management
 sources:
-  - https://www.youtube.com/watch?v=2U3kFesNNcI
-  - https://www.youtube.com/watch?v=5lJ0a6tdj-4
-  - https://www.youtube.com/shorts/NjkVAM_dE2w
-  - https://www.youtube.com/shorts/4FvIlVWWCnE
   - https://www.microsoft.com/en-us/security/blog/2026/07/22/real-world-incident-response-microsoft-and-axa-xl-strengthen-cyber-resilience/
   - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/rdp-multipath-with-redundant-tcp-is-now-generally-available-for/ba-p/4534610
   - https://www.microsoft.com/microsoft-365/roadmap?id=560324
@@ -26,48 +20,36 @@ sources:
 
 ## Top 5 This Week
 
-1. **Purview DLM billing model changes to volume-based pricing** - If you retain non-Microsoft 365 generative AI prompts and responses under a DLM policy, your costs are now calculated per GB of retained data ($0.25/GB/month), not per message count. Review your retention policy scope and data volumes before your next billing cycle.
+1. **Purview DLM Billing Model Change**{{< cat "Security & Compliance" >}} - If your retention policies cover non-Microsoft 365 generative AI prompts and responses, your costs are about to be calculated differently. The new model bills on data volume retained (per GB/month) rather than per-message counts. Review your DLM policy scope and estimate retained data volume now before the new meter hits.
 
-2. **RDP Multipath with redundant TCP is GA for Windows 365 and AVD** - This directly improves session resilience for users behind restrictive firewalls, VPNs, or UDP-blocked networks. No more silent session drops due to single-path TCP failures; enable it now for your Cloud PC fleet.
+2. **RDP Multipath with Redundant TCP Goes GA**{{< cat "Security & Compliance" >}} - Windows 365 and Azure Virtual Desktop environments in TCP-restricted or VPN-heavy networks now have a production-ready resilience layer. This directly addresses session drops caused by packet loss and UDP restrictions without requiring firewall changes.
 
-3. **People Skills admin deletion control is GA** - Admins can now permanently wipe the entire organizational skills library, including confirmed, inferred, and imported skills. This is the offboarding lever you needed for data governance and compliance audits against the People Skills feature.
+3. **People Skills Admin Deletion Control**{{< cat "Security & Compliance" >}} - Admins now have a tenant-wide nuclear option for People Skills data: full deletion of the skills library, confirmed/inferred/imported skills, and removal from profile cards and Copilot experiences. Useful if you're offboarding from Skills or responding to a data governance requirement.
 
-4. **Auto-labeling of existing SharePoint files at rest is coming** - The roadmap item for applying default library sensitivity labels to data at rest lands in preview in September and GA in October 2026. Start auditing your library default label configurations now so rollout is clean.
+4. **SharePoint Library Default Label Auto-Apply (Preview Sept, GA Oct)** - Auto-labeling of existing files at rest to match the library's default sensitivity label closes a long-standing gap. Plan your library label configurations now so you're ready to validate behavior in the September preview.
 
-5. **Microsoft IR services extended to AXA XL policyholders** - If your organization holds an AXA XL cyber insurance policy, Microsoft Incident Response is now a covered service. Worth surfacing to your CISO and legal teams before you need it.
-
----
-
-## Collaboration & Productivity
-
-- **[What actually happens when you click a link?](https://www.youtube.com/watch?v=2U3kFesNNcI)** [GA] - Chrome-focused developer content explaining TCP/IP, DNS resolution, and the Blink rendering engine. This is Google Chrome developer training material, not a Microsoft 365 change; no admin action required, but useful background for engineers troubleshooting browser-based M365 application behavior.
-
-- **[How to build and debug WebMCP tools for browser agents](https://www.youtube.com/watch?v=5lJ0a6tdj-4)** [GA] - Google I/O content covering the WebMCP protocol for connecting web apps to browser agents via imperative and declarative APIs. Not a Microsoft platform change, but relevant context if your team is evaluating browser-native agent extensibility patterns alongside Copilot Studio deployments.
+5. **Microsoft + AXA XL Incident Response Integration**{{< cat "Security & Compliance" >}} - Microsoft Incident Response services are now available directly through AXA XL cyber insurance policies. If your organization holds AXA XL coverage, validate whether this integration is active and how it fits your existing IR runbooks.
 
 ---
 
 ## Security & Compliance
 
-- **[New AI features in Chrome](https://www.youtube.com/shorts/NjkVAM_dE2w)** [GA] - Google Chrome on-device AI demo showcasing local data processing for personalized experiences. This is Google developer content, not a Microsoft security change; however, if your organization manages Chrome via policy, understand that on-device AI model capabilities are expanding and may warrant a review of your browser data handling policies.
+- **[Real World Incident Response: Microsoft and AXA XL Strengthen Cyber Resilience](https://www.microsoft.com/en-us/security/blog/2026/07/22/real-world-incident-response-microsoft-and-axa-xl-strengthen-cyber-resilience/)** [GA] - If your organization carries AXA XL cyber insurance, Microsoft Incident Response services are now integrated directly into policyholder response workflows. The collaboration is designed to align technical containment, business continuity, and insurance claims processes under a single coordinated response. Check your insurance policy terms and update your IR runbook to reference this channel alongside your existing escalation paths.
 
-- **[How to get Chrome Web Store approval](https://www.youtube.com/shorts/4FvIlVWWCnE)** [GA] - Chrome extension submission guidance from Google. Relevant only if your team maintains internal Chrome extensions; no direct M365 security implication, but Chrome extension governance intersects with your browser security baseline and any extension allowlisting policies in Defender for Endpoint.
+- **[RDP Multipath with Redundant TCP Is Now Generally Available for Windows 365 and Azure Virtual Desktop](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/rdp-multipath-with-redundant-tcp-is-now-generally-available-for/ba-p/4534610)** [GA] - Environments where UDP is blocked or VPN routing degrades RDP sessions now have a supported, production-ready fix. RDP Multipath with redundant TCP extends session resiliency by aggregating multiple TCP paths, reducing the impact of packet loss, ISP instability, and proxy interference. No firewall changes are required; validate that your Windows 365 and AVD environments are on a supported client and host version to pick this up.
 
-- **[Real world incident response: Microsoft and AXA XL strengthen cyber resilience](https://www.microsoft.com/en-us/security/blog/2026/07/22/real-world-incident-response-microsoft-and-axa-xl-strengthen-cyber-resilience/)** [GA] - Microsoft Incident Response services are now available directly to AXA XL cyber insurance policyholders, integrating technical response with insurance coordination. If your org holds AXA XL coverage, confirm with your risk and legal teams that Microsoft IR is enabled under your policy terms before an incident forces the question.
+- **[Microsoft Purview: Data Lifecycle Management - DLM Meter Change](https://www.microsoft.com/microsoft-365/roadmap?id=560324)** [GA] - The DLM billing model is shifting from per-message pricing to volume-based pricing at $0.25 per GB per month for retained non-Microsoft 365 generative AI prompts and responses. If your retention policies sweep AI interactions at scale, run a data volume estimate against your current retained content before this meter activates. Organizations retaining large volumes of short AI messages may see cost changes in either direction depending on their payload sizes.
 
-- **[RDP Multipath with redundant TCP is now generally available for Windows 365 and Azure Virtual Desktop](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/rdp-multipath-with-redundant-tcp-is-now-generally-available-for/ba-p/4534610)** [GA] - Session resilience for Cloud PCs and AVD sessions now extends to TCP-based paths, addressing packet loss, proxy interference, and UDP-blocked network segments. This eliminates one of the most common causes of session interruption in enterprise remote desktop deployments; validate your Windows 365 provisioning policies and AVD host pool configurations to confirm the feature is active.
+- **[Microsoft Copilot (Microsoft 365): People Skills - Removal and Deletion Admin Control](https://www.microsoft.com/microsoft-365/roadmap?id=565905)** [GA] - Admins can now permanently delete the entire People Skills dataset for a tenant, including the skills library and all confirmed, inferred, and imported skills. Once triggered, skills disappear from profile cards and all skills-based Copilot and Viva experiences with no automatic reversal. This is the control you need for compliance-driven offboarding from People Skills; treat it as irreversible and scope the decision accordingly before initiating.
 
-- **[Microsoft Purview: Data Lifecycle Management - DLM Meter Change](https://www.microsoft.com/microsoft-365/roadmap?id=560324)** [GA] - Billing for DLM policies covering non-Microsoft 365 generative AI prompts and responses shifts from a per-message model to per-GB retained ($0.25/GB/month). Audit the volume of AI-generated content currently under DLM policies and project your cost delta before the change hits your tenant's billing meter.
-
-- **[Microsoft Copilot (Microsoft 365): People Skills - removal and deletion admin control](https://www.microsoft.com/microsoft-365/roadmap?id=565905)** [GA] - A new admin-only control in People Skills settings allows permanent deletion of the entire organizational skills library, including all confirmed, inferred, and imported skills data. Once triggered, skills disappear from profile cards and all skills-based M365 experiences including Copilot and Viva; this is irreversible, so treat it as a formal offboarding action with appropriate change control.
-
-- **[Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest](https://www.microsoft.com/microsoft-365/roadmap?id=559105)** [Preview] - Auto-labeling of existing SharePoint files will apply the default sensitivity label set on their parent document library, closing the gap for unlabeled data at rest without requiring user action. Preview lands September 2026, GA in October 2026; now is the time to audit and correct default label assignments on SharePoint libraries so auto-labeling applies the right classifications when the feature rolls out.
+- **[Microsoft Purview: Information Protection - Apply Default SharePoint Library Labels to Data at Rest](https://www.microsoft.com/microsoft-365/roadmap?id=559105)** [Preview] - Auto-labeling of existing files to match the configured default sensitivity label on their document library hits preview in September 2026 and goes GA in October 2026. This closes the gap where files uploaded before a library label was configured remained unlabeled. Audit your SharePoint library default label configurations now so you can assess scope and avoid unintended bulk label application when preview lands.
 
 ---
 
 ## Action Required
 
-- **[Purview DLM Meter Change](https://www.microsoft.com/microsoft-365/roadmap?id=560324)** [GA, billing impact now] - Pull a report of all DLM policies scoping non-Microsoft 365 generative AI content and calculate retained data volume in GB. The new $0.25/GB/month rate is live; unreviewed policies with high AI content volume could produce unexpected cost increases in your next billing cycle.
+- **[Purview DLM Meter Change](https://www.microsoft.com/microsoft-365/roadmap?id=560324)** [GA, act now] - Before this billing change takes effect, pull a retained-data volume estimate for any DLM policies covering non-Microsoft 365 AI prompts and responses. The shift from per-message to per-GB pricing could materially change your Purview spend depending on average payload size. Engage your licensing or FinOps contact if you need pre-change cost modeling.
 
-- **[RDP Multipath with redundant TCP - GA for Windows 365 and AVD](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/rdp-multipath-with-redundant-tcp-is-now-generally-available-for/ba-p/4534610)** [GA, enable now] - Verify the feature is enabled across your Windows 365 and AVD deployments, particularly for user populations on VPN or in UDP-restricted network environments. This is a reliability improvement that requires no licensing change but may need explicit configuration depending on your host pool and client version.
+- **[People Skills Admin Deletion Control](https://www.microsoft.com/microsoft-365/roadmap?id=565905)** [GA, governance decision required] - Now that tenant-wide People Skills deletion is available, document your organization's position on Skills data retention before anyone exercises this control. Deletion is permanent and removes skills from Copilot and Viva experiences immediately. Define who has authorization to trigger this and capture it in your admin runbook.
 
-- **[SharePoint default library label auto-labeling for data at rest](https://www.microsoft.com/microsoft-365/roadmap?id=559105)** [Preview September 2026, GA October 2026] - Within the next 60 days, audit default sensitivity label assignments across all SharePoint document libraries. Incorrect or missing default labels will be auto-applied at scale when this feature activates, and remediating mislabeled data post-rollout is significantly more effort than correcting the library defaults now.
+- **[SharePoint Library Default Label Auto-Apply](https://www.microsoft.com/microsoft-365/roadmap?id=559105)** [Preview September 2026] - With preview arriving in roughly 60 days, start auditing SharePoint library default sensitivity labels now. Libraries with misconfigured or missing default labels will have that state applied retroactively to existing content at rest when this feature activates. Identify any libraries where bulk label application would be unexpected and correct library configurations before preview rollout begins.

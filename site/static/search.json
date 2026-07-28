@@ -1,94 +1,94 @@
 [
   {
-    "title": "DLM Billing Model Change (GA)",
+    "title": "Purview DLM billing model changes to volume-based",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Purview Data Lifecycle Management is switching to volume-based billing ($0.25/GB/month). If your org retains non-Microsoft 365 generative AI prompts, your DLM costs are now tied directly to data volume. Run a sizing esti"
+    "snippet": "If your organization retains non-Microsoft 365 generative AI prompts and responses under a DLM policy, your costs are no longer tied to policy count but to data volume at $0.25/GB/month. Model your current retained data "
   },
   {
-    "title": "RDP Multipath Redundant TCP Now GA",
+    "title": "People Skills admin deletion control is GA",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Windows 365 and Azure Virtual Desktop environments can now benefit from TCP-based RDP Multipath, closing the gap for UDP-restricted or proxy-heavy networks. This is a meaningful reliability win for enterprises with stric"
+    "snippet": "{{< cat \"Security & Compliance\" >}} - You can now permanently nuke your entire tenant Skills library, including all confirmed, inferred, and imported skills data. This is the clean offboarding path for organizations that"
   },
   {
-    "title": "People Skills Admin Deletion Control (GA)",
+    "title": "RDP Multipath redundant TCP is GA for Windows 365 and Azure Virtual Desktop",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Admins can now permanently purge all People Skills data from the tenant, including inferred, confirmed, and imported skills. Critical for organizations with strict data governance or that are offboarding from People Skil"
+    "snippet": "{{< cat \"Security & Compliance\" >}} - TCP-based session resilience is now available alongside the existing UDP path, closing the gap for users behind restrictive firewalls, proxies, or VPN configurations that block UDP. "
   },
   {
-    "title": "Default SharePoint Library Label Auto-Apply Coming to Preview",
+    "title": "Auto-labeling of existing SharePoint files from library default labels is coming",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Existing files in SharePoint will be able to inherit their document library's default sensitivity label automatically. Preview lands in September 2026, GA in October 2026. Start auditing your library label configurations"
+    "snippet": "Preview lands September 2026, GA in October 2026. This will retroactively apply sensitivity labels to data at rest that currently sits unlabeled, which may trigger DLP policy matches you haven't planned for. Start auditi"
   },
   {
-    "title": "Microsoft + AXA XL IR Partnership",
+    "title": "Microsoft Incident Response now available to AXA XL policyholders",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Microsoft Incident Response services are now available directly to AXA XL cyber insurance policyholders. Relevant for organizations whose IR retainer or cyber insurance is routed through AXA XL."
+    "snippet": "{{< cat \"Security & Compliance\" >}} - If your organization carries AXA XL cyber insurance, Microsoft IR services are now directly accessible through that policy. Worth surfacing to your CISO and risk team as a pre-negoti"
   },
   {
-    "title": "Real World Incident Response: Microsoft and AXA XL Strengthen Cyber Resilience",
+    "title": "Real world incident response: Microsoft and AXA XL strengthen cyber resilience",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - If your organization carries AXA XL cyber insurance, Microsoft Incident Response services are now bundled in, enabling coordinated technical, business, and insurance response from a single engagement. Review your "
+    "snippet": "[GA] - If your organization holds AXA XL cyber insurance, Microsoft Incident Response services are now directly integrated into that coverage, coordinating technical, business, and insurance decisions through a single en"
   },
   {
-    "title": "RDP Multipath with Redundant TCP is Now Generally Available for Windows 365 and Azure Virtual Desktop",
+    "title": "RDP Multipath with redundant TCP is now generally available for Windows 365 and Azure Virtual Desktop",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Enterprises running Windows 365 or AVD in environments with packet loss, VPN routing, UDP restrictions, or proxy configurations now have a production-ready resiliency path via TCP-based RDP Multipath. This GA rele"
+    "snippet": "[GA] - RDP Multipath now supports redundant TCP paths in addition to UDP, meaning Cloud PC sessions can maintain connectivity through environments where UDP is blocked by firewalls, proxies, or VPN routing. This directly"
   },
   {
     "title": "Microsoft Purview: Data Lifecycle Management - DLM Meter Change",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - DLM billing is moving from a per-message to a volume-based model, charging $0.25 per GB of retained data per month. Any non-Microsoft 365 generative AI prompts and responses retained under a DLM policy are now met"
+    "snippet": "[GA] - DLM billing for non-Microsoft 365 generative AI content has shifted from a policy-based model to volume-based, priced at $0.25/GB/month ($0.0082/GB/day). Each AI prompt and response is treated as an individual tex"
   },
   {
-    "title": "Microsoft Copilot (Microsoft 365): People Skills - Removal and Deletion Admin Control",
+    "title": "Microsoft Copilot (Microsoft 365): People Skills - removal and deletion admin control",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - A new admin control in People Skills settings allows permanent, tenant-wide deletion of all skills data, including inferred, confirmed, and imported skills. Once triggered, skills disappear from profile cards and "
+    "snippet": "[GA] - A new admin-only control in People Skills settings allows permanent, irreversible deletion of the entire tenant Skills library, including all confirmed, inferred, and imported skills data. Once triggered, skills d"
   },
   {
-    "title": "Microsoft Purview: Information Protection - Apply Default SharePoint Library Labels to Data at Rest",
+    "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - Starting September 2026, Purview will auto-apply a document library's default sensitivity label to existing unlabeled files in SharePoint, with GA following in October 2026. This closes a long-standing gap wh"
+    "snippet": "[Preview] - Starting September 2026 in preview and GA in October 2026, existing unlabeled SharePoint files will be auto-labeled to match their document library's configured default sensitivity label. This closes a signif"
   },
   {
-    "title": "DLM Meter Change - Volume-Based Billing",
+    "title": "Purview DLM Meter Change",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA - review before next billing cycle] - The shift to $0.25/GB/month for retained DLM data means any broad AI prompt retention policy could produce materially higher costs than the prior per-message model. Pull retentio"
+    "snippet": "[GA, billing impact immediate] - The volume-based billing model for DLM on non-Microsoft 365 AI content is live. Assess the total retained data volume under your DLM policies covering generative AI prompts and responses "
   },
   {
-    "title": "People Skills Deletion Control - Governance Documentation",
+    "title": "SharePoint library default label auto-labeling",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA - action within 30 days] - Now that a permanent, admin-initiated deletion path exists for all People Skills data, update your data governance and offboarding runbooks to include this control. Establish approval workf"
+    "snippet": "[Preview September 2026, GA October 2026] - With roughly 60 days to preview, now is the time to audit all SharePoint document libraries with default sensitivity labels configured. Identify any libraries where auto-applyi"
   },
   {
-    "title": "SharePoint Library Default Label Auto-Apply - Audit Library Configurations",
+    "title": "People Skills deletion control",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[Preview September 2026 - prep now] - Before the September preview enables auto-labeling of existing SharePoint files, audit all document libraries with default sensitivity labels configured. Libraries with incorrect or "
+    "snippet": "[GA, governance decision required] - If your organization has People Skills data you need to remove for compliance, GDPR, or data governance reasons, the permanent deletion control is now available. Deletion is irreversi"
   },
   {
     "title": "Passkeys are now the default authentication method in Entra ID",
