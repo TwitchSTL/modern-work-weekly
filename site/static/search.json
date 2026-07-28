@@ -1,122 +1,94 @@
 [
   {
-    "title": "Purview DLM billing model changes to volume-based pricing",
+    "title": "DLM Billing Model Change (GA)",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "If you retain non-Microsoft 365 generative AI prompts and responses under a DLM policy, your costs are now calculated per GB of retained data ($0.25/GB/month), not per message count. Review your retention policy scope an"
+    "snippet": "Purview Data Lifecycle Management is switching to volume-based billing ($0.25/GB/month). If your org retains non-Microsoft 365 generative AI prompts, your DLM costs are now tied directly to data volume. Run a sizing esti"
   },
   {
-    "title": "RDP Multipath with redundant TCP is GA for Windows 365 and AVD",
+    "title": "RDP Multipath Redundant TCP Now GA",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "This directly improves session resilience for users behind restrictive firewalls, VPNs, or UDP-blocked networks. No more silent session drops due to single-path TCP failures; enable it now for your Cloud PC fleet."
+    "snippet": "Windows 365 and Azure Virtual Desktop environments can now benefit from TCP-based RDP Multipath, closing the gap for UDP-restricted or proxy-heavy networks. This is a meaningful reliability win for enterprises with stric"
   },
   {
-    "title": "People Skills admin deletion control is GA",
+    "title": "People Skills Admin Deletion Control (GA)",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Admins can now permanently wipe the entire organizational skills library, including confirmed, inferred, and imported skills. This is the offboarding lever you needed for data governance and compliance audits against the"
+    "snippet": "Admins can now permanently purge all People Skills data from the tenant, including inferred, confirmed, and imported skills. Critical for organizations with strict data governance or that are offboarding from People Skil"
   },
   {
-    "title": "Auto-labeling of existing SharePoint files at rest is coming",
+    "title": "Default SharePoint Library Label Auto-Apply Coming to Preview",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "The roadmap item for applying default library sensitivity labels to data at rest lands in preview in September and GA in October 2026. Start auditing your library default label configurations now so rollout is clean."
+    "snippet": "Existing files in SharePoint will be able to inherit their document library's default sensitivity label automatically. Preview lands in September 2026, GA in October 2026. Start auditing your library label configurations"
   },
   {
-    "title": "Microsoft IR services extended to AXA XL policyholders",
+    "title": "Microsoft + AXA XL IR Partnership",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "If your organization holds an AXA XL cyber insurance policy, Microsoft Incident Response is now a covered service. Worth surfacing to your CISO and legal teams before you need it."
+    "snippet": "Microsoft Incident Response services are now available directly to AXA XL cyber insurance policyholders. Relevant for organizations whose IR retainer or cyber insurance is routed through AXA XL."
   },
   {
-    "title": "What actually happens when you click a link?",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Chrome-focused developer content explaining TCP/IP, DNS resolution, and the Blink rendering engine. This is Google Chrome developer training material, not a Microsoft 365 change; no admin action required, but usef"
-  },
-  {
-    "title": "How to build and debug WebMCP tools for browser agents",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Google I/O content covering the WebMCP protocol for connecting web apps to browser agents via imperative and declarative APIs. Not a Microsoft platform change, but relevant context if your team is evaluating brows"
-  },
-  {
-    "title": "New AI features in Chrome",
+    "title": "Real World Incident Response: Microsoft and AXA XL Strengthen Cyber Resilience",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Google Chrome on-device AI demo showcasing local data processing for personalized experiences. This is Google developer content, not a Microsoft security change; however, if your organization manages Chrome via po"
+    "snippet": "[GA] - If your organization carries AXA XL cyber insurance, Microsoft Incident Response services are now bundled in, enabling coordinated technical, business, and insurance response from a single engagement. Review your "
   },
   {
-    "title": "How to get Chrome Web Store approval",
+    "title": "RDP Multipath with Redundant TCP is Now Generally Available for Windows 365 and Azure Virtual Desktop",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Chrome extension submission guidance from Google. Relevant only if your team maintains internal Chrome extensions; no direct M365 security implication, but Chrome extension governance intersects with your browser "
-  },
-  {
-    "title": "Real world incident response: Microsoft and AXA XL strengthen cyber resilience",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft Incident Response services are now available directly to AXA XL cyber insurance policyholders, integrating technical response with insurance coordination. If your org holds AXA XL coverage, confirm with "
-  },
-  {
-    "title": "RDP Multipath with redundant TCP is now generally available for Windows 365 and Azure Virtual Desktop",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Session resilience for Cloud PCs and AVD sessions now extends to TCP-based paths, addressing packet loss, proxy interference, and UDP-blocked network segments. This eliminates one of the most common causes of sess"
+    "snippet": "[GA] - Enterprises running Windows 365 or AVD in environments with packet loss, VPN routing, UDP restrictions, or proxy configurations now have a production-ready resiliency path via TCP-based RDP Multipath. This GA rele"
   },
   {
     "title": "Microsoft Purview: Data Lifecycle Management - DLM Meter Change",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Billing for DLM policies covering non-Microsoft 365 generative AI prompts and responses shifts from a per-message model to per-GB retained ($0.25/GB/month). Audit the volume of AI-generated content currently under"
+    "snippet": "[GA] - DLM billing is moving from a per-message to a volume-based model, charging $0.25 per GB of retained data per month. Any non-Microsoft 365 generative AI prompts and responses retained under a DLM policy are now met"
   },
   {
-    "title": "Microsoft Copilot (Microsoft 365): People Skills - removal and deletion admin control",
+    "title": "Microsoft Copilot (Microsoft 365): People Skills - Removal and Deletion Admin Control",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - A new admin-only control in People Skills settings allows permanent deletion of the entire organizational skills library, including all confirmed, inferred, and imported skills data. Once triggered, skills disappe"
+    "snippet": "[GA] - A new admin control in People Skills settings allows permanent, tenant-wide deletion of all skills data, including inferred, confirmed, and imported skills. Once triggered, skills disappear from profile cards and "
   },
   {
-    "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest",
+    "title": "Microsoft Purview: Information Protection - Apply Default SharePoint Library Labels to Data at Rest",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - Auto-labeling of existing SharePoint files will apply the default sensitivity label set on their parent document library, closing the gap for unlabeled data at rest without requiring user action. Preview land"
+    "snippet": "[Preview] - Starting September 2026, Purview will auto-apply a document library's default sensitivity label to existing unlabeled files in SharePoint, with GA following in October 2026. This closes a long-standing gap wh"
   },
   {
-    "title": "Purview DLM Meter Change",
+    "title": "DLM Meter Change - Volume-Based Billing",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA, billing impact now] - Pull a report of all DLM policies scoping non-Microsoft 365 generative AI content and calculate retained data volume in GB. The new $0.25/GB/month rate is live; unreviewed policies with high AI"
+    "snippet": "[GA - review before next billing cycle] - The shift to $0.25/GB/month for retained DLM data means any broad AI prompt retention policy could produce materially higher costs than the prior per-message model. Pull retentio"
   },
   {
-    "title": "RDP Multipath with redundant TCP - GA for Windows 365 and AVD",
+    "title": "People Skills Deletion Control - Governance Documentation",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA, enable now] - Verify the feature is enabled across your Windows 365 and AVD deployments, particularly for user populations on VPN or in UDP-restricted network environments. This is a reliability improvement that req"
+    "snippet": "[GA - action within 30 days] - Now that a permanent, admin-initiated deletion path exists for all People Skills data, update your data governance and offboarding runbooks to include this control. Establish approval workf"
   },
   {
-    "title": "SharePoint default library label auto-labeling for data at rest",
+    "title": "SharePoint Library Default Label Auto-Apply - Audit Library Configurations",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[Preview September 2026, GA October 2026] - Within the next 60 days, audit default sensitivity label assignments across all SharePoint document libraries. Incorrect or missing default labels will be auto-applied at scale"
+    "snippet": "[Preview September 2026 - prep now] - Before the September preview enables auto-labeling of existing SharePoint files, audit all document libraries with default sensitivity labels configured. Libraries with incorrect or "
   },
   {
     "title": "Passkeys are now the default authentication method in Entra ID",
