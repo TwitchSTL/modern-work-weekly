@@ -237,7 +237,7 @@ SOURCES = [
         # on deploying and configuring M365 services. YouTube Atom feed via feedparser.
         "url": "https://www.youtube.com/@MicrosoftMechanics",
         "cadence": "rolling",
-        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnUYZLuoy1rq1aVMwx4aTzw",
+        "rss": "https://www.youtube.com/feeds/videos.xml?channel_id=UCJ9905MRHxwLZ2jeNQGIWxA",
         "selector": None,
     },
     {
