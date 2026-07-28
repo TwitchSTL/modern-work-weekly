@@ -715,15 +715,49 @@ def extract_category_sections(content: str) -> dict[str, list[str]]:
     return sections
 
 
+def _stem_words(words: set) -> set:
+    """Very light plural normalization (strip a trailing 's' on words longer
+    than 3 chars) so e.g. 'label' vs 'labels' don't cost overlap score.
+    Deliberately naive — good enough for matching a Top 5 headline against
+    the same story's own category-section title (same underlying item,
+    independently reworded by Claude), not general-purpose stemming.
+    """
+    return {w[:-1] if len(w) > 3 and w.endswith("s") else w for w in words}
+
+
+def _best_category_match(headline: str, catalog: list, min_overlap: float = 0.5):
+    """Like _best_link_match, but with light plural normalization and a
+    lower confidence bar (0.5 vs 0.6). A lower bar is appropriate here
+    because a miss just falls back to the pre-existing client-side color
+    guess (cosmetic), not a wrong hyperlink like _best_link_match guards
+    against — so the cost of a false negative is higher than the cost of
+    a marginal false positive, the opposite trade-off from link matching.
+    """
+    headline_words = _stem_words(_title_words(headline))
+    if not headline_words:
+        return None
+    best_category, best_score = None, 0.0
+    for _title, category, title_words in catalog:
+        title_words = _stem_words(title_words)
+        if not title_words:
+            continue
+        shared = headline_words & title_words
+        smaller = min(len(headline_words), len(title_words))
+        if smaller < 2 and headline_words != title_words:
+            continue
+        score = len(shared) / smaller
+        if score > best_score:
+            best_score, best_category = score, category
+    return best_category if best_score >= min_overlap else None
+
+
 def tag_top5_categories(content: str) -> str:
     """Tag each Top 5 item with the real category section it best matches,
     via an inline {{< cat "..." >}} shortcode right after the bold title.
 
-    Uses _best_link_match's title-overlap matching, repurposing its URL
-    slot to carry the category name instead. An item with no confident
-    match (below the overlap threshold) is left untagged; collapsible.js
-    falls back to its own keyword guess for that one item, same as it
-    already does for every pre-existing post.
+    An item with no confident match is left untagged; collapsible.js falls
+    back to its own keyword guess for that one item, same as it already
+    does for every pre-existing post.
     """
     sections = extract_category_sections(content)
     if not sections:
@@ -741,7 +775,7 @@ def tag_top5_categories(content: str) -> str:
 
     def tag_item(m):
         title = m.group("title").strip()
-        category = _best_link_match(title, catalog)
+        category = _best_category_match(title, catalog)
         if category:
             return f"**{title}**{{{{< cat \"{category}\" >}}}}"
         return m.group(0)
