@@ -659,6 +659,97 @@ def _best_link_match(headline: str, links: list, min_overlap: float = 0.6):
     return best_url if best_score >= min_overlap else None
 
 
+# ── Top 5 category tagging ───────────────────────────────────────────────────
+# collapsible.js colors each Top 5 badge and each category section
+# independently: section headers get their color from their own literal H2
+# text, but Top 5 badges are colored by detectPillar(), a client-side regex
+# guess that has no visibility into which section the item actually landed
+# in. Most weeks this goes unnoticed because the guessed category usually
+# matches *some* real section on the page; a week that collapses to one
+# category (e.g. 2026-07-28) exposes the mismatch directly, since the guess
+# can land on a category that has no section on the page at all.
+#
+# Fix is deterministic post-processing here, not a stronger prompt
+# instruction: prompt-only formatting rules aren't reliable enough for hard
+# requirements even when explicit (see clean_dashes()/MAX_PER_CAT
+# precedent). This tags each Top 5 item with the real category section its
+# title best matches, using the same overlap-matching already proven for
+# LinkedIn headline linking (_best_link_match). collapsible.js reads the tag
+# when present and only falls back to detectPillar() for older posts
+# published before this existed.
+CATEGORY_NAMES = [
+    "Identity & Access",
+    "Endpoint & Device Management",
+    "Collaboration & Productivity",
+    "AI & Copilot",
+    "Employee Experience",
+    "Security & Compliance",
+]
+_CATEGORY_NAME_SET = {name.lower() for name in CATEGORY_NAMES}
+
+_CATEGORY_SECTION_RE = re.compile(r"^## (?P<heading>.+?)\s*\n(?P<body>.*?)(?=\n## |\Z)", re.MULTILINE | re.DOTALL)
+_CATEGORY_ITEM_RE = re.compile(r"^-\s+\*\*(?:\[(?P<linked>[^\]]+)\]\([^)]+\)|(?P<plain>[^*]+))\*\*", re.MULTILINE)
+
+
+def extract_category_sections(content: str) -> dict[str, list[str]]:
+    """Map each real category section heading in a generated post to the
+    titles of the items actually placed under it.
+
+    This is the ground truth for tag_top5_categories() below: rather than
+    trusting Claude to self-report a Top 5 item's category, or re-guessing
+    it client-side from keywords, we read it straight from the section
+    Claude actually filed the item under in this same post.
+    """
+    sections: dict[str, list[str]] = {}
+    for m in _CATEGORY_SECTION_RE.finditer(content):
+        heading = m.group("heading").strip()
+        if heading.lower() not in _CATEGORY_NAME_SET:
+            continue
+        titles = [
+            (item.group("linked") or item.group("plain") or "").strip()
+            for item in _CATEGORY_ITEM_RE.finditer(m.group("body"))
+        ]
+        titles = [t for t in titles if t]
+        if titles:
+            sections[heading] = titles
+    return sections
+
+
+def tag_top5_categories(content: str) -> str:
+    """Tag each Top 5 item with the real category section it best matches,
+    via an inline {{< cat "..." >}} shortcode right after the bold title.
+
+    Uses _best_link_match's title-overlap matching, repurposing its URL
+    slot to carry the category name instead. An item with no confident
+    match (below the overlap threshold) is left untagged; collapsible.js
+    falls back to its own keyword guess for that one item, same as it
+    already does for every pre-existing post.
+    """
+    sections = extract_category_sections(content)
+    if not sections:
+        return content
+
+    catalog = [
+        (title, category, _title_words(title))
+        for category, titles in sections.items()
+        for title in titles
+    ]
+
+    top5_match = _TOP5_SECTION_RE.search(content)
+    if not top5_match:
+        return content
+
+    def tag_item(m):
+        title = m.group("title").strip()
+        category = _best_link_match(title, catalog)
+        if category:
+            return f"**{title}**{{{{< cat \"{category}\" >}}}}"
+        return m.group(0)
+
+    tagged_block = re.sub(r"\*\*(?P<title>[^*]+)\*\*(?=\s*-\s)", tag_item, top5_match.group(1))
+    return content[: top5_match.start(1)] + tagged_block + content[top5_match.end(1) :]
+
+
 def _draft_links(draft: dict) -> list:
     """Pull (title, url, wordset) triples straight from the raw scraped items
     in this week's draft.
@@ -713,7 +804,10 @@ def linkify_linkedin_draft(li_content: str, content: str, draft: dict | None = N
 
 _TOP5_SECTION_RE = re.compile(r"## Top 5 This Week\s*\n(.*?)\n---", re.DOTALL)
 _TOP5_ITEM_RE = re.compile(
-    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*\s*-\s*(?P<body>.+?)(?=\n\n\d+\.\s+\*\*|\Z)",
+    # The optional non-capturing group tolerates the {{< cat "..." >}} shortcode
+    # tag_top5_categories() inserts right after the title — present on posts
+    # generated after that function existed, absent on older ones.
+    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*(?:\{\{<\s*cat\s+\"[^\"]*\"\s*>\}\})?\s*-\s*(?P<body>.+?)(?=\n\n\d+\.\s+\*\*|\Z)",
     re.MULTILINE | re.DOTALL,
 )
 
@@ -937,6 +1031,7 @@ def run(args):
         return
 
     content = clean_dashes(call_claude(prompt))
+    content = tag_top5_categories(content)
     post_path = write_post(content, week_of)
 
     # Generate Executive's Guide unless skipped

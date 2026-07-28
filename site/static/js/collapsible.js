@@ -114,8 +114,17 @@ function makeTop5Collapsible(content, expandAll) {
     const strong = li.querySelector('strong');
     if (!strong) return;
 
-    const pillar  = detectPillar(li.textContent);
+    // Prefer the category digest.py deterministically tagged this item with
+    // (matched against the real section it landed in, via the {{< cat >}}
+    // shortcode) over detectPillar()'s independent client-side keyword
+    // guess, which has no visibility into which section the item actually
+    // appears under and can disagree with it — most visible on weeks that
+    // collapse to a single category. Posts published before this tagging
+    // existed have no tag element, so they fall back to the old guess.
+    const catTag  = li.querySelector('.top5-cat-tag');
+    const pillar  = catTag ? catTag.dataset.cat.trim() : detectPillar(li.textContent);
     const color   = categoryColor(pillar);
+    if (catTag) catTag.remove();
 
     const details = document.createElement('details');
     details.className = 'top5-item';
