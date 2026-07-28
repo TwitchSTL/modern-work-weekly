@@ -1,0 +1,114 @@
+---
+title: "Executive's Guide - Week of 2026-07-28"
+date: 2026-07-28
+description: "Threat actors are shifting from email to Teams-based attacks while Microsoft rolls out new AI agent security controls and identity backup capabilities that directly affect your organization's cyber resilience and compliance posture."
+categories: ["Executive Guide"]
+tags: ["security", "compliance", "identity", "AI", "cost", "user-impact", "data-protection", "licensing"]
+---
+
+## The Week at a Glance
+
+- 🔴 **Teams and email attacks are evolving faster than traditional defenses:** Threat actors are abandoning disrupted phishing platforms and pivoting to Teams-based social engineering and automated, multi-stage attack chains, meaning your employees are now a target in chat, not just in their inbox.
+- 🟡 **AI agents now need their own security layer:** Microsoft is previewing runtime threat detection for AI agents that can access enterprise data and take actions autonomously; organizations deploying Copilot or custom agents should plan to evaluate these new controls before broader agent adoption accelerates.
+- 🟡 **Purview data retention billing is changing:** How Microsoft charges for Data Lifecycle Management is shifting to a volume-based model, which could meaningfully affect your compliance budget if you retain large volumes of AI-generated content.
+- 🟢 **Microsoft Entra now backs up your identity directory automatically:** Tenant backup and recovery for Entra ID is now on by default, closing a significant gap in identity resilience with no immediate action required.
+
+*Sources: [Microsoft Security Blog - Q2 2026 Email Threat Landscape](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/) · [Microsoft Defender for Endpoint Blog - Securing AI Agents at Runtime](https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255) · [Entra What's New - July 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631)*
+
+---
+
+## Why This Week Matters
+
+The convergence of two trends this week demands leadership attention: attackers are deliberately moving onto collaboration platforms where defenses are weaker, and AI agents are expanding the attack surface inside your own environment at the same time. Organizations that have invested in email security but not yet extended that scrutiny to Teams communications and AI agent behavior face a widening blind spot. The decisions made in the next 30 to 60 days about AI agent governance and collaboration platform security controls will define your exposure for the rest of this year.
+
+*Sources: [Microsoft Security Blog - Rethinking Security for the Age of AI](https://blogs.microsoft.com/blog/2026/07/27/rethinking-security-for-the-age-of-ai/) · [Microsoft Security Blog - Q2 2026 Email Threat Landscape](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/)*
+
+---
+
+## Risk & Compliance
+
+- 🔴 **[Teams-based social engineering on the rise - Q2 2026 threat report](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/):** Following Microsoft's disruption of the Tycoon2FA phishing platform, threat actors have pivoted to Teams-based social engineering and multi-stage automated attacks, meaning your existing email security investment no longer covers the full attack surface; review Teams external access policies and user awareness training now. Relevant to HIPAA, SOC 2, and CMMC; act within 30 days.
+
+- 🔴 **[July 2026 Exchange Server security updates released](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146):** Microsoft has released security updates for Exchange Server SE, 2019, and 2016 addressing vulnerabilities reported by external security partners; organizations running on-premises Exchange must apply these patches immediately to close known exploitable gaps. Note that Exchange 2019 and 2016 require enrollment in the Period 2 Extended Security Update program to access these fixes.
+
+- 🟡 **[AI agent runtime security now available in preview](https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255):** AI agents operating in Microsoft 365 can now access data, call tools, and take actions autonomously, creating attack paths that traditional controls were not designed to address; Microsoft Defender for Microsoft Agent 365 now offers preview-stage runtime threat detection and protection for these workflows. Organizations with active Copilot or Copilot Studio deployments should evaluate enrollment before agent use expands further.
+
+- 🟡 **[Purview Data Lifecycle Management billing model changing](https://www.microsoft.com/microsoft-365/roadmap?id=560324):** DLM billing is shifting from a per-message to a volume-based model charged at $0.25 per GB per month, which will directly affect compliance budgets for any organization retaining AI-generated prompts and responses at scale; finance and compliance teams should model expected data volumes against the new pricing before the change takes effect.
+
+- 🟡 **[Entra custom sign-in branding will begin retiring CSS positioning in October 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471):** Microsoft is retiring custom CSS positioning properties from Entra sign-in pages on October 26, 2026 as part of its Secure Future Initiative, with full CSS retirement planned for 2027; organizations with customized sign-in pages should audit their branding configurations and plan updates before the October deadline to avoid visible disruption to users. This change strengthens phishing resistance by reducing attacker ability to manipulate the sign-in UI surface.
+
+- 🟡 **[Microsoft Entra Backup and Recovery now on by default](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631):** Entra ID now automatically backs up critical directory objects including users, groups, Conditional Access policies, and managed identities, enabling tenant restoration after accidental or malicious changes; this closes a meaningful identity resilience gap relevant to SOC 2 and NIST CSF with no configuration required, but organizations should confirm their recovery procedures reference this new capability. This closes an implicit-trust gap by ensuring that even compromised or maliciously altered identity configurations can be reliably restored.
+
+- 🟢 **[People Skills admin deletion control now available](https://www.microsoft.com/microsoft-365/roadmap?id=565905):** Administrators can now permanently delete all People Skills data from the tenant, supporting GDPR and internal data governance requirements for organizations that need to offboard from the feature or respond to data subject requests.
+
+- 🟢 **[SharePoint auto-labeling for data at rest coming in preview September 2026](https://www.microsoft.com/microsoft-365/roadmap?id=559105):** A new capability will automatically apply default sensitivity labels to existing unlabeled SharePoint files, closing labeling gaps for data at rest without requiring user action; preview in September, generally available in October 2026. Relevant to organizations with HIPAA, GDPR, or information protection requirements who have struggled with manual labeling compliance.
+
+*Sources: [Microsoft Security Blog - Q2 2026 Email Threat Landscape](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/) · [Entra What's New - July 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631) · [M365 Roadmap - Purview DLM Meter Change](https://www.microsoft.com/microsoft-365/roadmap?id=560324)*
+
+---
+
+## What Your Employees Will Notice
+
+- **New Copilot voice notes on mobile (August 2026):** Employees with Microsoft 365 Copilot licenses will be able to record voice notes in the Copilot mobile app and have them converted into structured, searchable content, which is useful for capturing meeting follow-ups or ideas while away from a desk.
+- **Copilot search suggestions in Outlook have been cancelled:** Microsoft has decided not to proceed with Copilot search suggestions in the Outlook search menu; no user-facing change will occur, but employees who read about this feature should know it is no longer coming.
+- **Teams inline search via @mention has been deferred:** The feature enabling @mention-based file and channel search inside the compose box has been cancelled for now; employees who saw roadmap previews should be informed it will not arrive.
+- **Anthropic Claude Opus 5 now available in Copilot:** Employees using Microsoft 365 Copilot can now select Claude Opus 5 as their model for complex, multi-step tasks across Word, Excel, and other apps, expanding the choice of AI reasoning engines available in daily work.
+- **Viva Engage community feeds are being improved (September 2026):** Feed sorting and content review behavior in Viva Engage communities will update to better match how employees naturally read and triage messages.
+- **New profile cards for buildings, rooms, and desks in Copilot Chat:** Employees will see richer directory cards for workplace locations when searching through Copilot Chat or other Microsoft 365 entry points, making room and desk discovery easier.
+
+*Sources: [M365 Roadmap - Copilot Voice Notes](https://www.microsoft.com/microsoft-365/roadmap?id=498640) · [M365 Copilot Blog - Claude Opus 5](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/ba-p/4540524) · [M365 Roadmap - Viva Engage Feed Improvements](https://www.microsoft.com/microsoft-365/roadmap?id=513275)*
+
+---
+
+## What Your Help Desk Should Expect
+
+- **Teams external access questions:** As awareness of Teams-based social engineering grows, expect employees to ask how to identify and report suspicious Teams messages from external senders, particularly if you communicate this threat to staff.
+- **Exchange patch tickets:** IT staff applying the July 2026 Exchange Server security updates should anticipate potential restart windows and temporary service interruptions; communicate scheduled maintenance in advance to reduce inbound tickets.
+- **Copilot mobile voice notes support requests (August):** When voice notes arrive in the Copilot mobile app, help desk should prepare for questions about supported operating systems, language availability, and where to find recorded notes.
+- **Claude Opus 5 model selection questions:** Some employees may not know how to switch AI models inside Copilot; a brief how-to communication can reduce inbound requests.
+- **People Skills deletion inquiries:** If your organization chooses to exercise the new admin deletion control for People Skills data, users will notice skills disappearing from their profile cards; proactive communication before deletion is initiated will reduce confusion.
+- **Entra sign-in branding changes (October deadline):** If your IT team has customized the Entra sign-in page using CSS, they should begin testing now; end users may notice visual changes if branding is not updated before the October 26 deadline.
+
+*Sources: [Exchange Team Blog - July 2026 Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146) · [Entra Blog - Enhanced Branded Sign-Ins](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471) · [M365 Roadmap - People Skills Deletion Control](https://www.microsoft.com/microsoft-365/roadmap?id=565905)*
+
+---
+
+## Cost & Licensing
+
+- **Purview Data Lifecycle Management pricing shift:** The move to volume-based billing at $0.25 per GB per month will affect any organization using DLM policies to retain AI-generated content, including Copilot prompts and responses. Organizations retaining high volumes of AI interactions should model their expected GB per month against current per-message costs to identify whether this represents a budget increase before the change takes effect.
+- **GitHub Copilot spend visibility via Viva Insights (Preview):** Managers with five or more direct reports can now view GitHub Copilot usage and spend data in Viva Insights dashboards, giving leadership a practical tool to assess return on AI licensing investment before making renewal or expansion decisions.
+- **Claude Opus 5 included in existing Copilot license:** Access to Anthropic Claude Opus 5 inside Microsoft 365 Copilot requires no additional licensing purchase; it is available to existing Copilot license holders as an additional model choice.
+
+*Sources: [M365 Roadmap - DLM Meter Change](https://www.microsoft.com/microsoft-365/roadmap?id=560324) · [M365 Roadmap - Viva Insights for GitHub Copilot](https://www.microsoft.com/microsoft-365/roadmap?id=566470) · [M365 Copilot Blog - Claude Opus 5](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/ba-p/4540524)*
+
+---
+
+## Planning Horizon
+
+- **Immediately - [July 2026 Exchange Server security updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146):** Confirm your IT team has applied or scheduled the July 2026 security updates for all on-premises Exchange servers, and verify Exchange 2019 or 2016 environments are enrolled in the Period 2 ESU program or begin migration planning now.
+
+- **Within 14 days - [Teams-based social engineering threat response](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/):** Review your organization's Teams external access policies and schedule a user awareness communication so employees know how to recognize and report suspicious messages arriving via Teams chat, not just email.
+
+- **Within 30 days - [AI agent runtime security evaluation](https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255):** Task your security team with evaluating Microsoft Defender for Microsoft Agent 365 preview controls before autonomous agent use expands across the business; establish a governance policy for what agents are permitted to access and act upon.
+
+- **Within 30 days - [Purview DLM billing model impact assessment](https://www.microsoft.com/microsoft-365/roadmap?id=560324):** Have your compliance and finance teams estimate retained AI-generated content volumes in GB to model the cost impact of the new volume-based billing and identify any budget adjustment needed.
+
+- **Before October 26, 2026 - [Entra custom branding CSS retirement](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471):** Direct IT to audit any custom CSS used on your Entra sign-in pages and complete necessary redesign before Microsoft retires CSS positioning properties, avoiding visible disruption to employee and partner sign-in experiences.
+
+- **By September 2026 - [SharePoint auto-labeling preview evaluation](https://www.microsoft.com/microsoft-365/roadmap?id=559105):** Engage your compliance team to prepare sensitivity label policies and test the auto-labeling preview so you can move to general availability in October with confidence that existing SharePoint data will be labeled consistently.
+
+- **By August 2026 - [Teams app and agent management unification](https://www.microsoft.com/microsoft-365/roadmap?id=567883):** Confirm your IT governance process is updated to reflect that app installation policies set in either the Microsoft 365 Admin Center or Teams Admin Center will now apply across both surfaces, preventing unintended app exposure.
+
+*Sources: [Exchange Team Blog - July 2026 Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146) · [Entra Blog - Enhanced Branded Sign-Ins](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471) · [M365 Roadmap - SharePoint Auto-Labeling](https://www.microsoft.com/microsoft-365/roadmap?id=559105)*
+
+---
+
+## If You Take No Action
+
+**Unpatched Exchange servers will remain exposed to known, documented vulnerabilities.** Microsoft published these security updates specifically because vulnerabilities were reported by external security partners, meaning the exploit details are effectively public. Every day an on-premises Exchange server runs without the July 2026 update is a day attackers with that knowledge can act. This is a direct HIPAA, SOC 2, and cyber insurance exposure.
+
+**Employees in Teams are now being actively targeted and most are not aware of it.** Your workforce has been trained to recognize suspicious email. Phishing that arrives as a Teams chat from an external account looks entirely different and triggers none of those learned instincts. Without an update to your awareness program and external access policy review, attackers are operating in a channel where your defenses have not yet caught up.
+
+**Unrestricted AI agent deployment without governance creates data exposure you cannot audit.** Agents that access enterprise content, call external tools, and take actions on behalf of users without runtime security controls create accountability gaps that are difficult to detect and harder to remediate after the fact. SOC 2 auditors and cyber insurers are beginning to ask specifically about AI agent governance; absence of a policy is increasingly a compliance finding, not just a risk.
+
+*Sources: [Exchange Team Blog - July 2026 Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146) · [Microsoft Security Blog - Q2 2026 Email Threat Landscape](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/) · [Microsoft Defender Blog - Securing AI Agents at Runtime](https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255)*

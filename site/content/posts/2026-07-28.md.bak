@@ -1,0 +1,205 @@
+---
+title: "Modern Work Weekly - Week of 2026-07-28"
+date: 2026-07-28
+description: "Anthropic Claude Opus 5 lands in M365 Copilot today, Entra ships backup and recovery GA, and July Exchange Server security updates demand immediate attention for on-prem shops."
+tags:
+  - entra-id
+  - exchange
+  - copilot
+  - defender-for-endpoint
+  - conditional-access
+  - identity
+  - windows
+  - teams
+  - sharepoint
+  - onedrive
+  - viva
+  - modern-work
+  - zero-trust
+  - power-platform
+categories:
+  - Identity & Access
+  - Collaboration & Productivity
+  - AI & Copilot
+  - Security & Compliance
+  - Employee Experience
+sources:
+  - https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146
+  - https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567466
+  - https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/beyond-benchmarks-the-lifecycle-of-measuring-agentic-quality-in/ba-p/4538319
+  - https://www.microsoft.com/microsoft-365/roadmap?id=568073
+  - https://www.microsoft.com/microsoft-365/roadmap?id=567883
+  - https://www.microsoft.com/microsoft-365/roadmap?id=564612
+  - https://www.microsoft.com/microsoft-365/roadmap?id=559990
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16277
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/modernize-sap-identity-management-with-microsoft-entra/ba-p/4528596
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631
+  - https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-the-power-pages-security-agent-preview-your-ai-partner-for-site-security/
+  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/strengthening-key-management-service-kms-with-hardware-based/ba-p/4539465
+  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-available-admin-control-for-sso-prompts-in-windows/ba-p/4534613
+  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471
+  - https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/ba-p/4540524
+  - https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/1-million-documents-to-300-agents-building-an-enterprise-scale/ba-p/4540155
+  - https://www.microsoft.com/en-us/power-platform/blog/2026/07/21/dataverse-plugin-for-coding-agents-now-available-in-cursor-marketplace/
+  - https://www.microsoft.com/microsoft-365/roadmap?id=553219
+  - https://www.microsoft.com/microsoft-365/roadmap?id=498640
+  - https://www.microsoft.com/microsoft-365/roadmap?id=542181
+  - https://www.microsoft.com/microsoft-365/roadmap?id=503590
+  - https://www.microsoft.com/microsoft-365/roadmap?id=502533
+  - https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255
+  - https://techcommunity.microsoft.com/t5/microsoft-security-community/level-up-your-security-skills-this-august-with-the-microsoft/ba-p/4541235
+  - https://blogs.microsoft.com/blog/2026/07/27/rethinking-security-for-the-age-of-ai/
+  - https://www.microsoft.com/en-us/security/blog/2026/07/27/enhancing-ai-security-through-global-ai-red-teaming/
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50333
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50697
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50343
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56159
+  - https://techcommunity.microsoft.com/t5/microsoft-security-community/how-nationwide-stays-ahead-of-attackers-with-project-perception/ba-p/4540534
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16461
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-8450
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64530
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-14040
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16807
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16806
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16805
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16804
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62835
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48561
+  - https://www.microsoft.com/microsoft-365/roadmap?id=566470
+  - https://www.microsoft.com/microsoft-365/roadmap?id=513275
+---
+
+## Top 5 This Week
+
+1. **July 2026 Exchange Server Security Updates are out.** On-prem Exchange SE, 2019, and 2016 all have patches available now. ESU enrollment is required to access 2019 and 2016 updates, so confirm enrollment status before attempting to download.
+
+2. **Entra Backup and Recovery is now GA.** Automatic backup of critical directory objects including users, groups, apps, service principals, Conditional Access policies, and managed identities is on by default. This is a material risk reduction for accidental or malicious tenant changes.
+
+3. **Entra custom CSS positioning properties retire October 26, 2026.** If your org uses custom CSS for branded sign-in pages, you have a hard deadline three months out. Full CSS retirement follows in 2027.
+
+4. **Claude Opus 5 is live in M365 Copilot today.** Anthropic's latest model is available now for licensed users across Word, and other M365 apps, expanding the model choice roster with a strong multi-step reasoning option.
+
+5. **Defender for Microsoft Agent 365 ships runtime threat detection in Preview.** Real-time protection and threat detection for AI agents is available now in preview, covering the new attack paths created by autonomous agent execution flows.
+
+---
+
+## Identity & Access
+
+- **[What's New in Microsoft Entra: July 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631)** [GA] - Entra Backup and Recovery hit GA this month and is on by default, automatically snapshotting users, groups, applications, service principals, managed identities, Conditional Access policies, named locations, and authentication policies. Review the full July release notes for the complete GA and preview item list and confirm backup scope aligns with your recovery objectives.
+
+- **[Microsoft Entra ID enhances security of branded sign-ins](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)** [GA] - Custom CSS positioning properties used in Entra custom branding will be retired on October 26, 2026, with full CSS retirement planned for later in 2027. Audit your custom branding configurations now and begin migrating to the replacement customization options before the October deadline.
+
+- **[Now available: Admin control for SSO prompts in Windows](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-available-admin-control-for-sso-prompts-in-windows/ba-p/4534613)** [GA] - IT admins can now suppress SSO consent prompts on managed Windows devices via a registry setting, available from the July 2026 monthly security update (KB5101650) for Windows 11 24H2 and 25H2. This targets EEA tenants where Microsoft removed automatic SSO consent, but any org wanting cleaner end-user sign-in flows should evaluate the setting post-patch.
+
+- **[Modernize SAP Identity Management with Microsoft Entra](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/modernize-sap-identity-management-with-microsoft-entra/ba-p/4528596)** [GA] - Microsoft published updated guidance on replacing on-premises SAP identity management with Entra, covering automated lifecycle management and unified access policy across the SAP estate. If your org is planning an SAP BTP or S/4HANA migration, this is the current recommended identity integration pattern.
+
+- **[Strengthening Key Management Service (KMS) with Hardware-Based Trust](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/strengthening-key-management-service-kms-with-hardware-based/ba-p/4539465)** [GA] - Microsoft is extending KMS activation with hardware-backed validation to counter fake or cloned KMS server abuse. Organizations still running traditional KMS infrastructure should review the new requirements to ensure compliance posture and activation integrity are maintained.
+
+- **[Announcing the Power Pages Security Agent (Preview): Your AI Partner for Site Security](https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-the-power-pages-security-agent-preview-your-ai-partner-for-site-security/)** [Preview] - A new AI-powered security agent for Power Pages is in preview, surfacing authentication, authorization, and permissions configuration guidance in context. Teams managing external-facing Power Pages sites should pilot this to reduce misconfiguration risk during site setup and review cycles.
+
+- **[CVE-2026-16277 Rpcbind: stack buffer overflow in rpcinfo rpcbaddrlist()](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16277)** [GA] - MSRC published information on a stack buffer overflow in rpcbind affecting rpcinfo's rpcbaddrlist() function. Review affected components in your environment and apply relevant mitigations per the advisory.
+
+---
+
+## Collaboration & Productivity
+
+- **[Released: July 2026 Exchange Server Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146)** [GA] - Security updates are available now for Exchange SE RTM, Exchange 2019 CU14/CU15, and Exchange 2016 CU23. Access to the 2019 and 2016 SUs requires active enrollment in the Period 2 ESU program, so confirm enrollment before attempting to pull the updates, then patch immediately.
+
+- **[Email threat landscape: Q2 2026 trends and insights](https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/)** [GA] - Microsoft's Q2 2026 threat report shows Tycoon2FA disruption continued to suppress traditional phishing volumes, but threat actors have pivoted to Teams-based social engineering and automated multi-stage attack chains. Use this to calibrate your user awareness training focus and review Teams external access policies if you haven't recently.
+
+- **[Microsoft Teams: Unified Agent and App Installation Management Across Microsoft 365 and Teams Admin Center](https://www.microsoft.com/microsoft-365/roadmap?id=567883)** [GA] - Coming August 2026, app and agent installation changes made in either the M365 admin center or Teams admin center will apply consistently across Teams, Outlook, and M365 Copilot. Previously the two admin centers operated independently; this unification means you need to coordinate governance policies in one pass going forward.
+
+- **[Microsoft Teams: Teams events attendance and engagement report policy](https://www.microsoft.com/microsoft-365/roadmap?id=567466)** [GA] - A separate attendance and engagement report policy for Teams events (distinct from the meeting policy) arrives in September 2026, letting admins grant event organizers report access while restricting meeting-level report access. Plan policy updates if your org has differentiated governance needs between events and meetings.
+
+- **[Microsoft Viva: Campaigns in SharePoint](https://www.microsoft.com/microsoft-365/roadmap?id=568073)** [GA] - Viva Amplify campaign management is being embedded natively into SharePoint, arriving August 2026 for Amplify-licensed users. Corporate comms teams get campaign creation, distribution, and analytics directly from SharePoint without a separate tool context switch.
+
+- **[Beyond Benchmarks: The Lifecycle of Measuring Agentic Quality in AI Content Management](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/beyond-benchmarks-the-lifecycle-of-measuring-agentic-quality-in/ba-p/4538319)** [GA] - Microsoft's SharePoint and OneDrive team published engineering detail on how they measure and maintain quality for Copilot retrieval and agentic workflows over SharePoint content at scale. Relevant reading for teams responsible for Copilot data governance and grounding quality in their tenant.
+
+- **[Microsoft Teams: Inline search in compose box](https://www.microsoft.com/microsoft-365/roadmap?id=564612)** [GA] - Microsoft has cancelled this roadmap item. The planned @mention-based inline search for files, chats, channels, and meetings in the compose box will not ship. Remove this from your roadmap planning if you were tracking it.
+
+- **[Outlook: Copilot Search Suggestions for Outlook](https://www.microsoft.com/microsoft-365/roadmap?id=559990)** [GA] - This roadmap item has been cancelled as of July 23. Copilot-powered search suggestions in the Outlook search menu will not be delivered. Adjust user expectation-setting and change management materials accordingly.
+
+---
+
+## AI & Copilot
+
+- **[Available today: Anthropic Claude Opus 5 in Microsoft 365 Copilot](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/ba-p/4540524)** [GA] - Claude Opus 5 is live now for M365 Copilot licensed users, adding Anthropic's latest multi-step reasoning model to the existing model roster. Evaluate it for complex, long-horizon knowledge work tasks where your users have found existing models falling short.
+
+- **[1 million documents to 300+ agents: Building an enterprise-scale Microsoft 365 Copilot connector](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/1-million-documents-to-300-agents-building-an-enterprise-scale/ba-p/4540155)** [GA] - Microsoft published an internal engineering case study on running a Copilot connector at a million-document scale across 100,000+ users, feeding over 300 Copilot Studio agents. Concrete architecture and operational lessons here for teams planning or scaling enterprise connector deployments.
+
+- **[Microsoft Copilot (Microsoft 365): Capture voice notes in the Microsoft 365 Copilot mobile app](https://www.microsoft.com/microsoft-365/roadmap?id=498640)** [Preview] - Voice note capture with Copilot-driven structuring is entering preview in July 2026, targeting GA in August 2026. Requires an M365 Copilot license; plan user enablement communications ahead of the GA rollout.
+
+- **[Microsoft Copilot (Microsoft 365): Edit with Copilot in Excel - GCC](https://www.microsoft.com/microsoft-365/roadmap?id=542181)** [GA] - Edit with Copilot for Excel (Web, Win32, Mac) is coming to GCC environments in September 2026. GCC tenant admins should include this in their Copilot readiness planning for government customers.
+
+- **[Microsoft Copilot (Microsoft 365): Admins can now edit user mappings and query filters for ServiceNow Connector](https://www.microsoft.com/microsoft-365/roadmap?id=503590)** [Preview] - ServiceNow connector configuration now supports editing user mapping and query filters post-creation, addressing a key operational gap for connector admins. GA was March 2026; confirm this is available in your tenant if you run the ServiceNow connector.
+
+- **[Microsoft Copilot (Microsoft 365): Rich entity representation for connectors in Search results](https://www.microsoft.com/microsoft-365/roadmap?id=502533)** [GA] - Connector content in M365 Search results will render with rich entity cards in September 2026, improving discoverability and context for users searching across connected data sources. No admin action required, but worth communicating to users as a search experience improvement.
+
+- **[Microsoft 365: New profile cards for buildings, rooms and desks](https://www.microsoft.com/microsoft-365/roadmap?id=553219)** [GA] - Buildings, rooms, and desks in the Places directory now surface dedicated profile cards accessible from Copilot Chat and other M365 entry points. Ensure your Places directory data is accurate so these cards surface useful information rather than stale or blank records.
+
+- **[Dataverse Plugin for Coding Agents Now Available in Cursor Marketplace](https://www.microsoft.com/en-us/power-platform/blog/2026/07/21/dataverse-plugin-for-coding-agents-now-available-in-cursor-marketplace/)** [GA] - The Dataverse plugin is now in the Cursor Marketplace, giving developers using Cursor a direct path to build against Microsoft Dataverse within their AI coding environment. Relevant for dev teams evaluating AI-assisted development against Power Platform backends.
+
+---
+
+## Employee Experience
+
+- **[Microsoft Viva: Insights for GitHub Copilot spend and usage](https://www.microsoft.com/microsoft-365/roadmap?id=566470)** [Preview] - GitHub Copilot spend and usage data is entering preview in Viva Insights this month, available to managers with five or more direct reports, global analysts, and M365 global admins. The dashboard is on by default, so expect managers to start asking questions; brief them on how to interpret the data before they surface it to leadership.
+
+- **[Microsoft Viva: Engage Community feed improvements](https://www.microsoft.com/microsoft-365/roadmap?id=513275)** [GA] - Viva Engage community feeds are getting a default experience update in September 2026 aligned to typical user consumption patterns, with added support for sequential content review for users who want to read every message. Low-admin-effort change, but communicate the experience shift to community managers before rollout.
+
+---
+
+## Security & Compliance
+
+- **[Securing AI Agents at Runtime: Real-Time Protection and Threat Detection for Microsoft Agent 365](https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255)** [Preview] - Defender for Microsoft Agent 365 now offers runtime threat detection and real-time protection for AI agents in preview, covering attack paths specific to autonomous agent execution: prompt injection, tool abuse, and sensitive data access. If you're deploying Copilot Studio agents or Agent 365 workflows, enable this preview now before production agent footprints grow.
+
+- **[Rethinking security for the age of AI](https://blogs.microsoft.com/blog/2026/07/27/rethinking-security-for-the-age-of-ai/)** [GA] - Microsoft introduced Project Perception, a new agentic security architecture described as a "cyber stack" for the AI era. Early customer deployments like Nationwide (see below) are already reporting weeks-to-hours compression on threat remediation workflows.
+
+- **[How Nationwide stays ahead of attackers with Project Perception](https://techcommunity.microsoft.com/t5/microsoft-security-community/how-nationwide-stays-ahead-of-attackers-with-project-perception/ba-p/4540534)** [GA] - Nationwide Building Society published results from their early Project Perception deployment, using coordinated red, blue, and green agents alongside analysts to compress multi-week threat remediation cycles into hours. Read this as a concrete reference architecture case study if your org is evaluating agentic SOC tooling.
+
+- **[Enhancing AI security through global AI red teaming](https://www.microsoft.com/en-us/security/blog/2026/07/27/enhancing-ai-security-through-global-ai-red-teaming/)** [GA] - Microsoft's External Red Team Alliance (EXTRA) is expanding AI red teaming through university and regional research partnerships to surface emerging AI risks. Relevant context for teams building AI security governance programs or assessing frontier model risk.
+
+- **[Level Up Your Security Skills This August with the Microsoft Defender Challenge and Learn Live](https://techcommunity.microsoft.com/t5/microsoft-security-community/level-up-your-security-skills-this-august-with-the-microsoft/ba-p/4541235)** [GA] - A hands-on Defender learning challenge runs July 20 through August 21, 2026, covering Defender XDR, Sentinel, and Defender for Cloud with certification alignment. Forward this to your SOC team; the window closes August 21.
+
+- **[CVE-2026-50333 Windows Spaceport.sys Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50333)** [GA] - Acknowledgment update only, no new technical details. Track via your MSRC feed for any future severity or exploitation status changes.
+
+- **[CVE-2026-50697 Windows Common Log File System Driver Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50697)** [GA] - Acknowledgment update only. CLFS driver EoP vulnerabilities have historically been exploited in the wild; confirm this was addressed in your July patching cycle.
+
+- **[CVE-2026-50343 Microsoft Install Service Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50343)** [GA] - Acknowledgment update only, no change to severity or exploitation status. Verify July patches are applied across managed endpoints.
+
+- **[CVE-2026-56159 DHCP Server Service Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56159)** [GA] - Acknowledgment update only for this RCE in DHCP Server Service. If you run Windows DHCP Server roles, confirm the July SU is applied, given the RCE classification.
+
+- **[CVE-2026-16461 Rpcbind: stack buffer overflow in rpcinfo rpcbdump()](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16461)** [GA] - MSRC published information on a second rpcbind stack buffer overflow, this one in rpcbdump()'s short-mode version-list formatting. Review affected Linux-based workloads in your environment alongside CVE-2026-16277.
+
+- **[CVE-2026-8450 HTTP::Daemon versions before 6.17 for Perl allow OS command injection via send_file()](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-8450)** [GA] - OS command injection via the Perl HTTP::Daemon send_file() function in versions before 6.17. Check for any internal tooling or server-side Perl components using this library and update to 6.17 or later.
+
+- **[CVE-2026-64530 net/sched: cls_api: Handle TC_ACT_CONSUMED in tcf_qevent_handle](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64530)** [GA] - Linux kernel networking scheduler vulnerability published by MSRC. Relevant for Azure Linux VMs or hybrid environments running affected kernel versions; apply available kernel patches.
+
+- **[CVE-2024-14040 net: nexthop: Increase weight to u16](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-14040)** [GA] - Linux kernel nexthop vulnerability newly published in MSRC. Assess exposure in Linux-based workloads and apply patches per your Linux distribution's advisory.
+
+- **[Chromium: CVE-2026-16807 Out of bounds write in Codecs](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16807)** [GA] - Out-of-bounds write in Chromium Codecs, addressed in the latest Chrome release and picked up by Edge. Ensure Edge is current across managed devices; Intune-managed browsers should self-update but verify via device compliance reports.
+
+- **[Chromium: CVE-2026-16806 Use after free in WebMCP](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16806)** [GA] - Use-after-free in WebMCP addressed in the latest Chromium-based Edge update. Confirm Edge version currency alongside CVE-2026-16807 remediation.
+
+- **[Chromium: CVE-2026-16805 Use after free in Blink](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16805)** [GA] - Use-after-free in the Blink rendering engine, addressed in the latest Edge update. Blink vulnerabilities are frequently targeted; prioritize Edge patching this cycle.
+
+- **[Chromium: CVE-2026-16804 Use after free in Input](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16804)** [GA] - Use-after-free in Chromium Input handling, resolved in the latest Edge release. Bundle remediation with the other three Chromium CVEs this week in your browser update verification.
+
+- **[CVE-2026-62835 Azure Portal Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62835)** [GA] - Description and title correction only, no change to technical severity or mitigation. Monitor MSRC for further updates if this vulnerability is relevant to your Azure Portal exposure.
+
+- **[CVE-2026-48561 Microsoft Edge Copilot Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48561)** [GA] - Description and title correction for this Edge Copilot RCE. Confirm this was patched in your July Edge update cycle regardless of the metadata correction.
+
+---
+
+## Action Required
+
+- **[July 2026 Exchange Server Security Updates](https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146)** [GA] - Patch immediately: SUs are available now for Exchange SE, 2019 CU14/CU15, and 2016 CU23. Confirm ESU Period 2 enrollment for 2019 and 2016 before attempting download, or you will not have access. Do not defer this cycle.
+
+- **[Microsoft Entra ID enhances security of branded sign-ins](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)** [GA] - Deadline October 26, 2026: custom CSS positioning properties in Entra branded sign-in pages will be retired. Audit all custom branding configurations now, identify CSS positioning dependencies, and migrate to supported alternatives before the deadline. Full CSS retirement follows in 2027 with additional advance notice.
+
+- **[Securing AI Agents at Runtime: Real-Time Protection and Threat Detection for Microsoft Agent 365](https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255)** [Preview] - If agents are already in production use in your tenant, enable the Defender for Microsoft Agent 365 runtime protection preview now. Agent attack surfaces (prompt injection, tool misuse, sensitive data exfiltration) are not covered by traditional Defender policies; this is the current mitigation path.
+
+- **[Chromium CVEs: CVE-2026-16804, CVE-2026-16805, CVE-2026-16806, CVE-2026-16807](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-16807)** [GA] - Four Chromium vulnerabilities (use-after-free in Input, Blink, WebMCP; out-of-bounds write in Codecs) are patched in the current Edge release. Verify managed Edge devices have updated this week and check compliance reports for any straggler devices.
+
+- **[Level Up Your Security Skills: Microsoft Defender Challenge](https://techcommunity.microsoft.com/t5/microsoft-security-community/level-up-your-security-skills-this-august-with-the-microsoft/ba-p/4541235)** [GA] - Window closes August 21, 2026: the hands-on Defender XDR, Sentinel, and Defender for Cloud learning challenge is live now. Share with your SOC and security operations staff before the deadline.

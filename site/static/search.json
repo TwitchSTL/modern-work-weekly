@@ -1,381 +1,122 @@
 [
   {
-    "title": "July 2026 Exchange Server Security Updates are out.",
+    "title": "Purview DLM billing model changes to volume-based pricing",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "On-prem Exchange SE, 2019, and 2016 all have patches available now. ESU enrollment is required to access 2019 and 2016 updates, so confirm enrollment status before attempting to download."
+    "snippet": "If you retain non-Microsoft 365 generative AI prompts and responses under a DLM policy, your costs are now calculated per GB of retained data ($0.25/GB/month), not per message count. Review your retention policy scope an"
   },
   {
-    "title": "Entra Backup and Recovery is now GA.",
+    "title": "RDP Multipath with redundant TCP is GA for Windows 365 and AVD",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Automatic backup of critical directory objects including users, groups, apps, service principals, Conditional Access policies, and managed identities is on by default. This is a material risk reduction for accidental or "
+    "snippet": "This directly improves session resilience for users behind restrictive firewalls, VPNs, or UDP-blocked networks. No more silent session drops due to single-path TCP failures; enable it now for your Cloud PC fleet."
   },
   {
-    "title": "Entra custom CSS positioning properties retire October 26, 2026.",
+    "title": "People Skills admin deletion control is GA",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "If your org uses custom CSS for branded sign-in pages, you have a hard deadline three months out. Full CSS retirement follows in 2027."
+    "snippet": "Admins can now permanently wipe the entire organizational skills library, including confirmed, inferred, and imported skills. This is the offboarding lever you needed for data governance and compliance audits against the"
   },
   {
-    "title": "Claude Opus 5 is live in M365 Copilot today.",
+    "title": "Auto-labeling of existing SharePoint files at rest is coming",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Anthropic's latest model is available now for licensed users across Word, and other M365 apps, expanding the model choice roster with a strong multi-step reasoning option."
+    "snippet": "The roadmap item for applying default library sensitivity labels to data at rest lands in preview in September and GA in October 2026. Start auditing your library default label configurations now so rollout is clean."
   },
   {
-    "title": "Defender for Microsoft Agent 365 ships runtime threat detection in Preview.",
+    "title": "Microsoft IR services extended to AXA XL policyholders",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "Real-time protection and threat detection for AI agents is available now in preview, covering the new attack paths created by autonomous agent execution flows."
+    "snippet": "If your organization holds an AXA XL cyber insurance policy, Microsoft Incident Response is now a covered service. Worth surfacing to your CISO and legal teams before you need it."
   },
   {
-    "title": "What's New in Microsoft Entra: July 2026",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Entra Backup and Recovery hit GA this month and is on by default, automatically snapshotting users, groups, applications, service principals, managed identities, Conditional Access policies, named locations, and a"
-  },
-  {
-    "title": "Microsoft Entra ID enhances security of branded sign-ins",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Custom CSS positioning properties used in Entra custom branding will be retired on October 26, 2026, with full CSS retirement planned for later in 2027. Audit your custom branding configurations now and begin migr"
-  },
-  {
-    "title": "Now available: Admin control for SSO prompts in Windows",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - IT admins can now suppress SSO consent prompts on managed Windows devices via a registry setting, available from the July 2026 monthly security update (KB5101650) for Windows 11 24H2 and 25H2. This targets EEA ten"
-  },
-  {
-    "title": "Modernize SAP Identity Management with Microsoft Entra",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft published updated guidance on replacing on-premises SAP identity management with Entra, covering automated lifecycle management and unified access policy across the SAP estate. If your org is planning an"
-  },
-  {
-    "title": "Strengthening Key Management Service (KMS) with Hardware-Based Trust",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft is extending KMS activation with hardware-backed validation to counter fake or cloned KMS server abuse. Organizations still running traditional KMS infrastructure should review the new requirements to en"
-  },
-  {
-    "title": "Announcing the Power Pages Security Agent (Preview): Your AI Partner for Site Security",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - A new AI-powered security agent for Power Pages is in preview, surfacing authentication, authorization, and permissions configuration guidance in context. Teams managing external-facing Power Pages sites shou"
-  },
-  {
-    "title": "CVE-2026-16277 Rpcbind: stack buffer overflow in rpcinfo rpcbaddrlist()",
-    "category": "Identity & Access",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - MSRC published information on a stack buffer overflow in rpcbind affecting rpcinfo's rpcbaddrlist() function. Review affected components in your environment and apply relevant mitigations per the advisory."
-  },
-  {
-    "title": "Released: July 2026 Exchange Server Security Updates",
+    "title": "What actually happens when you click a link?",
     "category": "Collaboration & Productivity",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Security updates are available now for Exchange SE RTM, Exchange 2019 CU14/CU15, and Exchange 2016 CU23. Access to the 2019 and 2016 SUs requires active enrollment in the Period 2 ESU program, so confirm enrollmen"
+    "snippet": "[GA] - Chrome-focused developer content explaining TCP/IP, DNS resolution, and the Blink rendering engine. This is Google Chrome developer training material, not a Microsoft 365 change; no admin action required, but usef"
   },
   {
-    "title": "Email threat landscape: Q2 2026 trends and insights",
+    "title": "How to build and debug WebMCP tools for browser agents",
     "category": "Collaboration & Productivity",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft's Q2 2026 threat report shows Tycoon2FA disruption continued to suppress traditional phishing volumes, but threat actors have pivoted to Teams-based social engineering and automated multi-stage attack ch"
+    "snippet": "[GA] - Google I/O content covering the WebMCP protocol for connecting web apps to browser agents via imperative and declarative APIs. Not a Microsoft platform change, but relevant context if your team is evaluating brows"
   },
   {
-    "title": "Microsoft Teams: Unified Agent and App Installation Management Across Microsoft 365 and Teams Admin Center",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Coming August 2026, app and agent installation changes made in either the M365 admin center or Teams admin center will apply consistently across Teams, Outlook, and M365 Copilot. Previously the two admin centers o"
-  },
-  {
-    "title": "Microsoft Teams: Teams events attendance and engagement report policy",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - A separate attendance and engagement report policy for Teams events (distinct from the meeting policy) arrives in September 2026, letting admins grant event organizers report access while restricting meeting-level"
-  },
-  {
-    "title": "Microsoft Viva: Campaigns in SharePoint",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Viva Amplify campaign management is being embedded natively into SharePoint, arriving August 2026 for Amplify-licensed users. Corporate comms teams get campaign creation, distribution, and analytics directly from "
-  },
-  {
-    "title": "Beyond Benchmarks: The Lifecycle of Measuring Agentic Quality in AI Content Management",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft's SharePoint and OneDrive team published engineering detail on how they measure and maintain quality for Copilot retrieval and agentic workflows over SharePoint content at scale. Relevant reading for tea"
-  },
-  {
-    "title": "Microsoft Teams: Inline search in compose box",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft has cancelled this roadmap item. The planned @mention-based inline search for files, chats, channels, and meetings in the compose box will not ship. Remove this from your roadmap planning if you were tra"
-  },
-  {
-    "title": "Outlook: Copilot Search Suggestions for Outlook",
-    "category": "Collaboration & Productivity",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - This roadmap item has been cancelled as of July 23. Copilot-powered search suggestions in the Outlook search menu will not be delivered. Adjust user expectation-setting and change management materials accordingly."
-  },
-  {
-    "title": "Available today: Anthropic Claude Opus 5 in Microsoft 365 Copilot",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Claude Opus 5 is live now for M365 Copilot licensed users, adding Anthropic's latest multi-step reasoning model to the existing model roster. Evaluate it for complex, long-horizon knowledge work tasks where your u"
-  },
-  {
-    "title": "1 million documents to 300+ agents: Building an enterprise-scale Microsoft 365 Copilot connector",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft published an internal engineering case study on running a Copilot connector at a million-document scale across 100,000+ users, feeding over 300 Copilot Studio agents. Concrete architecture and operationa"
-  },
-  {
-    "title": "Microsoft Copilot (Microsoft 365): Capture voice notes in the Microsoft 365 Copilot mobile app",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - Voice note capture with Copilot-driven structuring is entering preview in July 2026, targeting GA in August 2026. Requires an M365 Copilot license; plan user enablement communications ahead of the GA rollout."
-  },
-  {
-    "title": "Microsoft Copilot (Microsoft 365): Edit with Copilot in Excel - GCC",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Edit with Copilot for Excel (Web, Win32, Mac) is coming to GCC environments in September 2026. GCC tenant admins should include this in their Copilot readiness planning for government customers."
-  },
-  {
-    "title": "Microsoft Copilot (Microsoft 365): Admins can now edit user mappings and query filters for ServiceNow Connector",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - ServiceNow connector configuration now supports editing user mapping and query filters post-creation, addressing a key operational gap for connector admins. GA was March 2026; confirm this is available in you"
-  },
-  {
-    "title": "Microsoft Copilot (Microsoft 365): Rich entity representation for connectors in Search results",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Connector content in M365 Search results will render with rich entity cards in September 2026, improving discoverability and context for users searching across connected data sources. No admin action required, but"
-  },
-  {
-    "title": "Microsoft 365: New profile cards for buildings, rooms and desks",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Buildings, rooms, and desks in the Places directory now surface dedicated profile cards accessible from Copilot Chat and other M365 entry points. Ensure your Places directory data is accurate so these cards surfac"
-  },
-  {
-    "title": "Dataverse Plugin for Coding Agents Now Available in Cursor Marketplace",
-    "category": "AI & Copilot",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - The Dataverse plugin is now in the Cursor Marketplace, giving developers using Cursor a direct path to build against Microsoft Dataverse within their AI coding environment. Relevant for dev teams evaluating AI-ass"
-  },
-  {
-    "title": "Microsoft Viva: Insights for GitHub Copilot spend and usage",
-    "category": "Employee Experience",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - GitHub Copilot spend and usage data is entering preview in Viva Insights this month, available to managers with five or more direct reports, global analysts, and M365 global admins. The dashboard is on by def"
-  },
-  {
-    "title": "Microsoft Viva: Engage Community feed improvements",
-    "category": "Employee Experience",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Viva Engage community feeds are getting a default experience update in September 2026 aligned to typical user consumption patterns, with added support for sequential content review for users who want to read every"
-  },
-  {
-    "title": "Securing AI Agents at Runtime: Real-Time Protection and Threat Detection for Microsoft Agent 365",
+    "title": "New AI features in Chrome",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - Defender for Microsoft Agent 365 now offers runtime threat detection and real-time protection for AI agents in preview, covering attack paths specific to autonomous agent execution: prompt injection, tool abu"
+    "snippet": "[GA] - Google Chrome on-device AI demo showcasing local data processing for personalized experiences. This is Google developer content, not a Microsoft security change; however, if your organization manages Chrome via po"
   },
   {
-    "title": "Rethinking security for the age of AI",
+    "title": "How to get Chrome Web Store approval",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft introduced Project Perception, a new agentic security architecture described as a \"cyber stack\" for the AI era. Early customer deployments like Nationwide (see below) are already reporting weeks-to-hours"
+    "snippet": "[GA] - Chrome extension submission guidance from Google. Relevant only if your team maintains internal Chrome extensions; no direct M365 security implication, but Chrome extension governance intersects with your browser "
   },
   {
-    "title": "How Nationwide stays ahead of attackers with Project Perception",
+    "title": "Real world incident response: Microsoft and AXA XL strengthen cyber resilience",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Nationwide Building Society published results from their early Project Perception deployment, using coordinated red, blue, and green agents alongside analysts to compress multi-week threat remediation cycles into "
+    "snippet": "[GA] - Microsoft Incident Response services are now available directly to AXA XL cyber insurance policyholders, integrating technical response with insurance coordination. If your org holds AXA XL coverage, confirm with "
   },
   {
-    "title": "Enhancing AI security through global AI red teaming",
+    "title": "RDP Multipath with redundant TCP is now generally available for Windows 365 and Azure Virtual Desktop",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Microsoft's External Red Team Alliance (EXTRA) is expanding AI red teaming through university and regional research partnerships to surface emerging AI risks. Relevant context for teams building AI security govern"
+    "snippet": "[GA] - Session resilience for Cloud PCs and AVD sessions now extends to TCP-based paths, addressing packet loss, proxy interference, and UDP-blocked network segments. This eliminates one of the most common causes of sess"
   },
   {
-    "title": "Level Up Your Security Skills This August with the Microsoft Defender Challenge and Learn Live",
+    "title": "Microsoft Purview: Data Lifecycle Management - DLM Meter Change",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - A hands-on Defender learning challenge runs July 20 through August 21, 2026, covering Defender XDR, Sentinel, and Defender for Cloud with certification alignment. Forward this to your SOC team; the window closes A"
+    "snippet": "[GA] - Billing for DLM policies covering non-Microsoft 365 generative AI prompts and responses shifts from a per-message model to per-GB retained ($0.25/GB/month). Audit the volume of AI-generated content currently under"
   },
   {
-    "title": "CVE-2026-50333 Windows Spaceport.sys Elevation of Privilege Vulnerability",
+    "title": "Microsoft Copilot (Microsoft 365): People Skills - removal and deletion admin control",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Acknowledgment update only, no new technical details. Track via your MSRC feed for any future severity or exploitation status changes."
+    "snippet": "[GA] - A new admin-only control in People Skills settings allows permanent deletion of the entire organizational skills library, including all confirmed, inferred, and imported skills data. Once triggered, skills disappe"
   },
   {
-    "title": "CVE-2026-50697 Windows Common Log File System Driver Elevation of Privilege Vulnerability",
+    "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest",
     "category": "Security & Compliance",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Acknowledgment update only. CLFS driver EoP vulnerabilities have historically been exploited in the wild; confirm this was addressed in your July patching cycle."
+    "snippet": "[Preview] - Auto-labeling of existing SharePoint files will apply the default sensitivity label set on their parent document library, closing the gap for unlabeled data at rest without requiring user action. Preview land"
   },
   {
-    "title": "CVE-2026-50343 Microsoft Install Service Elevation of Privilege Vulnerability",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Acknowledgment update only, no change to severity or exploitation status. Verify July patches are applied across managed endpoints."
-  },
-  {
-    "title": "CVE-2026-56159 DHCP Server Service Remote Code Execution Vulnerability",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Acknowledgment update only for this RCE in DHCP Server Service. If you run Windows DHCP Server roles, confirm the July SU is applied, given the RCE classification."
-  },
-  {
-    "title": "CVE-2026-16461 Rpcbind: stack buffer overflow in rpcinfo rpcbdump()",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - MSRC published information on a second rpcbind stack buffer overflow, this one in rpcbdump()'s short-mode version-list formatting. Review affected Linux-based workloads in your environment alongside CVE-2026-16277"
-  },
-  {
-    "title": "CVE-2026-8450 HTTP::Daemon versions before 6.17 for Perl allow OS command injection via send_file()",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - OS command injection via the Perl HTTP::Daemon send_file() function in versions before 6.17. Check for any internal tooling or server-side Perl components using this library and update to 6.17 or later."
-  },
-  {
-    "title": "CVE-2026-64530 net/sched: cls_api: Handle TC_ACT_CONSUMED in tcf_qevent_handle",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Linux kernel networking scheduler vulnerability published by MSRC. Relevant for Azure Linux VMs or hybrid environments running affected kernel versions; apply available kernel patches."
-  },
-  {
-    "title": "CVE-2024-14040 net: nexthop: Increase weight to u16",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Linux kernel nexthop vulnerability newly published in MSRC. Assess exposure in Linux-based workloads and apply patches per your Linux distribution's advisory."
-  },
-  {
-    "title": "Chromium: CVE-2026-16807 Out of bounds write in Codecs",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Out-of-bounds write in Chromium Codecs, addressed in the latest Chrome release and picked up by Edge. Ensure Edge is current across managed devices; Intune-managed browsers should self-update but verify via device"
-  },
-  {
-    "title": "Chromium: CVE-2026-16806 Use after free in WebMCP",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Use-after-free in WebMCP addressed in the latest Chromium-based Edge update. Confirm Edge version currency alongside CVE-2026-16807 remediation."
-  },
-  {
-    "title": "Chromium: CVE-2026-16805 Use after free in Blink",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Use-after-free in the Blink rendering engine, addressed in the latest Edge update. Blink vulnerabilities are frequently targeted; prioritize Edge patching this cycle."
-  },
-  {
-    "title": "Chromium: CVE-2026-16804 Use after free in Input",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Use-after-free in Chromium Input handling, resolved in the latest Edge release. Bundle remediation with the other three Chromium CVEs this week in your browser update verification."
-  },
-  {
-    "title": "CVE-2026-62835 Azure Portal Information Disclosure Vulnerability",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Description and title correction only, no change to technical severity or mitigation. Monitor MSRC for further updates if this vulnerability is relevant to your Azure Portal exposure."
-  },
-  {
-    "title": "CVE-2026-48561 Microsoft Edge Copilot Remote Code Execution Vulnerability",
-    "category": "Security & Compliance",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Description and title correction for this Edge Copilot RCE. Confirm this was patched in your July Edge update cycle regardless of the metadata correction."
-  },
-  {
-    "title": "July 2026 Exchange Server Security Updates",
+    "title": "Purview DLM Meter Change",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Patch immediately: SUs are available now for Exchange SE, 2019 CU14/CU15, and 2016 CU23. Confirm ESU Period 2 enrollment for 2019 and 2016 before attempting download, or you will not have access. Do not defer this"
+    "snippet": "[GA, billing impact now] - Pull a report of all DLM policies scoping non-Microsoft 365 generative AI content and calculate retained data volume in GB. The new $0.25/GB/month rate is live; unreviewed policies with high AI"
   },
   {
-    "title": "Microsoft Entra ID enhances security of branded sign-ins",
+    "title": "RDP Multipath with redundant TCP - GA for Windows 365 and AVD",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Deadline October 26, 2026: custom CSS positioning properties in Entra branded sign-in pages will be retired. Audit all custom branding configurations now, identify CSS positioning dependencies, and migrate to supp"
+    "snippet": "[GA, enable now] - Verify the feature is enabled across your Windows 365 and AVD deployments, particularly for user populations on VPN or in UDP-restricted network environments. This is a reliability improvement that req"
   },
   {
-    "title": "Securing AI Agents at Runtime: Real-Time Protection and Threat Detection for Microsoft Agent 365",
+    "title": "SharePoint default library label auto-labeling for data at rest",
     "category": "Action Required",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
-    "snippet": "[Preview] - If agents are already in production use in your tenant, enable the Defender for Microsoft Agent 365 runtime protection preview now. Agent attack surfaces (prompt injection, tool misuse, sensitive data exfiltr"
-  },
-  {
-    "title": "Chromium CVEs: CVE-2026-16804, CVE-2026-16805, CVE-2026-16806, CVE-2026-16807",
-    "category": "Action Required",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Four Chromium vulnerabilities (use-after-free in Input, Blink, WebMCP; out-of-bounds write in Codecs) are patched in the current Edge release. Verify managed Edge devices have updated this week and check complianc"
-  },
-  {
-    "title": "Level Up Your Security Skills: Microsoft Defender Challenge",
-    "category": "Action Required",
-    "date": "2026-07-28",
-    "url": "/posts/2026-07-28/",
-    "snippet": "[GA] - Window closes August 21, 2026: the hands-on Defender XDR, Sentinel, and Defender for Cloud learning challenge is live now. Share with your SOC and security operations staff before the deadline."
+    "snippet": "[Preview September 2026, GA October 2026] - Within the next 60 days, audit default sensitivity label assignments across all SharePoint document libraries. Incorrect or missing default labels will be auto-applied at scale"
   },
   {
     "title": "Passkeys are now the default authentication method in Entra ID",
