@@ -16,6 +16,16 @@ log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
 # Pull latest — exit quietly if already up to date
 cd "$REPO"
+
+# Discard local health.json/deadlines.json drift before pulling. Both files
+# get their "updated" timestamp rewritten on every scraper/health-run.sh
+# pass even when nothing else changed, which otherwise blocks this pull the
+# moment an incoming commit also touches either file. weekly-run.sh and
+# health-run.sh already do this; deploy.sh didn't, which caused two
+# separate silent-deploy outages (2026-07-17, 2026-07-31) before this line
+# was added. See MAINTENANCE.md "Site changes pushed but not appearing live."
+git checkout -- site/data/health.json site/data/deadlines.json 2>/dev/null || true
+
 BEFORE=$(git rev-parse HEAD)
 if ! git pull origin main >> "$LOG" 2>&1; then
   log "ERROR: git pull failed — this box will not receive any updates until this is fixed. Likely cause: local uncommitted changes on a tracked file (run 'git status' on the box) conflicting with an incoming commit. See MAINTENANCE.md."
