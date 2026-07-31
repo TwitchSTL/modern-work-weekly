@@ -37,6 +37,17 @@
     return `${y}-${m}-${d}`;
   }
 
+  // Shared urgency thresholds — used by the homepage "upcoming" sidebar list
+  // and the /deadlines/ page's countdown badges + stat strip, so all three
+  // agree on what counts as urgent/soon.
+  function urgencyInfo(diff) {
+    if (diff < 0)        return { label: 'Past',        cls: 'is-overdue' };
+    if (diff === 0)      return { label: 'Today',       cls: 'is-urgent'  };
+    if (diff <= 14)      return { label: `${diff}d`,    cls: 'is-urgent'  };
+    if (diff <= 30)      return { label: `${diff}d`,    cls: 'is-soon'    };
+    return                      { label: `${diff}d`,    cls: ''           };
+  }
+
   function makeDots(events) {
     if (!events || !events.length) return '';
     return '<div class="cal-dots">' +
@@ -203,11 +214,9 @@
         const items = upcoming.map(function (d) {
           const diff  = Math.round((d._date - today) / 86400000);
           const color = PILLAR_COLORS[d.pillar] || '#6e7681';
-          let urgencyLabel = '';
-          let urgencyClass = '';
-          if (diff === 0)       { urgencyLabel = ' — TODAY';    urgencyClass = 'is-urgent'; }
-          else if (diff <= 14)  { urgencyLabel = ` — ${diff}d`; urgencyClass = 'is-urgent'; }
-          else if (diff <= 30)  { urgencyLabel = ` — ${diff}d`; urgencyClass = 'is-soon';   }
+          const info  = urgencyInfo(diff);
+          const urgencyLabel = (diff <= 30) ? ` — ${diff === 0 ? 'TODAY' : info.label}` : '';
+          const urgencyClass = (diff <= 30) ? info.cls : '';
           return `
 <div class="cal-upcoming-item ${urgencyClass}" data-date="${d.date}" style="border-left-color:${color}">
   <div class="cal-upcoming-date">${d.date}${urgencyLabel}</div>
@@ -250,5 +259,50 @@
         tip.classList.remove('is-visible');
       });
     });
+
+    // ── Countdown badges on /deadlines/ pillar cards ──────────────────────
+    // No-op on the homepage (no .deadline-card[data-date] elements there).
+    // Watching-tier cards deliberately carry no data-date, so they're
+    // skipped automatically.
+    document.querySelectorAll('.deadline-card[data-date]').forEach(function (card) {
+      const dt   = toLocal(card.dataset.date);
+      const diff = Math.round((dt - today) / 86400000);
+      const info = urgencyInfo(diff);
+      const badge = card.querySelector('.deadline-card-countdown');
+      if (badge) {
+        badge.textContent = info.label;
+        if (info.cls) badge.classList.add(info.cls);
+      }
+    });
+
+    // ── Stat strip on /deadlines/ (element only exists on that page) ──────
+    const statsEl = document.getElementById('deadline-stats');
+    if (statsEl) {
+      const upcoming = deadlines
+        .map(function (d) { return Object.assign({}, d, { _date: toLocal(d.date) }); })
+        .filter(function (d) { return d._date >= today; });
+
+      const urgentCount = upcoming.filter(function (d) {
+        return Math.round((d._date - today) / 86400000) <= 14;
+      }).length;
+      const soonCount = upcoming.filter(function (d) {
+        const diff = Math.round((d._date - today) / 86400000);
+        return diff > 14 && diff <= 30;
+      }).length;
+      const pillarCount = new Set(upcoming.map(function (d) { return d.pillar; })).size;
+
+      [
+        { num: upcoming.length, label: 'Upcoming deadlines',       cls: '' },
+        { num: urgentCount,     label: 'Within 14 days',           cls: urgentCount > 0 ? 'exec-stat-card-high' : '' },
+        { num: soonCount,       label: '15–30 days out',      cls: soonCount   > 0 ? 'exec-stat-card-med'  : '' },
+        { num: pillarCount,     label: 'Practice areas affected',  cls: '' },
+      ].forEach(function (s) {
+        const card = document.createElement('div');
+        card.className = 'exec-stat-card ' + s.cls;
+        card.innerHTML = '<div class="exec-stat-number">' + s.num + '</div>' +
+          '<div class="exec-stat-label">' + s.label + '</div>';
+        statsEl.appendChild(card);
+      });
+    }
   });
 })();

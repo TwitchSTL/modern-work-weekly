@@ -19,6 +19,10 @@
     <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
   </header>
 
+  {{/* ── Stat strip — filled client-side (needs "today", not build time);
+       reuses the Exec Guide's .exec-stat-card cards for visual consistency ── */}}
+  <div id="deadline-stats" class="exec-risk-dashboard deadlines-stats"></div>
+
   {{/* ── Month-separated calendar ── */}}
   <section class="deadlines-calendar-section">
     <div id="deadline-calendar"
@@ -50,8 +54,11 @@
         <div class="deadlines-cards">
           {{ range sort $items "date" }}
           {{ $dateLabel := time.Format "Jan 2, 2006" .date }}
-          <div class="deadline-card">
-            <div class="deadline-card-date">{{ $dateLabel }}</div>
+          <div class="deadline-card" data-date="{{ .date }}">
+            <div class="deadline-card-toprow">
+              <div class="deadline-card-date">{{ $dateLabel }}</div>
+              <span class="deadline-card-countdown"></span>
+            </div>
             <div class="deadline-card-title">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
             {{ with .applies_to }}<div class="deadline-card-applies"><span class="deadline-applies-label">Applies to</span> {{ . }}</div>{{ end }}
             <div class="deadline-card-action">{{ .action }}</div>
