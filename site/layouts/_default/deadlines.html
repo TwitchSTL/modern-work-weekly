@@ -64,6 +64,29 @@
     {{ end }}
   </section>
 
+  {{/* ── Watching: retirement/deprecation signals with no confirmed date yet ── */}}
+  {{ with .watching }}
+  <section class="deadlines-watching-section">
+    <div class="deadlines-watching-header">
+      <h2 class="deadlines-watching-heading">Watching</h2>
+      <span class="deadlines-watching-sub">Confirmed direction, no date yet — flagged for tracking, not the calendar</span>
+    </div>
+    <div class="deadlines-cards deadlines-cards-watching">
+      {{ range . }}
+      {{ $pillar := .pillar }}
+      {{ $color  := index $colors $pillar | default "#6e7681" }}
+      <div class="deadline-card deadline-card-watching" style="--pillar-color: {{ $color }}">
+        <div class="deadline-card-date deadline-card-watching-label">Watching{{ with .flagged }} · since {{ time.Format "Jan 2006" . }}{{ end }}</div>
+        <div class="deadline-card-title">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
+        {{ with .applies_to }}<div class="deadline-card-applies"><span class="deadline-applies-label">Applies to</span> {{ . }}</div>{{ end }}
+        <div class="deadline-card-action">{{ .action }}</div>
+        {{ with .note }}<div class="deadline-card-watching-note">{{ . }}</div>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
 </div>
 
 <script src="/js/calendar.js?v={{ now.Unix }}"></script>

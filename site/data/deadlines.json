@@ -26,6 +26,14 @@
       "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562534"
     },
     {
+      "date": "2026-08-01",
+      "title": "Purview Data Lifecycle Management: Archive OneDrive/SharePoint Files Under Retention",
+      "action": "Evaluate retention-covered file volumes ahead of the August preview to identify storage cost savings, and confirm archiving policies align with e-discovery/regulatory retention obligations before September GA.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs managing storage costs alongside e-discovery or regulatory retention requirements",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561208"
+    },
+    {
       "date": "2026-09-01",
       "title": "Copilot in PowerPoint: GCC / Sovereign Cloud GA",
       "action": "Add to your GCC/GCC-H Copilot rollout timeline and validate brand kit configuration ahead of release.",
@@ -34,12 +42,39 @@
       "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566702"
     },
     {
+      "date": "2026-09-01",
+      "title": "SharePoint Auto-Labeling for Data at Rest (Preview)",
+      "action": "Audit SharePoint library default sensitivity label configurations before the September preview activates, to avoid unintended DLP blocks or access restrictions when existing unlabeled files get auto-labeled ahead of October GA.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs with SharePoint libraries carrying default sensitivity labels",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559105"
+    },
+    {
       "date": "2026-10-01",
       "title": "EWS Disablement in Exchange Online",
       "action": "Audit all apps/service accounts still authenticating via EWS. Configure EWSAllowedAppIDs for stragglers and set internal migration milestones now - don't wait for enforcement to discover dependencies.",
       "pillar": "Collaboration & Productivity",
       "applies_to": "Orgs with apps or service accounts still authenticating to Exchange Online via EWS",
       "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/introducing-ewsallowedappids-preparing-for-the-final-phase-of/ba-p/4529471"
+    },
+    {
+      "date": "2027-01-01",
+      "title": "Purview DLP: Restrict Copilot Processing of External Emails GA",
+      "action": "Begin policy design for restricting Copilot's processing of external emails ahead of the January 2027 GA, particularly if your organization handles regulated data via email.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs with HIPAA/GDPR obligations around email data handled by Copilot",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561552"
+    }
+  ],
+  "watching": [
+    {
+      "title": "OWA Light Retirement in Exchange Server",
+      "action": "Audit for users, browser policies, or helpdesk documentation pointing to the light client (`?layout=light`) and redirect them to standard Outlook on the web. Update internal training/help desk scripts now — no fallback exists once Microsoft disables it.",
+      "pillar": "Collaboration & Productivity",
+      "applies_to": "Exchange Server (on-premises) customers with users still on OWA Light",
+      "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/upcoming-retirement-of-owa-light-in-exchange-server/ba-p/4534943",
+      "flagged": "2026-07-14",
+      "note": "Microsoft has confirmed the retirement direction but has not published a specific date yet."
     }
   ]
 }

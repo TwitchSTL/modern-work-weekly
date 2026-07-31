@@ -3037,6 +3037,54 @@ details[open] .toc-label::before { content: "▼ "; }
   margin-top: 0.1rem;
 }
 
+/* ── Watching section — retirement/deprecation signals with no confirmed
+   date yet. Visually distinct (dashed border, muted) from the dated
+   pillar cards above so it reads as "tracked" rather than "on the
+   calendar." ── */
+.deadlines-watching-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.deadlines-watching-header {
+  margin-bottom: 1rem;
+}
+
+.deadlines-watching-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin: 0 0 0.25rem;
+}
+
+.deadlines-watching-sub {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+.deadline-card-watching {
+  border-style: dashed;
+  border-left-style: solid;
+  opacity: 0.9;
+}
+
+.deadline-card-watching-label {
+  color: var(--color-text-muted) !important;
+  text-transform: uppercase;
+}
+
+.deadline-card-watching-note {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-top: 0.4rem;
+  opacity: 0.85;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .header-inner { flex-direction: column; align-items: flex-start; }
