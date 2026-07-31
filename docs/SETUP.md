@@ -243,9 +243,11 @@ crontab -l
 
 Verify your LXC can reach:
 - `443/TCP` outbound to the internet — for Cloudflare Tunnel, scraper HTTP requests, and Claude API
-- `22/TCP` inbound from GitHub Actions runner IPs — for the deploy SSH step (see [GitHub's IP list](https://api.github.com/meta) under `actions`)
 
-No inbound ports need to be opened on your router — the Cloudflare Tunnel is entirely outbound.
+No inbound ports need to be opened on your router or firewall — the Cloudflare Tunnel is
+entirely outbound, and deploy is pull-based (`deploy.sh` polling GitHub, see Step 7), not a
+GitHub Actions SSH push. GitHub Actions only runs a build-check on push; it never connects
+to the LXC.
 
 ---
 

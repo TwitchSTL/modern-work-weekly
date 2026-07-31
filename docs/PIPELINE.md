@@ -9,14 +9,14 @@ newsletter draft.
 ## How `digest.py` works
 
 ```
-pending_draft.json
-       │
-       ▼
+pending_draft.json      docs_updates.py (GitHub doc-commit
+       │                 data, fetched separately per run)
+       ▼                        │
   load_draft()              ← Prefers pending_draft.json; falls back to weekly_draft_*.json
-       │
+       │                        │
        ├──────────────────────────┬──────────────────────────────┐
        ▼                          ▼                              ▼
-  build_prompt()            build_exec_prompt()            build_linkedin_prompt()
+  build_prompt() ◄───────┘  build_exec_prompt()            build_linkedin_prompt()
   call_claude()             call_claude_exec()             call_claude_linkedin()
   write_post()              write_exec_post()              write_linkedin_draft()
        │                          │                              │
@@ -35,6 +35,37 @@ next week's scraper can diff against it. Both the Executive's Guide and LinkedIn
 are generated in `try`/`except` blocks — failures are logged as non-fatal and don't
 block the technical digest from publishing.
 
+Only the technical digest prompt consumes `docs_updates.py`'s GitHub doc-commit data
+(for the optional "Documentation Updates" section) — the Exec Guide and LinkedIn
+prompts don't receive it.
+
+---
+
+## Category taxonomy
+
+Categories are Modern Work practice areas, not a security framework:
+Identity & Access, Endpoint & Device Management, Collaboration & Productivity,
+AI & Copilot, Employee Experience, Security & Compliance.
+
+This replaced the original six Zero Trust pillars (Identity, Devices, Apps, Data,
+Network, Visibility & Automation) on 2026-07-17 — the old categories were just
+Microsoft's Zero Trust pillars renamed, which made the site structurally a
+security-ops digest regardless of what actually shipped that week. `classify_item()`
+in `scraper.py` does the actual per-item classification from title/body text against
+`CLASSIFICATION_KEYWORDS` in `sources.py`, before anything reaches Claude; it returns
+`(category, matched)` where `matched=False` means the item fell back to the default
+category rather than hitting a real keyword. `write_classification_stats()` logs
+per-run category counts and the fallback rate to `state/classification_stats.json` —
+review with `python classification_report.py`.
+
+Historical posts (through 2026-07-14) keep their original Zero Trust category labels;
+this was a forward-only migration, not a retroactive relabel, to avoid breaking
+existing links into published category sections.
+
+Zero Trust survives in one place: the Executive's Guide uses it as an optional
+strategic *lens* for identity/device/network/security items (see below), not as a
+category name anywhere on the site.
+
 ---
 
 ## System prompt design
@@ -47,16 +78,19 @@ Instructs Claude to:
 - Structure: front matter → Top 5 → per-category sections → Action Required
 - List all source URLs in the YAML front matter under a `sources:` key (not in the post body)
 - Use only the standard lowercase-hyphenated tag set
-- Map content to Zero Trust pillars: Identity / Devices / Apps / Data / Network / Visibility & Automation
+- Map content to Modern Work practice areas: Identity & Access / Endpoint & Device Management / Collaboration & Productivity / AI & Copilot / Employee Experience / Security & Compliance (taxonomy reframed 2026-07-17 from the prior six Zero Trust pillars — see "Category taxonomy" above)
 - Surface deadlines, breaking changes, and admin actions prominently
+- Documentation Updates section (optional, `## Documentation Updates`): include only when `docs_updates.py`'s GitHub doc-commit data has at least one substantive item this week; most raw commits are noise (typo/formatting fixes) and get filtered by Claude's judgment, not just included wholesale
 
 ### Executive's Guide (`EXEC_SYSTEM_PROMPT`)
 
 Instructs Claude to:
 - Write for C-suite, IT directors, compliance officers — no unexplained jargon
-- Structure: front matter → Week at a Glance (risk-labeled) → Why This Week Matters → Risk & Compliance table → What Employees Will Notice → What Help Desk Should Expect → Cost & Licensing → Planning Horizon → If You Take No Action
+- Structure: front matter → Week at a Glance (risk-labeled) → Why This Week Matters → What Microsoft's Research Is Saying (optional) → Risk & Compliance → What Employees Will Notice → What Help Desk Should Expect → Cost & Licensing → Planning Horizon → If You Take No Action
 - Use risk markers: 🔴 High / 🟡 Medium / 🟢 Low
 - Surface relevant regulatory angles: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, GDPR, cyber insurance
+- Strategic framing: identity/device/network/security items may be framed in Zero Trust maturity terms (e.g. "closes an implicit-trust gap") where it helps leadership read posture. This is the only place Zero Trust appears as a framework — since the 2026-07-17 reframe it's a strategy lens scoped to this guide, not the site's category taxonomy (see "Category taxonomy" above)
+- "What Microsoft's Research Is Saying" only appears when Viva/WorkLab "Research & Trends" items exist that week — these are routed away from the technical digest entirely and fed only to this guide, with a 30-day freshness window instead of the standard 7
 
 ### LinkedIn newsletter draft (`LINKEDIN_SYSTEM_PROMPT`)
 
@@ -150,4 +184,13 @@ python scraper.py                         # Normal run — accumulate new items
 python scraper.py --force-all             # Bypass dedup — pull everything available
 python scraper.py --source Intune         # Single source only
 python scraper.py --health-only           # Health sources only — no draft or state changes
+
+# docs_updates.py — GitHub doc-commit data feeding the technical digest's optional
+# "Documentation Updates" section (see project_mww_github_docs_repo_mapping memory
+# for why only entra-docs/memdocs/microsoft-365-docs/defender-docs are wired up)
+python docs_updates.py --dry-run          # Print what would be fetched, no filtering detail
+python docs_updates.py                    # Print full JSON to stdout
+
+# classification_report.py — review category-classification stats from the last run
+python classification_report.py          # Reads state/classification_stats.json
 ```

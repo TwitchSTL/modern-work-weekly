@@ -13,7 +13,8 @@ after the Tuesday digest publishes.
 
 1. **`git pull origin main`** — syncs the repo to latest (first discards any local
    `health.json`/`deadlines.json` drift so the pull applies cleanly)
-2. **`scraper.py --force-all`** — fetches 15+ Microsoft portals, deduplicates against
+2. **`scraper.py --force-all`** — fetches all 40 Microsoft portals (23 what's-new sources
+   + 17 known-issues sources), deduplicates against
    `seen_items.json`, appends new items to `state/pending_draft.json`, writes known
    issues to `health.json`
 3. **`digest.py`** — reads `pending_draft.json`, calls the Claude API three times:

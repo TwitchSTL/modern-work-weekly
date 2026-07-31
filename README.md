@@ -102,6 +102,8 @@ Three cron jobs run automatically on a self-hosted LXC:
 | `scraper.py` | Fetches all sources via RSS, JSON API, or HTML scraping; deduplicates; appends to rolling draft; refreshes `health.json` and `deadlines.json` |
 | `digest.py` | Reads `pending_draft.json`, calls Claude API (×3) for technical digest, Executive's Guide, and LinkedIn draft; updates health baseline |
 | `sources.py` | Source definitions - URLs, RSS feeds, health flags, and per-source scraping hints |
+| `docs_updates.py` | Fetches recent commits to Microsoft's documentation GitHub repos, feeding the digest's optional "Documentation Updates" section |
+| `classification_report.py` | Reads `state/classification_stats.json` and prints per-category totals + fallback rate - quick health check on the classification taxonomy |
 | `deploy.sh` | Pulls latest commits, rebuilds Hugo, and rsyncs to the web root |
 | `weekly-run.sh` | Tuesday cron entrypoint - scrape → draft → push → build & deploy |
 | `health-run.sh` | 8-hour cron entrypoint - health sources + deadline purge → push if changed |
