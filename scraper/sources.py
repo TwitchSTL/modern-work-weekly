@@ -126,6 +126,21 @@ SOURCES = [
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftteamsblog",
         "selector": "h2, h3, p",
+        # Confirmed 2026-08-04: this board's RSS feed doesn't reliably expose a
+        # stable per-item publish date for at least one entry ("What's New in
+        # Microsoft Teams | April 2026" — clearly April content per its own
+        # body text, but recorded with a date of 2026-08-03, matching scrape
+        # time rather than true publish time). That entry sat unpublished in
+        # pending_draft.json's rolling accumulator since at least 2026-06-02
+        # (present in 4+ consecutive weekly archives), its recorded date
+        # drifting toward "now" on every re-scrape, until it finally slipped
+        # inside the freshness window and got published on 2026-08-04 looking
+        # brand new. Same bug class as Microsoft 365 Roadmap below —
+        # no_item_dates tells fetch_rss() to record date=None instead of
+        # faking "now", so item_age_days() honestly reports unknown age
+        # (kept, never wrongly aged out or wrongly certified as fresh)
+        # instead of silently laundering stale content as current.
+        "no_item_dates": True,
     },
     {
         "name": "Microsoft Security Blog",
