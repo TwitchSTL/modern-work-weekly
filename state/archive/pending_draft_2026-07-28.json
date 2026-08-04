@@ -1,0 +1,308 @@
+{
+  "week_of": "2026-07-28",
+  "last_updated": "2026-07-28",
+  "runs": [
+    "2026-07-28"
+  ],
+  "total_new_items": 31,
+  "sources_checked": [
+    "Intune",
+    "Defender XDR",
+    "Entra ID",
+    "Teams",
+    "Microsoft Security Blog",
+    "Purview",
+    "SharePoint / OneDrive",
+    "Microsoft 365 Roadmap",
+    "Agent 365",
+    "Defender for Endpoint",
+    "Defender for Identity",
+    "Defender for Office 365",
+    "Exchange Online",
+    "Windows 365",
+    "Windows Autopatch",
+    "Autopilot",
+    "Microsoft 365 Copilot",
+    "Copilot Studio",
+    "Power Platform",
+    "Microsoft Viva",
+    "Microsoft Security Response Center",
+    "Microsoft Mechanics",
+    "Global Secure Access",
+    "Intune Known Issues",
+    "Windows 365 Known Issues",
+    "Autopilot Known Issues",
+    "Defender XDR Known Issues",
+    "Purview Known Issues",
+    "Entra ID Known Issues",
+    "Windows Release Health",
+    "Azure Status",
+    "Microsoft 365 Service Status"
+  ],
+  "grouped_items": {
+    "Collaboration & Productivity": [
+      {
+        "id": "7169f2581e769554",
+        "source": "Defender XDR",
+        "title": "New Windows Features to Secure Today\u2019s Data in a Post-Quantum World",
+        "body": "***July 14 Update: TLS Hybrid Key Exchange using ML-KEM groups is now available on Windows 11 starting with update KB5089573 for 24H2 and 25H2 and KB5095091 for 26H1. Composite algorithms are now available on Windows 11 starting with update KB5095093 for 24H2 and 25H2 and KB5095091 for 26H1. Both features are available for Windows Server 2025 with the July 14th patch - July 14, 2026\u2014KB5099536 (OS Build 26100.33158) Quantum safety is a staged transition across customer environments. Windows is enabling this progression by extending quantum-safe support beyond algorithms and APIs, into the proto",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/new-windows-features-to-secure-today-s-data-in-a-post-quantum/ba-p/4523370",
+        "date": "2026-07-14T18:24:17+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1e6287af3c2d64ad",
+        "source": "Teams",
+        "title": "Focus on the Teams Phone calls that matter most with intelligent call delegation",
+        "body": "Incoming calls don\u2019t wait for a break in your day. Whether you\u2019re leading a meeting or juggling back-to-back commitments, every new call creates the same dilemma: answer and risk losing momentum, or ignore it and risk missing something important. We're excited to announce intelligent call delegation as an AI-powered experience that can answer your incoming Teams calls and schedule follow-up appointments on your behalf. This capability helps users focus on engaging with the calls that matter most and is available through the Frontier program . What is intelligent call delegation? Here's how the",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/focus-on-the-teams-phone-calls-that-matter-most-with-intelligent/ba-p/4512533",
+        "date": "2026-07-16T00:15:35+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6764e123aebac4f7",
+        "source": "SharePoint / OneDrive",
+        "title": "What\u2019s New in Copilot in SharePoint: July 2026",
+        "body": "Copilot in SharePoint helps you do more with your content \u2014 ask questions, run workflows, and create sites, pages, interactive reports, and Office files using natural language. June was a big month: starting June 16 Copilot in SharePoint began rolling out as on by default for everyone with a Microsoft 365 Copilot license, and we shipped a wave of new capabilities for creating content, automating work, and getting trustworthy answers. Here\u2019s everything that\u2019s new. \ud83d\udee0\ufe0f Create content with natural language Create Word, Excel, and PowerPoint files What\u2019s new: Ask Copilot to create a Word document, ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/what-s-new-in-copilot-in-sharepoint-july-2026/ba-p/4535420",
+        "date": "2026-07-16T16:05:23+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Identity & Access": [
+      {
+        "id": "ea433d931a2432f1",
+        "source": "Entra ID",
+        "title": "Plan your Azure AD B2C migration with the Migration Policy Analyzer",
+        "body": "Migration planning starts with visibility One of the first challenges organizations face when planning a migration from Azure AD B2C to Microsoft Entra External ID is understanding exactly what is implemented in their tenant today. Over time, Azure AD B2C deployments often grow to include custom user journeys, federation integrations, claims transformations, API connections, and tailored sign-up and sign-in experiences. As teams change and solutions evolve, assessing migration scope can become time-consuming and complex. To help organizations accelerate migration planning, the Migration Policy",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/plan-your-azure-ad-b2c-migration-with-the-migration-policy/ba-p/4532874",
+        "date": "2026-07-20T17:18:24+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "42c69545cd0a8243",
+        "source": "Entra ID",
+        "title": "AI agents are everywhere. Are your access controls ready?",
+        "body": "At Identiverse 2026, Microsoft Security hosted a Power Breakfast that brought together 150 identity professionals across 10 simultaneous roundtable discussions. Participants came from industries including financial services, healthcare, government, and energy, and represented every stage of AI adoption. We asked participants what they\u2019ve built to secure agents, what they\u2019ve rolled back, and where control is breaking down. \u201cThe pace has been crazy fast. We have thousands of agents. Most of them are unmanaged.\u201d Roundtable participant, Identiverse 2026 What your peers are saying about securing ag",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/ai-agents-are-everywhere-are-your-access-controls-ready/ba-p/4531379",
+        "date": "2026-07-15T18:16:41+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8c177ac2dd434cbb",
+        "source": "Microsoft Security Blog",
+        "title": "Least privilege for AI agents: Identity, access, and tool binding",
+        "body": "As AI agents become more autonomous, strong identity, access, and auditing controls are critical to keeping them secure. The post Least privilege for AI agents: Identity, access, and tool binding appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/16/least-privilege-for-ai-agents-identity-access-and-tool-binding/",
+        "date": "2026-07-16T16:00:00+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      }
+    ],
+    "AI & Copilot": [
+      {
+        "id": "25a18927f6e5f786",
+        "source": "Entra ID",
+        "title": "Govern AI agent identities and access the same way you govern your employees",
+        "body": "In our conversations with customers, we\u2019ve heard consistent feedback: organizations want to embrace AI agents, but they need the same governance rigor they apply to human identities\u2014adapted for the speed and scale of AI. As agents take on real work, the critical question becomes: how do you give each agent the access it needs to be productive without letting that access become a risk? For example, an agent tasked with analyzing purchase trends and delivering a report needs the ability to read transaction data from an ERP system. Historically, agents may have used shared credentials or access r",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/govern-ai-agent-identities-and-access-the-same-way-you-govern/ba-p/4529302",
+        "date": "2026-07-07T21:34:53+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "aecc803b03a1fa9c",
+        "source": "Microsoft 365 Copilot",
+        "title": "Join Us Live: Understanding Copilot Cowork and Managing Copilot Credits",
+        "body": "The way we work with AI is evolving rapidly, and so is the way organizations manage and scale those experiences. If you're exploring Copilot Cowork , navigating Copilot Credits , or looking for guidance on consumption-based AI experiences, you won't want to miss our upcoming live event. \ud83c\udf99\ufe0f Live AMA: Understanding Copilot Cowork and Managing Copilot Credits Tuesday, July 21, 2026 9:00\u201310:00 AM Pacific Time Join us for a live webinar and Ask Microsoft Anything (AMA) featuring experts from the Microsoft 365 Copilot team as they dive into the latest capabilities of Copilot Cowork and share practic",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/join-us-live-understanding-copilot-cowork-and-managing-copilot/ba-p/4537935",
+        "date": "2026-07-16T16:36:52+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Copilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "18424356421cb022",
+        "source": "Power Platform",
+        "title": "Announcing Link to Fabric UX refresh",
+        "body": "We are refreshing how you connect Microsoft Dataverse to your analytics stack. The post Announcing Link to Fabric UX refresh appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/2026/07/20/link-to-fabric-ux-refresh/",
+        "date": "2026-07-20T14:00:00+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Security & Compliance": [
+      {
+        "id": "3656266374a10ced",
+        "source": "Microsoft Security Blog",
+        "title": "Real world incident response: Microsoft and AXA XL strengthen cyber resilience",
+        "body": "Our collaboration with AXA XL brings Microsoft Incident Response services directly to cyber insurance policyholders, helping organizations coordinate technical, business, and insurance decisions. The post Real world incident response: Microsoft and AXA XL strengthen cyber resilience appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/22/real-world-incident-response-microsoft-and-axa-xl-strengthen-cyber-resilience/",
+        "date": "2026-07-22T16:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6c7216bdaf1d5e73",
+        "source": "Microsoft Security Blog",
+        "title": "Turning threat intelligence into decisive action with Defender Experts",
+        "body": "Security teams have never had more visibility, yet rarely have they felt more uncertain. Signal pours in from endpoints, identities, cloud workloads, and a sprawling mix of third-party tools. The post Turning threat intelligence into decisive action with Defender Experts appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/15/turning-threat-intelligence-into-decisive-action-with-defender-experts/",
+        "date": "2026-07-15T16:00:35+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c88875a1c99d005c",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Purview: Data Lifecycle Management - DLM Meter Change",
+        "body": "Data Lifecycle Management (DLM) billing will be based on the volume of data retained. For example, any number of non\u2011Microsoft 365 generative AI prompts and responses that collectively amount to 1 GB of retained data will be billed at $0.25 per GB per month (equivalent to ~$0.0082 per GB per day). In the updated model, DLM is billed based on the total volume of text messages managed by a DLM policy. Each non\u2011Microsoft 365 generative AI prompt and response is treated as an individual text message and is retained and deleted according to the configured Microsoft Purview retention settings. Billi",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560324",
+        "date": null,
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8ff29183536785a1",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Copilot (Microsoft 365): People Skills- removal and deletion admin control",
+        "body": "A new admin control in the People Skills settings lets administrators permanently remove their organization's People Skills data from the tenant. With this new control, organizations can delete their entire skills library along with all users confirmed, inferred, and imported skills data\u2014giving them full control to offboard from People Skills in support of data governance and compliance needs.\nOnce deletion is initiated, skills will no longer appear on user profile cards or be used across Microsoft 365 skills-based experiences such as Copilot and Viva. The control is admin-only with no automat",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565905",
+        "date": null,
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3738e5e794ef9116",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest",
+        "body": "Enables auto\u2011labeling of existing SharePoint files to match the default sensitivity label configured on their document library. This helps organizations close labeling gaps for data at rest and ensure consistent, secure\u2011by\u2011default protection across SharePoint libraries\u2014without relying on manual user labeling. GA date: October CY2026 Preview date: September CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559105",
+        "date": null,
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f08ec794a67037a5",
+        "source": "Exchange Online",
+        "title": "Released: June 2026 Exchange Server Security Updates",
+        "body": "Microsoft has released Security Updates (SUs) for vulnerabilities found in: Exchange Server Subscription Edition (SE) Exchange Server 2019 Exchange Server 2016 SUs are available for the following specific versions of Exchange Server: Exchange SE RTM Exchange Server 2019\u00a0CU14\u00a0and\u00a0CU15 (to access, organization must be enrolled into the Period 2 ESU program ) Exchange Server 2016\u00a0CU23 (to access, organization must be enrolled into the Period 2 ESU program ) The June 2026 SUs address vulnerabilities responsibly reported to Microsoft by security partners and found through Microsoft\u2019s internal proce",
+        "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491",
+        "date": "2026-07-14T17:23:34+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5a5aaaf24e0c24a0",
+        "source": "Windows 365",
+        "title": "RDP Multipath with redundant TCP is now generally available for Windows 365 and Azure Virtual Desktop",
+        "body": "Reliable connectivity is essential for delivering a productive Cloud PC and virtual desktop experience. Network variability\u2014whether caused by packet loss, ISP instability, restrictive firewalls, proxy configurations, VPN routing, or UDP-restricted environments\u2014continues to be one of the most common causes of session interruptions across enterprise remote desktop deployments. Today, we're excited to announce the general availability of RDP Multipath with redundant TCP support for Windows 365 and Azure Virtual Desktop . This enhancement extends the resiliency benefits of RDP Multipath to TCP-bas",
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/rdp-multipath-with-redundant-tcp-is-now-generally-available-for/ba-p/4534610",
+        "date": "2026-07-21T16:42:03+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      }
+    ]
+  }
+}

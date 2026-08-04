@@ -1,229 +1,79 @@
 ---
 title: "Modern Work Weekly - Week of 2026-08-04"
 date: 2026-08-04
-description: "Midnight Blizzard is actively targeting enterprise travelers, Cloud-Managed Remote Mailbox writeback hits GA, and July's Teams and Intune updates land with meaningful admin controls across mobile, calling, and device visibility."
+description: "A light update week dominated by Edge security hardening, a handful of CVE advisories, and documentation improvements across Intune, Entra ID, and Defender. No breaking changes this week, but the SMS/voice retirement FAQ split and Tunnel prerequisite updates are worth a review."
 tags:
-  - intune
-  - entra-id
-  - teams
-  - sharepoint
-  - onedrive
-  - exchange
-  - copilot
-  - zero-trust
-  - modern-work
-  - identity
-  - endpoint-management
-  - conditional-access
-  - global-secure-access
-  - windows
+  - defender-for-endpoint
   - defender-for-office-365
-  - defender-xdr
-  - purview
-  - power-platform
-  - viva
+  - entra-id
+  - intune
+  - modern-work
+  - windows
+  - zero-trust
+  - global-secure-access
 categories:
-  - Identity & Access
-  - Endpoint & Device Management
-  - Collaboration & Productivity
-  - AI & Copilot
-  - Employee Experience
   - Security & Compliance
 sources:
-  - https://techcommunity.microsoft.com/t5/microsoft-intune-blog/what-s-new-in-microsoft-intune-july/ba-p/4537392
-  - https://techcommunity.microsoft.com/t5/microsoft-security-community/secure-by-default-trusted-launch-as-default-is-now-generally/ba-p/4541672
-  - https://techcommunity.microsoft.com/t5/microsoft-security-community/why-ai-agents-may-require-a-new-security-operations-model/ba-p/4542532
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50416
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50341
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50493
-  - https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/
-  - https://www.youtube.com/shorts/Lf2KEXY1WEg
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54128
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55129
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56197
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-66803
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-24304
-  - https://techcommunity.microsoft.com/t5/microsoft-security-community/the-microsoft-ai-and-agent-platform-the-platform-behind/ba-p/4539060
-  - https://www.microsoft.com/en-us/security/blog/2026/07/29/better-security-starts-with-better-questions/
-  - https://www.youtube.com/shorts/Q7BQG2_WDzY
-  - https://www.youtube.com/shorts/hYI3T0UnXKg
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13032
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13030
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13028
-  - https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/more-control-over-web-grounding-with-domain-exclusion-for/ba-p/4540151
-  - https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-april-2026/ba-p/4515907
-  - https://techcommunity.microsoft.com/t5/microsoft-security-community/from-ai-experiments-to-digital-workforce-do-enterprises-need-a/ba-p/4542520
-  - https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-in-public/ba-p/4520138
-  - https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/what-s-new-in-microsoft-365-copilot-july-2026/ba-p/4538332
-  - https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-july-2026/ba-p/4542510
-  - https://www.microsoft.com/en-us/security/blog/2026/07/30/whats-new-in-microsoft-security-july-2026/
-  - https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-showcase-10-custom-ai-skills-every-sharepoint-site/ba-p/4535414
-  - https://www.microsoft.com/en-us/power-platform/blog/2026/07/28/dataverse-plugin-for-coding-agents-openai-and-codex-marketplace-expansion/
-  - https://www.microsoft.com/microsoft-365/roadmap?id=568067
-  - https://www.microsoft.com/microsoft-365/roadmap?id=567461
-  - https://www.microsoft.com/microsoft-365/roadmap?id=566858
-  - https://www.microsoft.com/microsoft-365/roadmap?id=567465
-  - https://www.microsoft.com/microsoft-365/roadmap?id=567302
-  - https://www.microsoft.com/microsoft-365/roadmap?id=567306
-  - https://www.microsoft.com/microsoft-365/roadmap?id=566866
-  - https://www.microsoft.com/microsoft-365/roadmap?id=561038
-  - https://www.microsoft.com/microsoft-365/roadmap?id=560813
-  - https://www.microsoft.com/microsoft-365/roadmap?id=559605
-  - https://www.microsoft.com/microsoft-365/roadmap?id=557563
-  - https://www.youtube.com/shorts/j8AGpZ8Z2yA
-  - https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-generally/ba-p/4543507
-  - https://www.microsoft.com/microsoft-365/roadmap?id=567457
-  - https://www.youtube.com/shorts/XdgO2fjg3KQ
-  - https://www.microsoft.com/en-us/microsoft-365/blog/2026/07/30/the-next-measure-of-ai-momentum-is-work-transformed/
-  - https://www.microsoft.com/en-us/power-platform/blog/2026/07/29/prompt-columns-july2026/
-  - https://www.microsoft.com/microsoft-365/roadmap?id=567320
+  - https://www.youtube.com/shorts/s7gJPCpa4QA
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50422
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47301
+  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-59117
+  - https://www.microsoft.com/microsoft-365/roadmap?id=568366
+  - https://www.microsoft.com/microsoft-365/roadmap?id=561486
+  - https://github.com/MicrosoftDocs/entra-docs/commit/938217238eb9520112ac2f6eafad1eac6c1b78d6
+  - https://github.com/MicrosoftDocs/entra-docs/commit/a0cd379ac39208e3bec5105771b887332829a495
+  - https://github.com/MicrosoftDocs/entra-docs/commit/649f7a17c18170104e4cf9aae8c93ffac9fcf00f
+  - https://github.com/MicrosoftDocs/entra-docs/commit/73565b59f03b2578d8099cbc0d8525cccf829532
+  - https://github.com/MicrosoftDocs/entra-docs/commit/3824f4a3001ebf731808b7c8ce205f1149838c39
+  - https://github.com/MicrosoftDocs/entra-docs/commit/7eb64a786de183ec4cb0483b41187ac879813984
+  - https://github.com/MicrosoftDocs/memdocs/commit/52b93b3a20cbcecd14913f209523bdf63ad7eb8c
+  - https://github.com/MicrosoftDocs/memdocs/commit/07f23b3ec298cc121409b1dda3a00f15bf3be498
+  - https://github.com/MicrosoftDocs/memdocs/commit/3c8f16eeb9974d781b00608661b53bfc54c6e4a0
+  - https://github.com/MicrosoftDocs/memdocs/commit/1589e02102cd9f4ab44470a50a0dfaa68ebba9a5
+  - https://github.com/MicrosoftDocs/memdocs/commit/0b6be673bc34dd234d181a133f9cde79df4387f0
+  - https://github.com/MicrosoftDocs/memdocs/commit/6d50432a73a4967dc4acd5a400630bec719b552e
+  - https://github.com/MicrosoftDocs/defender-docs/commit/3e913ef1187a6ea001eb6df467970a007da91eb5
+  - https://github.com/MicrosoftDocs/defender-docs/commit/676ccb90565ea002f140af3dcb38ca9ecc57896f
+  - https://github.com/MicrosoftDocs/defender-docs/commit/ba8a948070bbe3dd56f8d6211b7df43f9a8bcaaa
 ---
 
 ## Top 5 This Week
 
-1. **CaptiveCrunch / Midnight Blizzard:** A sub-cluster of Midnight Blizzard (Storm-2945) has been actively compromising hotel sign-in portals since May 2026 to deliver malware and steal credentials from travelers. If your org has traveling users or hospitality-sector partners, threat intel review and conditional access tightening for non-compliant or unfamiliar network locations is warranted now.
+1. **Edge auto-unsubscribes users from malicious notification sources (GA: September 2026).** SmartScreen now closes the loop on notification-based phishing by automatically revoking notification permissions when a source directs users to a blocked site. No admin policy required, but know this behavior is coming so you can update user communications accordingly.
 
-2. **Writeback for Cloud-Managed Remote Mailboxes hits GA:** If you are on the path to retiring your last on-premises Exchange server, this is the unlock you have been waiting for. Writeback is now GA across WW, GCCH, DoD, and 21Vianet, supporting up to 600,000 cloud-managed mailboxes per tenant. Start planning your Exchange attribute SOA migration.
+2. **CVE-2026-47301 Configuration Manager Elevation of Privilege: build number corrected.** If you cross-referenced the Security Updates table for SCCM patching decisions last week, recheck the corrected build numbers now to confirm you applied the right update.
 
-3. **Copilot Domain Exclusion for web grounding is GA:** Admins can now block specific external domains from being used to ground Copilot responses. For organizations with compliance requirements around acceptable web sources, this is an actionable control you can configure today in the Microsoft 365 admin center.
+3. **Kubernetes privilege escalation hunting via KQL in Defender for Cloud.** The CloudProcessEvents and CloudAuditEvents tables together surface cluster-admin role binding creation in near real time. If you run AKS or any Kubernetes workloads, this detection pattern should be in your threat hunting playbook.
 
-4. **Trusted Launch as Default is GA for Azure Gen2 VMs:** New Gen2 VM deployments via Portal, PowerShell, and CLI already get Secure Boot and vTPM by default. If you use ARM templates, Bicep, Terraform, or SDKs, a one-time registration is required to extend this default to your IaC pipelines. Act on this before your next automated deployment cycle.
+4. **SMS/voice MFA retirement FAQ now has a dedicated page.** The retirement is progressing and the FAQ has been split out into its own article, signaling the docs are being hardened ahead of enforcement. If you have users still on SMS/voice MFA, this is your cue to accelerate migration planning.
 
-5. **CVE-2026-66803: Azure Cosmos DB RCE via improper access control:** An unauthenticated network attacker can execute code against Azure Cosmos DB. If your tenant or applications consume Cosmos DB, verify your exposure and apply any available mitigations from the MSRC advisory immediately.
-
----
-
-## Identity & Access
-
-- **[Give Every AI Agent Its Own Identity](https://www.youtube.com/shorts/j8AGpZ8Z2yA)** [GA] - AI agents carry real identity risk: overpermissioned or hijacked agents can cause significant damage at machine speed. Microsoft Entra Agent ID assigns each agent its own unique, manageable identity so you can apply Zero Trust governance, visibility, and least-privilege controls to non-human actors the same way you do for users. Start inventorying deployed agents and plan to onboard them to Entra Agent ID.
-
-- **[Writeback for Cloud-Managed Remote Mailboxes: Now Generally Available](https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-generally/ba-p/4543507)** [GA] - Writeback is GA across all environments (WW, GCCH, DoD, 21Vianet), supporting up to 600,000 cloud-managed mailboxes per tenant. This closes the final technical gap for organizations looking to retire their last on-premises Exchange server by transferring Exchange attribute Source of Authority to Exchange Online. Review the GA announcement and validate your Entra Connect Sync or Cloud Sync configuration before enabling.
-
-- **[Microsoft Teams: View and manage auto attendant shared voicemails directly in the Queues app](https://www.microsoft.com/microsoft-365/roadmap?id=567457)** [GA] - Auto Attendant voicemails will surface directly in the Queues app, giving contact center teams a single place to track, triage, and respond to customer messages without switching contexts. Arriving August 2026, verify Queues app permissions and voicemail routing policies are configured for affected Auto Attendants before rollout.
-
----
-
-## Endpoint & Device Management
-
-- **[What's New in Microsoft Intune - July](https://techcommunity.microsoft.com/t5/microsoft-intune-blog/what-s-new-in-microsoft-intune-july/ba-p/4537392)** [GA] - July's Intune release centers on giving admins clearer visibility into device sync health and more confident control over fleet management at scale. Key highlights include demystified Windows device sync status to aid troubleshooting and improvements to compliance reporting. Review the full release notes and identify which new reporting capabilities can replace existing manual checks in your runbooks.
-
----
-
-## Collaboration & Productivity
-
-- **[What's New in Microsoft Teams | July 2026](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-july-2026/ba-p/4542510)** [GA] - July's Teams release introduces the Meeting Recaps app for easier post-meeting catch-up, improved app and agent management controls for admins, and a range of AI-powered features across roles. Review the full post and assess whether any new app management policies need updating in the Teams admin center.
-
-- **[What's New in Microsoft Teams | April 2026](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-april-2026/ba-p/4515907)** [GA] - April's release recap covers collaboration intelligence, hybrid meeting improvements, and calling enhancements. If you missed the M365 Community Conference announcements, this post consolidates what shipped in April and is worth reviewing to catch up on any features that may now be live in your tenant.
-
-- **[What's New in Microsoft 365 Copilot | July 2026](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/what-s-new-in-microsoft-365-copilot-july-2026/ba-p/4538332)** [GA] - July's Copilot update covers model upgrades, agent additions in Copilot Chat, push notifications in the Copilot app, new Cowork capabilities, Copilot Notebook reference support, Word workflows, and Power Platform skills. Review the release post to identify user-facing changes that need communication or training updates in your tenant.
-
-- **[What's New in Microsoft Security: July 2026](https://www.microsoft.com/en-us/security/blog/2026/07/30/whats-new-in-microsoft-security-july-2026/)** [GA] - July's security update roundup focuses on AI environment security, AI-assisted defense capabilities, and operational foundations for AI-powered security operations. Use this as your checklist to confirm which new Defender and Purview features are now available in your environment and require policy or configuration attention.
-
-- **[Writeback for Cloud-Managed Remote Mailboxes: Now in Public Preview](https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-in-public/ba-p/4520138)** [Preview] - This is the original public preview post, superseded by GA as of August 3, 2026. Included for reference; if you were tracking the preview, the GA announcement is now the authoritative source. Customers still on the preview should confirm they meet the GA prerequisites and validate writeback behavior in their environment.
-
-- **[From AI Experiments to Digital Workforce: Do Enterprises Need a Chief Agent Officer?](https://techcommunity.microsoft.com/t5/microsoft-security-community/from-ai-experiments-to-digital-workforce-do-enterprises-need-a/ba-p/4542520)** [GA] - As agent fleets grow, governance accountability is fragmenting across IT, security, and compliance teams with no clear owner. This post frames the emerging organizational challenge and is useful context for engineering teams preparing governance frameworks or advising leadership on AI agent ownership models.
-
-- **[SharePoint Showcase: 10 Custom AI Skills Every SharePoint Site Owner Should Build](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-showcase-10-custom-ai-skills-every-sharepoint-site/ba-p/4535414)** [GA] - Copilot Skills in SharePoint let site owners define reusable natural language instructions that teach Copilot to perform repeatable team tasks, from meeting summaries to project briefs. These skills are persisted at the site level, making them a shared team asset. Consider whether your governance model needs guidance on who can create and publish skills within your SharePoint sites.
-
-- **[Dataverse Plugin for Coding Agents: OpenAI and Codex Marketplace Expansion](https://www.microsoft.com/en-us/power-platform/blog/2026/07/28/dataverse-plugin-for-coding-agents-openai-and-codex-marketplace-expansion/)** [GA] - The Dataverse plugin is now available in the OpenAI and Codex marketplaces, extending developer access to Dataverse data from external coding agent environments. If your organization uses Dataverse for business data, review data access permissions and API governance policies to ensure external coding agent usage is accounted for.
-
-- **[Microsoft Teams: See more messages on mobile](https://www.microsoft.com/microsoft-365/roadmap?id=568067)** [GA] - A streamlined mobile messaging layout will display more content on screen with improved readability, making it easier to follow conversation flow in Teams on mobile. Rolling out September 2026, no admin action required but worth noting in any mobile UX change communications.
-
-- **[Microsoft Teams: Updated header and dashboard for chats and channels on mobile](https://www.microsoft.com/microsoft-365/roadmap?id=567461)** [GA] - A redesigned mobile header and lightweight dashboard surfaces key channel details, people, and pinned content in one place, aligning mobile and desktop navigation patterns. Rolling out September 2026, inform Teams Champions and helpdesk staff ahead of rollout.
-
-- **[Microsoft Teams: Clearer text highlighting in dark mode](https://www.microsoft.com/microsoft-365/roadmap?id=566858)** [GA] - Text highlighting when composing messages in dark mode will be visually consistent with other editing surfaces. Rolling out September 2026, no admin action required.
-
-- **[Microsoft Teams: Teams shared display mode and peripheral detection available for DoD environments](https://www.microsoft.com/microsoft-365/roadmap?id=567465)** [GA] - Shared display mode and BYOD peripheral detection for inventory management via the Pro Management portal are now available in DoD GCC environments. Rolling out August 2026; DoD environment admins should validate Pro Management portal access and peripheral detection policies.
-
-- **[Microsoft Teams: Ability for IT admins to customize user notification messages for recording and transcription in calls](https://www.microsoft.com/microsoft-365/roadmap?id=567302)** [GA] - Admins can now customize a portion of the notification messages users see when recording or transcription starts in Teams calls. Rolling out August 2026; review whether your legal or compliance team has requirements for the notification text and configure accordingly via Teams admin center calling policies.
-
-- **[Microsoft Teams: Enhanced delegated calling with delegate call access restrictions and join notifications](https://www.microsoft.com/microsoft-365/roadmap?id=567306)** [GA] - Delegators can now lock active calls to prevent delegates from joining or resuming, and can enable warning tones when a delegate joins. Rolling out August 2026; this is particularly relevant for executive and front-desk calling scenarios where call privacy is a requirement.
-
-- **[Planner: Task Details Side Pane experience](https://www.microsoft.com/microsoft-365/roadmap?id=566866)** [GA] - Task details now open in a side pane, keeping the Board, Grid, or My Tasks view visible while editing, eliminating the context-switch caused by modal dialogs. This shipped July 2026; no admin action required, but worth noting in productivity-focused user communications.
-
-- **[SharePoint: Admin Center detailed report on Everyone except external user permissions](https://www.microsoft.com/microsoft-365/roadmap?id=561038)** [GA] - SharePoint Advanced Management admins will get item-level detail on permissions granted to the "Everyone except external users" and "Everyone" special groups. Rolling out August 2026; run this report early to identify overshared content and close exposure gaps before it surfaces in an audit.
-
-- **[Microsoft Teams: Unblock users to send messages while file is uploading in the background](https://www.microsoft.com/microsoft-365/roadmap?id=560813)** [GA] - Asynchronous file uploads eliminate the blocking behavior that forced users to wait for large file transfers before sending messages. Rolling out August 2026, no admin action required.
-
-- **[Microsoft Teams: Improved organization for muted and meeting chats](https://www.microsoft.com/microsoft-365/roadmap?id=559605)** [GA] - Teams now auto-groups muted chats and can collect meeting chats into dedicated sections to reduce clutter in the chat list. Note: this feature was temporarily rolled back as of July 20, 2026. Monitor the roadmap item for reactivation before including it in user communications.
-
-- **[OneDrive: Improved max path error experience on desktop](https://www.microsoft.com/microsoft-365/roadmap?id=557563)** [GA] - When a file path exceeds the 520-character sync limit, OneDrive desktop will now show exactly how many characters are over the limit and guide users through renaming or moving the file. Rolling out August 2026; useful context for organizations with deep folder hierarchies or legacy naming conventions that frequently hit path limits.
-
----
-
-## AI & Copilot
-
-- **[Why Ungoverned AI Agents Are Dangerous](https://www.youtube.com/shorts/XdgO2fjg3KQ)** [GA] - Overpermissioned AI agents with access to enterprise data and tools represent a high-impact attack path: a compromised agent can move at machine speed before anyone notices. This short from Microsoft Mechanics frames the governance risk clearly and is useful material for security architecture and leadership conversations about agent policy.
-
-- **[The Next Measure of AI Momentum Is Work Transformed](https://www.microsoft.com/en-us/microsoft-365/blog/2026/07/30/the-next-measure-of-ai-momentum-is-work-transformed/)** [GA] - Microsoft 365 Copilot has surpassed 30 million paid seats with net seat adds more than doubling quarter over quarter. For engineering teams, accelerating seat counts mean governance, data access policy, and agent oversight frameworks need to scale with deployment; use this signal to pressure-test your current Copilot governance posture.
-
-- **[Prompt Columns in GA: Turning Business Apps Data into Persisted AI Insights](https://www.microsoft.com/en-us/power-platform/blog/2026/07/29/prompt-columns-july2026/)** [GA] - Prompt Columns in Power Apps allows natural language prompts defined once to automatically generate and persist AI-produced classifications, summaries, and recommendations directly in Dataverse tables, with no code required. This is a new data-generation surface; ensure your data governance and DLP policies cover AI-generated content stored in Dataverse.
-
-- **[Microsoft Viva: Viva Glint - Copilot admin configuration assistance](https://www.microsoft.com/microsoft-365/roadmap?id=567320)** [GA] - A Copilot-powered conversational assistant embedded in the Viva Glint admin experience will answer configuration and how-to questions with deep links to relevant settings pages. Rolling out September 2026; limited to users with Viva Glint Admin permissions, no additional configuration required to enable.
-
----
-
-## Employee Experience
-
-No new Viva or employee experience items this week beyond the Viva Glint Copilot configuration assistant covered in AI & Copilot above.
+5. **Intune July 2026 release and service release 2607 documented.** Both the monthly release notes and the 2607 service release What's New pages are now live. Review them to understand what landed in your tenant before end-users start asking questions.
 
 ---
 
 ## Security & Compliance
 
-- **[CaptiveCrunch: Midnight Blizzard Targets Travelers Worldwide for Malware Delivery and Credential Theft](https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/)** [GA] - Storm-2945, a Midnight Blizzard sub-cluster, has been compromising hotel sign-in portals since May 2026 to push malware and harvest credentials from guests. Review your conditional access policies for sign-ins from hospitality network ranges, ensure MFA is enforced with phishing-resistant methods for traveling users, and push the threat intel to your SOC and travel security teams.
+- **[Hunt Kubernetes Privilege Escalation With KQL](https://www.youtube.com/shorts/s7gJPCpa4QA)** [GA] - If you manage Kubernetes workloads in Azure, this detection pattern belongs in your threat hunting library. Use CloudProcessEvents for runtime activity and CloudAuditEvents for control plane actions in Defender for Cloud; a focused KQL query surfaces cluster-admin role binding creation and the subject granted access, confirming privilege escalation with evidence from both planes.
 
-- **[Secure by Default: Trusted Launch as Default is Now Generally Available](https://techcommunity.microsoft.com/t5/microsoft-security-community/secure-by-default-trusted-launch-as-default-is-now-generally/ba-p/4541672)** [GA] - New Azure Gen2 VMs deployed via Portal, PowerShell, and CLI now get Secure Boot and vTPM enabled by default at no extra cost. IaC pipelines using ARM templates, Bicep, Terraform, or SDKs require a one-time registration to activate this default; complete that registration before your next automated deployment cycle.
+- **[CVE-2026-50422 Windows NTFS Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50422)** [GA] - Acknowledgement update only, no technical or patch details have changed. No action required unless you were tracking attribution; confirm your patch status against the previously published Security Updates table.
 
-- **[Why AI Agents May Require a New Security Operations Model](https://techcommunity.microsoft.com/t5/microsoft-security-community/why-ai-agents-may-require-a-new-security-operations-model/ba-p/4542532)** [GA] - A compromised AI agent can do what a compromised endpoint and a compromised identity do simultaneously, while also reasoning, invoking tools, and chaining to other agents at machine speed. This post is essential reading for SOC architects and should inform your detection, response, and agent governance planning.
+- **[CVE-2026-47301 Configuration Manager Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47301)** [GA] - The build number in the Security Updates table has been corrected. If you used last week's table to validate your SCCM patch level, recheck the advisory now to confirm the update you applied actually satisfies the requirement.
 
-- **[More Control Over Web Grounding with Domain Exclusion for Microsoft 365 Copilot](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/more-control-over-web-grounding-with-domain-exclusion-for/ba-p/4540151)** [GA] - Admins can now specify domains to exclude from Copilot's web search grounding, keeping responses aligned with organizational policy and trusted source strategies. Configure exclusions in the Microsoft 365 admin center now, especially for regulated industries where web source provenance matters for compliance.
+- **[CVE-2026-59117 Windows Terminal Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-59117)** [GA] - The affected software name has been corrected from "Microsoft Power Apps" to "Microsoft Power Apps Desktop Client." Informational change only; if you scoped remediation or exclusions based on the previous product name, update your records to reflect the correct target.
 
-- **[The Microsoft AI and Agent Platform: The Platform Behind Intelligent Agents](https://techcommunity.microsoft.com/t5/microsoft-security-community/the-microsoft-ai-and-agent-platform-the-platform-behind/ba-p/4539060)** [GA] - This post outlines the governance, trust, and enterprise readiness foundations in Microsoft's AI and agent platform. Useful as a vendor alignment reference when evaluating agent deployment architectures and explaining the governance stack to compliance stakeholders.
+- **[Microsoft Edge: Automatically unsubscribe users from notifications sent by scam and malicious sites](https://www.microsoft.com/microsoft-365/roadmap?id=568366)** [GA] - Landing in September 2026, Edge will automatically revoke notification permissions when SmartScreen identifies a notification source as directing users to scam, phishing, or malware pages, then notifies the user. No admin policy needed to enable this; users can review affected sites at edge://settings/privacy/sitePermissions/allPermissions/notifications. Update your security awareness content so users understand why a previously allowed notification source may disappear.
 
-- **[Better Security Starts with Better Questions](https://www.microsoft.com/en-us/security/blog/2026/07/29/better-security-starts-with-better-questions/)** [GA] - A thought leadership piece on using AI-assisted inquiry and human judgment to build more resilient security programs. Low on operational detail but useful for security leadership positioning and framing AI's role in your security decision-making process.
-
-- **[Assign a CVE to GitHub Copilot, Get a Pull Request](https://www.youtube.com/shorts/Q7BQG2_WDzY)** [GA] - Defender for Cloud can now surface a container CVE recommendation, generate a GitHub issue, assign it to GitHub Copilot coding agent, and receive a draft PR fixing the CVE, with resolution syncing back to Defender. This closes the detection-to-fix loop for container supply chain vulnerabilities; evaluate whether your DevSecOps workflow can adopt this pattern.
-
-- **[This Policy Blocked an Image With 415 CVEs](https://www.youtube.com/shorts/hYI3T0UnXKg)** [GA] - Defender for Cloud security policies can now deny deployment of container images that violate CVE thresholds at the Kubernetes namespace level. If you run AI application workloads in containers, define and scope a zero-tolerance CVE policy to your AI namespace as a supply chain control.
-
-- **[CVE-2026-66803: Azure Cosmos DB Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-66803)** [GA] - Improper access control in Azure Cosmos DB allows an unauthenticated network attacker to execute code. Review the MSRC advisory, assess tenant exposure, and apply any available mitigations immediately if your applications depend on Cosmos DB.
-
-- **[CVE-2026-54128: Windows DHCP Client Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54128)** [GA] - Acknowledgment updated on this Windows DHCP Client RCE. Confirm your Windows endpoints are current on patches that address this vulnerability, particularly for devices on untrusted networks.
-
-- **[CVE-2026-55129: Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55129)** [GA] - Acknowledgment updated on this Office RCE. Verify Office update compliance across your fleet and confirm Defender for Endpoint telemetry shows no exploitation attempts.
-
-- **[CVE-2026-56197: Windows Admin Center (WAC) Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56197)** [GA] - Acknowledgment updated on this WAC RCE. Ensure Windows Admin Center deployments are on a patched version and that WAC access is restricted to authorized admin networks.
-
-- **[CVE-2026-50416: Win32k Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50416)** [GA] - Acknowledgment updated for this Win32k information disclosure. Confirm Windows endpoint patch compliance for the fix covering this CVE.
-
-- **[CVE-2026-50341: Windows NTFS Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50341)** [GA] - Acknowledgment updated for this NTFS information disclosure. Verify patching for affected Windows versions is current across your managed fleet.
-
-- **[CVE-2026-50493: DirectX Graphics Kernel Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50493)** [GA] - Acknowledgment updated for this DirectX Graphics Kernel EoP. EoP vulnerabilities are frequently chained with initial access exploits; ensure this patch is prioritized in your next update cycle.
-
-- **[CVE-2026-24304: Azure Resource Manager Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-24304)** [GA] - Informational update only for this ARM EoP CVE. No action change from prior guidance; confirm your ARM RBAC posture and least-privilege assignments are in good standing.
-
-- **[Chromium CVE-2026-13032: Use After Free in WebGL](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13032)** [GA] - Chrome-assigned CVE addressed in the Microsoft Edge Chromium update. Confirm Edge is current on managed endpoints; Intune or your software update tool should show compliance against the latest Edge build.
-
-- **[Chromium CVE-2026-13030: Uninitialized Use in GPU](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13030)** [GA] - Chrome-assigned CVE addressed in Microsoft Edge Chromium. Same guidance as above; ensure Edge patch compliance across your fleet.
-
-- **[Chromium CVE-2026-13028: Use After Free in WebGL](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13028)** [GA] - Chrome-assigned CVE addressed in Microsoft Edge Chromium. Three WebGL and GPU CVEs this cycle; verify Edge is fully patched on all managed and shared devices.
-
-- **[What Zero Trust Actually Means](https://www.youtube.com/shorts/Lf2KEXY1WEg)** [GA] - A concise Microsoft Mechanics explainer covering the three Zero Trust principles: verify explicitly, enforce least privilege, and assume breach. Useful onboarding material for new team members or stakeholder education sessions.
+- **[Microsoft Edge: Improved website compatibility with site troubleshooting controls](https://www.microsoft.com/microsoft-365/roadmap?id=561486)** [GA] - Also targeting September 2026, Edge will surface contextual troubleshooting options, including tracking prevention adjustments and site-specific settings, when a site behaves unexpectedly. This reduces support noise from users hitting strict tracking prevention, but review whether surfacing these controls conflicts with any enterprise settings policies you have enforced.
 
 ---
 
 ## Action Required
 
-- **[CaptiveCrunch: Midnight Blizzard Active Campaign Against Travelers](https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/)** [GA] - Active threat, act now. Review and harden conditional access policies for sign-ins from hospitality or unknown network locations, enforce phishing-resistant MFA for all traveling users, and brief your SOC on the Storm-2945 indicators of compromise published in this advisory.
+- **[CVE-2026-47301 Configuration Manager EoP: revalidate your patch level](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47301)** - The corrected build number in the Security Updates table means any patch validation done against the original advisory may have been against a wrong target. Confirm the SCCM build running in your environment matches the corrected remediated build before your next change window.
 
-- **[CVE-2026-66803: Azure Cosmos DB Remote Code Execution](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-66803)** [GA] - Unauthenticated network RCE against Cosmos DB warrants immediate review. Check your tenant and application dependencies on Cosmos DB, review the MSRC advisory for mitigation steps, and confirm any available platform-side patches or configuration controls are applied.
+- **[SMS/Voice MFA retirement: begin or accelerate migration](https://github.com/MicrosoftDocs/entra-docs/commit/938217238eb9520112ac2f6eafad1eac6c1b78d6)** - The retirement FAQ is now a standalone article, a documentation posture that typically precedes enforcement timelines tightening. Audit users still registered only for SMS or voice MFA, assign Authenticator app or FIDO2 as alternatives, and communicate the change before Microsoft enforces it.
 
-- **[Trusted Launch as Default: One-Time Registration Required for IaC Pipelines](https://techcommunity.microsoft.com/t5/microsoft-security-community/secure-by-default-trusted-launch-as-default-is-now-generally/ba-p/4541672)** [GA] - Before your next automated Azure VM deployment: complete the one-time registration to enable Trusted Launch as Default for ARM templates, Bicep, Terraform, and SDK-based deployments. Without registration, IaC-provisioned Gen2 VMs will not inherit the new secure-by-default baseline.
-
-- **[SharePoint Admin Center: Everyone Except External Users Permissions Report](https://www.microsoft.com/microsoft-365/roadmap?id=561038)** [GA] - Arriving August 2026. Plan to run this report immediately upon availability to identify items shared broadly via the "Everyone except external users" group. Overshared content surfaced here should be remediated before your next internal or external audit cycle.
-
-- **[Three Chromium CVEs in Edge: WebGL and GPU](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13032)** [GA] - CVE-2026-13032, CVE-2026-13030, and CVE-2026-13028 are addressed in the latest Microsoft Edge Chromium build. Verify Edge patch compliance across all managed endpoints in Intune or your patch management tooling; WebGL use-after-free vulnerabilities are high-risk for browser-based exploit chains.
+- **[Microsoft Tunnel prerequisite changes: review before next deployment](https://github.com/MicrosoftDocs/memdocs/commit/52b93b3a20cbcecd14913f209523bdf63ad7eb8c)** - Updated prerequisites are now documented for Microsoft Tunnel. Before onboarding new Tunnel servers or updating existing ones, review the revised requirements to avoid failed deployments or unsupported configurations.
 
 ---
 
@@ -231,24 +81,34 @@ No new Viva or employee experience items this week beyond the Viva Glint Copilot
 
 **Identity & Access**
 
-- **[SMS and Voice Retirement FAQ Split into Dedicated Page](https://github.com/MicrosoftDocs/entra-docs/commit/938217238eb9520112ac2f6eafad1eac6c1b78d6)** - The SMS/voice authentication retirement FAQ has been moved to its own dedicated page, making it easier to find retirement timeline and migration guidance; relevant for any org still running SMS or voice as MFA methods.
+- **[SMS/Voice MFA retirement FAQ split into a dedicated article](https://github.com/MicrosoftDocs/entra-docs/commit/938217238eb9520112ac2f6eafad1eac6c1b78d6)** - The retirement FAQ has been separated from the main MFA docs into its own page, consolidating guidance and signaling the retirement is progressing toward enforcement.
 
-- **[New Multitenant Architecture Guide Published](https://github.com/MicrosoftDocs/entra-docs/commit/7eb64a786de183ec4cb0483b41187ac879813984)** - A new Entra ID multitenant architecture guide has been added, covering design patterns and decision points for organizations managing multiple tenants; reference this if you are designing or reviewing a multitenant Entra topology.
+- **[API instructions added for custom call-outs in attribute mappings](https://github.com/MicrosoftDocs/entra-docs/commit/a0cd379ac39208e3bec5105771b887332829a495)** - A new reference article covers custom call-outs, and API-level configuration instructions have been added to the attribute mappings article, giving engineers a programmatic path for extending provisioning workflows.
 
-- **[Global Secure Access: Remote Network CPE Behind NAT Guidance Added](https://github.com/MicrosoftDocs/entra-docs/commit/649f7a17c18170104e4cf9aae8c93ffac9fcf00f)** - New guidance documents how to configure remote network CPE devices sitting behind NAT for Global Secure Access, addressing a common deployment gap for branch office scenarios.
+- **[Global Secure Access: remote network CPE behind NAT guidance added](https://github.com/MicrosoftDocs/entra-docs/commit/649f7a17c18170104e4cf9aae8c93ffac9fcf00f)** - New guidance documents how to configure remote network Customer Premises Equipment sitting behind NAT for Global Secure Access, covering a topology that previously had no official walkthrough.
 
-- **[Global Secure Access: Internet Access Profile Documentation Revised](https://github.com/MicrosoftDocs/entra-docs/commit/73565b59f03b2578d8099cbc0d8525cccf829532)** - The Internet Access profile docs have been meaningfully rewritten; review if you are configuring or auditing Global Secure Access Internet Access policies.
+- **[Internet Access profile documentation revised](https://github.com/MicrosoftDocs/entra-docs/commit/73565b59f03b2578d8099cbc0d8525cccf829532)** - The Global Secure Access Internet Access profile docs have been meaningfully updated; if you are deploying or reviewing Internet Access policies, pull the latest version before making configuration decisions.
 
-- **[New Entra Zscaler ZIdentity Integration Tutorial](https://github.com/MicrosoftDocs/entra-docs/commit/0372550fa2b9824e825d48440331bd42e9ac880c)** - A new step-by-step tutorial for integrating Zscaler ZIdentity with Microsoft Entra ID has been published; relevant for organizations running Zscaler alongside Entra for identity-aware network access.
+- **[New multitenant architecture guide published](https://github.com/MicrosoftDocs/entra-docs/commit/7eb64a786de183ec4cb0483b41187ac879813984)** - A new authoritative guide covering multitenant Entra ID architecture has been added, useful for engineers designing cross-tenant identity topologies or advising customers on tenant consolidation or federation patterns.
 
 **Endpoint & Device Management**
 
-- **[Microsoft Tunnel Prerequisites Updated](https://github.com/MicrosoftDocs/memdocs/commit/52b93b3a20cbcecd14913f209523bdf63ad7eb8c)** - Prerequisites for Microsoft Tunnel have been updated; review before deploying or upgrading Tunnel infrastructure to avoid configuration failures.
+- **[Microsoft Tunnel prerequisites updated](https://github.com/MicrosoftDocs/memdocs/commit/52b93b3a20cbcecd14913f209523bdf63ad7eb8c)** - Prerequisites for Microsoft Tunnel have been revised; review before deploying new Tunnel servers to avoid configuration failures against changed requirements.
 
-- **[CVE-2026-47301 Documented in Configuration Manager Console Extension Fix](https://github.com/MicrosoftDocs/memdocs/commit/6d50432a73a4967dc4acd5a400630bec719b552e)** - CVE-2026-47301 has been added to the Configuration Manager console extension KB article; if you manage ConfigMgr console extensions, review the referenced KB for remediation steps.
+- **[Intune July 2026 release notes published](https://github.com/MicrosoftDocs/memdocs/commit/07f23b3ec298cc121409b1dda3a00f15bf3be498)** - Full July 2026 release details are now documented; review to understand what features landed in your tenant this month.
+
+- **[Intune service release 2607 What's New documented](https://github.com/MicrosoftDocs/memdocs/commit/3c8f16eeb9974d781b00608661b53bfc54c6e4a0)** - The 2607 service release What's New page is live; cross-reference this with the monthly release notes to get a complete picture of July changes.
+
+- **[Azure Virtual Desktop deployment requirements updated in Intune docs](https://github.com/MicrosoftDocs/memdocs/commit/1589e02102cd9f4ab44470a50a0dfaa68ebba9a5)** - Deployment requirements for managing AVD with Intune have been revised; if you are enrolling or managing AVD session hosts, verify your setup matches the updated requirements.
+
+- **[Force Encryption flag support added to Intune SQL configuration docs](https://github.com/MicrosoftDocs/memdocs/commit/0b6be673bc34dd234d181a133f9cde79df4387f0)** - Documentation now covers the Force Encryption flag for SQL connectivity in Intune-managed configurations, alongside a reorganization of SQL-related pages.
+
+- **[CVE-2026-47301 references added to Configuration Manager KB articles](https://github.com/MicrosoftDocs/memdocs/commit/6d50432a73a4967dc4acd5a400630bec719b552e)** - KB articles covering the Configuration Manager console extension fix and a related update now include explicit CVE-2026-47301 references, making it easier to confirm patch coverage from the KB side.
 
 **Security & Compliance**
 
-- **[Tenant Allow/Block List: Block Entry Behavior for Domains and Subdomains Clarified](https://github.com/MicrosoftDocs/defender-docs/commit/3e913ef1187a6ea001eb6df467970a007da91eb5)** - The documentation now clarifies exactly how block entries for domains and subdomains are evaluated in the Tenant Allow/Block List, resolving a common point of confusion about scope and inheritance behavior.
+- **[Defender for Office 365 block entry behavior clarified for domains and subdomains](https://github.com/MicrosoftDocs/defender-docs/commit/3e913ef1187a6ea001eb6df467970a007da91eb5)** - The explanation of how block entries apply to domains versus subdomains in the Tenant Allow/Block List has been updated; if you manage domain-level blocks, review to confirm your entries behave as intended.
 
-- **[IIJ Added as Trusted ARC Sealer](https://github.com/MicrosoftDocs/defender-docs/commit/ba8a948070bbe3dd56f8d6211b7df43f9a8bcaaa)** - IIJ has been added to the list of trusted ARC sealers in Defender for Office 365 configuration guidance; relevant if IIJ is in your mail flow path and you are troubleshooting ARC authentication failures.
+- **[Approval functionality removed from Defender docs](https://github.com/MicrosoftDocs/defender-docs/commit/676ccb90565ea002f140af3dcb38ca9ecc57896f)** - Approval-related content has been removed from a Defender doc, indicating a feature or workflow change; check whether any internal runbooks reference this functionality and update accordingly.
+
+- **[IIJ added as a trusted ARC sealer in email authentication docs](https://github.com/MicrosoftDocs/defender-docs/commit/ba8a948070bbe3dd56f8d6211b7df43f9a8bcaaa)** - IIJ is now listed as a supported trusted ARC sealer configuration, relevant for organizations routing mail through IIJ or validating ARC chain integrity for third-party sealers.

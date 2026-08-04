@@ -1,0 +1,2290 @@
+{
+  "week_of": "2026-08-04",
+  "last_updated": "2026-08-04",
+  "runs": [
+    "2026-08-04",
+    "2026-08-04",
+    "2026-08-04"
+  ],
+  "total_new_items": 111,
+  "sources_checked": [
+    "Autopilot Known Issues",
+    "Microsoft 365 Copilot",
+    "Exchange Online",
+    "Windows Release Health",
+    "SharePoint / OneDrive",
+    "Defender XDR",
+    "Microsoft Security Response Center",
+    "Defender XDR Known Issues",
+    "Agent 365",
+    "Defender for Office 365",
+    "Global Secure Access",
+    "Intune",
+    "Windows Autopatch",
+    "Microsoft Viva",
+    "Microsoft Mechanics",
+    "Windows 365",
+    "Microsoft Security Blog",
+    "Entra ID Known Issues",
+    "Power Platform",
+    "Autopilot",
+    "Copilot Studio",
+    "Defender for Endpoint",
+    "Azure Status",
+    "Windows 365 Known Issues",
+    "Purview Known Issues",
+    "Microsoft 365 Service Status",
+    "Teams",
+    "Intune Known Issues",
+    "Defender for Identity",
+    "Microsoft 365 Roadmap",
+    "Purview",
+    "Entra ID"
+  ],
+  "grouped_items": {
+    "Security & Compliance": [
+      {
+        "id": "9abd4a721b390ba0",
+        "source": "Defender for Endpoint",
+        "title": "New Privileged Token Context Telemetry Boosts Advanced Hunting in Microsoft Defender",
+        "body": "In brief: Defenders can now easily identify logons involving high-privilege identities or special logon flags to better hunt threats and fine-tune detections. When a user logs on, Windows\u2019 Local Security Authority (LSA) constructs an access token that represents the user\u2019s security context for that session. This token includes the user\u2019s SID, group memberships, user rights, and logon flags , the information that determines what the session is allowed to access. The challenge was that, although Microsoft Defender has been collecting a token creation event at logon to supplement standard logon t",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/new-privileged-token-context-telemetry-boosts-advanced-hunting/ba-p/4528613",
+        "date": "2026-07-15T16:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "657114533b9eeffe",
+        "source": "Defender for Endpoint",
+        "title": "Introducing scheduled antivirus scans on Microsoft Defender Linux",
+        "body": "Security teams rely on scheduled scans to ensure consistent coverage across devices, detect dormant or missed threats, and meet compliance requirements. However, managing scans on Linux has traditionally required custom scripts and cron-based setups, which can be hard to scale and maintain. That\u2019s why we\u2019re excited to introduce centrally managed scheduled antivirus scans for Linux in Microsoft Defender . With this release, we are bringing built-in, flexible scheduling capabilities directly into Defender - making it easier to manage and standardize scan behavior across Linux environments. What\u2019",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/introducing-scheduled-antivirus-scans-on-microsoft-defender/ba-p/4524578",
+        "date": "2026-07-15T14:05:55+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Endpoint"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "30ca2ff47b326464",
+        "source": "Intune",
+        "title": "New option for the Remove Default Microsoft Store packages setting",
+        "body": "The existing Remove Default Microsoft Store packages setting in the ApplicationManagement area has a new subsetting, Specify additional package family names to remove . It lets you provide a custom list of package family names (PFNs) to remove, in addition to the built-in default set of Microsoft Store packages.\nFor more information, see the ApplicationManagement policy CSP .",
+        "url": "https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-applicationmanagement",
+        "date": "2026-07-27",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "10108d4b7f7d3eea",
+        "source": "Intune",
+        "title": "New setting to disable the Get Started app",
+        "body": "The new Disable Get Started setting prevents the Windows Get Started app from being available to users.\nFor more information, see the Experience policy CSP .",
+        "url": "https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-experience",
+        "date": "2026-07-27",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7780f7f4b88bffd9",
+        "source": "Intune",
+        "title": "Updated Visual Studio administrative templates in the Windows settings catalog",
+        "body": "The Visual Studio administrative templates were refreshed to version 1.0.184.40051, which adds the latest Visual Studio policy settings to the Windows settings catalog. The new setting is:",
+        "url": "https://learn.microsoft.com/en-us/visualstudio/ide/visual-studio-github-copilot-admin#configure-copilot-group-policy",
+        "date": "2026-07-27",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "06eecb67bb7d962c",
+        "source": "Defender XDR",
+        "title": "Secure by default: Trusted Launch as Default is now Generally Available",
+        "body": "We are\u00a0excited to announce that Trusted Launch as Default (TLaD) is now Generally Available for new Azure Generation 2 (Gen2) virtual machines (VMs) and virtual machine scale sets. With this milestone, new Gen2 deployments\u00a0come up with Secure Boot and a virtual Trusted Platform Module (vTPM) enabled out of the box\u2014raising the security baseline of your fleet automatically, and at no extra cost .\u00a0TLaD\u00a0is the default\u00a0already\u00a0for\u00a0Portal,\u00a0Powershell\u00a0and\u00a0CLI\u00a0and\u00a0now\u00a0requires one-time registration\u00a0to enable it by default for\u00a0deployment scripts or\u00a0tooling like ARM templates, Bicep, Terraform, or SDKs ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/secure-by-default-trusted-launch-as-default-is-now-generally/ba-p/4541672",
+        "date": "2026-08-03T15:46:27+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "74017e720b20e15f",
+        "source": "Defender XDR",
+        "title": "Why AI Agents May Require a New Security Operations Model",
+        "body": "Organizations are rapidly adopting AI agents to retrieve data, invoke tools, automate workflows, interact with applications, and increasingly make decisions on behalf of users. As these agents become part of the enterprise workforce, they introduce an entirely new security surface. A compromised endpoint can spread malware. A compromised identity can access sensitive data. A compromised AI agent can do both \u2014 while also reasoning, invoking tools, interacting with other agents, and executing actions at machine speed. The challenge is no longer simply governing AI agents. The challenge is securi",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/why-ai-agents-may-require-a-new-security-operations-model/ba-p/4542532",
+        "date": "2026-08-03T14:30:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "aeb50a61c89446e9",
+        "source": "Defender XDR",
+        "title": "The Microsoft AI and Agent Platform \u2014 The Platform Behind Intelligent Agents",
+        "body": "Why the platform around the model is the real enterprise differentiator Enterprise AI has reached a turning point. Beyond answering questions, it can now reason over business context, retrieve knowledge, use tools, coordinate workflows, and act across enterprise systems. This shift raises a critical question: How can organizations build agents intelligent enough to transform work while ensuring they remain trusted, governed, and ready to operate at enterprise scale? The answer is not a single model, chatbot, or orchestration framework. Foundation models are advancing quickly and increasingly b",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/the-microsoft-ai-and-agent-platform-the-platform-behind/ba-p/4539060",
+        "date": "2026-07-29T18:05:42+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4da1999fe3f8af24",
+        "source": "Defender XDR",
+        "title": "Securing AI Agents at Runtime: Real-Time Protection and Threat Detection for Microsoft Agent 365",
+        "body": "Organizations are rapidly adopting AI agents to automate workflows, access enterprise data, invoke tools, and take actions on behalf of users. This autonomy creates a fundamentally new security challenge. Unlike traditional AI applications, agents\u00a0operate\u00a0across dynamic execution flows, interacting with external content, calling tools, and accessing sensitive resources. These interactions create new attack paths that traditional security controls were not designed to address. Today,\u00a0we're\u00a0announcing two major milestones for Security for AI in Microsoft Defender for Microsoft Agent 365: Threat ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/securing-ai-agents-at-runtime-real-time-protection-and-threat/ba-p/4541255",
+        "date": "2026-07-27T17:37:49+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": "Organizations are rapidly adopting AI agents to automate workflows, access enterprise data, invoke tools, and take actions on behalf of users",
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "68731af48e232c38",
+        "source": "Defender XDR",
+        "title": "Level Up Your Security Skills This August with the Microsoft Defender Challenge and Learn Live",
+        "body": "Security teams face an increasingly complex landscape. Threats span identities, endpoints, email, cloud workloads, and emerging AI environments. The best defenders aren't just reacting to threats\u2014they're continuously building the skills needed to stay ahead. That's why we're inviting security practitioners to build practical security operations expertise while working toward their next certification goal. Running from July 20 through August 21, 2026, and focused on skills across Microsoft Defender XDR, Microsoft Sentinel, and Microsoft Defender for Cloud, this hands-on learning experience is t",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/level-up-your-security-skills-this-august-with-the-microsoft/ba-p/4541235",
+        "date": "2026-07-27T16:47:02+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8a8039b471fc58f2",
+        "source": "Defender XDR",
+        "title": "How Nationwide stays ahead of attackers with Project Perception",
+        "body": "Nationwide, the world\u2019s\u00a0largest\u00a0building\u00a0society,\u00a0is among the first\u00a0organizations\u00a0to\u00a0put Microsoft\u2019s new agentic security system to work. Facing adversaries who now\u00a0regularly\u00a0weaponize AI, the society is using Project Perception\u2019s coordinated multi-agent defense \u2014 red, blue, and green agents working alongside its analysts \u2014 to find and remediate threats faster, while its security experts stay firmly in command.\u00a0Their\u00a0team has already seen work that once took weeks compressed into hours. Defending against AI-driven threats Nationwide Building Society is a member-owned mutual\u00a0serving\u00a019\u00a0million",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/how-nationwide-stays-ahead-of-attackers-with-project-perception/ba-p/4540534",
+        "date": "2026-07-27T12:30:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c06edb7799ba6dc1",
+        "source": "Microsoft Security Blog",
+        "title": "CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft",
+        "body": "Storm-2945, a sub-cluster of the Russian threat actor Midnight Blizzard, has been observed compromising the sign-in portals of hospitality-related organizations such as hotels since May 2026 in order to deliver malware to travelers and steal credentials in an operation we call CaptiveCrunch. The post CaptiveCrunch: Midnight Blizzard targets travelers worldwide for malware delivery and credential theft appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+        "date": "2026-07-31T21:01:37+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ed558f07b05cd443",
+        "source": "Microsoft Security Blog",
+        "title": "\u200b\u200bBetter security starts with better questions",
+        "body": "Learn how better questions, trusted AI, and human judgment help security leaders make confident decisions and build resilient systems. The post \u200b\u200bBetter security starts with better questions appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/29/better-security-starts-with-better-questions/",
+        "date": "2026-07-29T16:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d28fd18cde4ac6e3",
+        "source": "Microsoft Security Blog",
+        "title": "Rethinking security for the age of AI",
+        "body": "The physics of cybersecurity are changing. Introducing security's new cyber stack: Project Perception. The post Rethinking security for the age of AI appeared first on Microsoft Security Blog .",
+        "url": "https://blogs.microsoft.com/blog/2026/07/27/rethinking-security-for-the-age-of-ai/",
+        "date": "2026-07-27T16:40:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9c592c3d00228e6e",
+        "source": "Microsoft Security Blog",
+        "title": "Enhancing AI security through global AI red teaming",
+        "body": "Microsoft's External Red Team Alliance (EXTRA) is a global AI security initiative designed to advance AI safety research and red teaming. By partnering with universities, researchers, and regional experts, EXTRA helps identify emerging AI risks, improve security testing, and strengthen the resilience of frontier AI systems. The post Enhancing AI security through global AI red teaming appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/27/enhancing-ai-security-through-global-ai-red-teaming/",
+        "date": "2026-07-27T16:25:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "cd6c2f295e8ec4c7",
+        "source": "Defender for Identity",
+        "title": "Migration readiness reasons on the Sensors page",
+        "body": "When a server is marked Not ready for migration on the Sensors page, you can now hover over the status to see a tooltip that lists the specific reasons the server doesn't meet the migration prerequisites. For more information, see Troubleshoot \"Not ready for migration\" status .",
+        "url": "deploy/migrate-to-sensor-v3#troubleshoot-not-ready-for-migration-status",
+        "date": "2026-07-15",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Identity"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9511e2eac63e4842",
+        "source": "Defender for Office 365",
+        "title": "Defending the Inbox Against Prompt Injection Attacks",
+        "body": "AI assistants are quickly becoming part of everyday work\u2014summarizing emails, drafting responses, triaging requests, and even potentially acting across connected business systems. As email becomes an automated input to AI systems, it can also become a new attack surface. Attackers no longer need to convince a human to click; they can target the AI. This shift changes how email threats operate and why traditional protections aren\u2019t enough on their own. Publicly disclosed research\u2014 Morris II , EchoLeak, and a steady stream of indirect prompt injection findings\u2014shows this isn\u2019t theoretical. Email ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-defender-for-office/defending-the-inbox-against-prompt-injection-attacks/ba-p/4534636",
+        "date": "2026-07-22T18:50:10+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f08ec794a67037a5",
+        "source": "Exchange Online",
+        "title": "Released: June 2026 Exchange Server Security Updates",
+        "body": "Microsoft has released Security Updates (SUs) for vulnerabilities found in: Exchange Server Subscription Edition (SE) Exchange Server 2019 Exchange Server 2016 SUs are available for the following specific versions of Exchange Server: Exchange SE RTM Exchange Server 2019\u00a0CU14\u00a0and\u00a0CU15 (to access, organization must be enrolled into the Period 2 ESU program ) Exchange Server 2016\u00a0CU23 (to access, organization must be enrolled into the Period 2 ESU program ) The June 2026 SUs address vulnerabilities responsibly reported to Microsoft by security partners and found through Microsoft\u2019s internal proce",
+        "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/released-june-2026-exchange-server-security-updates/ba-p/4524491",
+        "date": "2026-07-14T17:23:34+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "cd6e74de171437c1",
+        "source": "Microsoft 365 Copilot",
+        "title": "More control over web grounding with Domain Exclusion for Microsoft 365 Copilot",
+        "body": "We are excited to announce Domain Exclusion for Microsoft 365 Copilot, a new web search control that gives organizations more choice over which external web sources can be used to ground Copilot responses. As customers bring Microsoft 365 Copilot and Copilot Chat (Copilot) into more business-critical workflows, admins need practical controls that help web-grounded experiences stay aligned with organizational policies, compliance expectations, and trusted source strategies. Give admins more control over web grounding Web grounding helps Copilot deliver more timely and relevant answers by allowi",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/more-control-over-web-grounding-with-domain-exclusion-for/ba-p/4540151",
+        "date": "2026-07-28T15:50:14+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Copilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c1fd6f6ad1fd0d08",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-50416 Win32k Information Disclosure Vulnerability",
+        "body": "Acknowledgement Updated",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50416",
+        "date": "2026-08-03T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0a7be5f76f270453",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-50341 Windows NTFS Information Disclosure Vulnerability",
+        "body": "Acknowledgement Updated",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50341",
+        "date": "2026-08-03T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "66654b7a17fa8753",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-50493 DirectX Graphics Kernel Elevation of Privilege Vulnerability",
+        "body": "Acknowledgement Updated",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50493",
+        "date": "2026-08-03T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "56362245b261dfa0",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-54128 Windows DHCP Client Remote Code Execution Vulnerability",
+        "body": "Updated an acknowledgement. This is an informational change only.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54128",
+        "date": "2026-07-30T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e267fd27b44090e8",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-55129 Microsoft Office Remote Code Execution Vulnerability",
+        "body": "Acknowledgement Updated",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55129",
+        "date": "2026-07-30T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4662f49a45850b88",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-56197 Windows Admin Center (WAC) Remote Code Execution Vulnerability",
+        "body": "Updated an acknowledgement. This is an informational change only.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-56197",
+        "date": "2026-07-30T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "82d42bedb55980e4",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-66803 Azure Cosmos DB Remote Code Execution Vulnerability",
+        "body": "Improper access control in Azure Cosmos DB allows an unauthorized attacker to execute code over a network.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-66803",
+        "date": "2026-07-30T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ed26a93d886ead96",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-24304 Azure Resource Manager Elevation of Privilege Vulnerability",
+        "body": "Informational Change. CVE ID stays the same.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-24304",
+        "date": "2026-07-30T14:00:00+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "18910caec77104b1",
+        "source": "Microsoft Security Response Center",
+        "title": "Chromium: CVE-2026-13032 Use after free in WebGL",
+        "body": "This CVE was assigned by Chrome.  Microsoft Edge (Chromium-based) ingests Chromium, which addresses this vulnerability. Please see [Google Chrome Releases](https://chromereleases.googleblog.com/2026) for more information.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13032",
+        "date": "2026-07-28T22:03:48+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1a22d4fa63e6204f",
+        "source": "Microsoft Security Response Center",
+        "title": "Chromium: CVE-2026-13028 Use after free in WebGL",
+        "body": "This CVE was assigned by Chrome.  Microsoft Edge (Chromium-based) ingests Chromium, which addresses this vulnerability. Please see [Google Chrome Releases](https://chromereleases.googleblog.com/2026) for more information.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13028",
+        "date": "2026-07-28T22:03:44+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "88cca1467c9396b1",
+        "source": "Microsoft Security Response Center",
+        "title": "Chromium: CVE-2026-13030 Uninitialized Use in GPU",
+        "body": "This CVE was assigned by Chrome.  Microsoft Edge (Chromium-based) ingests Chromium, which addresses this vulnerability. Please see [Google Chrome Releases](https://chromereleases.googleblog.com/2026) for more information.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-13030",
+        "date": "2026-07-28T22:03:47+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a04e649cb2686e5c",
+        "source": "Microsoft Mechanics",
+        "title": "What Zero Trust Actually Means",
+        "body": "Never assume trust, always verify. Zero Trust runs on three principles: verify explicitly, enforce least-privilege access, and assume breach. Verify confirms who or what is requesting access, least privilege grants only the permissions needed and only for as long as needed, and assume breach means you build proactive defenses as if your environment is already compromised.\n\n\u25b6 Full video: https://aka.ms/ZTMechanics\n\u25b6 Go Zero Trust (free workshops): https://aka.ms/GoZeroTrust\n\n#Shorts #ZeroTrust #CyberSecurity #CloudSecurity #ZeroTrustAI",
+        "url": "https://www.youtube.com/shorts/Lf2KEXY1WEg",
+        "date": "2026-07-31T14:37:06+00:00",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "91f58205359c9bd8",
+        "source": "Microsoft Mechanics",
+        "title": "Assign a CVE to GitHub Copilot, Get a Pull Request",
+        "body": "Can you fix container CVEs without leaving the workflow? From a Microsoft Defender for Cloud recommendation, create a GitHub issue and assign it to the GitHub Copilot coding agent \u2014 it generates a draft pull request that fixes the CVEs for review. Merge it, and the resolution syncs straight back to Defender where your SOC lives. That's the loop from detection to fix, closed.\n\n\u25b6 Full episode: https://youtu.be/CnqmC-CQs48\n\u25b6 Get started: https://aka.ms/DefenderCloudSecurity\n\n#Shorts #DefenderForCloud #ContainerSecurity #GitHubCopilot #MicrosoftSecurity",
+        "url": "https://www.youtube.com/shorts/Q7BQG2_WDzY",
+        "date": "2026-07-29T15:45:25+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7e3317c11a652711",
+        "source": "Microsoft Mechanics",
+        "title": "This Policy Blocked an Image With 415 CVEs",
+        "body": "How do you stop a vulnerable container image from ever reaching production? With a security policy in Microsoft Defender for Cloud, deploying an image scoped to your AI applications' namespace gets denied the moment it violates the rule. In this test, a kubectl run is blocked immediately \u2014 the image carried 415 CVEs, and the policy allowed zero. That's how you shut down a supply chain attack at deployment.\n\n\u25b6 Full episode: https://youtu.be/CnqmC-CQs48\n\u25b6 Get started: https://aka.ms/DefenderCloudSecurity\n\n#Shorts #DefenderForCloud #ContainerSecurity #Kubernetes #MicrosoftSecurity",
+        "url": "https://www.youtube.com/shorts/hYI3T0UnXKg",
+        "date": "2026-07-29T13:45:31+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "64ce0508e6b1a67a",
+        "source": "Microsoft Mechanics",
+        "title": "19 Alerts, One Incident: An Azure-to-AWS Attack",
+        "body": "What does a multi-stage cloud attack look like when it's stitched into one story? Microsoft Defender for Cloud correlated 19 alerts into a single incident in near real time \u2014 tracing initial access from a Kubernetes API request, identity compromise via a stolen service principal, and cross-cloud lateral movement: a brute-force attack from an exposed Azure Kubernetes Service cluster targeting an AWS RDS resource.\n\n\u25b6 Full episode: https://youtu.be/CnqmC-CQs48\n\u25b6 Get started: https://aka.ms/DefenderCloudSecurity\n\n#Shorts #DefenderForCloud #ContainerSecurity #Kubernetes #MicrosoftSecurity",
+        "url": "https://www.youtube.com/shorts/bRmkNo80xoM",
+        "date": "2026-07-27T14:33:48+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1e47ecebbd4a622c",
+        "source": "Microsoft Mechanics",
+        "title": "Your Image Scanner Can't See This Container Attack",
+        "body": "Image scanning won't catch a container that's been hijacked to mine crypto \u2014 because it's running something that was never in the original image. Containers should be immutable, so when Microsoft Defender for Cloud detects \"binary drift\" \u2014 a process the container was never built to run \u2014 it flags the runtime threat that scanning and posture alone can't see, down to the process, file, pod, and cluster.\n\n\u25b6 Full episode: https://youtu.be/CnqmC-CQs48\n\u25b6 Get started: https://aka.ms/DefenderCloudSecurity\n\n#Shorts #DefenderForCloud #ContainerSecurity #Kubernetes #MicrosoftSecurity",
+        "url": "https://www.youtube.com/shorts/NSZsOud3_b8",
+        "date": "2026-07-27T14:21:49+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "85b5fed3068fb8a9",
+        "source": "Microsoft Mechanics",
+        "title": "10 Billion Transactions Overnight",
+        "body": "When OpenAI shipped new capabilities in Nov 2023, transactions on Azure Cosmos DB jumped from 4.7B to 10.6B almost overnight \u2014 and it scaled automatically, at single-digit-millisecond latency. Full episode: https://youtu.be/se5ArmOUr8c #AzureCosmosDB #Azure #GenerativeAI",
+        "url": "https://www.youtube.com/shorts/CYGEE1r0XoQ",
+        "date": "2026-07-24T13:30:11+00:00",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "970f2f5fdf8c6f05",
+        "source": "Microsoft Mechanics",
+        "title": "What Database Does ChatGPT Use?",
+        "body": "What database does ChatGPT use to store conversation history? Azure Cosmos DB \u2014 it works with any data via the document model, at the scale of hundreds of millions of users. Full episode: https://youtu.be/se5ArmOUr8c #ChatGPT #AzureCosmosDB #GenerativeAI",
+        "url": "https://www.youtube.com/shorts/C72IV9v_wQo",
+        "date": "2026-07-24T02:58:29+00:00",
+        "category": "Security & Compliance",
+        "category_matched": false,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d7d1e41dc8bf34bb",
+        "source": "Microsoft Mechanics",
+        "title": "The Triage Agent that clears your alert queue",
+        "body": "The new Data Security Triage Agent in Microsoft Purview sifts your Insider Risk and DLP alert queue, cuts false positives, and surfaces only the alerts that matter \u2014 with clear reasoning behind every call. Powered by Security Copilot. #MicrosoftPurview #DataSecurity #SecurityCopilot",
+        "url": "https://www.youtube.com/shorts/JfzK_jhDz4g",
+        "date": "2026-07-23T16:39:05+00:00",
+        "category": "Security & Compliance",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Endpoint & Device Management": [
+      {
+        "id": "456d5e64d0bf2dee",
+        "source": "Intune",
+        "title": "What\u2019s new in Microsoft Intune \u2013 July",
+        "body": "Ask an IT admin what a good day looks like, and it usually comes down to one word: control. Control means you push a change and know it landed. It means you have a clear view into your device fleet, from compliance status to sync health. That certainty is what helps IT stay ahead and deliver. Still, endpoint management gets harder as fleets grow across locations and device types. More devices and policies rarely mean fewer admin hours. This month's updates focus on giving IT clearer visibility and more confident action. Demystify Windows device sync status When admins troubleshoot a device, th",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/what-s-new-in-microsoft-intune-july/ba-p/4537392",
+        "date": "2026-07-28T22:03:17+00:00",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2ea22c8ddacd90f3",
+        "source": "Intune",
+        "title": "Samsung Knox E-FOTA firmware update management for Android Enterprise devices",
+        "body": "Microsoft Intune now integrates with Samsung Knox E-FOTA (Firmware Over-The-Air), so you can manage firmware updates for corporate-owned Samsung devices directly in the Microsoft Intune admin center. Control which firmware version each device receives, deploy updates without user interaction, and schedule downloads and installations to reduce downtime. For more information, see Samsung Knox E-FOTA integration with Microsoft Intune .",
+        "url": "../device-updates/android/setup-samsung-knox",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "bf6495bcdb1ab4f3",
+        "source": "Intune",
+        "title": "New settings available in the Windows settings catalog",
+        "body": "Microsoft Intune now includes new settings in the Windows settings catalog for Windows devices. You can configure options for camera behavior, Keyboard Filter controls (for Windows Insider devices), and Windows Subsystem for Linux (WSL). To find them, go to Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Settings catalog .",
+        "url": "https://learn.microsoft.com/en-us/deployedge/microsoft-edge-policies/localfontsallowedforurls",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "24919394b3902c84",
+        "source": "Intune",
+        "title": "New Windows App (Azure Virtual Desktop) settings in the Windows settings catalog",
+        "body": "There are new Windows App settings in the Windows settings catalog. To see and configure them in Intune, create a Windows settings catalog profile ( Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Settings catalog ). The new settings are:",
+        "url": "https://learn.microsoft.com/en-us/windows-app/configure-updates-windows",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4bced2571d753750",
+        "source": "Intune",
+        "title": "Skip Setup Assistant screens for tvOS and visionOS enrollment",
+        "body": "Microsoft Intune now supports hiding or showing new Setup Assistant screens during automated device enrollment (ADE) for tvOS and visionOS devices. When you configure an enrollment profile, you can choose which screens, such as Apple ID , Diagnostics Data , and Location Services , appear during setup. By default, these screens are shown. For more information, see Set up ADE for tvOS and Set up ADE for visionOS .",
+        "url": "../device-enrollment/apple/setup-automated-tv-os",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "58952965f0ca8d81",
+        "source": "Intune",
+        "title": "Dedicated RBAC permission for zero-touch enrollment",
+        "body": "Microsoft Intune now provides a dedicated role-based access control (RBAC) permission for Google zero-touch enrollment portal access. Previously, the zero-touch enrollment iframe in the Microsoft Intune admin center required the Update app sync permission, which also grants rights to manage Managed Google Play app sync. With the dedicated permission, you can grant zero-touch enrollment portal access independently from app management permissions. For more information, see Enroll by using Google Zero Touch .",
+        "url": "../device-enrollment/android/ref-corporate-methods#enroll-by-using-google-zero-touch",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "34c5eba086e199e1",
+        "source": "Intune",
+        "title": "Collect Windows registry data with the properties catalog",
+        "body": "Microsoft Intune now lets you collect Windows registry data through the properties catalog. When you create a device inventory policy, you can define specific registry keys and values to collect from enrolled Windows devices, including a single value, all values directly under a key, or the same value across subkeys under HKEY_LOCAL_MACHINE . This gives you richer device state visibility and advanced querying without custom scripts. For more information, see Use the Intune properties catalog to get device hardware properties .",
+        "url": "../device-configuration/collect-device-properties",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3be856b7a5822fd0",
+        "source": "Intune",
+        "title": "Improved on-demand device sync for Windows devices",
+        "body": "Microsoft Intune now supports a more comprehensive on-demand sync for Windows devices. When you select the Sync device action in the Microsoft Intune admin center, Intune initiates a full synchronization across key workloads, including configuration policies, apps, and scripts, so devices reflect your latest changes faster. This capability is especially useful during troubleshooting, incident response, and high-priority rollouts. For more information, see Device action: sync .",
+        "url": "../device-management/actions/sync",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2696e3e09563dd98",
+        "source": "Intune",
+        "title": "Custom compliance settings for macOS",
+        "body": "Microsoft Intune now supports custom compliance settings for macOS. As an admin, you can define compliance checks using scripts and JSON rules, similar to existing support for Windows and Linux. This capability lets you evaluate device configuration, security posture, and other custom attributes not covered by built-in settings. Results appear alongside standard compliance reporting in the Intune admin center. For more information, see Custom compliance settings in Microsoft Intune .",
+        "url": "../device-security/compliance/custom-settings",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "780a724efd15ca5b",
+        "source": "Intune",
+        "title": "Controlled Configuration for Microsoft Defender antivirus settings (preview)",
+        "body": "In preview, Microsoft Intune now supports Controlled Configuration for Microsoft Defender antivirus settings. When you enable it, the Defender antivirus settings delivered by Intune or Microsoft Defender for Endpoint security settings management become authoritative and override configurations from other channels, such as Group Policy, Configuration Manager, and local scripts. Extending Tamper Protection, this capability locks settings to your defined values for consistent and predictable device states. For more information, see Controlled configuration for Microsoft Defender settings .",
+        "url": "../device-configuration/endpoint-security/antivirus#controlled-configuration-for-microsoft-defender-settings-preview",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a092df8df731b060",
+        "source": "Intune",
+        "title": "Regional support for Microsoft Store apps",
+        "body": "Microsoft Intune now supports regional selection for Microsoft Store apps. When you add a Microsoft Store app, you can choose the region (market) whose Store catalog to search and deploy from. Previously, Intune searched only the United States catalog. Now you can deploy apps published for specific markets, such as Japan or Spain, that aren't available in the US catalog. For more information, see Add Microsoft Store apps to Microsoft Intune .",
+        "url": "../app-management/deployment/add-microsoft-store",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f0f2245643f31489",
+        "source": "Defender XDR",
+        "title": "(Preview) AI agent posture risk in Microsoft Defender",
+        "body": "(Preview) AI agent posture risk in Microsoft Defender : Microsoft Defender now assesses posture risk for AI agents, including enterprise agents and local agents discovered on endpoint devices. Risk levels are based on active risk indicators, such as configuration, access, runtime activity, endpoint and user context, and active alerts. Security teams can use posture risk and recommendations to prioritize risky agents and improve agent security posture. For more information, see AI agent posture risk in Microsoft Defender .",
+        "url": "security-for-ai/ai-agent-risk-assessment",
+        "date": "2026-07-27",
+        "category": "Endpoint & Device Management",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Collaboration & Productivity": [
+      {
+        "id": "ec737d78b4f60169",
+        "source": "Intune",
+        "title": "New OneDrive settings in the Windows settings catalog",
+        "body": "There are new OneDrive settings in the Windows settings catalog:",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/use-group-policy",
+        "date": "2026-07-27",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "04cc531a5f05bbae",
+        "source": "Defender XDR",
+        "title": "From AI Experiments to Digital Workforce: Do Enterprises Need a Chief Agent Officer?",
+        "body": "As organizations move from deploying a handful of AI copilots to managing fleets of task-specific agents, a new challenge is emerging - Ownership. Today's AI agents can do far more than answer questions. They can access enterprise data, invoke tools, interact with business systems, collaborate with other agents, and perform actions on behalf of users. In many ways, they are starting to resemble a digital workforce rather than traditional software. The problem is that responsibility for these agents is often fragmented. IT manages the platforms. Security manages risk. Compliance manages regulat",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/from-ai-experiments-to-digital-workforce-do-enterprises-need-a/ba-p/4542520",
+        "date": "2026-08-03T13:35:39+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9129e96588e60412",
+        "source": "Teams",
+        "title": "What\u2019s New in Microsoft Teams | July 2026",
+        "body": "I hope everyone is having a great summer - July has flown by. As we head into the second half of the year, we're continuing to innovate in Teams to help people collaborate with people and AI to get work done more efficiently. This month's updates bring together new ways to stay informed, simplify everyday tasks, and put AI to work across more scenarios and roles. One highlight is the new Meeting Recaps app, which makes it easier to find, revisit, and catch up on important conversations across your meetings. We're also expanding how organizations manage apps and agents in Teams with improved re",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-july-2026/ba-p/4542510",
+        "date": "2026-07-31T15:00:00+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a0a9ae187efbb813",
+        "source": "Teams",
+        "title": "What's New in Microsoft Teams | April 2026",
+        "body": "Our team just wrapped up the M365 Community Conference in Orlando, FL, and it was an incredible way to close out April! Our teams were energized by connecting with, listening to, and sharing what\u2019s new with many of you: the builders, innovators and icons of intelligent work. Thank you to everyone who attended, and we can\u2019t wait to see even more of you at next year\u2019s conference! As for this month\u2019s Teams updates, we remain focused on bringing you features that can make collaboration more intelligent, secure, and seamless\u2014whether you\u2019re working with AI, managing calls, or enabling hybrid teams a",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-april-2026/ba-p/4515907",
+        "date": "2026-08-03T18:52:36+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "1e6287af3c2d64ad",
+        "source": "Teams",
+        "title": "Focus on the Teams Phone calls that matter most with intelligent call delegation",
+        "body": "Incoming calls don\u2019t wait for a break in your day. Whether you\u2019re leading a meeting or juggling back-to-back commitments, every new call creates the same dilemma: answer and risk losing momentum, or ignore it and risk missing something important. We're excited to announce intelligent call delegation as an AI-powered experience that can answer your incoming Teams calls and schedule follow-up appointments on your behalf. This capability helps users focus on engaging with the calls that matter most and is available through the Frontier program . What is intelligent call delegation? Here's how the",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/focus-on-the-teams-phone-calls-that-matter-most-with-intelligent/ba-p/4512533",
+        "date": "2026-07-16T00:15:35+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "509b75dc87f5b37b",
+        "source": "Microsoft Security Blog",
+        "title": "\u200b\u200b\u200b\u200bWhat\u2019s new in Microsoft Security: July 2026",
+        "body": "This month\u2019s updates help security and IT teams secure their AI environments, use AI to defend, and strengthen the foundations that AI-powered operations depend on. The post \u200b\u200b\u200b\u200bWhat\u2019s new in Microsoft Security: July 2026 appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/30/whats-new-in-microsoft-security-july-2026/",
+        "date": "2026-07-30T16:00:00+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2de4469881f3f83d",
+        "source": "Microsoft Security Blog",
+        "title": "Email threat landscape: Q2 2026 trends and insights",
+        "body": "In the second quarter of 2026, the continuing effects of Microsoft\u2019s disruption of the Tycoon2FA phishing platform contributed to sustained declines in several major phishing techniques, while threat actors expanded into Teams-based social engineering and employed increasingly automated and multi-stage attack chains. The post Email threat landscape: Q2 2026 trends and insights appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/23/email-threat-landscape-q2-2026-trends-and-insights/",
+        "date": "2026-07-23T15:00:00+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5cb988fd78bc5c9b",
+        "source": "SharePoint / OneDrive",
+        "title": "SharePoint Showcase: 10 Custom AI Skills Every SharePoint Site Owner Should Build",
+        "body": "Every team has repeatable work they want done the right way, not just once, but every time. Copilot can learn the way your team already works, follow the processes you trust, and help people repeat high-quality outcomes without starting from scratch every time. That is the idea behind skills in Copilot in SharePoint. Skills are reusable instructions that teach Copilot how to perform a specific task, whether that is summarizing meetings, analyzing a SharePoint site, generating reports, reviewing documents, or preparing project briefs. Once saved to a SharePoint site, skills become a shared team",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-showcase-10-custom-ai-skills-every-sharepoint-site/ba-p/4535414",
+        "date": "2026-07-28T18:34:37+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "678879bfc6d3b353",
+        "source": "SharePoint / OneDrive",
+        "title": "Beyond Benchmarks: The Lifecycle of Measuring Agentic Quality in AI Content Management",
+        "body": "By Sujay Kumar Jauhar, Spriha Chandrayan, Natasha Gaitonde, Zhen Lei, Reed Pankhurst, Anush Sankaran, Amrit Shandilya, Ryen W. White Organizations put their most important content in OneDrive and SharePoint, trusting us to deliver AI experiences they can depend on. That trust runs across everything Copilot does with their content \u2014 surfacing the right information through retrieval, and, increasingly, driving agentic workflows that reason over documents and take action on their behalf. Living up to that trust is what we care about most, and it's why we put the quality of these experiences \u2014 and",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/beyond-benchmarks-the-lifecycle-of-measuring-agentic-quality-in/ba-p/4538319",
+        "date": "2026-07-21T15:56:41+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": "That trust runs across everything Copilot does with their content \u2014 surfacing the right information through retrieval, and, increasingly, driving agentic workflows that reason over documents and take ",
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6764e123aebac4f7",
+        "source": "SharePoint / OneDrive",
+        "title": "What\u2019s New in Copilot in SharePoint: July 2026",
+        "body": "Copilot in SharePoint helps you do more with your content \u2014 ask questions, run workflows, and create sites, pages, interactive reports, and Office files using natural language. June was a big month: starting June 16 Copilot in SharePoint began rolling out as on by default for everyone with a Microsoft 365 Copilot license, and we shipped a wave of new capabilities for creating content, automating work, and getting trustworthy answers. Here\u2019s everything that\u2019s new. \ud83d\udee0\ufe0f Create content with natural language Create Word, Excel, and PowerPoint files What\u2019s new: Ask Copilot to create a Word document, ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/what-s-new-in-copilot-in-sharepoint-july-2026/ba-p/4535420",
+        "date": "2026-07-16T16:05:23+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b6281b90892485ff",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: See more messages on mobile",
+        "body": "We are introducing a more streamlined messaging experience that displays more content on screen while improving readability when using Teams on mobile. These updates make it easier to scan conversations and follow the discussion flow, helping users stay productive and engaged wherever they work. GA date: September CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568067",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a0bda6bc7791783f",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Upated header and dashboard for chats and channels on mobile",
+        "body": "You can now get oriented and take action faster when using Teams on mobile, with a redesigned header and lightweight dashboard that brings key channel details, people, and pinned content into one intuitive place. It creates a more predictable, familiar experience across desktop and mobile so you can move faster with less friction. GA date: September CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567461",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": "You can now get oriented and take action faster when using Teams on mobile, with a redesigned header and lightweight dashboard that brings key channel details, people, and pinned content into one intu",
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "969bdf484f55943a",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Clearer text highlighting in dark mode",
+        "body": "We've improved how highlighted text looks when composing messages in dark mode, giving you a more consistent editing experience. GA date: September CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566858",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d1097e1e80c8c32e",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Teams shared display mode and peripheral detection available for DoD environments",
+        "body": "Shared display mode in Teams is now available in government DOD environments, enabling more seamless and private meeting hosting from your PC. Additionally, peripheral detection for bring-your-own-device spaces is available for inventory management and reporting through the Pro Management portal. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567465",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a980258ff62e57ef",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Ability for IT admins to customize the user notification messages for recording and transcription in calls",
+        "body": "This feature enables IT admins to customize a portion of the user notification messages for recording and transcription during Teams calls. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567302",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a7fa709715bf89b0",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Enhanced delegated calling with delegate call access restrictions and join notifications",
+        "body": "Call delegation in Teams now includes new controls that give delegators greater privacy and control during active calls. Delegators can lock an ongoing call to prevent delegates from joining or resuming the call and can optionally enable warning tones that notify participants when a delegate joins or resumes a call. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567306",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c949eb171dea44c1",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Planner: Task Details Side Pane experience",
+        "body": "The Task Details Side Pane lets you view and edit task details in a side pane while keeping your Board, Grid, or My Tasks view visible. Update tasks without losing context or switching back and forth from modal dialogs. GA date: July CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566866",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ec625aed7560e3ca",
+        "source": "Microsoft 365 Roadmap",
+        "title": "SharePoint: Admin Center - detailed report on Everyone except external user permissions",
+        "body": "The new report provides SharePoint Advanced Management admins complete item level details of permissions granted to Everyone except external user and Everyone special SharePoint groups. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561038",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d918e52d66020124",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Unblock users to send message while file is uploading in the background",
+        "body": "Large file sharing in Teams today introduces blocking behavior, forcing users to wait for uploads to complete and disrupting real-time collaboration. To improve productivity and reduce perceived latency, we are introducing asynchronous file uploads. This allows users to continue sending messages while the file uploads in the background, enabling a more seamless and uninterrupted collaboration experience. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560813",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "744e7b73468bdb7c",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: Improved organization for muted and meeting chats",
+        "body": "Microsoft Teams automatically organizes your chats with new built in sections that help reduce clutter and keep conversations easy to find. Muted chats (on by default) are grouped together in a dedicated area, while meeting chats (off by default) can be collected into a single section for quick access. You\u2019re always in control, as each section can be turned on or off based on your preferences. The new Meeting chats section will replace the Meeting chats filter, that was previously available at the top of the chat and channel list. Updated July 20, 2026: We have temporarily rolled back this fea",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559605",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "853958531b35012d",
+        "source": "Microsoft 365 Roadmap",
+        "title": "OneDrive: Improved max path error experience on desktop",
+        "body": "OneDrive desktop sync users now get clearer, more actionable guidance when file paths exceed the supported 520-character limit. The updated experience shows exactly how many characters a path is over the limit and offers a guided flow to rename or move the affected items so they can sync. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557563",
+        "date": null,
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "41ed9aaf578284af",
+        "source": "Defender for Office 365",
+        "title": "Localized default Mark as and notify email templates",
+        "body": "Localized default Mark as and notify email templates : When automatic notifications use the default template, users receive notification emails in their preferred language based on their Outlook language settings. Custom notification templates configured by admins aren't affected. For more information, see Admin review for user reported messages .",
+        "url": "submissions-admin-review-user-reported-messages#notify-users-from-within-the-portal",
+        "date": "2026-07-30",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a8648c75bea5d91b",
+        "source": "Defender for Office 365",
+        "title": "Unified RBAC is the default permission model for new Defender for Office 365 Plan 2 organizations : ",
+        "body": "Unified RBAC is the default permission model for new Defender for Office 365 Plan 2 organizations : Starting July 2026, new Microsoft Defender for Office 365 Plan 2 organizations use the Microsoft Defender unified role-based access control (Unified RBAC) model by default. For more information, see Configure Unified RBAC for Microsoft Defender for Office 365 and MC1246006 .",
+        "url": "step-by-step-guides/configure-unified-rbac-defender-office-365",
+        "date": "2026-07-30",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "cb0be7bb826d9dae",
+        "source": "Defender for Office 365",
+        "title": "Microsoft Defender for Office 365 Plan 1 included in Microsoft 365 E3",
+        "body": "Microsoft Defender for Office 365 Plan 1 included in Microsoft 365 E3 : Microsoft 365 E3 now includes Microsoft Defender for Office 365 Plan 1. For more information about what's included in each plan, see Microsoft Defender for Office 365 Plan 1 vs. Plan 2 cheat sheet .",
+        "url": "mdo-about#defender-for-office-365-plan-1-vs-plan-2-cheat-sheet",
+        "date": "2026-07-30",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6ae75425e84cb53b",
+        "source": "Defender for Office 365",
+        "title": "Prompt injection protection",
+        "body": "Prompt injection protection : Microsoft Defender for Office 365 now detects prompt injection attacks hidden in inbound email. For more information, see Prompt injection protection in Microsoft Defender for Office 365 .",
+        "url": "step-by-step-guides/prompt-injection-protection-defender-for-office-365",
+        "date": "2026-07-30",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Office 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fc24910acfa7fd05",
+        "source": "Exchange Online",
+        "title": "Released: July 2026 Exchange Server Security Updates",
+        "body": "Microsoft has released Security Updates (SUs) for vulnerabilities found in: Exchange Server Subscription Edition (SE) Exchange Server 2019 Exchange Server 2016 SUs are available for the following specific versions of Exchange Server: Exchange SE RTM Exchange Server 2019\u00a0CU14\u00a0and\u00a0CU15 (to access, organization must be enrolled into the Period 2 ESU program ) Exchange Server 2016\u00a0CU23 (to access, organization must be enrolled into the Period 2 ESU program ) The July 2026 SUs address vulnerabilities responsibly reported to Microsoft by security partners and found through Microsoft\u2019s internal proce",
+        "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/released-july-2026-exchange-server-security-updates/ba-p/4534146",
+        "date": "2026-07-24T18:41:35+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "989933cc5037d08f",
+        "source": "Exchange Online",
+        "title": "Writeback for Cloud-Managed Remote Mailboxes: Now in Public Preview",
+        "body": "Update: 8/3/2026: Writeback for Cloud-Managed Remote Mailboxes: Now Generally Available | Microsoft Community Hub . In our previous posts, we announced the Public Preview and the General Availability of Cloud-Managed Remote Mailboxes \u2013 a key step toward retiring the 'last Exchange Server' in your organization. The response from the community has been incredible, and your feedback continues to shape the roadmap. Today, we're excited to share two new milestones in this journey: Writeback for Cloud-Managed Remote Mailboxes is now in Public Preview . For customers with no remaining dependency on t",
+        "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-in-public/ba-p/4520138",
+        "date": "2026-08-03T13:26:53+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5510ab6eab24eb76",
+        "source": "Microsoft 365 Copilot",
+        "title": "What\u2019s New in Microsoft 365 Copilot | July 2026",
+        "body": "Welcome to the July 2026 edition of What's New in Microsoft 365 Copilot! Every month, we highlight new features and enhancements to keep Microsoft 365 customers up to date with Copilot features that help your users be more productive and efficient in the apps they use every day. Let\u2019s take a closer look at what\u2019s new this month: User capabilities: Adding agents in Copilot Chat Model update, search enhancements, and push notifications in the Copilot app Model update and new ways to work in Cowork Additional reference support for Copilot Notebooks Workflows for Copilot in Word New skills and Pow",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/what-s-new-in-microsoft-365-copilot-july-2026/ba-p/4538332",
+        "date": "2026-07-31T15:30:00+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Copilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "33ecb20610afe649",
+        "source": "Power Platform",
+        "title": "Dataverse Plugin for Coding Agents: OpenAI and Codex Marketplace Expansion",
+        "body": "We\u2019re excited to announce expansion of the Dataverse plugin across additional coding agent marketplaces, meeting developers where they already work. The plugin is now available for OpenAI and Codex. The post Dataverse Plugin for Coding Agents: OpenAI and Codex Marketplace Expansion appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/2026/07/28/dataverse-plugin-for-coding-agents-openai-and-codex-marketplace-expansion/",
+        "date": "2026-07-28T16:57:55+00:00",
+        "category": "Collaboration & Productivity",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Identity & Access": [
+      {
+        "id": "945f0451905f6e73",
+        "source": "Defender XDR",
+        "title": "Advanced hunting sign-in table migration",
+        "body": "Advanced hunting sign-in table migration : On October 19, 2026, the AADSignInEventsBeta and AADSpnSignInEventsBeta tables will be deprecated and replaced by EntraIdSignInEvents and EntraIdSpnSignInEvents , respectively. All queries that use the AAD tables will be migrated automatically to the corresponding Entra ID tables. The Entra ID tables are already available.",
+        "url": "advanced-hunting-aadsignineventsbeta-table",
+        "date": "2026-07-27",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "79c66832d832b67f",
+        "source": "Defender XDR",
+        "title": "(GA) The Domain investigation page allows you to investigate an Active Directory domain. It shows Ac",
+        "body": "(GA) The Domain investigation page allows you to investigate an Active Directory domain. It shows Active Directory domain security, including domain properties, deployment health, identity summary, service account breakdown, sensitive entities, active recommendations, group policies, and trust relationships. For more information, see Investigate a domain .",
+        "url": "https://learn.microsoft.com/en-us/defender-for-identity/investigate-domain",
+        "date": "2026-07-27",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "10f5d0200b162754",
+        "source": "Entra ID",
+        "title": "What's New in Microsoft Entra: July 2026",
+        "body": "Welcome to the July edition of our monthly newsletter, summarizing the latest news and developments in the exciting, ever-evolving world of Microsoft Entra. What went into General Availability (GA) since June 2026? Microsoft Entra Backup and Recovery - A\u00a0capability that helps organizations restore a tenant after accidental or malicious changes. On by default, it automatically backs up critical directory objects, including users, groups, applications, Service Principals, managed identities, Conditional Access policies, named locations, agent IDs, and authentication and authorization policies, s",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631",
+        "date": "2026-07-24T17:47:47+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "75ddccf3b6543102",
+        "source": "Entra ID",
+        "title": "Modernize SAP Identity Management with Microsoft Entra",
+        "body": "Many organizations are rethinking how they manage identity across their SAP landscape as they move away from on-premises identity management systems and adopt a more unified cloud strategy. That shift often starts with a practical question: how do you connect SAP identity processes with the rest of your application estate without introducing more complexity? That is where the ongoing work between Microsoft Entra and SAP can help. Over the past several years, we have continued to expand integration points that help organizations automate lifecycle changes, apply access policies more consistentl",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/modernize-sap-identity-management-with-microsoft-entra/ba-p/4528596",
+        "date": "2026-07-24T17:54:07+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "74ee94410c44d101",
+        "source": "Entra ID",
+        "title": "Microsoft Entra ID enhances security of branded sign-ins",
+        "body": "To align with Microsoft\u2019s Secure Future Initiative and its focus on identity security and phishing resistance, we\u2019re evolving Microsoft Entra custom branding to help customers deliver sign-in experiences that are more secure, reliable, and consistent. Beginning October 26, 2026 , Microsoft Entra will retire support for custom CSS positioning properties used in custom branding. Full retirement of all custom CSS is planned for later in 2027 . Microsoft will provide advance notice ahead of this milestone, along with alternative customization options. These changes add an additional layer of secur",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471",
+        "date": "2026-07-21T17:58:43+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ea433d931a2432f1",
+        "source": "Entra ID",
+        "title": "Plan your Azure AD B2C migration with the Migration Policy Analyzer",
+        "body": "Migration planning starts with visibility One of the first challenges organizations face when planning a migration from Azure AD B2C to Microsoft Entra External ID is understanding exactly what is implemented in their tenant today. Over time, Azure AD B2C deployments often grow to include custom user journeys, federation integrations, claims transformations, API connections, and tailored sign-up and sign-in experiences. As teams change and solutions evolve, assessing migration scope can become time-consuming and complex. To help organizations accelerate migration planning, the Migration Policy",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/plan-your-azure-ad-b2c-migration-with-the-migration-policy/ba-p/4532874",
+        "date": "2026-07-20T17:18:24+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "42c69545cd0a8243",
+        "source": "Entra ID",
+        "title": "AI agents are everywhere. Are your access controls ready?",
+        "body": "At Identiverse 2026, Microsoft Security hosted a Power Breakfast that brought together 150 identity professionals across 10 simultaneous roundtable discussions. Participants came from industries including financial services, healthcare, government, and energy, and represented every stage of AI adoption. We asked participants what they\u2019ve built to secure agents, what they\u2019ve rolled back, and where control is breaking down. \u201cThe pace has been crazy fast. We have thousands of agents. Most of them are unmanaged.\u201d Roundtable participant, Identiverse 2026 What your peers are saying about securing ag",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/ai-agents-are-everywhere-are-your-access-controls-ready/ba-p/4531379",
+        "date": "2026-07-15T18:16:41+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8c177ac2dd434cbb",
+        "source": "Microsoft Security Blog",
+        "title": "Least privilege for AI agents: Identity, access, and tool binding",
+        "body": "As AI agents become more autonomous, strong identity, access, and auditing controls are critical to keeping them secure. The post Least privilege for AI agents: Identity, access, and tool binding appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/16/least-privilege-for-ai-agents-identity-access-and-tool-binding/",
+        "date": "2026-07-16T16:00:00+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e19da17993fe69d6",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Teams: View and manage auto attendant shared voicemails directly in the Queues app",
+        "body": "Calls to an Auto Attendant that are routed to voicemail will now appear directly within Queues app. This enables organizations to manage shared Auto Attendant voicemails in a centralized experience, making it easier for teams to track, triage, and respond to customer messages. GA date: August CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567457",
+        "date": null,
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "804075451eb4b8c0",
+        "source": "Defender for Identity",
+        "title": "Sensor v2.x to v3.x migration is now generally available",
+        "body": "Migration of Defender for Identity sensors from v2.x to v3.x is now generally available. For more information, see Migrate to Defender for Identity sensor v3.x .",
+        "url": "deploy/migrate-to-sensor-v3",
+        "date": "2026-07-15",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Identity"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6d19719769541f50",
+        "source": "Defender for Identity",
+        "title": "Expanded SaaS app support in Password protection (Preview)",
+        "body": "The Password protection page now includes password risks from SaaS apps connected through Microsoft Defender for Cloud Apps, in addition to Active Directory, Microsoft Entra ID, and Okta. SaaS apps that support SaaS Security Posture Management (SSPM), such as Salesforce and ServiceNow, appear on the Password Hygiene and Password Policies tabs. Each SaaS app requires a Defender for Cloud Apps app connector. For more information, see Investigate identity password protection .",
+        "url": "password-protection",
+        "date": "2026-07-15",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Identity"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4f51c667b9852de9",
+        "source": "Defender for Identity",
+        "title": "TheDomain investigation pageis now generally available",
+        "body": "The Domain investigation page allows you to investigate an Active Directory domain. It shows Active Directory domain security, including domain properties, deployment health, identity summary, service account breakdown, sensitive entities, active recommendations, group policies, and trust relationships. For more information, see Investigate a domain .",
+        "url": "investigate-domain",
+        "date": "2026-07-15",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Identity"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "321b01ac4a42aa0f",
+        "source": "Defender for Identity",
+        "title": "Automatic RPC auditing on domain controllers",
+        "body": "Defender for Identity now automatically enables RPC auditing on domain controllers when you upgrade to sensor version 3.0.8 or later. You no longer need to apply a tag manually to enable RPC auditing. For more information, see Configure RPC auditing .",
+        "url": "deploy/deploy-sensor-v3#configure-rpc-auditing",
+        "date": "2026-07-15",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender for Identity"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "07f0ab1cdf4d8339",
+        "source": "Exchange Online",
+        "title": "Writeback for Cloud-Managed Remote Mailboxes: Now Generally Available",
+        "body": "In May, we announced the Public Preview of Writeback for Cloud-Managed Remote Mailboxes . Since then, many customers have enabled this feature and shared their feedback. Today, we're excited to announce that Writeback for Cloud-Managed Remote Mailboxes is now Generally Available (GA) . Writeback is available in WW, GCCH, DoD, and 21Vianet environments and supports up to 600,000 cloud-managed mailboxes per tenant . A quick recap Cloud-Managed Remote Mailboxes allow organizations to transfer the Source of Authority (SOA) for a directory-synchronized mailbox's Exchange attributes to Exchange Onli",
+        "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-generally/ba-p/4543507",
+        "date": "2026-08-03T12:58:46+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4bca5ebb65e46b6f",
+        "source": "Windows 365",
+        "title": "Strengthening Key Management Service - (KMS) with Hardware-Based Trust",
+        "body": "For years, organizations have relied on Microsoft\u2019s Key Management Service (KMS) to activate Windows devices at scale. While KMS helped enable broad deployment scenarios, modern organizations increasingly require stronger assurances around device identity and activation integrity. Microsoft has continued to enhance activation capabilities with innovations that leverage hardware-backed validation to provide stronger protection against activation misuse and improve trust in device identity. As attackers have exploited fake or cloned KMS servers, organizations face increased compliance and licens",
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/strengthening-key-management-service-kms-with-hardware-based/ba-p/4539465",
+        "date": "2026-07-22T16:00:00+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f325c387826fb127",
+        "source": "Windows 365",
+        "title": "Now available: Admin control for SSO prompts in Windows",
+        "body": "IT administrators can now automatically accept SSO permissions on managed Windows devices using a supported registry setting. In this context, SSO, or single sign-on, refers to using the Microsoft credentials from a user\u2019s Windows sign-in to access other Microsoft apps and services without seeing any prompts. This new capability is available beginning with the July 2026 monthly security update ( KB5101650 ) for Windows 11, version 24H2 and 25H2. Background: What changed and why In the European Economic Area (EEA), Microsoft updated the Windows sign-in experience so that users are not automatic",
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-available-admin-control-for-sso-prompts-in-windows/ba-p/4534613",
+        "date": "2026-07-21T20:42:06+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fb94477425786265",
+        "source": "Power Platform",
+        "title": "Announcing the Power Pages Security Agent (Preview): Your AI Partner for Site Security",
+        "body": "Securing a Power Pages site often requires configuring authentication, authorization, permissions, and application security settings across multiple experiences. Whether you\u2019re troubleshooting a sign-in issue, reviewing access permissions, or hardening your site\u2019s security posture, finding the right configuration can be time-consuming and requires deep platform knowledge. The post Announcing the Power Pages Security Agent (Preview): Your AI Partner for Site Security appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-the-power-pages-security-agent-preview-your-ai-partner-for-site-security/",
+        "date": "2026-07-23T07:11:02+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6b816058579d1ce6",
+        "source": "Microsoft Mechanics",
+        "title": "Give Every AI Agent Its Own Identity",
+        "body": "AI agents don't fall for phishing, but they're still vulnerable \u2014 they can be hijacked, and broad access means one misconfiguration can open the door to a major breach. The new Microsoft Entra Agent ID gives each AI agent its own unique, manageable identity, so you can apply the same visibility, governance, and Zero Trust controls you use for people to non-human actors too.\n\n\u25b6 Full video: https://aka.ms/ZTMechanics\n\u25b6 Go Zero Trust (free workshops): https://aka.ms/GoZeroTrust\n\n#Shorts #MicrosoftEntra #ZeroTrust #AISecurity #ZeroTrustAI",
+        "url": "https://www.youtube.com/shorts/j8AGpZ8Z2yA",
+        "date": "2026-08-03T13:48:29+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "b1836de6dbe5d57a",
+        "source": "Microsoft Mechanics",
+        "title": "What Is Token Theft? The Theme-Park Pass Explained",
+        "body": "What actually is a session token, and why do attackers want it? Think of it like a theme-park pass: whoever holds it gets the rides \u2014 so if someone steals it after you sign in, they get your access without your password. \n\nFull explainer: https://www.youtube.com/watch?v=gPcNlm0CyOw\n\n#CyberSecurity #IdentitySecurity #MicrosoftEntra #TokenTheft #ITpro",
+        "url": "https://www.youtube.com/shorts/cLWJ-za8CeM",
+        "date": "2026-07-26T15:09:18+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "a4ed569b8fbaa619",
+        "source": "Microsoft Mechanics",
+        "title": "Token Theft Attacks Jumped 111% \u2014 Why MFA Alone Won't Save You",
+        "body": "MFA is essential \u2014 but is it enough? As more orgs turn on MFA, attackers pivot to credential-bypass attacks like token theft: Microsoft detected 147,000 token-theft attacks in a single year \u2014 a 111% jump \u2014 and the trend keeps climbing. \n\nHere's how to defend against it: https://www.youtube.com/watch?v=gPcNlm0CyOw\n\nNote: The 147,000 / 111% figures are from the source video (2024) \u2014 accurate as stated, but this is illustrative of the trend, not this-year numbers.\n\n#CyberSecurity #MicrosoftEntra #TokenTheft #MFA #ITpro",
+        "url": "https://www.youtube.com/shorts/dJYDtUohpB4",
+        "date": "2026-07-25T15:36:23+00:00",
+        "category": "Identity & Access",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      }
+    ],
+    "AI & Copilot": [
+      {
+        "id": "4882c983b31fdd68",
+        "source": "Defender XDR",
+        "title": "(GA) Security for Microsoft Agent 365 with Defender",
+        "body": "(GA) Security for Microsoft Agent 365 with Defender : With a Microsoft Agent 365 license, Microsoft Defender provides discovery, security posture, threat detection and investigation, and real-time protection for the AI agents in your tenant. Onboarding includes enabling data collection, connecting the Microsoft 365 app connector, and connecting Copilot Studio for real-time protection of Copilot Studio agents. For more information, see Protect AI agents using Microsoft Defender and Enable security for AI agents using Microsoft Defender .",
+        "url": "security-for-ai/defender-security-for-ai#protect-ai-agents-using-microsoft-defender",
+        "date": "2026-07-27",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5c9a0dedc6452b42",
+        "source": "Microsoft 365 Roadmap",
+        "title": "Microsoft Viva: Viva Glint - Copilot admin configuration assistance",
+        "body": "A Copilot-powered conversational assistant embedded in the Viva Glint admin experience that answers configuration and how-to questions and provides step-by-step guidance. Responses will include deep links to configuration pages streamlining navigation and discoverability. Only available for Viva Glint users with Admin permissions. GA date: September CY2026",
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567320",
+        "date": null,
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Roadmap"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0d34f1b5ec9e8c68",
+        "source": "Agent 365",
+        "title": "The next measure of AI momentum is work transformed",
+        "body": "In yesterday\u2019s earnings call, we shared that Microsoft 365 Copilot has surpassed 30 million paid seats, with net seat adds more than doubling quarter over quarter. The post The next measure of AI momentum is work transformed appeared first on Microsoft 365 Blog .",
+        "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2026/07/30/the-next-measure-of-ai-momentum-is-work-transformed/",
+        "date": "2026-07-30T13:00:00+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Agent 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "47c3adf87dacc264",
+        "source": "Microsoft 365 Copilot",
+        "title": "Available today: Anthropic Claude Opus 5 in Microsoft 365 Copilot",
+        "body": "Today we\u2019re expanding model choice in Microsoft 365 Copilot with the addition of Anthropic\u2019s latest model\u2014Claude Opus 5. Claude Opus 5 is the newest model in Anthropic\u2019s Opus family. Designed to be used every day for complex, multi-step work. It improves on Opus 4.8 across agentic coding, professional knowledge work, and long-horizon reasoning 1 . With Opus 5, Copilot takes on more of the steps between idea and finished work across the apps you use every day\u2014while keeping you in control of the final outcome: Word : Move from rough idea to a complete draft, holding structure and flow together a",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/available-today-anthropic-claude-opus-5-in-microsoft-365-copilot/ba-p/4540524",
+        "date": "2026-07-24T21:11:08+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Copilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "129b69090c1b37ca",
+        "source": "Microsoft 365 Copilot",
+        "title": "1 million documents to 300+agents: Building an enterprise-scale Microsoft 365 Copilot connector",
+        "body": "1 million documents. 100,000+ monthly users. 300+ Copilot Studio agents. Here's what we learned building the Microsoft 365 Copilot connector behind them. Most enterprise knowledge lives in portals and repositories that people trust but rarely visit in the flow of work. That's the gap this connector was built to close. At Microsoft, we built an enterprise-scale Microsoft 365 Copilot connector to make internal documentation available as grounded context across supported Copilot experiences. The connector runs in production today, serving teams across engineering, support, and field roles. Who th",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/1-million-documents-to-300-agents-building-an-enterprise-scale/ba-p/4540155",
+        "date": "2026-07-23T18:57:12+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Copilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "aecc803b03a1fa9c",
+        "source": "Microsoft 365 Copilot",
+        "title": "Join Us Live: Understanding Copilot Cowork and Managing Copilot Credits",
+        "body": "The way we work with AI is evolving rapidly, and so is the way organizations manage and scale those experiences. If you're exploring Copilot Cowork , navigating Copilot Credits , or looking for guidance on consumption-based AI experiences, you won't want to miss our upcoming live event. \ud83c\udf99\ufe0f Live AMA: Understanding Copilot Cowork and Managing Copilot Credits Tuesday, July 21, 2026 9:00\u201310:00 AM Pacific Time Join us for a live webinar and Ask Microsoft Anything (AMA) featuring experts from the Microsoft 365 Copilot team as they dive into the latest capabilities of Copilot Cowork and share practic",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/join-us-live-understanding-copilot-cowork-and-managing-copilot/ba-p/4537935",
+        "date": "2026-07-16T16:36:52+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft 365 Copilot"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "0729ef88351fb5f4",
+        "source": "Power Platform",
+        "title": "Prompt Columns in GA: Turning Business Apps Data into Persisted AI Insights",
+        "body": "Prompt Columns allows organizations to embed AI directly into business tables, without writing a single line of code. With Prompt Columns, you define natural language prompts once, and AI automatically generates insights, classifications, summaries, and recommendations that are persisted directly in your data. The post Prompt Columns in GA: Turning Business Apps Data into Persisted AI Insights appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/2026/07/29/prompt-columns-july2026/",
+        "date": "2026-07-29T15:00:00+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6f5aa2a9f570b30d",
+        "source": "Power Platform",
+        "title": "Dataverse Plugin for Coding Agents Now Available in Cursor Marketplace",
+        "body": "Today, we are excited to share that the Dataverse plugin is now available in the Cursor Marketplace, giving Cursor users a direct path to build with Microsoft Dataverse from inside their preferred AI coding experience. The post Dataverse Plugin for Coding Agents Now Available in Cursor Marketplace appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/2026/07/21/dataverse-plugin-for-coding-agents-now-available-in-cursor-marketplace/",
+        "date": "2026-07-21T15:00:00+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "18424356421cb022",
+        "source": "Power Platform",
+        "title": "Announcing Link to Fabric UX refresh",
+        "body": "We are refreshing how you connect Microsoft Dataverse to your analytics stack. The post Announcing Link to Fabric UX refresh appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/2026/07/20/link-to-fabric-ux-refresh/",
+        "date": "2026-07-20T14:00:00+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9bb491b16cce6738",
+        "source": "Microsoft Mechanics",
+        "title": "Why Ungoverned AI Agents Are Dangerous",
+        "body": "Ungoverned AI agents are a new attack path. AI semantic search can surface information that was once hard to find and share it with the wrong people, and agents with extensive permissions can move through your organization at unparalleled speed \u2014 so if one is compromised, it can cause significant damage before anyone notices.\n\n\u25b6 Full video: https://aka.ms/ZTMechanics\n\u25b6 Go Zero Trust (free workshops): https://aka.ms/GoZeroTrust\n\n#Shorts #ZeroTrust #AISecurity #AIagentsSecurity #ZeroTrustAI",
+        "url": "https://www.youtube.com/shorts/XdgO2fjg3KQ",
+        "date": "2026-08-01T15:20:34+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d2cfddcbdcc9e30f",
+        "source": "Microsoft Mechanics",
+        "title": "How Vector Search Grounds an LLM",
+        "body": "How does vector search ground an LLM? Data becomes vector embeddings as it's ingested; a user's prompt becomes a vector too, and the database returns the closest matches \u2014 so the model answers from your data. Full episode: https://youtu.be/se5ArmOUr8c #VectorSearch #RAG #GenerativeAI",
+        "url": "https://www.youtube.com/shorts/Zbo6xodLLt0",
+        "date": "2026-07-24T16:00:19+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "ebe734e416ceba16",
+        "source": "Microsoft Mechanics",
+        "title": "Type One Sentence, Get a Full Year of Data",
+        "body": "Need sample data fast? Prompt Copilot in Excel to generate a full year of finances \u2014 months as columns, categories as rows \u2014 no manual entry. #Excel #Copilot #Microsoft365 #ExcelForBeginners",
+        "url": "https://www.youtube.com/shorts/wDhZQfuUIhk",
+        "date": "2026-07-23T14:39:05+00:00",
+        "category": "AI & Copilot",
+        "category_matched": true,
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      }
+    ]
+  },
+  "doc_updates": {
+    "Identity & Access": [
+      {
+        "id": "ghc-938217238eb9520112ac2f6eafad1eac6c1b78d6",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Split SMS/voice retirement FAQ into a dedicated FAQ page (#13978)",
+        "body": "Doc commit by marinasanchezz1. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/938217238eb9520112ac2f6eafad1eac6c1b78d6",
+        "date": "2026-08-03T21:37:06Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-a0cd379ac39208e3bec5105771b887332829a495",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "added api instructions for custom call-outs docs (#14004)",
+        "body": "Doc commit by adimitui. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/a0cd379ac39208e3bec5105771b887332829a495",
+        "date": "2026-08-03T20:09:32Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-ec4af2d9ba202691d96bfc638ea6e7bb44866c90",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Added a link to lcw extensibility workflow article",
+        "body": "Doc commit by adimitui. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/ec4af2d9ba202691d96bfc638ea6e7bb44866c90",
+        "date": "2026-08-03T16:29:29Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-0372550fa2b9824e825d48440331bd42e9ac880c",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "creating a new tutorial for Zscaler zidentity (#13083)",
+        "body": "Doc commit by Hamsika45. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/0372550fa2b9824e825d48440331bd42e9ac880c",
+        "date": "2026-08-03T07:51:24Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-649f7a17c18170104e4cf9aae8c93ffac9fcf00f",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Add guidance for remote network CPE behind NAT (#13993)",
+        "body": "Doc commit by abhijeetsinha. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/649f7a17c18170104e4cf9aae8c93ffac9fcf00f",
+        "date": "2026-08-03T07:39:57Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-e79d24cbc7f530626bcf350fe43292ad9b2f1a2b",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Additional GUIDs used for the DocuTune monthly security scan (#13981)",
+        "body": "Doc commit by glennstephensms. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/e79d24cbc7f530626bcf350fe43292ad9b2f1a2b",
+        "date": "2026-08-03T05:30:23Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-73565b59f03b2578d8099cbc0d8525cccf829532",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Revise Internet Access profile documentation (#13994)",
+        "body": "Doc commit by KaTabish. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/73565b59f03b2578d8099cbc0d8525cccf829532",
+        "date": "2026-08-02T22:21:01Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-3824f4a3001ebf731808b7c8ce205f1149838c39",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "add a new reference article on custom call-outs (#13986)",
+        "body": "Doc commit by adimitui. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/3824f4a3001ebf731808b7c8ce205f1149838c39",
+        "date": "2026-07-31T23:24:34Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-9e2b6e4763afc06c15dc4bb79cc9306f3002421d",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Clarified using multiple auto-assignment policies",
+        "body": "Doc commit by TeeEarls. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/9e2b6e4763afc06c15dc4bb79cc9306f3002421d",
+        "date": "2026-07-31T23:05:46Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-e86cc7358afa62588bea23ef44e673022d589bdb",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update road-to-the-cloud-introduction.md (#13968)",
+        "body": "Doc commit by ichristian01. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/e86cc7358afa62588bea23ef44e673022d589bdb",
+        "date": "2026-07-31T21:33:18Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-a47c84b4a2b961fd0745dcfaadc7f9e06a12b445",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Clarify secure tenant creation prerequisites (#13971)",
+        "body": "Doc commit by tafra00. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/a47c84b4a2b961fd0745dcfaadc7f9e06a12b445",
+        "date": "2026-07-31T20:46:11Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-7eb64a786de183ec4cb0483b41187ac879813984",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "New multitenant arch guide per Ben Athawes, Ramiro Calderon (#13857)",
+        "body": "Doc commit by mmacy-msft. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/7eb64a786de183ec4cb0483b41187ac879813984",
+        "date": "2026-07-31T20:41:58Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-b3fdff548732415a6288b4b02dcb170ae885a8f1",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "added notes about custom call-outs to existing attribute mappings article",
+        "body": "Doc commit by adimitui. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/b3fdff548732415a6288b4b02dcb170ae885a8f1",
+        "date": "2026-07-31T19:24:20Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-50c56275a9d54194981a937bb2cd666811ae8161",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "docs: move guest billing note under prerequisites",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/50c56275a9d54194981a937bb2cd666811ae8161",
+        "date": "2026-07-31T16:06:33Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-ab5d0e8921f3bc8ad871a394c7b121a65e4e59a9",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "docs: add guest billing note to unsponsored guest workflow",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/ab5d0e8921f3bc8ad871a394c7b121a65e4e59a9",
+        "date": "2026-07-31T16:03:35Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-272b88e055b9c99d803c944a00c82153188f73cf",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Add GSA and Defender for Cloud Apps coexistence guidance (#13973)",
+        "body": "Doc commit by tdetzner. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/272b88e055b9c99d803c944a00c82153188f73cf",
+        "date": "2026-07-31T15:59:05Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-5d22d3dbe8bdb27cc57c93228e82c0c79aa5b7f4",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Tenant Governance config management GA how-to updates (#13965)",
+        "body": "Doc commit by tafra00. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/5d22d3dbe8bdb27cc57c93228e82c0c79aa5b7f4",
+        "date": "2026-07-31T14:50:38Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-c50cf2c9c29b1986cb2b118b9ef9cda06d834882",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update aws-single-sign-on-provisioning-tutorial.md",
+        "body": "Doc commit by Hamsika45. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/c50cf2c9c29b1986cb2b118b9ef9cda06d834882",
+        "date": "2026-07-31T06:53:23Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-e599e0a6b94875ae395292aee1884fd504eef489",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Add FAQ on Azure AD B2C and Microsoft Entra External ID scope",
+        "body": "Doc commit by marinasanchezz1. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/e599e0a6b94875ae395292aee1884fd504eef489",
+        "date": "2026-07-30T15:34:19Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-e54c4cc405f2012865a349b7d0ac4344c5eb4216",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update Microsoft Entra Tenant Governance licensing guidance (#13966)",
+        "body": "Doc commit by tafra00. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/e54c4cc405f2012865a349b7d0ac4344c5eb4216",
+        "date": "2026-07-30T02:07:01Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-89f3a5405db13ebb3d62a9b53f4ddf9d068fd4aa",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Add workload identity immutable subject articles (#13956)",
+        "body": "Doc commit by ahmed-mohamed-msft. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/89f3a5405db13ebb3d62a9b53f4ddf9d068fd4aa",
+        "date": "2026-07-29T21:23:27Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-0aa6bbc677e353a31bae5a873110b40a7ac48ccd",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update Tenant Governance GDAP relationship docs (#13934)",
+        "body": "Doc commit by hafowler. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/0aa6bbc677e353a31bae5a873110b40a7ac48ccd",
+        "date": "2026-07-29T20:14:51Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-bb8a355b30a7a4a20b4fa4912b9afcb4f56a098a",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update email customization instructions",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/bb8a355b30a7a4a20b4fa4912b9afcb4f56a098a",
+        "date": "2026-07-29T20:02:01Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-3e8c184653aa48f6bbed11754ffb845380a852f2",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "docs: clarify examples and add backward compatibility note",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/3e8c184653aa48f6bbed11754ffb845380a852f2",
+        "date": "2026-07-29T19:57:17Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-dd16d215b1587bbd1c33c791434fad1335cf7590",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "docs: simplify on-prem example and fix attribute formatting",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/dd16d215b1587bbd1c33c791434fad1335cf7590",
+        "date": "2026-07-29T19:31:39Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-f5ec88b29c677749f08f9fe1c6cfa3977110a84f",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "docs: expand dynamic attributes table in lifecycle-workflow-tasks",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/f5ec88b29c677749f08f9fe1c6cfa3977110a84f",
+        "date": "2026-07-29T19:17:29Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-7497adbec014a9b061855736b3f2d6852251145e",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "docs: expand dynamic attribute support in lifecycle workflow custom emails",
+        "body": "Doc commit by krbain. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/7497adbec014a9b061855736b3f2d6852251145e",
+        "date": "2026-07-29T19:13:08Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-b7b4e3606e4e8b755d5c485d73d62361288237de",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update how-to-universal-tenant-restrictions.md (#13959)",
+        "body": "Doc commit by idMdev. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/b7b4e3606e4e8b755d5c485d73d62361288237de",
+        "date": "2026-07-29T19:05:52Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-584d7106a448de0b85241e23ee869d97f0d7f606",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Add passkeyDynamicMigration opt-out details to SMS/voice retirement FAQ",
+        "body": "Doc commit by marinasanchezz1. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/584d7106a448de0b85241e23ee869d97f0d7f606",
+        "date": "2026-07-29T18:42:58Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-e6a6b4e1a886c3050fdd431b84161f58e2583866",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Scaffold PR for SMS/voice retirement doc edits",
+        "body": "Doc commit by marinasanchezz1. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/e6a6b4e1a886c3050fdd431b84161f58e2583866",
+        "date": "2026-07-29T18:36:34Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-0af00c3a987f449caa7651dce60f5b962a71c362",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update OIDC federation known limitations",
+        "body": "Doc commit by Vimala Ranganathan. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/0af00c3a987f449caa7651dce60f5b962a71c362",
+        "date": "2026-07-29T18:04:50Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-8bb5a7a2a40d6fc2173058446b5f150b7707a77a",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "akhil potturi/tenant governance drilldown docs (#13860)",
+        "body": "Doc commit by akhil-potturi. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/8bb5a7a2a40d6fc2173058446b5f150b7707a77a",
+        "date": "2026-07-29T14:15:17Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-98bcdadd5e5f934c281dd601df3f2856c6c3e530",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Fix formatting issues in managed-policies.md",
+        "body": "Doc commit by anksridhar. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/98bcdadd5e5f934c281dd601df3f2856c6c3e530",
+        "date": "2026-07-29T01:30:54Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-693b76c873a0fe440080b0c747f12d0a366944bd",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Fix link text for high-risk user remediation",
+        "body": "Doc commit by anksridhar. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/693b76c873a0fe440080b0c747f12d0a366944bd",
+        "date": "2026-07-29T00:26:25Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-5faaf5642435ba1ccd2d6755cece71bae856dfcc",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Add 'Require remediation for high-risk users' policy section",
+        "body": "Doc commit by anksridhar. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/5faaf5642435ba1ccd2d6755cece71bae856dfcc",
+        "date": "2026-07-29T00:17:58Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      },
+      {
+        "id": "ghc-6ac455317f4dc86b343ce5d9e988d357a23ed189",
+        "source": "MicrosoftDocs/entra-docs docs",
+        "title": "Update installation note for Microsoft Entra Connect Health",
+        "body": "Doc commit by CelesteDG. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/entra-docs/commit/6ac455317f4dc86b343ce5d9e988d357a23ed189",
+        "date": "2026-07-28T21:59:13Z",
+        "repo": "MicrosoftDocs/entra-docs"
+      }
+    ],
+    "Endpoint & Device Management": [
+      {
+        "id": "ghc-52b93b3a20cbcecd14913f209523bdf63ad7eb8c",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "Update prerequisites for Microsoft Tunnel (#20596)",
+        "body": "Doc commit by OluchiC. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/52b93b3a20cbcecd14913f209523bdf63ad7eb8c",
+        "date": "2026-07-30T23:50:21Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-07f23b3ec298cc121409b1dda3a00f15bf3be498",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "Document July 2026 release details (#20594)",
+        "body": "Doc commit by OluchiC. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/07f23b3ec298cc121409b1dda3a00f15bf3be498",
+        "date": "2026-07-30T23:48:23Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-3c8f16eeb9974d781b00608661b53bfc54c6e4a0",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "600948 - Service release 2607: What's New update (#20583)",
+        "body": "Doc commit by mmacy-msft. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/3c8f16eeb9974d781b00608661b53bfc54c6e4a0",
+        "date": "2026-07-30T23:31:11Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-1589e02102cd9f4ab44470a50a0dfaa68ebba9a5",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "Update deployment requirements for Azure Virtual Desktop (#5197)",
+        "body": "Doc commit by MayDay47. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/1589e02102cd9f4ab44470a50a0dfaa68ebba9a5",
+        "date": "2026-07-30T00:01:13Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-e252f919778a1e120844de752abe070f0bb49063",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "Update boundary-groups-software-update-points.md (#5195)",
+        "body": "Doc commit by BernEdel. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/e252f919778a1e120844de752abe070f0bb49063",
+        "date": "2026-07-29T16:00:35Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-0b6be673bc34dd234d181a133f9cde79df4387f0",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "Added Force Encryption flag support + SQL pages reorg (#20584)",
+        "body": "Doc commit by Yupiter2005. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/0b6be673bc34dd234d181a133f9cde79df4387f0",
+        "date": "2026-07-29T03:47:59Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-c7573d42d0e7b53d069d391741a3c428136d1676",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "Remove en-US locale from CVE-2026-47301 URLs",
+        "body": "Doc commit by qiani. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/c7573d42d0e7b53d069d391741a3c428136d1676",
+        "date": "2026-07-29T02:27:40Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-6d50432a73a4967dc4acd5a400630bec719b552e",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "KB37864969: add CVE-2026-47301 reference for console extension fix",
+        "body": "Doc commit by qiani. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/6d50432a73a4967dc4acd5a400630bec719b552e",
+        "date": "2026-07-28T23:12:22Z",
+        "repo": "MicrosoftDocs/memdocs"
+      },
+      {
+        "id": "ghc-cbe3720f68b54cb13508bb5e72779c95cd0e783f",
+        "source": "MicrosoftDocs/memdocs docs",
+        "title": "KB38232642: add CVE-2026-47301 reference",
+        "body": "Doc commit by qiani. File path scope: intune.",
+        "url": "https://github.com/MicrosoftDocs/memdocs/commit/cbe3720f68b54cb13508bb5e72779c95cd0e783f",
+        "date": "2026-07-28T23:08:27Z",
+        "repo": "MicrosoftDocs/memdocs"
+      }
+    ],
+    "Security & Compliance": [
+      {
+        "id": "ghc-3e913ef1187a6ea001eb6df467970a007da91eb5",
+        "source": "MicrosoftDocs/defender-docs docs",
+        "title": "Update block entry explanation for domains and subdomains (#562)",
+        "body": "Doc commit by aylamck. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/defender-docs/commit/3e913ef1187a6ea001eb6df467970a007da91eb5",
+        "date": "2026-08-03T18:09:01Z",
+        "repo": "MicrosoftDocs/defender-docs"
+      },
+      {
+        "id": "ghc-0956204f2b361a8a0d46bd3c1c2d8bdae707a27c",
+        "source": "MicrosoftDocs/defender-docs docs",
+        "title": "Update get-vulnerability-by-id.md (#560)",
+        "body": "Doc commit by tur11ng. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/defender-docs/commit/0956204f2b361a8a0d46bd3c1c2d8bdae707a27c",
+        "date": "2026-07-31T16:01:53Z",
+        "repo": "MicrosoftDocs/defender-docs"
+      },
+      {
+        "id": "ghc-b225a9a99200cb15b8e1ba1a58c3b6ef0b8e2bbf",
+        "source": "MicrosoftDocs/defender-docs docs",
+        "title": "Update tenant-allow-block-list-about.md (#559)",
+        "body": "Doc commit by Zeik0s. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/defender-docs/commit/b225a9a99200cb15b8e1ba1a58c3b6ef0b8e2bbf",
+        "date": "2026-07-31T15:05:06Z",
+        "repo": "MicrosoftDocs/defender-docs"
+      },
+      {
+        "id": "ghc-676ccb90565ea002f140af3dcb38ca9ecc57896f",
+        "source": "MicrosoftDocs/defender-docs docs",
+        "title": "Remove approval functionality (#556)",
+        "body": "Doc commit by rmca14. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/defender-docs/commit/676ccb90565ea002f140af3dcb38ca9ecc57896f",
+        "date": "2026-07-30T23:46:54Z",
+        "repo": "MicrosoftDocs/defender-docs"
+      },
+      {
+        "id": "ghc-ba8a948070bbe3dd56f8d6211b7df43f9a8bcaaa",
+        "source": "MicrosoftDocs/defender-docs docs",
+        "title": "Add IIJ as a trusted ARC sealer configuration (#552)",
+        "body": "Doc commit by ikoga. File path scope: (whole repo).",
+        "url": "https://github.com/MicrosoftDocs/defender-docs/commit/ba8a948070bbe3dd56f8d6211b7df43f9a8bcaaa",
+        "date": "2026-07-28T17:02:12Z",
+        "repo": "MicrosoftDocs/defender-docs"
+      }
+    ]
+  }
+}

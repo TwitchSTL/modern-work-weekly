@@ -1,0 +1,774 @@
+{
+  "week_of": "2026-07-14",
+  "last_updated": "2026-07-14",
+  "runs": [
+    "2026-07-14"
+  ],
+  "total_new_items": 48,
+  "sources_checked": [
+    "Intune",
+    "Defender XDR",
+    "Entra ID",
+    "Teams",
+    "Microsoft Security Blog (Zero Trust)",
+    "Purview",
+    "SharePoint / OneDrive",
+    "Microsoft 365 Roadmap",
+    "Agent 365",
+    "Defender for Endpoint",
+    "Defender for Identity",
+    "Defender for Office 365",
+    "Exchange Online",
+    "Windows 365",
+    "Windows Autopatch",
+    "Autopilot",
+    "Microsoft 365 Copilot",
+    "Copilot Studio",
+    "Power Platform",
+    "Microsoft Viva",
+    "Microsoft Security Response Center",
+    "Microsoft Mechanics",
+    "Global Secure Access",
+    "Intune Known Issues",
+    "Windows 365 Known Issues",
+    "Autopilot Known Issues",
+    "Defender XDR Known Issues",
+    "Purview Known Issues",
+    "Entra ID Known Issues",
+    "Windows Release Health",
+    "Azure Status",
+    "Microsoft 365 Service Status"
+  ],
+  "grouped_items": {
+    "Devices": [
+      {
+        "id": "0fd573c8d4056175",
+        "source": "Intune",
+        "title": "Advanced Microsoft Intune capabilities now available in Microsoft 365 E3 and E5",
+        "body": "Across industries, customers are already using advanced Microsoft Intune Suite capabilities to solve real endpoint challenges, such as reducing standing privilege, improving IT response times, modernizing certificate management, and preparing for AI-assisted operations. Now, more Microsoft 365 customers can put these same capabilities to work. The packaging changes announced in December 2025 are now in effect. As of July 1, advanced Intune Suite capabilities are included in Microsoft 365 E5, with select capabilities available in Microsoft 365 E3, 1 as shown below: \u200b T he above table highlights",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-intune-blog/advanced-microsoft-intune-capabilities-now-available-in/ba-p/4529335",
+        "date": "2026-07-01T16:00:00+00:00",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Intune"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c1f60e2949820eca",
+        "source": "Windows 365",
+        "title": "Windows news you can use: June 2026",
+        "body": "Earlier this month, we announced that Windows 11, version 26H2 \u2014the next annual feature update for Windows 11\u2014is now available for early testing and validation via the Windows Insider Program. As this release will share the same servicing branch as versions 25H2 and 24H2, devices can be updated using an enablement package, quickly and with minimal disruption to users. Microsoft also announced major Windows 365 updates at Build 2026 , introducing ready-to-code Cloud PCs, expanded developer-focused capabilities, and new support for secure enterprise AI agents. Now let's dive into more developmen",
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-news-you-can-use-june-2026/ba-p/4532288",
+        "date": "2026-07-01T22:00:00+00:00",
+        "category": "Devices",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Data": [
+      {
+        "id": "924c6e8c4536b861",
+        "source": "Defender XDR",
+        "title": "Extend data security to the network with Microsoft Purview and Microsoft Entra",
+        "body": "Protection that keep s up with how data moves in the AI era Enterprise data used to be easier to contain. It lived in files, in apps you managed, within boundaries you controlled. Security teams could focus on endpoints and known systems, and that was often enough.\u00a0That\u2019s\u00a0no longer the case. Today, data\u00a0travels\u00a0constantly\u00a0between trusted endpoints and unmanaged\u00a0web apps, SaaS apps, and\u00a0most critically, generative AI tools\u00a0over the network. Employees\u00a0type and paste\u00a0sensitive information into prompts, upload\u00a0work-related\u00a0files to external services\u00a0or personal cloud storage, and interact with sys",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/extend-data-security-to-the-network-with-microsoft-purview-and/ba-p/4531929",
+        "date": "2026-07-01T16:00:00+00:00",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3dae4a9f4bcbf585",
+        "source": "Defender XDR",
+        "title": "Introducing a unified alert experience for Microsoft Purview Insider Risk Management",
+        "body": "Modern insider risk investigations succeed or fail based on how quickly analysts can move from\u00a0signal to decision\u00a0with more context.\u00a0Too often, investigations\u00a0within Microsoft Purview\u00a0require\u00a0high switching costs\u00a0while analysts struggle with\u00a0disconnected\u00a0alert\u00a0views\u00a0and scattered case notes across workflows.\u00a0Every switch slows triage pulling\u00a0focus away from the risk\u00a0itself,\u00a0decreasing the\u00a0speed and confidence of investigations. That\u2019s\u00a0why\u00a0we\u2019re\u00a0unifying the\u00a0Microsoft Purview\u00a0Insider Risk Management investigation experience\u00a0with three connected\u00a0improvements\u00a0\u2014 a unified alert queue, expanded use",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/introducing-a-unified-alert-experience-for-microsoft-purview/ba-p/4530714",
+        "date": "2026-06-30T19:00:00+00:00",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "53ca24ecaf073ca0",
+        "source": "Entra ID",
+        "title": "Protect sensitive data in motion across SaaS and AI apps with Microsoft Purview and Microsoft Entra",
+        "body": "Once, securing data meant protecting them within the confines of endpoints and managed apps. It lived inside boundaries you controlled. Today, those boundaries have disappeared\u2014and with them, the old playbook for data security. Data security must keep up with how data moves in the AI-era Organizational data now travels constantly between trusted endpoints and unmanaged web apps, SaaS apps, and most critically, generative AI tools over the network. Employees type and paste sensitive information into prompts, upload work-related files to external services or personal cloud storage, and interact ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/protect-sensitive-data-in-motion-across-saas-and-ai-apps-with/ba-p/4529310",
+        "date": "2026-07-01T16:32:24+00:00",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d2cfd17af12867a3",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "5 insights from Frost & Sullivan\u2019s 2025 Frost Radar\u2122 for Cloud Security Posture Management",
+        "body": "Read five key learnings from the Frost & Sullivan 2025 Frost Radar\u2122 for CSPM to learn how CSPM is evolving from point-in-time compliance to continuous risk management. The post 5 insights from Frost & Sullivan\u2019s 2025 Frost Radar\u2122 for Cloud Security Posture Management appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/06/5-insights-from-frost-sullivans-2025-frost-radar-for-cloud-security-posture-management/",
+        "date": "2026-07-06T16:00:00+00:00",
+        "category": "Data",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Visibility & Automation": [
+      {
+        "id": "3cfc9747e397c91d",
+        "source": "Defender XDR",
+        "title": "The state of MCP security in 2026",
+        "body": "Co-Author: ShalabhPradhan\u200b A year\u00a0ago\u00a0we published Understanding and mitigating security risks in MCP implementations . The core idea still holds: the moment a model can choose and call tools, it stops being a question-and-answer box and becomes software that acts. Anything that acts has a trust boundary, and tool descriptions, schemas, outputs, and credentials all sit inside it. What has changed is scale. The Model Context Protocol has gone from a promising idea to the way agents connect to tools, data, and systems. Enterprises have stopped experimenting and started shipping into production. ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/the-state-of-mcp-security-in-2026/ba-p/4531327",
+        "date": "2026-06-30T16:43:45+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "25a18927f6e5f786",
+        "source": "Entra ID",
+        "title": "Govern AI agent identities and access the same way you govern your employees",
+        "body": "In our conversations with customers, we\u2019ve heard consistent feedback: organizations want to embrace AI agents, but they need the same governance rigor they apply to human identities\u2014adapted for the speed and scale of AI. As agents take on real work, the critical question becomes: how do you give each agent the access it needs to be productive without letting that access become a risk? For example, an agent tasked with analyzing purchase trends and delivering a report needs the ability to read transaction data from an ERP system. Historically, agents may have used shared credentials or access r",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/govern-ai-agent-identities-and-access-the-same-way-you-govern/ba-p/4529302",
+        "date": "2026-07-07T21:34:53+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "e7c625ca8d626d02",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Securing our future: July 2026 progress report on Microsoft\u2019s Secure Future Initiative",
+        "body": "Microsoft\u2019s latest Secure Future Initiative report outlines progress on secure foundations, AI-powered defense, and future-ready cybersecurity. The post Securing our future: July 2026 progress report on Microsoft\u2019s Secure Future Initiative appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/10/securing-our-future-july-2026-progress-report-on-microsofts-secure-future-initiative/",
+        "date": "2026-07-10T16:00:00+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3a2037f49e51488e",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "GigaWiper: Anatomy of a destructive backdoor assembled from multiple malware",
+        "body": "GigaWiper is a destructive backdoor that combines multiple wiping and ransomware-like capabilities into a single operational platform. This blog analyzes how the malware incorporates code from several previously separate malware families and provides guidance to help defenders detect and defend against similar threats. The post GigaWiper: Anatomy of a destructive backdoor assembled from multiple malware appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/09/gigawiper-anatomy-of-a-destructive-backdoor-assembled-from-multiple-malware/",
+        "date": "2026-07-09T15:00:00+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7313ab96ca83a023",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Improving security posture across the Microsoft partner ecosystem",
+        "body": "Read how Microsoft strengthens partner ecosystem security with CSP vetting, least privilege access, monitoring, and risk management best practices. The post Improving security posture across the Microsoft partner ecosystem appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/02/improving-security-posture-across-the-microsoft-partner-ecosystem/",
+        "date": "2026-07-02T16:00:00+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "d09cad64112b140d",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Microsoft named a leader in the Frost Radar for cloud and application runtime security",
+        "body": "Frost & Sullivan names Microsoft a leader as cloud and application security converge into unified, runtime risk reduction. The post Microsoft named a leader in the Frost Radar for cloud and application runtime security appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/07/01/microsoft-named-a-leader-in-the-frost-radar-for-cloud-and-application-runtime-security/",
+        "date": "2026-07-01T16:00:00+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c158128138b1a2f8",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "Accelerating the quantum-safe timeline",
+        "body": "We\u2019re accelerating quantum-safe readiness\u2014and sharing what organizations can do now to transition earlier and with confidence. The post Accelerating the quantum-safe timeline appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/06/30/microsoft-advances-quantum-safe-security-as-the-risk-timeline-shifts/",
+        "date": "2026-06-30T19:00:00+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6adb711fd12b310a",
+        "source": "Windows 365",
+        "title": "Windows 365 for Agents: A secured execution environment for AI agents",
+        "body": "AI agents are rapidly evolving from answering questions to performing tasks across enterprise systems. As organizations move from experimentation to production, one question continues to rise to the top for security leaders: how do you run agents securely at scale? Today, many agents operate in fragmented environments: local machines, shared virtual machines, or unmanaged cloud infrastructure. That can make it hard to consistently enforce identity, apply policies, and maintain the visibility security teams need. Windows 365 for Agents changes that. A Cloud PC for enterprise agents, with securi",
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/windows-365-for-agents-a-secured-execution-environment-for-ai/ba-p/4529336",
+        "date": "2026-07-08T16:00:00+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c7dd600e2170887b",
+        "source": "Power Platform",
+        "title": "Native Dataverse Authorization (Public Preview) for Stronger Security in Power Pages",
+        "body": "We\u2019re excited to introduce the public preview of Native Dataverse Authorization (Enhanced Authorization) in Power Pages. This release brings a significant advancement in how external user access is secured and managed. Authorization is now enforced directly within Dataverse, providing stronger security, improved visibility, and more precise control while keeping the maker experience unchanged. The post Native Dataverse Authorization (Public Preview) for Stronger Security in Power Pages appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/power-pages/native-dataverse-authorization-public-preview-for-stronger-security-in-power-pages/",
+        "date": "2026-07-07T15:06:13+00:00",
+        "category": "Visibility & Automation",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "efac6c576904e1ed",
+        "source": "Power Platform",
+        "title": "Dataverse Is Your Agent Data Platform: Here\u2019s What\u2019s New in July 2026",
+        "body": "Latest Dataverse improvements: expanding the plugin across more coding agent marketplaces, connecting agents to more tools through MCP, certifying partner MCPs for trusted adoption, and bringing internal MCPs under enterprise governance. The post Dataverse Is Your Agent Data Platform: Here\u2019s What\u2019s New in July 2026 appeared first on Microsoft Power Platform Blog .",
+        "url": "https://www.microsoft.com/en-us/power-platform/blog/2026/07/06/dataverse-july2026/",
+        "date": "2026-07-06T15:35:22+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Power Platform"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "6cc33501ff7f7653",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-40468 Heap buffer overflow in gawk",
+        "body": "Information published.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40468",
+        "date": "2026-07-14T08:01:35+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7bc72ef3f5c95465",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-40553 Stack-based buffer overflow in gawk",
+        "body": "Information published.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40553",
+        "date": "2026-07-14T08:01:22+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f2bcf515f1553dbb",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-40469 Heap buffer overflow in gawk",
+        "body": "Information published.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40469",
+        "date": "2026-07-14T08:01:29+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "91682447966dcfd7",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-15308 Incremental HTMLParser feed() allows CPU-exhaustion DoS via repeated unterminated markup declarations",
+        "body": "Information published.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-15308",
+        "date": "2026-07-12T08:01:27+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "f0f481f944a907a9",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-59871 node-tar: Process crash via PAX numeric path type confusion",
+        "body": "Information published.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-59871",
+        "date": "2026-07-12T08:01:34+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "767f01196bf0896e",
+        "source": "Microsoft Security Response Center",
+        "title": "CVE-2026-59873 node-tar: Decompression/parse DoS via unlimited input",
+        "body": "Information published.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-59873",
+        "date": "2026-07-12T08:01:40+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "401f162a85e91752",
+        "source": "Microsoft Security Response Center",
+        "title": "Chromium: CVE-2026-14428 Insufficient validation of untrusted input in Dawn",
+        "body": "This CVE was assigned by Chrome.\u00a0 Microsoft Edge (Chromium-based) ingests Chromium, which addresses this vulnerability. Please see [Google Chrome Releases](https://chromereleases.googleblog.com/2025) for more information.",
+        "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-14428",
+        "date": "2026-07-11T22:41:38+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Response Center"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "aa6f15b1c26ada4d",
+        "source": "Microsoft Mechanics",
+        "title": "Lighthouse Audit: Make your website agent-ready",
+        "body": "Make your website agent ready with the agentic browsing Lighthouse audit in Chrome 150. This tool verifies your site's accessibility tree is well-formed and WebMCP schemas are valid. It also detects UI shifts and confirms proper WebMCP tool registration, helping you identify and fix issues for seamless agent interaction.\n\nSubscribe to Chrome for Developers \u2192 https://goo.gle/ChromeDevs\n\n #GoogleIO #WebDev #ChromeforDevelopers #Chrome #AgenticWeb\n\nEvent: Google I/O 2026\n\nSpeaker: Kasper Kulikowski\nProducts Mentioned: Chrome",
+        "url": "https://www.youtube.com/shorts/0heeppCYrmM",
+        "date": "2026-07-10T19:09:26+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "51ad216336351364",
+        "source": "Microsoft Mechanics",
+        "title": "The Butterfly Effect: Dev Edition",
+        "body": "We caught up with Rowdy Rabouw, Google Developer Expert for Web, at #GoogleIOConnect Berlin and asked him to share his developer journey into web development, his first coding experiences and why he's excited about Modern Web Guidance. \n\nResources:\nWatch the \"Modern Web Guidance\" workshop \u2192 https://goo.gle/4w71Hid \nGet started with Modern Web Guidance \u2192 https://goo.gle/3QUtEdA\n\n\nWatch the full sessions \u2192 https://goo.gle/4eZAZAn  \nSubscribe to Chrome for Developers \u2192 https://goo.gle/ChromeDevs\n\n\n#ChromeForDevelopers #Chrome #GoogleIOConnect\n\n\nEvent: I/O Connect Berlin 2026\n\nSpeaker: Rowdy Rabou",
+        "url": "https://www.youtube.com/shorts/luOzh9Q1zY8",
+        "date": "2026-07-10T16:10:08+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "9f87a4f2f55e03b0",
+        "source": "Microsoft Mechanics",
+        "title": "Explain like I\u2019m 5: WebMCP edition",
+        "body": "Susanna Wong, Google Developer Expert for Web, breaks down Declarative and Imperative APIs at #GoogleIOConnect Berlin. \n\nAI agents often struggle with web interactions due to a lack of clear instructions, leading to guesswork in task execution. WebMCP helps solve this by offering a proposed web standard that enables websites to provide AI agents with a labeled directory of page tools. Implement this using the Declarative API for HTML forms or the Imperative API for custom JavaScript tools. This ensures AI agents can instantly complete tasks like checkout, eliminating guesswork and broken steps",
+        "url": "https://www.youtube.com/shorts/mRsbIHuSMhg",
+        "date": "2026-07-09T21:07:32+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "2bfd7c0267715e6c",
+        "source": "Microsoft Mechanics",
+        "title": "What is Modern Web Guidance?",
+        "body": "At Google I/O Connect Berlin, Brecht De Ruyter, a Google Developer Expert for Web, shares insights into Modern Web Guidance. This agent skill and CLI injects modern web standards, with Baseline Widely Available fallbacks, directly into your coding agent\u2019s context. Understand how it acts as a guardrail, moving beyond historical LLM training data to enforce today\u2019s native web platform solutions. Learn how to implement it with `npx modern-web-guidance` or integrate it natively into Claude Code, Copilot CLI, or Antigravity.\n\nResources:\nWatch the \"Modern Web Guidance\" workshop \u2192 https://goo.gle/4w7",
+        "url": "https://www.youtube.com/shorts/RmA5BIzxLYs",
+        "date": "2026-07-09T16:01:36+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "84c2f8590f3b5dba",
+        "source": "Microsoft Mechanics",
+        "title": "New workflows for improved web app quality: Modern Web Guidance and DevTools (I/O Connect '26)",
+        "body": "Two new workflows are here to streamline AI-powered web development. Modern Web Guidance provides coding agents with up-to-date, expert-vetted skills to ensure code quality and backward compatibility. Chrome DevTools for agents offers real-time debugging data, allowing agents to autonomously identify and fix issues. Build web applications more efficiently and effectively.\n\nResources:\nChrome DevTools overview \u2192 https://goo.gle/4gdy8Gx\nGet started with Modern Web Guidance \u2192 https://goo.gle/3QUtEdA\n\n\nWatch all the Chrome sessions from Google I/O Connect Berlin \u2192 https://goo.gle/4eZAZAn \nSubscribe",
+        "url": "https://www.youtube.com/shorts/rXT0bscwllk",
+        "date": "2026-07-09T00:23:17+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5dcb8af91a2eb03b",
+        "source": "Microsoft Mechanics",
+        "title": "Life After I/O: Where is the Chrome DevRel team now?",
+        "body": "Google I/O might be over, but the grind never stops. Meet the team helping devs take the web to the next level and see what they are now. \n\nSubscribe to Chrome for Developers \u2192 https://goo.gle/ChromeDevs\n\n#ChromeForDevelopers #Chrome \n\n\nEvent: Google I/O\n\nProducts Mentioned: Chrome",
+        "url": "https://www.youtube.com/shorts/SAYyWDKdCJA",
+        "date": "2026-07-07T17:31:21+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "8b8443fe231d4960",
+        "source": "Microsoft Mechanics",
+        "title": "Google I/O Connect Berlin with Chrome for Developers",
+        "body": "Experience Google I/O Connect Berlin! Devs and experts came together to build, learn and explore the latest in Chrome and the web. Hear about Chrome DevTools, Modern Web Guidance, Web Extensions and more!\n\n\nWatch more Chrome sessions from I/O Connect Berlin \u2192 https://goo.gle/4eZAZAn \nSubscribe to Chrome for Developers \u2192 https://goo.gle/ChromeDevs\n\n\n#ChromeForDevelopers #Chrome #GoogleIOConnect #Developers\n\n\nEvent: I/O Connect Berlin 2026\n\nProducts Mentioned: Chrome",
+        "url": "https://www.youtube.com/shorts/_KBZ241HS9c",
+        "date": "2026-07-06T22:01:02+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4904c919ff3a2aaa",
+        "source": "Microsoft Mechanics",
+        "title": "New quest: Discover DevTools for agents",
+        "body": "Navigate Google I/O in first-person mode and chat to helpful NPCs along the way to discover the latest on DevTools for agents.\n\n\nSubscribe to Chrome for Developers \u2192 https://goo.gle/ChromeDevs\n\n\n#ChromeForDevelopers #Chrome #GoogleIO #DevTools\n\n\nEvent: Google I/O 2026\n\nProducts Mentioned: Chrome,",
+        "url": "https://www.youtube.com/shorts/66josBG04qA",
+        "date": "2026-07-06T19:03:41+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "170b239f25b91e9c",
+        "source": "Microsoft Mechanics",
+        "title": "Automate building Chrome Extensions with Antigravity and DevTools MCP (I/O Connect \u201826)",
+        "body": "Ever wished a website or your browser worked a little differently? That's what Chrome Extensions are for - and building one is more accessible than you think. Watch this workshop from Sebastian Benz, to go from idea to a ready to publish extension, using Antigravity as your coding agent. We'll pair it with our new Chrome Extensions Skill and Chrome DevTools for agents to automate building and debugging your extension - no prior experience required.\n\nChapters:\n0:00 - Introduction\n0:48 - Why build Chrome extensions now\n1:55 - The best way to build a Chrome extension\n4:15 - Use cases for Chrome e",
+        "url": "https://www.youtube.com/watch?v=w37SORQg8II",
+        "date": "2026-07-02T17:25:29+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "12780c709c4ce438",
+        "source": "Microsoft Mechanics",
+        "title": "Practical steps to make your website agent-ready (I/O Connect \u201826)",
+        "body": "Prepare your website for the next generation of AI-driven interactions. Dive into Chrome DevTools to monitor and debug the WebMCP, use targeted Lighthouse Audits to evaluate your site's agentic web readiness, and finally put coding agent SKILLS to the test in practical exercises. Kasper Kulikowski and Andre Bandarra share how to apply these tools today to future-proof your projects for the next evolution of the web.\n\nChapters:\n0:00 - Introduction\n0:36 - The Agentic Web\n1:54 - How AI agents see websites and complex journeys\n5:28 - Introduction to WebMCP and tool demonstrations\n10:37 - Defining ",
+        "url": "https://www.youtube.com/watch?v=SnkNmrW0cdE",
+        "date": "2026-07-02T17:21:54+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "77a414efff0ad89f",
+        "source": "Microsoft Mechanics",
+        "title": "Bridge the AI knowledge gap with Modern Web Guidance (I/O Connect \u201826)",
+        "body": "Take a guided tour of Chrome's modern web guidance toolkit for coding agents with Tara Agyemang - stepping through the installation process, all the way to using it in new and established codebases. See the difference for yourself as you give a coding agent web development tasks, with and without this guidance, across various agents, models, and web frameworks.\n\nChapters:\n0:00 - Introduction\n1:09 - Prerequisites\n2:35 - What is Modern Web Guidance?\n5:57 - How it works\n8:40 - Demo: Modernizing existing code\n11:00 - Executing the Lighthouse audit\n15:00 - Applying performance improvements\n18:38 - ",
+        "url": "https://www.youtube.com/watch?v=3IZNhRHcY-g",
+        "date": "2026-07-02T17:11:18+00:00",
+        "category": "Visibility & Automation",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Identity": [
+      {
+        "id": "fa450653d5254bde",
+        "source": "Defender XDR",
+        "title": "Security Community Spotlight: Sathish Veerapandian",
+        "body": "Meet Sathish Veerapandian: security architect, community collaborator, published author, and cycling enthusiast with a knack for turning real-world customer challenges into product-shaping feedback. From influencing phishing-resistant authentication and malware scanning improvements to helping organizations navigate Microsoft Purview, AI governance, and hybrid work, Sathish brings the best kind of energy to the Microsoft Security Community: curious, practical, generous, and always ready to help others move forward. What do you find most rewarding about being a member of the Microsoft Security ",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-security-community/security-community-spotlight-sathish-veerapandian/ba-p/4530697",
+        "date": "2026-06-25T15:00:00+00:00",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Defender XDR"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "28bf3d0148210bef",
+        "source": "Entra ID",
+        "title": "Bring business logic into PIM role activation workflows",
+        "body": "Privileged access often depends on business context that lives outside Privileged identity Management (PIM)\u2014ticket validity, HR status, compliance checks, or on-call schedules. With custom extensions for Microsoft Entra Privileged Identity Management, organizations can bring that context directly into activation workflows. We\u2019re excited to announce the preview of custom extensions for Microsoft Entra Privileged Identity Management (PIM), a powerful new capability that lets you integrate your organization\u2019s business logic directly into PIM role activation workflows. The challenge Many organizat",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/bring-business-logic-into-pim-role-activation-workflows/ba-p/4531380",
+        "date": "2026-07-01T16:35:45+00:00",
+        "category": "Identity",
+        "phase": "Preview",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "4344fd2220dd1b93",
+        "source": "Entra ID",
+        "title": "Microsoft Entra Backup and Recovery is now generally available",
+        "body": "Microsoft Entra Backup and Recovery is now generally available. Microsoft Entra customers licensed for Entra ID P1 or P2 now can restore supported critical identity data after accidental changes or malicious updates, rolling out to all workforce tenants this week. Identity resilience and disaster recovery are top challenges for IT teams. Microsoft Entra Backup and Recovery helps address both by automatically backing up core directory objects daily. Supported objects include users, groups, applications, service principals, managed identities, Conditional Access policies, named locations, and au",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-backup-and-recovery-is-now-generally-available/ba-p/4521997",
+        "date": "2026-06-30T18:27:57+00:00",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Entra ID"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5100f9793deb67e3",
+        "source": "Microsoft Security Blog (Zero Trust)",
+        "title": "\u200b\u200bWhat\u2019s new in Microsoft Security: June 2026",
+        "body": "This month\u2019s updates help security and IT teams strengthen identity and multicloud foundations, protect data wherever it lives, and secure the developer workflows powering AI innovation. The post \u200b\u200bWhat\u2019s new in Microsoft Security: June 2026 appeared first on Microsoft Security Blog .",
+        "url": "https://www.microsoft.com/en-us/security/blog/2026/06/30/whats-new-in-microsoft-security-june-2026/",
+        "date": "2026-06-30T16:00:00+00:00",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Security Blog (Zero Trust)"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "833d017b759659b5",
+        "source": "Microsoft Mechanics",
+        "title": "Authentication in 2026: A guide to passkeys, digital credentials and more (I/O Connect \u201826)",
+        "body": "Natalia Markoborodova and Yu Tsuno, share how to eliminate password risks and reduce drop-off by implementing phishing-resistant authentication. Learn to build a modern identity flow that balances high security with a seamless user experience using Passkeys, Digital Credentials, Identity Federation, and other modern identity solutions.\n\nChapters:\n0:00 - Introduction & The Status Quo\n4:51 - Account Creation & Autofill\n8:43 - User & Email Verification\n13:06 - Digital Credentials API\n16:23 - Sign In with Passkeys & Unified UI\n20:06 - Passkey Creation & Error Handling\n22:08 - Cross-Platform Experi",
+        "url": "https://www.youtube.com/watch?v=W07fSGVlcw8",
+        "date": "2026-07-02T17:08:10+00:00",
+        "category": "Identity",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      }
+    ],
+    "Apps": [
+      {
+        "id": "11c14fbb515b6842",
+        "source": "Teams",
+        "title": "What's New in Microsoft Teams | May 2026 - Build Edition",
+        "body": "It's hard to believe May is over already! You may have noticed this edition of What's new in Teams is landing a few days later than usual \u2014 that's intentional. We're publishing alongside Microsoft Build , our annual developer conference where we showcase the latest in AI, agents, and the tools that help developers. It's one of the most energizing weeks of the year, full of announcements, hands-on sessions, and a first look at where the platform is headed. A lot of what's in this release ties directly to what's being unveiled on the Build stage, and I wanted to highlight a few Teams Platform fe",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-teams-blog/what-s-new-in-microsoft-teams-may-2026-build-edition/ba-p/4524613",
+        "date": "2026-06-30T11:43:37+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Teams"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "615ad1924b1c49c5",
+        "source": "SharePoint / OneDrive",
+        "title": "Streamlining business processes with Microsoft 365 - ShareCloud - SharePoint Partner Spotlight",
+        "body": "SharePoint and Microsoft 365 have evolved into a powerful platform for building business applications that meet organizations where they already work . With SharePoint as the content, collaboration, and process foundation, and Microsoft 365 services such as Teams, Power Platform, and Azure extending the experience, partners can deliver practical solutions that simplify everyday work, improve compliance, and help organizations move faster. This partner showcase highlights ShareCloud , an Estonian software company that has been delivering productized and tailor-made solutions on top of Microsoft",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/streamlining-business-processes-with-microsoft-365-sharecloud/ba-p/4533560",
+        "date": "2026-07-08T16:14:28+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "7a9cd7b23e34aed4",
+        "source": "SharePoint / OneDrive",
+        "title": "Proven intranet framework - Involv Intranet - SharePoint Partner Spotlight",
+        "body": "We are excited to share a new episode on our partner showcase series focused on SharePoint in Microsoft 365 . In this brief discussion Tim Bogemans and Pascal Herreweghe from Involv Intranet are joining Vesa Juvonen from Microsoft to highlight\u00a0 capabilities they've built for Microsoft 365 and SharePoint using SharePoint Framework (SPFx). Involv Intranet is trusted by over 300 organizations across healthcare, the public sector, construction, finance and beyond. It provides a fully branded, mobile-ready intranet experience with more than 50 configurable components out of the box. These include p",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/proven-intranet-framework-involv-intranet-sharepoint-partner/ba-p/4519241",
+        "date": "2026-07-08T16:16:23+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "3c1f51fe0c8b748e",
+        "source": "SharePoint / OneDrive",
+        "title": "Solutions for document-centric business processes - Portal Systems - SharePoint Partner Spotlight",
+        "body": "We are excited to share a new episode on our partner showcase series focused on SharePoint in Microsoft 365 . In this brief discussion Patrick Carl from Portal Systems AG join Vesa Juvonen from Microsoft to showcase different features and capabilities they've built for Microsoft 365 and SharePoint using SharePoint Framework (SPFx). Portal Systems AG is an independent software manufacturer specializing in Enterprise Content Management (ECM) and software solutions based on Microsoft 365 and SharePoint. With many years of experience in the ECM environment, the company offers its 350-plus customer",
+        "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/solutions-for-document-centric-business-processes-portal-systems/ba-p/4515217",
+        "date": "2026-07-08T16:30:42+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "SharePoint / OneDrive"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "c335c7ae1731b75e",
+        "source": "Agent 365",
+        "title": "Copilot in Excel:\u00a0Built for the era of\u00a0Frontier\u00a0Finance",
+        "body": "Plenty of AI tools claim to be built for finance; Microsoft 365 Copilot in Excel is proving it in practice. The post Copilot in Excel:\u00a0Built for the era of\u00a0Frontier\u00a0Finance appeared first on Microsoft 365 Blog .",
+        "url": "https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/25/copilot-in-excel-built-for-the-era-of-frontier-finance/",
+        "date": "2026-06-25T13:00:00+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Agent 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "48327f51d53bbc44",
+        "source": "Exchange Online",
+        "title": "Upcoming retirement of OWA Light in Exchange Server",
+        "body": "We are announcing our plan to retire and disable the OWA Light experience in Exchange Server in a future update. OWA Light was created for a much earlier era of the web, when browser support, bandwidth, and accessibility technologies were very different from today. Going forward, we want to invest in modern Outlook on the web experience that provides the cross-browser, accessible, and security-focused experience. Organizations that still rely on OWA Light must move users to the standard Outlook on the web experience and review any internal guidance, bookmarks, training material, helpdesk scrip",
+        "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/upcoming-retirement-of-owa-light-in-exchange-server/ba-p/4534943",
+        "date": "2026-07-08T13:08:33+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Exchange Online"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "fc4ac885ecb8b0c8",
+        "source": "Windows 365",
+        "title": "Point-in-time restore for Windows 11 is now generally available",
+        "body": "When a Windows PC experiences an unexpected issue, every minute of downtime matters. Devices are constantly evolving through updates, apps, policies, drivers, and user activity, which can make recovery complex. For IT teams, getting users back to work often means time-consuming troubleshooting, or full rebuilds that take hours. Today, we\u2019re excited to announce the general availability of point\u2011in\u2011time restore for Windows 11 new built-in recovery capability designed to recover in minutes instead of hours, with confidence, by safely rolling a device back to a previous state. Available in Windows",
+        "url": "https://techcommunity.microsoft.com/t5/windows-it-pro-blog/point-in-time-restore-for-windows-11-is-now-generally-available/ba-p/4508101",
+        "date": "2026-06-23T16:00:00+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Windows 365"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "5d44af83fd2b60b0",
+        "source": "Microsoft Mechanics",
+        "title": "Create a closed feedback loop: Chrome Devtools for agents (I/O Connect \u201826)",
+        "body": "Hear from Matthias Rohmer how with DevTools for agents engabled your coding agent can verify its own creations, reproduce in a real Chrome browser, and inspect them with the same powerful and trusted tools you use everyday, creating a closed feedback loop \n\nResources:\nChrome DevTools overview \u2192 https://goo.gle/4gdy8Gx\nGet started with Chrome DevTools for agents \u2192 https://goo.gle/4vedauV\n\n\nWatch the full sessions \u2192 https://goo.gle/4eZAZAn \nSubscribe to Chrome for Developers \u2192 https://goo.gle/ChromeDevs\n\n\n#ChromeForDevelopers #Chrome #GoogleIOConnect #Developers\n\n\nEvent: Google I/O Connect Berli",
+        "url": "https://www.youtube.com/shorts/YImum6f4Z2w",
+        "date": "2026-07-07T19:43:34+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      },
+      {
+        "id": "359c579db72dc215",
+        "source": "Microsoft Mechanics",
+        "title": "From zero to built-in AI hero (I/O Connect \u201826)",
+        "body": "Explore the power of Chrome's built-in AI APIs starting with the \"\"big picture.\"\" Watch this workshop by Thomas Steiner to discover how to analyze a production-ready blogging platform to see how these APIs handle tasks like content generation and summarization. From there, find out how to distill the core mechanics until they're simple enough to run directly in the DevTools Console. You will learn how to implement these features today, including how to handle graceful fallbacks for unsupported browsers and platforms.\n\nChapters:\n0:00 - Introduction and Agenda\n0:45 - The demo app and blog editor",
+        "url": "https://www.youtube.com/watch?v=GUGMMt3x-Ag",
+        "date": "2026-07-02T17:15:09+00:00",
+        "category": "Apps",
+        "phase": "GA",
+        "admin_action": null,
+        "impacted_workloads": [
+          "Microsoft Mechanics"
+        ],
+        "is_updated": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "history": [
+    {
+      "run_date": "2026-07-21",
+      "total_items": 84,
+      "by_category": {
+        "Endpoint & Device Management": 3,
+        "Security & Compliance": 47,
+        "Identity & Access": 13,
+        "Collaboration & Productivity": 14,
+        "AI & Copilot": 7
+      },
+      "fallback_count": 29,
+      "fallback_titles": [
+        "The state of MCP security in 2026",
+        "Govern AI agent identities and access the same way you govern your employees",
+        "Microsoft at Black Hat USA 2026: Defending trust in the age of AI and supply chain attacks",
+        "Securing our future: July 2026 progress report on Microsoft\u2019s Secure Future Initiative",
+        "Reminder: Exchange 2016 and 2019 ESU Program Ends in October 2026",
+        "Released: July 2026 Exchange Server Security Updates",
+        "CVE-2026-48863 Libsolv: stack-based buffer overflow in libsolv eddsa pgp signature verification allows denial of service",
+        "CVE-2026-60082 DBI versions before 1.651 for Perl do not enforce statement handle consistency with the row",
+        "CVE-2026-60081 DBI::ProfileData versions before 1.651 for Perl do not limit the path index",
+        "CVE-2026-62299 CoreDNS: rewrite-plugin EDNS0 response-revert nil-pointer panic (remote DoS) when a downstream plugin returns a response with no OPT record"
+      ]
+    },
+    {
+      "run_date": "2026-07-21",
+      "total_items": 59,
+      "by_category": {
+        "Endpoint & Device Management": 3,
+        "Security & Compliance": 40,
+        "Identity & Access": 7,
+        "Collaboration & Productivity": 6,
+        "AI & Copilot": 3
+      },
+      "fallback_count": 22,
+      "fallback_titles": [
+        "The state of MCP security in 2026",
+        "Govern AI agent identities and access the same way you govern your employees",
+        "Microsoft at Black Hat USA 2026: Defending trust in the age of AI and supply chain attacks",
+        "Securing our future: July 2026 progress report on Microsoft\u2019s Secure Future Initiative",
+        "Reminder: Exchange 2016 and 2019 ESU Program Ends in October 2026",
+        "Released: July 2026 Exchange Server Security Updates",
+        "CVE-2026-60082 DBI versions before 1.651 for Perl do not enforce statement handle consistency with the row",
+        "CVE-2026-63801 tipc: fix slab-use-after-free Read in tipc_aead_decrypt_done",
+        "CVE-2026-64133 ALSA: asihpi: Fix potential OOB array access at reading cache",
+        "CVE-2026-64097 drm/amd/display: Validate GPIO pin LUT table size before iterating"
+      ]
+    },
+    {
+      "run_date": "2026-07-28",
+      "total_items": 75,
+      "by_category": {
+        "Collaboration & Productivity": 13,
+        "Identity & Access": 10,
+        "AI & Copilot": 15,
+        "Security & Compliance": 35,
+        "Employee Experience": 2
+      },
+      "fallback_count": 9,
+      "fallback_titles": [
+        "Rethinking security for the age of AI",
+        "Enhancing AI security through global AI red teaming",
+        "New AI features in Chrome",
+        "How to get Chrome Web Store approval",
+        "How to schedule an extension release",
+        "Modern Web Guidance for AI-assisted web development",
+        "Build a Chrome Extension with Antigravity: A 30-second timer",
+        "How to engage with Chrome Web Store reviews",
+        "The Butterfly Effect: Dev Edition"
+      ]
+    },
+    {
+      "run_date": "2026-07-28",
+      "total_items": 31,
+      "by_category": {
+        "Collaboration & Productivity": 5,
+        "Identity & Access": 3,
+        "AI & Copilot": 7,
+        "Security & Compliance": 16
+      },
+      "fallback_count": 7,
+      "fallback_titles": [
+        "New AI features in Chrome",
+        "How to get Chrome Web Store approval",
+        "How to schedule an extension release",
+        "Modern Web Guidance for AI-assisted web development",
+        "Build a Chrome Extension with Antigravity: A 30-second timer",
+        "How to engage with Chrome Web Store reviews",
+        "The Butterfly Effect: Dev Edition"
+      ]
+    },
+    {
+      "run_date": "2026-08-04",
+      "total_items": 87,
+      "by_category": {
+        "Endpoint & Device Management": 1,
+        "Security & Compliance": 37,
+        "Collaboration & Productivity": 24,
+        "Identity & Access": 14,
+        "AI & Copilot": 11
+      },
+      "fallback_count": 7,
+      "fallback_titles": [
+        "\u200b\u200bBetter security starts with better questions",
+        "Rethinking security for the age of AI",
+        "Enhancing AI security through global AI red teaming",
+        "Microsoft Edge: Improved website compatibility with site troubleshooting controls",
+        "What Zero Trust Actually Means",
+        "10 Billion Transactions Overnight",
+        "What Database Does ChatGPT Use?"
+      ]
+    },
+    {
+      "run_date": "2026-08-04",
+      "total_items": 40,
+      "by_category": {
+        "Security & Compliance": 17,
+        "Identity & Access": 11,
+        "Collaboration & Productivity": 5,
+        "AI & Copilot": 7
+      },
+      "fallback_count": 5,
+      "fallback_titles": [
+        "Rethinking security for the age of AI",
+        "Enhancing AI security through global AI red teaming",
+        "Microsoft Edge: Improved website compatibility with site troubleshooting controls",
+        "10 Billion Transactions Overnight",
+        "What Database Does ChatGPT Use?"
+      ]
+    },
+    {
+      "run_date": "2026-08-04",
+      "total_items": 2,
+      "by_category": {
+        "Security & Compliance": 2
+      },
+      "fallback_count": 0,
+      "fallback_titles": []
+    },
+    {
+      "run_date": "2026-08-04",
+      "total_items": 2,
+      "by_category": {
+        "Security & Compliance": 2
+      },
+      "fallback_count": 0,
+      "fallback_titles": []
+    },
+    {
+      "run_date": "2026-08-04",
+      "total_items": 111,
+      "by_category": {
+        "Endpoint & Device Management": 12,
+        "Security & Compliance": 38,
+        "Collaboration & Productivity": 29,
+        "Identity & Access": 20,
+        "AI & Copilot": 12
+      },
+      "fallback_count": 10,
+      "fallback_titles": [
+        "New option for the Remove Default Microsoft Store packages setting",
+        "New setting to disable the Get Started app",
+        "Updated Visual Studio administrative templates in the Windows settings catalog",
+        "\u200b\u200bBetter security starts with better questions",
+        "Rethinking security for the age of AI",
+        "Enhancing AI security through global AI red teaming",
+        "Migration readiness reasons on the Sensors page",
+        "What Zero Trust Actually Means",
+        "10 Billion Transactions Overnight",
+        "What Database Does ChatGPT Use?"
+      ]
+    }
+  ]
+}
