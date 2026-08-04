@@ -22,6 +22,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urljoin
 
 import feedparser
 import requests
@@ -523,9 +524,14 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                             break
                     body = " ".join(body_parts)[:800]
                     link = heading.find_next("a")
-                    item_url = link["href"] if link and link.get("href") else source["url"]
-                    if item_url.startswith("/"):
-                        item_url = "https://learn.microsoft.com" + item_url
+                    # Resolve against the page's own URL, not just a bare
+                    # "learn.microsoft.com" prefix — Learn's whats-new pages
+                    # use document-relative hrefs (e.g. "mdo-about", no
+                    # leading slash) for "see also" links to sibling pages,
+                    # which a leading-slash-only check silently leaves
+                    # unresolved. urljoin handles absolute, root-relative,
+                    # document-relative, and fragment-only hrefs correctly.
+                    item_url = urljoin(source["url"], link["href"]) if link and link.get("href") else source["url"]
                     items.append({
                         "source": source["name"],
                         "title": title,
@@ -554,9 +560,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         if len(title) < 8:
                             continue
                         link = row.find("a")
-                        item_url = link["href"] if link and link.get("href") else source["url"]
-                        if item_url.startswith("/"):
-                            item_url = "https://learn.microsoft.com" + item_url
+                        item_url = urljoin(source["url"], link["href"]) if link and link.get("href") else source["url"]
                         items.append({
                             "source": source["name"],
                             "title": title,
@@ -581,9 +585,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         continue
                     title = text.split(":", 1)[0].strip(" *")[:120] if ":" in text[:80] else text[:100]
                     link = li.find("a")
-                    item_url = link["href"] if link and link.get("href") else source["url"]
-                    if item_url.startswith("/"):
-                        item_url = "https://learn.microsoft.com" + item_url
+                    item_url = urljoin(source["url"], link["href"]) if link and link.get("href") else source["url"]
                     items.append({
                         "source": source["name"],
                         "title": title,
