@@ -441,15 +441,19 @@ def fetch_whatsnew(source: dict) -> list[dict]:
     merge its output with the RSS results, not swap them.
 
     Page layout varies by product, confirmed against live pages for
-    Intune, Entra ID, Purview, Defender XDR, and Defender for Identity:
+    Intune, Entra ID, Purview, Defender XDR, Defender for Identity, and
+    Defender for Endpoint:
       - Intune: 'Week of <date>' sections, h3 category dividers, h4 items
       - Entra ID / Defender for Identity: '<Month> <Year>' sections, h3 items
       - Purview: '<Month> <Year>' sections, h3 category dividers, li items
       - Defender XDR: '<Month> <Year>' sections, flat li items, no sub-headings
-    Item extraction tries h4 first, then h3, then bare <li> — in that
-    order — so category-divider headings never get mistaken for items
-    when a deeper heading level is present, and a flat bullet list still
-    gets parsed when no sub-headings exist at all.
+      - Defender for Endpoint: '<Month> <Year>' sections, changelog laid out
+        as a markdown table (Type/Feature/Preview-GA/Description columns)
+        instead of headings or bullets
+    Item extraction tries h4 first, then h3, then a table, then bare <li>
+    — in that order — so category-divider headings never get mistaken for
+    items when a deeper heading level is present, and a flat bullet list
+    or table still gets parsed when no sub-headings exist at all.
 
     Only the two most recent dated sections are parsed, bounding how much
     backlog can flood in the first time a source is scraped this way.
@@ -495,6 +499,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
 
             h4s = [n for n in section_nodes if n.name == "h4"]
             h3s = [n for n in section_nodes if n.name == "h3"]
+            tables = [n for n in section_nodes if n.name == "table"]
 
             if h4s:
                 heading_items = h4s
@@ -528,9 +533,40 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         "url": item_url,
                         "date": section_date,
                     })
+            elif tables:
+                # Some products (confirmed: Defender for Endpoint) lay out
+                # each month's changelog as a markdown table
+                # ('| Type | Feature | Preview/GA | Description |') instead
+                # of headings or bullets. Skip header rows (they use <th>),
+                # then treat each data row as one item — the longest cell is
+                # almost always the Feature/Description column, so it's a
+                # better title candidate than picking a fixed column index
+                # that might not exist on every table variant.
+                for table in tables:
+                    for row in table.find_all("tr")[:20]:
+                        if row.find("th"):
+                            continue
+                        cells = [c.get_text(" ", strip=True) for c in row.find_all(["td", "th"])]
+                        cells = [c for c in cells if c]
+                        if not cells:
+                            continue
+                        title = max(cells, key=len)[:120]
+                        if len(title) < 8:
+                            continue
+                        link = row.find("a")
+                        item_url = link["href"] if link and link.get("href") else source["url"]
+                        if item_url.startswith("/"):
+                            item_url = "https://learn.microsoft.com" + item_url
+                        items.append({
+                            "source": source["name"],
+                            "title": title,
+                            "body": " — ".join(cells)[:800],
+                            "url": item_url,
+                            "date": section_date,
+                        })
             else:
-                # No sub-headings at all — flat bullet list directly under
-                # the month heading (e.g. Defender XDR).
+                # No sub-headings or table at all — flat bullet list directly
+                # under the month heading (e.g. Defender XDR).
                 lis = []
                 for node in section_nodes:
                     if node.name == "li":
