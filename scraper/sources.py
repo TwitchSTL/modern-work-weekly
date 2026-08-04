@@ -24,8 +24,30 @@ behavior it didn't have. If you want a source's likely pillar for reference,
 see the README's "Sources scraped" table instead — that's curated by hand
 and isn't tied to any code path.
 
-Last reviewed: 2026-07-17
+Last reviewed: 2026-08-04
 Changes from prior version:
+  - Added whatsnew_html=True to Intune, Entra ID, Purview, Defender XDR,
+    Defender for Endpoint, Defender for Identity, and Defender for Office 365.
+    Every source here has an rss field, so run_scraper()'s fetch dispatch
+    (json_api > rss > html) always took the rss branch — the whats-new doc
+    pages in the url field were configured but never actually scraped, just
+    used as citation links. For monthly-cadence TechCommunity blogs, that
+    meant a source could return 0 items for weeks at a time whenever the
+    blog itself didn't post that week, even though the product's real
+    whats-new changelog kept updating. fetch_whatsnew() in scraper.py now
+    supplements (not replaces) the RSS fetch for these seven sources.
+  - Fixed Defender for Endpoint and Defender for Office 365 rss: both were
+    pointing at the generic microsoft-security-blog board, identical to
+    Defender XDR and Defender for Identity. Since all four "sources" shared
+    one feed, run_scraper()'s cross-source URL dedup kept only the first
+    occurrence (Defender XDR) and silently dropped the other three every
+    run. Endpoint and Office 365 each have their own dedicated
+    TechCommunity board (MicrosoftDefenderATPBlog and
+    MicrosoftDefenderforOffice365Blog); Defender for Identity has no
+    dedicated board and stays pointed at the shared feed (harmless — it
+    just dedups against Defender XDR) but now gets real coverage from
+    whatsnew_html instead.
+Changes from 2026-07-17 version:
   - Removed the unused per-source "category" field (see note above)
   - Renamed "Microsoft Security Blog (Zero Trust)" to "Microsoft Security
     Blog" — the parenthetical was left over from the old Zero Trust pillar
@@ -54,6 +76,10 @@ SOURCES = [
         "cadence": "weekly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftintuneblog",
         "selector": "h2, h3, p",
+        # RSS-only was returning 0 items on weeks the Intune blog didn't post,
+        # even though the whats-new page updates weekly with "Week of ..."
+        # service-release sections. See fetch_whatsnew() in scraper.py.
+        "whatsnew_html": True,
     },
     {
         "name": "Defender XDR",
@@ -61,6 +87,7 @@ SOURCES = [
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
+        "whatsnew_html": True,
     },
     {
         "name": "Entra ID",
@@ -68,6 +95,7 @@ SOURCES = [
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-entra-blog",
         "selector": "h2, h3, p",
+        "whatsnew_html": True,
     },
     {
         "name": "Teams",
@@ -93,6 +121,7 @@ SOURCES = [
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-purview-blog",
         "selector": "h2, h3, p",
+        "whatsnew_html": True,
     },
     {
         "name": "SharePoint / OneDrive",
@@ -133,24 +162,42 @@ SOURCES = [
         # (active content as of Dec 2025). /whats-new-mde is the ARCHIVE. No change.
         "url": "https://learn.microsoft.com/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint",
         "cadence": "monthly",
-        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
+        # Was pointing at the generic microsoft-security-blog board, same as
+        # Defender XDR/Identity/Office 365 below — since all four "sources"
+        # shared one feed, cross-source URL dedup in run_scraper() kept only
+        # the first occurrence (Defender XDR), so this source and the other
+        # two Defender variants never actually got attributed any items.
+        # Confirmed 2026-08-04: Defender for Endpoint has its own dedicated
+        # TechCommunity blog/board.
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftDefenderATPBlog",
         "selector": "h2, h3, p",
+        "whatsnew_html": True,
     },
     {
         "name": "Defender for Identity",
         # Has its own what's-new page separate from the Defender XDR rollup page.
         # Actively updated — confirmed May 2026 content.
+        # Confirmed 2026-08-04: unlike Endpoint/Office 365, there is no
+        # dedicated TechCommunity blog board for Defender for Identity —
+        # its content is folded into the general microsoft-security-blog
+        # board. Left pointed there (harmless — dedups against Defender XDR
+        # rather than contributing noise) and relies on whatsnew_html for
+        # its real coverage.
         "url": "https://learn.microsoft.com/en-us/defender-for-identity/whats-new",
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
         "selector": "h2, h3, p",
+        "whatsnew_html": True,
     },
     {
         "name": "Defender for Office 365",
         "url": "https://learn.microsoft.com/en-us/defender-office-365/defender-for-office-365-whats-new",
         "cadence": "monthly",
-        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoft-security-blog",
+        # Confirmed 2026-08-04: has its own dedicated TechCommunity blog/board,
+        # same fix as Defender for Endpoint above.
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=MicrosoftDefenderforOffice365Blog",
         "selector": "h2, h3, p",
+        "whatsnew_html": True,
     },
     {
         "name": "Exchange Online",

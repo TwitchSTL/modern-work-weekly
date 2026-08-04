@@ -379,6 +379,190 @@ def fetch_html(source: dict) -> list[dict]:
     return items
 
 
+_MONTH_NAMES = ("January|February|March|April|May|June|July|August|"
+                "September|October|November|December")
+_WEEK_OF_RE = re.compile(
+    rf'^Week of\s+({_MONTH_NAMES})\s+(\d{{1,2}}),?\s*(\d{{4}})', re.IGNORECASE)
+_MONTH_YEAR_RE = re.compile(rf'^({_MONTH_NAMES})\s+(\d{{4}})$', re.IGNORECASE)
+
+
+def _parse_section_date(heading_text: str, page_date: str, is_top_section: bool) -> str | None:
+    """Turn a whats-new page's section heading into a usable item date.
+
+    Handles the two heading styles seen across Microsoft Learn whats-new
+    pages: 'Week of <Month> <Day>, <Year> (...)' (Intune — gives an exact
+    date straight from the heading) and '<Month> <Year>' (Purview, Defender
+    XDR, Defender for Identity, Entra ID — month granularity only). For the
+    latter, the top (most recent) section is dated using the page's own
+    ms.date meta tag as an honest freshness proxy, since individual items
+    don't carry their own dates; older sections get the 1st of that month,
+    which reliably ages them out of the freshness filters — they're a
+    backstop, not meant to surface as "new."
+
+    Returns None if the heading doesn't match a recognized date pattern —
+    callers should treat that as "not a dated section" and skip it.
+    """
+    text = heading_text.strip()
+    m = _WEEK_OF_RE.match(text)
+    if m:
+        month, day, year = m.groups()
+        try:
+            return datetime.strptime(f"{month} {day} {year}", "%B %d %Y").date().isoformat()
+        except ValueError:
+            return None
+    m = _MONTH_YEAR_RE.match(text)
+    if m:
+        if is_top_section:
+            return page_date
+        month, year = m.groups()
+        try:
+            return datetime.strptime(f"{month} 1 {year}", "%B %d %Y").date().isoformat()
+        except ValueError:
+            return None
+    return None
+
+
+def fetch_whatsnew(source: dict) -> list[dict]:
+    """Supplemental fetch for learn.microsoft.com 'What's new' changelog pages.
+
+    Every source in sources.py has an 'rss' field, so the main fetch
+    dispatch in run_scraper() always takes fetch_rss() and never reaches
+    fetch_html() against the richer whats-new doc pages — those pages sit
+    configured as the 'url' field but were never actually being scraped,
+    just used as a citation link. That's a real gap: TechCommunity blog
+    boards for monthly-cadence products (Entra, Intune, Purview, the
+    Defender variants) often go a full week or more with no new post, so a
+    weekly scrape of RSS alone comes back with 0 items — not because
+    nothing shipped, but because the blog just didn't publish that week.
+    The whats-new doc pages update on a similar-or-tighter cadence and
+    carry the full changelog regardless of blog activity.
+
+    This is additive, not a replacement for fetch_rss() — callers should
+    merge its output with the RSS results, not swap them.
+
+    Page layout varies by product, confirmed against live pages for
+    Intune, Entra ID, Purview, Defender XDR, and Defender for Identity:
+      - Intune: 'Week of <date>' sections, h3 category dividers, h4 items
+      - Entra ID / Defender for Identity: '<Month> <Year>' sections, h3 items
+      - Purview: '<Month> <Year>' sections, h3 category dividers, li items
+      - Defender XDR: '<Month> <Year>' sections, flat li items, no sub-headings
+    Item extraction tries h4 first, then h3, then bare <li> — in that
+    order — so category-divider headings never get mistaken for items
+    when a deeper heading level is present, and a flat bullet list still
+    gets parsed when no sub-headings exist at all.
+
+    Only the two most recent dated sections are parsed, bounding how much
+    backlog can flood in the first time a source is scraped this way.
+
+    Never raises: any parse failure (markup change, unexpected structure,
+    network error) returns an empty list so this can't break the rest of
+    the scraper run. Logged as a warning, not an error, for the same reason.
+    """
+    try:
+        log.info(f"  Whats-new HTML → {source['name']}")
+        resp = SESSION.get(source["url"], timeout=15)
+        resp.raise_for_status()
+        soup = BeautifulSoup(resp.text, "html.parser")
+
+        page_date = None
+        meta_date = soup.find("meta", attrs={"name": "ms.date"})
+        if meta_date and meta_date.get("content"):
+            page_date = str(meta_date["content"])[:10]
+        if not page_date:
+            page_date = datetime.now(timezone.utc).date().isoformat()
+
+        article = soup.find("main") or soup.find("article") or soup.body
+        if not article:
+            return []
+
+        dated_sections = []  # (h2_tag, date_str)
+        for h2 in article.find_all("h2"):
+            date_str = _parse_section_date(
+                h2.get_text(strip=True), page_date, is_top_section=len(dated_sections) == 0
+            )
+            if date_str:
+                dated_sections.append((h2, date_str))
+            if len(dated_sections) >= 2:
+                break
+
+        items = []
+        for h2, section_date in dated_sections:
+            section_nodes = []
+            for sib in h2.find_next_siblings():
+                if sib.name == "h2":
+                    break
+                section_nodes.append(sib)
+
+            h4s = [n for n in section_nodes if n.name == "h4"]
+            h3s = [n for n in section_nodes if n.name == "h3"]
+
+            if h4s:
+                heading_items = h4s
+            elif h3s:
+                heading_items = h3s
+            else:
+                heading_items = []
+
+            if heading_items:
+                for heading in heading_items[:20]:
+                    title = heading.get_text(strip=True)
+                    if len(title) < 8:
+                        continue
+                    body_parts = []
+                    for sib in heading.find_next_siblings():
+                        if sib.name in ("h2", "h3", "h4"):
+                            break
+                        if sib.name in ("p", "li"):
+                            body_parts.append(sib.get_text(" ", strip=True))
+                        if len(body_parts) >= 3:
+                            break
+                    body = " ".join(body_parts)[:800]
+                    link = heading.find_next("a")
+                    item_url = link["href"] if link and link.get("href") else source["url"]
+                    if item_url.startswith("/"):
+                        item_url = "https://learn.microsoft.com" + item_url
+                    items.append({
+                        "source": source["name"],
+                        "title": title,
+                        "body": body,
+                        "url": item_url,
+                        "date": section_date,
+                    })
+            else:
+                # No sub-headings at all — flat bullet list directly under
+                # the month heading (e.g. Defender XDR).
+                lis = []
+                for node in section_nodes:
+                    if node.name == "li":
+                        lis.append(node)
+                    elif node.name in ("ul", "ol"):
+                        lis.extend(node.find_all("li"))
+                    else:
+                        lis.extend(node.find_all("li"))
+                for li in lis[:20]:
+                    text = li.get_text(" ", strip=True)
+                    if len(text) < 15:
+                        continue
+                    title = text.split(":", 1)[0].strip(" *")[:120] if ":" in text[:80] else text[:100]
+                    link = li.find("a")
+                    item_url = link["href"] if link and link.get("href") else source["url"]
+                    if item_url.startswith("/"):
+                        item_url = "https://learn.microsoft.com" + item_url
+                    items.append({
+                        "source": source["name"],
+                        "title": title,
+                        "body": text[:800],
+                        "url": item_url,
+                        "date": section_date,
+                    })
+
+        log.info(f"    → {len(items)} items from whats-new page")
+        return items
+    except Exception as e:
+        log.warning(f"    Whats-new HTML fetch failed for {source['name']} (non-fatal): {e}")
+        return []
+
+
 def enrich_item(raw: dict) -> dict:
     """Add classification, phase, action fields to a raw item."""
     category, matched = classify_item(raw["title"], raw["body"])
@@ -607,6 +791,12 @@ def run_scraper(args):
         except Exception as e:
             log.warning(f"  Error on {source['name']}: {e}")
             raw_items = []
+
+        # Supplemental — see fetch_whatsnew() docstring. Additive only, and
+        # fetch_whatsnew() never raises, so a bad fetch here can't take out
+        # the RSS results already collected above.
+        if source.get("whatsnew_html") and not source.get("health"):
+            raw_items = raw_items + fetch_whatsnew(source)
 
         log.info(f"  → {len(raw_items)} raw items fetched.")
         if source.get("health"):
