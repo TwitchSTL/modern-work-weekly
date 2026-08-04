@@ -143,9 +143,18 @@ Edit `sources.py` — add a new entry to the `SOURCES` list with the portal URL.
 Prefer RSS feeds over HTML scraping where available. Set `health=True` for known
 issues pages that feed the sidebar health widget.
 
-Sources don't carry a category field — `classify_item()` in `scraper.py` always
+Most sources don't carry a category field — `classify_item()` in `scraper.py`
 classifies each item from its title/body text against `CLASSIFICATION_KEYWORDS`
-in `sources.py`, regardless of which source it came from. A new source doesn't
-need a category assignment; if its content isn't landing in the expected practice
-area, add keywords to `CLASSIFICATION_KEYWORDS` instead and check
-`classification_report.py` to confirm the fallback rate drops.
+in `sources.py`. If a new source's content isn't landing in the expected practice
+area, add keywords to `CLASSIFICATION_KEYWORDS` and check `classification_report.py`
+to confirm the fallback rate drops.
+
+Exception: `SOURCE_PILLARS` in `sources.py` lists a small set of sources whose
+product name maps to exactly one pillar with no ambiguity (Intune, Entra ID,
+Defender for Office 365, etc.) — `classify_item()` checks this first and skips
+keyword scoring entirely for those. Added 2026-08-04 after keyword-only scoring
+kept misfiring on sources whose own name contains another pillar's keyword (e.g.
+"Defender for **Office** 365" tripping the Collaboration & Productivity "office"
+keyword). Only add a source here if it's genuinely single-pillar — sources that
+legitimately span multiple pillars (Microsoft Security Blog, M365 Roadmap, MSRC,
+Microsoft Mechanics) should stay on keyword scoring.

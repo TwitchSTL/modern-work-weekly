@@ -28,7 +28,7 @@ import feedparser
 import requests
 from bs4 import BeautifulSoup
 
-from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS, DEFAULT_CATEGORY
+from sources import SOURCES, CLASSIFICATION_KEYWORDS, PHASE_KEYWORDS, DEFAULT_CATEGORY, SOURCE_PILLARS
 from dateutils import item_age_days
 import docs_updates
 
@@ -138,14 +138,30 @@ def item_id(source_name: str, title: str) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:16]
 
 
-def classify_item(title: str, body: str) -> tuple[str, bool]:
-    """Classify an item into a category based on keyword matching.
+def classify_item(title: str, body: str, source_name: str | None = None) -> tuple[str, bool]:
+    """Classify an item into a category.
 
-    Returns (category, matched). matched=False means no keyword scored above
-    zero and the category is DEFAULT_CATEGORY — a guess, not a real signal.
-    Callers should track this rather than treat every item as equally
-    confident; see write_classification_stats().
+    Checks SOURCE_PILLARS first: if source_name maps to a pillar there, use
+    it directly (matched=True) and skip keyword scoring entirely. Added
+    2026-08-04 after confirming keyword-only classification was misfiring on
+    sources whose own product name contains a different pillar's keyword —
+    e.g. "Defender for Office 365" items kept scoring into Collaboration &
+    Productivity because "office" is a keyword there, and "Defender for
+    Endpoint" items were at equal risk of scoring into Endpoint & Device
+    Management because "endpoint" is a keyword there. A source's identity is
+    a stronger, cheaper signal than re-deriving the same fact from prose
+    every time — but only for sources unambiguous enough to list in
+    SOURCE_PILLARS; see that dict's comment for what's deliberately excluded.
+
+    Falls back to keyword matching against CLASSIFICATION_KEYWORDS for any
+    source not in SOURCE_PILLARS. Returns (category, matched). matched=False
+    means no keyword scored above zero and the category is DEFAULT_CATEGORY
+    — a guess, not a real signal. Callers should track this rather than
+    treat every item as equally confident; see write_classification_stats().
     """
+    if source_name and source_name in SOURCE_PILLARS:
+        return SOURCE_PILLARS[source_name], True
+
     combined = (title + " " + body).lower()
     scores = {cat: 0 for cat in CLASSIFICATION_KEYWORDS}
     for cat, keywords in CLASSIFICATION_KEYWORDS.items():
@@ -603,7 +619,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
 
 def enrich_item(raw: dict) -> dict:
     """Add classification, phase, action fields to a raw item."""
-    category, matched = classify_item(raw["title"], raw["body"])
+    category, matched = classify_item(raw["title"], raw["body"], raw["source"])
     # Microsoft Viva's "Research Drop" posts are WorkLab-style workplace/AI
     # research essays, not product feature updates. Keyword-classifying them
     # into the six pillars was why they never surfaced: they don't carry

@@ -15,17 +15,36 @@ Each source has:
     instead of faking "now"
 
 Note: sources used to carry a "category" field ("default classification
-bucket"). It was removed 2026-07-17 — it was never actually read anywhere;
-classify_item() in scraper.py always classifies from the item's title/body
-text against CLASSIFICATION_KEYWORDS below, regardless of which source it
-came from. The field had drifted into a stale mix of old and new taxonomy
-labels across different sources, which was confusing to read and implied a
-behavior it didn't have. If you want a source's likely pillar for reference,
-see the README's "Sources scraped" table instead — that's curated by hand
-and isn't tied to any code path.
+bucket"). It was removed 2026-07-17 because it was never actually read
+anywhere — classify_item() in scraper.py always classified purely from the
+item's title/body text against CLASSIFICATION_KEYWORDS below, regardless of
+source. It had drifted into a stale mix of old and new taxonomy labels
+across different sources, confusing to read and implying a behavior it
+didn't have.
+
+A related-but-different mapping was added back 2026-08-04: SOURCE_PILLARS
+below (used by classify_item()) IS actively read, as a priority override
+before keyword scoring runs. The distinction that keeps it from rotting the
+same way: it's deliberately short, covering only sources whose product name
+maps to exactly one pillar with no real ambiguity (e.g. Intune is always
+Endpoint & Device Management). Sources that legitimately span multiple
+pillars (Microsoft Security Blog, Microsoft 365 Roadmap, Microsoft Security
+Response Center, Microsoft Mechanics) are deliberately left out so they
+keep going through keyword scoring. See classify_item()'s docstring for why
+this was needed — keyword-only classification was misfiring on sources
+whose product name contains another pillar's keyword (e.g. "Defender for
+**Office** 365" tripping the Collaboration & Productivity "office" keyword,
+or "Defender for **Endpoint**" tripping the Endpoint & Device Management
+"endpoint" keyword).
 
 Last reviewed: 2026-08-04
 Changes from prior version:
+  - Added SOURCE_PILLARS (see above) and wired it into classify_item() as a
+    priority override for unambiguous single-pillar sources. Confirmed live
+    on the 2026-08-04 draft: all 4 non-CVE "Defender for Office 365"
+    whats-new items had landed under Collaboration & Productivity instead
+    of Security & Compliance, because their titles/bodies contain "Office
+    365" and "office" is a Collaboration & Productivity keyword.
   - Added whatsnew_html=True to Intune, Entra ID, Purview, Defender XDR,
     Defender for Endpoint, Defender for Identity, and Defender for Office 365.
     Every source here has an rss field, so run_scraper()'s fetch dispatch
@@ -467,6 +486,41 @@ SOURCES = [
         "json_api": True,
     },
 ]
+
+# Source → pillar overrides, checked by classify_item() before it falls
+# back to keyword scoring. See the module docstring above for why this
+# exists and why it's safe against the same staleness that killed the old
+# per-source "category" field: only sources whose product name is
+# unambiguously one pillar are listed here. A source not listed here is
+# not an oversight — it's a deliberate signal that the source spans
+# multiple pillars and keyword scoring is the right tool for it.
+#
+# Keys must match SOURCES[]["name"] exactly. Values must be a key of
+# CLASSIFICATION_KEYWORDS below.
+SOURCE_PILLARS = {
+    "Intune": "Endpoint & Device Management",
+    "Entra ID": "Identity & Access",
+    "Teams": "Collaboration & Productivity",
+    "Purview": "Security & Compliance",
+    "SharePoint / OneDrive": "Collaboration & Productivity",
+    "Defender XDR": "Security & Compliance",
+    "Defender for Endpoint": "Security & Compliance",
+    "Defender for Identity": "Security & Compliance",
+    "Defender for Office 365": "Security & Compliance",
+    "Exchange Online": "Collaboration & Productivity",
+    "Windows 365": "Endpoint & Device Management",
+    "Windows Autopatch": "Endpoint & Device Management",
+    "Autopilot": "Endpoint & Device Management",
+    "Microsoft 365 Copilot": "AI & Copilot",
+    "Copilot Studio": "AI & Copilot",
+    "Power Platform": "AI & Copilot",
+    "Agent 365": "AI & Copilot",
+    "Microsoft Viva": "Employee Experience",
+    "Global Secure Access": "Security & Compliance",
+    # Deliberately NOT listed (span multiple pillars — keep keyword scoring):
+    # Microsoft Security Blog, Microsoft 365 Roadmap,
+    # Microsoft Security Response Center, Microsoft Mechanics.
+}
 
 # Classification keywords — Modern Work practice-area alignment
 # Pillars: Identity & Access, Endpoint & Device Management, Collaboration &
