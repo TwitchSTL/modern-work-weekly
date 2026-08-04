@@ -1,5 +1,201 @@
 [
   {
+    "title": "Edge auto-unsubscribes users from malicious notification sources (GA: September 2026).",
+    "category": "Top 5 This Week",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "SmartScreen now closes the loop on notification-based phishing by automatically revoking notification permissions when a source directs users to a blocked site. No admin policy required, but know this behavior is coming "
+  },
+  {
+    "title": "CVE-2026-47301 Configuration Manager Elevation of Privilege: build number corrected.",
+    "category": "Top 5 This Week",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "If you cross-referenced the Security Updates table for SCCM patching decisions last week, recheck the corrected build numbers now to confirm you applied the right update."
+  },
+  {
+    "title": "Kubernetes privilege escalation hunting via KQL in Defender for Cloud.",
+    "category": "Top 5 This Week",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The CloudProcessEvents and CloudAuditEvents tables together surface cluster-admin role binding creation in near real time. If you run AKS or any Kubernetes workloads, this detection pattern should be in your threat hunti"
+  },
+  {
+    "title": "SMS/voice MFA retirement FAQ now has a dedicated page.",
+    "category": "Top 5 This Week",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The retirement is progressing and the FAQ has been split out into its own article, signaling the docs are being hardened ahead of enforcement. If you have users still on SMS/voice MFA, this is your cue to accelerate migr"
+  },
+  {
+    "title": "Intune July 2026 release and service release 2607 documented.",
+    "category": "Top 5 This Week",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Both the monthly release notes and the 2607 service release What's New pages are now live. Review them to understand what landed in your tenant before end-users start asking questions."
+  },
+  {
+    "title": "Hunt Kubernetes Privilege Escalation With KQL",
+    "category": "Security & Compliance",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "[GA] - If you manage Kubernetes workloads in Azure, this detection pattern belongs in your threat hunting library. Use CloudProcessEvents for runtime activity and CloudAuditEvents for control plane actions in Defender fo"
+  },
+  {
+    "title": "CVE-2026-50422 Windows NTFS Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "[GA] - Acknowledgement update only, no technical or patch details have changed. No action required unless you were tracking attribution; confirm your patch status against the previously published Security Updates table."
+  },
+  {
+    "title": "CVE-2026-47301 Configuration Manager Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "[GA] - The build number in the Security Updates table has been corrected. If you used last week's table to validate your SCCM patch level, recheck the advisory now to confirm the update you applied actually satisfies the"
+  },
+  {
+    "title": "CVE-2026-59117 Windows Terminal Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "[GA] - The affected software name has been corrected from \"Microsoft Power Apps\" to \"Microsoft Power Apps Desktop Client.\" Informational change only; if you scoped remediation or exclusions based on the previous product "
+  },
+  {
+    "title": "Microsoft Edge: Automatically unsubscribe users from notifications sent by scam and malicious sites",
+    "category": "Security & Compliance",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "[GA] - Landing in September 2026, Edge will automatically revoke notification permissions when SmartScreen identifies a notification source as directing users to scam, phishing, or malware pages, then notifies the user. "
+  },
+  {
+    "title": "Microsoft Edge: Improved website compatibility with site troubleshooting controls",
+    "category": "Security & Compliance",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "[GA] - Also targeting September 2026, Edge will surface contextual troubleshooting options, including tracking prevention adjustments and site-specific settings, when a site behaves unexpectedly. This reduces support noi"
+  },
+  {
+    "title": "CVE-2026-47301 Configuration Manager EoP: revalidate your patch level",
+    "category": "Action Required",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The corrected build number in the Security Updates table means any patch validation done against the original advisory may have been against a wrong target. Confirm the SCCM build running in your environment matches the "
+  },
+  {
+    "title": "SMS/Voice MFA retirement: begin or accelerate migration",
+    "category": "Action Required",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The retirement FAQ is now a standalone article, a documentation posture that typically precedes enforcement timelines tightening. Audit users still registered only for SMS or voice MFA, assign Authenticator app or FIDO2 "
+  },
+  {
+    "title": "Microsoft Tunnel prerequisite changes: review before next deployment",
+    "category": "Action Required",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Updated prerequisites are now documented for Microsoft Tunnel. Before onboarding new Tunnel servers or updating existing ones, review the revised requirements to avoid failed deployments or unsupported configurations."
+  },
+  {
+    "title": "SMS/Voice MFA retirement FAQ split into a dedicated article",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The retirement FAQ has been separated from the main MFA docs into its own page, consolidating guidance and signaling the retirement is progressing toward enforcement."
+  },
+  {
+    "title": "API instructions added for custom call-outs in attribute mappings",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "A new reference article covers custom call-outs, and API-level configuration instructions have been added to the attribute mappings article, giving engineers a programmatic path for extending provisioning workflows."
+  },
+  {
+    "title": "Global Secure Access: remote network CPE behind NAT guidance added",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "New guidance documents how to configure remote network Customer Premises Equipment sitting behind NAT for Global Secure Access, covering a topology that previously had no official walkthrough."
+  },
+  {
+    "title": "Internet Access profile documentation revised",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The Global Secure Access Internet Access profile docs have been meaningfully updated; if you are deploying or reviewing Internet Access policies, pull the latest version before making configuration decisions."
+  },
+  {
+    "title": "New multitenant architecture guide published",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "A new authoritative guide covering multitenant Entra ID architecture has been added, useful for engineers designing cross-tenant identity topologies or advising customers on tenant consolidation or federation patterns."
+  },
+  {
+    "title": "Microsoft Tunnel prerequisites updated",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Prerequisites for Microsoft Tunnel have been revised; review before deploying new Tunnel servers to avoid configuration failures against changed requirements."
+  },
+  {
+    "title": "Intune July 2026 release notes published",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Full July 2026 release details are now documented; review to understand what features landed in your tenant this month."
+  },
+  {
+    "title": "Intune service release 2607 What's New documented",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The 2607 service release What's New page is live; cross-reference this with the monthly release notes to get a complete picture of July changes."
+  },
+  {
+    "title": "Azure Virtual Desktop deployment requirements updated in Intune docs",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Deployment requirements for managing AVD with Intune have been revised; if you are enrolling or managing AVD session hosts, verify your setup matches the updated requirements."
+  },
+  {
+    "title": "Force Encryption flag support added to Intune SQL configuration docs",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Documentation now covers the Force Encryption flag for SQL connectivity in Intune-managed configurations, alongside a reorganization of SQL-related pages."
+  },
+  {
+    "title": "CVE-2026-47301 references added to Configuration Manager KB articles",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "KB articles covering the Configuration Manager console extension fix and a related update now include explicit CVE-2026-47301 references, making it easier to confirm patch coverage from the KB side."
+  },
+  {
+    "title": "Defender for Office 365 block entry behavior clarified for domains and subdomains",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "The explanation of how block entries apply to domains versus subdomains in the Tenant Allow/Block List has been updated; if you manage domain-level blocks, review to confirm your entries behave as intended."
+  },
+  {
+    "title": "Approval functionality removed from Defender docs",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "Approval-related content has been removed from a Defender doc, indicating a feature or workflow change; check whether any internal runbooks reference this functionality and update accordingly."
+  },
+  {
+    "title": "IIJ added as a trusted ARC sealer in email authentication docs",
+    "category": "Documentation Updates",
+    "date": "2026-08-04",
+    "url": "/posts/2026-08-04/",
+    "snippet": "IIJ is now listed as a supported trusted ARC sealer configuration, relevant for organizations routing mail through IIJ or validating ARC chain integrity for third-party sealers."
+  },
+  {
     "title": "Purview DLM billing model changes to volume-based",
     "category": "Top 5 This Week",
     "date": "2026-07-28",
