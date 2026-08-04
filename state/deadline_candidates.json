@@ -1,0 +1,53 @@
+{
+  "generated": "2026-08-04",
+  "candidates": [
+    {
+      "title": "New setting to disable the Get Started app",
+      "url": "https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-experience",
+      "source": "Intune",
+      "pillar": "Security & Compliance",
+      "signal": "disabl",
+      "extracted_date": null
+    },
+    {
+      "title": "What\u2019s New in Copilot in SharePoint: July 2026",
+      "url": "https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/what-s-new-in-copilot-in-sharepoint-july-2026/ba-p/4535420",
+      "source": "SharePoint / OneDrive",
+      "pillar": "Collaboration & Productivity",
+      "signal": "rolling out",
+      "extracted_date": "July 2026"
+    },
+    {
+      "title": "Writeback for Cloud-Managed Remote Mailboxes: Now in Public Preview",
+      "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/writeback-for-cloud-managed-remote-mailboxes-now-in-public/ba-p/4520138",
+      "source": "Exchange Online",
+      "pillar": "Collaboration & Productivity",
+      "signal": "retiring",
+      "extracted_date": null
+    },
+    {
+      "title": "Advanced hunting sign-in table migration",
+      "url": "advanced-hunting-aadsignineventsbeta-table",
+      "source": "Defender XDR",
+      "pillar": "Identity & Access",
+      "signal": "deprecat",
+      "extracted_date": "October 19, 2026"
+    },
+    {
+      "title": "What's New in Microsoft Entra: July 2026",
+      "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/what-s-new-in-microsoft-entra-july-2026/ba-p/4534631",
+      "source": "Entra ID",
+      "pillar": "Identity & Access",
+      "signal": "general availability",
+      "extracted_date": "July 2026"
+    },
+    {
+      "title": "Microsoft Entra ID enhances security of branded sign-ins",
+      "url": "https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471",
+      "source": "Entra ID",
+      "pillar": "Identity & Access",
+      "signal": "retire",
+      "extracted_date": "October 26, 2026"
+    }
+  ]
+}
