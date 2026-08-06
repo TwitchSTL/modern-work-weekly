@@ -1,38 +1,55 @@
 {{ define "main" }}
-<div class="container exec-list-wide">
+{{/* 2-column layout (center + Key Dates sidebar), matching the same
+     .post-layout/.post-layout-2col grid the technical digest single pages
+     use (_default/single.html) — reused here for the exec list page
+     instead of a single article. Key Dates is the same partial the
+     homepage's right sidebar uses; deadlines are directly relevant to an
+     executive audience (compliance/cost timelines), unlike the homepage's
+     left "Known Issues" sidebar, which is IT-troubleshooting detail this
+     page intentionally leaves out. Added 2026-08-06. */}}
+<div class="post-layout post-layout-2col exec-layout">
 
-  <section class="exec-list-header">
-    <h1 class="exec-list-title">Executive's Guide</h1>
-    <p class="exec-list-sub">Microsoft 365 changes explained for business leaders — risk, compliance, cost, and user impact. No jargon.</p>
-    <p class="exec-list-note">Each edition pairs with the <a href="/posts/">technical digest</a> published the same week.</p>
-  </section>
+  <div class="exec-list-main">
 
-  <div class="wip-banner">
-    <span class="wip-banner-icon">🚧</span>
-    <span><strong>Work in Progress</strong> — The Executive's Guide is auto-generated and reviewed weekly. Content quality and depth improve over time. Verify key details before sharing with leadership.</span>
+    <section class="exec-list-header">
+      <h1 class="exec-list-title">Executive's Guide</h1>
+      <p class="exec-list-sub">Microsoft 365 changes explained for business leaders — risk, compliance, cost, and user impact. No jargon.</p>
+      <p class="exec-list-note">Each edition pairs with the <a href="/posts/">technical digest</a> published the same week.</p>
+    </section>
+
+    <div class="wip-banner">
+      <span class="wip-banner-icon">🚧</span>
+      <span><strong>Work in Progress</strong> — The Executive's Guide is auto-generated and reviewed weekly. Content quality and depth improve over time. Verify key details before sharing with leadership.</span>
+    </div>
+
+    <section class="post-list">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="post-card exec-card">
+        <div class="post-card-meta">
+          <time>{{ .Date.Format "Jan 02, 2006" }}</time>
+          <span class="meta-sep">·</span>
+          <span>{{ .ReadingTime }} min read</span>
+          <span class="meta-sep">·</span>
+          <span class="exec-badge">Leadership</span>
+        </div>
+        <h2 class="post-card-title">
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h2>
+        {{ with .Description }}
+        <p class="post-card-desc">{{ . }}</p>
+        {{ end }}
+        {{ partial "exec-card-signals.html" . }}
+        <a class="read-more" href="{{ .Permalink }}">Read brief →</a>
+      </article>
+      {{ end }}
+    </section>
+
   </div>
 
-  <section class="post-list">
-    {{ range .Pages.ByDate.Reverse }}
-    <article class="post-card exec-card">
-      <div class="post-card-meta">
-        <time>{{ .Date.Format "Jan 02, 2006" }}</time>
-        <span class="meta-sep">·</span>
-        <span>{{ .ReadingTime }} min read</span>
-        <span class="meta-sep">·</span>
-        <span class="exec-badge">Leadership</span>
-      </div>
-      <h2 class="post-card-title">
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-      </h2>
-      {{ with .Description }}
-      <p class="post-card-desc">{{ . }}</p>
-      {{ end }}
-      {{ partial "exec-card-signals.html" . }}
-      <a class="read-more" href="{{ .Permalink }}">Read brief →</a>
-    </article>
-    {{ end }}
-  </section>
+  <!-- Right sidebar: Key Dates -->
+  <aside class="post-sidebar post-sidebar-right">
+    {{ partial "deadlines-calendar.html" . }}
+  </aside>
 
 </div>
 {{ end }}

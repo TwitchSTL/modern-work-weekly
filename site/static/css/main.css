@@ -1424,8 +1424,11 @@ details[open] .toc-label::before { content: "▼ "; }
 .post-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
 
 /* Homepage right sidebar: calendar grid floats, upcoming list scrolls.
-   Override overflow so the sidebar itself doesn't scroll as a whole. */
-.home-layout .post-sidebar-right {
+   Override overflow so the sidebar itself doesn't scroll as a whole.
+   .exec-layout reuses the same Key Dates partial on the Exec Guide list
+   page (2026-08-06), so it needs the same override. */
+.home-layout .post-sidebar-right,
+.exec-layout .post-sidebar-right {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -2594,15 +2597,6 @@ details[open] .toc-label::before { content: "▼ "; }
   text-decoration: none;
 }
 .exec-sources-block a:hover { text-decoration: underline; }
-
-/* Widen the Exec Guide list page (2026-08-06) — it's a single-column list
-   with no sidebars, so the default 740px .container left a lot of empty
-   space on wider viewports. 960px is a middle ground between that and the
-   1380px 3-column .main-wide (which is sized for a layout with 240px
-   sidebars, not a single reading column). */
-.exec-list-wide {
-  max-width: 960px;
-}
 
 .exec-list-header {
   padding: 2rem 0 1.5rem;
