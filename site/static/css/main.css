@@ -519,6 +519,12 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 .urgency-chip-action { border: 1px solid #ff6b6b; color: #ff6b6b; }
 .urgency-chip-cve    { border: 1px solid #f0883e; color: #f0883e; }
 
+/* Exec Guide risk chips (2026-08-06) — same colors as the single exec
+   page's own risk dashboard (.exec-stat-card-high/-med/-low). */
+.urgency-chip-risk-high { border: 1px solid #ff6b6b; color: #ff6b6b; }
+.urgency-chip-risk-med  { border: 1px solid #f0883e; color: #f0883e; }
+.urgency-chip-risk-low  { border: 1px solid #3fb950; color: #3fb950; }
+
 .read-more {
   font-size: 0.85rem;
   font-weight: 500;
@@ -2588,6 +2594,15 @@ details[open] .toc-label::before { content: "▼ "; }
   text-decoration: none;
 }
 .exec-sources-block a:hover { text-decoration: underline; }
+
+/* Widen the Exec Guide list page (2026-08-06) — it's a single-column list
+   with no sidebars, so the default 740px .container left a lot of empty
+   space on wider viewports. 960px is a middle ground between that and the
+   1380px 3-column .main-wide (which is sized for a layout with 240px
+   sidebars, not a single reading column). */
+.exec-list-wide {
+  max-width: 960px;
+}
 
 .exec-list-header {
   padding: 2rem 0 1.5rem;

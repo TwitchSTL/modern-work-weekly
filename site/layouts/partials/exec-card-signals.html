@@ -1,0 +1,25 @@
+{{/*
+  exec-card-signals.html — quick-scan risk signals for an Executive's Guide
+  list card (2026-08-06). Exec posts don't have multi-pillar categories to
+  badge (front matter categories is always "Executive Guide") or a sources
+  list to count CVEs from, but each one hand-flags its four "Week at a
+  Glance" bullets 🔴/🟡/🟢 by risk level — the signal an executive scanning
+  the list actually wants (is there something red this week?).
+
+  risk_high / risk_med / risk_low come from front matter, written by
+  scraper/digest.py's inject_exec_risk_stats() for every exec post
+  generated from 2026-08-06 onward, and backfilled once for earlier posts.
+  Colors match the single exec page's own risk dashboard
+  (.exec-stat-card-high/-med/-low) so a risk level reads the same color
+  everywhere on the site.
+*/}}
+{{ $riskHigh := .Params.risk_high | default 0 }}
+{{ $riskMed := .Params.risk_med | default 0 }}
+{{ $riskLow := .Params.risk_low | default 0 }}
+{{ if or (gt $riskHigh 0) (gt $riskMed 0) (gt $riskLow 0) }}
+<div class="post-card-urgency">
+  {{ if gt $riskHigh 0 }}<span class="urgency-chip urgency-chip-risk-high">{{ $riskHigh }} high risk</span>{{ end }}
+  {{ if gt $riskMed 0 }}<span class="urgency-chip urgency-chip-risk-med">{{ $riskMed }} medium</span>{{ end }}
+  {{ if gt $riskLow 0 }}<span class="urgency-chip urgency-chip-risk-low">{{ $riskLow }} low</span>{{ end }}
+</div>
+{{ end }}

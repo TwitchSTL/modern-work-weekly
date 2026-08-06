@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="container">
+<div class="container exec-list-wide">
 
   <section class="exec-list-header">
     <h1 class="exec-list-title">Executive's Guide</h1>
@@ -28,6 +28,7 @@
       {{ with .Description }}
       <p class="post-card-desc">{{ . }}</p>
       {{ end }}
+      {{ partial "exec-card-signals.html" . }}
       <a class="read-more" href="{{ .Permalink }}">Read brief →</a>
     </article>
     {{ end }}

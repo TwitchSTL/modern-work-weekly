@@ -852,6 +852,49 @@ def inject_card_stats(content: str) -> str:
     return content[: front_matter_match.end(1)] + stats_block + content[front_matter_match.end(1) :]
 
 
+# ── Executive's Guide card quick signals ────────────────────────────────────
+# Same idea as the technical post's cve_count/action_required_count above,
+# but exec posts don't have a source list or multi-pillar categories to key
+# off of (front matter categories is always the single value "Executive
+# Guide" — see the system prompt). What they do have is "The Week at a
+# Glance", four bullets each hand-flagged 🔴/🟡/🟢 by risk level — exactly
+# the signal an executive scanning the list page wants (is there something
+# red this week?), and it already matches the red/orange/green palette the
+# single exec page's own risk dashboard uses (exec-stat-card-high/med/low).
+# Added 2026-08-06.
+_EXEC_FRONT_MATTER_RE = re.compile(r"^(---\s*\n.*?\n)(---\s*\n)", re.DOTALL)
+_WEEK_AT_GLANCE_RE = re.compile(
+    r"^## The Week at a Glance\s*\n(?P<body>.*?)(?=\n## |\Z)", re.MULTILINE | re.DOTALL
+)
+
+
+def compute_exec_risk_stats(content: str) -> dict:
+    """Count 🔴/🟡/🟢-flagged bullets in the exec post's Week at a Glance."""
+    match = _WEEK_AT_GLANCE_RE.search(content)
+    body = match.group("body") if match else ""
+    return {
+        "risk_high": len(re.findall(r"^-\s*🔴", body, re.MULTILINE)),
+        "risk_med": len(re.findall(r"^-\s*🟡", body, re.MULTILINE)),
+        "risk_low": len(re.findall(r"^-\s*🟢", body, re.MULTILINE)),
+    }
+
+
+def inject_exec_risk_stats(content: str) -> str:
+    """Write compute_exec_risk_stats() into the exec post's front matter as
+    `risk_high:`/`risk_med:`/`risk_low:`, inserted right before the closing
+    `---`. Leaves content untouched if front matter can't be found."""
+    stats = compute_exec_risk_stats(content)
+    m = _EXEC_FRONT_MATTER_RE.match(content)
+    if not m:
+        return content
+    stats_block = (
+        f"risk_high: {stats['risk_high']}\n"
+        f"risk_med: {stats['risk_med']}\n"
+        f"risk_low: {stats['risk_low']}\n"
+    )
+    return content[: m.end(1)] + stats_block + content[m.end(1) :]
+
+
 def _draft_links(draft: dict) -> list:
     """Pull (title, url, wordset) triples straight from the raw scraped items
     in this week's draft.
@@ -1143,6 +1186,7 @@ def run(args):
         try:
             exec_prompt = build_exec_prompt(draft, max_age_days=max_age_days)
             exec_content = clean_dashes(call_claude_exec(exec_prompt))
+            exec_content = inject_exec_risk_stats(exec_content)
             exec_post_path = write_exec_post(exec_content, week_of)
         except Exception as e:
             log.warning(f"Executive's Guide generation failed (non-fatal): {e}")
