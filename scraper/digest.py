@@ -812,6 +812,46 @@ def tag_top5_categories(content: str) -> str:
     return content[: top5_match.start(1)] + tagged_block + content[top5_match.end(1) :]
 
 
+# ── Homepage card quick signals ─────────────────────────────────────────────
+# The homepage card for each week (site/layouts/_default/list.html) shows a
+# reader two quick signals before they click through: how many CVEs this
+# week touches and how many Action Required items are flagged. Counted here,
+# post-generation, from Claude's own output — same reasoning as
+# extract_category_sections()/tag_top5_categories() above: a self-reported
+# count in the prompt is exactly the kind of soft instruction that drifts,
+# deterministic post-processing doesn't (see clean_dashes()/MAX_PER_CAT
+# precedent). Added 2026-08-06.
+_CVE_RE = re.compile(r"CVE-\d{4,}-\d+", re.IGNORECASE)
+_ACTION_REQUIRED_SECTION_RE = re.compile(
+    r"^## Action Required\s*\n(?P<body>.*?)(?=\n## |\Z)", re.MULTILINE | re.DOTALL
+)
+
+
+def compute_card_stats(content: str) -> dict:
+    """Count CVEs (deduped) and Action Required bullets in a generated post."""
+    cve_count = len({m.group(0).upper() for m in _CVE_RE.finditer(content)})
+    action_required_count = 0
+    ar_match = _ACTION_REQUIRED_SECTION_RE.search(content)
+    if ar_match:
+        action_required_count = len(list(_CATEGORY_ITEM_RE.finditer(ar_match.group("body"))))
+    return {"cve_count": cve_count, "action_required_count": action_required_count}
+
+
+def inject_card_stats(content: str) -> str:
+    """Write compute_card_stats() into the post's front matter as
+    `cve_count:` / `action_required_count:`, inserted immediately before the
+    `sources:` block. If the front matter doesn't have a top-level
+    `sources:` line in the expected place, leave content untouched rather
+    than guess where to insert — the homepage card simply omits the signal
+    chips for that post (list.html guards with `default 0`)."""
+    stats = compute_card_stats(content)
+    front_matter_match = re.match(r"^(---\s*\n.*?)(^sources:\s*\n)", content, re.DOTALL | re.MULTILINE)
+    if not front_matter_match:
+        return content
+    stats_block = f"cve_count: {stats['cve_count']}\naction_required_count: {stats['action_required_count']}\n"
+    return content[: front_matter_match.end(1)] + stats_block + content[front_matter_match.end(1) :]
+
+
 def _draft_links(draft: dict) -> list:
     """Pull (title, url, wordset) triples straight from the raw scraped items
     in this week's draft.
@@ -1094,6 +1134,7 @@ def run(args):
 
     content = clean_dashes(call_claude(prompt))
     content = tag_top5_categories(content)
+    content = inject_card_stats(content)
     post_path = write_post(content, week_of)
 
     # Generate Executive's Guide unless skipped

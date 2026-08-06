@@ -1,0 +1,58 @@
+{{/*
+  post-card-signals.html — quick-scan signals for a digest homepage card
+  (2026-08-06): colored pillar badges (which categories got coverage) plus
+  urgency chips (CVE count, Action Required count) so a reader can judge a
+  week's relevance before clicking through.
+
+  Pillar colors match the canonical PILLAR_COLORS map already used in
+  deadlines-sidebar.html / deadlines.html / calendar.js / collapsible.js —
+  kept in sync manually since there's no shared data source across
+  Hugo templates and static JS.
+
+  cve_count / action_required_count come from front matter, written by
+  scraper/digest.py's inject_card_stats() for every post generated from
+  2026-08-06 onward, and backfilled once for earlier posts. Older posts
+  with neither field just show pillar badges with no urgency chips.
+*/}}
+{{ $page := . }}
+{{ $categories := $page.Params.categories }}
+{{ $cveCount := $page.Params.cve_count | default 0 }}
+{{ $arCount := $page.Params.action_required_count | default 0 }}
+{{ if or $categories (gt $cveCount 0) (gt $arCount 0) }}
+<div class="post-card-signals">
+  {{ if $categories }}
+  <div class="post-card-pillars">
+    {{/* Current (2026-07+) Modern Work pillars, plus the legacy Zero Trust
+         pillar names carried on posts published before the 2026-07-14
+         taxonomy reframe (forward-only rename — old posts keep their
+         original category headings). Colors match collapsible.js's
+         PILLAR_COLORS exactly so a pillar reads the same color everywhere
+         on the site regardless of which taxonomy generation a post used. */}}
+    {{ $pillarColors := dict
+      "Identity & Access"            "#a78bfa"
+      "Endpoint & Device Management" "#3fb950"
+      "Collaboration & Productivity" "#58a6ff"
+      "AI & Copilot"                 "#f0883e"
+      "Employee Experience"          "#f778ba"
+      "Security & Compliance"        "#d2a8ff"
+      "Identity"                     "#a78bfa"
+      "Devices"                      "#3fb950"
+      "Apps"                         "#58a6ff"
+      "Data"                         "#f0883e"
+      "Network"                      "#39d353"
+      "Visibility & Automation"      "#d2a8ff"
+    }}
+    {{ range $categories }}
+      {{ $color := index $pillarColors . | default "#6e7681" }}
+      <span class="pillar-chip" style="--pillar-color: {{ $color }}">{{ . }}</span>
+    {{ end }}
+  </div>
+  {{ end }}
+  {{ if or (gt $arCount 0) (gt $cveCount 0) }}
+  <div class="post-card-urgency">
+    {{ if gt $arCount 0 }}<span class="urgency-chip urgency-chip-action">{{ $arCount }} action item{{ if ne $arCount 1 }}s{{ end }}</span>{{ end }}
+    {{ if gt $cveCount 0 }}<span class="urgency-chip urgency-chip-cve">{{ $cveCount }} CVE{{ if ne $cveCount 1 }}s{{ end }}</span>{{ end }}
+  </div>
+  {{ end }}
+</div>
+{{ end }}

@@ -475,6 +475,50 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   color: var(--color-accent);
 }
 
+/* ── Homepage card quick signals (2026-08-06) ────────────────────────────
+   Pillar badges + urgency chips (CVE / Action Required counts) so a reader
+   can judge a week's relevance before clicking through. Solid-border-on-
+   surface treatment matches the existing .topic-chip/.cat-badge language
+   rather than introducing a new tinted-background style. */
+.post-card-signals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.post-card-pillars,
+.post-card-urgency {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pillar-chip {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--pillar-color, #6e7681);
+  color: var(--pillar-color, #6e7681);
+  letter-spacing: 0.01em;
+}
+
+.urgency-chip {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  letter-spacing: 0.01em;
+}
+
+.urgency-chip-action { border: 1px solid #ff6b6b; color: #ff6b6b; }
+.urgency-chip-cve    { border: 1px solid #f0883e; color: #f0883e; }
+
 .read-more {
   font-size: 0.85rem;
   font-weight: 500;

@@ -30,6 +30,7 @@
         {{ with .Description }}
         <p class="post-card-desc">{{ . }}</p>
         {{ end }}
+        {{ partial "post-card-signals.html" . }}
         {{ with .Params.tags }}
         <div class="post-card-topics">
           {{ range . }}<a class="topic-chip" href="/tags/{{ . | urlize }}/">{{ . }}</a>{{ end }}
@@ -65,6 +66,7 @@
     {{ with .Description }}
     <p class="post-card-desc">{{ . }}</p>
     {{ end }}
+    {{ partial "post-card-signals.html" . }}
     <a class="read-more" href="{{ .Permalink }}">Read digest →</a>
   </article>
   {{ end }}
