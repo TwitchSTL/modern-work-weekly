@@ -13,15 +13,17 @@ _build:
 
 Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly pulls from 30+ official Microsoft sources, filters the noise, and surfaces what actually matters.
 
-No marketing. No executive summaries. Operational signal only.
+No marketing. Operational signal, not corporate comms-speak.
+
+The weekly digest above is written for the engineers doing the work. A companion [Executive's Guide](/exec/) runs alongside it every week, same underlying changes, reframed around risk and decisions instead of admin console steps, for anyone who needs to brief leadership rather than configure a policy.
 
 ---
 
 ## Standing on the shoulders of giants
 
-This site wouldn't exist without the Microsoft employees, MVPs, and community contributors who put out exceptional work — writing detailed docs, publishing deep-dive blog posts, presenting at Ignite and community events, and generally making the M365 ecosystem more legible for everyone trying to work in it.
+This site wouldn't exist without the Microsoft employees, MVPs, and community contributors who put out exceptional work - writing detailed docs, publishing deep-dive blog posts, presenting at Ignite and community events, and generally making the M365 ecosystem more legible for everyone trying to work in it.
 
-The problem isn't a lack of content. It's the opposite: between the official What's New pages, MVP blogs, Tech Community posts, and product-specific portals, there's more signal than any one person can reasonably track. Especially for MSP engineers supporting multiple clients across multiple environments — the breadth of what you need to stay current on is enormous.
+The problem isn't a lack of content. It's the opposite: between the official What's New pages, MVP blogs, Tech Community posts, and product-specific portals, there's more signal than any one person can reasonably track. Especially for MSP engineers supporting multiple clients across multiple environments - the breadth of what you need to stay current on is enormous.
 
 This is my attempt to solve that for myself, and share it with anyone else who finds it useful. One place, one weekly cadence, organized by the pillars that matter.
 
@@ -29,12 +31,12 @@ This is my attempt to solve that for myself, and share it with anyone else who f
 
 ## What's covered
 
-- **Identity & Access** — Entra ID, Conditional Access, External MFA, hybrid sync, Privileged Identity Management, and the expanding agent identity model.
-- **Endpoint & Device Management** — Intune for Windows, macOS, iOS, and Android; Autopatch, Autopilot, Windows 365; configuration policies, compliance, and the PowerShell/Graph API hooks underneath.
-- **Collaboration & Productivity** — Teams, SharePoint, OneDrive, and Exchange feature changes. Currently the largest single category of weekly content.
-- **AI & Copilot** — Microsoft 365 Copilot, Copilot Studio, Agent 365, and Power Platform automation, plus the licensing and governance guardrails that come with them.
-- **Employee Experience** — Viva Insights, Learning, Engage, and Goals, plus Microsoft's own workplace research translated into what it means for your organization's planning.
-- **Security & Compliance** — Defender (XDR, Endpoint, Identity, Office 365), Microsoft Purview (DLP, sensitivity labels, insider risk, data governance), Global Secure Access, and the practical Zero Trust posture work underneath: Conditional Access, device compliance, Secure Score.
+- **Identity & Access** - Entra ID, Conditional Access, External MFA, hybrid sync, Privileged Identity Management, and the expanding agent identity model.
+- **Endpoint & Device Management** - Intune for Windows, macOS, iOS, and Android; Autopatch, Autopilot, Windows 365; configuration policies, compliance, and the PowerShell/Graph API hooks underneath.
+- **Collaboration & Productivity** - Teams, SharePoint, OneDrive, and Exchange feature changes. Currently the largest single category of weekly content.
+- **AI & Copilot** - Microsoft 365 Copilot, Copilot Studio, Agent 365, and Power Platform automation, plus the licensing and governance guardrails that come with them.
+- **Employee Experience** - Viva Insights, Learning, Engage, and Goals, plus Microsoft's own workplace research translated into what it means for your organization's planning.
+- **Security & Compliance** - Defender (XDR, Endpoint, Identity, Office 365), Microsoft Purview (DLP, sensitivity labels, insider risk, data governance), Global Secure Access, and the practical Zero Trust posture work underneath: Conditional Access, device compliance, Secure Score.
 
 Licensing and cost implications (E3/E5, Business Premium, Copilot add-ons) get called out wherever they're relevant, rather than tracked as a separate category.
 
@@ -48,7 +50,7 @@ The goal is simple: close that gap. One well-organized digest, once a week, so e
 
 This will always be free and open. I'm not selling anything.
 
-If this digest saves you an hour of portal-hunting — or helps you catch something before it breaks something — that's the whole point. If you want to help offset the API costs and keep me motivated to make it better, [a small contribution on Ko-fi](https://ko-fi.com/ryanarbuckle) goes a long way. No pressure, no paywall.
+If this digest saves you an hour of portal-hunting - or helps you catch something before it breaks something - that's the whole point. If you want to help offset the API costs and keep me motivated to make it better, [a small contribution on Ko-fi](https://ko-fi.com/ryanarbuckle) goes a long way. No pressure, no paywall.
 
 ---
 

@@ -87,6 +87,10 @@
   </div>
   <script>window._siteBuildTime = {{ now.Unix }};</script>
   <script src="/js/search.js?v={{ now.Unix }}"></script>
-  <script src="/js/main.js?v={{ now.Unix }}"></script>
+  <!-- No site/static/js/main.js has ever existed in this repo (confirmed via
+       `git log --all -- site/static/js/main.js`, zero history) — this tag was
+       requesting a file that never shipped, returning a 503 on every page load.
+       search.js and every other page script are self-contained IIFEs with no
+       shared main.js dependency, so removing this has no functional effect. -->
 </body>
 </html>

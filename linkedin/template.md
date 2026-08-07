@@ -6,7 +6,7 @@ Use this as a reference for the article format when posting to LinkedIn Articles
 ---
 
 ## Article title format
-`Modern Work Weekly — Week of YYYY-MM-DD`
+`Modern Work Weekly - Week of YYYY-MM-DD` (plain hyphen, not an em dash)
 
 ## Tagline (goes under the title)
 *Your weekly Microsoft 365 / Modern Work change digest for engineers, architects, and admins.*

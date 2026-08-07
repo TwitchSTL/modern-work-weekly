@@ -27,6 +27,11 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import digest  # for clean_dashes() — see feedback_mww_prompt_reliability memory:
+                # prompt-only "never use em dashes" rules aren't reliable, this
+                # script had its own Claude call with no code-level backstop.
+
 BASE_DIR  = Path(__file__).resolve().parent.parent
 POSTS_DIR = BASE_DIR / "site" / "content" / "posts"
 ENV_FILE  = Path("/opt/modern-work-weekly/.env")
@@ -43,7 +48,7 @@ Format rules:
 - Front matter: title, date, description (1-2 punchy sentences matching the week's actual tone — highlight what's most notable whether that's a new feature, a deadline, a risk, or a capability unlock; not everything is a warning, some weeks are rich with feature enablements or reporting improvements), tags (see standard list below), categories (from the standard list)
 - Do NOT write an intro paragraph in the post body. The front matter description already serves that purpose and is rendered separately by the site template. Start the body directly with the first section heading.
 - Top 5 section: the 5 most important changes this week with a brief why-it-matters for each
-- Title format must be exactly: "Modern Work Weekly — Week of YYYY-MM-DD"
+- Title format must be exactly: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash)
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
   `- **[Title](source-url)** [phase tag] — [1-3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL using Markdown link syntax. If no URL is available, write the title without a link.
@@ -102,7 +107,7 @@ def reformat_post(date: str, dry_run: bool = False) -> None:
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_prompt}],
     )
-    result = message.content[0].text
+    result = digest.clean_dashes(message.content[0].text)
     log.info(f"Received {len(result)} chars from Claude")
 
     # Back up original

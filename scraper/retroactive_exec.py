@@ -21,6 +21,11 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import digest  # for clean_dashes() — see feedback_mww_prompt_reliability memory:
+                # prompt-only "never use em dashes" rules aren't reliable, this
+                # script had its own Claude call with no code-level backstop.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 POSTS_DIR = BASE_DIR / "site" / "content" / "posts"
 EXEC_DIR  = BASE_DIR / "site" / "content" / "exec"
@@ -42,7 +47,7 @@ Risk levels — use exactly these markers in the "Week at a Glance" section:
 🟢 Low — awareness only; no immediate action required
 
 Format rules:
-- Front matter: title (must be exactly "Executive's Guide — Week of YYYY-MM-DD"), date, description (1-2 sentences on the week's business significance — not technical), categories: ["Executive Guide"], tags (business-level: compliance, security, cost, user-impact, licensing, identity, devices, data-protection)
+- Front matter: title (must be exactly "Executive's Guide - Week of YYYY-MM-DD", plain hyphen), date, description (1-2 sentences on the week's business significance — not technical), categories: ["Executive Guide"], tags (business-level: compliance, security, cost, user-impact, licensing, identity, devices, data-protection)
 - ## The Week at a Glance — 3-4 risk-labeled bullets in plain English
 - ## Why This Week Matters — 2-3 sentences of leadership-level context; the one thing leadership must understand
 - ## Risk & Compliance — markdown table with columns: Change | Business Risk | Regulatory Angle | Act By
@@ -97,7 +102,7 @@ def generate_exec(post_path: Path) -> str:
             )
         }]
     )
-    return message.content[0].text
+    return digest.clean_dashes(message.content[0].text)
 
 
 def write_exec(content: str, date: str) -> Path:

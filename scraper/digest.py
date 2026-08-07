@@ -57,8 +57,8 @@ Your output must be valid Hugo-flavored Markdown with YAML front matter. Be dire
 Format rules:
 - Front matter: title, date, description (1-2 punchy sentences matching the week's actual tone — highlight what's most notable whether that's a new feature, a deadline, a risk, or a capability unlock; not everything is a warning, some weeks are rich with feature enablements or reporting improvements), tags (see standard list below), categories (from the standard list)
 - Do NOT write an intro paragraph in the post body. The front matter description already serves that purpose and is rendered separately by the site template. Start the body directly with the first section heading.
-- Top 5 section: the 5 most important changes this week with a brief why-it-matters for each
-- Title format must be exactly: "Modern Work Weekly — Week of YYYY-MM-DD"
+- Top 5 section: heading must be exactly "## Top 5" (not "## Top 5 This Week" or any other variant — the LinkedIn draft pipeline's extract_top5() parses this heading verbatim and silently returns nothing on a mismatch). The 5 most important changes this week with a brief why-it-matters for each.
+- Title format must be exactly: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash — see clean_dashes())
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
   `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
@@ -98,7 +98,7 @@ Risk levels — use exactly these markers in the "Week at a Glance" section:
 🟢 Low — awareness only; no immediate action required
 
 Format rules:
-- Front matter: title (must be exactly "Executive's Guide — Week of YYYY-MM-DD"), date, description (1-2 sentences on the week's business significance — not technical), categories: ["Executive Guide"], tags (business-level: compliance, security, cost, user-impact, licensing, identity, devices, data-protection)
+- Front matter: title (must be exactly "Executive's Guide - Week of YYYY-MM-DD", plain hyphen), date, description (1-2 sentences on the week's business significance — not technical), categories: ["Executive Guide"], tags (business-level: compliance, security, cost, user-impact, licensing, identity, devices, data-protection)
 - ## The Week at a Glance — 3-4 risk-labeled bullets in plain English. If any 🔴 High item exists this week, it must be the FIRST bullet listed (the site lifts this exact bullet into a hero alert above the fold, so its bold title must stand alone as a clear, punchy headline of what's wrong and its sentence must make sense read in isolation, without depending on the bullets around it).
 - ## Why This Week Matters — 2-3 sentences of leadership-level context; the one thing leadership must understand
 - ## What Microsoft's Research Is Saying — OPTIONAL. Include only when "Research & Trends" items are present in the raw data; omit the entire section, heading included, if there are none this week. 1-3 bullets translating Microsoft's own workplace/AI research (Viva/WorkLab research essays) into what it means for this organization's planning. This is context, not an action item, so do not add it to Risk & Compliance or Planning Horizon.
@@ -140,7 +140,7 @@ Format — optimised for pasting into LinkedIn's newsletter article editor. Use 
 - Keep total length 400–600 words
 
 Structure (in order):
-1. Title — format exactly as: "Modern Work Weekly — Week of YYYY-MM-DD" (this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
+1. Title — format exactly as: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash; this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
 2. Hook line — one punchy sentence that names the biggest story this week. No greeting, no "this week in M365". Just the hook.
 3. **⚡ TOP 5 THIS WEEK** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
@@ -164,6 +164,49 @@ DIGEST CONTENT (Top 5 and category items):
 {digest_content}
 
 Output plain text only. No markdown syntax. No preamble."""
+
+# ── LinkedIn announcement/teaser post ────────────────────────────────────────
+# The regular native LinkedIn post that accompanies each week's Newsletter
+# edition. Previously drafted ad hoc by hand — see feedback_linkedin_hashtags
+# memory. Automated because the hand-drafted version kept reproducing the
+# newsletter's own content (killing any reason to click through) and burying
+# the site link two self-comments deep. This prompt is deliberately the
+# opposite of LINKEDIN_SYSTEM_PROMPT: short, teases without explaining, and
+# drives to modernworkweekly.com instead of to the Newsletter article.
+ANNOUNCEMENT_SYSTEM_PROMPT = """You write the short LinkedIn announcement post that accompanies each week's Modern Work Weekly newsletter — a digest for Microsoft 365 engineers, architects, and admins.
+
+This is a native LinkedIn post, NOT the newsletter itself and not a summary of it. Its only job is to earn a click through to modernworkweekly.com. Never reproduce the newsletter's analysis or "why it matters" explanations here — those live on the site. This post only hints at what's inside.
+
+Voice: peer-professional, direct, occasionally dry, punchier and more informal than the newsletter edition. Confident, not hype-y. First-person is fine here.
+
+Lens of the week: not everyone reading cares about the same thing — a security engineer, a licensing/procurement person, and a helpdesk lead each want a different item leading the post. Before writing, pick exactly ONE governing angle from this list, whichever the week's Top 5 most strongly supports, and frame the whole post (hook and closing question, not necessarily the other fragments) consistently through it. Do not default to "biggest story" or blend two lenses.
+- Security/Risk — an active threat, vulnerability, or exposure that demands attention
+- Licensing/Cost — a capability that's now included, bundled, or newly billed differently
+- End-User Impact — a change end users will notice or generate helpdesk tickets over
+- Action Required/Deadline — something with a concrete date or required admin step
+- Architecture/Strategic — a structural or governance shift worth planning around
+State which lens you picked on its own line first, prefixed "LENS: " (e.g. "LENS: Licensing/Cost"), before the post body. This line is for editorial review only — it gets stripped before posting, never leave it in what actually goes on LinkedIn.
+
+Format:
+- Plain text only. No markdown, no bold, no headers, no numbered lists, no emoji section anchors.
+- 80-120 words total.
+- Opening hook: 1-2 sentences leading with the item that best fits the chosen lens, with one real, specific, credible detail (a product name, a number) but withholding the "so what."
+- Then reference 2-3 more items as short headline fragments only, in a sentence or two of prose, not a list. No colon-explanation, no "why it matters" sentence for any of them. Just enough to create curiosity. These don't need to fit the lens, only the hook and closing question do.
+- Closing line: an open question inviting a comment, tied to the same lens as the hook (a Licensing lens closes on a licensing question, not a security one). Never a generic "thoughts?"
+- Do not include a URL anywhere in the body. The link is posted separately as the first comment immediately after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
+- Do not write "link in comments," "full digest below," or any variant as a separate closing line — the question is the close.
+- Never estimate or promise a reading time ("five minute read," "quick read," etc.) — the digest's actual length varies week to week, and a wrong promise breaks trust before the reader even clicks. If you want urgency, tie it to relevance instead ("before your next license renewal conversation," "before Friday," "before your next travel booking"), never a time commitment.
+
+Do not use em dashes. Do not use the contrastive "X isn't Y, it's Z" construction. American English spellings throughout ("organization," "behavior," "license," "customize")."""
+
+ANNOUNCEMENT_PROMPT_TEMPLATE = """Here is this week's confirmed Top 5 (already reviewed and published in the technical post). Produce the short LinkedIn announcement post that teases this content without explaining it.
+
+Week of: {week_of}
+
+CONFIRMED TOP 5 (choose the single strongest lead story for the hook; name 2-3 more only as headline fragments; do not use all 5, do not explain any of them, do not invent items not listed here):
+{top5_lines}
+
+Output plain text only. No markdown. No preamble."""
 
 EXEC_DIGEST_PROMPT_TEMPLATE = """Here is this week's Microsoft 365 update data. Produce the Executive's Guide briefing.
 
@@ -947,7 +990,21 @@ def linkify_linkedin_draft(li_content: str, content: str, draft: dict | None = N
     return re.sub(r"\*\*([^*]+)\*\*", replace_bold, li_content)
 
 
-_TOP5_SECTION_RE = re.compile(r"## Top 5 This Week\s*\n(.*?)\n---", re.DOTALL)
+# [^\n]* tolerates trailing words after "Top 5" (e.g. the older "Top 5 This
+# Week" heading used through 2026-07-28) — the SYSTEM_PROMPT now pins the
+# heading to exactly "## Top 5" going forward, but this stays tolerant in
+# case of future drift, since a silent empty match here quietly regresses
+# both the Newsletter draft and the announcement post back to re-deriving
+# their own Top 5 instead of using the human-reviewed one. See cf9c8bf and
+# the 2026-08-04 regression this tolerance was added to fix.
+# Terminates on the next "## " heading rather than a "---" divider: the
+# 2026-08-04 post dropped the "---" section dividers between category
+# headings entirely (confirmed via git history — earlier posts had them,
+# that one doesn't), so a "---"-anchored terminator silently matched zero
+# items on that post even after the heading-text fix above. re.MULTILINE
+# lets the lookahead's ^ match "## " at the start of any line, not just
+# the start of the string.
+_TOP5_SECTION_RE = re.compile(r"^## Top 5[^\n]*\n(.*?)(?=\n^## |\Z)", re.DOTALL | re.MULTILINE)
 _TOP5_ITEM_RE = re.compile(
     # The optional non-capturing group tolerates the {{< cat "..." >}} shortcode
     # tag_top5_categories() inserts right after the title — present on posts
@@ -1043,6 +1100,41 @@ def write_linkedin_draft(content: str, week_of: str) -> Path:
     path = STATE_DIR / f"linkedin_draft_{week_of}.txt"
     path.write_text(content, encoding="utf-8")
     log.info(f"LinkedIn draft written → {path}")
+    return path
+
+
+def build_announcement_prompt(top5: list[dict], week_of: str) -> str:
+    """Build the prompt for the short native-post teaser (see
+    ANNOUNCEMENT_SYSTEM_PROMPT for why this is a separate, deliberately
+    thinner draft from the Newsletter edition).
+
+    Reuses the same human-reviewed Top 5 the Newsletter draft is grounded
+    in (extract_top5() on the technical post) rather than re-deriving its
+    own — see build_linkedin_prompt()'s docstring for why that matters.
+    """
+    lines = [f"  {i}. {item['title']}" for i, item in enumerate(top5, 1)]
+    return ANNOUNCEMENT_PROMPT_TEMPLATE.format(
+        week_of=week_of,
+        top5_lines="\n".join(lines),
+    )
+
+
+def call_claude_announcement(prompt: str) -> str:
+    client = anthropic.Anthropic()
+    log.info("Calling Claude API for LinkedIn announcement post...")
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        system=ANNOUNCEMENT_SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return message.content[0].text
+
+
+def write_announcement_draft(content: str, week_of: str) -> Path:
+    path = STATE_DIR / f"linkedin_post_{week_of}.txt"
+    path.write_text(content, encoding="utf-8")
+    log.info(f"LinkedIn announcement draft written → {path}")
     return path
 
 
@@ -1199,13 +1291,35 @@ def run(args):
             li_content = clean_dashes(call_claude_linkedin(li_prompt))
             # No hashtags here — this is the long-form newsletter article body,
             # pasted into LinkedIn's Newsletter editor, where hashtags aren't
-            # functional/linkable. build_hashtags()/TAG_HASHTAGS are still used
-            # for the separate short announcement/teaser post (drafted ad hoc,
-            # not by this pipeline) — see feedback_linkedin_hashtags memory.
+            # functional/linkable. build_hashtags()/TAG_HASHTAGS are used below,
+            # on the separate short announcement/teaser post — see
+            # feedback_linkedin_hashtags memory.
             li_content = linkify_linkedin_draft(li_content, content, draft)
             linkedin_draft_path = write_linkedin_draft(li_content, week_of)
         except Exception as e:
             log.warning(f"LinkedIn draft generation failed (non-fatal): {e}")
+
+    # Generate the short announcement/teaser post unless skipped. Separate
+    # try/except from the Newsletter draft above so one failing doesn't take
+    # down the other.
+    announcement_path = None
+    if not args.skip_linkedin:
+        try:
+            top5 = extract_top5(content)
+            ann_prompt = build_announcement_prompt(top5, week_of)
+            ann_content = clean_dashes(call_claude_announcement(ann_prompt))
+            tags = extract_post_tags(content)
+            hashtags = " ".join(build_hashtags(tags))
+            post_url = f"https://modernworkweekly.com/posts/{week_of}/"
+            ann_content = (
+                f"{ann_content}\n\n{hashtags}\n\n"
+                f"[Post this first. Immediately after it publishes, add this as the "
+                f"FIRST comment — do not put it in the body, do not add a second link: "
+                f"{post_url}]"
+            )
+            announcement_path = write_announcement_draft(ann_content, week_of)
+        except Exception as e:
+            log.warning(f"LinkedIn announcement post generation failed (non-fatal): {e}")
 
     # Clear the pending draft now that it's been published — next scraper run
     # starts a fresh accumulation.
@@ -1236,6 +1350,8 @@ def run(args):
         print(f"  Executive's Guide:   {exec_post_path}")
     if linkedin_draft_path:
         print(f"  LinkedIn draft:      {linkedin_draft_path}")
+    if announcement_path:
+        print(f"  LinkedIn post:       {announcement_path}")
     if deadline_candidates:
         print(f"  Key Date candidates: {len(deadline_candidates)} flagged for review → {candidates_path}")
     else:
@@ -1259,7 +1375,7 @@ if __name__ == "__main__":
     parser.add_argument("--skip-exec", action="store_true",
                         help="Skip Executive's Guide generation (technical digest only)")
     parser.add_argument("--skip-linkedin", action="store_true",
-                        help="Skip LinkedIn newsletter draft generation")
+                        help="Skip LinkedIn newsletter draft and announcement post generation")
     parser.add_argument("--max-age-days", type=int, default=None,
                         help=f"Override the freshness window (default {MAX_AGE_DAYS} days) for this run only. "
                              f"Use for a one-off regeneration when a real backlog built up "

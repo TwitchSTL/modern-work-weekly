@@ -22,6 +22,11 @@ from pathlib import Path
 import anthropic
 from dotenv import load_dotenv
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import digest  # for clean_dashes() — see feedback_mww_prompt_reliability memory:
+                # prompt-only "never use em dashes" rules aren't reliable, this
+                # script had its own Claude calls with no code-level backstop.
+
 BASE_DIR  = Path(__file__).resolve().parent.parent
 POSTS_DIR = BASE_DIR / "site" / "content" / "posts"
 EXEC_DIR  = BASE_DIR / "site" / "content" / "exec"
@@ -36,7 +41,7 @@ DIGEST_SYSTEM_PROMPT = """You are an expert Microsoft 365 technical writer produ
 Your output must be valid Hugo-flavored Markdown with YAML front matter. Be direct, technical, and opinionated.
 
 Format rules:
-- Front matter: title (exactly "Modern Work Weekly — Week of YYYY-MM-DD"), date, description (1-2 punchy sentences), tags, categories, sources (YAML list of all source URLs from both input posts)
+- Front matter: title (exactly "Modern Work Weekly - Week of YYYY-MM-DD", plain hyphen), date, description (1-2 punchy sentences), tags, categories, sources (YAML list of all source URLs from both input posts)
 - Do NOT write an intro paragraph in the post body. Start directly with the first section heading.
 - Top 5 section: the 5 most important changes across both weeks combined
 - Per-category sections with h2 headings ONLY (Identity, Devices, Apps, Data, Network, Visibility & Automation). One bullet per item:
@@ -64,7 +69,7 @@ Risk levels:
 🟢 Low — awareness only; no immediate action required
 
 Format rules:
-- Front matter: title (exactly "Executive's Guide — Week of YYYY-MM-DD"), date, description, categories: ["Executive Guide"], tags (business-level)
+- Front matter: title (exactly "Executive's Guide - Week of YYYY-MM-DD", plain hyphen), date, description, categories: ["Executive Guide"], tags (business-level)
 - ## The Week at a Glance — 3-4 risk-labeled bullets in plain English
 - ## Why This Week Matters — 2-3 sentences; the one thing leadership must understand
 - ## Risk & Compliance — table: Change | Business Risk | Regulatory Angle | Act By
@@ -99,7 +104,7 @@ def call_claude(system: str, user: str, max_tokens: int = 4096) -> str:
         system=system,
         messages=[{"role": "user", "content": user}],
     )
-    return message.content[0].text
+    return digest.clean_dashes(message.content[0].text)
 
 
 def run(args):

@@ -17,10 +17,11 @@ after the Tuesday digest publishes.
    + 17 known-issues sources), deduplicates against
    `seen_items.json`, appends new items to `state/pending_draft.json`, writes known
    issues to `health.json`
-3. **`digest.py`** — reads `pending_draft.json`, calls the Claude API three times:
+3. **`digest.py`** — reads `pending_draft.json`, calls the Claude API four times:
    - Generates technical digest → `site/content/posts/YYYY-MM-DD.md`
    - Generates Executive's Guide → `site/content/exec/YYYY-MM-DD.md`
-   - Generates LinkedIn newsletter draft → `state/linkedin_draft_YYYY-MM-DD.txt`
+   - Generates LinkedIn newsletter (Pulse article) draft → `state/linkedin_draft_YYYY-MM-DD.txt`
+   - Generates LinkedIn announcement/teaser post draft → `state/linkedin_post_YYYY-MM-DD.txt`
    - Regenerates the search index (`site/static/search.json`) and updates the health baseline
    - Archives `pending_draft.json` to `state/archive/`
 4. **`git commit` + `git push origin main`** — if anything changed
@@ -83,6 +84,33 @@ git push origin main
 The `deploy.sh` cron picks up the new commit within 5 minutes, rebuilds with Hugo,
 and rsyncs to the web root.
 
+### Step 4 — Publish to LinkedIn
+
+Two separate pieces, two separate jobs. Don't let the Newsletter edition carry the
+click-through job — that's what killed engagement on early editions (see
+`feedback_linkedin_hashtags` memory: 4 reactions / 4 comments on a 976-impression
+post, with the actual site links buried in self-comments at 65 and 34 impressions).
+
+**`state/linkedin_draft_YYYY-MM-DD.txt`** — the full Newsletter/Pulse article.
+Paste as-is into LinkedIn's Newsletter editor and publish. This is for your 132
+subscribers who want the whole thing without leaving LinkedIn; it's allowed to be
+complete. Its own comments can still carry the Exec's Guide / Technical Digest
+links for anyone reading it who wants to go deeper — that's fine, just don't rely
+on it to drive general reach.
+
+**`state/linkedin_post_YYYY-MM-DD.txt`** — the short teaser, and the one that
+actually needs to work hard. Post it as a regular native feed post, never as an
+Article. The first line is `LENS: <name>` — that's editorial metadata for your
+review (confirm the chosen angle actually fits this week's strongest item),
+strip it before pasting anywhere. Publish order matters:
+1. Post the body text only, LENS line removed, no link in it (the draft never
+   includes one; keep it that way, an in-body link takes a real reach penalty).
+2. The moment it's live, add ONE comment: the `modernworkweekly.com/posts/...`
+   link, nothing else. Don't wait, don't also add a second link to the Exec's
+   Guide — one link, one destination, immediately, or most readers never see it.
+3. Reply to any comments the closing question draws — that's what pulls it into
+   more feeds.
+
 ---
 
 ## Running manually
@@ -106,7 +134,7 @@ python digest.py
 # Skip the Executive's Guide
 python digest.py --skip-exec
 
-# Skip the LinkedIn newsletter draft
+# Skip the LinkedIn newsletter draft and announcement post
 python digest.py --skip-linkedin
 
 # Dry run — see the prompt without making an API call
@@ -210,9 +238,14 @@ python scraper.py --health-only
 [ ] Tuesday cron fired (check: git log --oneline -5)
 [ ] Technical digest reviewed and edited if needed
 [ ] Executive's Guide reviewed if sharing with leadership
-[ ] LinkedIn draft reviewed (state/linkedin_draft_YYYY-MM-DD.txt) before posting manually
+[ ] LinkedIn Newsletter draft reviewed (state/linkedin_draft_YYYY-MM-DD.txt) before
+    posting manually to the Newsletter/Pulse editor
     (headlines are auto-linked to their source URL from the technical post — verify a
     few resolve correctly; an unmatched headline is left as plain bold, not a broken link)
+[ ] LinkedIn announcement post reviewed (state/linkedin_post_YYYY-MM-DD.txt) — confirm
+    the LENS line matches your editorial judgment, strip it, post the rest as a regular
+    feed post, then immediately add the single site link as the first comment
+    (see Step 4 above — do not skip straight from posting to walking away)
 [ ] Corrections pushed (if any)
 [ ] Site live at modernworkweekly.com
 ```
