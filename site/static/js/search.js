@@ -18,16 +18,18 @@
   var INDEX_URL = '/search.json';
   var searchIndex = null;
 
-  // Category name → accent color (matches PILLAR_COLORS in collapsible.js)
+  // Category name → accent color. Kept in sync manually with PILLAR_COLORS
+  // in collapsible.js (full-phrase keys, same order) since there's no shared
+  // data source between this file and the Hugo templates/static JS.
   var CAT_COLORS = [
-    { keys: ['visibility', 'automation', 'ai'],   color: '#d2a8ff' },
-    { keys: ['collaboration', 'productivity'],     color: '#58a6ff' },
-    { keys: ['identity', 'access'],                color: '#a78bfa' },
-    { keys: ['endpoint', 'devices'],               color: '#3fb950' },
-    { keys: ['security', 'compliance', 'data'],    color: '#f0883e' },
-    { keys: ['network'],                           color: '#39d353' },
-    { keys: ['apps'],                              color: '#58a6ff' },
-    { keys: ['action', 'required', 'recommended'], color: '#ff6b6b' },
+    { keys: ['identity & access'],            color: '#a78bfa' },
+    { keys: ['endpoint & device management'], color: '#3fb950' },
+    { keys: ['collaboration & productivity'], color: '#58a6ff' },
+    { keys: ['ai & copilot'],                 color: '#f0883e' },
+    { keys: ['employee experience'],          color: '#f778ba' },
+    { keys: ['security & compliance'],        color: '#d2a8ff' },
+    { keys: ['action required', 'action items', 'recommended actions'], color: '#ff6b6b' },
+    { keys: ['documentation updates'],        color: '#e3b341' },
   ];
 
   function categoryColor(cat) {

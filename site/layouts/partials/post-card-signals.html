@@ -22,12 +22,12 @@
 <div class="post-card-signals">
   {{ if $categories }}
   <div class="post-card-pillars">
-    {{/* Current (2026-07+) Modern Work pillars, plus the legacy Zero Trust
-         pillar names carried on posts published before the 2026-07-14
-         taxonomy reframe (forward-only rename — old posts keep their
-         original category headings). Colors match collapsible.js's
-         PILLAR_COLORS exactly so a pillar reads the same color everywhere
-         on the site regardless of which taxonomy generation a post used. */}}
+    {{/* Modern Work pillars. All legacy digest posts (through 2026-07-14)
+         were backfilled to these category names on 2026-08-08, so the old
+         Zero Trust pillar keys (Identity, Devices, Apps, Data, Network,
+         Visibility & Automation) are no longer used by any published post
+         and have been removed. Colors match collapsible.js's PILLAR_COLORS
+         exactly so a pillar reads the same color everywhere on the site. */}}
     {{ $pillarColors := dict
       "Identity & Access"            "#a78bfa"
       "Endpoint & Device Management" "#3fb950"
@@ -35,12 +35,6 @@
       "AI & Copilot"                 "#f0883e"
       "Employee Experience"          "#f778ba"
       "Security & Compliance"        "#d2a8ff"
-      "Identity"                     "#a78bfa"
-      "Devices"                      "#3fb950"
-      "Apps"                         "#58a6ff"
-      "Data"                         "#f0883e"
-      "Network"                      "#39d353"
-      "Visibility & Automation"      "#d2a8ff"
     }}
     {{ range $categories }}
       {{ $color := index $pillarColors . | default "#6e7681" }}

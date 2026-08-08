@@ -9,11 +9,11 @@
  *   data-no-counters="true"  — hide the (N items) badge
  */
 
-// Modern Work pillar colors (2026-07 taxonomy) — checked first, exact-ish keys.
-// Legacy Zero Trust pillar names follow below: posts published before
-// 2026-07-14 keep their original category headings (forward-only rename, not
-// retroactively relabeled), so those keys stay mapped to their original
-// colors indefinitely rather than being removed.
+// Modern Work pillar colors (2026-07 taxonomy). All legacy digest posts
+// (through 2026-07-14) were backfilled to these category names on 2026-08-08,
+// so the old Zero Trust pillar keys (Identity, Devices, Apps, Data, Network,
+// Visibility & Automation) are no longer referenced by any published post
+// and have been removed.
 const PILLAR_COLORS = [
   { keys: ['identity & access'],            color: '#a78bfa' },
   { keys: ['endpoint & device management'], color: '#3fb950' },
@@ -21,13 +21,6 @@ const PILLAR_COLORS = [
   { keys: ['ai & copilot'],                 color: '#f0883e' },
   { keys: ['employee experience'],          color: '#f778ba' },
   { keys: ['security & compliance'],        color: '#d2a8ff' },
-  // Legacy — Zero Trust pillar names on pre-2026-07-14 posts only
-  { keys: ['identity'],                                                        color: '#a78bfa' },
-  { keys: ['devices'],                                                         color: '#3fb950' },
-  { keys: ['apps'],                                                            color: '#58a6ff' },
-  { keys: ['data'],                                                            color: '#f0883e' },
-  { keys: ['network'],                                                         color: '#39d353' },
-  { keys: ['visibility & automation', 'automation & ai', 'ai & automation'],   color: '#d2a8ff' },
   { keys: ['action required', 'action items', 'recommended actions'],         color: '#ff6b6b' },
   { keys: ['documentation updates'],                                          color: '#e3b341' },
 ];
