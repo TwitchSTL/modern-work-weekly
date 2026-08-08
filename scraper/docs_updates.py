@@ -164,53 +164,94 @@ def _headers() -> dict:
     return h
 
 
-def fetch_doc_commits(source: dict, since: datetime) -> list[dict]:
-    """Fetch commits for one repo/path since the given datetime, pre-filtered
-    for bot/sync noise. Returns raw GitHub commit objects (not yet the
-    site's internal item shape — see fetch_all_doc_updates for that).
+def fetch_doc_commits(source: dict, since: datetime, until: datetime | None = None) -> list[dict]:
+    """Fetch commits for one repo/path since the given datetime (and, if
+    given, before `until`), pre-filtered for bot/sync noise. Returns raw
+    GitHub commit objects (not yet the site's internal item shape — see
+    fetch_all_doc_updates for that).
+
+    `until` supports historical backfill for a specific past week — the
+    commits API's own `until` param bounds the window on the far end,
+    letting this pull a real Mon-Sun (or whatever window) slice out of
+    permanent commit history instead of only ever reading "since N days
+    ago through right now" (see fetch_all_doc_updates's since/until args).
     """
     repo = source["repo"]
     path = source.get("path")
     label = f"{repo}/{path}" if path else repo
     params = {"since": since.strftime("%Y-%m-%dT%H:%M:%SZ"), "per_page": 100}
+    if until:
+        params["until"] = until.strftime("%Y-%m-%dT%H:%M:%SZ")
     if path:
         params["path"] = path
 
-    try:
-        resp = requests.get(
-            f"{GITHUB_API}/repos/{repo}/commits",
-            headers=_headers(),
-            params=params,
-            timeout=20,
-        )
-        resp.raise_for_status()
-        commits = resp.json()
-    except requests.RequestException as e:
-        log.warning(f"  Failed to fetch commits for {label}: {e}")
-        return []
+    # Paginate — the routine 7-day trailing window rarely needs this (one
+    # page has always been enough in practice), but a one-off historical
+    # backfill query against a path=None repo (whole-repo scope, e.g.
+    # entra-docs/defender-docs) can plausibly exceed 100 commits in a single
+    # week, and silently truncating to page 1 would under-report real
+    # content for that week rather than fail loudly.
+    commits: list[dict] = []
+    page = 1
+    while True:
+        params["page"] = page
+        try:
+            resp = requests.get(
+                f"{GITHUB_API}/repos/{repo}/commits",
+                headers=_headers(),
+                params=params,
+                timeout=20,
+            )
+            resp.raise_for_status()
+            batch = resp.json()
+        except requests.RequestException as e:
+            log.warning(f"  Failed to fetch commits for {label} (page {page}): {e}")
+            break
 
-    if not isinstance(commits, list):
-        log.warning(f"  Unexpected response fetching {label} — expected list, got {type(commits).__name__}")
-        return []
+        if not isinstance(batch, list):
+            log.warning(f"  Unexpected response fetching {label} — expected list, got {type(batch).__name__}")
+            break
+        if not batch:
+            break
+
+        commits.extend(batch)
+        if len(batch) < 100:
+            break
+        page += 1
+        if page > 20:  # sanity ceiling — 2000 commits in one window would be a bug, not real data
+            log.warning(f"  {label}: stopped paginating at page {page} — check date window for a bug")
+            break
 
     kept = [c for c in commits if not is_noise_commit(c)]
     log.info(f"  {label}: {len(commits)} raw commits, {len(kept)} after noise filter")
     return kept
 
 
-def fetch_all_doc_updates(days: int = 7) -> dict[str, list[dict]]:
+def fetch_all_doc_updates(
+    days: int = 7,
+    since: datetime | None = None,
+    until: datetime | None = None,
+) -> dict[str, list[dict]]:
     """Fetch and pre-filter doc commits across every configured source.
+
+    Normal weekly use: leave since/until unset, `days` controls a trailing
+    window ending now (unchanged default behavior).
+
+    Historical backfill use: pass explicit `since`/`until` datetimes to pull
+    a specific past week's real commit window instead of "N days ago through
+    right now" — `days` is ignored when `since` is given.
 
     Returns {pillar: [item, ...]} using the same rough item shape as the
     rest of the pipeline (source, title, body, url, date) plus a 'repo'
     field for traceability, so digest.py can treat this consistently
     alongside grouped_items while still telling the two apart.
     """
-    since = datetime.now(timezone.utc) - timedelta(days=days)
+    if since is None:
+        since = datetime.now(timezone.utc) - timedelta(days=days)
     results: dict[str, list[dict]] = {}
 
     for source in DOC_SOURCES:
-        commits = fetch_doc_commits(source, since)
+        commits = fetch_doc_commits(source, since, until)
         for c in commits:
             message_lines = c.get("commit", {}).get("message", "").split("\n")
             title = message_lines[0].strip()
@@ -241,10 +282,19 @@ def fetch_all_doc_updates(days: int = 7) -> dict[str, list[dict]]:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     parser = argparse.ArgumentParser(description="Fetch recent Microsoft doc commits for Documentation Updates")
-    parser.add_argument("--days", type=int, default=7, help="Trailing window in days (default 7)")
+    parser.add_argument("--days", type=int, default=7, help="Trailing window in days (default 7, ignored if --since is given)")
+    parser.add_argument("--since", type=str, default=None, help="Historical backfill: window start, YYYY-MM-DD (UTC)")
+    parser.add_argument("--until", type=str, default=None, help="Historical backfill: window end, YYYY-MM-DD (UTC). Requires --since.")
     args = parser.parse_args()
 
-    data = fetch_all_doc_updates(days=args.days)
+    since_dt = None
+    until_dt = None
+    if args.since:
+        since_dt = datetime.strptime(args.since, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        if args.until:
+            until_dt = datetime.strptime(args.until, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+
+    data = fetch_all_doc_updates(days=args.days, since=since_dt, until=until_dt)
     total = sum(len(v) for v in data.values())
     log.info(f"Total substantive doc commits after filtering: {total}")
     json.dump(data, sys.stdout, indent=2)
