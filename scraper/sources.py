@@ -589,12 +589,37 @@ CLASSIFICATION_KEYWORDS = {
         "endpoint", "device management", "managed device", "linux", "macos",
         "android enterprise", "apple", "tvos", "visionos", "epm",
         "endpoint privilege", "laps", "firmware",
+        # Added 2026-08-11 after a full-corpus keyword-gap audit found this
+        # pillar (and Collaboration/AI & Copilot/Employee Experience below)
+        # was ~3-4x thinner than Security & Compliance, causing real
+        # Endpoint/Windows 365/Autopilot content with no matching keyword to
+        # silently default to Security & Compliance. Each addition here was
+        # validated against every archived item before landing — "windows
+        # 365" and "cloud pc" were confirmed missing entirely despite
+        # Windows 365 being a whole locked source; "autopilot" likewise.
+        # Two rejected candidates worth remembering: bare "csp" was pulled
+        # because it collides with "Cloud Solution Provider" (misrouted real
+        # Security Blog content into this pillar); bare "provisioning" was
+        # narrowed to "pre-provision" because it collided with Entra ID's
+        # HR-driven identity-lifecycle provisioning content (a different,
+        # Identity & Access sense of the same word).
+        "windows 365", "cloud pc", "settings catalog", "pre-provision",
+        "autopilot",
     ],
     "Collaboration & Productivity": [
         # from prior "Apps", minus copilot/viva/yammer/power apps (moved below)
         "teams", "sharepoint", "onedrive", "outlook", "calendar",
         "meeting", "channel", "loop", "planner", "forms",
         "microsoft 365 apps", "office", "exchange",
+        # Added 2026-08-11 (see Endpoint & Device Management comment above
+        # for the full audit context). Confirmed real Exchange Online
+        # content — GAL visibility settings, distribution list management —
+        # had no matching keyword and was defaulting to Security &
+        # Compliance. Rejected candidate: "notebook"/"notebooks" — collides
+        # with Microsoft 365 Copilot's own "Notebooks" feature name and
+        # wrongly pulled several Copilot monthly changelogs out of AI &
+        # Copilot; do not re-add without a narrower qualifier.
+        "global address list", "distribution list", "resource mailbox",
     ],
     "AI & Copilot": [
         # copilot/ai charts/power apps from prior "Apps" + the AI/agent/Power
@@ -602,12 +627,26 @@ CLASSIFICATION_KEYWORDS = {
         "copilot", "ai charts", "power apps", "copilot studio", "agent 365",
         "shadow ai", "ai gateway", "prompt injection", "llm", "generative ai",
         "power automate", "power platform", "mcp", "ai agent",
+        # Added 2026-08-11 (see Endpoint & Device Management comment above).
+        # Power Platform is a locked source (SOURCE_PILLARS), so these
+        # mainly matter if it's ever unlocked later — but confirmed real,
+        # unambiguous Dataverse/Power Pages/Dynamics 365 content with zero
+        # prior keyword coverage across the full archive.
+        "dataverse", "power pages", "dynamics 365",
     ],
     "Employee Experience": [
         # viva/yammer moved from prior "Apps"; rest are new additions
         "viva", "yammer", "viva engage", "viva insights", "viva learning",
         "viva goals", "employee experience", "engagement", "wellbeing",
         "workplace analytics", "worklab",
+        # Added 2026-08-11 (see Endpoint & Device Management comment above).
+        # "Research Drop" is Viva's own recurring research-content series
+        # title — confirmed real, unambiguous, no collision risk found
+        # across the full archive. Employee Experience remains the
+        # thinnest pillar (Viva is its only locked source); expanding
+        # further needs more real content to validate against, not
+        # speculative additions.
+        "research drop",
     ],
     "Security & Compliance": [
         # prior "Data" + "Network" + the security-ops portion of prior
