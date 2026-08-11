@@ -1,5 +1,530 @@
 [
   {
+    "title": "Entra Tenant Governance is now GA",
+    "category": "Top 5",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "{{< cat \"Identity & Access\" >}} - Multi-tenant environments have historically been a governance blind spot. This GA capability gives organizations a central control plane to manage identity, access, and compliance postur"
+  },
+  {
+    "title": "Defender for Identity sensor v3.x now covers AD FS, AD CS, and Entra Connect",
+    "category": "Top 5",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "{{< cat \"Security & Compliance\" >}} - These three server roles are high-value attack targets and were previously gaps in MDI sensor coverage. Expanding automatic auditing and sensor support to these roles closes a real d"
+  },
+  {
+    "title": "Copilot Domain Exclusion feature has been rolled back",
+    "category": "Top 5",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "{{< cat \"AI & Copilot\" >}} - If your organization deployed or communicated to stakeholders that web grounding could be scoped by domain exclusion, that capability is gone for now. No replacement timeline has been given. "
+  },
+  {
+    "title": "Cross-tenant Free/Busy, MailTips, and calendar sharing moving off EWS",
+    "category": "Top 5",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "{{< cat \"Collaboration & Productivity\" >}} - EWS deprecation is forcing a migration to Cross-Tenant Access Policy for these Exchange features. If your tenant does cross-tenant calendar sharing today, this requires action"
+  },
+  {
+    "title": "ChainDrop supply chain worm spread via 400+ compromised npm packages",
+    "category": "Top 5",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "{{< cat \"Endpoint & Device Management\" >}} - This is a practical threat intelligence item for any team running CI/CD pipelines or Node.js-based tooling. Review your software composition analysis controls and npm dependen"
+  },
+  {
+    "title": "Microsoft Entra Tenant Governance is now generally available",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - If you manage more than one tenant today, this is the capability you've been waiting for: a built-in, centralized governance plane for multi-tenant environments. It surfaces identity, access, and compliance postur"
+  },
+  {
+    "title": "What's New in Microsoft Entra: August 2026",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The August Entra release roundup covers the full breadth of changes shipping this month across identity and network access. Worth reading end-to-end rather than sampling; several items in this digest trace back to"
+  },
+  {
+    "title": "DeadLock ransomware: Rust-based encryptor with decentralized recovery infrastructure",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Microsoft Threat Intelligence has published a detailed breakdown of DeadLock ransomware, which uses decentralized infrastructure for victim communications and double extortion. The identity angle is significant: u"
+  },
+  {
+    "title": "End VPN gaps with identity-first access",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - This post lays out the case for replacing or supplementing traditional VPN with Conditional Access and Global Secure Access, covering gaps in continuous evaluation of device posture, location, and user risk. Usefu"
+  },
+  {
+    "title": "CVE-2026-68183: stratix10-svc firmware memory leaks and list corruption",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Information published via MSRC. Review your firmware inventory for affected stratix10-svc components and apply guidance per the advisory."
+  },
+  {
+    "title": "Plan for Windows 10 Enterprise LTSC 2021 end of support",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - End of support lands January 12, 2027, after which no security updates will be issued. If you have LTSC 2021 devices in your estate, the migration runway to Windows 11 Enterprise LTSC 2024 is now under six months."
+  },
+  {
+    "title": "ChainDrop supply chain compromise: Anatomy of a self-propagating worm",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Over 400 npm packages were compromised and used to automatically republish malicious updates across software ecosystems. If your build pipelines consume npm packages, review your software composition analysis tool"
+  },
+  {
+    "title": "128 Seconds to disruption: Microsoft Defender stops ransomware at QNET",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - A real-world case study of Defender for Endpoint's automatic attack disruption isolating a compromised endpoint in 128 seconds before the ransomware payload could spread. Useful validation for stakeholders who que"
+  },
+  {
+    "title": "Microsoft Edge: Updated horizontal tab appearance",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - A visual refresh to Edge's horizontal tab strip with rounded tabs and revised spacing is targeting GA in September 2026. Tab behavior and enterprise data handling are unchanged, but expect user questions about the"
+  },
+  {
+    "title": "Cross-tenant Free/Busy, MailTips, and Calendar Sharing moving to Cross-Tenant Access Policy",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - EWS deprecation is forcing a migration of cross-tenant calendar features to the Cross-Tenant Access Policy model. If your organization shares Free/Busy or calendar data with external Microsoft 365 tenants today, t"
+  },
+  {
+    "title": "What's New in Copilot in SharePoint: August 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Copilot in SharePoint now generates live dashboards directly from SharePoint lists and Excel, producing interactive HTML reports that stay connected to the underlying data source. This is a meaningful productivity"
+  },
+  {
+    "title": "Microsoft named a Leader in KuppingerCole Leadership Compass for CNAPP",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Analyst recognition for Microsoft's cloud-native application protection platform posture. Relevant context if you're evaluating or consolidating security tooling around the Microsoft stack."
+  },
+  {
+    "title": "Microsoft named a Leader in 2026 Gartner Magic Quadrant for Unified Communications as a Service",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Eighth consecutive year as a UCaaS Leader, positioned highest on Ability to Execute. Useful for licensing and vendor consolidation conversations; no technical action required."
+  },
+  {
+    "title": "Teams Phone Agent and custom voice agents built in Copilot Studio",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Teams Phone Agent enables AI-powered voice agents to handle customer calls, including after-hours and overflow scenarios, built on Copilot Studio. If your organization runs a call center or customer-facing phone q"
+  },
+  {
+    "title": "Workplace check-in via Wi-Fi for Microsoft Places and Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Employees can opt in to automatic workplace location updates based on connection to configured company Wi-Fi networks, reducing manual status management. Admins need to configure the relevant network identifiers; "
+  },
+  {
+    "title": "Making Microsoft Teams more responsive, reliable, and ready for work",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The Teams engineering team has published details on recent performance investments covering startup time, chat responsiveness, and meeting join reliability. No admin action required, but useful context for help de"
+  },
+  {
+    "title": "What's New in Microsoft Teams: May 2026 Build Edition",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The May release roundup covers Teams Platform features announced at Microsoft Build, with a focus on developer-facing capabilities including agents, extensibility, and AI integration points. Review if your team ma"
+  },
+  {
+    "title": "What's New in Microsoft Teams: April 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - April's release summary covers collaboration intelligence, calling improvements, and hybrid team features. Worth reviewing if you haven't caught up; several items may already be live in your tenant."
+  },
+  {
+    "title": "Teams Phone user multi-line: up to 10 phone numbers per user",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Admins can now assign up to 10 phone numbers to a single Teams Phone user, enabling one person to represent multiple lines of business or regions within a single Teams account. This eliminates common workarounds i"
+  },
+  {
+    "title": "New Frontline Innovations at Microsoft 365 Community Conference",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - New frontline capabilities include a guided deployment wizard in Teams Admin Center for scaling pilots, smart scheduling for automatic shift filling, a Communicator App for operational updates, and hands-free site"
+  },
+  {
+    "title": "Intelligent call delegation for Teams Phone",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - An AI-powered experience that can answer incoming Teams calls and schedule follow-up appointments on a user's behalf is available through the Frontier program. This is an early-access capability; check Frontier el"
+  },
+  {
+    "title": "Microsoft Teams at the 2026 Microsoft 365 Community Conference",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Session and announcement overview from M365CC covering meetings, calling, collaboration, and agent integration in Teams. Useful as a reference for what was announced at the conference if you missed it."
+  },
+  {
+    "title": "Public Preview: New Microsoft Teams VDI Optimization for Omnissa",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - A tech preview of the new Teams VDI optimization for Omnissa Horizon environments is now available, aiming for feature parity and performance consistency between physical and virtual desktops. If you run Team"
+  },
+  {
+    "title": "Copilot context menu PDF review on OneDrive iOS",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Selecting text in a PDF on OneDrive iOS will surface an Ask Copilot option for summarization, translation, or custom questions, targeting GA in October 2026. No admin action required; ensure Copilot licenses are i"
+  },
+  {
+    "title": "Teams Queues app: Intelligent call recaps for recorded calls",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AI-generated summaries, key discussion points, and follow-up actions will be available in the Recap tab for recorded call queue calls, targeting GA in September 2026. Relevant for contact center and support queue "
+  },
+  {
+    "title": "OneDrive: Dedicated Shortcuts folder when adding shortcuts",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - OneDrive now offers a dedicated Shortcuts folder as a destination when adding shortcuts, keeping them separate from root-level files. The folder is auto-created on first use with a distinct icon; already GA as of "
+  },
+  {
+    "title": "Copilot Notebooks: Outlook emails as knowledge sources",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - Users can now add Outlook emails as references in Copilot Notebooks, grounding agent outputs in email conversations and decisions alongside files. Currently in preview; confirm your Copilot license scope cove"
+  },
+  {
+    "title": "Teams meetings: Connect to existing Planner plans",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Rather than auto-generating a new Planner plan per meeting, users can now connect a Teams meeting to an existing plan, consolidating tasks for long-running projects. GA targeting September 2026; no admin configura"
+  },
+  {
+    "title": "Microsoft 365 Apps Cloud Update: Simplified Channel Management",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - Admins can now use Entra ID groups as device selection criteria in Cloud Update profiles, combining channel assignment and profile assignment in a single step. Currently in preview as of May 2026, GA since Ju"
+  },
+  {
+    "title": "Domain Exclusion for Microsoft 365 Copilot has been rolled back",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The web grounding domain exclusion capability that allowed admins to block specific domains from Copilot's web search has been pulled back with no replacement timeline. If you communicated this control to stakehol"
+  },
+  {
+    "title": "What's new in Power Platform: July/August 2026 feature update",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The data grid modern control is now GA for canvas apps, delivering a Fluent UI-based grid with search, sorting, selection, and rich column types. Review the full post for additional GA and preview items shipping t"
+  },
+  {
+    "title": "Microsoft Entra Agent ID for Dataverse: GA",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Each AI agent built on Dataverse can now be assigned a dedicated Entra identity with appropriate security roles, giving you audit trails and least-privilege access control per agent. If your organization is deploy"
+  },
+  {
+    "title": "Partner Blog: From AI curiosity to Copilot adoption in 30 days",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - A 30-day adoption framework for SMB Copilot rollouts targeting CSP partners. Useful reference if you're supporting SMB customers or running an internal Copilot pilot and need a structured adoption playbook."
+  },
+  {
+    "title": "Advance Zero Trust for AI: New tools and guidance for AI agents and DevSecOps",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Microsoft has expanded its Zero Trust for AI strategy with new tooling and prescriptive guidance covering AI agent security and DevSecOps environments. If you're building or governing agent deployments, review the"
+  },
+  {
+    "title": "Copilot Studio: Dataverse as a native knowledge source",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - Dataverse is entering preview as a native knowledge source in Copilot Studio, allowing agents to be grounded directly in structured business data including customer records and operational data. Preview start"
+  },
+  {
+    "title": "Copilot Vision: Analyze desktop screen and mobile camera in real time",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Vision in Microsoft 365 Copilot now supports real-time analysis of a shared desktop screen or mobile camera feed during voice sessions, delivering context-aware spoken answers. This was GA in June 2026; if you hav"
+  },
+  {
+    "title": "Copilot mobile app: Proactive push notifications for productivity workflows",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The Microsoft 365 Copilot mobile app will proactively push notifications for workflows like \"Your Day at a Glance\" and \"Items waiting for you,\" targeting GA in September 2026. Requires Copilot licenses; these noti"
+  },
+  {
+    "title": "Viva Glint: Export Heat Map report to editable PowerPoint slides",
+    "category": "Employee Experience",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Managers can now export the default sections of the Glint Heat Map report as editable PowerPoint slides rather than static screenshots, already GA as of July 2026. Communicate this to Glint admins and managers who"
+  },
+  {
+    "title": "Viva Glint: Configurable data retention policy",
+    "category": "Employee Experience",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Glint service administrators can now configure a data retention policy governing how long past survey cycles are retained or deleted, covering engagement surveys, always-on surveys, lifecycle surveys, and 360s. Th"
+  },
+  {
+    "title": "CVE-2025-2309: HDF5 Type Conversion Logic heap-based overflow",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Information published via MSRC. Assess exposure in any environments processing HDF5 files and apply mitigations per the advisory."
+  },
+  {
+    "title": "CVE-2025-2308: HDF5 Scale-Offset Filter heap-based overflow",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Second HDF5 heap overflow published this cycle, affecting the Scale-Offset filter decompression path. Treat together with CVE-2025-2309 when assessing HDF5 exposure."
+  },
+  {
+    "title": "CVE-2026-64581: xfrm double-free in xfrm_user_policy()",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Linux kernel xfrm (IPsec) double-free vulnerability published via MSRC. Relevant for Linux-based endpoints or VMs in your estate; apply kernel patches per advisory guidance."
+  },
+  {
+    "title": "CVE-2026-68097: ksmbd ACE size validation against SID sub-authorities",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Information published. Relevant for environments using ksmbd (Linux kernel SMB server); review and patch accordingly."
+  },
+  {
+    "title": "CVE-2026-68412: cfg80211 error handling in cfg80211_wext_siwscan()",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Linux Wi-Fi subsystem vulnerability published via MSRC. Apply kernel updates on affected Linux devices."
+  },
+  {
+    "title": "CVE-2026-71497: jsoup Cleaner exposing markup with custom raw-text elements",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - jsoup HTML sanitizer vulnerability that can expose markup through custom raw-text elements. Relevant for any Java-based application or service that uses jsoup for HTML sanitization; update the library dependency."
+  },
+  {
+    "title": "CVE-2026-68273: drm/amdgpu context pstate override handling fix",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AMD GPU driver fix published via MSRC. Apply on Linux systems with amdgpu driver exposure."
+  },
+  {
+    "title": "CVE-2026-68190: rtl8723bs OOB reads in rtw_get_wps_ie()",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Out-of-bounds read in the RTL8723BS staging driver. Patch Linux endpoints with this wireless chipset."
+  },
+  {
+    "title": "CVE-2026-64652: GitHub CLI partial token disclosure in gh auth status",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - GitHub CLI can partially disclose tokens in the output of gh auth status. Update the GitHub CLI on all developer workstations and CI/CD environments and rotate any tokens that may have been exposed in logs."
+  },
+  {
+    "title": "CVE-2026-68186: binfmt_misc execfd flag set before interpreter is opened",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Linux binfmt_misc vulnerability published via MSRC. Apply kernel patches on affected Linux hosts."
+  },
+  {
+    "title": "CVE-2026-64653: GitHub CLI path traversal via unescaped URL variable components",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Unescaped variable components in GitHub CLI request URLs can enable path traversal. Update the GitHub CLI on all developer and CI/CD systems immediately; this pairs with CVE-2026-64652 as a two-issue update obliga"
+  },
+  {
+    "title": "CVE-2026-68114: drm/amdgpu/gfx12.1 BUG_ON replaced with WARN_ON",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AMD GPU stability fix published via MSRC. Apply on Linux systems running amdgpu gfx12.1 hardware."
+  },
+  {
+    "title": "CVE-2026-68258: drm/amdkfd bounds check on CRIU restore queue type and mqd size",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AMD kernel fusion driver bounds checking fix published via MSRC. Apply on Linux systems with AMD GPU workloads."
+  },
+  {
+    "title": "CVE-2026-68203: vivid cleanup bugs in vivid_init()",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Linux media test driver cleanup fix published via MSRC. Low production exposure for most environments, but patch accordingly on affected kernels."
+  },
+  {
+    "title": "Microsoft named a Leader in 2026 IDC MarketScape for MDR/MXDR",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - IDC has named Microsoft a Leader in the MDR/MXDR for Enterprise MarketScape. Useful supporting material for stakeholders evaluating Defender Experts MDR as part of a SOC modernization or vendor consolidation effor"
+  },
+  {
+    "title": "Defender for Identity: New health alert for GPO-reverted auditing configuration",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - MDI will now raise a health alert when a GPO repeatedly reverts the auditing configuration required by sensor v3.x on a domain controller. If you see this alert, it means a GPO conflict is silently degrading your "
+  },
+  {
+    "title": "Defender for Identity: PowerShell script to find GPO auditing conflicts",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The new Find-MdiAuditingGpoConflicts.ps1 read-only script identifies GPOs that override MDI's automatic auditing settings on domain controllers. Run this proactively across your domain controller fleet rather than"
+  },
+  {
+    "title": "Defender for Identity sensor v3.x: Support for AD FS, AD CS, and Entra Connect servers",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Sensor v3.x can now be deployed on AD FS, AD CS, and Microsoft Entra Connect servers regardless of whether they are domain controllers. These are high-value identity infrastructure targets; add them to your MDI se"
+  },
+  {
+    "title": "Defender for Identity: Expanded automatic auditing for AD FS, AD CS, and Entra Connect",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Automatic Windows event auditing now extends to AD FS, AD CS, and Entra Connect servers running sensor v3.x, including non-domain-controller deployments. This means your MDI event collection is now consistent acro"
+  },
+  {
+    "title": "MCP safety and evaluation with Agent 365 CLI and Agent Governance Toolkit",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Two distinct control points for MCP agent governance: Agent 365 CLI evaluates MCP servers before an agent connects, and the Agent Governance Toolkit governs sensitive tool calls at runtime. If your organization is"
+  },
+  {
+    "title": "Windows 10 Enterprise LTSC 2021 end of support: January 12, 2027",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Deadline: January 12, 2027, now under six months away. Run a Intune or Endpoint Analytics report to quantify your LTSC 2021 device count, build a migration plan to Windows 11 Enterprise LTSC 2024, and get leadersh"
+  },
+  {
+    "title": "Cross-tenant calendar and Free/Busy features moving off EWS: Plan your migration",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - EWS deprecation drives this change. Review Message Center post MC1446796, identify which tenant relationships use cross-tenant Free/Busy, MailTips, or calendar sharing, and begin configuring Cross-Tenant Access Po"
+  },
+  {
+    "title": "GitHub CLI CVEs: Immediate update required for CVE-2026-64652 and CVE-2026-64653",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Two GitHub CLI vulnerabilities published this week: partial token disclosure in gh auth status output and path traversal via unescaped URL components. Update the GitHub CLI on all developer workstations and CI/CD "
+  },
+  {
+    "title": "Defender for Identity sensor v3.x: Deploy to AD FS, AD CS, and Entra Connect now",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - With sensor v3.x support now GA for these server roles, there is no reason to leave them uncovered. Add AD FS, AD CS, and Entra Connect servers to your MDI sensor deployment queue, and run Find-MdiAuditingGpoConfl"
+  },
+  {
+    "title": "Copilot Domain Exclusion rollback: Reassess web grounding governance",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The domain exclusion control for Copilot web grounding has been removed with no replacement timeline. If this was part of your Copilot governance story or was communicated to compliance stakeholders, update your d"
+  },
+  {
+    "title": "Token Protection deployment guide for web apps added (Preview)",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "A new deployment guide for Token Protection in web app scenarios has been added to the Entra docs, covering prerequisites, configuration steps, and the current preview scope; relevant for any team evaluating Conditional "
+  },
+  {
+    "title": "Admin permission required for passkey opt-out now documented",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "The docs now explicitly document which admin permission is required to opt users out of passkey registration, closing a gap that was causing confusion during passkey policy rollouts."
+  },
+  {
+    "title": "Managed policies activation and remediation details revised",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "The guidance on activating and remediating managed Conditional Access policies has been updated with clearer steps and corrected detail; worth reviewing if your team manages Microsoft-managed CA policies."
+  },
+  {
+    "title": "Agent ID licensing updated to reference Agent 365 product terms",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "The Entra Agent ID licensing page now references Agent 365 product terms rather than prior licensing language; check this if you're planning agent identity deployments and need accurate licensing prerequisites."
+  },
+  {
+    "title": "Warning added for Platform SSO incompatibility with userless ADE devices",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "The docs now include an explicit warning that Platform SSO (PSSO) is not supported on userless Automated Device Enrollment (ADE) devices; if you're rolling out PSSO alongside ADE, verify your device enrollment profiles a"
+  },
+  {
+    "title": "Intune firewall policy docs updated with per-setting reporting note",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "Firewall policy documentation now clarifies per-setting reporting behavior, which affects how compliance status is surfaced for individual firewall rules in the Intune console."
+  },
+  {
     "title": "Defender for Office 365 Plan 1 now included in Microsoft 365 E3",
     "category": "Top 5",
     "date": "2026-08-04",
@@ -582,35 +1107,35 @@
   },
   {
     "title": "Purview DLM billing model changes to volume-based",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
     "snippet": "If your organization retains non-Microsoft 365 generative AI prompts and responses under a DLM policy, your costs are no longer tied to policy count but to data volume at $0.25/GB/month. Model your current retained data "
   },
   {
     "title": "People Skills admin deletion control is GA",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
     "snippet": "{{< cat \"Security & Compliance\" >}} - You can now permanently nuke your entire tenant Skills library, including all confirmed, inferred, and imported skills data. This is the clean offboarding path for organizations that"
   },
   {
     "title": "RDP Multipath redundant TCP is GA for Windows 365 and Azure Virtual Desktop",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
     "snippet": "{{< cat \"Security & Compliance\" >}} - TCP-based session resilience is now available alongside the existing UDP path, closing the gap for users behind restrictive firewalls, proxies, or VPN configurations that block UDP. "
   },
   {
     "title": "Auto-labeling of existing SharePoint files from library default labels is coming",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
     "snippet": "Preview lands September 2026, GA in October 2026. This will retroactively apply sensitivity labels to data at rest that currently sits unlabeled, which may trigger DLP policy matches you haven't planned for. Start auditi"
   },
   {
     "title": "Microsoft Incident Response now available to AXA XL policyholders",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-28",
     "url": "/posts/2026-07-28/",
     "snippet": "{{< cat \"Security & Compliance\" >}} - If your organization carries AXA XL cyber insurance, Microsoft IR services are now directly accessible through that policy. Worth surfacing to your CISO and risk team as a pre-negoti"
@@ -672,36 +1197,78 @@
     "snippet": "[GA, governance decision required] - If your organization has People Skills data you need to remove for compliance, GDPR, or data governance reasons, the permanent deletion control is now available. Deletion is irreversi"
   },
   {
+    "title": "Entra Tenant Governance: 'preview' tags removed for GA",
+    "category": "Documentation Updates",
+    "date": "2026-07-28",
+    "url": "/posts/2026-07-28/",
+    "snippet": "The Entra Tenant Governance Learn article no longer carries preview tags, reflecting general availability of the shadow tenant discovery capability covered in earlier weeks."
+  },
+  {
+    "title": "Lifecycle Workflows navigation: '(Preview)' labels removed",
+    "category": "Documentation Updates",
+    "date": "2026-07-28",
+    "url": "/posts/2026-07-28/",
+    "snippet": "The Lifecycle Workflows navigation menu documentation no longer shows Preview labels, indicating this area of the product has moved to general availability."
+  },
+  {
+    "title": "Lifecycle Workflows: unsponsored guest removal task documented",
+    "category": "Documentation Updates",
+    "date": "2026-07-28",
+    "url": "/posts/2026-07-28/",
+    "snippet": "New documentation covers a Lifecycle Workflows task that sends an email about unsponsored guest removal, useful for tightening B2B guest governance."
+  },
+  {
+    "title": "Cloud Sync device sync documentation added",
+    "category": "Documentation Updates",
+    "date": "2026-07-28",
+    "url": "/posts/2026-07-28/",
+    "snippet": "New documentation covers device sync behavior in Cloud Sync, relevant if you're running hybrid identity with Cloud Sync rather than Connect Sync."
+  },
+  {
+    "title": "New SSO article for Orgvue",
+    "category": "Documentation Updates",
+    "date": "2026-07-28",
+    "url": "/posts/2026-07-28/",
+    "snippet": "A new SSO integration article covers Orgvue, useful if you're onboarding this integration."
+  },
+  {
+    "title": "Known behavior note added for cross-cloud B2B login_hint",
+    "category": "Documentation Updates",
+    "date": "2026-07-28",
+    "url": "/posts/2026-07-28/",
+    "snippet": "A known behavior note documents cross-cloud B2B login_hint handling, useful if you're troubleshooting unexpected sign-in prompts for cross-cloud guest scenarios."
+  },
+  {
     "title": "Passkeys are now the default authentication method in Entra ID",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
     "snippet": "Microsoft has shifted the default sign-in experience to passkeys and introduced a new model for SMS and voice authentication. Review your Conditional Access and authentication policies now; the default has moved whether "
   },
   {
     "title": "Microsoft Entra Backup and Recovery is generally available",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
     "snippet": "Automatic daily backups of users, groups, apps, service principals, managed identities, and Conditional Access policies are rolling out to all workforce tenants with Entra ID P1 or P2. This directly addresses directory d"
   },
   {
     "title": "Advanced Intune Suite capabilities are now included in M365 E3 and E5",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
     "snippet": "As of July 1, the packaging changes announced in December 2025 are live. If your org holds M365 E5, you now have access to advanced Intune Suite features without an add-on; E3 gets a select subset. Audit your current Int"
   },
   {
     "title": "Exchange 2016/2019 ESU ends October 2026, with no further extension",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
     "snippet": "Microsoft has confirmed there will be no Period 3. If your organization is still running Exchange 2016 or 2019 on-premises, the migration deadline is real and the clock is running."
   },
   {
     "title": "ACR Stealer campaigns actively targeting enterprise environments via ClickFix lures",
-    "category": "Top 5 This Week",
+    "category": "Top 5",
     "date": "2026-07-21",
     "url": "/posts/2026-07-21/",
     "snippet": "Microsoft Defender Experts observed sustained ACR Stealer activity from late April through mid-June 2026, successfully harvesting browser credentials, auth tokens, and documents. Review your Defender for Endpoint coverag"
@@ -931,6 +1498,69 @@
     "snippet": "[GA] - Ongoing threat. Pull Defender for Endpoint detections for ClickFix-related indicators from the documented intrusion chains. Verify that browser credential isolation and token protection controls are enabled. Escal"
   },
   {
+    "title": "FAQ added: external MFA methods and SMS/voice retirement scope",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "A new FAQ covers external MFA methods and clarifies the scope of the SMS/voice authentication retirement, useful given this week's default-passkey change."
+  },
+  {
+    "title": "Obsolete 'Deprecating soon' notice removed from WCF article",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "The Windows Configuration Framework article no longer carries an obsolete deprecation notice, reflecting a status change."
+  },
+  {
+    "title": "WCF source traffic types corrected to Agent and Non-agent",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Documentation now correctly labels WCF source traffic types as Agent and Non-agent, worth a re-read if you referenced the previous labeling in policy design."
+  },
+  {
+    "title": "Tenant restrictions documentation revised for clarity",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Tenant restrictions documentation has been revised for clarity, useful if you're configuring or troubleshooting Tenant Restrictions v2."
+  },
+  {
+    "title": "Tenant Governance Administrator role marked as privileged",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "The Tenant Governance Administrator role is now documented as privileged, a security-relevant classification change worth reflecting in your role assignment reviews."
+  },
+  {
+    "title": "ECS endpoint added for US government Intune documentation",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "A new endpoint has been documented for US government Intune environments, relevant if you manage GCC or GCC-High tenants."
+  },
+  {
+    "title": "Android MAM SDK 12.6.1 documentation updated",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Documentation has been updated for Android MAM SDK version 12.6.1, worth checking if you maintain custom line-of-business apps using the SDK."
+  },
+  {
+    "title": "Two-decisions scan model flowchart added",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "A new visual flowchart illustrates the two-decisions software update scan model, useful for troubleshooting scan behavior."
+  },
+  {
+    "title": "Online vs. WSUS contact clarified in software updates scan documentation",
+    "category": "Documentation Updates",
+    "date": "2026-07-21",
+    "url": "/posts/2026-07-21/",
+    "snippet": "Documentation now clarifies when a device contacts online services versus WSUS during a software update scan, useful for diagnosing update delivery issues."
+  },
+  {
     "title": "OWA Light retirement in Exchange Server",
     "category": "Top 5",
     "date": "2026-07-14",
@@ -1062,6 +1692,62 @@
     "date": "2026-07-14",
     "url": "/posts/2026-07-14/",
     "snippet": "[GA] — Audit and patch within 30 days: Both node-tar CVEs affect process stability and availability. Scan your Node.js dependency trees across CI/CD pipelines and deployed services for node-tar versions below the patched"
+  },
+  {
+    "title": "OAuth credentials added for Netskope integration",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "New OAuth credential documentation supports Netskope integration with Entra ID, relevant if Netskope is part of your SSE stack."
+  },
+  {
+    "title": "Custom PAC files documentation added",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "New documentation covers custom PAC (proxy auto-config) file configuration, useful if you're routing traffic through Global Secure Access via explicit proxy."
+  },
+  {
+    "title": "SMS and Voice MFA retirement article added",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "A new dedicated article covers the SMS and Voice MFA retirement, giving admins a single reference for timeline, impact, and migration steps."
+  },
+  {
+    "title": "Retired OAuth authorization code grant removed from SCIM authorization table",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "The SCIM authorization documentation no longer lists the retired OAuth authorization code grant, reflecting current supported options."
+  },
+  {
+    "title": "Catalog Access Reviews added to guest billing table",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "Guest billing documentation now includes Catalog Access Reviews, relevant if you manage external identity governance costs."
+  },
+  {
+    "title": "SQL collation/config check added before Modify SQL Server configuration",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "New guidance adds a SQL collation and configuration check as a prerequisite step before modifying SQL Server configuration during site maintenance."
+  },
+  {
+    "title": "Supported apps revised for Multiple Managed Accounts — Outlook",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "The supported-apps list for the Multiple Managed Accounts feature has been revised for Outlook, worth checking if you're piloting this BYOD capability."
+  },
+  {
+    "title": "Client Analyzer shipped version instructions clarified",
+    "category": "Documentation Updates",
+    "date": "2026-07-14",
+    "url": "/posts/2026-07-14/",
+    "snippet": "Instructions for running the Client Analyzer shipped version have been clarified, useful if you're troubleshooting Defender client health."
   },
   {
     "title": "Copilot Cowork is GA worldwide.",
@@ -1209,6 +1895,83 @@
     "date": "2026-07-07",
     "url": "/posts/2026-07-07/",
     "snippet": "[GA] — Before 26H2 reaches production rings: Backup is on by default; restore requires admin configuration. Determine whether your organization wants to allow, restrict, or manage this behavior via policy before the rele"
+  },
+  {
+    "title": "New article: Transfer Microsoft Authenticator to a new phone",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "A new how-to article walks users through transferring Microsoft Authenticator to a new phone, a common support scenario worth linking from your helpdesk documentation."
+  },
+  {
+    "title": "Migration Policy Analyzer how-to article added",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "A new how-to article covers the Migration Policy Analyzer tool, useful if you're planning a hybrid-to-cloud identity migration."
+  },
+  {
+    "title": "GSA external user access subscription linking documented",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "New documentation covers subscription linking for external user access in Global Secure Access, relevant if you're extending GSA policies to guest or partner users."
+  },
+  {
+    "title": "SCIM multi-valued attributes processing details corrected",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "SCIM provisioning documentation now correctly describes multi-valued attribute processing, worth a re-read if you've built custom SCIM integrations against the previous guidance."
+  },
+  {
+    "title": "Migration Hub: Amazon Cognito to Entra External ID migration guidance added",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "New guidance covers migrating from Amazon Cognito to Microsoft Entra External ID, relevant if you're consolidating customer identity platforms."
+  },
+  {
+    "title": "Minimum role corrected for Microsoft Graph secret key renewal",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "The Azure services wizard documentation now lists the correct minimum role required to renew a secret key (2409 Microsoft Graph) — the previous guidance named the wrong role."
+  },
+  {
+    "title": "Terminology updated: 'Apple Business Manager' renamed to 'Apple Business'",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Documentation now consistently uses \"Apple Business\" instead of \"Apple Business Manager,\" reflecting Apple's current naming."
+  },
+  {
+    "title": "MDM compliance partner onboarding details removed from what's new documentation",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Onboarding details for MDM compliance partners have been removed from the what's-new documentation, reflecting a scope change in how that content is maintained."
+  },
+  {
+    "title": "Audit logs documentation: date range filter behavior modified",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Audit logs documentation now reflects modified date range filter behavior, worth checking if you script against audit log queries."
+  },
+  {
+    "title": "GPO setting name corrected",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Documentation now references the correct GPO setting name — the previous name in the docs could have led to a misconfiguration if followed literally."
+  },
+  {
+    "title": "Config file reference updated: MDEConfig.txt renamed to DefenderDTconfig.txt",
+    "category": "Documentation Updates",
+    "date": "2026-07-07",
+    "url": "/posts/2026-07-07/",
+    "snippet": "Documentation now references the updated config file name, worth checking if any of your deployment scripts still reference the old filename."
   },
   {
     "title": "Six CVEs published across libxml2, GNU gzip, attr, and acl.",
@@ -1391,6 +2154,69 @@
     "date": "2026-06-30",
     "url": "/posts/2026-06-30/",
     "snippet": "[GA] — Within the next 30 days, review the June Intune release notes and identify new app management capabilities that address version drift in your environment. With AI agents increasingly acting on behalf of users, end"
+  },
+  {
+    "title": "OIDC API reference and extensibility reference added",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "New reference documentation covers the OIDC API and its extensibility model, useful if you're building custom OIDC-based integrations against Entra ID."
+  },
+  {
+    "title": "Global Secure Access: Microsoft traffic tutorials added",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "New tutorials walk through configuring Microsoft traffic routing in Global Secure Access, useful if you're tuning which traffic goes through the Microsoft peering path versus internet access."
+  },
+  {
+    "title": "GSA Purview text content type documentation updated",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "Documentation covering Purview text content type detection within Global Secure Access has been updated, relevant if you're using GSA's DLP integration for file-type content filtering."
+  },
+  {
+    "title": "Power BI multi-tenant org (MTO) limitation removed — now GA",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "The documented Power BI MTO limitation has been removed, reflecting that multi-tenant org support is now generally available in Power BI and Fabric."
+  },
+  {
+    "title": "New provisioning tutorial added for VISA",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "A new provisioning tutorial covers VISA integration, useful if you're onboarding this app for automated user provisioning."
+  },
+  {
+    "title": "Intune notices updated for iOS 18 and macOS 15 support",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "Intune support notices have been updated to reflect current iOS 18 and macOS 15 support status, worth checking before your next OS upgrade wave."
+  },
+  {
+    "title": "Widgets support added for OneNote",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "New documentation covers Widgets support for OneNote, relevant if you manage app configuration policies for OneNote on managed devices."
+  },
+  {
+    "title": "Remote Help app permissions advice revised",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "Permissions guidance for the Remote Help app has been revised, worth a review if Remote Help is part of your helpdesk tooling."
+  },
+  {
+    "title": "Unattended session guidelines revised for security",
+    "category": "Documentation Updates",
+    "date": "2026-06-30",
+    "url": "/posts/2026-06-30/",
+    "snippet": "Guidelines for unattended remote sessions have been revised with a security focus, worth reviewing against your current remote access policy."
   },
   {
     "title": "EWS retirement final phase, October 2026 deadline.",
@@ -1589,6 +2415,76 @@
     "snippet": "[GA] — Urgent architecture review recommended for any environment running AI agents with web browsing capability and local service access. Enforce network segmentation between agent processes and local interfaces, requir"
   },
   {
+    "title": "Stale device lifecycle context added",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "New context has been added covering stale device lifecycle behavior, useful if you're auditing device object hygiene in Entra ID."
+  },
+  {
+    "title": "Capacity guidance added to Domain Services SKUs table",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "A new capacity guidance note has been added to the Microsoft Entra Domain Services SKUs table, worth reviewing before sizing a new deployment."
+  },
+  {
+    "title": "AAGUID-targeting passkey profile examples added for Windows",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "New examples show how to target passkey profiles by AAGUID on Windows, useful if you're rolling out passkey policy scoped to specific authenticator models."
+  },
+  {
+    "title": "SSO onboarding articles added for ISV app developers",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "New onboarding articles walk ISV app developers through SSO integration, relevant if you work with or evaluate third-party apps integrating with Entra ID."
+  },
+  {
+    "title": "Approver details section: 'Preview' label removed",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "The approver details section documentation no longer carries a Preview label, indicating this capability has moved to general availability."
+  },
+  {
+    "title": "MAA app-auth enforcement — out-of-band update",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "Documentation for Modern Authentication App (MAA) app-auth enforcement has received an out-of-band update — worth a re-read given the enforcement was reverted earlier this cycle (see the 2026-06-02 backfill note above)."
+  },
+  {
+    "title": "Token To User Mapping: Account Name setting clarified",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "The Account Name setting in Token To User Mapping documentation has been clarified, useful if you're configuring device-based authentication mapping."
+  },
+  {
+    "title": "Entity enrichment docs added for MDTI convergence",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "New documentation covers entity enrichment as part of the Microsoft Defender Threat Intelligence (MDTI) convergence into the Defender portal, relevant if you use threat intelligence enrichment in investigations."
+  },
+  {
+    "title": "Advanced hunting for all clouds now GA",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "Advanced hunting documentation now reflects general availability across all cloud environments, expanding hunting coverage beyond the original scope."
+  },
+  {
+    "title": "Arc-enabled Kubernetes advanced hunting reverted to Preview status",
+    "category": "Documentation Updates",
+    "date": "2026-06-23",
+    "url": "/posts/2026-06-23/",
+    "snippet": "Advanced hunting for Arc-enabled Kubernetes has been reverted from GA back to Preview in the docs — worth noting if you had already planned around GA availability for this specific workload."
+  },
+  {
     "title": "CVE-2026-54411: Linux-PAM Timing Side-Channel Leaks Plaintext Passwords",
     "category": "Top 5",
     "date": "2026-06-16",
@@ -1720,6 +2616,111 @@
     "date": "2026-06-16",
     "url": "/posts/2026-06-16/",
     "snippet": "[GA] — 30-day governance window. Computer-using agents are GA and accessible to makers in Copilot Studio — without proactive governance, business units will deploy agents with broad UI access and no audit controls. Defin"
+  },
+  {
+    "title": "Add AI agent discovery (preview) doc for Global Secure Access",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "A new preview doc covers AI agent discovery within Global Secure Access, giving early guidance for organizations that want visibility into AI agent traffic alongside user and device traffic."
+  },
+  {
+    "title": "Cross-tenant sync docs updated: 21Vianet now supported",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Cross-tenant synchronization documentation now covers the 21Vianet-operated Azure cloud, relevant if your organization operates or partners with tenants in the Microsoft Azure operated by 21Vianet environment."
+  },
+  {
+    "title": "Cross-reference added for Apple Secure Enclave browser requirements",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "A new cross-reference links Apple Secure Enclave browser requirements into related Entra documentation, making the dependency easier to find when auditing platform prerequisites."
+  },
+  {
+    "title": "Dynamic group guidance: stale object note added",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Dynamic group membership guidance now flags stale object behavior — worth a review if you rely on dynamic groups for access assignment and have seen unexpected membership drift."
+  },
+  {
+    "title": "External ID self-service sign-up clarified",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Self-service sign-up documentation for External ID has been clarified, useful if you're configuring or troubleshooting customer-facing sign-up flows."
+  },
+  {
+    "title": "AI reader permissions updated: usage reports removed",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Documentation for AI reader permissions no longer references usage reports, reflecting a scoped-down permission surface — worth checking if your governance docs or scripts still reference the old scope."
+  },
+  {
+    "title": "New: Security update status dashboard",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "New documentation covers a security update status dashboard, giving admins a consolidated view of update compliance across managed devices."
+  },
+  {
+    "title": "Multiple Managed Accounts now supported in Intune mobile app management",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Intune mobile app management now documents support for multiple managed accounts on a single device, relevant for BYOD scenarios where users need separate work profiles."
+  },
+  {
+    "title": "KB 37864613 added: security update for importing console extensions",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "A new KB article documents a security update affecting console extension imports; confirm this is applied if you manage custom console extensions."
+  },
+  {
+    "title": "Warning added for unsupported iOS SDK versions",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "New warning notifications flag unsupported iOS SDK versions, worth checking if you manage iOS app deployments through Intune."
+  },
+  {
+    "title": "MP internet access requirement documented for Entra token validation (version 2603)",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Management point internet access requirements have been documented for Entra token validation in ConfigMgr version 2603, relevant if you're planning or troubleshooting that upgrade."
+  },
+  {
+    "title": "SQL Server 2025 added as supported database (version 2603)",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "ConfigMgr version 2603 documentation now lists SQL Server 2025 as a supported site database, useful if you're planning a SQL Server upgrade alongside your ConfigMgr environment."
+  },
+  {
+    "title": "Salesforce connector enhancements documented: events and NHI insights",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Documentation for the Salesforce connector now covers event tracking and non-human-identity (NHI) insights, relevant if you're monitoring Salesforce-connected service accounts and automation."
+  },
+  {
+    "title": "Defender deployment tool GA announcement merged into docs",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Documentation reflecting general availability of a Defender deployment tool has landed; review if you're planning or automating Defender rollouts."
+  },
+  {
+    "title": "Sentinel graph visualization documentation enhanced",
+    "category": "Documentation Updates",
+    "date": "2026-06-16",
+    "url": "/posts/2026-06-16/",
+    "snippet": "Sentinel's graph visualization documentation has been expanded, useful if you're building or interpreting entity relationship graphs during investigations."
   },
   {
     "title": "CVE-2026-42897 — Exchange Server OWA XSS (Active Vulnerability):",
@@ -1895,6 +2896,55 @@
     "date": "2026-06-09",
     "url": "/posts/2026-06-09/",
     "snippet": "[GA] — Plan within 30 days. Advanced Intune Suite features will begin appearing in M365 tenants in CY26 Q3 with 30-day Message Center notice. Review your current Intune Suite add-on licensing — if you're paying for stand"
+  },
+  {
+    "title": "New article for AgileWorks SSO configuration",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "A new configuration article covers AgileWorks SSO setup, useful if you're onboarding this integration."
+  },
+  {
+    "title": "Generative AI Insights logging documented for Global Secure Access (preview)",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "New preview documentation covers Generative AI Insights logging (prompt and MCP traffic) within Global Secure Access, relevant if you're building visibility into AI tool usage on managed networks."
+  },
+  {
+    "title": "AADDS123 alert updated with self-service options",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "The AADDS123 alert documentation now includes self-service remediation options, reducing the need to open a support case for this specific alert."
+  },
+  {
+    "title": "Security Operator role description enhanced",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "The built-in Security Operator role description has been expanded for clarity, worth a review if you're assigning this role as part of least-privilege access design."
+  },
+  {
+    "title": "Security update status dashboard content and guidance updated",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "Documentation for the security update status dashboard has been expanded with additional content and guidance, useful if you're using it to track update compliance."
+  },
+  {
+    "title": "Remote Help documentation updated",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "Remote Help documentation has been updated; review if Remote Help is part of your helpdesk tooling."
+  },
+  {
+    "title": "Linux isolation prerequisites: full kernel config table added",
+    "category": "Documentation Updates",
+    "date": "2026-06-09",
+    "url": "/posts/2026-06-09/",
+    "snippet": "Linux device isolation prerequisites now include a full kernel configuration table, useful if you're troubleshooting or validating isolation readiness on Linux endpoints."
   },
   {
     "title": "CVE-2026-42897 — Patch Exchange Server on-prem now.",
@@ -2175,6 +3225,41 @@
     "date": "2026-06-02",
     "url": "/posts/2026-06-02/",
     "snippet": "[GA] — Action within 30 days. DLP for M365 Copilot Chat is GA and included at no extra cost for all Copilot and Copilot Chat users. If your DLP policies were written before Copilot was in scope, they do not automatically"
+  },
+  {
+    "title": "Prerequisites section completed in reset password article",
+    "category": "Documentation Updates",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "The Prerequisites section in the self-service password reset article has been completed, closing a gap for admins following the setup guide end-to-end."
+  },
+  {
+    "title": "VPN modernization guidance renamed and expanded with Zero Trust links",
+    "category": "Documentation Updates",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "The former \"Phase 1\" VPN guidance has been renamed to \"VPN modernization\" and now links out to related Zero Trust documentation, useful if you're building a phased VPN-to-SSE migration plan."
+  },
+  {
+    "title": "Local AI agent and NL2KQL support documented",
+    "category": "Documentation Updates",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "New documentation covers support information for the Local AI agent and natural-language-to-KQL (NL2KQL) capabilities, relevant if you're piloting on-device AI tooling."
+  },
+  {
+    "title": "MAA app-auth enforcement reverted",
+    "category": "Documentation Updates",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "Documentation now reflects that Modern Authentication App (MAA) app-auth enforcement has been reverted — worth checking if you had already planned around the enforcement timeline this affects."
+  },
+  {
+    "title": "Configuration clarified for 'Enable Create First User' setting",
+    "category": "Documentation Updates",
+    "date": "2026-06-02",
+    "url": "/posts/2026-06-02/",
+    "snippet": "The configuration guidance for the \"Enable Create First User\" setting has been clarified, useful during initial device provisioning setup."
   },
   {
     "title": "GSA iOS Client, Cloud Firewall, and File-Type Filtering all hit GA",
@@ -2478,6 +3563,55 @@
     "snippet": "Shipping in June CY2026, the 30-minute sync SLA replaces the 2-hour window. If your runbooks or SOC playbooks reference the old 2-hour propagation time when assessing DLP policy change risk or scheduling maintenance wind"
   },
   {
+    "title": "Add Conditional Access guidance: restrict device code flow for Microsoft Teams devices",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "New Conditional Access guidance covers restricting the device code authentication flow specifically for Microsoft Teams devices, closing a gap for orgs hardening against device-code phishing."
+  },
+  {
+    "title": "Dynamic group rules: cleanup note added",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "Dynamic group rules documentation now includes a cleanup note, worth reviewing if you maintain complex dynamic membership rule sets."
+  },
+  {
+    "title": "Cloud Management Gateway FAQ updated with security details",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "The Cloud Management Gateway FAQ now includes additional security detail, useful if you're evaluating or hardening a CMG deployment."
+  },
+  {
+    "title": "Web Protection documentation updated for Android",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "Web Protection guidance for Android has been updated; review if you manage Android devices with Defender-based web protection policies."
+  },
+  {
+    "title": "Tor Browser support removed from documentation",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "References to Tor Browser support have been removed from the docs, reflecting a scoped-down supported-browser list — worth checking if any of your guidance or scripts still assume Tor Browser support."
+  },
+  {
+    "title": "Identity attack graph clarified as preview",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "Documentation now explicitly clarifies that the identity attack graph feature is in preview, useful context if you're evaluating it for production investigations."
+  },
+  {
+    "title": "Offboarding note corrected",
+    "category": "Documentation Updates",
+    "date": "2026-05-26",
+    "url": "/posts/2026-05-26/",
+    "snippet": "An offboarding-related note has been corrected; worth a re-read if offboarding procedures are part of your active documentation references."
+  },
+  {
     "title": "Storm-2949 cloud breach anatomy — read this now.",
     "category": "Top 5",
     "date": "2026-05-19",
@@ -2779,6 +3913,55 @@
     "snippet": "Microsoft's SMB security guidance lands as AI-driven phishing grows roughly 4.5x more effective than traditional attacks. The pitch centers on Microsoft 365 Business Premium's built-in protections for identity, devices, "
   },
   {
+    "title": "Incorrect SSPR risk remediation claim fixed",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Self-service password reset documentation no longer makes an incorrect claim about risk remediation behavior — worth a re-read if you referenced this for a compliance or design decision."
+  },
+  {
+    "title": "User Insights deprecation documented — retiring August 31, 2026",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "A new article documents the User Insights deprecation with a firm retirement date of August 31, 2026, giving admins a concrete deadline to plan around."
+  },
+  {
+    "title": "Owner and sponsor roles clarified, including guest user support",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Documentation on agent owner and sponsor roles has been clarified, and now notes support for guest users in these roles."
+  },
+  {
+    "title": "Directory settings permission added to default user permissions table",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "The default user permissions table now includes the directory settings permission, closing a gap for anyone auditing baseline user capabilities."
+  },
+  {
+    "title": "Feature comparison table updated with links and licensing notes",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "A feature comparison table has been updated with additional links and licensing notes, useful when scoping which SKU covers a given capability."
+  },
+  {
+    "title": "Delete option behavior clarified: only one option available",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "Documentation now clarifies that only one delete option is available in a specific workflow, reducing ambiguity for admins expecting a choice."
+  },
+  {
+    "title": "New anti-spam policy troubleshooting article created",
+    "category": "Documentation Updates",
+    "date": "2026-05-19",
+    "url": "/posts/2026-05-19/",
+    "snippet": "A new troubleshooting article covers anti-spam policy issues, useful if you're diagnosing unexpected mail flow or filtering behavior."
+  },
+  {
     "title": "Hotpatch now default for all eligible Windows devices",
     "category": "Top 5",
     "date": "2026-05-17",
@@ -3036,6 +4219,55 @@
     "date": "2026-05-17",
     "url": "/posts/2026-05-17/",
     "snippet": "[Action Required] — The Entra admin center Agent Registry and Agent Collections blades are already retired (May 1). Monitor Message Center for the Graph API deprecation date and plan re-registration of agents via the new"
+  },
+  {
+    "title": "MSAL Android registration code fixed to match actual API",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Sample registration code has been corrected to match the actual MSAL Android API, fixing a documentation/implementation mismatch developers may have copy-pasted."
+  },
+  {
+    "title": "SSPR policy documentation simplified and admin roles reformatted as a table",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Self-service password reset policy documentation has been restructured for clarity, with admin roles now presented in table format."
+  },
+  {
+    "title": "Device code flow blocking documented in security defaults",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Security defaults documentation now explicitly covers device code flow blocking behavior, relevant if you rely on security defaults rather than custom Conditional Access."
+  },
+  {
+    "title": "Platform SSO setting availability note updated",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "The availability note for the Platform SSO setting has been updated, worth checking if you're rolling out Platform SSO on macOS."
+  },
+  {
+    "title": "API references updated: hardwarePasswordInfo renamed to hardwarePasswordDetails",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Graph API reference documentation now uses hardwarePasswordDetails instead of the old hardwarePasswordInfo name — update any scripts or automation referencing the old property name."
+  },
+  {
+    "title": "Admin account username guidance added for devices without user affinity",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "New guidance covers admin account username behavior for devices provisioned without user affinity, relevant for shared or kiosk-style device scenarios."
+  },
+  {
+    "title": "Runtime protection documentation substantially revised",
+    "category": "Documentation Updates",
+    "date": "2026-05-17",
+    "url": "/posts/2026-05-17/",
+    "snippet": "Runtime protection documentation received a significant rewrite this week across multiple commits, worth a re-read if runtime protection is part of your active Defender configuration reference."
   },
   {
     "title": "Endpoint management",
