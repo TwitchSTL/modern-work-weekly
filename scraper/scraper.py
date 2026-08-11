@@ -158,11 +158,27 @@ def classify_item(title: str, body: str, source_name: str | None = None) -> tupl
     means no keyword scored above zero and the category is DEFAULT_CATEGORY
     — a guess, not a real signal. Callers should track this rather than
     treat every item as equally confident; see write_classification_stats().
+
+    Before keyword scoring, strips the source's own display name out of the
+    combined text (added 2026-08-11). Sources not listed in SOURCE_PILLARS
+    fall through to keyword scoring, but several — e.g. "Defender for
+    Identity" — have a pillar keyword baked directly into their own product
+    name. Without stripping it, any item whose body merely restates the
+    product name (e.g. "Migration of Defender for Identity sensors...") would
+    score a false-positive "identity" hit and get pulled into Identity &
+    Access even though the content itself (a sensor version bump) has
+    nothing to do with identity/access. Verified against 5 real historical
+    Defender for Identity items: stripping correctly keeps sensor-migration
+    and RPC-auditing items in Security & Compliance while still letting
+    genuinely identity-flavored items (domain investigation, password
+    protection) score into Identity & Access on their own merit.
     """
     if source_name and source_name in SOURCE_PILLARS:
         return SOURCE_PILLARS[source_name], True
 
     combined = (title + " " + body).lower()
+    if source_name:
+        combined = combined.replace(source_name.lower(), "")
     scores = {cat: 0 for cat in CLASSIFICATION_KEYWORDS}
     for cat, keywords in CLASSIFICATION_KEYWORDS.items():
         for kw in keywords:

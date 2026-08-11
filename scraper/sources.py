@@ -520,8 +520,17 @@ SOURCE_PILLARS = {
     "SharePoint / OneDrive": "Collaboration & Productivity",
     "Defender XDR": "Security & Compliance",
     "Defender for Endpoint": "Security & Compliance",
-    "Defender for Identity": "Security & Compliance",
     "Defender for Office 365": "Security & Compliance",
+    # Defender for Identity deliberately NOT locked here (removed 2026-08-11).
+    # Unlike the other Defender variants, a meaningful share of its real
+    # content (domain investigation, password protection posture) is
+    # substantively Identity & Access material, not just Security-flavored
+    # detection/response. Falls through to keyword scoring instead, which
+    # (combined with the source-name-stripping fix in classify_item()) was
+    # verified against 5 historical items: 2 correctly stay Security &
+    # Compliance (sensor migration, RPC auditing — "identity" there was only
+    # the product's own name), 2 correctly move to Identity & Access (domain
+    # investigation, password protection — "identity" reflects real content).
     "Exchange Online": "Collaboration & Productivity",
     "Windows 365": "Endpoint & Device Management",
     "Windows Autopatch": "Endpoint & Device Management",
