@@ -22,7 +22,7 @@
       {{ end }}
       {{ with .Params.tags }}
       <div class="post-tags">
-        {{ range . }}<span class="tag">#{{ . }}</span> {{ end }}
+        {{ range . }}<a class="tag" href="/tags/{{ . | urlize }}/">#{{ . }}</a> {{ end }}
       </div>
       {{ end }}
     </header>

@@ -848,7 +848,15 @@ def tag_top5_categories(content: str) -> str:
         title = m.group("title").strip()
         category = _best_category_match(title, catalog)
         if category:
-            return f"**{title}**{{{{< cat \"{category}\" >}}}}"
+            # A space is required before the shortcode call -- without it,
+            # Goldmark fails to close the ** emphasis run (placeholder sits
+            # directly against the delimiter) and the title renders as
+            # literal asterisks instead of <strong>. That silently breaks
+            # collapsible.js: makeTop5Collapsible() requires a <strong> in
+            # each Top 5 <li> to build the item. Confirmed live on the
+            # 2026-08-11 post, the first week this tagging shipped -- all 5
+            # Top 5 items vanished from the page.
+            return f"**{title}** {{{{< cat \"{category}\" >}}}}"
         return m.group(0)
 
     tagged_block = re.sub(r"\*\*(?P<title>[^*]+)\*\*(?=\s*-\s)", tag_item, top5_match.group(1))
