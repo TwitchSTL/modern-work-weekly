@@ -2636,29 +2636,56 @@ details[open] .toc-label::before { content: "▼ "; }
   border-left: 3px solid rgba(245, 166, 35, 0.4);
 }
 
-/* Work-in-progress banner for exec pages */
-.wip-banner {
+/* Author credibility banner for exec pages (replaced amber "Work in Progress"
+   warning box 2026-08-11 — same info, framed as process transparency
+   instead of an accuracy caveat). */
+.exec-id-banner {
   margin-top: 2rem;
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  background: rgba(245, 166, 35, 0.07);
-  border: 1px solid rgba(245, 166, 35, 0.28);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.85rem 1.1rem;
   margin-bottom: 2rem;
   font-size: 0.83rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--color-text-muted);
 }
-.wip-banner-icon {
-  font-size: 1rem;
+.exec-id-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(88, 166, 255, 0.1);
+  border: 1px solid rgba(88, 166, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
   flex-shrink: 0;
   margin-top: 0.05rem;
 }
-.wip-banner strong {
-  color: #f5a623;
+.exec-id-banner-body strong {
+  color: var(--color-text);
   font-weight: 600;
+}
+.exec-id-banner-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  background: rgba(88, 166, 255, 0.08);
+  border: 1px solid rgba(88, 166, 255, 0.25);
+  border-radius: 10px;
+  padding: 1px 7px;
+  margin-left: 0.4rem;
+  vertical-align: 1px;
 }
 
 .exec-post .post-title {
