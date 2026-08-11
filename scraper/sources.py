@@ -540,7 +540,19 @@ SOURCE_PILLARS = {
     "Power Platform": "AI & Copilot",
     "Agent 365": "AI & Copilot",
     "Microsoft Viva": "Employee Experience",
-    "Global Secure Access": "Security & Compliance",
+    # Global Secure Access deliberately NOT locked here (removed 2026-08-11,
+    # audited alongside the other four Security-locked sources). Unlike
+    # Defender XDR/Endpoint/Office 365 and Purview — which were audited at
+    # the same time and kept locked because their cross-pillar keyword hits
+    # were overwhelmingly single-keyword false positives (e.g. "forms"
+    # substring-matching inside "platforms", a stray "endpoint" mention
+    # nearly misrouting this week's real "(Preview) AI agent posture risk in
+    # Microsoft Defender" Top 5 item into Endpoint & Device Management) —
+    # Global Secure Access showed a strong, clean signal: 4/14 historical
+    # items were genuine Entra ID identity content sitting in its feed, one
+    # hitting 6 Identity & Access keywords at once ("Microsoft Entra ID
+    # security updates: What organizations..."). Falls through to keyword
+    # scoring (with source-name-stripping) instead.
     # Deliberately NOT listed (span multiple pillars — keep keyword scoring):
     # Microsoft Security Blog, Microsoft 365 Roadmap,
     # Microsoft Security Response Center, Microsoft Mechanics.
