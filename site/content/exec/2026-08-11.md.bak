@@ -1,0 +1,161 @@
+---
+title: "Executive's Guide - Week of 2026-08-11"
+date: 2026-08-11
+description: "Active ransomware operations, a major software supply chain attack, and the arrival of AI agent security controls make this a week where security posture decisions carry direct financial and compliance weight."
+categories: ["Executive Guide"]
+tags: ["security", "compliance", "identity", "devices", "data-protection", "user-impact", "cost", "licensing"]
+risk_high: 1
+risk_med: 2
+risk_low: 1
+---
+
+## The Week at a Glance
+
+- 🔴 **ChainDrop supply chain worm and DeadLock ransomware are active threats targeting organizations now.** Attackers compromised more than 400 software packages to steal credentials and spread automatically, while a new ransomware group uses decentralized infrastructure to pressure victims with double extortion; organizations that rely on third-party software or haven't validated endpoint protection should treat both as live incidents, not future risks.
+- 🟡 **Windows 10 Enterprise LTSC 2021 reaches end of security support on January 12, 2027.** Any device still running this version after that date will stop receiving security patches, creating a compliance gap and potential cyber insurance exposure; upgrade planning should begin now.
+- 🟡 **Microsoft is rolling out AI agent security controls, and your organization needs a governance position.** New tools to assess, monitor, and block risky AI agent behavior are entering general availability; organizations deploying Copilot agents or custom AI tools should decide who owns agent governance before the default becomes "no one."
+- 🟢 **Copilot web-grounding domain exclusion feature has been rolled back.** Organizations that were counting on this control to restrict which websites Copilot could reference should note it is no longer available and watch for Microsoft's replacement guidance.
+
+*Sources: [Microsoft Security Blog - ChainDrop](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/) · [Microsoft Security Blog - DeadLock Ransomware](https://www.microsoft.com/en-us/security/blog/2026/08/10/deadlock-ransomware-breaking-down-a-rust-based-encryptor-with-decentralized-recovery-infrastructure/) · [Windows IT Pro Blog - Windows 10 LTSC 2021 EOS](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/plan-for-windows-10-enterprise-ltsc-2021-end-of-support/ba-p/4539866)*
+
+---
+
+## Why This Week Matters
+
+Two active threat campaigns, a supply chain worm and a new ransomware operation, are running simultaneously, which means the threat environment is unusually elevated this week. At the same time, Microsoft is shipping the first wave of AI agent security and governance tooling into general availability, signaling that the window for organizations to define their AI governance posture before incidents occur is narrowing. Leadership should understand that the convergence of active attacks and expanding AI agent deployments creates compounding risk: stolen credentials from the supply chain campaign can be used to access AI-connected systems that lack the agent controls now becoming available.
+
+*Sources: [Microsoft Security Blog - ChainDrop](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/) · [Microsoft Security Blog - Advance Zero Trust for AI](https://www.microsoft.com/en-us/security/blog/2026/08/04/advance-zero-trust-for-ai-new-tools-and-guidance-to-secure-ai-agents-and-devsecops/)*
+
+---
+
+## Risk & Compliance
+
+- 🔴 **[ChainDrop supply chain worm](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/):** A self-propagating credential-stealing worm hidden across more than 400 compromised npm software packages poses an immediate threat to any organization whose development teams use open-source software components; relevant to SOC 2 vendor risk controls and NIST CSF supply chain requirements, act immediately by engaging your IT and development leads to audit package dependencies and check for indicators of compromise.
+
+- 🔴 **[DeadLock ransomware](https://www.microsoft.com/en-us/security/blog/2026/08/10/deadlock-ransomware-breaking-down-a-rust-based-encryptor-with-decentralized-recovery-infrastructure/):** An emerging ransomware group using double extortion (encrypting data and threatening public disclosure) is actively targeting organizations; this directly implicates HIPAA breach notification, cyber insurance incident response obligations, and SOC 2 availability commitments, so confirm that endpoint detection and response is active and that your incident response plan is current.
+
+- 🟡 **[Windows 10 Enterprise LTSC 2021 end of support - January 12, 2027](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/plan-for-windows-10-enterprise-ltsc-2021-end-of-support/ba-p/4539866):** Devices remaining on this version after the deadline will receive no further security patches, creating an unpatched exposure that violates NIST CSF and CMMC patch management requirements and may void cyber insurance coverage for those endpoints; upgrade planning to Windows 11 Enterprise LTSC 2024 should be budgeted and scheduled now.
+
+- 🟡 **[AI agent posture risk assessment (Preview)](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-risk-assessment):** Microsoft Defender can now evaluate the risk level of AI agents running in your environment, including agents on employee devices; organizations without a defined AI governance owner risk operating agents with excessive permissions or misconfigured access, a gap that regulators and auditors are beginning to scrutinize under emerging AI risk frameworks.
+
+- 🟡 **[Real-time protection for AI agent tooling servers (GA)](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-real-time-protection):** Microsoft Defender can now block unsafe tool invocations by AI agents in real time, but this protection requires deliberate policy configuration; without it, agents can call external tools or data sources with no guardrails, creating data leakage risk relevant to GDPR, HIPAA, and state privacy laws.
+
+- 🟡 **[Sensor v3.x expanded to AD FS, AD CS, and Entra Connect servers](https://learn.microsoft.com/en-us/defender-for-identity/deploy/deploy-sensor-v3#supported-server-types):** Defender for Identity monitoring can now extend to the servers that handle certificate issuance and identity federation, closing a previously unmonitored gap in identity infrastructure; organizations should prioritize deploying these sensors, as these servers are high-value targets and their compromise can enable broad account takeover, strengthening Zero Trust verification across a previously implicit-trust zone.
+
+- 🟡 **[macOS ClickFix infostealer campaign](https://www.microsoft.com/en-us/security/blog/2026/08/05/macos-clickfix-campaign-learned-hide/):** Attackers are now hiding macOS credential-stealing malware behind browser fingerprinting to evade detection; organizations with Mac fleets, particularly in creative, legal, or executive roles, should confirm endpoint protection coverage extends to macOS devices, relevant to SOC 2 and cyber insurance endpoint security requirements.
+
+- 🟡 **[DLP for Microsoft 365 Copilot extended to government clouds (GA)](https://www.microsoft.com/microsoft-365/roadmap?id=561892):** Data Loss Prevention policies can now block Copilot from responding to prompts containing sensitive data in government cloud environments; organizations in regulated sectors that have not yet configured these policies are operating Copilot without a critical data protection control, relevant to HIPAA, CMMC, and FedRAMP requirements.
+
+- 🟡 **[DLP block for external domains and users in SharePoint/OneDrive (Preview)](https://www.microsoft.com/microsoft-365/roadmap?id=557191):** Admins can now configure policies that prevent specific external users or entire external domains from accessing sensitive files; organizations that share files externally should plan to activate this control, particularly where GDPR, HIPAA, or contractual data handling obligations limit with whom data may be shared.
+
+- 🟡 **[Cross-tenant calendar sharing migrating to Cross-Tenant Access Policy](https://techcommunity.microsoft.com/t5/exchange-team-blog/cross-tenant-free-busy-mailtips-and-calendar-sharing-are-moving/ba-p/4545169):** Organizations sharing Free/Busy availability, MailTips, or calendars with partner or subsidiary tenants must migrate to the new Cross-Tenant Access Policy model before Exchange Web Services is deprecated; failure to act will break cross-organization scheduling, impacting operations and, in healthcare, potentially affecting care coordination workflows.
+
+- 🟢 **[Copilot domain exclusion feature rolled back](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/update-domain-exclusion-for-microsoft-365-copilot/ba-p/4543648):** The capability allowing admins to restrict which external websites Copilot could reference for web grounding has been temporarily withdrawn by Microsoft; no immediate action is required, but organizations that had documented this control as part of their AI governance posture should note the gap and monitor for Microsoft's replacement approach.
+
+- 🟢 **[Defender for Identity health alert for reverted auditing configuration (GA)](https://learn.microsoft.com/en-us/defender-for-identity/health-alerts):** A new alert will now notify security teams when Group Policy Objects are silently overriding the auditing settings required for identity threat detection on domain controllers; this improves visibility into a configuration drift risk that can leave identity attacks undetected.
+
+- 🟢 **[Entra Tenant Governance generally available](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-tenant-governance-is-now-generally-available/ba-p/4543638):** Organizations managing multiple Microsoft 365 tenants, common in mergers, subsidiaries, or regulated business units, can now centrally govern identity and access policies across all tenants from a single console, reducing the risk of policy inconsistency across environments.
+
+*Sources: [Microsoft Security Blog - ChainDrop](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/) · [Defender XDR - AI Agent Risk Assessment](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-risk-assessment) · [Purview Roadmap - DLP for Copilot](https://www.microsoft.com/microsoft-365/roadmap?id=561892)*
+
+---
+
+## What Your Employees Will Notice
+
+- **Teams Phone users assigned multiple numbers** will now manage up to 10 phone lines within a single Teams experience, eliminating the need for separate accounts or devices for different roles or regions; no retraining is required, but employees may have questions about which number to use for outbound calls.
+
+- **AI-generated call recaps in the Teams Queues app** will surface automatically for recorded call queue calls, showing a summary, key points, and follow-up actions; contact center staff and supervisors will see a new Recap tab on call records starting in September.
+
+- **Copilot mobile app users** will begin receiving proactive push notifications for daily briefings such as "Your Day at a Glance" and pending action items, starting in September; employees should expect these notifications and can manage them through standard mobile notification settings.
+
+- **Wi-Fi-based workplace check-in in Teams and Microsoft Places** will allow employees to optionally have their office location updated automatically when they connect to a configured company network; this is opt-in, but employees may receive prompts to enable the feature and will have questions about privacy.
+
+- **Copilot in OneDrive on iOS** will allow users to highlight text in any PDF and ask Copilot to explain, summarize, or translate it; this extends a desktop capability that many users are already familiar with, arriving in October.
+
+- **Outlook emails as knowledge sources in Copilot Notebooks** are rolling out, allowing users to pull email threads directly into Copilot research notebooks; employees using Notebooks for project work will find this useful, but should be aware that email content they add becomes part of the notebook's knowledge base.
+
+- **Teams meetings can now be connected to existing Planner plans** rather than always creating a new one; project-oriented teams will find tasks easier to consolidate, arriving in September.
+
+- **Edge browser tab strip appearance** is receiving a visual refresh with rounded tabs and updated spacing in September; browser behavior and enterprise controls are unchanged.
+
+*Sources: [Microsoft 365 Roadmap - Teams Queues Recap](https://www.microsoft.com/microsoft-365/roadmap?id=569017) · [Teams Blog - Multi-line](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/use-multiple-phone-numbers-in-a-unified-experience-with-teams/ba-p/4512534) · [Teams Blog - Wi-Fi Check-in](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/workplace-presence-made-effortless-workplace-check-in-via-wi-fi/ba-p/4523386)*
+
+---
+
+## What Your Help Desk Should Expect
+
+- **Supply chain and ransomware incident inquiries:** Following the ChainDrop and DeadLock disclosures, security-aware employees and managers may file tickets asking whether the organization is affected. Prepare a brief internal statement from IT or the CISO so help desk staff can respond consistently without speculation.
+
+- **Teams Phone multi-line setup questions:** Users newly assigned multiple phone numbers will ask how to select which number appears on outbound calls, how to manage separate voicemails, and how to configure ring settings per line.
+
+- **Copilot push notification questions:** When proactive mobile notifications begin in September, employees who find them unexpected will contact the help desk to turn them off or ask what data Copilot is accessing; a brief FAQ published in advance will reduce ticket volume.
+
+- **Wi-Fi workplace check-in prompts:** Employees who receive an in-app prompt to enable location-based check-in will have privacy questions. Help desk should be prepared to explain that the feature is opt-in, what data is collected, and how to decline.
+
+- **Cross-tenant calendar sharing disruptions:** Organizations sharing calendars with partners or subsidiaries that do not complete the migration to Cross-Tenant Access Policy on time will see Free/Busy lookups and MailTips fail. Expect tickets from executive assistants and coordinators who schedule across organizational boundaries.
+
+- **Defender for Identity auditing configuration alerts:** Security operations staff may escalate new health alerts about GPO conflicts reverting auditing settings on domain controllers. These are legitimate alerts requiring IT follow-up, not false positives.
+
+*Sources: [Microsoft Security Blog - ChainDrop](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/) · [Exchange Team Blog - Cross-Tenant Calendar](https://techcommunity.microsoft.com/t5/exchange-team-blog/cross-tenant-free-busy-mailtips-and-calendar-sharing-are-moving/ba-p/4545169) · [Defender for Identity - Health Alerts](https://learn.microsoft.com/en-us/defender-for-identity/health-alerts)*
+
+---
+
+## Cost & Licensing
+
+- **AI agent governance tooling requires Defender licensing:** The new AI agent posture risk assessment and real-time agent protection features are part of Microsoft Defender. Organizations that have not licensed Defender for their full user population will not benefit from these controls. As AI agent deployments expand, this coverage gap becomes a budget conversation for the next planning cycle.
+
+- **Windows 10 LTSC 2021 upgrade costs:** Organizations with significant fleets of devices on this version face hardware refresh or upgrade licensing costs before January 2027. If hardware does not meet Windows 11 requirements, Extended Security Updates (ESU) may provide temporary coverage at additional cost, but this is a bridge, not a solution, and should be budgeted as part of a broader refresh plan.
+
+- **Entra Tenant Governance licensing:** Centralized multi-tenant governance is now generally available through Microsoft Entra; organizations with complex multi-tenant environments should confirm whether their current Entra licensing tier includes Tenant Governance features or whether an upgrade is required.
+
+- **Teams Phone Agent for customer-facing voice AI:** The newly announced Teams Phone Agent capability, which allows voice AI agents to handle customer calls, will carry additional licensing considerations. Organizations evaluating this for contact center use cases should engage their Microsoft account team to understand per-minute or per-agent cost structures before piloting.
+
+*Sources: [Entra Blog - Tenant Governance GA](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-tenant-governance-is-now-generally-available/ba-p/4543638) · [Windows IT Pro Blog - Windows 10 LTSC 2021 EOS](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/plan-for-windows-10-enterprise-ltsc-2021-end-of-support/ba-p/4539866) · [Teams Blog - Teams Phone Agent](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/engage-customers-with-teams-phone-agent-and-custom-voice-agents/ba-p/4526829)*
+
+---
+
+## Planning Horizon
+
+**Within 7 days:**
+
+- **Within 7 days - [ChainDrop supply chain worm](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/):** Direct your IT security team to audit third-party software dependencies and scan for indicators of compromise using Microsoft's published detection guidance, then brief leadership on findings.
+
+- **Within 7 days - [DeadLock ransomware](https://www.microsoft.com/en-us/security/blog/2026/08/10/deadlock-ransomware-breaking-down-a-rust-based-encryptor-with-decentralized-recovery-infrastructure/):** Verify that endpoint detection and response is active and current across all managed devices, and confirm your incident response plan includes a current contact list for cyber insurance notification.
+
+- **Within 7 days - [macOS ClickFix infostealer campaign](https://www.microsoft.com/en-us/security/blog/2026/08/05/macos-clickfix-campaign-learned-hide/):** Confirm that endpoint protection is deployed and reporting on all macOS devices in your fleet, not only Windows machines.
+
+**Within 30 days:**
+
+- **Within 30 days - [AI agent posture risk (Preview)](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-risk-assessment):** Assign an internal owner for AI agent governance and schedule a review of which agents are running in your environment before Microsoft's tooling surfaces findings that require a response.
+
+- **Within 30 days - [Real-time AI agent protection (GA)](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-real-time-protection):** Approve the policy configuration work required to activate real-time blocking for AI agent tool invocations, as the capability is available but does not enforce protections until policies are defined.
+
+- **Within 30 days - [DLP for external domains and users in SharePoint/OneDrive (Preview)](https://www.microsoft.com/microsoft-365/roadmap?id=557191):** Review whether current external sharing practices for sensitive files meet compliance obligations, and begin designing DLP policies to block access for unauthorized external parties.
+
+- **Within 30 days - [Defender for Identity sensor v3.x on identity role servers](https://learn.microsoft.com/en-us/defender-for-identity/deploy/deploy-sensor-v3#supported-server-types):** Authorize deployment of Defender for Identity sensors on AD FS, AD CS, and Entra Connect servers to close visibility gaps in identity infrastructure that attackers frequently target.
+
+- **Within 30 days - [Cross-tenant calendar sharing migration](https://techcommunity.microsoft.com/t5/exchange-team-blog/cross-tenant-free-busy-mailtips-and-calendar-sharing-are-moving/ba-p/4545169):** Determine whether your organization shares Free/Busy data, MailTips, or calendars with other tenants, and engage IT to begin the migration to Cross-Tenant Access Policy before Exchange Web Services deprecation breaks those connections.
+
+- **Within 30 days - [Copilot domain exclusion rollback](https://techcommunity.microsoft.com/t5/microsoft-365-copilot-blog/update-domain-exclusion-for-microsoft-365-copilot/ba-p/4543648):** Update your AI governance documentation to note that web-grounding domain exclusion is not currently available, and decide whether this gap requires any interim compensating controls.
+
+**Within 90 days:**
+
+- **Within 90 days - [Windows 10 Enterprise LTSC 2021 end of support (January 12, 2027)](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/plan-for-windows-10-enterprise-ltsc-2021-end-of-support/ba-p/4539866):** Commission an inventory of devices on this version, assess hardware eligibility for Windows 11, and secure budget approval for the upgrade or hardware refresh before the end-of-year planning window closes.
+
+- **Within 90 days - [Entra Tenant Governance (GA)](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-tenant-governance-is-now-generally-available/ba-p/4543638):** Organizations managing multiple tenants should evaluate whether centralized governance is in scope for the next fiscal planning cycle and confirm licensing requirements with their Microsoft account team.
+
+- **Within 90 days - [Teams Phone Agent for voice AI](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/engage-customers-with-teams-phone-agent-and-custom-voice-agents/ba-p/4526829):** Customer-facing organizations should evaluate whether AI-assisted call handling aligns with their service model and initiate a pilot scope and budget discussion with IT and operations leadership.
+
+*Sources: [Microsoft Security Blog - ChainDrop](https://www.microsoft.com/en-us/security/blog/2026/08/04/chaindrop-supply-chain-compromise-anatomy-self-propagating-worm/) · [Windows IT Pro Blog - Windows 10 LTSC 2021 EOS](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/plan-for-windows-10-enterprise-ltsc-2021-end-of-support/ba-p/4539866) · [Entra Blog - Tenant Governance GA](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-tenant-governance-is-now-generally-available/ba-p/4543638)*
+
+---
+
+## If You Take No Action
+
+**ChainDrop supply chain worm and DeadLock ransomware:** Organizations that do not audit software dependencies or verify endpoint protection coverage this week remain exposed to active credential theft and ransomware encryption. A successful ransomware event typically costs organizations between recovery expenses, ransom negotiation, regulatory notification, and downtime, well into seven figures. For organizations subject to HIPAA or SOC 2, a breach triggered by either campaign carries mandatory notification obligations and potential regulatory penalties on top of operational disruption.
+
+**Windows 10 LTSC 2021 end of support:** Devices still running this version after January 12, 2027, will accumulate unpatched security vulnerabilities with no remedy available from Microsoft. Cyber insurers are increasingly excluding coverage for incidents involving out-of-support operating systems. Compliance frameworks including NIST CSF, CMMC, and HIPAA Security Rule all require patching and supported software; unpatched endpoints will create audit findings that are difficult to remediate without completing the upgrade.
+
+**AI agent governance (no policy owner assigned):** As AI agents proliferate across Microsoft 365, Copilot Studio, and Power Platform, the absence of a defined governance owner means no one is reviewing which agents have access to sensitive data, what tools they can invoke, or whether their behavior is monitored. Microsoft's new agent risk tooling will surface findings, but without an owner to act on them, those findings accumulate into undisclosed risk. Regulators and auditors are beginning to treat AI governance as a board-level accountability question, and the absence of documented governance is an increasingly visible gap.
+
+*Sources: [Microsoft Security Blog - DeadLock Ransomware](https://www.microsoft.com/en-us/security/blog/2026/08/10/deadlock-ransomware-breaking-down-a-rust-based-encryptor-with-decentralized-recovery-infrastructure/) · [Windows IT Pro Blog - Windows 10 LTSC 2021 EOS](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/plan-for-windows-10-enterprise-ltsc-2021-end-of-support/ba-p/4539866) · [Defender XDR - AI Agent Risk Assessment](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-risk-assessment)*
