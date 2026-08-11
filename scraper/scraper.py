@@ -417,6 +417,35 @@ _MONTH_NAMES = ("January|February|March|April|May|June|July|August|"
 _WEEK_OF_RE = re.compile(
     rf'^Week of\s+({_MONTH_NAMES})\s+(\d{{1,2}}),?\s*(\d{{4}})', re.IGNORECASE)
 _MONTH_YEAR_RE = re.compile(rf'^({_MONTH_NAMES})\s+(\d{{4}})$', re.IGNORECASE)
+_BARE_DATE_TITLE_RE = re.compile(
+    rf'^({_MONTH_NAMES})\s+\d{{1,2}},?\s*\d{{4}}$', re.IGNORECASE)
+
+
+def is_content_free_stub(title: str, body: str) -> bool:
+    """True if an item has no real content to classify or show a reader.
+
+    Confirmed 2026-08-11: TechCommunity board RSS feeds (Teams' board is the
+    confirmed case, via fetch_rss()) occasionally carry entries whose title
+    is a bare date ("May 20, 2026") with a completely empty <description>/
+    <summary> — likely calendar/event-type or embed-only board posts on
+    Microsoft's side, not a parsing bug on ours (the current live feed
+    doesn't show the specific historical entries anymore to confirm the raw
+    payload, but the title/body shape is unambiguous either way). No amount
+    of CLASSIFICATION_KEYWORDS tuning can ever classify or usefully display
+    an item with nothing in it, so these are dropped here — before
+    enrichment, before they get an id and enter seen_ids/pending_draft —
+    rather than left to surface as an empty-looking category-default item
+    downstream.
+
+    Deliberately narrow: only catches title-is-literally-a-date AND
+    body-is-empty. A short but real title with a real (even short) body —
+    e.g. "New setting to disable the Get Started app" — is left alone;
+    that's a keyword-coverage gap, not a content-free stub.
+    """
+    if not body or not body.strip():
+        if _BARE_DATE_TITLE_RE.match(title.strip()):
+            return True
+    return False
 
 
 def _parse_section_date(heading_text: str, page_date: str, is_top_section: bool) -> str | None:
@@ -902,6 +931,24 @@ def run_scraper(args):
     if len(deduped_raw) < len(all_raw):
         log.info(f"URL dedup removed {len(all_raw) - len(deduped_raw)} cross-source duplicate(s).")
     all_raw = deduped_raw
+
+    # Content-free stub filter — see is_content_free_stub() docstring.
+    # Drops bare-date-titled, empty-body board posts (confirmed on Teams'
+    # TechCommunity RSS feed) before they get an id and enter seen_ids —
+    # no keyword tuning can ever classify or display an item with nothing
+    # in it, so this runs ahead of enrichment rather than letting them
+    # surface downstream as an empty-looking default-category item.
+    stub_filtered = []
+    stub_dropped = 0
+    for item in all_raw:
+        if is_content_free_stub(item.get("title", ""), item.get("body", "")):
+            log.info(f"  Content-free stub: dropping '{item['title']}' from {item['source']} — bare date title, empty body.")
+            stub_dropped += 1
+            continue
+        stub_filtered.append(item)
+    if stub_dropped:
+        log.info(f"Content-free stub filter removed {stub_dropped} item(s).")
+    all_raw = stub_filtered
 
     # Enrich and dedup digest items against seen_ids, with a published-post
     # backstop (see load_published_urls) in case seen_items.json missed it.
