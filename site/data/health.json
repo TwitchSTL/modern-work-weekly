@@ -396,7 +396,7 @@
       "items": [
         {
           "title": "I don't see Microsoft Defender content",
-          "body": "If you don't see capabilities on the navigation pane such as the Incidents, Action center, or Hunting in your portal, verify that your tenant has the appropriate licenses. For more information, seePrerequisites. ",
+          "body": "If you don't see capabilities on the navigation pane such as the Incidents, Action center, or Hunting in your portal, verify that your tenant has the appropriate licenses. For more information, seeMicrosoft Defender XDR prerequisites. ",
           "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-dont-see-microsoft-defender-content",
           "is_new": false
         },
