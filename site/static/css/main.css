@@ -16,6 +16,25 @@
   --color-badge-sc-text: #f97583;
   --color-badge-ai: #1a2a1a;
   --color-badge-ai-text: #85e89d;
+
+  /* Canonical Modern Work pillar colors (Phase 1 backfill, 2026-08-12).
+     Single source of truth going forward — every place that currently
+     hardcodes this same 6-color map (collapsible.js, search.js,
+     calendar.js, deadlines.html, deadlines-sidebar.html,
+     post-card-signals.html) should migrate to reading these tokens
+     instead of keeping its own copy in sync by hand. Not done yet in
+     this pass, scoped separately (see Phase 5 in FRONTEND_HANDOFF.md).
+     Values unchanged from what's already live everywhere else, this
+     just gives them one canonical home. Structured so a future
+     `prefers-color-scheme: light` block only has to override these six
+     variables, not touch every place a pillar color is used. */
+  --pillar-identity-access: #a78bfa;
+  --pillar-endpoint-device: #3fb950;
+  --pillar-collaboration-productivity: #58a6ff;
+  --pillar-ai-copilot: #f0883e;
+  --pillar-employee-experience: #f778ba;
+  --pillar-security-compliance: #d2a8ff;
+
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --max-width: 740px;
