@@ -202,4 +202,3 @@ Three cron jobs run automatically on a self-hosted LXC:
 ## ☕ Support
 
 This project is free and open. If it saves you time, [contributions on Ko-fi](https://ko-fi.com/ryanarbuckle) help offset the API costs and keep it running.
-
