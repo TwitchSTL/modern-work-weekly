@@ -11,6 +11,43 @@
   "Security & Compliance"        "#d2a8ff"
 }}
 
+{{/* Pillar → fill-style map — second visual cue beyond color, same mapping
+     as PILLAR_STYLE in the Tag Universe globe prototype and the
+     .pillar-style-* / .deadlines-pillar-dot.pillar-style-* rules in
+     main.css. Kept in sync manually with post-card-signals.html /
+     deadlines-sidebar.html / calendar.js, same as $colors above. */}}
+{{ $styles := dict
+  "Identity & Access"            "pillar-style-solid"
+  "Endpoint & Device Management" "pillar-style-donut"
+  "Collaboration & Productivity" "pillar-style-stripe"
+  "AI & Copilot"                 "pillar-style-dashed"
+  "Employee Experience"          "pillar-style-gradient"
+  "Security & Compliance"        "pillar-style-halo"
+}}
+
+{{/* Entry type — separate axis from pillar. Not everything on this page is
+     a hard deadline: "feature"/"report" entries are informational GA/
+     rollout items worth knowing about, with no cutoff pressure; "deadline"
+     is reserved for real forced-action items (EOS, disablement, retirement,
+     compliance cutoffs); "watch" is the existing no-date-yet tier below.
+     Labels/colors kept in sync manually with TYPE_META in calendar.js. */}}
+{{ $typeLabels := dict "deadline" "Deadline" "feature" "New Feature" "report" "Reporting" "watch" "Watching" }}
+{{ $typeColors := dict "deadline" "#ff6b6b" "feature" "#58a6ff" "report" "#d29922" "watch" "#8b949e" }}
+{{/* Precomputed rgba glow, not color-mix()/alpha-blend of the hex above —
+     same broad-browser-support reasoning as the .pillar-style-* rules. */}}
+{{ $typeGlow := dict
+  "deadline" "rgba(255, 107, 107, 0.12)"
+  "feature"  "rgba(88, 166, 255, 0.12)"
+  "report"   "rgba(210, 153, 34, 0.12)"
+  "watch"    "rgba(139, 148, 158, 0.12)"
+}}
+{{ $typeGlowStrong := dict
+  "deadline" "rgba(255, 107, 107, 0.5)"
+  "feature"  "rgba(88, 166, 255, 0.5)"
+  "report"   "rgba(210, 153, 34, 0.5)"
+  "watch"    "rgba(139, 148, 158, 0.5)"
+}}
+
 <div class="container deadlines-page">
 
   <header class="deadlines-header">
@@ -18,6 +55,14 @@
     <p class="deadlines-sub">Upcoming Microsoft 365 rollout milestones, feature retirements, and compliance windows — organized by Modern Work practice area. Not everything here requires action; use the <strong>Applies to</strong> note to decide if it's relevant to your environment.</p>
     <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
   </header>
+
+  {{/* ── Type filter — client-side (calendar.js toggles data-type cards) ── */}}
+  <div class="key-dates-filters" role="group" aria-label="Filter by type">
+    <button type="button" class="key-dates-filter is-active" data-filter-type="all">All</button>
+    {{ range (slice "deadline" "feature" "report" "watch") }}
+    <button type="button" class="key-dates-filter" data-filter-type="{{ . }}" style="--type-color: {{ index $typeColors . }}; --type-glow: {{ index $typeGlow . }}; --type-glow-strong: {{ index $typeGlowStrong . }}">{{ index $typeLabels . }}</button>
+    {{ end }}
+  </div>
 
   {{/* ── Stat strip — filled client-side (needs "today", not build time);
        reuses the Exec Guide's .exec-stat-card cards for visual consistency ── */}}
@@ -41,24 +86,27 @@
     {{ range $pillars }}
       {{ $pillar := . }}
       {{ $color  := index $colors $pillar | default "#6e7681" }}
+      {{ $style  := index $styles $pillar | default "" }}
       {{ $items  := where $deadlines "pillar" $pillar }}
       {{ if $items }}
       <div class="deadlines-pillar-group" style="--pillar-color: {{ $color }}">
 
         <div class="deadlines-pillar-header">
-          <span class="deadlines-pillar-dot"></span>
+          <span class="deadlines-pillar-dot {{ $style }}"></span>
           <h2 class="deadlines-pillar-heading">{{ $pillar }}</h2>
-          <span class="deadlines-pillar-count">{{ len $items }} deadline{{ if gt (len $items) 1 }}s{{ end }}</span>
+          <span class="deadlines-pillar-count">{{ len $items }} key date{{ if gt (len $items) 1 }}s{{ end }}</span>
         </div>
 
         <div class="deadlines-cards">
           {{ range sort $items "date" }}
           {{ $dateLabel := time.Format "Jan 2, 2006" .date }}
-          <div class="deadline-card" data-date="{{ .date }}">
+          {{ $type := .type | default "feature" }}
+          <div class="deadline-card" data-date="{{ .date }}" data-type="{{ $type }}">
             <div class="deadline-card-toprow">
               <div class="deadline-card-date">{{ $dateLabel }}</div>
               <span class="deadline-card-countdown"></span>
             </div>
+            <span class="deadline-card-type" style="--type-color: {{ index $typeColors $type }}">{{ index $typeLabels $type }}</span>
             <div class="deadline-card-title">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
             {{ with .applies_to }}<div class="deadline-card-applies"><span class="deadline-applies-label">Applies to</span> {{ . }}</div>{{ end }}
             <div class="deadline-card-action">{{ .action }}</div>
@@ -82,7 +130,7 @@
       {{ range . }}
       {{ $pillar := .pillar }}
       {{ $color  := index $colors $pillar | default "#6e7681" }}
-      <div class="deadline-card deadline-card-watching" style="--pillar-color: {{ $color }}">
+      <div class="deadline-card deadline-card-watching" data-type="watch" style="--pillar-color: {{ $color }}">
         <div class="deadline-card-date deadline-card-watching-label">Watching{{ with .flagged }} · since {{ time.Format "Jan 2006" . }}{{ end }}</div>
         <div class="deadline-card-title">{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}</div>
         {{ with .applies_to }}<div class="deadline-card-applies"><span class="deadline-applies-label">Applies to</span> {{ . }}</div>{{ end }}

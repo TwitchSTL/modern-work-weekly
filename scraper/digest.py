@@ -377,6 +377,31 @@ def _extract_roadmap_date(text: str) -> tuple[str | None, str | None]:
     return None, None
 
 
+def _guess_deadline_type(matched_kw: str, text_lower: str) -> str:
+    """Best-effort guess at the Key Dates entry type, so a future weekly
+    review starts from a suggestion instead of hand-classifying every
+    candidate from scratch. Matches the "deadline"/"feature"/"report" types
+    in site/data/deadlines.json and $typeLabels in deadlines.html — always
+    reviewed by a human before it's actually added there, same as the date
+    and pillar already are (see write_deadline_candidates()/WEEKLY_WORKFLOW.md).
+
+    "deadline" = a real forced-action cutoff (retirement, disablement, EOS,
+    compliance deadline) — matches DEADLINE_KEYWORDS_ALWAYS or the signal
+    text itself.
+    "report" = a new reporting/visibility capability, not a rollout with
+    cutoff pressure — a loose keyword check, deliberately narrow so it
+    only fires on real report-shaped language rather than every mention of
+    the word "report" in body text.
+    "feature" = everything else (the common case: a GA/rollout item worth
+    knowing about, no cutoff to prep for).
+    """
+    if matched_kw.lower() in [kw.lower() for kw in DEADLINE_KEYWORDS_ALWAYS]:
+        return "deadline"
+    if re.search(r"\breport(s|ing)?\b", text_lower):
+        return "report"
+    return "feature"
+
+
 def detect_deadline_candidates(draft: dict) -> list[dict]:
     """Scan this week's accumulated items for retirement/deprecation/GA-date
     language so nothing dated silently misses site/data/deadlines.json.
@@ -424,6 +449,7 @@ def detect_deadline_candidates(draft: dict) -> list[dict]:
                 "signal": matched_kw.strip(),
                 "extracted_date": extracted_date,
                 "structured": structured,
+                "suggested_type": _guess_deadline_type(matched_kw, text_lower),
             })
     return candidates
 
@@ -1485,7 +1511,8 @@ def run(args):
             print(f"\nKey Date candidates ({len(deadline_candidates)}):")
             for c in deadline_candidates:
                 tag = " [structured — Roadmap-confirmed]" if c.get("structured") else ""
-                print(f"  - [{c['pillar']}] {c['title']} — signal: '{c['signal']}', date: {c['extracted_date']}{tag}")
+                print(f"  - [{c['pillar']}] {c['title']} — signal: '{c['signal']}', date: {c['extracted_date']}, "
+                      f"suggested type: {c.get('suggested_type', 'feature')}{tag}")
         else:
             print("\nKey Date candidates: none flagged this week.")
         log.info("Dry run complete — no API call made.")

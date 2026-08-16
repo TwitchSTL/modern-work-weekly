@@ -14,6 +14,12 @@
 (function () {
   const WEEKS_DEFAULT = 5;
 
+  // Entry type — separate axis from pillar. Kept in sync manually with
+  // $typeLabels/$typeColors in deadlines.html. "feature" is the default
+  // for any older deadlines.json entry written before the type field
+  // existed, matching that template's `.type | default "feature"`.
+  const TYPE_LABELS = { deadline: 'Deadline', feature: 'New Feature', report: 'Reporting', watch: 'Watching' };
+
   const PILLAR_COLORS = {
     'Identity & Access':             '#a78bfa',
     'Endpoint & Device Management':  '#3fb950',
@@ -21,6 +27,20 @@
     'AI & Copilot':                  '#f0883e',
     'Employee Experience':           '#f778ba',
     'Security & Compliance':         '#d2a8ff',
+  };
+
+  // Per-pillar fill-style, second visual cue beyond color — same mapping as
+  // PILLAR_STYLE in the Tag Universe globe prototype and the
+  // .cal-style-* / .pillar-style-* rules in main.css. Kept in sync manually
+  // with post-card-signals.html / deadlines-sidebar.html / deadlines.html /
+  // collapsible.js, same as PILLAR_COLORS above.
+  const PILLAR_STYLES = {
+    'Identity & Access':             '',
+    'Endpoint & Device Management':  'cal-style-donut',
+    'Collaboration & Productivity':  'cal-style-stripe',
+    'AI & Copilot':                  'cal-style-dashed',
+    'Employee Experience':           'cal-style-gradient',
+    'Security & Compliance':         'cal-style-halo',
   };
 
   function toLocal(dateStr) {
@@ -52,7 +72,10 @@
     if (!events || !events.length) return '';
     return '<div class="cal-dots">' +
       events.map(function (e) {
-        return `<span class="cal-dot" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" data-tip="${e.title}"></span>`;
+        const style = PILLAR_STYLES[e.pillar] || '';
+        const typeLabel = TYPE_LABELS[e.type] || TYPE_LABELS.feature;
+        const tip = `${typeLabel}: ${e.title}`;
+        return `<span class="cal-dot ${style}" style="background:${PILLAR_COLORS[e.pillar] || '#6e7681'}" data-tip="${tip}"></span>`;
       }).join('') +
     '</div>';
   }
@@ -209,7 +232,7 @@
         .slice(0, 3);
 
       if (upcoming.length === 0) {
-        listEl.innerHTML = '<p class="sidebar-empty">No upcoming deadlines</p>';
+        listEl.innerHTML = '<p class="sidebar-empty">Nothing on the calendar right now</p>';
       } else {
         const items = upcoming.map(function (d) {
           const diff  = Math.round((d._date - today) / 86400000);
@@ -217,11 +240,12 @@
           const info  = urgencyInfo(diff);
           const urgencyLabel = (diff <= 30) ? ` — ${diff === 0 ? 'TODAY' : info.label}` : '';
           const urgencyClass = (diff <= 30) ? info.cls : '';
+          const typeLabel = TYPE_LABELS[d.type] || TYPE_LABELS.feature;
           return `
 <div class="cal-upcoming-item ${urgencyClass}" data-date="${d.date}" style="border-left-color:${color}">
   <div class="cal-upcoming-date">${d.date}${urgencyLabel}</div>
   <div class="cal-upcoming-title">${d.url ? `<a href="${d.url}" target="_blank" rel="noopener">${d.title}</a>` : d.title}</div>
-  <div class="cal-upcoming-pillar" style="color:${color}">${d.pillar}</div>
+  <div class="cal-upcoming-pillar" style="color:${color}">${d.pillar} &middot; ${typeLabel}</div>
   <div class="cal-upcoming-action">${d.action}</div>
 </div>`;
         }).join('');
@@ -292,7 +316,7 @@
       const pillarCount = new Set(upcoming.map(function (d) { return d.pillar; })).size;
 
       [
-        { num: upcoming.length, label: 'Upcoming deadlines',       cls: '' },
+        { num: upcoming.length, label: 'Upcoming key dates',       cls: '' },
         { num: urgentCount,     label: 'Within 14 days',           cls: urgentCount > 0 ? 'exec-stat-card-high' : '' },
         { num: soonCount,       label: '15–30 days out',      cls: soonCount   > 0 ? 'exec-stat-card-med'  : '' },
         { num: pillarCount,     label: 'Practice areas affected',  cls: '' },
@@ -302,6 +326,33 @@
         card.innerHTML = '<div class="exec-stat-number">' + s.num + '</div>' +
           '<div class="exec-stat-label">' + s.label + '</div>';
         statsEl.appendChild(card);
+      });
+    }
+
+    // ── Type filters (/deadlines/ page only — element only exists there) ──
+    const filterEls = document.querySelectorAll('.key-dates-filter');
+    if (filterEls.length) {
+      const cards = document.querySelectorAll('.deadline-card[data-type]');
+      const groups = document.querySelectorAll('.deadlines-pillar-group, .deadlines-watching-section');
+
+      function applyFilter(type) {
+        cards.forEach(function (card) {
+          card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+        });
+        // Hide a pillar/watching section entirely once every card inside it
+        // is filtered out, rather than leaving an empty-looking heading.
+        groups.forEach(function (group) {
+          const visible = group.querySelectorAll('.deadline-card[data-type]:not([style*="display: none"])');
+          group.style.display = visible.length ? '' : 'none';
+        });
+      }
+
+      filterEls.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterEls.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          applyFilter(btn.dataset.filterType);
+        });
       });
     }
   });
