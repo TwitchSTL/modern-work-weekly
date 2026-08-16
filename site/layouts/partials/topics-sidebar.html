@@ -1,0 +1,83 @@
+{{/*
+  topics-sidebar.html — homepage left-sidebar panel pointing at /tags/.
+  Replaces the old footer-only "Topics" link (low visibility, easy to
+  never notice) with a real entry point from the homepage. Shows the 6
+  pillars with a post count each, linking to that pillar's anchor on the
+  Topics page (see the id="pillar-..." added to terms.html's pillar
+  groups) rather than dumping the full 32-tag list into the sidebar.
+
+  Same hand-maintained tag→pillar map as terms.html — see that file's
+  comment for why this isn't computed dynamically from Hugo taxonomy
+  relations. Kept in sync manually; a shared data file is the real fix,
+  scoped separately.
+*/}}
+{{ $pillars := slice "Identity & Access" "Endpoint & Device Management" "Collaboration & Productivity" "AI & Copilot" "Employee Experience" "Security & Compliance" }}
+{{ $pillarColors := dict
+  "Identity & Access"            "#a78bfa"
+  "Endpoint & Device Management" "#3fb950"
+  "Collaboration & Productivity" "#58a6ff"
+  "AI & Copilot"                 "#f0883e"
+  "Employee Experience"          "#f778ba"
+  "Security & Compliance"        "#d2a8ff"
+}}
+{{ $tagPillar := dict
+  "entra-id" "Identity & Access"
+  "identity" "Identity & Access"
+  "conditional-access" "Identity & Access"
+  "global-secure-access" "Identity & Access"
+  "intune" "Endpoint & Device Management"
+  "endpoint-management" "Endpoint & Device Management"
+  "windows" "Endpoint & Device Management"
+  "windows-365" "Endpoint & Device Management"
+  "windows-autopatch" "Endpoint & Device Management"
+  "autopilot" "Endpoint & Device Management"
+  "hotpatch" "Endpoint & Device Management"
+  "linux" "Endpoint & Device Management"
+  "teams-rooms" "Endpoint & Device Management"
+  "exchange" "Collaboration & Productivity"
+  "teams" "Collaboration & Productivity"
+  "sharepoint" "Collaboration & Productivity"
+  "onedrive" "Collaboration & Productivity"
+  "copilot" "AI & Copilot"
+  "copilot-studio" "AI & Copilot"
+  "power-platform" "AI & Copilot"
+  "shadow-ai" "AI & Copilot"
+  "agent-365" "AI & Copilot"
+  "viva" "Employee Experience"
+  "zero-trust" "Security & Compliance"
+  "defender-xdr" "Security & Compliance"
+  "defender-for-endpoint" "Security & Compliance"
+  "defender-for-identity" "Security & Compliance"
+  "defender-for-office-365" "Security & Compliance"
+  "purview" "Security & Compliance"
+  "data-lifecycle" "Security & Compliance"
+  "dspm" "Security & Compliance"
+}}
+{{ $terms := .Site.Taxonomies.tags }}
+<div class="sidebar-panel topics-sidebar">
+  <div class="sidebar-panel-header">
+    <span class="sidebar-panel-label">Modern Pillars &amp; Related Topics</span>
+  </div>
+  <ul class="topics-sidebar-list">
+    {{ range $pillars }}
+    {{ $pillar := . }}
+    {{ $color := index $pillarColors $pillar }}
+    {{ $count := 0 }}
+    {{ range $tag, $weighted := $terms }}
+      {{ if eq (index $tagPillar $tag) $pillar }}
+        {{ $count = add $count (len $weighted) }}
+      {{ end }}
+    {{ end }}
+    {{ if gt $count 0 }}
+    <li>
+      <a href="/tags/#pillar-{{ $pillar | urlize }}" style="--pillar-color: {{ $color }}">
+        <span class="topics-sidebar-dot"></span>
+        <span class="topics-sidebar-name">{{ $pillar }}</span>
+        <span class="topics-sidebar-count">{{ $count }}</span>
+      </a>
+    </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+  <a class="sidebar-view-all" href="/tags/">Browse all topics →</a>
+</div>
