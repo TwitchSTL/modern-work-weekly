@@ -142,10 +142,10 @@ Format — optimised for pasting into LinkedIn's newsletter article editor. Use 
 Structure (in order):
 1. Title — format exactly as: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash; this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
 2. Hook line — one punchy sentence that names the biggest story this week. No greeting, no "this week in M365". Just the hook.
-3. **⚡ TOP 5 THIS WEEK** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. Format: "1. **Item title:** explanation."
+3. **⚡ TOP 5 THIS WEEK** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. This is the Newsletter edition, read natively inside LinkedIn by subscribers who want the whole thing without leaving the app — give each item a real, complete explanation, not a teaser. (The separate short Announcement post is the one whose only job is earning a click to the site; don't duplicate that job here.) If a source has a real full author name available (not a bare username), it's fine to credit them by name (e.g. "..., per [Name]'s writeup"), but never invent or guess a name that wasn't provided. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
-6. Closing line — one sentence pointing to both the full technical digest and the Executive's Guide. Format: "Full Technical Digest and Exec's Guide in the comments!" Do not include a URL in this line - the Technical Digest URL gets posted as the first comment and the Executive's Guide URL as the second comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
+6. Closing line — one short sentence pointing to this week's guides. Format: "This week's guides in the comments!" Do not include a URL in this line - the Technical Digest URL gets posted as the first comment and the Executive's Guide URL as the second comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
 
 Do not include any hashtags in your output — hashtags aren't functional inside LinkedIn's Newsletter article editor, so they're never added to this draft. Do not add a sign-off. Do not wrap output in code fences.
 
@@ -343,34 +343,78 @@ _MONTH_YEAR_RE = re.compile(
 )
 _QUARTER_YEAR_RE = re.compile(r"\bQ([1-4])\s+(20\d{2})\b", re.IGNORECASE)
 
+# Microsoft 365 Roadmap descriptions embed the actual target date as
+# structured text — e.g. "...GA date: September CY2026" or "...Preview
+# date: August CY2026" — a real, Microsoft-confirmed target, not vague
+# prose. _MONTH_YEAR_RE doesn't catch it: Roadmap's "CY" year prefix
+# ("CY2026") isn't a bare "2026" immediately after the month, so the two
+# patterns never overlap. This is checked as its own signal, independent of
+# DEADLINE_KEYWORDS_NEEDS_DATE, because "GA date:" / "Preview date:" IS the
+# target-date announcement — no separate keyword needed to justify flagging
+# it. Confirmed live against the 2026-08-16 Roadmap feed: none of these
+# items were being caught by the generic patterns above, so Roadmap GA/
+# Preview targets were relying entirely on manual spotting during weekly
+# review instead of showing up in deadline_candidates.json.
+_ROADMAP_DATE_RE = re.compile(
+    r"\b(GA date|Preview date):\s*"
+    r"(January|February|March|April|May|June|July|August|September"
+    r"|October|November|December)\s+CY(20\d{2})",
+    re.IGNORECASE,
+)
+
+
+def _extract_roadmap_date(text: str) -> tuple[str | None, str | None]:
+    """Pull a Roadmap-style 'GA date: <Month> CY<yyyy>' / 'Preview date:
+    <Month> CY<yyyy>' out of item text. Prefers GA over Preview when both
+    are present (GA is the harder commitment, more worth calendaring).
+    Returns (label, "Month YYYY") or (None, None) if neither is found.
+    """
+    matches = {m.group(1).lower(): m for m in _ROADMAP_DATE_RE.finditer(text)}
+    for label in ("ga date", "preview date"):
+        m = matches.get(label)
+        if m:
+            return m.group(1), f"{m.group(2)} {m.group(3)}"
+    return None, None
+
 
 def detect_deadline_candidates(draft: dict) -> list[dict]:
     """Scan this week's accumulated items for retirement/deprecation/GA-date
     language so nothing dated silently misses site/data/deadlines.json.
 
-    Returns a list of {title, url, source, pillar, signal, extracted_date}.
-    extracted_date is the raw matched text (e.g. "August 2026") or None if a
-    retirement/deprecation signal hit but no date-like text was found nearby
-    — those still get surfaced as a "watch for a date" item rather than
-    dropped, since Microsoft often confirms the direction before the date.
+    Returns a list of {title, url, source, pillar, signal, extracted_date,
+    structured}. extracted_date is the raw matched text (e.g. "August 2026")
+    or None if a retirement/deprecation signal hit but no date-like text was
+    found nearby — those still get surfaced as a "watch for a date" item
+    rather than dropped, since Microsoft often confirms the direction before
+    the date. structured=True marks candidates pulled from Roadmap's own
+    "GA date:"/"Preview date:" line rather than regex-matched prose — those
+    are Microsoft-confirmed targets, not an inference, so they're safe to
+    approve faster during weekly review.
     """
     candidates = []
     for cat, items in draft.get("grouped_items", {}).items():
         for item in items:
             text = f"{item.get('title', '')} {item.get('body', '')}"
             text_lower = text.lower()
-            date_match = _MONTH_YEAR_RE.search(text) or _QUARTER_YEAR_RE.search(text)
-            extracted_date = date_match.group(0) if date_match else None
 
-            matched_kw = next(
-                (kw for kw in DEADLINE_KEYWORDS_ALWAYS if kw in text_lower), None
-            )
-            if not matched_kw and extracted_date:
+            roadmap_label, roadmap_date = _extract_roadmap_date(text)
+            structured = roadmap_date is not None
+            if structured:
+                extracted_date = roadmap_date
+                matched_kw = roadmap_label
+            else:
+                date_match = _MONTH_YEAR_RE.search(text) or _QUARTER_YEAR_RE.search(text)
+                extracted_date = date_match.group(0) if date_match else None
+
                 matched_kw = next(
-                    (kw for kw in DEADLINE_KEYWORDS_NEEDS_DATE if kw in text_lower), None
+                    (kw for kw in DEADLINE_KEYWORDS_ALWAYS if kw in text_lower), None
                 )
-            if not matched_kw:
-                continue
+                if not matched_kw and extracted_date:
+                    matched_kw = next(
+                        (kw for kw in DEADLINE_KEYWORDS_NEEDS_DATE if kw in text_lower), None
+                    )
+                if not matched_kw:
+                    continue
 
             candidates.append({
                 "title": item.get("title", ""),
@@ -379,6 +423,7 @@ def detect_deadline_candidates(draft: dict) -> list[dict]:
                 "pillar": cat,
                 "signal": matched_kw.strip(),
                 "extracted_date": extracted_date,
+                "structured": structured,
             })
     return candidates
 
@@ -1056,6 +1101,56 @@ def extract_top5(post_content: str) -> list[dict]:
     return items
 
 
+# ── Author byline hints for the LinkedIn draft ──────────────────────────────
+# scraper.py's fetch_rss() now captures a per-item author (feedparser's
+# entry.author, mapped from RSS dc:creator / Atom author). Coverage varies:
+# TechCommunity blogs return a bare username (e.g. "ScottSawyer", no space —
+# not a display name, and not something a reader would recognize), WordPress-
+# hosted blogs like Microsoft Security Blog return a real "First Last" name,
+# and structured feeds with no individual byline (Roadmap, likely MSRC/
+# Mechanics) return None. Only the "First Last" case is safe to surface in
+# LinkedIn body text — a bare username reads as sloppy and may not even be
+# the person's real name.
+def _is_full_name(author: str | None) -> bool:
+    """True only for a real 'First Last'-shaped author, never a bare
+    TechCommunity username or None."""
+    if not author:
+        return False
+    parts = author.strip().split()
+    return len(parts) >= 2 and all(p.replace("-", "").isalpha() for p in parts)
+
+
+def _best_author_match(headline: str, items: list[dict], min_overlap: float = 0.6) -> str | None:
+    """Find the original scraped item whose title best overlaps a Top 5
+    headline and return its author if it's a real full name.
+
+    A Top 5 headline is Claude's reworded version of the original item
+    title, not a literal match, so this reuses the same overlap-coefficient
+    approach as _best_link_match() (see that docstring for why overlap over
+    the smaller word-set beats Jaccard for "same story, reworded" matching)
+    rather than an exact title lookup.
+    """
+    headline_words = _title_words(headline)
+    if not headline_words:
+        return None
+    best_author, best_score = None, 0.0
+    for item in items:
+        author = item.get("author")
+        if not _is_full_name(author):
+            continue
+        title_words = _title_words(item.get("title", ""))
+        if not title_words:
+            continue
+        shared = headline_words & title_words
+        smaller = min(len(headline_words), len(title_words))
+        if smaller < 2 and headline_words != title_words:
+            continue
+        score = len(shared) / smaller
+        if score > best_score:
+            best_score, best_author = score, author
+    return best_author if best_score >= min_overlap else None
+
+
 def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_days: int = MAX_AGE_DAYS) -> str:
     """Build a compact digest summary to feed the LinkedIn draft.
 
@@ -1076,6 +1171,7 @@ def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_
     since those are meant to surface extra items beyond the Top 5.
     """
     top5 = extract_top5(post_content)
+    all_items = [it for items in draft.get("grouped_items", {}).values() for it in items]
     lines = []
     if top5:
         lines.append(
@@ -1083,10 +1179,15 @@ def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_
             "technical post — use exactly these 5 items, in this order, "
             "reworded for LinkedIn voice and length. Do not substitute, "
             "add, drop, or reorder them, and do not pull a different item "
-            "from below into TOP 5):"
+            "from below into TOP 5). A trailing [byline: Name] is the "
+            "confirmed real author of that source post — safe to credit by "
+            "name per the system prompt's rule; items with no [byline: ...] "
+            "tag have no confirmed individual author, so don't invent one:"
         )
         for i, item in enumerate(top5, 1):
-            lines.append(f"  {i}. {item['title']}: {item['body'][:300]}")
+            author = _best_author_match(item["title"], all_items)
+            byline = f" [byline: {author}]" if author else ""
+            lines.append(f"  {i}. {item['title']}: {item['body'][:300]}{byline}")
         lines.append("")
         lines.append(
             "ADDITIONAL ITEMS (pool for WORTH YOUR ATTENTION and ONE FOR "
@@ -1102,7 +1203,8 @@ def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_
             continue
         lines.append(f"[{cat}]")
         for item in fresh_items:
-            lines.append(f"  - {item['title']}: {(item.get('body') or '')[:200]}")
+            byline = f" [byline: {item['author']}]" if _is_full_name(item.get("author")) else ""
+            lines.append(f"  - {item['title']}: {(item.get('body') or '')[:200]}{byline}")
     return LINKEDIN_PROMPT_TEMPLATE.format(
         week_of=week_of,
         digest_content="\n".join(lines),
@@ -1119,6 +1221,102 @@ def call_claude_linkedin(prompt: str) -> str:
         messages=[{"role": "user", "content": prompt}],
     )
     return message.content[0].text
+
+
+# ── LinkedIn tag candidates ──────────────────────────────────────────────────
+TAG_CANDIDATES_FILE = STATE_DIR / "tag_candidates.json"
+
+
+def collect_tag_candidates(top5: list[dict], draft: dict) -> list[dict]:
+    """Surface every author on this week's item pool as a manual @-tag
+    candidate for LinkedIn — editorial-review-only, never embedded in the
+    generated post body.
+
+    This can't produce a real, working @-mention automatically: LinkedIn
+    only resolves a mention to a member's URN through its own UI
+    autocomplete (or the API with that ID already known), neither of which
+    an RSS-scraped author name gives us. What this can do is hand Ryan a
+    short "who to search for and tag" list alongside the draft, so it's a
+    copy/paste in the LinkedIn composer instead of re-reading every source
+    link by hand.
+
+    Includes bare TechCommunity usernames (e.g. "ScottSawyer") as well as
+    real full names — is_full_name flags which is which. Only full names
+    are safe to credit inline in the LinkedIn draft body itself (see
+    _is_full_name()), but a username still tells Ryan who to look up.
+    """
+    all_items = [it for items in draft.get("grouped_items", {}).values() for it in items]
+    seen = set()
+    candidates = []
+
+    # Top 5 items: match by headline overlap (same approach as the byline
+    # hints in build_linkedin_prompt), but don't require a full name here —
+    # a bare username is still useful in a review-only list.
+    for item in top5:
+        headline_words = _title_words(item["title"])
+        if not headline_words:
+            continue
+        best_item, best_score = None, 0.0
+        for it in all_items:
+            if not it.get("author"):
+                continue
+            title_words = _title_words(it.get("title", ""))
+            if not title_words:
+                continue
+            shared = headline_words & title_words
+            smaller = min(len(headline_words), len(title_words))
+            if smaller < 2 and headline_words != title_words:
+                continue
+            score = len(shared) / smaller
+            if score > best_score:
+                best_score, best_item = score, it
+        if best_item and best_score >= 0.6:
+            key = (best_item["author"], best_item.get("url"))
+            if key not in seen:
+                seen.add(key)
+                candidates.append({
+                    "item_title": best_item["title"],
+                    "author": best_item["author"],
+                    "is_full_name": _is_full_name(best_item["author"]),
+                    "source": best_item.get("source", ""),
+                    "url": best_item.get("url", ""),
+                    "section": "Top 5",
+                })
+
+    # Everything else in this week's pool with an author — in case something
+    # worth crediting landed in Worth Your Attention / Help Desk instead.
+    for it in all_items:
+        author = it.get("author")
+        if not author:
+            continue
+        key = (author, it.get("url"))
+        if key in seen:
+            continue
+        seen.add(key)
+        candidates.append({
+            "item_title": it.get("title", ""),
+            "author": author,
+            "is_full_name": _is_full_name(author),
+            "source": it.get("source", ""),
+            "url": it.get("url", ""),
+            "section": "pool",
+        })
+    return candidates
+
+
+def write_tag_candidates(candidates: list[dict], week_of: str) -> Path:
+    STATE_DIR.mkdir(exist_ok=True)
+    with open(TAG_CANDIDATES_FILE, "w") as f:
+        json.dump(
+            {
+                "week_of": week_of,
+                "generated": datetime.now(timezone.utc).date().isoformat(),
+                "candidates": candidates,
+            },
+            f,
+            indent=2,
+        )
+    return TAG_CANDIDATES_FILE
 
 
 def write_linkedin_draft(content: str, week_of: str) -> Path:
@@ -1286,7 +1484,8 @@ def run(args):
         if deadline_candidates:
             print(f"\nKey Date candidates ({len(deadline_candidates)}):")
             for c in deadline_candidates:
-                print(f"  - [{c['pillar']}] {c['title']} — signal: '{c['signal']}', date: {c['extracted_date']}")
+                tag = " [structured — Roadmap-confirmed]" if c.get("structured") else ""
+                print(f"  - [{c['pillar']}] {c['title']} — signal: '{c['signal']}', date: {c['extracted_date']}{tag}")
         else:
             print("\nKey Date candidates: none flagged this week.")
         log.info("Dry run complete — no API call made.")
@@ -1346,6 +1545,18 @@ def run(args):
         except Exception as e:
             log.warning(f"LinkedIn announcement post generation failed (non-fatal): {e}")
 
+    # Author tag candidates for manual LinkedIn @-tagging — see
+    # collect_tag_candidates() for why this can't be a real embedded mention.
+    tag_candidates = []
+    tag_candidates_path = None
+    if not args.skip_linkedin:
+        try:
+            tag_candidates = collect_tag_candidates(extract_top5(content), draft)
+            if tag_candidates:
+                tag_candidates_path = write_tag_candidates(tag_candidates, week_of)
+        except Exception as e:
+            log.warning(f"Tag-candidate collection failed (non-fatal): {e}")
+
     # Clear the pending draft now that it's been published — next scraper run
     # starts a fresh accumulation.
     if not args.keep_pending and draft_path == PENDING_DRAFT_FILE:
@@ -1377,6 +1588,10 @@ def run(args):
         print(f"  LinkedIn draft:      {linkedin_draft_path}")
     if announcement_path:
         print(f"  LinkedIn post:       {announcement_path}")
+    if tag_candidates:
+        full_name_count = sum(1 for c in tag_candidates if c["is_full_name"])
+        print(f"  Tag candidates:      {len(tag_candidates)} author(s) ({full_name_count} full name, "
+              f"{len(tag_candidates) - full_name_count} username-only) → {tag_candidates_path}")
     if deadline_candidates:
         print(f"  Key Date candidates: {len(deadline_candidates)} flagged for review → {candidates_path}")
     else:

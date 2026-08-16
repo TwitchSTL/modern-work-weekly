@@ -248,12 +248,23 @@ def fetch_rss(source: dict) -> list[dict]:
             date_str = entry.get(
                 "published", entry.get("updated", datetime.now(timezone.utc).isoformat())
             )
+        # feedparser normalizes both RSS <dc:creator> and Atom <author> into
+        # entry.author. Coverage varies by source: TechCommunity blogs (Intune,
+        # Entra, Defender, Purview, SharePoint, Teams, etc.) carry a TechCommunity
+        # username (e.g. "ScottSawyer"), WordPress-hosted blogs (Microsoft
+        # Security Blog) carry a full display name, and feeds with no individual
+        # byline (Microsoft 365 Roadmap, likely MSRC and Microsoft Mechanics)
+        # have no author field at all — entry.get() returns None in that case
+        # rather than guessing, so downstream consumers can tell "no author on
+        # this source" apart from "author lookup failed."
+        author = entry.get("author") or None
         items.append({
             "source": source["name"],
             "title": title,
             "body": body,
             "url": entry.get("link", source["url"]),
             "date": date_str,
+            "author": author,
         })
     return items
 
@@ -686,6 +697,7 @@ def enrich_item(raw: dict) -> dict:
         "body": raw["body"][:600],
         "url": raw["url"],
         "date": raw["date"],
+        "author": raw.get("author"),
         "category": category,
         "category_matched": matched,
         "phase": phase,
