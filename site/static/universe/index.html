@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tag Universe — Modern Work Weekly</title>
+<meta name="description" content="Explore every topic Modern Work Weekly has covered, clustered by pillar, sized by how often each one comes up, and linked by which topics tend to show up together.">
+
+<!--
+  ============================================================================
+  MODERN WORK WEEKLY — "News Universe" / Tag Universe Globe
+  Reconstructed design prototype, prepared 2026-08-08.
+  Round 2: drag-to-rotate, depth occlusion (v1), glow flyout, richer trend
+  graph, shader starfield.
+  Round 3: geometrically-exact occlusion (v1 had an edge case), milky way
+  rebuilt as particles (v1's texture had a UV seam), the globe rebuilt as a
+  shaded/textured Fresnel surface instead of a bare wireframe, flyout gained
+  a sparkline/rank/co-occurring tags.
+  Round 4: more vivid star glow, independent twinkle on the tag stars,
+  evenly-matched 15° grid graticule, softer background vignette, a
+  Documentation Updates badge per pillar, a "focus over time" panel.
+  Round 5 (this pass, from a screenshot review): focus panel now lives
+  bottom-right permanently instead of toggle-hidden; the right-side panels
+  and left-side tag list now dynamically avoid overlapping each other
+  instead of using fixed positions; a secondary opacity gate on hover
+  (layered on top of, not replacing, the geometric occlusion) so
+  barely-visible near-terminator stars stop triggering flyouts that feel
+  like they're coming from nothing; faster auto-rotate resume; stronger
+  twinkle; slower, denser, calmer background.
+  Round 13 (from a screenshot review, after confirming round 11/12's
+  centering + color-collision fixes worked): the co-occurrence EDGES list
+  was pruned by raw shared-week count, which silently favored copilot/
+  zero-trust (the two most-published tags) and left Collaboration &
+  Productivity / AI & Copilot tags almost entirely unconnected — clicking
+  one of their stars showed no web at all, unlike Identity/Endpoint/
+  Security. Rebuilt EDGES using Jaccard-normalized co-occurrence (see the
+  long comment above the EDGES array) so every tag with real repeat
+  presence gets its genuine strongest relationships, not just links to the
+  two hub tags.
+  ============================================================================
+
+  CONTEXT FOR A FRESH CLAUDE PROJECT READING THIS FILE:
+
+  This is Ryan Arbuckle's Modern Work Weekly site (modernworkweekly.com), a
+  weekly Microsoft 365 / Modern Work engineering digest built on Hugo. This
+  file began as a standalone reconstruction of a globe visualization, built
+  from a written spec (docs/FRONTEND_HANDOFF.md, Phase 2 section) plus
+  iterative, screenshot-driven design review. As of round 13, TAG_SEED and
+  DOCS_REAL were rebuilt from each published post's real front-matter tags
+  and Documentation Updates counts (see the comments on those constants) —
+  it is NOT mock data, and as of the 2026-08-16 session this file WAS
+  deployed as the live /universe/ page (site/static/universe/index.html is
+  a copy of this file). TAG_SEED/DOCS_REAL/WEEKS are a point-in-time
+  snapshot through the week of 2026-08-11, though, not a live query — a
+  future update needs to regenerate them from the current post history
+  before the numbers drift noticeably stale. Any future session editing
+  this file should edit here first, then re-copy to
+  site/static/universe/index.html (see the ops note in that direction from
+  whichever session deployed it).
+
+  WHAT THIS IS: a "News Universe" page at /universe/ has two connected
+  views — an outer Tag Universe Globe (this file: a shaded, textured sphere
+  with tags as glowing, twinkling stars clustered by the site's 6 pillars,
+  draggable to rotate, plus a gold Documentation Updates badge per pillar)
+  and an inner set of horizontal CSS scroll-snap "rooms" (not built here,
+  separate/pure-CSS, must work with the globe absent or WebGL unsupported).
+
+  HARD DESIGN CONSTRAINTS:
+    - Never hijack the mouse WHEEL. Drag rotation on the canvas is separate
+      from page scroll and doesn't use the wheel. touch-action:none is
+      scoped to the canvas element only.
+    - Must degrade gracefully with no WebGL and with prefers-reduced-motion.
+    - No external model/texture image assets — everything is canvas-painted
+      at runtime.
+    - Auto-rotation pauses on hover/drag, resumes on its own after an idle
+      period (now 1.3s, was 2.6s — see ROUND 5 CHANGES).
+    - Six pillars, six fixed brand colors matching the site's CSS tokens.
+      Documentation Updates uses the site's existing gold token (#e3b341).
+
+  ROUND 6 CHANGES (this pass, from a screenshot + written feedback review):
+    - The "spiderweb" lines connecting stars are NOT a bug — they're the
+      co-occurrence edges from FRONTEND_HANDOFF.md's original spec (tags
+      that tend to appear in the same digest together). Since they read as
+      inert wiring rather than a live relationship, each edge now carries
+      one or two small traveling glow pulses ("data flow") that move along
+      the curve on a loop, fading in/out near the endpoints.
+    - Focus panel shows one static, non-interactive chart: one aggregate
+      bar each for Last Week, Last Month (last 4 published digests),
+      Last Quarter (the CURRENT calendar quarter, anchored to Jan 1 of
+      this year — not a rolling 91-day window), and Since Inception (all
+      digests to date), labeled below each bar. An earlier pass made
+      these clickable tabs; cut per feedback as "useless navigation" for
+      a glance panel — see overallFocusBuckets() / currentQuarterWeeks().
+    - Right-side panels and the left tag-browser now butt up much closer
+      together (gap cut from 12px to 6px) and all of the persistent panels
+      (legend, tag browser, graph/docs/focus panels) got a real neon
+      border glow via layered box-shadow, not just a slightly darker
+      border color.
+    - Focus panel no longer scrolls (overflow hidden, content sized to
+      fit); its footer no longer talks about bucket mechanics, just a
+      one-line "this grows every week" note plus a tab-specific caption.
+    - The chart itself got a visual pass: rounded-top bars, a vertical
+      gradient per pillar segment, and a soft glow — a small "modernize
+      the Modern Work site" pass rather than the flat single-color bars
+      from round 4/5.
+    - The globe can no longer be dragged by clicking empty space off to
+      the side — pointerdown now raycasts against the sphere/depth mask
+      first and only starts a drag if it actually lands on the globe.
+    - The tag-browser toggle moved from a floating button at the bottom
+      of the screen to a fixed position directly under the pillar legend,
+      restyled to match the legend's visual weight (glowing, high-contrast
+      label) instead of being an easy-to-miss plain button. The list now
+      expands downward from there instead of upward from the bottom.
+
+  ROUND 5 CHANGES:
+
+    - FOCUS PANEL IS NOW ALWAYS ON, BOTTOM-RIGHT. Per feedback that the
+      bottom-right corner was empty screen real estate anyway. The old
+      toggle button is gone entirely — simpler than adding a re-open
+      affordance for a panel that's supposed to just always be there.
+
+    - RIGHT-SIDE PANELS NO LONGER OVERLAP. The per-tag graph panel (and the
+      Documentation Updates panel, which shares its top-right slot) and the
+      always-on focus panel now compute their own layout on every
+      open/close/resize: if a top panel is open, the focus panel's `top` is
+      set to that panel's actual rendered bottom edge + a gap, and its
+      `bottom` stays pinned at 16px — setting both top and bottom with no
+      explicit height lets the browser size it to exactly fill the
+      remaining space, so it can never overlap and always butts up cleanly.
+      When nothing is open up top, it falls back to a sensible default
+      height. See layoutRightPanels().
+
+    - LEFT-SIDE TAG LIST EXPANDS WITHOUT OVERLAPPING THE LEGEND. Round 4's
+      keyboard tag-browse list was anchored purely from the bottom and
+      could grow up and directly over the pillar legend above it (visible
+      in the screenshot — the legend's last line was getting covered). Uses
+      the same top+bottom stretch technique: top is pinned just below the
+      legend's real bottom edge, bottom just above the toggle button. The
+      separate "Focus over time" toggle that used to share this bottom-left
+      corner is gone (see above), freeing up room for this list to actually
+      be bigger, which was also requested.
+
+    - BOTH OF THOSE DYNAMIC PANELS GOT CLEARER BORDERS — slightly heavier
+      border weight and an explicit box-shadow so they read as distinct
+      bounded cards rather than blending into the busy starfield behind
+      them.
+
+    - HOVER GAINED A SECONDARY OPACITY GATE. The geometric occlusion from
+      round 3 is still correct and still the hard backstop — nothing
+      genuinely behind the globe can be hovered. But stars very close to
+      the terminator are so dimmed by the curvature fade that they're
+      basically imperceptible while still being, correctly, on the "front"
+      side — which reads as "hovering something invisible" even though
+      technically nothing is wrong geometrically. Added a rendered-opacity
+      floor (0.5) as a second, deliberate requirement for hover eligibility
+      — a UX polish layered on top of the correctness fix, not a
+      replacement for it.
+
+    - FASTER RESUME, STRONGER TWINKLE, SLOWER/DENSER BACKGROUND. Idle
+      auto-rotate resume cut from 2.6s to 1.3s. Tag star twinkle amplitude
+      roughly doubled. Starfield/milky way parallax slowed ~10%
+      (STARFIELD_SPEED_FACTOR 0.55 → 0.495) since it read as too fast.
+      Slightly denser star/milky-way particle counts and a narrower,
+      calmer twinkle-speed range on the milky way band for "more realism
+      and smoothness," per feedback.
+
+  WHAT'S NOT IN THIS FILE (still open, per FRONTEND_HANDOFF.md §8):
+    - The inner scroll-snap rooms, route-scoping, a real camera fly-through
+      transition, a full accessibility audit beyond the keyboard list here.
+-->
+
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel-bg: #161b22;
+    --border: #30363d;
+    --border-strong: #3d4552;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+
+    --pillar-identity: #a78bfa;
+    --pillar-endpoint: #3fb950;
+    --pillar-collab:   #58a6ff;
+    --pillar-ai:       #f0883e;
+    --pillar-ee:       #f778ba;
+    --pillar-security: #d2a8ff;
+    --pillar-docs:     #e3b341;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    /* Round 11: darkened all three stops — was #161d29/#0d1117/#05070a —
+       per feedback to lean further into black so the pillar colors pop
+       more by contrast, without touching the pillar tokens themselves. */
+    background: radial-gradient(ellipse at 50% 42%, #0f141f 0%, #090c12 55%, #020304 100%);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .universe-topbar {
+    background: #0d1117;
+    border-bottom: 1px solid #30363d;
+    color: #8b949e;
+    font-size: 13px;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 16px;
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .universe-topbar a {
+    color: #c9d1d9;
+    text-decoration: none;
+  }
+  .universe-topbar a:hover { color: #58a6ff; }
+  .universe-topbar span { color: #6e7681; font-size: 12px; }
+
+  #universe-root { position: relative; width: 100%; height: calc(100% - 40px); }
+  #universe-canvas-holder { position: absolute; inset: 0; }
+
+  canvas { display: block; }
+  #universe-canvas-holder canvas {
+    touch-action: none;
+    cursor: grab;
+  }
+  #universe-canvas-holder canvas.dragging { cursor: grabbing; }
+  #universe-canvas-holder canvas.hoverable { cursor: pointer; }
+
+  /* Persistent neon border glow, shared by every "always there" panel
+     (legend, tag browser, graph/docs/focus panels) so they read as
+     clearly bounded cards against the busy starfield. */
+  .neon-card {
+    border: 1px solid rgba(88,166,255,0.5);
+    box-shadow:
+      0 0 1px rgba(88,166,255,0.65),
+      0 0 14px 2px rgba(88,166,255,0.3),
+      0 0 34px 6px rgba(88,166,255,0.13),
+      0 4px 20px rgba(0,0,0,0.55);
+  }
+
+  .legend {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(22,27,34,0.85);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 13px;
+    backdrop-filter: blur(6px);
+    /* Round 20: widened from 220px, per feedback that the fill-style
+       markers (donut/stripe/dashed/gradient/halo) were too small to read
+       here — the whole point of this legend is to teach that vocabulary
+       before someone has to hover a star on the globe to see it. */
+    max-width: 280px;
+    z-index: 10;
+  }
+  .legend h3 {
+    margin: 0 0 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+  }
+  .legend-row { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+  /* Round 20: nearly doubled (10px → 17px) so the fill-style pattern
+     (stripes, dashes, the donut ring, etc.) is actually legible at a
+     glance instead of needing a hover on the globe to tell pillars apart. */
+  .legend-dot { width: 17px; height: 17px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; }
+  .legend-dot.ring { background: transparent; border: 3px solid var(--pillar-docs); border-radius: 50%; }
+
+  /* Round 18: reworked from round 17's per-pillar clip-path SHAPES — those
+     only existed on the flat legend/tag-list/flyout panels, not on the
+     actual glowing stars on the globe (billboarded sprites can't easily
+     take an arbitrary clip-path the same way), so the panels and the globe
+     visually disagreed with each other, which read as arbitrary rather
+     than meaningful. Replaced with per-pillar FILL STYLE instead — every
+     marker stays a plain circle (matching the globe's stars), but the fill
+     treatment (flat / ringed / striped / dashed / gradient / haloed)
+     differs by pillar as the second, redundant channel on top of color.
+     Every marker sets --mc (marker color) inline; the .style-* rules below
+     decide how to use it. "Documentation Updates" keeps its own distinct
+     ring (unchanged, a 7th indicator, not part of the 6-pillar set).
+     See PILLAR_STYLE in section 1 (JS) for the pillar → style mapping. */
+  .style-solid { background: var(--mc); }
+  .style-donut { background: var(--mc); box-shadow: inset 0 0 0 2px rgba(13,17,23,0.65); }
+  .style-stripe { background: repeating-linear-gradient(45deg, var(--mc) 0 2px, rgba(255,255,255,0.55) 2px 3.2px); }
+  .style-dashed { background: transparent; border: 2px dashed var(--mc); }
+  .style-gradient { background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.95), var(--mc) 65%); }
+  /* Round 20: the legend's markers are now much bigger (17px vs. 9-10px
+     elsewhere) — scale the pattern detail up to match instead of the same
+     thin lines just floating in more empty space. */
+  .legend-dot.style-donut { box-shadow: inset 0 0 0 3px rgba(13,17,23,0.65); }
+  .legend-dot.style-stripe { background: repeating-linear-gradient(45deg, var(--mc) 0 3px, rgba(255,255,255,0.55) 3px 5px); }
+  .legend-dot.style-dashed { border-width: 3px; }
+  .style-halo { background: var(--mc); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.8); }
+  .legend-hint {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  /* Round 17: a way back to a known-good orientation for anyone who starts
+     dragging before they've hovered a star (or gets turned around and
+     isn't sure which way is "forward" anymore) — per feedback. */
+  #reset-view-btn {
+    display: block; width: 100%; margin-top: 8px;
+    background: rgba(88,166,255,0.1); border: 1px solid rgba(88,166,255,0.4);
+    border-radius: 6px; color: #79c0ff; font-size: 11px; font-weight: 600;
+    padding: 6px 8px; cursor: pointer; text-align: center;
+    transition: background 0.12s ease, border-color 0.12s ease;
+  }
+  #reset-view-btn:hover, #reset-view-btn:focus {
+    background: rgba(88,166,255,0.2); border-color: rgba(88,166,255,0.7); outline: none;
+  }
+
+  #flyout {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(22,27,34,0.97);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    max-width: 260px;
+    z-index: 30;
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+    transition: opacity 0.12s ease, transform 0.12s ease, border-color 0.08s ease, box-shadow 0.08s ease;
+  }
+  #flyout.visible { opacity: 1; transform: translateY(0) scale(1); }
+  #flyout .fly-tag { font-weight: 700; }
+  #flyout .fly-pillar { font-size: 11px; color: var(--text-dim); margin-top: 2px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  #flyout .fly-pillar .kdot { display: inline-block; width: 9px; height: 9px; flex-shrink: 0; border-radius: 50%; box-sizing: border-box; }
+  #flyout .fly-pillar .kdot.ring { background: transparent; border: 2px solid var(--mc); }
+  #flyout .fly-spark { display: block; margin: 4px 0; }
+  #flyout .fly-total { font-size: 11px; margin-top: 4px; }
+  #flyout .fly-cooccur { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+  #flyout .fly-hint { font-size: 10px; color: var(--text-dim); margin-top: 6px; font-style: italic; }
+
+  /* ---- Right column: graph-panel and docs-panel share the top slot
+       (mutually exclusive); focus-panel is always on and fills whatever
+       space is left below whichever (if either) is open. All three get
+       top/bottom set directly in JS via layoutRightPanels(). ---- */
+  #graph-panel, #docs-panel, #focus-panel {
+    position: absolute;
+    right: 16px;
+    width: 340px;
+    background: rgba(22,27,34,0.97);
+    border-radius: 10px;
+    padding: 14px 16px;
+    z-index: 25;
+  }
+  #graph-panel, #docs-panel { top: 16px; display: none; overflow-y: auto; }
+  #graph-panel.open, #docs-panel.open { display: block; }
+  #focus-panel { display: flex; flex-direction: column; overflow: hidden; } /* no scroll — see ROUND 6 CHANGES */
+
+  .gp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; }
+  .gp-header h4 { margin: 0; font-size: 15px; }
+  .gp-pillar { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
+  .gp-close {
+    background: none; border: none; color: var(--text-dim);
+    font-size: 16px; cursor: pointer; line-height: 1; padding: 2px 4px;
+  }
+  .gp-close:hover { color: var(--text); }
+  #graph-panel canvas, #docs-panel canvas, #focus-panel canvas { width: 100%; display: block; cursor: crosshair; }
+  #graph-panel canvas, #docs-panel canvas { height: 150px; }
+  /* Round 15: taller now that the caption line below it is gone — the
+     chart fills more of the panel instead of leaving that space unused. */
+  #focus-panel canvas { height: 180px; cursor: default; flex-shrink: 0; }
+  .gp-summary {
+    font-size: 12px; color: var(--text); margin-top: 10px;
+    padding-top: 8px; border-top: 1px solid var(--border); line-height: 1.6;
+  }
+  .gp-summary b { font-weight: 600; }
+  .gp-summary .trend-up { color: #3fb950; }
+  .gp-summary .trend-down { color: #f85149; }
+  .gp-summary .trend-flat { color: var(--text-dim); }
+  .gp-footer { font-size: 10px; color: var(--text-dim); margin-top: 6px; }
+
+  #focus-legend { display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: 11px; margin-top: 8px; }
+  #focus-legend span { display: flex; align-items: center; gap: 4px; color: var(--text-dim); }
+  #focus-legend .fdot { width: 9px; height: 9px; flex-shrink: 0; border-radius: 50%; box-sizing: border-box; }
+
+  /* ---- Left column: one box, same shape as the legend above it — round
+       10: the separate floating "Browse tags" label sitting between the
+       legend and the list read as "a weird middle button that's actually
+       the title of the window below it." Folded it into the list itself
+       as a sticky in-box header (same pattern the legend uses for
+       "PILLARS"), so there's exactly one box here, not two. top/bottom
+       set directly in JS via layoutLeftPanel() so it stretches from just
+       below the legend to the bottom margin — always open, always
+       scrollable, never collapsed. ---- */
+  #kbd-list {
+    position: absolute; left: 16px;
+    max-width: 320px;
+    overflow-y: auto;
+    background: rgba(22,27,34,0.97);
+    border-radius: 10px; padding: 12px; display: block; z-index: 10;
+  }
+  #kbd-list h3 {
+    position: sticky; top: -12px; z-index: 2;
+    margin: -12px -12px 8px; padding: 12px 12px 10px;
+    background: rgba(22,27,34,0.99);
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+    color: #79c0ff;
+    border-bottom: 1px solid rgba(88,166,255,0.3);
+  }
+  #kbd-list h4 { margin: 4px 6px 8px; font-size: 12px; color: var(--text-dim); text-transform: uppercase; }
+  #kbd-list button {
+    display: block; width: 100%; text-align: left; background: none; border: none;
+    color: var(--text); padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 13px;
+  }
+  #kbd-list button:hover, #kbd-list button:focus { background: rgba(255,255,255,0.08); outline: none; }
+  #kbd-list button .kdot { display: inline-block; width: 9px; height: 9px; margin-right: 8px; flex-shrink: 0; border-radius: 50%; box-sizing: border-box; }
+  #kbd-list button .kdot.ring { background: transparent; border: 2px solid var(--pillar-docs); }
+
+  #no-webgl {
+    display: none; padding: 60px 24px; max-width: 640px; margin: 0 auto;
+    text-align: center; color: var(--text-dim);
+  }
+  #no-webgl h2 { color: var(--text); }
+  #no-webgl ul { text-align: left; display: inline-block; }
+
+  #rm-badge {
+    position: absolute; bottom: 16px; right: 372px; font-size: 11px;
+    color: var(--text-dim); background: rgba(22,27,34,0.8);
+    padding: 4px 10px; border-radius: 6px; display: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="universe-topbar">
+  <a href="/">&larr; Modern Work Weekly</a>
+  <span>Tag Universe &middot; drag to rotate &middot; click a star for its trend</span>
+</div>
+
+<div id="universe-root">
+  <div id="universe-canvas-holder"></div>
+
+  <div class="legend neon-card">
+    <h3>Pillars</h3>
+    <div class="legend-row"><span class="legend-dot style-solid" style="--mc:var(--pillar-identity)"></span>Identity &amp; Access</div>
+    <div class="legend-row"><span class="legend-dot style-donut" style="--mc:var(--pillar-endpoint)"></span>Endpoint &amp; Device Mgmt</div>
+    <div class="legend-row"><span class="legend-dot style-stripe" style="--mc:var(--pillar-collab)"></span>Collaboration &amp; Productivity</div>
+    <div class="legend-row"><span class="legend-dot style-dashed" style="--mc:var(--pillar-ai)"></span>AI &amp; Copilot</div>
+    <div class="legend-row"><span class="legend-dot style-gradient" style="--mc:var(--pillar-ee)"></span>Employee Experience</div>
+    <div class="legend-row"><span class="legend-dot style-halo" style="--mc:var(--pillar-security)"></span>Security &amp; Compliance</div>
+    <div class="legend-row"><span class="legend-dot ring"></span>Documentation Updates (1 per pillar)</div>
+    <div class="legend-hint">Drag to rotate. Hover a star. Click for its weekly trend.</div>
+    <button id="reset-view-btn" type="button">↺ Reset view</button>
+  </div>
+
+  <div id="flyout"></div>
+
+  <div id="graph-panel" class="neon-card">
+    <div class="gp-header">
+      <div><h4 id="gp-title">tag</h4><div class="gp-pillar" id="gp-pillar">pillar</div></div>
+      <button class="gp-close" id="gp-close" aria-label="Close">✕</button>
+    </div>
+    <canvas id="gp-canvas" width="308" height="150"></canvas>
+    <div class="gp-summary" id="gp-summary"></div>
+    <div class="gp-footer">Weeks this tag was featured in, across published digests</div>
+  </div>
+
+  <div id="docs-panel" class="neon-card">
+    <div class="gp-header">
+      <div><h4 id="dp-title">Documentation Updates</h4><div class="gp-pillar" id="dp-pillar">pillar</div></div>
+      <button class="gp-close" id="dp-close" aria-label="Close">✕</button>
+    </div>
+    <canvas id="dp-canvas" width="308" height="150"></canvas>
+    <div class="gp-summary" id="dp-summary"></div>
+    <div class="gp-footer">Doc-commit-derived items surfaced per week for this pillar</div>
+  </div>
+
+  <div id="focus-panel" class="neon-card">
+    <div class="gp-header">
+      <div><h4>Focus over time</h4></div>
+    </div>
+    <canvas id="focus-canvas" width="308" height="180"></canvas>
+    <div id="focus-legend"></div>
+  </div>
+
+  <div id="kbd-list" class="neon-card open" role="menu" aria-label="All tags by pillar"></div>
+
+  <div id="rm-badge">prefers-reduced-motion: auto-rotate disabled</div>
+
+  <div id="no-webgl">
+    <h2>Tag Universe needs WebGL</h2>
+    <p>Your browser or device doesn't support WebGL, so the globe can't render here. The real site's <code>/universe/</code> route always falls back to the plain CSS room list below the globe, with all the same content and links.</p>
+    <ul id="no-webgl-fallback-list"></ul>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ==========================================================================
+  // 1. PILLARS
+  // ==========================================================================
+  const PILLARS = [
+    { name: "Identity & Access",              color: 0xa78bfa, lat: 30,  lon: -120 },
+    { name: "Endpoint & Device Management",   color: 0x3fb950, lat: -10, lon: -50  },
+    { name: "Collaboration & Productivity",   color: 0x58a6ff, lat: 45,  lon: 20   },
+    { name: "AI & Copilot",                   color: 0xf0883e, lat: -35, lon: 60   },
+    { name: "Employee Experience",            color: 0xf778ba, lat: 10,  lon: 150  },
+    { name: "Security & Compliance",          color: 0xd2a8ff, lat: -55, lon: -160 },
+  ];
+  const DOCS_COLOR = 0xe3b341;
+  function hexStr(intColor) { return "#" + intColor.toString(16).padStart(6, "0"); }
+
+  // Round 18: per-pillar FILL STYLE (see the .style-* CSS block), not shape
+  // — round 17 gave the flat UI panels clip-path shapes, but the globe's
+  // own star sprites stayed plain circles, so the panels and the globe
+  // disagreed with each other. Every marker here is a plain circle
+  // (matching the globe); PILLAR_STYLE controls how it's filled instead.
+  const PILLAR_STYLE = {
+    "Identity & Access": "style-solid",
+    "Endpoint & Device Management": "style-donut",
+    "Collaboration & Productivity": "style-stripe",
+    "AI & Copilot": "style-dashed",
+    "Employee Experience": "style-gradient",
+    "Security & Compliance": "style-halo",
+  };
+
+  // ==========================================================================
+  // 2. REAL DATA — extracted 2026-08-15 from this repo's 16 published posts
+  // (site/content/posts/*.md front matter `tags:` + `date:`) rather than
+  // fabricated. Per round-6 request: "dry-run against the site's current
+  // tags, then create a sample based on the current live set."
+  //
+  // What's real vs. still illustrative:
+  //   - WEEKS: the 16 actual published post dates.
+  //   - TAG_SEED: the 32 actual distinct tags in use (excluding "modern-work",
+  //     a whole-site branding tag on every post, not a content signal), with
+  //     each tag's REAL per-week presence (1 = that week's digest carried
+  //     this tag, 0 = it didn't) and REAL pillar, reproduced from
+  //     scraper/sources.py's CLASSIFICATION_KEYWORDS (a few defender-*
+  //     variants needed a manual override — see comment below — since a
+  //     naive keyword match would misroute them the same way the real
+  //     classifier's own audit history warns about).
+  //   - Because front matter only lists which tags a week's digest carried
+  //     (not how many times), "total"/weekly counts here mean "weeks
+  //     featured," not "mentions" — the UI copy below reflects that.
+  //   - EDGES: real co-occurrence (tags appearing in the same week's digest
+  //     together), pruned to weight >= 8 — at the full real threshold there
+  //     are 167 pairings, which is exactly the unreadable spiderweb problem;
+  //     this keeps the ~26 strongest real relationships visible.
+  //   - DOCS_NODES (Documentation Updates badges): REAL per-week counts for
+  //     Identity & Access, Endpoint & Device Management, and Security &
+  //     Compliance, parsed from each post's "## Documentation Updates"
+  //     section. Collaboration & Productivity, AI & Copilot, and Employee
+  //     Experience all come back genuinely zero — docs_updates.py only
+  //     watches the entra-docs/memdocs/defender-docs repos today, so there's
+  //     no real doc-commit source for those three pillars yet. That's not a
+  //     mock-data placeholder; it's an accurate reflection of a real,
+  //     already-known pipeline gap.
+  //
+  // Worth flagging on its own: Employee Experience has exactly ONE real tag
+  // (viva, 1 of 16 weeks) — matches the known gap in FRONTEND_HANDOFF.md
+  // ("no published post has ever carried Employee Experience" as a
+  // *category*; it turns out one early post did carry viva as a *tag*,
+  // but the pillar is still by far the thinnest cluster on the globe).
+  const WEEKS = ["2026-05-09","2026-05-10","2026-05-17","2026-05-19","2026-05-26",
+                 "2026-06-02","2026-06-09","2026-06-16","2026-06-23","2026-06-30",
+                 "2026-07-07","2026-07-14","2026-07-21","2026-07-28","2026-08-04","2026-08-11"];
+
+  function seededRand(seed) {
+    let s = seed % 2147483647;
+    if (s <= 0) s += 2147483646;
+    return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  }
+  function hashCode(str) {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) { h = (h * 31 + str.charCodeAt(i)) | 0; }
+    return Math.abs(h) || 1;
+  }
+
+  // [tag, pillar, weekly-presence-array — 1 if that week's digest carried this tag]
+  const TAG_SEED = [
+    ["copilot", "AI & Copilot", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1]],
+    ["zero-trust", "Security & Compliance", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1]],
+    ["defender-xdr", "Security & Compliance", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1]],
+    ["entra-id", "Identity & Access", [1,1,1,1,1,1,1,1,1,0,0,0,1,0,1,1]],
+    ["intune", "Endpoint & Device Management", [1,1,1,1,1,1,1,1,1,1,0,0,1,0,1,0]],
+    ["endpoint-management", "Endpoint & Device Management", [0,0,1,1,1,1,1,1,1,1,0,0,1,0,1,1]],
+    ["exchange", "Collaboration & Productivity", [1,0,0,0,0,1,1,1,1,1,0,1,1,0,1,1]],
+    ["teams", "Collaboration & Productivity", [1,0,0,1,1,1,1,0,1,1,1,0,0,0,1,1]],
+    ["purview", "Security & Compliance", [1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,0]],
+    ["windows", "Endpoint & Device Management", [0,0,1,1,0,0,0,1,1,1,1,1,1,0,1,1]],
+    ["identity", "Identity & Access", [0,0,0,1,1,1,1,1,1,1,0,0,1,0,1,1]],
+    ["sharepoint", "Collaboration & Productivity", [1,0,0,0,0,1,1,0,1,1,1,1,0,0,1,1]],
+    ["conditional-access", "Identity & Access", [0,0,1,0,1,1,1,1,1,0,0,0,1,0,0,1]],
+    ["shadow-ai", "AI & Copilot", [0,0,1,1,0,1,1,1,1,0,0,0,0,0,1,1]],
+    ["windows-365", "Endpoint & Device Management", [1,0,0,0,1,1,1,1,0,0,0,0,1,1,0,0]],
+    ["global-secure-access", "Security & Compliance", [1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0]],
+    ["data-lifecycle", "Security & Compliance", [0,0,0,1,1,1,1,1,0,0,0,0,0,1,0,0]],
+    ["power-platform", "AI & Copilot", [0,0,0,0,0,1,1,1,0,0,0,0,1,0,1,1]],
+    ["copilot-studio", "AI & Copilot", [1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1]],
+    ["windows-autopatch", "Endpoint & Device Management", [0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0]],
+    ["dspm", "Security & Compliance", [0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0]],
+    ["defender-for-endpoint", "Security & Compliance", [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1]],
+    ["defender-for-office-365", "Security & Compliance", [0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0]],
+    ["agent-365", "AI & Copilot", [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["viva", "Employee Experience", [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["hotpatch", "Endpoint & Device Management", [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["linux", "Endpoint & Device Management", [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["teams-rooms", "Collaboration & Productivity", [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["autopilot", "Endpoint & Device Management", [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0]],
+    ["security", "Security & Compliance", [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]],
+    ["defender-for-identity", "Security & Compliance", [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]],
+    ["onedrive", "Collaboration & Productivity", [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]],
+  ];
+
+  const NODES = TAG_SEED.map(([tag, pillar, presence]) => {
+    const weekly = presence.map((count, i) => ({ week: WEEKS[i], count }));
+    return { tag, pillar, total: presence.reduce((a, c) => a + c, 0), weekly };
+  });
+
+  // Real per-week Documentation Updates counts, parsed from each post's
+  // "## Documentation Updates" section. Zeros for Collaboration &
+  // Productivity / AI & Copilot / Employee Experience are real absences,
+  // not filler — see the comment block above.
+  const DOCS_REAL = {
+    "Identity & Access": {"2026-05-17":3,"2026-05-19":5,"2026-05-26":2,"2026-06-02":2,"2026-06-09":4,"2026-06-16":6,"2026-06-23":5,"2026-06-30":5,"2026-07-07":5,"2026-07-14":5,"2026-07-21":5,"2026-07-28":6,"2026-08-04":6,"2026-08-11":4},
+    "Endpoint & Device Management": {"2026-05-17":3,"2026-05-26":3,"2026-06-02":3,"2026-06-09":2,"2026-06-16":6,"2026-06-23":2,"2026-06-30":4,"2026-07-07":4,"2026-07-14":2,"2026-07-21":4,"2026-08-04":3,"2026-08-11":2},
+    "Security & Compliance": {"2026-05-17":1,"2026-05-19":2,"2026-05-26":2,"2026-06-09":1,"2026-06-16":3,"2026-06-23":3,"2026-07-07":2,"2026-07-14":1,"2026-08-04":3},
+    "Collaboration & Productivity": {},
+    "AI & Copilot": {},
+    "Employee Experience": {},
+  };
+  const DOCS_NODES = PILLARS.map(p => {
+    const table = DOCS_REAL[p.name] || {};
+    const weekly = WEEKS.map(week => ({ week, count: table[week] || 0 }));
+    return { pillar: p.name, total: weekly.reduce((a, w) => a + w.count, 0), weekly };
+  });
+
+  // Round 13: the round-6 pruning (global "weight >= 8" on raw shared-week
+  // counts) had a hidden bias — "copilot" and "zero-trust" are the two most
+  // consistently-published tags (13-14 of 16 weeks each), so almost every
+  // OTHER tag's single strongest raw overlap was just "shares weeks with
+  // copilot/zero-trust because they're on nearly every week," not a real
+  // relationship. A flat top-26-by-raw-weight cutoff therefore favored pairs
+  // touching those two hubs and dropped real, meaningful pairings inside
+  // less frequently-featured pillars — concretely, Collaboration &
+  // Productivity and AI & Copilot tags (exchange, teams, sharepoint,
+  // power-platform, copilot-studio, shadow-ai) mostly fell out of the list
+  // entirely, which is why clicking one of their stars showed no web whatsoever,
+  // unlike Identity/Endpoint/Security tags built around high-frequency hub
+  // tags like entra-id/intune/defender-xdr.
+  //
+  // Fixed by ranking each tag's own top-2 co-occurring partners by JACCARD
+  // similarity (shared weeks / union of weeks each tag appeared in) instead
+  // of raw shared-week count — this normalizes for a tag's own frequency, so
+  // "always-on" tags like copilot/zero-trust no longer crowd out every other
+  // tag's real strongest relationship. A raw-weight floor of >= 3 shared
+  // weeks still applies so two tags that merely happened to overlap once or
+  // twice don't get wired together. Recomputed directly from each tag's real
+  // weekly presence array above (TAG_SEED) — not fabricated.
+  //
+  // Tags still absent from the graph (teams-rooms, onedrive, agent-365, viva,
+  // hotpatch, linux, autopilot, security, defender-for-identity,
+  // defender-for-endpoint, defender-for-office-365) are tags that were only
+  // ever featured in 1-2 total weeks — there's no real co-occurrence signal
+  // to show for them yet. That's an honest reflection of thin history, the
+  // same as this file's other "genuinely thin, not broken" data notes.
+  const EDGES = [
+    ["copilot", "zero-trust", 14], ["copilot", "defender-xdr", 13],
+    ["defender-xdr", "zero-trust", 13], ["copilot", "entra-id", 12],
+    ["entra-id", "zero-trust", 12], ["copilot", "intune", 12],
+    ["intune", "zero-trust", 12], ["copilot", "endpoint-management", 11],
+    ["copilot", "identity", 10], ["endpoint-management", "identity", 10],
+    ["copilot", "teams", 10], ["entra-id", "purview", 9],
+    ["copilot", "windows", 9], ["conditional-access", "endpoint-management", 8],
+    ["conditional-access", "entra-id", 8], ["endpoint-management", "windows", 8],
+    ["endpoint-management", "shadow-ai", 8], ["entra-id", "shadow-ai", 8],
+    ["exchange", "sharepoint", 8], ["exchange", "identity", 8],
+    ["sharepoint", "teams", 8], ["exchange", "power-platform", 6],
+    ["identity", "power-platform", 6], ["global-secure-access", "purview", 7],
+    ["copilot-studio", "exchange", 5], ["data-lifecycle", "windows-365", 5],
+    ["global-secure-access", "windows-365", 5], ["data-lifecycle", "global-secure-access", 5],
+    ["copilot-studio", "power-platform", 4], ["dspm", "windows-autopatch", 4],
+    ["global-secure-access", "windows-autopatch", 4], ["dspm", "global-secure-access", 4],
+  ];
+
+  const pillarRank = {};
+  PILLARS.forEach(p => {
+    const pnodes = NODES.filter(n => n.pillar === p.name).slice().sort((a, b) => b.total - a.total);
+    pnodes.forEach((n, i) => { pillarRank[n.tag] = { rank: i + 1, of: pnodes.length }; });
+  });
+  const tagPillarOf = Object.fromEntries(NODES.map(n => [n.tag, n.pillar]));
+  const coOccurMap = {};
+  EDGES.forEach(([a, b, w]) => {
+    (coOccurMap[a] = coOccurMap[a] || []).push({ tag: b, weight: w });
+    (coOccurMap[b] = coOccurMap[b] || []).push({ tag: a, weight: w });
+  });
+  Object.keys(coOccurMap).forEach(k => coOccurMap[k].sort((a, b) => b.weight - a.weight));
+
+  function bucketLabel(iso) {
+    const d = new Date(iso + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { month: "short", year: "2-digit", timeZone: "UTC" });
+  }
+
+  // ---- Focus-over-time tabs: Last Week / Last Month / Quarter / All Time.
+  // Round 15 fix: this used to mean the CURRENT (in-progress) calendar
+  // quarter, which produced a mismatch feedback called out directly — e.g.
+  // on today's date the "Last Quarter" bucket was showing Jul-Sep data,
+  // which reads as "this quarter," not "last quarter." "Last Quarter" now
+  // means the most recently COMPLETED calendar quarter (Jan-Mar, Apr-Jun,
+  // Jul-Sep, Oct-Dec — still anchored to Jan 1, still not a rolling 91-day
+  // window, just shifted back one quarter from "current"). See
+  // lastQuarterWeeks().
+  function lastQuarterInfo() {
+    const now = new Date();
+    let year = now.getUTCFullYear();
+    let qIdx = Math.floor(now.getUTCMonth() / 3) - 1; // previous quarter, 0-3 anchored to Jan 1
+    if (qIdx < 0) { qIdx = 3; year -= 1; }
+    const start = new Date(Date.UTC(year, qIdx * 3, 1));
+    const end = new Date(Date.UTC(year, qIdx * 3 + 3, 0, 23, 59, 59));
+    return { qNum: qIdx + 1, year, start, end };
+  }
+  function lastQuarterWeeks() {
+    const { start, end } = lastQuarterInfo();
+    return WEEKS.filter(w => { const d = new Date(w + "T00:00:00Z"); return d >= start && d <= end; });
+  }
+
+  // Round 6: dropped the earlier tabbed version — clicking between ranges
+  // read as pointless navigation for a "glance" panel. Instead this is one
+  // static chart with one aggregate bar per range (not broken out by
+  // individual week/month), labeled below each bar.
+  function aggregateBucket(weekList, label) {
+    const byPillar = Object.fromEntries(PILLARS.map(p => [p.name, 0]));
+    const weekSet = new Set(weekList);
+    NODES.forEach(node => {
+      node.weekly.forEach(w => { if (weekSet.has(w.week)) byPillar[node.pillar] += w.count; });
+    });
+    return { label, byPillar };
+  }
+  function overallFocusBuckets() {
+    const byPillar = Object.fromEntries(PILLARS.map(p => [p.name, 0]));
+    NODES.forEach(node => { byPillar[node.pillar] += node.total; });
+    return [
+      // Round 15: shorter bar labels ("Week"/"Month"/"Quarter"/"All Time")
+      // per feedback — "Last Quarter" and "Since Inception" were wide
+      // enough at a readable font size to visually run into their
+      // neighboring bar's label.
+      aggregateBucket(WEEKS.slice(-1), "Week"),
+      aggregateBucket(WEEKS.slice(-4), "Month"),
+      aggregateBucket(lastQuarterWeeks(), "Quarter"),
+      { label: "All Time", byPillar },
+    ];
+  }
+
+  // ==========================================================================
+  // 3. WebGL availability check + graceful fallback
+  // ==========================================================================
+  function hasWebGL() {
+    try {
+      const canvas = document.createElement("canvas");
+      return !!(window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")));
+    } catch (e) { return false; }
+  }
+  const prefersReducedMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const saveData = navigator.connection && navigator.connection.saveData;
+
+  if (!hasWebGL() || saveData) {
+    document.getElementById("universe-canvas-holder").style.display = "none";
+    document.querySelector(".legend").style.display = "none";
+    document.getElementById("focus-panel").style.display = "none";
+    const fb = document.getElementById("no-webgl");
+    fb.style.display = "block";
+    const list = document.getElementById("no-webgl-fallback-list");
+    PILLARS.forEach(p => {
+      const li = document.createElement("li");
+      const label = document.createElement("strong");
+      label.textContent = p.name + ": ";
+      li.appendChild(label);
+      NODES.filter(n => n.pillar === p.name).forEach((n, i, arr) => {
+        const a = document.createElement("a");
+        a.href = "/tags/" + n.tag + "/";
+        a.textContent = n.tag;
+        li.appendChild(a);
+        if (i < arr.length - 1) li.appendChild(document.createTextNode(", "));
+      });
+      list.appendChild(li);
+    });
+    return;
+  }
+  if (prefersReducedMotion) document.getElementById("rm-badge").style.display = "block";
+
+  // ==========================================================================
+  // 4. Three.js scene setup
+  // ==========================================================================
+  const holder = document.getElementById("universe-canvas-holder");
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, holder.clientWidth / holder.clientHeight, 0.1, 1000);
+  camera.position.set(0, 0, 7);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(holder.clientWidth, holder.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  holder.appendChild(renderer.domElement);
+  const canvasEl = renderer.domElement;
+
+  window.addEventListener("resize", () => {
+    camera.aspect = holder.clientWidth / holder.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(holder.clientWidth, holder.clientHeight);
+    layoutRightPanels();
+    layoutLeftPanel();
+  });
+
+  const globeGroup = new THREE.Group();
+  scene.add(globeGroup);
+
+  // Round 10: doubled from 15° to 30° (24 lon/12 lat lines -> 12 lon/6 lat)
+  // — with only 32 real tags clustered around 6 fixed pillar centers, a lot
+  // of the sphere's surface is legitimately empty between clusters, and a
+  // dense grid made that emptiness read as "busy but hollow." Fewer, wider
+  // lines let the actual stars stand out as the content instead of
+  // competing with a grid that isn't showing any data of its own.
+  const GRID_STEP_DEG = 30;
+  function makeGridTexture() {
+    const w = 1024, h = 512;
+    const c = document.createElement("canvas");
+    c.width = w; c.height = h;
+    const ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, w, h);
+    // Round 15 brightened this grid (0.16→0.3 alpha, thicker lines) chasing
+    // "more visible globe texture," but round 16 feedback flagged the
+    // result as "thick gridlines" and a "weird light split" near the rim —
+    // an equirectangular UV grid's longitude lines converge and visually
+    // stack up near the poles/silhouette regardless of how thin they are,
+    // and round 15's extra brightness made that convergence artifact much
+    // more obvious. Pulled back closer to the original values (still a
+    // touch more visible than round 11) instead of chasing more brightness.
+    const lonCount = Math.round(360 / GRID_STEP_DEG);
+    ctx.strokeStyle = "rgba(200, 220, 255, 0.18)";
+    ctx.lineWidth = 1;
+    for (let i = 0; i < lonCount; i++) {
+      const x = (i / lonCount) * w;
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    const latCount = Math.round(180 / GRID_STEP_DEG);
+    for (let i = 1; i < latCount; i++) {
+      const y = (i / latCount) * h;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+    ctx.strokeStyle = "rgba(200, 220, 255, 0.32)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2); ctx.stroke();
+    ctx.fillStyle = "rgba(200, 220, 255, 0.06)";
+    for (let i = 0; i < 900; i++) { ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1); }
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.wrapT = THREE.ClampToEdgeWrapping;
+    return tex;
+  }
+
+  const GLOBE_VERT = `
+    varying vec3 vNormal; varying vec3 vViewDir; varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      vNormal = normalize(normalMatrix * normal);
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      vViewDir = normalize(-mvPosition.xyz);
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  `;
+  const GLOBE_FRAG = `
+    precision mediump float;
+    uniform vec3 uColor; uniform sampler2D uGridTex;
+    varying vec3 vNormal; varying vec3 vViewDir; varying vec2 vUv;
+    void main() {
+      // Round 11 darkened this sphere's self-glow so pillar colors would
+      // pop by contrast. Round 15 pushed the rim/fresnel term back up,
+      // which (combined with round 15's brighter grid, see makeGridTexture)
+      // produced a bright band right at the silhouette edge that round 16
+      // feedback called a "weird light split." Settled between rounds
+      // 11 and 15 here — visible texture without a blown-out rim.
+      float facing = max(dot(normalize(vNormal), normalize(vViewDir)), 0.0);
+      float fresnel = pow(1.0 - facing, 2.2);
+      vec4 grid = texture2D(uGridTex, vUv);
+      vec3 base = uColor * (0.08 + grid.r * 0.4);
+      vec3 rim = uColor * fresnel * 0.85;
+      float alpha = clamp(fresnel * 0.42 + grid.r * 0.18 + 0.03, 0.0, 0.78);
+      gl_FragColor = vec4(base + rim, alpha);
+    }
+  `;
+  // Round 12: found the actual reason blue dots kept reading as invisible —
+  // this uniform was 0x58a6ff, the EXACT same hex as the Collaboration &
+  // Productivity pillar color (see PILLARS below). A blue star sitting on
+  // a globe surface tinted the identical blue camouflages against it,
+  // especially with the grid/fresnel glow active nearby. Changed the
+  // globe's own tint to a neutral, desaturated slate — distinct from all
+  // six pillar colors — so no pillar's dots can ever blend into the
+  // sphere itself again.
+  const globeMat = new THREE.ShaderMaterial({
+    uniforms: { uColor: { value: new THREE.Color(0x6b7785) }, uGridTex: { value: makeGridTexture() } },
+    vertexShader: GLOBE_VERT, fragmentShader: GLOBE_FRAG,
+    transparent: true, depthWrite: false, side: THREE.FrontSide,
+  });
+  const sphereShell = new THREE.Mesh(new THREE.SphereGeometry(3, 48, 32), globeMat);
+  globeGroup.add(sphereShell);
+
+  const depthMask = new THREE.Mesh(
+    new THREE.SphereGeometry(2.92, 24, 16),
+    new THREE.MeshBasicMaterial({ colorWrite: false })
+  );
+  globeGroup.add(depthMask);
+
+  const starGroup = new THREE.Group();
+  globeGroup.add(starGroup);
+
+  // Round 19: `style` paints the SAME per-pillar fill treatment used by the
+  // flat panels (.style-* CSS, PILLAR_STYLE map) directly into the star's
+  // glow texture, into the bright core, so the globe's actual stars finally
+  // match the legend/tag-browser/flyout markers instead of every star
+  // being a plain glowing circle regardless of pillar.
+  function makeGlowTexture(hexColor, opts) {
+    opts = opts || {};
+    const ringOnly = opts.ringOnly, style = opts.style;
+    const size = 128;
+    const c = document.createElement("canvas");
+    c.width = c.height = size;
+    const ctx = c.getContext("2d");
+    const r = (hexColor >> 16) & 255, g = (hexColor >> 8) & 255, b = hexColor & 255;
+    // Round 14 tightened this falloff to keep "minimal glow" once every dot
+    // rendered all the time. Round 15 opened it back up per feedback asking
+    // for the glow to be amplified again — wider bright core, stronger
+    // mid-stop, so each dot reads as a proper glowing star rather than a
+    // flat disc, now that dots being visible at all is no longer in doubt.
+    const grad = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+    grad.addColorStop(0, "rgba(255,255,255,1)");
+    grad.addColorStop(0.16, `rgba(${r},${g},${b},1)`);
+    grad.addColorStop(0.55, `rgba(${r},${g},${b},0.6)`);
+    grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, size, size);
+    if (ringOnly) {
+      ctx.strokeStyle = `rgba(${r},${g},${b},0.9)`;
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size/2 - 6, 0, Math.PI * 2);
+      ctx.stroke();
+    } else if (style) {
+      const cx = size / 2, cy = size / 2;
+      ctx.save();
+      if (style === "style-donut") {
+        ctx.strokeStyle = "rgba(8,10,14,0.55)";
+        ctx.lineWidth = 6;
+        ctx.beginPath(); ctx.arc(cx, cy, size * 0.16, 0, Math.PI * 2); ctx.stroke();
+      } else if (style === "style-stripe") {
+        ctx.beginPath(); ctx.arc(cx, cy, size * 0.24, 0, Math.PI * 2); ctx.clip();
+        ctx.strokeStyle = "rgba(255,255,255,0.6)";
+        ctx.lineWidth = 3;
+        for (let x = -size; x < size * 1.5; x += 9) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + size, size); ctx.stroke();
+        }
+      } else if (style === "style-dashed") {
+        ctx.setLineDash([6, 5]);
+        ctx.strokeStyle = "rgba(255,255,255,0.85)";
+        ctx.lineWidth = 3.5;
+        ctx.beginPath(); ctx.arc(cx, cy, size * 0.24, 0, Math.PI * 2); ctx.stroke();
+      } else if (style === "style-gradient") {
+        const hi = ctx.createRadialGradient(cx - size * 0.08, cy - size * 0.08, 0, cx, cy, size * 0.2);
+        hi.addColorStop(0, "rgba(255,255,255,0.9)");
+        hi.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = hi;
+        ctx.beginPath(); ctx.arc(cx, cy, size * 0.2, 0, Math.PI * 2); ctx.fill();
+      } else if (style === "style-halo") {
+        ctx.strokeStyle = "rgba(255,255,255,0.85)";
+        ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(cx, cy, size * 0.1, 0, Math.PI * 2); ctx.stroke();
+      }
+      // style-solid: no overlay, the plain glow gradient above is already the look.
+      ctx.restore();
+    }
+    return new THREE.CanvasTexture(c);
+  }
+
+  function sunflowerCapPoints(n, centerLat, centerLon, capRadiusDeg) {
+    const points = [];
+    const golden = Math.PI * (3 - Math.sqrt(5));
+    for (let i = 0; i < n; i++) {
+      const frac = (i + 0.5) / n;
+      const r = Math.sqrt(frac) * capRadiusDeg;
+      const theta = i * golden;
+      const dLat = r * Math.cos(theta);
+      const dLon = r * Math.sin(theta) / Math.cos(centerLat * Math.PI / 180 || 0.01);
+      points.push({ lat: centerLat + dLat, lon: centerLon + dLon });
+    }
+    return points;
+  }
+  function latLonToVec3(lat, lon, radius) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (lon + 180) * Math.PI / 180;
+    return new THREE.Vector3(
+      -radius * Math.sin(phi) * Math.cos(theta),
+      radius * Math.cos(phi),
+      radius * Math.sin(phi) * Math.sin(theta)
+    );
+  }
+
+  const maxTotal = Math.max(...NODES.map(n => n.total));
+  const starMeshes = [];
+  const nodePositions = {};
+  // Lookups so the keyboard tag list (built later, section 10) can find
+  // and focus a star's actual sprite object without re-searching starMeshes.
+  const spriteByTag = {};
+  const spriteByDocsPillar = {};
+
+  PILLARS.forEach(pillar => {
+    const pillarNodes = NODES.filter(n => n.pillar === pillar.name);
+    // Cap radius widened from 24° to 32° alongside the sparser grid above —
+    // same goal, spread each pillar's tags across more of the globe's
+    // surface instead of a tight little clump, so the six clusters read as
+    // filling the sphere rather than floating on mostly-bare surface.
+    const spots = sunflowerCapPoints(pillarNodes.length, pillar.lat, pillar.lon, 32);
+    pillarNodes.forEach((node, i) => {
+      const pos = latLonToVec3(spots[i].lat, spots[i].lon, 3);
+      nodePositions[node.tag] = pos;
+      const glowTex = makeGlowTexture(pillar.color, { style: PILLAR_STYLE[pillar.name] });
+      const sizeScale = 0.10 + 0.34 * Math.sqrt(node.total / maxTotal);
+      const mat = new THREE.SpriteMaterial({ map: glowTex, transparent: true, depthWrite: false });
+      const sprite = new THREE.Sprite(mat);
+      sprite.position.copy(pos);
+      sprite.scale.set(sizeScale, sizeScale, 1);
+      const rnd = seededRand(hashCode(node.tag + "::twinkle"));
+      sprite.userData = {
+        node, pillar, baseScale: sizeScale, isHovered: false,
+        twinklePhase: rnd() * Math.PI * 2, twinkleSpeed: 0.6 + rnd() * 1.2,
+      };
+      starGroup.add(sprite);
+      starMeshes.push(sprite);
+      spriteByTag[node.tag] = sprite;
+    });
+
+    const docNode = DOCS_NODES.find(d => d.pillar === pillar.name);
+    const docPos = latLonToVec3(pillar.lat, pillar.lon, 3);
+    const docTex = makeGlowTexture(DOCS_COLOR, { ringOnly: true });
+    const docScale = 0.16 + 0.10 * Math.sqrt(docNode.total / Math.max(...DOCS_NODES.map(d => d.total)));
+    const docMat = new THREE.SpriteMaterial({ map: docTex, transparent: true, depthWrite: false });
+    const docSprite = new THREE.Sprite(docMat);
+    docSprite.position.copy(docPos);
+    docSprite.scale.set(docScale, docScale, 1);
+    const drnd = seededRand(hashCode(pillar.name + "::docs-twinkle"));
+    docSprite.userData = {
+      isDocBadge: true, docNode, pillar, baseScale: docScale, isHovered: false,
+      twinklePhase: drnd() * Math.PI * 2, twinkleSpeed: 0.5 + drnd() * 0.8,
+    };
+    starGroup.add(docSprite);
+    starMeshes.push(docSprite);
+    spriteByDocsPillar[pillar.name] = docSprite;
+  });
+
+  // Co-occurrence edges: tags that tend to appear in the same digest
+  // together. Each edge also carries 1-2 small traveling glow pulses —
+  // "data flow" — so the connection reads as an active relationship
+  // rather than a static wire. See updateEdgeFlows().
+  const edgeFlowTexture = makeGlowTexture(0xffffff, {});
+  const edgeFlows = [];
+  const edgeLines = [];
+  EDGES.forEach(([a, b, weight]) => {
+    const pa = nodePositions[a], pb = nodePositions[b];
+    if (!pa || !pb) return;
+    const mid = pa.clone().add(pb).multiplyScalar(0.5).normalize().multiplyScalar(3.15);
+    const curve = new THREE.QuadraticBezierCurve3(pa, mid, pb);
+    const points = curve.getPoints(20);
+    const geo = new THREE.BufferGeometry().setFromPoints(points);
+    // Round 15: brighter base line + bigger/brighter travel pulses, and
+    // pulses now start at weight >= 8 (previously >= 10) — per feedback
+    // asking for the flow lines to be amplified.
+    const baseOpacity = 0.2 + Math.min(weight / 14, 1) * 0.55;
+    const mat = new THREE.LineBasicMaterial({ color: 0xa8b4c2, transparent: true, opacity: baseOpacity });
+    const line = new THREE.Line(geo, mat);
+    starGroup.add(line);
+    edgeLines.push({ line, baseOpacity, pa, pb, a, b });
+
+    const pulseCount = weight >= 8 ? 2 : 1;
+    for (let i = 0; i < pulseCount; i++) {
+      const pulseMat = new THREE.SpriteMaterial({ map: edgeFlowTexture, transparent: true, depthWrite: false, opacity: 1 });
+      const pulse = new THREE.Sprite(pulseMat);
+      pulse.scale.set(0.085, 0.085, 1);
+      starGroup.add(pulse);
+      edgeFlows.push({ curve, sprite: pulse, speed: 0.13 + Math.random() * 0.1, offset: i / pulseCount + Math.random() * 0.4, a, b });
+    }
+  });
+
+  // Round 6 fix: edge lines and their travel pulses now fade in sync with
+  // how visible their endpoint stars are, using the same curvature-facing
+  // math as updateStars(). Previously a line kept a flat, weight-based
+  // opacity regardless of whether the tag star at its far end had already
+  // faded into the globe's far side — which is exactly the "flowing dot
+  // with no relevant colored star nearby" symptom from the screenshot: the
+  // line (and any pulse traveling on it) kept rendering past the point
+  // where its destination star had visually disappeared.
+  function curvatureFadeAt(localPos) {
+    const worldPos = localPos.clone().applyMatrix4(starGroup.matrixWorld);
+    const normal = localPos.clone().normalize();
+    const viewDir = camera.position.clone().sub(worldPos).normalize();
+    const dot = normal.dot(viewDir);
+    const edgeT = THREE.MathUtils.clamp((dot - (-0.05)) / (0.45 - (-0.05)), 0, 1);
+    return edgeT * edgeT * (3 - 2 * edgeT);
+  }
+  // Round 13: a clicked/focused tag's real co-occurrence partners are very
+  // often on the opposite side of the sphere from it (the 6 pillars are
+  // spread across the whole globe, and most real edges are cross-pillar —
+  // e.g. shadow-ai's strongest real partners are entra-id and
+  // endpoint-management, nowhere near AI & Copilot's cluster). Centering the
+  // clicked star to face the camera does nothing to bring THOSE partner
+  // stars into view — they were computed as fully occluded (fade 0) even
+  // though the relationship is real, which is exactly "I can't see any
+  // other orange dots" / "no web at all" for those tags. Since the flyout
+  // is already a deliberate out-of-world overlay (not limited by geometric
+  // occlusion), the currently-focused tag's direct partners and the edges
+  // connecting them get the same fade bypass the focused star itself
+  // already had (see isHovered in updateStars) — everything else keeps the
+  // strict occlusion/fade behavior unchanged.
+  // Round 14: reads `focusedTag` (a pinned/persisted tag, see section 6)
+  // instead of `hovered` directly — a tag clicked from the list should keep
+  // showing its web even while the mouse wanders over empty canvas space
+  // afterward, see the ROUND 14 notes on `focusedTag`/`pinned` below.
+  function focusedPartnerTags() {
+    if (!focusedTag) return null;
+    const partners = coOccurMap[focusedTag];
+    if (!partners || !partners.length) return null;
+    return { tag: focusedTag, set: new Set(partners.map(p => p.tag)) };
+  }
+  // Round 14: edges also get a visibility floor (see STAR_MIN_VISIBILITY in
+  // updateStars) instead of fading fully to zero on the globe's far side.
+  const EDGE_MIN_VISIBILITY = 0.45;
+  function updateEdgeLines() {
+    const focus = focusedPartnerTags();
+    edgeLines.forEach(e => {
+      const touchesFocus = focus && (e.a === focus.tag || e.b === focus.tag) &&
+        (focus.set.has(e.a) || focus.set.has(e.b));
+      const rawFade = Math.min(curvatureFadeAt(e.pa), curvatureFadeAt(e.pb));
+      const fade = touchesFocus ? 1 : EDGE_MIN_VISIBILITY + (1 - EDGE_MIN_VISIBILITY) * rawFade;
+      e.line.material.opacity = e.baseOpacity * fade;
+    });
+  }
+  function updateEdgeFlows(t) {
+    const focus = focusedPartnerTags();
+    edgeFlows.forEach(f => {
+      const u = ((t * f.speed + f.offset) % 1 + 1) % 1;
+      const pos = f.curve.getPointAt(Math.min(u, 0.999));
+      f.sprite.position.copy(pos);
+      const travelFade = Math.sin(Math.PI * u); // fade in near the start, out near the end
+      const touchesFocus = focus && (f.a === focus.tag || f.b === focus.tag) &&
+        (focus.set.has(f.a) || focus.set.has(f.b));
+      const rawFade = curvatureFadeAt(pos);
+      const visibilityFade = touchesFocus ? 1 : EDGE_MIN_VISIBILITY + (1 - EDGE_MIN_VISIBILITY) * rawFade;
+      f.sprite.material.opacity = (0.2 + 0.8 * travelFade) * visibilityFade;
+    });
+  }
+
+  // ==========================================================================
+  // 5. Particle fields — starfield + milky way band
+  // ==========================================================================
+  // 10% slower than round 4 (0.55 -> 0.495) — was moving too fast per feedback.
+  const STARFIELD_SPEED_FACTOR = 0.495;
+
+  const STAR_VERT = `
+    attribute float aSize; attribute float aPhase; attribute float aSpeed; attribute vec3 aColor;
+    uniform float uTime; uniform float uPixelRatio;
+    varying float vAlpha; varying vec3 vColor;
+    void main() {
+      vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+      gl_Position = projectionMatrix * mvPosition;
+      float twinkle = 0.5 + 0.5 * sin(uTime * aSpeed + aPhase);
+      vAlpha = 0.3 + 0.7 * twinkle;
+      vColor = aColor;
+      gl_PointSize = aSize * uPixelRatio * (300.0 / -mvPosition.z);
+    }
+  `;
+  const STAR_FRAG = `
+    precision mediump float;
+    uniform sampler2D uTexture;
+    varying float vAlpha; varying vec3 vColor;
+    void main() {
+      vec4 tex = texture2D(uTexture, gl_PointCoord);
+      gl_FragColor = vec4(vColor, tex.a * vAlpha);
+    }
+  `;
+  function makeDotTexture() {
+    const c = document.createElement("canvas");
+    c.width = c.height = 32;
+    const ctx = c.getContext("2d");
+    const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    grad.addColorStop(0, "rgba(255,255,255,1)");
+    grad.addColorStop(0.4, "rgba(255,255,255,0.6)");
+    grad.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 32, 32);
+    return new THREE.CanvasTexture(c);
+  }
+  const sharedDotTexture = makeDotTexture();
+
+  function buildParticlePoints(positions, sizes, phases, speeds, colors, opts) {
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
+    geo.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
+    geo.setAttribute("aSpeed", new THREE.BufferAttribute(speeds, 1));
+    geo.setAttribute("aColor", new THREE.BufferAttribute(colors, 3));
+    const mat = new THREE.ShaderMaterial({
+      uniforms: { uTime: { value: 0 }, uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) }, uTexture: { value: sharedDotTexture } },
+      vertexShader: STAR_VERT, fragmentShader: STAR_FRAG, transparent: true, depthWrite: false,
+      blending: opts && opts.additive ? THREE.AdditiveBlending : THREE.NormalBlending,
+    });
+    return new THREE.Points(geo, mat);
+  }
+
+  function createStarfield(count, shellRadius) {
+    const positions = new Float32Array(count * 3), sizes = new Float32Array(count),
+          phases = new Float32Array(count), speeds = new Float32Array(count), colors = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const u = Math.random(), v = Math.random();
+      const theta = 2 * Math.PI * u, phi = Math.acos(2 * v - 1);
+      const r = shellRadius * (0.8 + Math.random() * 0.35);
+      positions[i*3] = r*Math.sin(phi)*Math.cos(theta);
+      positions[i*3+1] = r*Math.sin(phi)*Math.sin(theta);
+      positions[i*3+2] = r*Math.cos(phi);
+      const roll = Math.random();
+      sizes[i] = roll > 0.94 ? 1.6+Math.random()*1.2 : roll > 0.75 ? 0.8+Math.random()*0.5 : 0.25+Math.random()*0.4;
+      phases[i] = Math.random()*Math.PI*2;
+      speeds[i] = 0.4+Math.random()*1.6;
+      const warm = Math.random() < 0.15;
+      if (warm) { colors[i*3]=1.0; colors[i*3+1]=0.92; colors[i*3+2]=0.78; }
+      else { colors[i*3]=0.85+Math.random()*0.15; colors[i*3+1]=0.9+Math.random()*0.1; colors[i*3+2]=1.0; }
+    }
+    return buildParticlePoints(positions, sizes, phases, speeds, colors, { additive: false });
+  }
+
+  function sampleBandPoint(shellRadius) {
+    const theta = Math.random() * Math.PI * 2;
+    const u1 = Math.random(), u2 = Math.random(), u3 = Math.random();
+    const bandOffset = (u1 + u2 + u3 - 1.5) / 1.5;
+    const phi = Math.PI / 2 + bandOffset * 0.5;
+    const r = shellRadius * (0.75 + Math.random() * 0.4);
+    let x = r*Math.sin(phi)*Math.cos(theta), y = r*Math.sin(phi)*Math.sin(theta), z = r*Math.cos(phi);
+    const tiltX = THREE.MathUtils.degToRad(35), tiltZ = THREE.MathUtils.degToRad(20);
+    const y1 = y*Math.cos(tiltX) - z*Math.sin(tiltX), z1 = y*Math.sin(tiltX) + z*Math.cos(tiltX);
+    const x2 = x*Math.cos(tiltZ) - y1*Math.sin(tiltZ), y2 = x*Math.sin(tiltZ) + y1*Math.cos(tiltZ);
+    return [x2, y2, z1];
+  }
+  function createMilkyWay(count, shellRadius) {
+    const positions = new Float32Array(count * 3), sizes = new Float32Array(count),
+          phases = new Float32Array(count), speeds = new Float32Array(count), colors = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const [x, y, z] = sampleBandPoint(shellRadius);
+      positions[i*3]=x; positions[i*3+1]=y; positions[i*3+2]=z;
+      sizes[i] = 0.5 + Math.random() * 1.4;
+      phases[i] = Math.random() * Math.PI * 2;
+      // Narrower/calmer twinkle-speed range than round 4 for a smoother feel.
+      speeds[i] = 0.12 + Math.random() * 0.33;
+      const purple = Math.random() < 0.5;
+      if (purple) { colors[i*3]=0.65; colors[i*3+1]=0.55; colors[i*3+2]=0.95; }
+      else { colors[i*3]=0.55; colors[i*3+1]=0.75; colors[i*3+2]=1.0; }
+    }
+    return buildParticlePoints(positions, sizes, phases, speeds, colors, { additive: true });
+  }
+
+  const starfield = createStarfield(1600, 40); // was 1400 — slightly denser
+  scene.add(starfield);
+  const milkyWay = createMilkyWay(1100, 46); // was 900 — slightly denser
+  scene.add(milkyWay);
+
+  // Round 16: a canvas-painted nebula backdrop, per feedback wanting the
+  // background to feel more "natural, sharper, and visually striking"
+  // without adding literal dust/haze in front of the globe or competing
+  // with the dot/edge content. It's a big sphere (radius 90, well behind
+  // the starfield's ~46 max radius) rendered BackSide so it wraps the
+  // whole scene, painted with a handful of very low-opacity soft color
+  // blobs (no external image assets, same canvas-texture approach as the
+  // globe's own grid texture) — deep, desaturated cosmic hues, not the
+  // pillar colors, so it reads as ambient depth rather than more "dots."
+  function makeNebulaTexture() {
+    const w = 1024, h = 512;
+    const c = document.createElement("canvas");
+    c.width = w; c.height = h;
+    const ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, w, h);
+    const blobColors = [
+      [86, 58, 138],   // deep violet
+      [32, 62, 112],   // deep blue
+      [24, 92, 102],   // muted teal
+      [72, 42, 96],    // magenta-violet
+      [48, 50, 96],    // indigo
+    ];
+    const rnd = seededRand(hashCode("nebula-backdrop"));
+    for (let i = 0; i < 16; i++) {
+      const [r, g, b] = blobColors[Math.floor(rnd() * blobColors.length)];
+      const x = rnd() * w, y = h * 0.15 + rnd() * h * 0.7;
+      const radius = 110 + rnd() * 230;
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      grad.addColorStop(0, `rgba(${r},${g},${b},0.16)`);
+      grad.addColorStop(0.55, `rgba(${r},${g},${b},0.06)`);
+      grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
+    }
+    const tex = new THREE.CanvasTexture(c);
+    return tex;
+  }
+  const nebula = new THREE.Mesh(
+    new THREE.SphereGeometry(90, 24, 16),
+    new THREE.MeshBasicMaterial({
+      map: makeNebulaTexture(), transparent: true, side: THREE.BackSide,
+      depthWrite: false, fog: false,
+    })
+  );
+  scene.add(nebula);
+
+  // ==========================================================================
+  // 6. Rotation state
+  // ==========================================================================
+  const INITIAL_YAW = 0, INITIAL_PITCH = 0.15; // round 17: named so "Reset view" has a single source of truth
+  let yaw = INITIAL_YAW, pitch = INITIAL_PITCH;
+  // Round 11: widened from 75° to 172° — the 75° limit made sense for
+  // manual dragging alone, but three real pillar clusters (Collaboration &
+  // Productivity, AI & Copilot, Employee Experience) sit on the back
+  // hemisphere by default and genuinely need >90° of pitch to be brought
+  // fully to center; clamping them to 75° left them hugging the visible
+  // rim instead of actually centering (their derivative sign is provably
+  // always the same as everywhere else — verified in Node — so widening
+  // this doesn't reintroduce the inverted-drag bug, it only affects how
+  // far you can tilt before hitting the clamp). 172° instead of a full
+  // 180° leaves a small buffer around the poles so the yaw computation
+  // never approaches the exact singularity there.
+  const PITCH_LIMIT = THREE.MathUtils.degToRad(172);
+  const DRAG_SENSITIVITY = 0.006;
+  const GLOBE_ROTATION_SPEED = 0.0018;
+  const IDLE_RESUME_MS = 750; // round 16: was 1300 (round 5 cut it from 2600) — shortened again per feedback
+
+  function applyGlobeRotation() { globeGroup.rotation.set(pitch, yaw, 0, "YXZ"); }
+  applyGlobeRotation();
+
+  let autoRotate = !prefersReducedMotion;
+  let isDragging = false;
+  let isHoveringStar = false;
+  let lastPointer = { x: 0, y: 0 };
+  let resumeTimer = null;
+  function scheduleResume() {
+    if (prefersReducedMotion) return;
+    if (resumeTimer) clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => { if (!isDragging && !isHoveringStar) autoRotate = true; }, IDLE_RESUME_MS);
+  }
+
+  // Round 6: only start a drag if the pointer actually lands on the
+  // globe. Previously any pointerdown on the full-viewport canvas — even
+  // out in empty starfield space — began a rotate-drag, which felt like
+  // the whole page was grabbable.
+  const dragHitTester = new THREE.Raycaster();
+  const dragHitMouse = new THREE.Vector2();
+  function isPointerOnGlobe(clientX, clientY) {
+    const rect = canvasEl.getBoundingClientRect();
+    dragHitMouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    dragHitMouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+    dragHitTester.setFromCamera(dragHitMouse, camera);
+    return dragHitTester.intersectObjects([sphereShell, depthMask]).length > 0;
+  }
+
+  canvasEl.addEventListener("pointerdown", (e) => {
+    if (!isPointerOnGlobe(e.clientX, e.clientY)) return;
+    isDragging = true; autoRotate = false;
+    canvasEl.classList.add("dragging");
+    lastPointer = { x: e.clientX, y: e.clientY };
+    canvasEl.setPointerCapture(e.pointerId);
+    hideFlyout();
+  });
+  canvasEl.addEventListener("pointerup", (e) => {
+    isDragging = false;
+    canvasEl.classList.remove("dragging");
+    try { canvasEl.releasePointerCapture(e.pointerId); } catch (err) {}
+    scheduleResume();
+  });
+  canvasEl.addEventListener("pointercancel", () => {
+    isDragging = false; canvasEl.classList.remove("dragging"); scheduleResume();
+  });
+
+  // ==========================================================================
+  // 7. Interaction
+  // ==========================================================================
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  let hovered = null;
+  // Round 14: `focusedTag`/`pinned` fix the actual bug behind "the web is
+  // there, but then it goes away" — focusOnSprite() (a click, from the
+  // globe or the tag list) used to just set `hovered`, the SAME variable
+  // onPointerMove clears the instant the cursor drifts anywhere that isn't
+  // exactly back over that star (which, right after an auto-rotation to
+  // center it, is essentially guaranteed to happen on the very next mouse
+  // move). `pinned` means "this focus came from a click, not a live hover" —
+  // onPointerMove leaves it alone while the cursor is over empty canvas
+  // space, so the web/flyout stays up until you hover a genuinely different
+  // star or click empty space to dismiss it. `focusedTag` is what
+  // focusedPartnerTags() (section 4) actually reads.
+  let focusedTag = null;
+  let pinned = false;
+  const flyout = document.getElementById("flyout");
+  const raycastTargets = starMeshes.concat([depthMask]);
+
+  // Secondary hover gate on top of the geometric occlusion (which remains
+  // the hard correctness backstop) — see ROUND 5 CHANGES for why. Round 21:
+  // now checked against userData.hoverOpacity (curvature-only, set in
+  // updateStars) instead of the star's rendered material.opacity, which
+  // includes the twinkle pulse and could intermittently fail this gate on
+  // its own — see the ROUND 21 comment in updateStars for the full story.
+  const HOVER_MIN_OPACITY = 0.5;
+
+  function hideFlyout() { flyout.classList.remove("visible"); }
+
+  function positionFlyout(clientX, clientY) {
+    const margin = 12;
+    const rect = flyout.getBoundingClientRect();
+    let left = clientX + 18, top = clientY + 18;
+    if (left + rect.width + margin > window.innerWidth) left = clientX - rect.width - 18;
+    if (top + rect.height + margin > window.innerHeight) top = clientY - rect.height - 18;
+    left = Math.max(margin, Math.min(left, window.innerWidth - rect.width - margin));
+    top = Math.max(margin, Math.min(top, window.innerHeight - rect.height - margin));
+    flyout.style.left = left + "px";
+    flyout.style.top = top + "px";
+  }
+
+  function drawSparkline(canvas, weekly, color) {
+    const ctx = canvas.getContext("2d");
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    const counts = weekly.map(d => d.count);
+    const max = Math.max(...counts, 1);
+    const xAt = i => (i / (weekly.length - 1)) * (w - 4) + 2;
+    const yAt = v => h - 3 - (v / max) * (h - 6);
+    ctx.beginPath(); ctx.moveTo(xAt(0), h);
+    weekly.forEach((d, i) => ctx.lineTo(xAt(i), yAt(d.count)));
+    ctx.lineTo(xAt(weekly.length - 1), h); ctx.closePath();
+    ctx.fillStyle = color + "22"; ctx.fill();
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+    weekly.forEach((d, i) => { const x = xAt(i), y = yAt(d.count); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+    ctx.stroke();
+  }
+
+  function buildFlyoutContent(hit) {
+    const { pillar } = hit.userData;
+    const glowColor = hexStr(hit.userData.isDocBadge ? DOCS_COLOR : pillar.color);
+    if (hit.userData.isDocBadge) {
+      const docNode = hit.userData.docNode;
+      flyout.innerHTML =
+        `<div class="fly-tag">📄 Documentation Updates</div>` +
+        `<div class="fly-pillar" style="color:${glowColor};--mc:${glowColor}"><span class="kdot ring"></span>${pillar.name}</div>` +
+        `<canvas class="fly-spark" width="220" height="32"></canvas>` +
+        `<div class="fly-total">${docNode.total} doc items surfaced across ${WEEKS.length} weeks</div>` +
+        `<div class="fly-hint">Click for the weekly detail →</div>`;
+      drawSparkline(flyout.querySelector(".fly-spark"), docNode.weekly, glowColor);
+    } else {
+      const node = hit.userData.node;
+      const rank = pillarRank[node.tag];
+      // Round 7: also surfaces which OTHER pillars these co-occurring tags
+      // belong to — a same-pillar neighbor is expected, but a cross-pillar
+      // one is the more interesting "these two areas keep showing up
+      // together" signal, so it's called out distinctly.
+      const topCoOccur = (coOccurMap[node.tag] || []).slice(0, 3);
+      const crossPillars = [...new Set(
+        topCoOccur.map(c => tagPillarOf[c.tag]).filter(p => p && p !== node.pillar)
+      )];
+      const coOccurLine = topCoOccur.length
+        ? `<div class="fly-cooccur">Often appears with: ${topCoOccur.map(c => c.tag).join(", ")}</div>` : "";
+      const crossPillarLine = crossPillars.length
+        ? `<div class="fly-cooccur">Also appears in: ${crossPillars.join(", ")}</div>` : "";
+      flyout.innerHTML =
+        `<div class="fly-tag">${node.tag}</div>` +
+        `<div class="fly-pillar" style="color:${glowColor};--mc:${glowColor}"><span class="kdot ${PILLAR_STYLE[node.pillar]}"></span>${node.pillar}</div>` +
+        `<canvas class="fly-spark" width="220" height="32"></canvas>` +
+        `<div class="fly-total">Featured in ${node.total} of ${WEEKS.length} weeks &middot; #${rank.rank} of ${rank.of} in pillar</div>` +
+        coOccurLine + crossPillarLine +
+        `<div class="fly-hint">Click for the weekly trend →</div>`;
+      drawSparkline(flyout.querySelector(".fly-spark"), node.weekly, glowColor);
+    }
+    flyout.style.borderColor = glowColor;
+    flyout.style.boxShadow = `0 0 10px 1px ${glowColor}aa, 0 0 26px 6px ${glowColor}40`;
+  }
+
+  // Round 9: clicking a tag in the keyboard-friendly browse list should be
+  // a full equivalent of hovering + centering it on the globe directly —
+  // not just a shortcut to the trend panel.
+  //
+  // Round 11 (first pass) rebuilt this against the verified three.js
+  // rotation order (rotation.set(pitch, yaw, 0, "YXZ") applies
+  // RotationX(pitch) FIRST, then RotationY(yaw)) and found the equation
+  // for "P ends up centered" has exactly two valid (pitch, yaw) solutions,
+  // a half-turn apart in pitch. That version picked whichever of the two
+  // stayed within the ±75° pitch clamp — which fixed centering, but
+  // introduced a WORSE bug: the two solutions have opposite-sign
+  // derivatives (verified numerically), meaning whichever one gets chosen
+  // determines whether "drag up" moves the globe up or down afterward.
+  // Landing on the "other" branch — which happens for roughly half of the
+  // real pillar clusters, including Collaboration & Productivity, AI &
+  // Copilot, and Employee Experience — is exactly the reported "next
+  // click-and-drag is inverted" bug, and likely also why those pillars'
+  // dots seemed to not appear (they were being centered via a
+  // sign-flipped rotation that didn't land where expected).
+  //
+  // Round 11 (second pass): ALWAYS use the same branch (the one a normal
+  // drag session would naturally reach), so the drag direction can never
+  // flip — that part was right. But clamping that branch's pitch to the
+  // old 75° limit left three real pillar clusters (Collaboration &
+  // Productivity, AI & Copilot, Employee Experience — all on the back
+  // hemisphere by default) barely rotated at all, hugging the rim instead
+  // of centering, which is exactly what showed up in the follow-up
+  // screenshots. Fixed by widening PITCH_LIMIT itself to 172° (see its
+  // declaration in section 6) — verified in Node that this branch's
+  // derivative sign stays negative (non-inverting) at any pitch magnitude,
+  // so there was never a real reason to keep the clamp tight; it just
+  // needed to be wide enough to cover points that start far from center.
+  // Residual centering error only appears now for tags right at the outer
+  // edge of a pillar's 32°-radius spread, and even then it's small (a few
+  // percent of the sphere's radius, not a visible rim-hugging offset).
+  function computeCenteringRotation(localPos) {
+    const rawPitch = Math.atan2(localPos.y, localPos.z);
+    const pitch = THREE.MathUtils.clamp(rawPitch, -PITCH_LIMIT, PITCH_LIMIT);
+    const z1 = localPos.y * Math.sin(pitch) + localPos.z * Math.cos(pitch);
+    const yaw = Math.atan2(-localPos.x, z1);
+    return { yaw, pitch };
+  }
+  function projectToScreen(worldPos) {
+    const v = worldPos.clone().project(camera); // -> NDC space, -1..1
+    const rect = canvasEl.getBoundingClientRect();
+    return {
+      x: rect.left + (v.x * 0.5 + 0.5) * rect.width,
+      y: rect.top + (1 - (v.y * 0.5 + 0.5)) * rect.height,
+    };
+  }
+  function focusOnSprite(sprite) {
+    const { yaw: targetYaw, pitch: targetPitch } = computeCenteringRotation(sprite.position);
+    yaw = targetYaw;
+    pitch = targetPitch;
+    applyGlobeRotation();
+    globeGroup.updateMatrixWorld(true); // so the projected position below is accurate immediately, not next frame
+
+    autoRotate = false;
+    if (hovered) hovered.userData.isHovered = false;
+    hovered = sprite;
+    hovered.userData.isHovered = true;
+    isHoveringStar = true;
+    // Round 14: PIN this focus so a subsequent mouse move over empty canvas
+    // space (onPointerMove below) doesn't immediately clear it — see the
+    // long comment above `let focusedTag` in section 7.
+    pinned = true;
+    focusedTag = sprite.userData.node ? sprite.userData.node.tag : null;
+
+    buildFlyoutContent(sprite);
+    flyout.classList.add("visible");
+    const worldPos = sprite.position.clone().applyMatrix4(starGroup.matrixWorld);
+    const screenPos = projectToScreen(worldPos);
+    positionFlyout(screenPos.x, screenPos.y);
+    scheduleResume(); // auto-rotate picks back up after the normal idle period, same as a real hover releasing
+  }
+
+  function onPointerMove(e) {
+    const rect = canvasEl.getBoundingClientRect();
+    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    const hits = raycaster.intersectObjects(raycastTargets);
+    const first = hits[0];
+    const isRealStar = first && first.object !== depthMask && first.object.userData &&
+      (first.object.userData.node || first.object.userData.isDocBadge);
+    // Geometric occlusion (isRealStar) AND a visibility floor — both required.
+    // Round 21: gate on hoverOpacity (curvature only), not material.opacity
+    // (curvature × twinkle) — see the comment on HOVER_MIN_OPACITY above.
+    const validHit = isRealStar &&
+      (first.object.userData.hoverOpacity ?? first.object.material.opacity) >= HOVER_MIN_OPACITY;
+
+    if (validHit) {
+      const hit = first.object;
+      if (hovered !== hit) {
+        if (hovered) hovered.userData.isHovered = false;
+        hovered = hit;
+        hovered.userData.isHovered = true;
+      }
+      // Round 14: a genuine live hover over a real star always takes over
+      // the focus/web, replacing any previous click-pin.
+      pinned = false;
+      focusedTag = hit.userData.node ? hit.userData.node.tag : null;
+      isHoveringStar = true;
+      autoRotate = false;
+      buildFlyoutContent(hit);
+      flyout.classList.add("visible");
+      positionFlyout(e.clientX, e.clientY);
+      canvasEl.classList.add("hoverable");
+    } else if (pinned) {
+      // Round 14: cursor is over empty canvas space, but the current focus
+      // came from a click (list or star) — leave hovered/focusedTag/flyout
+      // alone. This is the actual fix for "the web is there, but then it
+      // goes away" / "quickly disappeared once I began to hover": before
+      // this, ANY pointer move that didn't land exactly back on the
+      // just-centered star cleared the focus outright.
+      isHoveringStar = false;
+      canvasEl.classList.remove("hoverable");
+    } else {
+      if (hovered) hovered.userData.isHovered = false;
+      hovered = null;
+      focusedTag = null;
+      isHoveringStar = false;
+      hideFlyout();
+      canvasEl.classList.remove("hoverable");
+      scheduleResume();
+    }
+  }
+
+  canvasEl.addEventListener("pointermove", (e) => {
+    if (!isDragging) { onPointerMove(e); return; }
+    const dx = e.clientX - lastPointer.x, dy = e.clientY - lastPointer.y;
+    yaw += dx * DRAG_SENSITIVITY;
+    pitch = THREE.MathUtils.clamp(pitch + dy * DRAG_SENSITIVITY, -PITCH_LIMIT, PITCH_LIMIT);
+    applyGlobeRotation();
+    lastPointer = { x: e.clientX, y: e.clientY };
+  });
+  canvasEl.addEventListener("mouseleave", () => {
+    if (isDragging) return;
+    // Leaving the canvas entirely (unlike just moving over empty space
+    // within it) still clears a pinned focus — this is a deliberate "walk
+    // away" signal, distinct from the within-canvas case onPointerMove now
+    // preserves.
+    if (hovered) hovered.userData.isHovered = false;
+    hovered = null; focusedTag = null; pinned = false; isHoveringStar = false;
+    hideFlyout();
+    canvasEl.classList.remove("hoverable");
+    scheduleResume();
+  });
+  canvasEl.addEventListener("click", () => {
+    // Round 14: clicking empty canvas space is now the explicit way to
+    // dismiss a pinned focus (isHoveringStar is false here whenever the
+    // cursor isn't currently over the pinned star — see the `pinned`
+    // branch in onPointerMove).
+    if (!hovered || !isHoveringStar) {
+      if (hovered) hovered.userData.isHovered = false;
+      hovered = null; focusedTag = null; pinned = false;
+      hideFlyout();
+      return;
+    }
+    if (hovered.userData.isDocBadge) openDocsPanel(hovered.userData.docNode, hovered.userData.pillar);
+    else openGraphPanel(hovered.userData.node, hovered.userData.pillar);
+  });
+
+  // Round 17: "Reset view" — per feedback, not everyone hovers a star
+  // first; some people click-drag right away, and if that first drag goes
+  // the "wrong" way it can feel like the controls are inverted with no way
+  // back to a known-good orientation. This snaps yaw/pitch back to the
+  // same values the globe loads with, clears any pinned focus/open panel,
+  // and lets auto-rotate resume normally.
+  document.getElementById("reset-view-btn").addEventListener("click", () => {
+    yaw = INITIAL_YAW;
+    pitch = INITIAL_PITCH;
+    applyGlobeRotation();
+    if (hovered) hovered.userData.isHovered = false;
+    hovered = null; focusedTag = null; pinned = false; isHoveringStar = false;
+    isDragging = false; canvasEl.classList.remove("dragging", "hoverable");
+    hideFlyout();
+    graphPanel.classList.remove("open");
+    docsPanel.classList.remove("open");
+    layoutRightPanels();
+    scheduleResume();
+  });
+
+  // Round 14: per feedback, ALL dots should be visible all the time — not
+  // faded to near-zero on the globe's far side — with a calmer, more
+  // minimal glow/twinkle by default so a fully-lit globe doesn't read as
+  // cluttered. STAR_MIN_VISIBILITY is the opacity floor for a star on the
+  // dead-back of the sphere; curvatureFadeAt() (front vs. back) still
+  // modulates ABOVE that floor as a subtle depth cue, it just can no
+  // longer bottom out near-invisible. This also makes the round-13
+  // focused-partner bypass mostly redundant for raw visibility (everything
+  // is already visible) — it's kept only for the extra size/brightness
+  // emphasis that helps a partner star read as "this is part of the web"
+  // versus the rest of the globe.
+  const STAR_MIN_VISIBILITY = 0.62;
+  function updateStars(t) {
+    const focus = focusedPartnerTags();
+    starMeshes.forEach(s => {
+      const { twinklePhase, twinkleSpeed, baseScale, isHovered, node } = s.userData;
+      const twinkle = 0.5 + 0.5 * Math.sin(t * twinkleSpeed + twinklePhase);
+      // Round 14 pulled twinkle way back (0.85-1.0 opacity / 1-1.06 scale)
+      // right after making every star always-visible, worried a strong
+      // pulse across 32 simultaneous dots would read as noisy. Round 15
+      // brings it back up per feedback wanting the twinkle amplified —
+      // the always-visible floor (STAR_MIN_VISIBILITY) stays, so this is
+      // purely more life in the pulse, not a return to dots disappearing.
+      const twinkleOpacity = 0.55 + 0.45 * twinkle;
+      const twinkleScale = 1 + 0.22 * twinkle;
+      const isFocusedPartner = !isHovered && focus && node && focus.set.has(node.tag);
+      const hoverMult = isHovered ? 1.6 : (isFocusedPartner ? 1.3 : 1);
+
+      // The currently focused/hovered star (and, since round 13, its direct
+      // co-occurrence partners) still get a hard guarantee of full
+      // opacity — everything else now uses a floor instead of a fade-to-zero,
+      // see STAR_MIN_VISIBILITY above.
+      const rawFade = curvatureFadeAt(s.position);
+      const curvatureFade = (isHovered || isFocusedPartner)
+        ? 1
+        : STAR_MIN_VISIBILITY + (1 - STAR_MIN_VISIBILITY) * rawFade;
+
+      s.material.opacity = curvatureFade * twinkleOpacity;
+      s.scale.setScalar(baseScale * hoverMult * twinkleScale);
+      // Round 21: the actual bug behind "I can't hover back on without
+      // dragging a little" — hover eligibility (onPointerMove, below) was
+      // checked against s.material.opacity, which includes the twinkle
+      // pulse. Once round 15/19 widened that pulse to swing down to 0.55×
+      // and STAR_MIN_VISIBILITY can itself be as low as 0.62×, the worst
+      // case (0.62 × 0.55 ≈ 0.34) is BELOW HOVER_MIN_OPACITY (0.5) — so a
+      // star sitting at a dim point in its own twinkle cycle would
+      // genuinely, correctly fail the hover gate. Dragging only "fixed" it
+      // by generating enough repeated pointermove events to eventually
+      // land on a brighter twinkle frame. Fix: track curvature-only
+      // opacity (no twinkle) separately, and gate hover on THAT instead —
+      // twinkle is decoration, it was never supposed to affect whether a
+      // star can be interacted with.
+      s.userData.hoverOpacity = curvatureFade;
+    });
+  }
+
+  // ==========================================================================
+  // 8. Weekly trend graph (per-tag click-through) + Documentation Updates panel
+  // ==========================================================================
+  const graphPanel = document.getElementById("graph-panel");
+  const gpCanvas = document.getElementById("gp-canvas");
+  const gpCtx = gpCanvas.getContext("2d");
+  let currentWeekly = null, currentColor = "#58a6ff";
+
+  function shortWeekLabel(iso) {
+    const d = new Date(iso + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+  }
+
+  function drawLineChart(ctx, canvas, weekly, color, hoverIdx) {
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+    const counts = weekly.map(d => d.count);
+    const max = Math.max(...counts, 1);
+    const padL = 28, padB = 26, padT = 10, padR = 8;
+    const plotW = w - padL - padR, plotH = h - padT - padB;
+    const xAt = i => padL + (i / (weekly.length - 1)) * plotW;
+    const yAt = v => padT + plotH - (v / max) * plotH;
+
+    const ticks = 4;
+    ctx.strokeStyle = "#21262d"; ctx.fillStyle = "#8b949e"; ctx.font = "9px sans-serif"; ctx.textAlign = "right";
+    for (let t = 0; t <= ticks; t++) {
+      const v = Math.round((max / ticks) * t), y = yAt(v);
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(w - padR, y); ctx.stroke();
+      ctx.fillText(String(v), padL - 5, y + 3);
+    }
+    ctx.textAlign = "center";
+    weekly.forEach((d, i) => { if (i % 3 === 0 || i === weekly.length - 1) ctx.fillText(shortWeekLabel(d.week), xAt(i), h - padB + 12); });
+
+    ctx.strokeStyle = "#30363d"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(padL, padT); ctx.lineTo(padL, h - padB); ctx.lineTo(w - padR, h - padB); ctx.stroke();
+
+    ctx.strokeStyle = color; ctx.lineWidth = 2;
+    ctx.beginPath();
+    weekly.forEach((d, i) => { const x = xAt(i), y = yAt(d.count); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
+    ctx.stroke();
+
+    ctx.fillStyle = color;
+    weekly.forEach((d, i) => { ctx.beginPath(); ctx.arc(xAt(i), yAt(d.count), 2.2, 0, Math.PI * 2); ctx.fill(); });
+
+    // Round 6: this used to also draw a tiny "peak: N" text label right on
+    // the canvas — at 9px it was nearly illegible, and it was pure
+    // duplicate data anyway (the summary text below the chart already
+    // states the peak week and its value in full-size, readable text).
+    // Keeping just the marker ring here as a quiet visual pointer to
+    // *where* the peak is; the summary owns saying *what* it is.
+    const peakIdx = counts.indexOf(Math.max(...counts));
+    const px = xAt(peakIdx), py = yAt(counts[peakIdx]);
+    ctx.strokeStyle = "#f0883e"; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(px, py, 5, 0, Math.PI * 2); ctx.stroke();
+
+    if (hoverIdx !== null && hoverIdx >= 0 && hoverIdx < weekly.length) {
+      const hx = xAt(hoverIdx), hy = yAt(weekly[hoverIdx].count);
+      ctx.strokeStyle = "#e6edf3"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(hx, hy, 4, 0, Math.PI * 2); ctx.stroke();
+      const label = `${shortWeekLabel(weekly[hoverIdx].week)}: ${weekly[hoverIdx].count}`;
+      ctx.font = "10px sans-serif";
+      const labelW = ctx.measureText(label).width + 10;
+      let boxX = hx + 8, boxY = hy - 22;
+      if (boxX + labelW > w) boxX = hx - labelW - 8;
+      if (boxY < 0) boxY = hy + 10;
+      ctx.fillStyle = "rgba(13,17,23,0.92)"; ctx.fillRect(boxX, boxY, labelW, 16);
+      ctx.strokeStyle = color; ctx.strokeRect(boxX, boxY, labelW, 16);
+      ctx.fillStyle = "#e6edf3"; ctx.textAlign = "left";
+      ctx.fillText(label, boxX + 5, boxY + 11);
+    }
+  }
+
+  function renderTrendSummary(el, weekly) {
+    const counts = weekly.map(d => d.count);
+    const total = counts.reduce((a, b) => a + b, 0);
+    const peakIdx = counts.indexOf(Math.max(...counts));
+    const half = Math.floor(weekly.length / 2);
+    const firstAvg = counts.slice(0, half).reduce((a, b) => a + b, 0) / Math.max(half, 1);
+    const secondAvg = counts.slice(half).reduce((a, b) => a + b, 0) / Math.max(weekly.length - half, 1);
+    const delta = secondAvg - firstAvg;
+    let trendClass = "trend-flat", trendLabel = "flat";
+    if (delta > 0.5) { trendClass = "trend-up"; trendLabel = "↑ rising"; }
+    else if (delta < -0.5) { trendClass = "trend-down"; trendLabel = "↓ cooling"; }
+    el.innerHTML =
+      `Featured in <b>${total}</b> of ${weekly.length} weeks &middot; peak week <b>${shortWeekLabel(weekly[peakIdx].week)}</b> (${counts[peakIdx]})<br>` +
+      `Trend: <span class="${trendClass}">${trendLabel}</span> vs. the first half of the archive`;
+  }
+
+  function openGraphPanel(node, pillar) {
+    document.getElementById("gp-title").textContent = node.tag;
+    const pillarLabel = document.getElementById("gp-pillar");
+    pillarLabel.textContent = node.pillar;
+    currentColor = hexStr(pillar.color);
+    pillarLabel.style.color = currentColor;
+    graphPanel.classList.add("open");
+    document.getElementById("docs-panel").classList.remove("open");
+    currentWeekly = node.weekly;
+    drawLineChart(gpCtx, gpCanvas, currentWeekly, currentColor, null);
+    renderTrendSummary(document.getElementById("gp-summary"), currentWeekly);
+    layoutRightPanels();
+  }
+  document.getElementById("gp-close").addEventListener("click", () => {
+    graphPanel.classList.remove("open"); currentWeekly = null; layoutRightPanels();
+  });
+  gpCanvas.addEventListener("mousemove", (e) => {
+    if (!currentWeekly) return;
+    const rect = gpCanvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (gpCanvas.width / rect.width);
+    const padL = 28, padR = 8, plotW = gpCanvas.width - padL - padR;
+    let idx = Math.round(((x - padL) / plotW) * (currentWeekly.length - 1));
+    idx = Math.max(0, Math.min(currentWeekly.length - 1, idx));
+    drawLineChart(gpCtx, gpCanvas, currentWeekly, currentColor, idx);
+  });
+  gpCanvas.addEventListener("mouseleave", () => { if (currentWeekly) drawLineChart(gpCtx, gpCanvas, currentWeekly, currentColor, null); });
+
+  const docsPanel = document.getElementById("docs-panel");
+  const dpCanvas = document.getElementById("dp-canvas");
+  const dpCtx = dpCanvas.getContext("2d");
+  let currentDocsWeekly = null, currentDocsColor = hexStr(DOCS_COLOR);
+
+  function openDocsPanel(docNode, pillar) {
+    document.getElementById("dp-pillar").textContent = pillar.name;
+    document.getElementById("dp-pillar").style.color = currentDocsColor;
+    docsPanel.classList.add("open");
+    graphPanel.classList.remove("open");
+    currentDocsWeekly = docNode.weekly;
+    drawLineChart(dpCtx, dpCanvas, currentDocsWeekly, currentDocsColor, null);
+    renderTrendSummary(document.getElementById("dp-summary"), currentDocsWeekly);
+    layoutRightPanels();
+  }
+  document.getElementById("dp-close").addEventListener("click", () => {
+    docsPanel.classList.remove("open"); currentDocsWeekly = null; layoutRightPanels();
+  });
+  dpCanvas.addEventListener("mousemove", (e) => {
+    if (!currentDocsWeekly) return;
+    const rect = dpCanvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left) * (dpCanvas.width / rect.width);
+    const padL = 28, padR = 8, plotW = dpCanvas.width - padL - padR;
+    let idx = Math.round(((x - padL) / plotW) * (currentDocsWeekly.length - 1));
+    idx = Math.max(0, Math.min(currentDocsWeekly.length - 1, idx));
+    drawLineChart(dpCtx, dpCanvas, currentDocsWeekly, currentDocsColor, idx);
+  });
+  dpCanvas.addEventListener("mouseleave", () => { if (currentDocsWeekly) drawLineChart(dpCtx, dpCanvas, currentDocsWeekly, currentDocsColor, null); });
+
+  // ==========================================================================
+  // 9. Focus-over-time panel — always on, bottom-right
+  // ==========================================================================
+  const focusPanel = document.getElementById("focus-panel");
+  const focusCanvas = document.getElementById("focus-canvas");
+  const focusCtx = focusCanvas.getContext("2d");
+  const focusLegendEl = document.getElementById("focus-legend");
+
+  PILLARS.forEach(p => {
+    const row = document.createElement("span");
+    row.innerHTML = `<span class="fdot ${PILLAR_STYLE[p.name]}" style="--mc:${hexStr(p.color)}"></span>${p.name}`;
+    focusLegendEl.appendChild(row);
+  });
+
+  // Helper for the modernized bars: mixes a hex color toward white by
+  // `amt` (0-1), used to build a per-segment top-to-bottom gradient
+  // instead of a flat fill.
+  function lightenColor(hex, amt) {
+    const r = (hex >> 16) & 255, g = (hex >> 8) & 255, b = hex & 255;
+    const lr = Math.round(r + (255 - r) * amt);
+    const lg = Math.round(g + (255 - g) * amt);
+    const lb = Math.round(b + (255 - b) * amt);
+    return `rgb(${lr},${lg},${lb})`;
+  }
+  function roundedTopRectPath(ctx, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h);
+    ctx.beginPath();
+    ctx.moveTo(x, y + h);
+    ctx.lineTo(x, y + r);
+    ctx.arcTo(x, y, x + r, y, r);
+    ctx.lineTo(x + w - r, y);
+    ctx.arcTo(x + w, y, x + w, y + r, r);
+    ctx.lineTo(x + w, y + h);
+    ctx.closePath();
+  }
+
+  // Round 7: bars are now a 100% stacked chart — every bar is the SAME
+  // height (the full plot height = 100%), and each pillar's segment is
+  // sized by its % SHARE of that bar's own total, not by raw count. That's
+  // what makes "Last Week" and "Since Inception" directly comparable as
+  // spread/composition, which a shared-absolute-scale chart couldn't do
+  // (a single-week bar was always going to look tiny next to an all-time
+  // one, even if their pillar mix was identical).
+  function drawFocusChart() {
+    const buckets = overallFocusBuckets();
+    const w = focusCanvas.width, h = focusCanvas.height;
+    focusCtx.clearRect(0, 0, w, h);
+    // Round 14: dropped the 0%/50%/100% axis labels per feedback — this is
+    // a 100%-stacked composition chart (every bar is always full height by
+    // definition), so the percentages were redundant with the shape of the
+    // bars themselves and just added label clutter. Left padding shrunk
+    // accordingly since that column no longer needs to hold tick text,
+    // which also gives the bars themselves a bit more room.
+    const padL = 8, padB = 20, padT = 8, padR = 6;
+    const plotW = w - padL - padR, plotH = h - padT - padB;
+    const barW = Math.min(plotW / buckets.length * 0.58, 54);
+    const gap = plotW / buckets.length;
+
+    const ticks = [0, 0.5, 1];
+    focusCtx.strokeStyle = "rgba(139,148,158,0.18)";
+    focusCtx.setLineDash([3, 3]);
+    ticks.forEach(t => {
+      const y = padT + plotH - t * plotH;
+      focusCtx.beginPath(); focusCtx.moveTo(padL, y); focusCtx.lineTo(w - padR, y); focusCtx.stroke();
+    });
+    focusCtx.setLineDash([]);
+
+    buckets.forEach((bucket, i) => {
+      const x = padL + gap * i + (gap - barW) / 2;
+      const total = PILLARS.reduce((sum, p) => sum + bucket.byPillar[p.name], 0) || 1;
+      const barH = plotH; // every bar is full height = 100% of its own total
+      const barTop = padT;
+
+      // More vivid than the earlier flat-color bars: a brighter gradient top
+      // stop, and the topmost non-zero segment's own color drives the
+      // glow/outline instead of a fixed generic blue, so each bar's accent
+      // reflects what's actually dominant in it.
+      let topSegmentColor = 0x58a6ff;
+      let yCursor = padT + plotH;
+      focusCtx.save();
+      roundedTopRectPath(focusCtx, x, barTop, barW, barH, 6);
+      focusCtx.clip();
+      PILLARS.forEach(p => {
+        const val = bucket.byPillar[p.name];
+        const segH = (val / total) * plotH;
+        if (segH > 0) {
+          if (yCursor === padT + plotH) topSegmentColor = p.color;
+          const grad = focusCtx.createLinearGradient(0, yCursor - segH, 0, yCursor);
+          grad.addColorStop(0, lightenColor(p.color, 0.55));
+          grad.addColorStop(1, hexStr(p.color));
+          focusCtx.fillStyle = grad;
+          focusCtx.fillRect(x, yCursor - segH, barW, segH);
+        }
+        yCursor -= segH;
+      });
+      focusCtx.restore();
+
+      focusCtx.save();
+      focusCtx.shadowColor = hexStr(topSegmentColor) + "aa";
+      focusCtx.shadowBlur = 8;
+      focusCtx.strokeStyle = "rgba(230,237,243,0.35)";
+      focusCtx.lineWidth = 1.25;
+      roundedTopRectPath(focusCtx, x, barTop, barW, barH, 6);
+      focusCtx.stroke();
+      focusCtx.restore();
+
+      focusCtx.fillStyle = "#c9d1d9"; focusCtx.font = "600 12px sans-serif"; focusCtx.textAlign = "center";
+      focusCtx.fillText(bucket.label, x + barW / 2, h - padB + 15);
+    });
+  }
+  drawFocusChart();
+  // Round 15: the disclaimer caption is gone per feedback ("that doesn't
+  // need to be explained") — the chart now just fills the panel instead.
+
+  // ---- Dynamic non-overlapping layout: right column and left column ----
+  // Round 9 root-cause fix: #universe-root (the containing block for all
+  // of these position:absolute panels) sits BELOW the orange banner, not
+  // at the viewport top — its own top edge is wherever the banner happens
+  // to render (which varies with text wrap width, e.g. 1 vs 2 lines at
+  // different window widths). Every layout function here was computing a
+  // target Y via getBoundingClientRect()/window.innerHeight (both
+  // viewport-relative) and assigning it straight to style.top (which CSS
+  // measures from the CONTAINING BLOCK's top, i.e. universe-root's top,
+  // not the viewport's). That silently added the banner's rendered height
+  // as extra, unaccounted-for top offset on every dynamically-positioned
+  // panel — the exact "gap that never goes away no matter what" and
+  // "window isn't actually taller" symptoms reported across the last two
+  // rounds. containerTop() below is the correction: subtract
+  // universe-root's own viewport offset before ever writing to style.top.
+  const universeRoot = document.getElementById("universe-root");
+  function containerTop() { return universeRoot.getBoundingClientRect().top; }
+
+  // Gap tightened to 6px (was 12) per round-6 feedback — panels should
+  // butt up close to each other, not float with dead space between them.
+  function layoutRightPanels() {
+    // Round 10 tried making focus-panel fill the whole right column when
+    // nothing else is open; reverted per feedback — that space needs to
+    // stay open and reserved for a dot's flyout/trend panel, not get
+    // claimed by focus-panel. Back to a fixed default height, same as
+    // rounds 7-9, permanently.
+    const gap = 6, marginBottom = 16, defaultTop = 360;
+    const cTop = containerTop();
+    const containerBottom = universeRoot.getBoundingClientRect().bottom;
+    const topPanel = graphPanel.classList.contains("open") ? graphPanel
+                    : docsPanel.classList.contains("open") ? docsPanel : null;
+    let topViewportY = topPanel ? topPanel.getBoundingClientRect().bottom + gap : containerBottom - defaultTop;
+    topViewportY = Math.max(cTop + 16, Math.min(topViewportY, containerBottom - 160));
+    focusPanel.style.top = (topViewportY - cTop) + "px";
+    focusPanel.style.bottom = marginBottom + "px";
+  }
+  function layoutLeftPanel() {
+    const gap = 6;
+    const cTop = containerTop();
+    const legendRect = document.querySelector(".legend").getBoundingClientRect();
+    const listTopViewportY = legendRect.bottom + gap;
+    kbdList.style.top = (listTopViewportY - cTop) + "px";
+    kbdList.style.bottom = "16px";
+  }
+  layoutRightPanels();
+
+  // ==========================================================================
+  // 10. Keyboard-operable fallback list
+  // ==========================================================================
+  // Round 8: reverted to the plain grouped list (pillar header + its
+  // tags, straight down the list) — a round-7 pass added sticky "jump to
+  // pillar" filter chips, but per feedback the older plain list was
+  // preferred, and the chips had a real bug anyway: `#kbd-list button`
+  // (ID selector) outranked `.kbd-filter-chip` (class selector) in
+  // specificity, so every chip rendered as a full-width stacked row
+  // instead of a compact pill — exactly what showed up in the screenshot.
+  // Round 10: the separate #kbd-toggle button/label sitting between the
+  // legend and this list is gone — it read as an odd floating middle
+  // element that was really just this box's title. It's now a sticky <h3>
+  // header inside the list itself (same idea as the legend's "PILLARS"
+  // header), so there's one box here instead of two with a gap to manage
+  // between them.
+  const kbdList = document.getElementById("kbd-list");
+  const kbdHeader = document.createElement("h3");
+  kbdHeader.textContent = "☰ Browse tags (keyboard-friendly)";
+  kbdList.appendChild(kbdHeader);
+  PILLARS.forEach(pillar => {
+    const h4 = document.createElement("h4");
+    h4.textContent = pillar.name;
+    kbdList.appendChild(h4);
+    NODES.filter(n => n.pillar === pillar.name).forEach(node => {
+      const btn = document.createElement("button");
+      btn.setAttribute("role", "menuitem");
+      btn.innerHTML = `<span class="kdot ${PILLAR_STYLE[pillar.name]}" style="--mc:${hexStr(pillar.color)}"></span>${node.tag}`;
+      btn.addEventListener("click", () => {
+        // Bring the actual dot front and center, with the same hover
+        // glow + flyout a mouse hover would show, then open its trend
+        // panel — round 9: clicking from the keyboard list should feel
+        // like a real hover-and-click on the globe itself, not just a
+        // shortcut into the panel.
+        const sprite = spriteByTag[node.tag];
+        if (sprite) focusOnSprite(sprite);
+        openGraphPanel(node, pillar);
+      });
+      kbdList.appendChild(btn);
+    });
+    const docBtn = document.createElement("button");
+    docBtn.setAttribute("role", "menuitem");
+    const docNode = DOCS_NODES.find(d => d.pillar === pillar.name);
+    docBtn.innerHTML = `<span class="kdot ring"></span>📄 Documentation Updates`;
+    docBtn.addEventListener("click", () => {
+      const sprite = spriteByDocsPillar[pillar.name];
+      if (sprite) focusOnSprite(sprite);
+      openDocsPanel(docNode, pillar);
+    });
+    kbdList.appendChild(docBtn);
+  });
+  layoutLeftPanel(); // position the label + always-open list under the legend immediately
+  // Defensive re-layout after full page load (fonts, etc.) in case the
+  // legend's rendered height shifted after the initial measurement.
+  window.addEventListener("load", () => { layoutRightPanels(); layoutLeftPanel(); });
+  // Belt-and-suspenders for the gap some testing showed between the legend
+  // and the toggle label below it: rather than trust one-time measurements
+  // plus resize/load events, watch the legend's actual box with
+  // ResizeObserver and reposition live any time it changes size for ANY
+  // reason (font swap, content change, zoom, etc.) — this should make a
+  // stale/incorrect gap structurally impossible rather than just unlikely.
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => layoutLeftPanel()).observe(document.querySelector(".legend"));
+  }
+
+  // ==========================================================================
+  // 11. Render loop
+  // ==========================================================================
+  const clock = new THREE.Clock();
+  // Round 16: idle auto-rotate used to only ever spin on yaw, so a pillar
+  // sitting well off to one side (in latitude) could stay out of view
+  // indefinitely if you never dragged — per feedback wanting "the other
+  // colored dots appear eventually too" without needing manual input.
+  // `pitch` (the same single source of truth the drag handler and
+  // focusOnSprite() both use) now also drifts, slowly and smoothly, toward
+  // a gently oscillating target — lerping straight into `pitch` itself
+  // (rather than tracking a separate drift offset) means picking up a drag
+  // or a click mid-drift has no snap-back discontinuity, it just continues
+  // from wherever the globe currently is.
+  const AUTO_PITCH_AMPLITUDE = THREE.MathUtils.degToRad(38);
+  const AUTO_PITCH_PERIOD_S = 26; // seconds per half-cycle-ish drift
+  function animate() {
+    requestAnimationFrame(animate);
+    const tNow = clock.getElapsedTime();
+    if (autoRotate) {
+      yaw += GLOBE_ROTATION_SPEED;
+      const pitchTarget = Math.sin(tNow / AUTO_PITCH_PERIOD_S) * AUTO_PITCH_AMPLITUDE;
+      pitch = THREE.MathUtils.clamp(pitch + (pitchTarget - pitch) * 0.01, -PITCH_LIMIT, PITCH_LIMIT);
+      applyGlobeRotation();
+      starfield.rotation.y -= GLOBE_ROTATION_SPEED * STARFIELD_SPEED_FACTOR;
+      milkyWay.rotation.y -= GLOBE_ROTATION_SPEED * STARFIELD_SPEED_FACTOR * 0.6;
+      // Nebula drifts far slower than either particle field — it's meant
+      // to read as distant, ambient depth, not another layer of motion
+      // competing for attention.
+      nebula.rotation.y -= GLOBE_ROTATION_SPEED * STARFIELD_SPEED_FACTOR * 0.12;
+    }
+    const t = clock.getElapsedTime();
+    starfield.material.uniforms.uTime.value = t;
+    milkyWay.material.uniforms.uTime.value = t;
+    updateStars(t);
+    updateEdgeLines();
+    updateEdgeFlows(t);
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>

@@ -9,6 +9,10 @@ title = "Modern Work Weekly"
   github = "https://github.com/TwitchSTL/modern-work-weekly"
   linkedin = "https://www.linkedin.com/in/ryanarbuckle/"
   keywords = ["Microsoft 365", "Intune", "Entra", "Defender", "Modern Work", "IT Admin"]
+  # Privacy-respecting analytics (GoatCounter, cookie-free) — see baseof.html
+  # for the two ways to fill this in (hosted site code, or self-hosted
+  # https:// count endpoint). Unset = no analytics script loads at all.
+  # goatcounter = "modernworkweekly"
 
 [markup]
   [markup.goldmark]
@@ -56,3 +60,7 @@ title = "Modern Work Weekly"
     name = "Key Dates"
     url = "/deadlines/"
     weight = 2
+  [[menu.main]]
+    name = "Universe"
+    url = "/universe/"
+    weight = 3
