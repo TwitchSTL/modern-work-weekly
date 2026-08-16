@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-28",
+  "updated": "2026-08-16",
   "deadlines": [
     {
       "date": "2026-08-01",
@@ -34,6 +34,30 @@
       "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561208"
     },
     {
+      "date": "2026-08-01",
+      "title": "Purview DLP: Granular Classification Error Controls (Exchange Online)",
+      "action": "Review existing DLP policies for Exchange Online and decide whether to split blanket failure-handling rules into per-error-type controls (timeout, throttling, scan errors) once this GAs.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs running Purview DLP policies against Exchange Online",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561916"
+    },
+    {
+      "date": "2026-08-01",
+      "title": "Purview DLP: User-Based Aggregation of Alerts",
+      "action": "Expect DLP alert volumes/grouping to change as related events consolidate per user. Review alert-triage runbooks and any automation keyed to individual alert IDs before this lands.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs with active Purview DLP alerting and SOC triage workflows",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=564765"
+    },
+    {
+      "date": "2026-08-01",
+      "title": "OneDrive: Exclude Specific Folders from Syncing",
+      "action": "Decide whether to set org-wide folder exclusion rules (e.g. dev tooling folders) once available, to keep local-only folders out of OneDrive by policy rather than per-user opt-out.",
+      "pillar": "Endpoint & Device Management",
+      "applies_to": "Orgs managing OneDrive sync policy on Windows/Mac endpoints",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567470"
+    },
+    {
       "date": "2026-09-01",
       "title": "Copilot in PowerPoint: GCC / Sovereign Cloud GA",
       "action": "Add to your GCC/GCC-H Copilot rollout timeline and validate brand kit configuration ahead of release.",
@@ -50,12 +74,84 @@
       "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559105"
     },
     {
+      "date": "2026-09-01",
+      "title": "Purview eDiscovery (Premium): Hold Reports",
+      "action": "Plan to use the new out-of-the-box hold reports for legal hold audits instead of custom exports once available - update internal e-discovery documentation to reference the built-in report.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Legal/compliance teams running eDiscovery Premium cases",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=93268"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "Purview Label Inheritance from Email Attachments (Outlook, incl. iOS/Android)",
+      "action": "Review sensitivity label policies for attachments - labels will start inheriting automatically across desktop and mobile Outlook, which may change labeling behavior your DLP rules currently assume.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs using Purview sensitivity labels on email attachments",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569022"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "Purview Information Protection: Auto-Labeling Per-Policy Coverage",
+      "action": "Review auto-labeling policy scope once per-policy coverage reporting ships - useful for confirming which policies are actually catching content before relying on them for compliance attestation.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs relying on Purview auto-labeling for compliance coverage",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568935"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "Purview DLP: Data Security for Non-Microsoft Cloud Apps",
+      "action": "Scope which third-party SaaS apps you'd want DLP coverage extended to once this ships, and plan a pilot policy for your highest-risk non-Microsoft app.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs with sensitive data flowing through non-Microsoft SaaS apps",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568075"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "Microsoft Edge: Local IP Address Detection Change for Proxy Auto-Config",
+      "action": "If your org relies on PAC scripts / proxy auto-config that assume current local IP detection behavior, test against Edge Insider builds before this rolls out broadly.",
+      "pillar": "Endpoint & Device Management",
+      "applies_to": "Orgs managing Edge proxy configuration via PAC scripts",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568787"
+    },
+    {
+      "date": "2026-09-01",
+      "title": "Copilot Studio: Dataverse Integration",
+      "action": "If you're building Copilot Studio agents, evaluate using Dataverse as a native knowledge source instead of custom connectors once this ships.",
+      "pillar": "AI & Copilot",
+      "applies_to": "Teams building custom agents in Copilot Studio",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568929"
+    },
+    {
       "date": "2026-10-01",
       "title": "EWS Disablement in Exchange Online",
       "action": "Audit all apps/service accounts still authenticating via EWS. Configure EWSAllowedAppIDs for stragglers and set internal migration milestones now - don't wait for enforcement to discover dependencies.",
       "pillar": "Collaboration & Productivity",
       "applies_to": "Orgs with apps or service accounts still authenticating to Exchange Online via EWS",
       "url": "https://techcommunity.microsoft.com/t5/exchange-team-blog/introducing-ewsallowedappids-preparing-for-the-final-phase-of/ba-p/4529471"
+    },
+    {
+      "date": "2026-10-01",
+      "title": "Purview Endpoint DLP: Policy Sync & Device Health AI-Powered Investigation",
+      "action": "No action required to adopt, but expect DLP policy sync failures to start surfacing root-cause explanations and recommended fixes automatically - worth a heads-up to whoever triages sync alerts today.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs running Purview Endpoint DLP across managed devices",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562016"
+    },
+    {
+      "date": "2026-10-01",
+      "title": "Purview Endpoint DLP: Protect Sensitive Data over FTP/SFTP",
+      "action": "If FTP/SFTP is a known exfiltration gap in your current DLP coverage, plan a policy pilot for this once it ships - it's new protocol coverage, not a change to existing policies.",
+      "pillar": "Security & Compliance",
+      "applies_to": "Orgs with FTP/SFTP transfer paths from managed endpoints",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565868"
+    },
+    {
+      "date": "2026-10-01",
+      "title": "Microsoft Teams: Malicious URL Protection for Chat/Channels (Gov Clouds)",
+      "action": "Confirm this closes a known protection gap for your Gov cloud tenant relative to commercial Teams, and update any compliance documentation that notes the discrepancy.",
+      "pillar": "Security & Compliance",
+      "applies_to": "GCC, GCC High, and DoD Teams tenants",
+      "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569421"
     },
     {
       "date": "2027-01-01",
