@@ -8,6 +8,13 @@
   --color-text-muted: #8b949e;
   --color-accent: #58a6ff;
   --color-accent-hover: #79b8ff;
+  /* Reserved for nav-level CTA emphasis only (currently: the Exec Guide
+     link) — deliberately not orange (that's the AI & Copilot pillar) and
+     not the accent blue (that's Collaboration & Productivity's pillar
+     color too), so this button doesn't read as "this links to AI/Collab
+     content." Don't reuse this for anything pillar-related. */
+  --color-cta: #d29922;
+  --color-cta-hover: #e3b341;
   --color-badge-ep: #1c2d3f;
   --color-badge-ep-text: #79b8ff;
   --color-badge-ia: #1e1e3a;
@@ -142,6 +149,25 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
 .site-nav a.active {
   color: var(--color-text);
   text-decoration: none;
+}
+
+/* Exec Guide is the one nav item that gets button treatment instead of
+   plain text — it's the entry point most worth a reader's one extra click,
+   and giving every nav item equal emphasis would cancel this out. Solid
+   fill, not a glow/shadow effect: reads as "click me" without looking
+   dated the way a neon glow can on a dark background. */
+.site-nav a.nav-cta {
+  color: #1a1300;
+  background: var(--color-cta);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.site-nav a.nav-cta:hover,
+.site-nav a.nav-cta.active {
+  color: #1a1300;
+  background: var(--color-cta-hover);
 }
 
 /* LinkedIn icon button */
@@ -523,6 +549,32 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   border: 1px solid var(--pillar-color, #6e7681);
   color: var(--pillar-color, #6e7681);
   letter-spacing: 0.01em;
+}
+
+/* Per-pillar fill-style variation — a second visual cue beyond color alone,
+   same concept (and same pillar → style mapping) as the Tag Universe
+   prototype's marker system (post-card-signals.html / deadlines-sidebar.html
+   / deadlines.html all emit the matching pillar-style-* class alongside the
+   existing --pillar-color custom property). Kept deliberately subtle here —
+   unlike the prototype's tiny anonymous dots, these chips already spell out
+   the pillar name, so the fill style is a bonus accent, not load-bearing for
+   legibility, and every rule below is written to not fight the chip's text
+   contrast. "Identity & Access" (pillar-style-solid) needs no extra rule —
+   it's just the plain chip look above. */
+.pillar-chip.pillar-style-donut {
+  box-shadow: inset 0 0 0 2px var(--pillar-color, #6e7681);
+}
+.pillar-chip.pillar-style-stripe {
+  background-image: repeating-linear-gradient(45deg, transparent 0 4px, var(--pillar-color, #6e7681) 4px 4.6px);
+}
+.pillar-chip.pillar-style-dashed {
+  border-style: dashed;
+}
+.pillar-chip.pillar-style-gradient {
+  background-image: linear-gradient(135deg, var(--pillar-color, #6e7681) 0%, transparent 18%);
+}
+.pillar-chip.pillar-style-halo {
+  box-shadow: 0 0 5px 0 var(--pillar-color, #6e7681);
 }
 
 .urgency-chip {
@@ -1798,6 +1850,26 @@ details[open] .toc-label::before { content: "▼ "; }
   cursor: help;
 }
 
+/* Same per-pillar fill-style system as .pillar-chip above, adapted for a
+   plain 6px dot with no text inside — layered ON TOP of the solid
+   background color calendar.js already sets inline, not replacing it. */
+.cal-dot.cal-style-donut {
+  box-shadow: inset 0 0 0 1.5px rgba(13, 17, 23, 0.6);
+}
+.cal-dot.cal-style-stripe {
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 2.2px);
+}
+.cal-dot.cal-style-dashed {
+  outline: 1.5px dashed rgba(255, 255, 255, 0.75);
+  outline-offset: 1px;
+}
+.cal-dot.cal-style-gradient {
+  background-image: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), transparent 60%);
+}
+.cal-dot.cal-style-halo {
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.75);
+}
+
 /* Deadline dot tooltip — rendered as a fixed body element via JS */
 #cal-dot-tip {
   position: fixed;
@@ -2109,9 +2181,28 @@ details[open] .toc-label::before { content: "▼ "; }
   margin-bottom: 1.75rem;
 }
 
+.terms-pillar-group {
+  margin-bottom: 2.25rem;
+}
+
+.terms-pillar-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.9rem;
+  padding-left: 0.65rem;
+  border-left: 3px solid var(--pillar-color, var(--color-border));
+  color: var(--pillar-color, var(--color-text));
+}
+
+.terms-pillar-general .terms-pillar-heading {
+  border-left-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
 .terms-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 0.75rem;
 }
 
@@ -2119,9 +2210,16 @@ details[open] .toc-label::before { content: "▼ "; }
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 0.9rem 1rem;
+  /* --weight is 0-100, scaled from this pillar's most-featured tag on the
+     page — a card near 100 is this pillar's most-covered topic, near 0 is
+     its least. Padding/font both scale so the grid reads as "weight," not
+     just a uniform wall of identical cards. */
+  padding: calc(0.7rem + (var(--weight, 40) * 0.003rem)) 1rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+  /* Plain pillar-color border, no color-mix()/alpha-blend — kept broadly
+     browser-safe, same reasoning as the .pillar-style-* rules in this file. */
+  border-left: 3px solid var(--pillar-color, var(--color-border));
   border-radius: var(--radius);
   text-decoration: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -2134,7 +2232,7 @@ details[open] .toc-label::before { content: "▼ "; }
 }
 
 .term-name {
-  font-size: 0.875rem;
+  font-size: calc(0.8rem + (var(--weight, 40) * 0.0014rem));
   font-weight: 500;
   color: var(--color-text);
 }
@@ -3061,6 +3159,25 @@ details[open] .toc-label::before { content: "▼ "; }
   border-radius: 50%;
   background: var(--pillar-color, #6e7681);
   flex-shrink: 0;
+}
+
+/* Same per-pillar fill-style system as .pillar-chip / .cal-dot above,
+   layered on top of this dot's existing solid background. */
+.deadlines-pillar-dot.pillar-style-donut {
+  box-shadow: inset 0 0 0 2px rgba(13, 17, 23, 0.6);
+}
+.deadlines-pillar-dot.pillar-style-stripe {
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.55) 0 1.5px, transparent 1.5px 3px);
+}
+.deadlines-pillar-dot.pillar-style-dashed {
+  outline: 1.5px dashed rgba(255, 255, 255, 0.8);
+  outline-offset: 1.5px;
+}
+.deadlines-pillar-dot.pillar-style-gradient {
+  background-image: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), transparent 60%);
+}
+.deadlines-pillar-dot.pillar-style-halo {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
 }
 
 .deadlines-pillar-heading {

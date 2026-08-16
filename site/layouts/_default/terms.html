@@ -1,14 +1,110 @@
 {{ define "main" }}
 <section class="terms-page">
   <h1 class="terms-title">{{ .Title }}</h1>
-  <p class="terms-sub">Browse all posts by topic.</p>
-  <div class="terms-grid">
-    {{ range .Data.Terms.Alphabetical }}
-    <a class="term-card" href="{{ .Page.Permalink }}">
-      <span class="term-name">{{ .Page.Title }}</span>
-      <span class="term-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
-    </a>
+  <p class="terms-sub">Browse every topic Modern Work Weekly has covered, grouped by pillar. Card size reflects how often each topic comes up. Prefer an interactive map? Try the <a href="/universe/">Tag Universe</a>.</p>
+
+  {{/* Pillar → color, matching the canonical map used in post-card-signals.html
+       / deadlines.html / calendar.js / collapsible.js. Kept in sync manually,
+       same known debt as those files (see FRONTEND_HANDOFF.md). Tag → pillar
+       below is likewise hand-maintained, mirroring PILLAR_STYLE's tag list in
+       the Tag Universe prototype (site/static/universe/index.html) — that
+       file's TAG_SEED is the closest thing this repo has to a canonical
+       tag/pillar source, since Hugo's own taxonomy has no concept of pillar. */}}
+  {{ $pillars := slice "Identity & Access" "Endpoint & Device Management" "Collaboration & Productivity" "AI & Copilot" "Employee Experience" "Security & Compliance" }}
+  {{ $pillarColors := dict
+    "Identity & Access"            "#a78bfa"
+    "Endpoint & Device Management" "#3fb950"
+    "Collaboration & Productivity" "#58a6ff"
+    "AI & Copilot"                 "#f0883e"
+    "Employee Experience"          "#f778ba"
+    "Security & Compliance"        "#d2a8ff"
+  }}
+  {{ $tagPillar := dict
+    "entra-id" "Identity & Access"
+    "identity" "Identity & Access"
+    "conditional-access" "Identity & Access"
+    "global-secure-access" "Identity & Access"
+    "intune" "Endpoint & Device Management"
+    "endpoint-management" "Endpoint & Device Management"
+    "windows" "Endpoint & Device Management"
+    "windows-365" "Endpoint & Device Management"
+    "windows-autopatch" "Endpoint & Device Management"
+    "autopilot" "Endpoint & Device Management"
+    "hotpatch" "Endpoint & Device Management"
+    "linux" "Endpoint & Device Management"
+    "teams-rooms" "Endpoint & Device Management"
+    "exchange" "Collaboration & Productivity"
+    "teams" "Collaboration & Productivity"
+    "sharepoint" "Collaboration & Productivity"
+    "onedrive" "Collaboration & Productivity"
+    "copilot" "AI & Copilot"
+    "copilot-studio" "AI & Copilot"
+    "power-platform" "AI & Copilot"
+    "shadow-ai" "AI & Copilot"
+    "agent-365" "AI & Copilot"
+    "viva" "Employee Experience"
+    "zero-trust" "Security & Compliance"
+    "defender-xdr" "Security & Compliance"
+    "defender-for-endpoint" "Security & Compliance"
+    "defender-for-identity" "Security & Compliance"
+    "defender-for-office-365" "Security & Compliance"
+    "purview" "Security & Compliance"
+    "data-lifecycle" "Security & Compliance"
+    "dspm" "Security & Compliance"
+  }}
+
+  {{ $maxCount := 1 }}
+  {{ range .Data.Terms.Alphabetical }}
+    {{ if gt .Count $maxCount }}{{ $maxCount = .Count }}{{ end }}
+  {{ end }}
+
+  {{ range $pillars }}
+    {{ $pillar := . }}
+    {{ $color := index $pillarColors $pillar }}
+    {{ $rows := slice }}
+    {{ range $.Data.Terms.Alphabetical }}
+      {{ if eq (index $tagPillar .Term) $pillar }}
+        {{ $rows = $rows | append . }}
+      {{ end }}
     {{ end }}
+    {{ if $rows }}
+    <div class="terms-pillar-group" style="--pillar-color: {{ $color }}">
+      <h2 class="terms-pillar-heading">{{ $pillar }}</h2>
+      <div class="terms-grid">
+        {{ range (sort $rows "Count" "desc") }}
+        {{ $weight := div (mul .Count 100) $maxCount }}
+        <a class="term-card" href="{{ .Page.Permalink }}" style="--weight: {{ $weight }}">
+          <span class="term-name">{{ .Page.Title }}</span>
+          <span class="term-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  {{ end }}
+
+  {{/* Anything not in the hand-maintained map above (e.g. "modern-work", a
+       brand tag that spans every pillar, or any new tag added since this
+       map was last updated) — surfaced here instead of silently dropped. */}}
+  {{ $ungrouped := slice }}
+  {{ range .Data.Terms.Alphabetical }}
+    {{ if not (index $tagPillar .Term) }}
+      {{ $ungrouped = $ungrouped | append . }}
+    {{ end }}
+  {{ end }}
+  {{ if $ungrouped }}
+  <div class="terms-pillar-group terms-pillar-general">
+    <h2 class="terms-pillar-heading">General</h2>
+    <div class="terms-grid">
+      {{ range (sort $ungrouped "Count" "desc") }}
+      {{ $weight := div (mul .Count 100) $maxCount }}
+      <a class="term-card" href="{{ .Page.Permalink }}" style="--weight: {{ $weight }}">
+        <span class="term-name">{{ .Page.Title }}</span>
+        <span class="term-count">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</span>
+      </a>
+      {{ end }}
+    </div>
   </div>
+  {{ end }}
 </section>
 {{ end }}

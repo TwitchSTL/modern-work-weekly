@@ -5,7 +5,11 @@
     </a>
     <nav class="site-nav">
       {{ range .Site.Menus.main }}
-      <a href="{{ .URL }}" {{ if eq $.RelPermalink .URL }}class="active"{{ end }}>{{ .Name }}</a>
+      {{ $isCta := eq .Name "Exec Guide" }}
+      {{ $classes := slice }}
+      {{ if $isCta }}{{ $classes = $classes | append "nav-cta" }}{{ end }}
+      {{ if eq $.RelPermalink .URL }}{{ $classes = $classes | append "active" }}{{ end }}
+      <a href="{{ .URL }}"{{ with $classes }} class="{{ delimit . " " }}"{{ end }}>{{ .Name }}</a>
       {{ end }}
       {{ partial "admin-links.html" . }}
       {{ with .Site.Params.github }}
