@@ -695,6 +695,23 @@
   ];
   // GENERATED:GRAPH:END
 
+  // Deterministic seeded PRNG + string hash  -  used for star twinkle jitter
+  // and the nebula backdrop below. Kept outside the GENERATED:GRAPH markers
+  // since generate_graph.py only owns the data, not these helpers  - 
+  // accidentally deleted here once already when the markers were first
+  // introduced, which broke star rendering entirely (ReferenceError:
+  // seededRand is not defined). Do not remove.
+  function seededRand(seed) {
+    let s = seed % 2147483647;
+    if (s <= 0) s += 2147483646;
+    return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  }
+  function hashCode(str) {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) { h = (h * 31 + str.charCodeAt(i)) | 0; }
+    return Math.abs(h) || 1;
+  }
+
   const pillarRank = {};
   PILLARS.forEach(p => {
     const pnodes = NODES.filter(n => n.pillar === p.name).slice().sort((a, b) => b.total - a.total);
