@@ -1471,12 +1471,76 @@ details[open] .toc-label::before { content: "▼ "; }
   }
 }
 
-/* Hide sidebars on tablet/mobile — content is king */
+/* Below 1060px, sidebars used to just disappear entirely (display:none) —
+   that hid Known Issues, Topics, and Key Dates from every mobile visitor
+   with no way to reach them short of the nav/footer. Now they stack below
+   the main content instead, each wrapped in a native <details open> (see
+   list.html/exec/list.html/single.html) so mobile gets a tap-to-collapse
+   accordion rather than a wall of always-open panels pushing the actual
+   content down. */
 @media (max-width: 1060px) {
   .post-layout {
     grid-template-columns: 1fr;
   }
   .post-sidebar {
+    display: block;
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+  /* Main content first, sidebars after — a mobile reader wants the digest,
+     not the accordions, above the fold. order: works on grid items same
+     as flex items. */
+  .home-center { order: 1; }
+  .post-sidebar-left,
+  .post-sidebar-right { order: 2; }
+  .post { order: 1; }
+
+  .post-sidebar-accordion {
+    margin-bottom: 0.75rem;
+  }
+  .post-sidebar-accordion summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.6rem 0.875rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+  .post-sidebar-accordion summary::-webkit-details-marker { display: none; }
+  .post-sidebar-accordion summary::after {
+    content: "+";
+    float: right;
+    font-size: 0.9rem;
+  }
+  .post-sidebar-accordion[open] summary {
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+  }
+  .post-sidebar-accordion[open] summary::after {
+    content: "\2212";
+  }
+  /* Panel(s) inside the accordion lose their own top rounding/margin so
+     they read as one continuous block under the summary, not a floating
+     card with a gap. */
+  .post-sidebar-accordion[open] .sidebar-panel {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+/* Above 1060px, the accordion wrapper should be fully transparent to
+   layout — desktop never sees a collapsed state or a summary row, since
+   the "open" attribute is always set by the template and this hides the
+   toggle control that would let it close. */
+@media (min-width: 1061px) {
+  .post-sidebar-accordion summary {
     display: none;
   }
 }
@@ -1593,6 +1657,61 @@ details[open] .toc-label::before { content: "▼ "; }
   transition: background 0.15s;
 }
 .sidebar-view-all:hover { background: rgba(88, 166, 255, 0.06); text-decoration: none; }
+
+/* Modern Pillars & Related Topics -- each pillar is its own pill button
+   (Ryan's request: "on their own buttons instead of just linked in the
+   box"), same border/hover language as .key-dates-filter for one
+   consistent "themed pill" vocabulary sitewide. The count sits in a
+   solid, high-contrast badge rather than trailing muted text, so it
+   reads at a glance instead of blending into the row. */
+.topics-sidebar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.6rem 0.875rem;
+}
+
+.pillar-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--pillar-color, var(--color-border));
+  border-radius: 999px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+.pillar-chip:hover {
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 10px var(--pillar-color, var(--color-border));
+  text-decoration: none;
+}
+
+.pillar-chip-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pillar-color, var(--color-border));
+  flex-shrink: 0;
+}
+
+.pillar-chip-name {
+  flex: 1;
+}
+
+.pillar-chip-count {
+  min-width: 1.5rem;
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0d1117;
+  background: var(--pillar-color, var(--color-text-muted));
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+}
 
 .sidebar-empty {
   font-size: 0.78rem;
@@ -3207,6 +3326,59 @@ details[open] .toc-label::before { content: "▼ "; }
   gap: 0.75rem;
 }
 
+/* Type filter pills — glowing/pill treatment per Ryan's request, distinct
+   from the Exec Guide nav CTA (that's a single fixed button; these need an
+   active/inactive state per type). --type-color is set inline per button
+   from $typeColors in deadlines.html. */
+.key-dates-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.key-dates-filter {
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--type-color, var(--color-text-muted));
+  background: transparent;
+  border: 1px solid var(--type-color, var(--color-border));
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+}
+
+.key-dates-filter:hover {
+  background: var(--type-glow, rgba(255, 255, 255, 0.06));
+}
+
+.key-dates-filter.is-active {
+  color: #0d1117;
+  background: var(--type-color, var(--color-text-muted));
+  box-shadow: 0 0 12px var(--type-glow-strong, rgba(255, 255, 255, 0.3));
+}
+
+.key-dates-filter[data-filter-type="all"] {
+  --type-color: var(--color-text);
+}
+
+.deadline-card-type {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--type-color, var(--color-text-muted));
+  /* Plain border, no color-mix()/alpha-blend of --type-color — same
+     browser-support reasoning as the .pillar-style-* rules in this file. */
+  border: 1px solid var(--type-color, var(--color-border));
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-bottom: 0.4rem;
+}
+
 .deadline-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -3356,7 +3528,9 @@ details[open] .toc-label::before { content: "▼ "; }
   .header-inner { flex-direction: column; align-items: flex-start; }
   .post-title { font-size: 1.3rem; }
   .hero h1 { font-size: 1.5rem; }
-  .site-nav { gap: 0.75rem; flex-wrap: wrap; }
+  .site-nav { gap: 0.5rem; flex-wrap: wrap; font-size: 0.82rem; }
+  .site-nav a.nav-cta { padding: 0.25rem 0.55rem; }
+  .site-logo { height: 48px; }
 }
 /* ── Exec Sidebar Panels ─────────────────────────────────────────────── */
 .exec-sidebar-panel {

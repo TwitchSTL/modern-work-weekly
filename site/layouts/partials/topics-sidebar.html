@@ -58,7 +58,7 @@
   <div class="sidebar-panel-header">
     <span class="sidebar-panel-label">Modern Pillars &amp; Related Topics</span>
   </div>
-  <ul class="topics-sidebar-list">
+  <div class="topics-sidebar-grid">
     {{ range $pillars }}
     {{ $pillar := . }}
     {{ $color := index $pillarColors $pillar }}
@@ -69,15 +69,13 @@
       {{ end }}
     {{ end }}
     {{ if gt $count 0 }}
-    <li>
-      <a href="/tags/#pillar-{{ $pillar | urlize }}" style="--pillar-color: {{ $color }}">
-        <span class="topics-sidebar-dot"></span>
-        <span class="topics-sidebar-name">{{ $pillar }}</span>
-        <span class="topics-sidebar-count">{{ $count }}</span>
-      </a>
-    </li>
+    <a class="pillar-chip" href="/tags/#pillar-{{ $pillar | urlize }}" style="--pillar-color: {{ $color }}">
+      <span class="pillar-chip-dot"></span>
+      <span class="pillar-chip-name">{{ $pillar }}</span>
+      <span class="pillar-chip-count">{{ $count }}</span>
+    </a>
     {{ end }}
     {{ end }}
-  </ul>
+  </div>
   <a class="sidebar-view-all" href="/tags/">Browse all topics →</a>
 </div>
