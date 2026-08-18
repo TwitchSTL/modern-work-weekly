@@ -58,12 +58,13 @@ Format rules:
 - Front matter: title, date, description (1-2 punchy sentences matching the week's actual tone — highlight what's most notable whether that's a new feature, a deadline, a risk, or a capability unlock; not everything is a warning, some weeks are rich with feature enablements or reporting improvements), tags (see standard list below), categories (from the standard list)
 - Do NOT write an intro paragraph in the post body. The front matter description already serves that purpose and is rendered separately by the site template. Start the body directly with the first section heading.
 - Top 5 section: heading must be exactly "## Top 5" (not "## Top 5 This Week" or any other variant — the LinkedIn draft pipeline's extract_top5() parses this heading verbatim and silently returns nothing on a mismatch). The 5 most important changes this week with a brief why-it-matters for each.
+- Top 5 and CVE items: do not name-check a routine CVE (acknowledgment update, build-number correction, or any CVE whose provided cve_severity is not "Critical" and whose cve_exploited is not "Yes") in the Top 5. Only a CVE that is Critical severity or has cve_exploited: "Yes" belongs in Top 5. Every CVE, regardless of severity, still gets its own bullet in the Action Required section — see that section's rule below.
 - Title format must be exactly: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash — see clean_dashes())
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
   `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
 - Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → Documentation Updates → sources front matter. Do NOT place Action Required before the category sections.
-- Action Required section: ALWAYS include this section — never omit it. Include any items with deadlines, required admin steps, patch obligations, CVE mitigations, governance decisions, or deprecation timelines. Use the same bullet format as category sections, with the deadline date or urgency called out prominently at the start of the description. If nothing is strictly time-sensitive this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days.
+- Action Required section: ALWAYS include this section — never omit it. This section is a COMPLETE list, not a curated highlight reel: include EVERY CVE item provided in the data (no exceptions, regardless of severity), plus any non-CVE items with deadlines, required admin steps, governance decisions, or deprecation timelines. Use the same bullet format as category sections. For each CVE bullet, prominently lead with its severity and CVSS base score from the provided cve_severity/cve_base_score fields (e.g. "**Important · CVSS 8.0**") — if cve_severity is null for an item, write "Severity: not yet rated by MSRC" rather than inventing a rating — followed by "Surfaced in the [Week of date] digest." using the exact "Week of:" date given in the DIGEST CONTENT below (do not use any other date for this), then the same practical 1-3 sentence explanation used elsewhere. For non-CVE Action Required items, lead with the deadline date or urgency as before. If there are genuinely zero CVEs and zero other time-sensitive items this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days instead.
 - Documentation Updates section (## Documentation Updates): OPTIONAL — include only when the raw GitHub doc commit data has at least one substantive item; omit the entire section, heading included, if none qualify this week. This data is raw commits to Microsoft's documentation repos, and most commits are NOT worth surfacing: typo fixes, formatting passes, screenshot swaps, minor rewording, and editorial cleanup are all noise. Select only commits that represent a real content change an engineer would want to know about: a newly documented capability or setting, a changed default or behavior, an added or removed prerequisite, a retirement or deprecation notice, a corrected or clarified admin procedure, or a meaningfully rewritten guidance page. It is normal and expected for this section to be short or entirely absent most weeks; do not pad it with marginal commits to make it look substantial. Sub-group selected items under a bold pillar name on its own line (e.g. `**Identity & Access**`), then one bullet per item below it, in this format: `- **[Your own clear, engineer-facing title](commit-url)** — [1 sentence: what actually changed in the docs and why it matters].` Write your own title describing the actual change; do NOT reuse the raw commit message as the title, since commit messages are written for other doc authors, not engineers, and are often unclear standing alone.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 - Category sections must include EVERY item provided for that category in the input data. Do not selectively cover only some items and silently drop the rest — every item in the data has already been filtered for relevance and freshness upstream before it ever reaches you, so there is no such thing as a provided item that isn't worth including. A category with 7 items provided must produce 7 bullets, not your own trimmed-down selection of 5. This applies regardless of category size; do not artificially cap any section at a round number.
@@ -559,6 +560,14 @@ def build_prompt(draft: dict, max_age_days: int = MAX_AGE_DAYS) -> str:
                 "phase": item.get("phase", "GA"),
                 "admin_action": item.get("admin_action"),
                 "url": item.get("url", ""),
+                # Real MSRC severity data (scraper.py's fetch_cve_severity),
+                # only ever populated on actual CVE items from the MSRC
+                # source. Passed through so Claude relays real Microsoft
+                # data in Action Required instead of guessing severity from
+                # the write-up.
+                "cve_severity": item.get("cve_severity"),
+                "cve_base_score": item.get("cve_base_score"),
+                "cve_exploited": item.get("cve_exploited"),
             }
             for item in sorted_items[:MAX_PER_CAT]
         ]
@@ -975,6 +984,27 @@ def compute_card_stats(content: str) -> dict:
         action_required_count = len(list(_CATEGORY_ITEM_RE.finditer(ar_match.group("body"))))
     return {"cve_count": cve_count, "action_required_count": action_required_count}
 
+
+def validate_all_cves_in_action_required(content: str) -> None:
+    """Code-level check for the "every CVE goes in Action Required" rule --
+    a prompt instruction is a request, not a guarantee (see the prompt-
+    reliability lesson from em-dash/category-truncation drift), so this
+    verifies it actually happened rather than trusting Claude followed the
+    SYSTEM_PROMPT rule. Logs a warning naming any CVE that appears
+    elsewhere in the post but not inside Action Required; does not modify
+    the content or block publishing, since a human reviews every post
+    before it goes out per the standard weekly workflow."""
+    all_cves = {m.group(0).upper() for m in _CVE_RE.finditer(content)}
+    ar_match = _ACTION_REQUIRED_SECTION_RE.search(content)
+    ar_cves = set()
+    if ar_match:
+        ar_cves = {m.group(0).upper() for m in _CVE_RE.finditer(ar_match.group("body"))}
+    missing = all_cves - ar_cves
+    if missing:
+        log.warning(
+            f"  {len(missing)} CVE(s) present in the post but missing from Action Required: "
+            f"{', '.join(sorted(missing))}. Review before publishing per Ryan's CVE policy."
+        )
 
 def inject_card_stats(content: str) -> str:
     """Write compute_card_stats() into the post's front matter as
@@ -1521,6 +1551,7 @@ def run(args):
     content = clean_dashes(call_claude(prompt))
     content = tag_top5_categories(content)
     content = inject_card_stats(content)
+    validate_all_cves_in_action_required(content)
     post_path = write_post(content, week_of)
 
     # Generate Executive's Guide unless skipped

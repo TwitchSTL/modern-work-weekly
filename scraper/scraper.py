@@ -673,6 +673,42 @@ def fetch_whatsnew(source: dict) -> list[dict]:
         return []
 
 
+# Public MSRC "Security Update Guide" API -- not the RSS feed (which only
+# carries title/description/pubDate, confirmed via direct inspection), and
+# not the vulnerability/CVE-XXXX web page (a JS SPA that renders nothing to
+# a plain requests+BeautifulSoup fetch). This endpoint returns real severity,
+# CVSS base score, and exploitation status as plain JSON with no auth
+# required. Added for Ryan's "CVEs should show real severity" request --
+# real Microsoft data, not an LLM guess from the write-up.
+_CVE_ID_RE = re.compile(r"CVE-\d{4,}-\d+", re.IGNORECASE)
+MSRC_SUG_API = "https://api.msrc.microsoft.com/sug/v2.0/en-US/vulnerability/{cve_id}"
+
+
+def fetch_cve_severity(cve_id: str) -> dict | None:
+    """Fetch severity/CVSS/exploitation data for one CVE from MSRC's public
+    Security Update Guide API. Returns None on any failure (network error,
+    unexpected schema, CVE not found) so a down or changed endpoint degrades
+    to "no severity data" for that item rather than breaking the scrape."""
+    url = MSRC_SUG_API.format(cve_id=cve_id)
+    try:
+        resp = requests.get(url, timeout=10, headers={"Accept": "application/json"})
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        log.warning(f"  MSRC severity lookup failed for {cve_id}: {e}")
+        return None
+    severity = data.get("severity")
+    base_score = data.get("baseScore")
+    if not severity and not base_score:
+        return None
+    return {
+        "severity": severity,
+        "base_score": base_score,
+        "exploited": data.get("exploited"),
+        "publicly_disclosed": data.get("publiclyDisclosed"),
+    }
+
+
 def enrich_item(raw: dict) -> dict:
     """Add classification, phase, action fields to a raw item."""
     category, matched = classify_item(raw["title"], raw["body"], raw["source"])
@@ -690,6 +726,22 @@ def enrich_item(raw: dict) -> dict:
     phase = detect_phase(raw["title"], raw["body"])
     action = detect_admin_action(raw["body"])
     iid = item_id(raw["source"], raw["title"])
+
+    # CVE severity enrichment -- only the MSRC source ever carries CVE
+    # titles, and only when the title actually names one (a handful of MSRC
+    # items are guidance posts, not CVE advisories).
+    cve_severity = None
+    cve_base_score = None
+    cve_exploited = None
+    if raw["source"] == "Microsoft Security Response Center":
+        cve_match = _CVE_ID_RE.search(raw["title"])
+        if cve_match:
+            cve_meta = fetch_cve_severity(cve_match.group(0).upper())
+            if cve_meta:
+                cve_severity = cve_meta.get("severity")
+                cve_base_score = cve_meta.get("base_score")
+                cve_exploited = cve_meta.get("exploited")
+
     return {
         "id": iid,
         "source": raw["source"],
@@ -704,6 +756,9 @@ def enrich_item(raw: dict) -> dict:
         "admin_action": action,
         "impacted_workloads": [raw["source"]],
         "is_updated": False,
+        "cve_severity": cve_severity,
+        "cve_base_score": cve_base_score,
+        "cve_exploited": cve_exploited,
     }
 
 
