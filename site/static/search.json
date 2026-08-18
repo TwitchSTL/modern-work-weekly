@@ -1,164 +1,913 @@
 [
   {
-    "title": "AI agent posture risk scoring in Defender (Preview)",
+    "title": "Exchange Server SE August Security Updates are live and need immediate attention.",
+    "category": "Top 5",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "Security updates are available for Exchange SE RTM, Exchange Server 2019 CU14/CU15, and Exchange Server 2016 CU23. If you are on 2019 or 2016, you must also be enrolled in the Period 2 ESU program to access these SUs. Pa"
+  },
+  {
+    "title": "Exchange SE CU1 has slipped again - plan your on-premises roadmap accordingly.",
+    "category": "Top 5",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "Microsoft confirmed CU1 will not ship in H1 2026 as previously stated, and the new target is simply \"second half of 2026.\" AI-assisted security tooling is part of the reason cited for the delay. If you have change window"
+  },
+  {
+    "title": "CVE-2026-59124 (HPC Pack RCE) update table corrected - verify you have the right patch.",
+    "category": "Top 5",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "Microsoft corrected the listed software in the Security Updates table for this RCE vulnerability. If you applied a patch based on the original advisory, confirm you targeted the correct build and reapply if necessary."
+  },
+  {
+    "title": "Defender for Identity migration readiness now surfaces blocking reasons inline.",
+    "category": "Top 5",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "The new tooltip on the Sensors page shows exactly why a server is marked \"Not ready for migration,\" which removes the guesswork when troubleshooting stalled v3 sensor migrations. If you have servers blocked on migration,"
+  },
+  {
+    "title": "Purview Permissions Audit Log improvements are coming in September 2026.",
+    "category": "Top 5",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "Enhanced audit logs will capture role and scoped-role access decisions in the Purview portal, giving admins better visibility for troubleshooting and compliance reporting. Plan to review your audit monitoring workflows w"
+  },
+  {
+    "title": "Why Active Directory alone is no longer enough",
+    "category": "Identity & Access",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - If your identity modernization case is still stalled internally, this post gives you the updated strategic framing: the question has shifted from \"what can cloud do that AD cannot\" to \"what outcomes does a modern "
+  },
+  {
+    "title": "How to enforce Zero Trust across every resource",
+    "category": "Identity & Access",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - This is implementation-focused guidance building on the identity-first access strategy post, covering Conditional Access and Global Secure Access deployment patterns. Key recommendations include report-only polici"
+  },
+  {
+    "title": "Expanded SaaS app support in Password protection (Preview)",
+    "category": "Identity & Access",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - Password protection now surfaces password risks from SaaS apps connected through Defender for Cloud Apps, covering SSPM-enabled apps like Salesforce and ServiceNow alongside AD, Entra ID, and Okta. Each SaaS "
+  },
+  {
+    "title": "Windows device recovery in 2026: A guide for IT pros",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - This post consolidates the full current toolkit for Windows device recovery, from automated cloud-based fixes to full rebuilds, covering mass-scale outage scenarios, isolated disruptions, deep OS corruption, and h"
+  },
+  {
+    "title": "Where is Exchange SE CU1 anyway?",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - CU1 has slipped from H1 2026 to a general \"second half of 2026\" window, with AI-assisted vulnerability discovery work cited as a contributing factor. Revisit any upgrade or change freeze dependencies tied to this "
+  },
+  {
+    "title": "Released: August 2026 Exchange Server Security Updates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Security updates are out for Exchange SE RTM, Exchange Server 2019 CU14 and CU15, and Exchange Server 2016 CU23. Access to updates for 2019 and 2016 requires Period 2 ESU enrollment. Apply these as soon as possibl"
+  },
+  {
+    "title": "Turn meetings into momentum with Microsoft 365 Copilot",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Microsoft's Work Trend Index identifies inefficient meetings as the top productivity disruptor, and this post outlines current Copilot meeting capabilities: preparation, real-time assistance, catch-up for late joi"
+  },
+  {
+    "title": "Outlook: Change the organizer of a meeting",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Meeting organizer transfer is coming to Outlook for Windows, web, and Teams calendar in September 2026. The new organizer must accept before the transfer completes, preserving the existing event for all attendees."
+  },
+  {
+    "title": "Planner: Private tasks now stored in your private plan",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Private tasks across Planner and Planner-powered experiences will consolidate into a single user-owned private plan, landing in September 2026. Existing tasks continue to work alongside the new structure. No admin"
+  },
+  {
+    "title": "Microsoft Purview: eDiscovery - Select user-owned SharePoint embedded container as a data source",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - eDiscovery will be able to target SharePoint Embedded content containers from Microsoft Loop, Copilot Pages, and Copilot Notebooks as custodian data sources, with preview in September 2026 and GA in October 2"
+  },
+  {
+    "title": "OneDrive: Improved capabilities for files with Copilot in OneDrive Web",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - Copilot file skills in OneDrive Web are being expanded to support content analysis, summarization, dashboard creation, and presentation generation directly from the file chat interface, with preview in August"
+  },
+  {
+    "title": "Microsoft Teams: Temporarily pause all notifications",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Users will be able to pause all Teams notifications temporarily, targeting September 2026. No admin configuration required; this is a user-controlled focus feature."
+  },
+  {
+    "title": "Microsoft Teams: Malicious URL Protection for Teams Chat and Channels for Gov clouds",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Safe Links-style malicious URL detection for Teams chat and channels is coming to Government cloud customers in October 2026. Gov cloud admins should plan to review their Defender for Office 365 policy coverage fo"
+  },
+  {
+    "title": "Microsoft Teams: Specify who has control of production tools in Teams meetings and events",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Organizers can now designate specific users who control production tools, including Manage What Attendees See and Green Room, rather than that access being tied solely to the organizer role. This is available now "
+  },
+  {
+    "title": "OneDrive: Refreshed Libraries View in OneDrive Web",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - The \"More places\" panel in OneDrive Web has been replaced with a redesigned Libraries view that surfaces recently accessed libraries, Teams default document libraries, and favorited SharePoint sites with filtering"
+  },
+  {
+    "title": "Microsoft Teams: SharePoint thumbnail previews",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - Teams desktop now renders rich link preview cards with thumbnail images and page descriptions when SharePoint page links are shared in chat, targeting a June 2026 GA. Verify this behavior aligns with your inf"
+  },
+  {
+    "title": "Copilot Notebooks now works with Markdown, plain-text, and rich-text files",
+    "category": "AI & Copilot",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Copilot Notebooks now accepts .md, .rtf, and .txt files as references alongside existing document types, making it practical to ground Copilot responses in READMEs, wikis, logs, and transcripts. This is live now a"
+  },
+  {
+    "title": "Built for business: How Microsoft 365 Copilot keeps you in the flow of legal work",
+    "category": "AI & Copilot",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Microsoft is positioning M365 Copilot for small business legal workflow scenarios, covering contract review, document drafting, and legal resource lookup. Useful context for Copilot adoption conversations with SMB"
+  },
+  {
+    "title": "Extend Liquid with Server Logic in Power Pages",
+    "category": "AI & Copilot",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Power Pages developers can now call Server Logic directly from Liquid templates, moving business logic server-side rather than relying solely on platform-provided Liquid objects. If your organization builds Power "
+  },
+  {
+    "title": "Your Company Is Racing to Deploy AI. Is Your Data Ready?",
+    "category": "AI & Copilot",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - This post frames Dataverse as the governance foundation for AI deployments, covering capacity management, retention, security, auditing, and recovery controls. If you are deploying Copilot Studio agents or Power P"
+  },
+  {
+    "title": "Microsoft 365 app: New Copilot Notebooks design in the Microsoft 365 Copilot App",
+    "category": "AI & Copilot",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - The redesigned Copilot Notebooks experience in the M365 Copilot app organizes chats, outputs, and references into a persistent workspace where accumulated context carries across sessions, with preview in July"
+  },
+  {
+    "title": "CVE-2026-40400 Windows PowerShell Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated this week; no change to remediation guidance. Confirm patches applied during August Patch Tuesday are in place across your Windows estate."
+  },
+  {
+    "title": "CVE-2026-56188 Windows Server Network driver Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Informational acknowledgment update only; remediation guidance is unchanged. Verify this was captured in your August patching cycle."
+  },
+  {
+    "title": "CVE-2026-62722 Microsoft Brokering File System Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - CVE description and title were corrected this week; the underlying remediation is unchanged. Confirm your vulnerability tracking tooling has picked up the corrected metadata."
+  },
+  {
+    "title": "CVE-2026-66807 Microsoft Office Graphics Component Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. Ensure Office patching is current for this and the two related Office Graphics RCE CVEs below."
+  },
+  {
+    "title": "CVE-2026-63519 Microsoft Office Graphics Component Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. Part of a cluster of Office Graphics RCE vulnerabilities from August Patch Tuesday."
+  },
+  {
+    "title": "CVE-2026-63513 Microsoft Office Graphics Component Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. Third in the Office Graphics RCE cluster - confirm all three are covered by your Office update deployment."
+  },
+  {
+    "title": "CVE-2026-70337 Microsoft PowerShell Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. If PowerShell remoting is enabled in your environment, verify this patch is applied and verify remoting exposure is scoped appropriately."
+  },
+  {
+    "title": "CVE-2026-58612 PowerShell Information Disclosure Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. Review alongside the PowerShell RCE CVEs as part of your overall PowerShell patch coverage validation."
+  },
+  {
+    "title": "CVE-2026-62886 .NET Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. Confirm .NET runtime patching is current, particularly on servers running custom applications."
+  },
+  {
+    "title": "CVE-2026-63518 Microsoft Office Word Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Acknowledgment updated; no remediation change. Verify Word is patched to the August 2026 update level across managed endpoints."
+  },
+  {
+    "title": "CVE-2026-65768 Microsoft Teams Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Build number for the security update was corrected; confirm your Teams desktop client version matches the corrected build number in the advisory before marking this resolved."
+  },
+  {
+    "title": "CVE-2026-65769 Microsoft Teams iOS Information Disclosure Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Build number corrected in the advisory; verify Teams iOS app version on managed devices aligns with the updated advisory before closing out remediation tracking."
+  },
+  {
+    "title": "CVE-2026-57104 Azure Storage Explorer Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Build number corrected; if Azure Storage Explorer is deployed or approved in your environment, confirm the installed version matches the corrected advisory and update if needed."
+  },
+  {
+    "title": "CVE-2026-65767 Microsoft Teams for Android Spoofing Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Build number corrected; verify Teams for Android version on managed and BYOD devices aligns with the updated advisory. The three Teams CVE build corrections together suggest a documentation pass - recheck all thre"
+  },
+  {
+    "title": "CVE-2026-59124 Microsoft High Performance Computing (HPC) Pack Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Microsoft corrected the software listed in the Security Updates table for this RCE and recommends installing the update as soon as possible. If you applied a patch based on the original advisory listing, verify yo"
+  },
+  {
+    "title": "Defender for Identity sensor updates",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Ongoing sensor update cadence for Defender for Identity; review the migration to sensor v3 documentation to ensure your sensors are current and migration prerequisites are met."
+  },
+  {
+    "title": "Migration readiness reasons on the Sensors page",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Hovering over a server's \"Not ready for migration\" status on the Sensors page now shows a tooltip listing the specific blocking prerequisites, eliminating the need to cross-reference documentation for each server."
+  },
+  {
+    "title": "Microsoft Purview: Permissions audit log improvements",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Enhanced audit logs will capture role and scoped-role access decisions in the Purview portal, targeting GA in September 2026. Start planning how these logs will integrate into your existing SIEM ingestion and comp"
+  },
+  {
+    "title": "Microsoft Purview: eDiscovery - CMK (Customer managed key) for eDiscovery direct export",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Customer-managed key support for the eDiscovery direct export workflow is targeting GA in January 2027. If your data sovereignty or compliance requirements mandate CMK for exported content, this closes the gap - a"
+  },
+  {
+    "title": "Microsoft 365 admin center: Organizational Data - Granular access policy controls for custom attributes",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - Admins will be able to release custom organizational attributes to specific users or groups rather than all employees or all managers, and will control whether leaders can share non-public data with Workforce"
+  },
+  {
+    "title": "August 2026 Exchange Server Security Updates",
+    "category": "Action Required",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Apply immediately. Patches are available for Exchange SE RTM, Exchange Server 2019 CU14/CU15, and Exchange Server 2016 CU23. Organizations on 2019 or 2016 must be enrolled in the Period 2 ESU program to access the"
+  },
+  {
+    "title": "CVE-2026-59124 HPC Pack RCE - Corrected software table",
+    "category": "Action Required",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Verify patch accuracy now. Microsoft corrected the Security Updates table listing for this RCE vulnerability and recommends applying the update as soon as possible. If you previously tracked this as remediated bas"
+  },
+  {
+    "title": "CVE-2026-65768, CVE-2026-65769, CVE-2026-65767 Teams build number corrections",
+    "category": "Action Required",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Revalidate Teams remediation tracking. Build numbers for the Teams Desktop RCE, Teams iOS information disclosure, and Teams for Android spoofing CVEs were all corrected this week. If you closed out remediation for"
+  },
+  {
+    "title": "New how-to guide for migrating web content filtering policies to v2",
+    "category": "Documentation Updates",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "A new article documenting the migration process for Global Secure Access web content filtering policies to the v2 policy model has been added; if you are managing web content filtering through Entra, review this guide be"
+  },
+  {
+    "title": "Conditional Access account recovery FAQ added",
+    "category": "Documentation Updates",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "A new FAQ page covering account recovery scenarios under Conditional Access policies has been published; useful reference for helpdesk and identity teams handling lockout escalations."
+  },
+  {
+    "title": "Attacker-added device risk remediation guidance revised",
+    "category": "Documentation Updates",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "The guidance for remediating the attacker-added device risk detection in Entra ID has been meaningfully rewritten; if your team references this doc in incident response runbooks, update your local copies."
+  },
+  {
+    "title": "Agent Identity anti-pattern guidance and AI coding assistant guardrails added",
+    "category": "Documentation Updates",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "The Entra Agent Identity developer docs now include explicit anti-pattern guidance and guardrails for teams using AI coding assistants to build agent authentication flows; relevant for any team building Copilot Studio or"
+  },
+  {
+    "title": "Intune daily Device Action limits now documented",
+    "category": "Documentation Updates",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "Daily per-tenant limits on Intune Device Actions are now formally documented; if you run large-scale automated remediation or bulk device actions, review these limits to avoid throttling in production workflows."
+  },
+  {
+    "title": "BitLocker migration group reuse considerations added",
+    "category": "Documentation Updates",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "A new section covering group reuse scenarios in BitLocker migration has been added to the migration considerations doc; relevant for environments moving BitLocker management into Intune from GPO or MBAM."
+  },
+  {
+    "title": "Entra Tenant Governance is now GA",
     "category": "Top 5",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "{{< cat \"Security & Compliance\" >}} - If your organization is deploying enterprise or local AI agents, Defender can now assess their risk posture using configuration, access, runtime activity, and alert signals. This is "
+    "snippet": "{{< cat \"Identity & Access\" >}} - Multi-tenant environments have historically been a governance blind spot. This GA capability gives organizations a central control plane to manage identity, access, and compliance postur"
   },
   {
-    "title": "Real-time protection for Agent 365 tooling servers (GA)",
+    "title": "Defender for Identity sensor v3.x now covers AD FS, AD CS, and Entra Connect",
     "category": "Top 5",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "{{< cat \"Security & Compliance\" >}} - Defender now evaluates and can block tool invocations against security policies for Work IQ MCP and customer MCP tools in Agent 365. This is production-grade control over what your a"
+    "snippet": "{{< cat \"Security & Compliance\" >}} - These three server roles are high-value attack targets and were previously gaps in MDI sensor coverage. Expanding automatic auditing and sensor support to these roles closes a real d"
   },
   {
-    "title": "Threat detection for Agent 365 agents (Preview)",
+    "title": "Copilot Domain Exclusion feature has been rolled back",
     "category": "Top 5",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "{{< cat \"Security & Compliance\" >}} - Runtime signals from Copilot Studio, Microsoft Foundry, and Agent Builder are now flowing into Defender XDR as incidents and advanced hunting data. Security teams can finally investi"
+    "snippet": "{{< cat \"AI & Copilot\" >}} - If your organization deployed or communicated to stakeholders that web grounding could be scoped by domain exclusion, that capability is gone for now. No replacement timeline has been given. "
   },
   {
-    "title": "Purview DLP for Copilot prompts reaches government clouds (GA)",
+    "title": "Cross-tenant Free/Busy, MailTips, and calendar sharing moving off EWS",
     "category": "Top 5",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "{{< cat \"Security & Compliance\" >}} - The real-time DLP control that blocks Copilot from responding when prompts contain sensitive data is now available in government cloud tenants. If you manage a GCC, GCC-High, or DoD "
+    "snippet": "{{< cat \"Collaboration & Productivity\" >}} - EWS deprecation is forcing a migration to Cross-Tenant Access Policy for these Exchange features. If your tenant does cross-tenant calendar sharing today, this requires action"
   },
   {
-    "title": "DLP block for external domains and users in SharePoint/OneDrive (Preview)",
+    "title": "ChainDrop supply chain worm spread via 400+ compromised npm packages",
     "category": "Top 5",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "{{< cat \"Security & Compliance\" >}} - Admins can now configure DLP policies that block specific external domains or individual users from accessing sensitive files, rather than relying on broad sharing controls. This fil"
+    "snippet": "{{< cat \"Endpoint & Device Management\" >}} - This is a practical threat intelligence item for any team running CI/CD pipelines or Node.js-based tooling. Review your software composition analysis controls and npm dependen"
   },
   {
-    "title": "(Preview) AI agent posture risk in Microsoft Defender",
+    "title": "Microsoft Entra Tenant Governance is now generally available",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - If you manage more than one tenant today, this is the capability you've been waiting for: a built-in, centralized governance plane for multi-tenant environments. It surfaces identity, access, and compliance postur"
+  },
+  {
+    "title": "What's New in Microsoft Entra: August 2026",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The August Entra release roundup covers the full breadth of changes shipping this month across identity and network access. Worth reading end-to-end rather than sampling; several items in this digest trace back to"
+  },
+  {
+    "title": "DeadLock ransomware: Rust-based encryptor with decentralized recovery infrastructure",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Microsoft Threat Intelligence has published a detailed breakdown of DeadLock ransomware, which uses decentralized infrastructure for victim communications and double extortion. The identity angle is significant: u"
+  },
+  {
+    "title": "End VPN gaps with identity-first access",
+    "category": "Identity & Access",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - This post lays out the case for replacing or supplementing traditional VPN with Conditional Access and Global Secure Access, covering gaps in continuous evaluation of device posture, location, and user risk. Usefu"
+  },
+  {
+    "title": "CVE-2026-68183: stratix10-svc firmware memory leaks and list corruption",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Information published via MSRC. Review your firmware inventory for affected stratix10-svc components and apply guidance per the advisory."
+  },
+  {
+    "title": "Plan for Windows 10 Enterprise LTSC 2021 end of support",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - End of support lands January 12, 2027, after which no security updates will be issued. If you have LTSC 2021 devices in your estate, the migration runway to Windows 11 Enterprise LTSC 2024 is now under six months."
+  },
+  {
+    "title": "ChainDrop supply chain compromise: Anatomy of a self-propagating worm",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Over 400 npm packages were compromised and used to automatically republish malicious updates across software ecosystems. If your build pipelines consume npm packages, review your software composition analysis tool"
+  },
+  {
+    "title": "128 Seconds to disruption: Microsoft Defender stops ransomware at QNET",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - A real-world case study of Defender for Endpoint's automatic attack disruption isolating a compromised endpoint in 128 seconds before the ransomware payload could spread. Useful validation for stakeholders who que"
+  },
+  {
+    "title": "Microsoft Edge: Updated horizontal tab appearance",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - A visual refresh to Edge's horizontal tab strip with rounded tabs and revised spacing is targeting GA in September 2026. Tab behavior and enterprise data handling are unchanged, but expect user questions about the"
+  },
+  {
+    "title": "Cross-tenant Free/Busy, MailTips, and Calendar Sharing moving to Cross-Tenant Access Policy",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - EWS deprecation is forcing a migration of cross-tenant calendar features to the Cross-Tenant Access Policy model. If your organization shares Free/Busy or calendar data with external Microsoft 365 tenants today, t"
+  },
+  {
+    "title": "What's New in Copilot in SharePoint: August 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Copilot in SharePoint now generates live dashboards directly from SharePoint lists and Excel, producing interactive HTML reports that stay connected to the underlying data source. This is a meaningful productivity"
+  },
+  {
+    "title": "Microsoft named a Leader in KuppingerCole Leadership Compass for CNAPP",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Analyst recognition for Microsoft's cloud-native application protection platform posture. Relevant context if you're evaluating or consolidating security tooling around the Microsoft stack."
+  },
+  {
+    "title": "Microsoft named a Leader in 2026 Gartner Magic Quadrant for Unified Communications as a Service",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Eighth consecutive year as a UCaaS Leader, positioned highest on Ability to Execute. Useful for licensing and vendor consolidation conversations; no technical action required."
+  },
+  {
+    "title": "Teams Phone Agent and custom voice agents built in Copilot Studio",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Teams Phone Agent enables AI-powered voice agents to handle customer calls, including after-hours and overflow scenarios, built on Copilot Studio. If your organization runs a call center or customer-facing phone q"
+  },
+  {
+    "title": "Workplace check-in via Wi-Fi for Microsoft Places and Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Employees can opt in to automatic workplace location updates based on connection to configured company Wi-Fi networks, reducing manual status management. Admins need to configure the relevant network identifiers; "
+  },
+  {
+    "title": "Making Microsoft Teams more responsive, reliable, and ready for work",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The Teams engineering team has published details on recent performance investments covering startup time, chat responsiveness, and meeting join reliability. No admin action required, but useful context for help de"
+  },
+  {
+    "title": "What's New in Microsoft Teams: May 2026 Build Edition",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The May release roundup covers Teams Platform features announced at Microsoft Build, with a focus on developer-facing capabilities including agents, extensibility, and AI integration points. Review if your team ma"
+  },
+  {
+    "title": "What's New in Microsoft Teams: April 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - April's release summary covers collaboration intelligence, calling improvements, and hybrid team features. Worth reviewing if you haven't caught up; several items may already be live in your tenant."
+  },
+  {
+    "title": "Teams Phone user multi-line: up to 10 phone numbers per user",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Admins can now assign up to 10 phone numbers to a single Teams Phone user, enabling one person to represent multiple lines of business or regions within a single Teams account. This eliminates common workarounds i"
+  },
+  {
+    "title": "New Frontline Innovations at Microsoft 365 Community Conference",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - New frontline capabilities include a guided deployment wizard in Teams Admin Center for scaling pilots, smart scheduling for automatic shift filling, a Communicator App for operational updates, and hands-free site"
+  },
+  {
+    "title": "Intelligent call delegation for Teams Phone",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - An AI-powered experience that can answer incoming Teams calls and schedule follow-up appointments on a user's behalf is available through the Frontier program. This is an early-access capability; check Frontier el"
+  },
+  {
+    "title": "Microsoft Teams at the 2026 Microsoft 365 Community Conference",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Session and announcement overview from M365CC covering meetings, calling, collaboration, and agent integration in Teams. Useful as a reference for what was announced at the conference if you missed it."
+  },
+  {
+    "title": "Public Preview: New Microsoft Teams VDI Optimization for Omnissa",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - A tech preview of the new Teams VDI optimization for Omnissa Horizon environments is now available, aiming for feature parity and performance consistency between physical and virtual desktops. If you run Team"
+  },
+  {
+    "title": "Copilot context menu PDF review on OneDrive iOS",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Selecting text in a PDF on OneDrive iOS will surface an Ask Copilot option for summarization, translation, or custom questions, targeting GA in October 2026. No admin action required; ensure Copilot licenses are i"
+  },
+  {
+    "title": "Teams Queues app: Intelligent call recaps for recorded calls",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AI-generated summaries, key discussion points, and follow-up actions will be available in the Recap tab for recorded call queue calls, targeting GA in September 2026. Relevant for contact center and support queue "
+  },
+  {
+    "title": "OneDrive: Dedicated Shortcuts folder when adding shortcuts",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - OneDrive now offers a dedicated Shortcuts folder as a destination when adding shortcuts, keeping them separate from root-level files. The folder is auto-created on first use with a distinct icon; already GA as of "
+  },
+  {
+    "title": "Copilot Notebooks: Outlook emails as knowledge sources",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - Users can now add Outlook emails as references in Copilot Notebooks, grounding agent outputs in email conversations and decisions alongside files. Currently in preview; confirm your Copilot license scope cove"
+  },
+  {
+    "title": "Teams meetings: Connect to existing Planner plans",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Rather than auto-generating a new Planner plan per meeting, users can now connect a Teams meeting to an existing plan, consolidating tasks for long-running projects. GA targeting September 2026; no admin configura"
+  },
+  {
+    "title": "Microsoft 365 Apps Cloud Update: Simplified Channel Management",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - Admins can now use Entra ID groups as device selection criteria in Cloud Update profiles, combining channel assignment and profile assignment in a single step. Currently in preview as of May 2026, GA since Ju"
+  },
+  {
+    "title": "Domain Exclusion for Microsoft 365 Copilot has been rolled back",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The web grounding domain exclusion capability that allowed admins to block specific domains from Copilot's web search has been pulled back with no replacement timeline. If you communicated this control to stakehol"
+  },
+  {
+    "title": "What's new in Power Platform: July/August 2026 feature update",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The data grid modern control is now GA for canvas apps, delivering a Fluent UI-based grid with search, sorting, selection, and rich column types. Review the full post for additional GA and preview items shipping t"
+  },
+  {
+    "title": "Microsoft Entra Agent ID for Dataverse: GA",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Each AI agent built on Dataverse can now be assigned a dedicated Entra identity with appropriate security roles, giving you audit trails and least-privilege access control per agent. If your organization is deploy"
+  },
+  {
+    "title": "Partner Blog: From AI curiosity to Copilot adoption in 30 days",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - A 30-day adoption framework for SMB Copilot rollouts targeting CSP partners. Useful reference if you're supporting SMB customers or running an internal Copilot pilot and need a structured adoption playbook."
+  },
+  {
+    "title": "Advance Zero Trust for AI: New tools and guidance for AI agents and DevSecOps",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Microsoft has expanded its Zero Trust for AI strategy with new tooling and prescriptive guidance covering AI agent security and DevSecOps environments. If you're building or governing agent deployments, review the"
+  },
+  {
+    "title": "Copilot Studio: Dataverse as a native knowledge source",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[Preview] - Dataverse is entering preview as a native knowledge source in Copilot Studio, allowing agents to be grounded directly in structured business data including customer records and operational data. Preview start"
+  },
+  {
+    "title": "Copilot Vision: Analyze desktop screen and mobile camera in real time",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Vision in Microsoft 365 Copilot now supports real-time analysis of a shared desktop screen or mobile camera feed during voice sessions, delivering context-aware spoken answers. This was GA in June 2026; if you hav"
+  },
+  {
+    "title": "Copilot mobile app: Proactive push notifications for productivity workflows",
+    "category": "AI & Copilot",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The Microsoft 365 Copilot mobile app will proactively push notifications for workflows like \"Your Day at a Glance\" and \"Items waiting for you,\" targeting GA in September 2026. Requires Copilot licenses; these noti"
+  },
+  {
+    "title": "Viva Glint: Export Heat Map report to editable PowerPoint slides",
+    "category": "Employee Experience",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Managers can now export the default sections of the Glint Heat Map report as editable PowerPoint slides rather than static screenshots, already GA as of July 2026. Communicate this to Glint admins and managers who"
+  },
+  {
+    "title": "Viva Glint: Configurable data retention policy",
+    "category": "Employee Experience",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Glint service administrators can now configure a data retention policy governing how long past survey cycles are retained or deleted, covering engagement surveys, always-on surveys, lifecycle surveys, and 360s. Th"
+  },
+  {
+    "title": "CVE-2025-2309: HDF5 Type Conversion Logic heap-based overflow",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[Preview] - If you are deploying AI agents, Defender now gives you a structured posture risk view covering configuration, access, runtime activity, endpoint and user context, and active alerts. Risk levels map directly t"
+    "snippet": "[GA] - Information published via MSRC. Assess exposure in any environments processing HDF5 files and apply mitigations per the advisory."
   },
   {
-    "title": "(GA) Domain investigation page in Defender for Identity",
+    "title": "CVE-2025-2308: HDF5 Scale-Offset Filter heap-based overflow",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[GA] - The dedicated Active Directory domain investigation page is now generally available, surfacing domain properties, deployment health, identity summary, service account breakdown, sensitive entities, group policies,"
+    "snippet": "[GA] - Second HDF5 heap overflow published this cycle, affecting the Scale-Offset filter decompression path. Treat together with CVE-2025-2309 when assessing HDF5 exposure."
   },
   {
-    "title": "(Preview) Threat detection for Microsoft Agent 365 agents",
+    "title": "CVE-2026-64581: xfrm double-free in xfrm_user_policy()",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[Preview] - Defender XDR now analyzes runtime signals from agent interactions, tool usage, and execution patterns across Copilot Studio, Microsoft Foundry, Agent Builder, and SDK-integrated agents, surfacing results as i"
+    "snippet": "[GA] - Linux kernel xfrm (IPsec) double-free vulnerability published via MSRC. Relevant for Linux-based endpoints or VMs in your estate; apply kernel patches per advisory guidance."
   },
   {
-    "title": "(GA) Real-time protection for Microsoft Agent 365 tooling servers",
+    "title": "CVE-2026-68097: ksmbd ACE size validation against SID sub-authorities",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[GA] - Defender now enforces security policies on tool invocations between agents and MCP servers, with the ability to allow or block interactions in real time. This is the enforcement layer that complements posture risk"
+    "snippet": "[GA] - Information published. Relevant for environments using ksmbd (Linux kernel SMB server); review and patch accordingly."
   },
   {
-    "title": "From open lures to cloaked gates: How a macOS ClickFix campaign learned to hide",
+    "title": "CVE-2026-68412: cfg80211 error handling in cfg80211_wext_siwscan()",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[GA] - A macOS ClickFix infostealer campaign added browser fingerprinting to gate malicious payloads, making infrastructure scanning less effective for detection. The blog details the new hunting indicators that the tech"
+    "snippet": "[GA] - Linux Wi-Fi subsystem vulnerability published via MSRC. Apply kernel updates on affected Linux devices."
   },
   {
-    "title": "Secure the AI Model, Not Just Access",
+    "title": "CVE-2026-71497: jsoup Cleaner exposing markup with custom raw-text elements",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[GA] - Microsoft Mechanics covers the Zero Trust principle that AI resources including models, agents, APIs, and data pipelines need to be secured as resources themselves, not just gated at the access layer. Prompt Shiel"
+    "snippet": "[GA] - jsoup HTML sanitizer vulnerability that can expose markup through custom raw-text elements. Relevant for any Java-based application or service that uses jsoup for HTML sanitization; update the library dependency."
   },
   {
-    "title": "Make Protection Follow Your Data",
+    "title": "CVE-2026-68273: drm/amdgpu context pstate override handling fix",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[GA] - This Mechanics short covers how Purview sensitivity labels applied to unstructured M365 data extend into Microsoft Fabric and other cloud data stores, including AI workloads. The practical takeaway is that label-d"
+    "snippet": "[GA] - AMD GPU driver fix published via MSRC. Apply on Linux systems with amdgpu driver exposure."
   },
   {
-    "title": "Microsoft Purview: Role groups UI enhancements",
+    "title": "CVE-2026-68190: rtl8723bs OOB reads in rtw_get_wps_ie()",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[Preview] - The Purview compliance portal Role groups page now lets admins look up permissions by roles and memberships directly in the UI. This reduces the operational overhead of auditing who has what compliance permis"
+    "snippet": "[GA] - Out-of-bounds read in the RTL8723BS staging driver. Patch Linux endpoints with this wireless chipset."
   },
   {
-    "title": "Microsoft Purview DLP for Microsoft 365 Copilot in government clouds",
+    "title": "CVE-2026-64652: GitHub CLI partial token disclosure in gh auth status",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[GA] - Real-time DLP for Copilot prompts, which blocks responses when prompts contain sensitive data and prevents that data from being used for grounding, is now GA in government clouds. GCC, GCC-High, and DoD tenant adm"
+    "snippet": "[GA] - GitHub CLI can partially disclose tokens in the output of gh auth status. Update the GitHub CLI on all developer workstations and CI/CD environments and rotate any tokens that may have been exposed in logs."
   },
   {
-    "title": "Microsoft Purview DLP: Block external domain/user action for SharePoint and OneDrive",
+    "title": "CVE-2026-68186: binfmt_misc execfd flag set before interpreter is opened",
     "category": "Security & Compliance",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "[Preview] - DLP policies can now target specific external domains or individual external users for file access blocking in SharePoint and OneDrive, adding precision beyond tenant-wide external sharing settings. This is t"
+    "snippet": "[GA] - Linux binfmt_misc vulnerability published via MSRC. Apply kernel patches on affected Linux hosts."
   },
   {
-    "title": "DLP for Copilot prompts in government clouds: Validate coverage now",
+    "title": "CVE-2026-64653: GitHub CLI path traversal via unescaped URL variable components",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Unescaped variable components in GitHub CLI request URLs can enable path traversal. Update the GitHub CLI on all developer and CI/CD systems immediately; this pairs with CVE-2026-64652 as a two-issue update obliga"
+  },
+  {
+    "title": "CVE-2026-68114: drm/amdgpu/gfx12.1 BUG_ON replaced with WARN_ON",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AMD GPU stability fix published via MSRC. Apply on Linux systems running amdgpu gfx12.1 hardware."
+  },
+  {
+    "title": "CVE-2026-68258: drm/amdkfd bounds check on CRIU restore queue type and mqd size",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - AMD kernel fusion driver bounds checking fix published via MSRC. Apply on Linux systems with AMD GPU workloads."
+  },
+  {
+    "title": "CVE-2026-68203: vivid cleanup bugs in vivid_init()",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Linux media test driver cleanup fix published via MSRC. Low production exposure for most environments, but patch accordingly on affected kernels."
+  },
+  {
+    "title": "Microsoft named a Leader in 2026 IDC MarketScape for MDR/MXDR",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - IDC has named Microsoft a Leader in the MDR/MXDR for Enterprise MarketScape. Useful supporting material for stakeholders evaluating Defender Experts MDR as part of a SOC modernization or vendor consolidation effor"
+  },
+  {
+    "title": "Defender for Identity: New health alert for GPO-reverted auditing configuration",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - MDI will now raise a health alert when a GPO repeatedly reverts the auditing configuration required by sensor v3.x on a domain controller. If you see this alert, it means a GPO conflict is silently degrading your "
+  },
+  {
+    "title": "Defender for Identity: PowerShell script to find GPO auditing conflicts",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The new Find-MdiAuditingGpoConflicts.ps1 read-only script identifies GPOs that override MDI's automatic auditing settings on domain controllers. Run this proactively across your domain controller fleet rather than"
+  },
+  {
+    "title": "Defender for Identity sensor v3.x: Support for AD FS, AD CS, and Entra Connect servers",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Sensor v3.x can now be deployed on AD FS, AD CS, and Microsoft Entra Connect servers regardless of whether they are domain controllers. These are high-value identity infrastructure targets; add them to your MDI se"
+  },
+  {
+    "title": "Defender for Identity: Expanded automatic auditing for AD FS, AD CS, and Entra Connect",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Automatic Windows event auditing now extends to AD FS, AD CS, and Entra Connect servers running sensor v3.x, including non-domain-controller deployments. This means your MDI event collection is now consistent acro"
+  },
+  {
+    "title": "MCP safety and evaluation with Agent 365 CLI and Agent Governance Toolkit",
+    "category": "Security & Compliance",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - Two distinct control points for MCP agent governance: Agent 365 CLI evaluates MCP servers before an agent connects, and the Agent Governance Toolkit governs sensitive tool calls at runtime. If your organization is"
+  },
+  {
+    "title": "Windows 10 Enterprise LTSC 2021 end of support: January 12, 2027",
     "category": "Action Required",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "GA as of June 2026. If you operate a GCC, GCC-High, or DoD tenant, confirm that your existing DLP policies include Copilot prompt locations. The feature is live and unprotected prompts containing sensitive data represent"
+    "snippet": "[GA] - Deadline: January 12, 2027, now under six months away. Run a Intune or Endpoint Analytics report to quantify your LTSC 2021 device count, build a migration plan to Windows 11 Enterprise LTSC 2024, and get leadersh"
   },
   {
-    "title": "Real-time Agent 365 MCP tool protection: Define policy stance before defaults bite you",
+    "title": "Cross-tenant calendar and Free/Busy features moving off EWS: Plan your migration",
     "category": "Action Required",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "GA as of this week. Organizations using Work IQ MCP or customer MCP tools with Agent 365 should document their intended allow/block posture per tool category and configure Defender policies accordingly. Leaving enforceme"
+    "snippet": "[GA] - EWS deprecation drives this change. Review Message Center post MC1446796, identify which tenant relationships use cross-tenant Free/Busy, MailTips, or calendar sharing, and begin configuring Cross-Tenant Access Po"
   },
   {
-    "title": "macOS ClickFix campaign: Review endpoint detections for fingerprinting-gated payloads",
+    "title": "GitHub CLI CVEs: Immediate update required for CVE-2026-64652 and CVE-2026-64653",
     "category": "Action Required",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "Active campaign targeting macOS. Review the Microsoft Security Blog indicators of compromise, update Defender for Endpoint custom detections for macOS, and confirm your browser fingerprinting-aware hunting queries are cu"
+    "snippet": "[GA] - Two GitHub CLI vulnerabilities published this week: partial token disclosure in gh auth status output and path traversal via unescaped URL components. Update the GitHub CLI on all developer workstations and CI/CD "
+  },
+  {
+    "title": "Defender for Identity sensor v3.x: Deploy to AD FS, AD CS, and Entra Connect now",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - With sensor v3.x support now GA for these server roles, there is no reason to leave them uncovered. Add AD FS, AD CS, and Entra Connect servers to your MDI sensor deployment queue, and run Find-MdiAuditingGpoConfl"
+  },
+  {
+    "title": "Copilot Domain Exclusion rollback: Reassess web grounding governance",
+    "category": "Action Required",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "[GA] - The domain exclusion control for Copilot web grounding has been removed with no replacement timeline. If this was part of your Copilot governance story or was communicated to compliance stakeholders, update your d"
   },
   {
     "title": "Token Protection deployment guide for web apps added (Preview)",
     "category": "Documentation Updates",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "A new deployment guide documents how to enable and configure Conditional Access Token Protection for web applications, which is now in Preview; if you have been waiting on implementation guidance before piloting this con"
+    "snippet": "A new deployment guide for Token Protection in web app scenarios has been added to the Entra docs, covering prerequisites, configuration steps, and the current preview scope; relevant for any team evaluating Conditional "
   },
   {
-    "title": "Permission requirement for passkey opt-out now documented",
+    "title": "Admin permission required for passkey opt-out now documented",
     "category": "Documentation Updates",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "The docs now specify which admin permission is required to allow users to opt out of passkey registration, a detail that was previously missing and relevant to any org fine-tuning their phishing-resistant MFA rollout."
+    "snippet": "The docs now explicitly document which admin permission is required to opt users out of passkey registration, closing a gap that was causing confusion during passkey policy rollouts."
   },
   {
-    "title": "Managed policy activation and remediation details revised",
+    "title": "Managed policies activation and remediation details revised",
     "category": "Documentation Updates",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "The documentation for Microsoft-managed Conditional Access policies has been updated with clarified activation steps and remediation guidance; worth re-reading if your org is working through managed policy conflicts or r"
+    "snippet": "The guidance on activating and remediating managed Conditional Access policies has been updated with clearer steps and corrected detail; worth reviewing if your team manages Microsoft-managed CA policies."
   },
   {
-    "title": "PSSO incompatibility with userless ADE devices now documented",
+    "title": "Agent ID licensing updated to reference Agent 365 product terms",
     "category": "Documentation Updates",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "A new warning clarifies that Platform SSO does not work on userless Automated Device Enrollment devices; if you are deploying shared iPads or kiosk-mode ADE devices alongside PSSO, check your enrollment profiles against "
+    "snippet": "The Entra Agent ID licensing page now references Agent 365 product terms rather than prior licensing language; check this if you're planning agent identity deployments and need accurate licensing prerequisites."
   },
   {
-    "title": "Per-setting reporting behavior added to Intune firewall policy docs",
+    "title": "Warning added for Platform SSO incompatibility with userless ADE devices",
     "category": "Documentation Updates",
     "date": "2026-08-11",
     "url": "/posts/2026-08-11/",
-    "snippet": "The firewall policy documentation now notes per-setting reporting limitations, which is relevant for engineers interpreting compliance reports where firewall settings appear unresolved despite successful policy delivery."
+    "snippet": "The docs now include an explicit warning that Platform SSO (PSSO) is not supported on userless Automated Device Enrollment (ADE) devices; if you're rolling out PSSO alongside ADE, verify your device enrollment profiles a"
+  },
+  {
+    "title": "Intune firewall policy docs updated with per-setting reporting note",
+    "category": "Documentation Updates",
+    "date": "2026-08-11",
+    "url": "/posts/2026-08-11/",
+    "snippet": "Firewall policy documentation now clarifies per-setting reporting behavior, which affects how compliance status is surfaced for individual firewall rules in the Intune console."
   },
   {
     "title": "Defender for Office 365 Plan 1 now included in Microsoft 365 E3",
