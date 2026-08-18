@@ -246,6 +246,44 @@
       0 4px 20px rgba(0,0,0,0.55);
   }
 
+  /* Glowing instruction banner -- Ryan's request: move the how-to-use
+     hint out from under the pillar legend (where it was easy to miss)
+     into its own clearly visible, glowing banner near the top of the
+     page. Reuses .neon-card's glow language but stronger/more central
+     so it reads as a deliberate callout, not a footnote. */
+  .universe-instruction-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px auto 0;
+    padding: 9px 20px;
+    max-width: fit-content;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--text);
+    background: rgba(88,166,255,0.08);
+    border: 1px solid rgba(88,166,255,0.55);
+    box-shadow:
+      0 0 2px rgba(88,166,255,0.7),
+      0 0 16px 2px rgba(88,166,255,0.35),
+      0 0 40px 8px rgba(88,166,255,0.16);
+  }
+  .universe-instruction-banner .ub-star {
+    color: #e3b341;
+    animation: ub-twinkle 2.4s ease-in-out infinite;
+  }
+  @keyframes ub-twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .universe-instruction-banner .ub-star { animation: none; }
+  }
+  @media (max-width: 700px) {
+    .universe-instruction-banner { font-size: 11px; padding: 7px 14px; margin: 8px 10px 0; }
+  }
+
   .legend {
     position: absolute;
     top: 16px;
@@ -444,6 +482,11 @@
   <span>Tag Universe &middot; drag to rotate &middot; click a star for its trend</span>
 </div>
 
+<div class="universe-instruction-banner neon-card">
+  <span class="ub-star">&#10022;</span>
+  <span>Drag to rotate the globe &middot; hover a star for details &middot; click a star for its weekly trend</span>
+</div>
+
 <div id="universe-root">
   <div id="universe-canvas-holder"></div>
 
@@ -456,7 +499,6 @@
     <div class="legend-row"><span class="legend-dot style-gradient" style="--mc:var(--pillar-ee)"></span>Employee Experience</div>
     <div class="legend-row"><span class="legend-dot style-halo" style="--mc:var(--pillar-security)"></span>Security &amp; Compliance</div>
     <div class="legend-row"><span class="legend-dot ring"></span>Documentation Updates (1 per pillar)</div>
-    <div class="legend-hint">Drag to rotate. Hover a star. Click for its weekly trend.</div>
     <button id="reset-view-btn" type="button">↺ Reset view</button>
   </div>
 
@@ -495,8 +537,8 @@
   <div id="rm-badge">prefers-reduced-motion: auto-rotate disabled</div>
 
   <div id="no-webgl">
-    <h2>Tag Universe needs WebGL</h2>
-    <p>Your browser or device doesn't support WebGL, so the globe can't render here. The real site's <code>/universe/</code> route always falls back to the plain CSS room list below the globe, with all the same content and links.</p>
+    <h2 id="no-webgl-heading">Tag Universe, list view</h2>
+    <p id="no-webgl-copy">Every topic Modern Work Weekly has covered, grouped by pillar. The full 3D globe needs a wider screen — visit on a larger display for the interactive version.</p>
     <ul id="no-webgl-fallback-list"></ul>
   </div>
 </div>
@@ -535,92 +577,65 @@
   };
 
   // ==========================================================================
-  // 2. REAL DATA — extracted 2026-08-15 from this repo's 16 published posts
-  // (site/content/posts/*.md front matter `tags:` + `date:`) rather than
-  // fabricated. Per round-6 request: "dry-run against the site's current
-  // tags, then create a sample based on the current live set."
+  // 2. REAL DATA  -  auto-generated from the published archive
+// ==========================================================================
+  // WEEKS/TAG_SEED/NODES/DOCS_REAL/DOCS_NODES/EDGES below are regenerated
+  // by scraper/generate_graph.py from site/content/posts/*.md front matter
+  // every time weekly-run.sh publishes a new digest - do not hand-edit the
+  // block between the GENERATED:GRAPH markers, run the script instead
+  // (`python3 scraper/generate_graph.py`, or `--dry-run` to preview).
   //
-  // What's real vs. still illustrative:
-  //   - WEEKS: the 16 actual published post dates.
-  //   - TAG_SEED: the 32 actual distinct tags in use (excluding "modern-work",
-  //     a whole-site branding tag on every post, not a content signal), with
-  //     each tag's REAL per-week presence (1 = that week's digest carried
-  //     this tag, 0 = it didn't) and REAL pillar, reproduced from
-  //     scraper/sources.py's CLASSIFICATION_KEYWORDS (a few defender-*
-  //     variants needed a manual override — see comment below — since a
-  //     naive keyword match would misroute them the same way the real
-  //     classifier's own audit history warns about).
-  //   - Because front matter only lists which tags a week's digest carried
-  //     (not how many times), "total"/weekly counts here mean "weeks
-  //     featured," not "mentions" — the UI copy below reflects that.
-  //   - EDGES: real co-occurrence (tags appearing in the same week's digest
-  //     together), pruned to weight >= 8 — at the full real threshold there
-  //     are 167 pairings, which is exactly the unreadable spiderweb problem;
-  //     this keeps the ~26 strongest real relationships visible.
-  //   - DOCS_NODES (Documentation Updates badges): REAL per-week counts for
-  //     Identity & Access, Endpoint & Device Management, and Security &
-  //     Compliance, parsed from each post's "## Documentation Updates"
-  //     section. Collaboration & Productivity, AI & Copilot, and Employee
-  //     Experience all come back genuinely zero — docs_updates.py only
-  //     watches the entra-docs/memdocs/defender-docs repos today, so there's
-  //     no real doc-commit source for those three pillars yet. That's not a
-  //     mock-data placeholder; it's an accurate reflection of a real,
-  //     already-known pipeline gap.
+  // Tag -> pillar mapping is scraper/generate_graph.py's PILLAR_TAG_MAP,
+  // kept in sync manually with topics-sidebar.html / terms.html.
+  // "total"/weekly counts mean "weeks featured," not "mentions," since
+  // front matter only records which tags a week's digest carried.
   //
-  // Worth flagging on its own: Employee Experience has exactly ONE real tag
-  // (viva, 1 of 16 weeks) — matches the known gap in FRONTEND_HANDOFF.md
-  // ("no published post has ever carried Employee Experience" as a
-  // *category*; it turns out one early post did carry viva as a *tag*,
-  // but the pillar is still by far the thinnest cluster on the globe).
-  const WEEKS = ["2026-05-09","2026-05-10","2026-05-17","2026-05-19","2026-05-26",
-                 "2026-06-02","2026-06-09","2026-06-16","2026-06-23","2026-06-30",
-                 "2026-07-07","2026-07-14","2026-07-21","2026-07-28","2026-08-04","2026-08-11"];
+  // EDGES: for each tag, its top-2 co-occurring partners ranked by Jaccard
+  // similarity (shared weeks / union of weeks either tag appeared in) so
+  // high-frequency tags like copilot/zero-trust don't crowd out every other
+  // tag's real strongest relationship, floored at >= 3 raw shared weeks.
+  // See generate_graph.py's module docstring for the full rationale.
+  //
+  // DOCS_NODES: per-week Documentation Updates counts parsed from each
+  // post's "## Documentation Updates" section. Pillars with no doc-commit
+  // source yet (docs_updates.py currently only watches entra-docs/memdocs/
+  // defender-docs) come back genuinely zero  -  that's an accurate reflection
+  // of a known pipeline gap, not a placeholder.
+  // GENERATED:GRAPH:START - do not hand-edit below this line, run scraper/generate_graph.py instead
+  const WEEKS = ["2026-05-09","2026-05-10","2026-05-17","2026-05-19","2026-05-26","2026-06-02","2026-06-09","2026-06-16","2026-06-23","2026-06-30","2026-07-07","2026-07-14","2026-07-21","2026-07-28","2026-08-04","2026-08-11","2026-08-18"];
 
-  function seededRand(seed) {
-    let s = seed % 2147483647;
-    if (s <= 0) s += 2147483646;
-    return function () { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
-  }
-  function hashCode(str) {
-    let h = 0;
-    for (let i = 0; i < str.length; i++) { h = (h * 31 + str.charCodeAt(i)) | 0; }
-    return Math.abs(h) || 1;
-  }
-
-  // [tag, pillar, weekly-presence-array — 1 if that week's digest carried this tag]
   const TAG_SEED = [
-    ["copilot", "AI & Copilot", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1]],
-    ["zero-trust", "Security & Compliance", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1]],
-    ["defender-xdr", "Security & Compliance", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1]],
-    ["entra-id", "Identity & Access", [1,1,1,1,1,1,1,1,1,0,0,0,1,0,1,1]],
-    ["intune", "Endpoint & Device Management", [1,1,1,1,1,1,1,1,1,1,0,0,1,0,1,0]],
-    ["endpoint-management", "Endpoint & Device Management", [0,0,1,1,1,1,1,1,1,1,0,0,1,0,1,1]],
-    ["exchange", "Collaboration & Productivity", [1,0,0,0,0,1,1,1,1,1,0,1,1,0,1,1]],
-    ["teams", "Collaboration & Productivity", [1,0,0,1,1,1,1,0,1,1,1,0,0,0,1,1]],
-    ["purview", "Security & Compliance", [1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,0]],
-    ["windows", "Endpoint & Device Management", [0,0,1,1,0,0,0,1,1,1,1,1,1,0,1,1]],
-    ["identity", "Identity & Access", [0,0,0,1,1,1,1,1,1,1,0,0,1,0,1,1]],
-    ["sharepoint", "Collaboration & Productivity", [1,0,0,0,0,1,1,0,1,1,1,1,0,0,1,1]],
-    ["conditional-access", "Identity & Access", [0,0,1,0,1,1,1,1,1,0,0,0,1,0,0,1]],
-    ["shadow-ai", "AI & Copilot", [0,0,1,1,0,1,1,1,1,0,0,0,0,0,1,1]],
-    ["windows-365", "Endpoint & Device Management", [1,0,0,0,1,1,1,1,0,0,0,0,1,1,0,0]],
-    ["global-secure-access", "Security & Compliance", [1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0]],
-    ["data-lifecycle", "Security & Compliance", [0,0,0,1,1,1,1,1,0,0,0,0,0,1,0,0]],
-    ["power-platform", "AI & Copilot", [0,0,0,0,0,1,1,1,0,0,0,0,1,0,1,1]],
-    ["copilot-studio", "AI & Copilot", [1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1]],
-    ["windows-autopatch", "Endpoint & Device Management", [0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0]],
-    ["dspm", "Security & Compliance", [0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0]],
-    ["defender-for-endpoint", "Security & Compliance", [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1]],
-    ["defender-for-office-365", "Security & Compliance", [0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0]],
-    ["agent-365", "AI & Copilot", [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
-    ["viva", "Employee Experience", [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
-    ["hotpatch", "Endpoint & Device Management", [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]],
-    ["linux", "Endpoint & Device Management", [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]],
-    ["teams-rooms", "Collaboration & Productivity", [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0]],
-    ["autopilot", "Endpoint & Device Management", [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0]],
-    ["security", "Security & Compliance", [0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0]],
-    ["defender-for-identity", "Security & Compliance", [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]],
-    ["onedrive", "Collaboration & Productivity", [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]],
+    ["copilot", "AI & Copilot", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1]],
+    ["zero-trust", "Security & Compliance", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,1,1]],
+    ["defender-xdr", "Security & Compliance", [1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1,0]],
+    ["entra-id", "Identity & Access", [1,1,1,1,1,1,1,1,1,0,0,0,1,0,1,1,1]],
+    ["endpoint-management", "Endpoint & Device Management", [0,0,1,1,1,1,1,1,1,1,0,0,1,0,1,1,1]],
+    ["intune", "Endpoint & Device Management", [1,1,1,1,1,1,1,1,1,1,0,0,1,0,1,0,0]],
+    ["exchange", "Collaboration & Productivity", [1,0,0,0,0,1,1,1,1,1,0,1,1,0,1,1,1]],
+    ["identity", "Identity & Access", [0,0,0,1,1,1,1,1,1,1,0,0,1,0,1,1,1]],
+    ["purview", "Security & Compliance", [1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,0,1]],
+    ["teams", "Collaboration & Productivity", [1,0,0,1,1,1,1,0,1,1,1,0,0,0,1,1,1]],
+    ["windows", "Endpoint & Device Management", [0,0,1,1,0,0,0,1,1,1,1,1,1,0,1,1,1]],
+    ["conditional-access", "Identity & Access", [0,0,1,0,1,1,1,1,1,0,0,0,1,0,0,1,1]],
+    ["sharepoint", "Collaboration & Productivity", [1,0,0,0,0,1,1,0,1,1,1,1,0,0,1,1,0]],
+    ["global-secure-access", "Identity & Access", [1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1]],
+    ["shadow-ai", "AI & Copilot", [0,0,1,1,0,1,1,1,1,0,0,0,0,0,1,1,0]],
+    ["windows-365", "Endpoint & Device Management", [1,0,0,0,1,1,1,1,0,0,0,0,1,1,0,0,1]],
+    ["power-platform", "AI & Copilot", [0,0,0,0,0,1,1,1,0,0,0,0,1,0,1,1,1]],
+    ["data-lifecycle", "Security & Compliance", [0,0,0,1,1,1,1,1,0,0,0,0,0,1,0,0,0]],
+    ["copilot-studio", "AI & Copilot", [1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,0]],
+    ["dspm", "Security & Compliance", [0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0]],
+    ["windows-autopatch", "Endpoint & Device Management", [0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0]],
+    ["defender-for-endpoint", "Security & Compliance", [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0]],
+    ["defender-for-identity", "Security & Compliance", [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1]],
+    ["defender-for-office-365", "Security & Compliance", [0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0]],
+    ["onedrive", "Collaboration & Productivity", [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1]],
+    ["agent-365", "AI & Copilot", [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["autopilot", "Endpoint & Device Management", [0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["hotpatch", "Endpoint & Device Management", [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["linux", "Endpoint & Device Management", [0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["teams-rooms", "Endpoint & Device Management", [0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ["viva", "Employee Experience", [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
   ];
 
   const NODES = TAG_SEED.map(([tag, pillar, presence]) => {
@@ -628,17 +643,13 @@
     return { tag, pillar, total: presence.reduce((a, c) => a + c, 0), weekly };
   });
 
-  // Real per-week Documentation Updates counts, parsed from each post's
-  // "## Documentation Updates" section. Zeros for Collaboration &
-  // Productivity / AI & Copilot / Employee Experience are real absences,
-  // not filler — see the comment block above.
   const DOCS_REAL = {
-    "Identity & Access": {"2026-05-17":3,"2026-05-19":5,"2026-05-26":2,"2026-06-02":2,"2026-06-09":4,"2026-06-16":6,"2026-06-23":5,"2026-06-30":5,"2026-07-07":5,"2026-07-14":5,"2026-07-21":5,"2026-07-28":6,"2026-08-04":6,"2026-08-11":4},
-    "Endpoint & Device Management": {"2026-05-17":3,"2026-05-26":3,"2026-06-02":3,"2026-06-09":2,"2026-06-16":6,"2026-06-23":2,"2026-06-30":4,"2026-07-07":4,"2026-07-14":2,"2026-07-21":4,"2026-08-04":3,"2026-08-11":2},
-    "Security & Compliance": {"2026-05-17":1,"2026-05-19":2,"2026-05-26":2,"2026-06-09":1,"2026-06-16":3,"2026-06-23":3,"2026-07-07":2,"2026-07-14":1,"2026-08-04":3},
+    "Identity & Access": {"2026-05-17":3,"2026-05-19":5,"2026-05-26":2,"2026-06-02":2,"2026-06-09":4,"2026-06-16":6,"2026-06-23":5,"2026-06-30":5,"2026-07-07":5,"2026-07-14":5,"2026-07-21":5,"2026-07-28":6,"2026-08-04":6,"2026-08-11":4,"2026-08-18":4},
+    "Endpoint & Device Management": {"2026-05-17":3,"2026-05-26":3,"2026-06-02":3,"2026-06-09":2,"2026-06-16":6,"2026-06-23":2,"2026-06-30":4,"2026-07-07":4,"2026-07-14":2,"2026-07-21":4,"2026-08-04":3,"2026-08-11":2,"2026-08-18":2},
     "Collaboration & Productivity": {},
     "AI & Copilot": {},
     "Employee Experience": {},
+    "Security & Compliance": {"2026-05-17":1,"2026-05-19":2,"2026-05-26":2,"2026-06-09":1,"2026-06-16":3,"2026-06-23":3,"2026-07-07":2,"2026-07-14":1,"2026-08-04":3},
   };
   const DOCS_NODES = PILLARS.map(p => {
     const table = DOCS_REAL[p.name] || {};
@@ -646,53 +657,43 @@
     return { pillar: p.name, total: weekly.reduce((a, w) => a + w.count, 0), weekly };
   });
 
-  // Round 13: the round-6 pruning (global "weight >= 8" on raw shared-week
-  // counts) had a hidden bias — "copilot" and "zero-trust" are the two most
-  // consistently-published tags (13-14 of 16 weeks each), so almost every
-  // OTHER tag's single strongest raw overlap was just "shares weeks with
-  // copilot/zero-trust because they're on nearly every week," not a real
-  // relationship. A flat top-26-by-raw-weight cutoff therefore favored pairs
-  // touching those two hubs and dropped real, meaningful pairings inside
-  // less frequently-featured pillars — concretely, Collaboration &
-  // Productivity and AI & Copilot tags (exchange, teams, sharepoint,
-  // power-platform, copilot-studio, shadow-ai) mostly fell out of the list
-  // entirely, which is why clicking one of their stars showed no web whatsoever,
-  // unlike Identity/Endpoint/Security tags built around high-frequency hub
-  // tags like entra-id/intune/defender-xdr.
-  //
-  // Fixed by ranking each tag's own top-2 co-occurring partners by JACCARD
-  // similarity (shared weeks / union of weeks each tag appeared in) instead
-  // of raw shared-week count — this normalizes for a tag's own frequency, so
-  // "always-on" tags like copilot/zero-trust no longer crowd out every other
-  // tag's real strongest relationship. A raw-weight floor of >= 3 shared
-  // weeks still applies so two tags that merely happened to overlap once or
-  // twice don't get wired together. Recomputed directly from each tag's real
-  // weekly presence array above (TAG_SEED) — not fabricated.
-  //
-  // Tags still absent from the graph (teams-rooms, onedrive, agent-365, viva,
-  // hotpatch, linux, autopilot, security, defender-for-identity,
-  // defender-for-endpoint, defender-for-office-365) are tags that were only
-  // ever featured in 1-2 total weeks — there's no real co-occurrence signal
-  // to show for them yet. That's an honest reflection of thin history, the
-  // same as this file's other "genuinely thin, not broken" data notes.
   const EDGES = [
-    ["copilot", "zero-trust", 14], ["copilot", "defender-xdr", 13],
-    ["defender-xdr", "zero-trust", 13], ["copilot", "entra-id", 12],
-    ["entra-id", "zero-trust", 12], ["copilot", "intune", 12],
-    ["intune", "zero-trust", 12], ["copilot", "endpoint-management", 11],
-    ["copilot", "identity", 10], ["endpoint-management", "identity", 10],
-    ["copilot", "teams", 10], ["entra-id", "purview", 9],
-    ["copilot", "windows", 9], ["conditional-access", "endpoint-management", 8],
-    ["conditional-access", "entra-id", 8], ["endpoint-management", "windows", 8],
-    ["endpoint-management", "shadow-ai", 8], ["entra-id", "shadow-ai", 8],
-    ["exchange", "sharepoint", 8], ["exchange", "identity", 8],
-    ["sharepoint", "teams", 8], ["exchange", "power-platform", 6],
-    ["identity", "power-platform", 6], ["global-secure-access", "purview", 7],
-    ["copilot-studio", "exchange", 5], ["data-lifecycle", "windows-365", 5],
-    ["global-secure-access", "windows-365", 5], ["data-lifecycle", "global-secure-access", 5],
-    ["copilot-studio", "power-platform", 4], ["dspm", "windows-autopatch", 4],
-    ["global-secure-access", "windows-autopatch", 4], ["dspm", "global-secure-access", 4],
+    ["copilot", "zero-trust", 15],
+    ["copilot", "entra-id", 13],
+    ["defender-xdr", "zero-trust", 13],
+    ["copilot", "defender-xdr", 13],
+    ["entra-id", "zero-trust", 13],
+    ["copilot", "intune", 12],
+    ["copilot", "endpoint-management", 12],
+    ["intune", "zero-trust", 12],
+    ["copilot", "teams", 11],
+    ["teams", "zero-trust", 11],
+    ["endpoint-management", "identity", 11],
+    ["copilot", "identity", 11],
+    ["copilot", "windows", 10],
+    ["entra-id", "purview", 10],
+    ["endpoint-management", "windows", 9],
+    ["conditional-access", "entra-id", 9],
+    ["conditional-access", "endpoint-management", 9],
+    ["exchange", "identity", 9],
+    ["sharepoint", "teams", 8],
+    ["entra-id", "shadow-ai", 8],
+    ["exchange", "sharepoint", 8],
+    ["entra-id", "global-secure-access", 8],
+    ["global-secure-access", "purview", 8],
+    ["endpoint-management", "shadow-ai", 8],
+    ["purview", "windows-365", 7],
+    ["identity", "power-platform", 7],
+    ["exchange", "power-platform", 7],
+    ["global-secure-access", "windows-365", 6],
+    ["data-lifecycle", "windows-365", 5],
+    ["data-lifecycle", "global-secure-access", 5],
+    ["dspm", "windows-autopatch", 4],
+    ["copilot-studio", "power-platform", 4],
+    ["copilot-studio", "dspm", 3],
+    ["copilot-studio", "windows-autopatch", 3],
   ];
+  // GENERATED:GRAPH:END
 
   const pillarRank = {};
   PILLARS.forEach(p => {
@@ -775,13 +776,35 @@
   const prefersReducedMotion = window.matchMedia &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const saveData = navigator.connection && navigator.connection.saveData;
+  // Below ~700px there isn't room for the globe plus its floating panels
+  // (legend, flyout, trend graph, docs panel, focus panel, tag browser) —
+  // they're all fixed-position/fixed-width, sized for a desktop viewport,
+  // and would overlap badly on a phone. Reusing the existing no-WebGL
+  // fallback here (rather than building a second, phone-specific layout)
+  // means mobile visitors get the same honest plain-list view instead of
+  // a broken 3D scene. Checked once at load, not on resize/rotate — a
+  // mid-session viewport change is rare enough not to be worth the
+  // complexity of tearing down and rebuilding the Three.js scene.
+  const isNarrowViewport = window.innerWidth < 700;
 
-  if (!hasWebGL() || saveData) {
+  if (!hasWebGL() || saveData || isNarrowViewport) {
     document.getElementById("universe-canvas-holder").style.display = "none";
     document.querySelector(".legend").style.display = "none";
     document.getElementById("focus-panel").style.display = "none";
     const fb = document.getElementById("no-webgl");
     fb.style.display = "block";
+    const headingEl = document.getElementById("no-webgl-heading");
+    const copyEl = document.getElementById("no-webgl-copy");
+    if (isNarrowViewport && hasWebGL() && !saveData) {
+      headingEl.textContent = "Tag Universe, list view";
+      copyEl.textContent = "Every topic Modern Work Weekly has covered, grouped by pillar. The full 3D globe needs a wider screen — visit on a larger display for the interactive version.";
+    } else if (saveData) {
+      headingEl.textContent = "Tag Universe, list view";
+      copyEl.textContent = "Your browser has Data Saver on, so the 3D globe is skipped here. Every topic Modern Work Weekly has covered, grouped by pillar.";
+    } else {
+      headingEl.textContent = "Tag Universe needs WebGL";
+      copyEl.textContent = "Your browser or device doesn't support WebGL, so the globe can't render here. Every topic Modern Work Weekly has covered, grouped by pillar, instead.";
+    }
     const list = document.getElementById("no-webgl-fallback-list");
     PILLARS.forEach(p => {
       const li = document.createElement("li");

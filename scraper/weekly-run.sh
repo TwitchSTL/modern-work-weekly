@@ -42,11 +42,17 @@ log "Running digest..."
 python3 "$SCRAPER_DIR/digest.py" >> "$LOG" 2>&1
 log "Digest done"
 
+# Regenerate the Tag Universe globe's data from the just-published posts
+log "Regenerating Tag Universe graph..."
+python3 "$SCRAPER_DIR/generate_graph.py" >> "$LOG" 2>&1
+log "Tag Universe graph done"
+
 # Commit anything new
 cd "$REPO"
 git add site/content/posts/ \
         site/content/exec/ \
         site/static/search.json \
+        site/static/universe/index.html \
         site/data/health.json \
         state/health_baseline.json 2>/dev/null || true
 
