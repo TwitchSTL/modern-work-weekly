@@ -56,14 +56,6 @@
     <p class="deadlines-meta">Last updated: {{ .updated }} · <a href="/">← Back to homepage</a></p>
   </header>
 
-  {{/* ── Type filter — client-side (calendar.js toggles data-type cards) ── */}}
-  <div class="key-dates-filters" role="group" aria-label="Filter by type">
-    <button type="button" class="key-dates-filter is-active" data-filter-type="all">All</button>
-    {{ range (slice "deadline" "feature" "report" "watch") }}
-    <button type="button" class="key-dates-filter" data-filter-type="{{ . }}" style="--type-color: {{ index $typeColors . }}; --type-glow: {{ index $typeGlow . }}; --type-glow-strong: {{ index $typeGlowStrong . }}">{{ index $typeLabels . }}</button>
-    {{ end }}
-  </div>
-
   {{/* ── Stat strip — filled client-side (needs "today", not build time);
        reuses the Exec Guide's .exec-stat-card cards for visual consistency ── */}}
   <div id="deadline-stats" class="exec-risk-dashboard deadlines-stats"></div>
@@ -77,6 +69,15 @@
     {{/* Hidden — upcoming list only used in sidebar widget */}}
     <div id="deadline-upcoming" style="display:none"></div>
   </section>
+
+  {{/* ── Type filter — client-side (calendar.js toggles data-type cards) ── */}}
+  <div class="key-dates-filters" role="group" aria-label="Filter by type">
+    <button type="button" class="key-dates-filter is-active" data-filter-type="all">All</button>
+    {{ range (slice "deadline" "feature" "report" "watch") }}
+    <button type="button" class="key-dates-filter" data-filter-type="{{ . }}" style="--type-color: {{ index $typeColors . }}; --type-glow: {{ index $typeGlow . }}; --type-glow-strong: {{ index $typeGlowStrong . }}">{{ index $typeLabels . }}</button>
+    {{ end }}
+  </div>
+
 
   {{/* ── Deadlines by pillar ── */}}
   {{ $pillars := slice "Identity & Access" "Endpoint & Device Management" "Collaboration & Productivity" "AI & Copilot" "Employee Experience" "Security & Compliance" }}
