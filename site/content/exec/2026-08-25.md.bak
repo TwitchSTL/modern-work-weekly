@@ -1,0 +1,143 @@
+---
+title: "Executive's Guide - Week of 2026-08-25"
+date: 2026-08-25
+description: "A MacOS and mobile credential-stealing threat, upcoming DLP coverage gaps on Mac and mobile devices, and a hard deadline on a widely used email integration protocol headline a week that tests identity security, compliance posture, and infrastructure readiness across the organization."
+categories: ["Executive Guide"]
+tags: ["security", "compliance", "identity", "data-protection", "user-impact", "devices", "cost", "licensing"]
+risk_high: 1
+risk_med: 2
+risk_low: 1
+---
+
+## The Week at a Glance
+
+- 🔴 **MacSync Stealer is actively targeting Mac users and rotating infrastructure to avoid detection:** This credential-stealing malware targets macOS devices, harvests browser-stored passwords and session tokens, and cycles through new domains fast enough to evade traditional blocklists, putting any employee on an unmanaged or lightly managed Mac at risk of account takeover.
+- 🟡 **Outlook DLP enforcement on Mac and mobile arrives in September:** Organizations that rely on Data Loss Prevention policies to meet compliance obligations should confirm their policies will apply correctly to Mac and mobile users before the rollout date, or face a coverage gap.
+- 🟡 **Exchange Web Services retirement begins in October:** A protocol that many third-party tools, line-of-business integrations, and calendar-sharing configurations depend on will start going offline in October 2026, with full shutdown in April 2027. Organizations with on-premises Exchange or hybrid environments need to assess exposure now.
+- 🟢 **Entra custom sign-in page CSS begins retiring October 26:** Organizations with custom-branded login pages must plan a visual refresh before that date to maintain a consistent employee and partner sign-in experience.
+
+*Sources: [Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) · [M365 Roadmap - DLP Mac](https://www.microsoft.com/microsoft-365/roadmap?id=569719) · [Exchange Team Blog - EWS Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691) · [Entra ID Blog](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)*
+
+---
+
+## Why This Week Matters
+
+Mac and mobile endpoints have historically been treated as lower-risk than Windows devices, but credential-stealing malware and a DLP gap on those platforms together expose a meaningful blind spot in most organizations' security and compliance programs. At the same time, the Exchange Web Services retirement clock is running: any business application or calendar integration that has not been assessed for EWS dependency faces a hard outage in under eight months. Leadership should treat this week as a prompt to confirm that endpoint coverage, compliance policy scope, and integration inventories are not lagging behind the threat and deprecation timelines.
+
+*Sources: [Microsoft Security Blog - MacSync Stealer](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) · [Exchange Team Blog - EWS Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691)*
+
+---
+
+## Risk & Compliance
+
+- 🔴 **[MacSync Stealer targeting Mac endpoints](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/):** This active credential-stealing campaign harvests browser passwords and session tokens from macOS devices, enabling attackers to bypass multi-factor authentication and take over accounts; organizations in regulated industries (HIPAA, SOC 2, CMMC) face heightened breach-notification and access-control obligations if employee credentials are compromised, and security teams should validate Mac endpoint coverage immediately. This gap in endpoint verification represents an implicit-trust vulnerability that a mature Zero Trust posture would close by requiring continuous device health signals before granting access.
+
+- 🟡 **[Outlook DLP Wait-on-Send for Mac - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569719):** Until this feature is live, Mac users in Outlook can send emails containing sensitive data without triggering the same pre-send policy checks that Windows users encounter; organizations subject to HIPAA, GDPR, or state privacy laws should confirm enforcement scope and communicate the change to compliance and legal teams before September.
+
+- 🟡 **[Outlook DLP Wait-on-Send for iOS and Android - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569718):** The same pre-send DLP gap exists for mobile Outlook users today; HIPAA- and GDPR-covered organizations should treat this September launch as a compliance milestone and verify that mobile device management policies are aligned so enforcement kicks in automatically on rollout.
+
+- 🟡 **[Purview DLP for Calendar Events on Outlook Mobile - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569716):** Meeting invitations sent from iOS and Android can currently carry sensitive information in subjects and descriptions without triggering DLP controls; this gap is particularly relevant for organizations in healthcare and financial services, where meeting content regularly includes regulated data, and the September GA date is the target for full coverage.
+
+- 🟡 **[Exchange Web Services retirement begins October 2026](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691):** Third-party apps, calendar integrations, and hybrid Free/Busy configurations that rely on EWS in Exchange Online will start failing as Microsoft phases out the protocol starting October 2026, with full shutdown in April 2027; IT and procurement teams need an inventory of EWS-dependent tools within the next 30 days to avoid service disruptions.
+
+- 🟡 **[Entra ID custom sign-in CSS retirement - October 26, 2026](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471):** Custom CSS layout and positioning properties used to brand the employee and partner sign-in page will stop working on October 26; organizations with heavily customized login pages risk a broken or unstyled sign-in experience for employees, partners, and customers if no action is taken before that date. This change is part of Microsoft's Secure Future Initiative and reduces the attack surface that custom CSS injection could expose, strengthening sign-in page integrity.
+
+- 🟡 **[Purview Data Security Investigations from endpoint DLP alerts - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=558547):** A new workflow lets compliance and security teams jump directly from a DLP alert into an investigation of the files involved, shortening the time to assess a potential data exfiltration event; organizations under SOC 2 or HIPAA should factor this capability into their incident-response procedures before the September launch.
+
+- 🟢 **[Purview Retention for Copilot Memory - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569612):** Copilot's personalized memory items, stored in user mailboxes, will be subject to retention and versioning policies; organizations with records-management obligations should confirm that existing retention policies appropriately cover this new data class before the feature is broadly available.
+
+- 🟢 **[CVE-2026-62834 - Azure Data Factory Elevation of Privilege](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62834):** An improper cryptographic signature check in Azure Data Factory could allow an attacker to escalate privileges over the network; organizations using Azure Data Factory in data pipelines should confirm their environments are patched and verify that least-privilege access controls are in place.
+
+- 🟢 **[CVE-2026-50661 - Windows BitLocker Security Feature Bypass](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50661):** An updated acknowledgment was published for this BitLocker bypass vulnerability; organizations relying on BitLocker as a primary encryption control for compliance (CMMC, HIPAA) should confirm that endpoint patching is current.
+
+*Sources: [Microsoft Security Blog - MacSync Stealer](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) · [Microsoft Security Response Center](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62834) · [M365 Roadmap](https://www.microsoft.com/microsoft-365/roadmap?id=569719)*
+
+---
+
+## What Your Employees Will Notice
+
+- **Outlook on Mac and mobile will pause briefly before sending certain emails starting in September.** When a message triggers a DLP policy, Outlook will hold the send action for a configurable period while the policy is evaluated. Employees may see a short delay or a policy tip asking them to review the content. Proactive communication will reduce help desk calls.
+
+- **Outlook calendar invites on mobile may show policy tips starting in September.** Employees who include sensitive details in meeting subjects or descriptions may see a new notification on iOS and Android. This is expected behavior, not an error.
+
+- **The company sign-in page may look slightly different after October 26.** If your organization uses a custom-branded login page, IT teams will need to update the design before that date. Employees who notice a visual change should be reassured it is intentional.
+
+- **Planner now supports tabs in private and shared Teams channels.** Teams that have been waiting to manage tasks inside private or shared channels can now add Planner directly as a tab, without leaving Teams.
+
+- **Inbox rule management in Outlook for Windows is getting a bulk-action upgrade in November.** Employees who maintain many inbox rules will be able to enable, disable, or delete multiple rules at once, saving time during cleanup.
+
+- **GitHub Copilot can now be @mentioned directly in Teams conversations.** Developer teams can hand off a discussion thread directly to GitHub Copilot to generate code without switching tools, which may prompt questions from non-developer staff about what the bot is doing in their channels.
+
+*Sources: [M365 Roadmap - DLP Mac](https://www.microsoft.com/microsoft-365/roadmap?id=569719) · [M365 Roadmap - Planner Private Channels](https://www.microsoft.com/microsoft-365/roadmap?id=558928) · [Teams Blog - GitHub Copilot in Teams](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/turn-conversations-into-code-with-github-copilot-in-microsoft/ba-p/4548305)*
+
+---
+
+## What Your Help Desk Should Expect
+
+- **"Why is my email not sending?" calls from Mac and mobile users starting in September.** The DLP wait-on-send feature will be new to these users. Pre-launch communication and a short FAQ will reduce ticket volume significantly.
+
+- **Confusion about policy tips on mobile calendar invites.** Users who receive a DLP notification when creating a meeting may not understand why. Help desk staff should be briefed on the new calendar DLP feature before September.
+
+- **Sign-in page appearance questions after October 26.** If the branded sign-in page changes, employees and partners may contact IT assuming something is broken. A brief announcement ahead of the change will preempt most of these contacts.
+
+- **Questions about slow or failed third-party integrations beginning in October.** As EWS deprecation begins, tools that have not been updated may start behaving erratically. Help desk teams should have an escalation path to IT operations for EWS-related failures.
+
+- **Planner tab setup requests for private and shared Teams channels.** Now that Planner is available in private and shared channels, teams may ask IT to help configure it. This is self-service but may generate tickets from less-technical users.
+
+*Sources: [M365 Roadmap - DLP Mac](https://www.microsoft.com/microsoft-365/roadmap?id=569719) · [Exchange Team Blog - EWS Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691) · [Entra ID Blog](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)*
+
+---
+
+## Cost & Licensing
+
+- **Microsoft 365 Business Basic, Standard, and Premium mailboxes now support up to 100 GB of primary storage**, up from 50 GB, at no additional charge. Organizations that have been purchasing supplemental storage licenses or archiving solutions to work around the 50 GB cap should review whether those costs are still justified.
+
+- **Digital signage on Teams panels requires Teams Rooms Pro or a Shared Space license.** Organizations considering the new idle-screen signage feature should confirm that their meeting room licenses qualify before investing in content or configuration work.
+
+- **Windows 365 Flex and Cloud Apps are distinct licensing tiers.** The new Cloud Apps capability, which publishes individual Windows applications from a shared Cloud PC pool rather than providing each user a dedicated Cloud PC, may represent a lower-cost option for task-worker or occasional-use scenarios. Finance and IT leaders evaluating Windows 365 expansion should request a Flex versus dedicated Cloud PC cost comparison from their Microsoft account team.
+
+*Sources: [Exchange Team Blog - 100 GB Mailbox](https://techcommunity.microsoft.com/t5/exchange-team-blog/understanding-the-new-100-gb-mailbox-entitlement-for-microsoft/ba-p/4548243) · [M365 Roadmap - Teams Panels Digital Signage](https://www.microsoft.com/microsoft-365/roadmap?id=558852) · [Microsoft Mechanics - Windows 365](https://www.youtube.com/watch?v=MK-hCq7Su1w)*
+
+---
+
+## Planning Horizon
+
+**Immediate (this week):**
+
+- **Immediate - [MacSync Stealer on macOS](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/):** Direct security operations to validate that Mac endpoints are covered by endpoint detection and response tooling and that conditional access policies require compliant device state before granting access to corporate resources.
+
+**Within 30 days:**
+
+- **Within 30 days - [Exchange Web Services retirement begins October 2026](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691):** Commission an inventory of all applications, scripts, and integrations that use EWS, then prioritize remediation before October to avoid service interruptions.
+
+- **Within 30 days - [Entra custom sign-in CSS retirement - October 26](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471):** Assign ownership of the sign-in page redesign to IT or brand teams so the work is complete before the October 26 deadline.
+
+- **Within 30 days - [Outlook DLP for Mac and mobile - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569719):** Compliance and IT teams should validate that existing DLP policies are correctly scoped to cover Mac and mobile users when the feature launches, and draft employee communications for the wait-on-send experience.
+
+- **Within 30 days - [Purview DLP for Calendar Events on mobile - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569716):** Review whether meeting-invite content in your organization carries regulated data, and confirm that mobile device management enrollment is sufficient to enforce DLP policy on iOS and Android.
+
+- **Within 30 days - [Purview Retention for Copilot Memory - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=569612):** Records management and legal teams should determine whether Copilot memory items fall within existing retention schedules or require a new policy before the feature reaches general availability.
+
+**Within 60-90 days:**
+
+- **Within 60-90 days - [Purview Data Security Investigations from endpoint DLP alerts - September GA](https://www.microsoft.com/microsoft-365/roadmap?id=558547):** Update incident-response runbooks to incorporate the new investigation workflow, and confirm that the security operations team has the Purview permissions needed to use it.
+
+- **Within 60-90 days - [Planner Capacity View - October GA](https://www.microsoft.com/microsoft-365/roadmap?id=569733):** Brief project managers and team leads on the upcoming capacity timeline view so they can plan to use it for Q4 resourcing decisions.
+
+**Longer range (before April 2027):**
+
+- **Before April 2027 - [Exchange Web Services full shutdown](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691):** All EWS-dependent integrations must be migrated or replaced before Microsoft fully disables the protocol; procurement and vendor management should be engaged now for any third-party tools requiring vendor updates or contract changes.
+
+*Sources: [Microsoft Security Blog - MacSync Stealer](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) · [Exchange Team Blog - EWS Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691) · [Entra ID Blog](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)*
+
+---
+
+## If You Take No Action
+
+**MacSync Stealer on unmanaged Mac endpoints:** Employees using macOS devices that are not enrolled in endpoint management or covered by endpoint detection tools are exposed to an active credential-harvesting campaign today. A successful attack can yield browser-stored passwords and session cookies that allow an attacker to authenticate as that employee, bypass multi-factor authentication, and move through corporate systems. For organizations subject to HIPAA, SOC 2, or cyber insurance requirements, an account takeover originating from an unmanaged endpoint is likely a reportable incident and a policy-compliance failure.
+
+**Exchange Web Services retirement without an integration inventory:** Organizations that do not audit their EWS-dependent tools before October 2026 will experience unexplained failures as phased disablement begins. Calendar sharing, Free/Busy lookups, and any line-of-business application built on EWS will degrade or stop working entirely by April 2027. Remediation under time pressure is significantly more expensive than planned migration, and some vendor updates may require contract cycles that take months.
+
+**Outlook DLP gap on Mac and mobile left unaddressed through September:** Until the September DLP features are live and correctly configured, Mac and mobile users can send emails and calendar invites containing regulated data without triggering any policy check. For covered entities under HIPAA or organizations bound by GDPR, this represents a period of documented non-enforcement that auditors and insurers may treat unfavorably if a data incident occurs in the interim.
+
+*Sources: [Microsoft Security Blog - MacSync Stealer](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) · [Exchange Team Blog - EWS Retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691) · [M365 Roadmap - DLP Mac](https://www.microsoft.com/microsoft-365/roadmap?id=569719)*

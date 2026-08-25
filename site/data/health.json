@@ -1,8 +1,8 @@
 {
   "updated": "2026-08-25",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 91,
-  "total_new_count": 2,
+  "total_count": 90,
+  "total_new_count": 0,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -142,7 +142,7 @@
       "name": "Windows 365 Known Issues",
       "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#first-time-cloud-pc-sign-in-triggers-an-impossible-travel-location-alert",
       "count": 14,
-      "new_count": 1,
+      "new_count": 0,
       "items": [
         {
           "title": "First-time Cloud PC sign-in triggers an impossible travel location alert",
@@ -208,7 +208,7 @@
           "title": "Administrator protection isn't supported on Cloud PCs",
           "body": "Windows 365 Cloud PCs don't support Administrator protection. If a policy that enables it is assigned to your Cloud PCs, users might see an unexpected authentication prompt when signing in, extra approval prompts for tasks that require elevation, and elevation failures. The sign-in prompt affects al",
           "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#administrator-protection-isnt-supported-on-cloud-pcs",
-          "is_new": true
+          "is_new": false
         },
         {
           "title": "Single sign-on users see a dialog to allow remote desktop connection during the connection attempt",
@@ -597,20 +597,6 @@
           "body": "",
           "url": "https://learn.microsoft.com/en-us/windows/release-health/",
           "is_new": false
-        }
-      ]
-    },
-    {
-      "name": "Azure Status",
-      "url": "https://azure.status.microsoft/en-us/status/",
-      "count": 1,
-      "new_count": 1,
-      "items": [
-        {
-          "title": "Investigating- Issues in Southeast Asia",
-          "body": "We have observed recovery for a portion of the infrastructure affected by this issue within the Southeast Asia region. While many impacted services and resources have recovered, a subset of customers may continue to experience connectivity issues or service degradation for dependent Azure services. ",
-          "url": "https://azure.status.microsoft/en-us/status/",
-          "is_new": true
         }
       ]
     }
