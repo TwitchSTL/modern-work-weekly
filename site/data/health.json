@@ -1,8 +1,8 @@
 {
-  "updated": "2026-08-24",
+  "updated": "2026-08-25",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 90,
-  "total_new_count": 1,
+  "total_count": 91,
+  "total_new_count": 2,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -597,6 +597,20 @@
           "body": "",
           "url": "https://learn.microsoft.com/en-us/windows/release-health/",
           "is_new": false
+        }
+      ]
+    },
+    {
+      "name": "Azure Status",
+      "url": "https://azure.status.microsoft/en-us/status/",
+      "count": 1,
+      "new_count": 1,
+      "items": [
+        {
+          "title": "Investigating- Issues in Southeast Asia",
+          "body": "We have observed recovery for a portion of the infrastructure affected by this issue within the Southeast Asia region. While many impacted services and resources have recovered, a subset of customers may continue to experience connectivity issues or service degradation for dependent Azure services. ",
+          "url": "https://azure.status.microsoft/en-us/status/",
+          "is_new": true
         }
       ]
     }
