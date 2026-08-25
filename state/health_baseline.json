@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-25",
   "titles": [
     "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
     "Azure enterprise applications aren't displayed in the Company Portal for Windows or the Intune Company Portal website",
@@ -32,12 +32,10 @@
     "In-place Windows upgrade might change the computer name",
     "Windows 365 provisioning fails",
     "Cloud PC reports as not compliant with the compliance policy",
+    "Administrator protection isn't supported on Cloud PCs",
     "Single sign-on users see a dialog to allow remote desktop connection during the connection attempt",
     "Single sign-on user connections are being denied through Microsoft Entra Conditional Access",
     "Possible cause",
-    "Troubleshooting steps",
-    "When a Cloud PC locks, it immediately disconnects single sign-on users",
-    "When single sign-on users connect from an unmanaged device, they aren't asked to reauthenticate to Microsoft Entra ID",
     "ODJ Connector configuration fails with a SeLogonAsServicePrivilege error when using your own gMSA",
     "Microsoft Entra hybrid join Autopilot deployments time out with error code 0x80004005",
     "Local Autopilot Reset can\u00e2\u0080\u0099t be triggered by local administrator when you deny access from network",
@@ -92,6 +90,7 @@
     "Windows 11, version 24H2",
     "Windows 10, version 22H2",
     "Windows Server 2025",
-    "Windows Server 2022"
+    "Windows Server 2022",
+    "Investigating- Issues in Southeast Asia"
   ]
 }

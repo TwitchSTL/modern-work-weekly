@@ -1,5 +1,495 @@
 [
   {
+    "title": "CVE-2026-64903: Critical Microsoft Office RCE (CVSS 7.8)",
+    "category": "Top 5",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "{{< cat \"Security & Compliance\" >}} - A Critical-severity remote code execution vulnerability in Microsoft Office is in the CVE list this week. Patch status is the priority check: confirm your Office update rings have pu"
+  },
+  {
+    "title": "CVE-2026-69836: Critical Entra ID RCE corrected to non-exploited (CVSS 10.0)",
+    "category": "Top 5",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "{{< cat \"Security & Compliance\" >}} - MSRC corrected the Exploited flag to No for this CVSS 10.0 Critical Entra ID RCE. The score still demands attention: verify your tenant has the remediation applied and review any pri"
+  },
+  {
+    "title": "CVE-2026-32202: Windows Shell Spoofing confirmed exploited in the wild (CVSS 4.3)",
+    "category": "Top 5",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "{{< cat \"Security & Compliance\" >}} - Despite a modest CVSS score, this vulnerability carries cve_exploited: Yes, meaning it is actively being used. Prioritize patching Windows endpoints regardless of the low base score,"
+  },
+  {
+    "title": "Entra custom branding CSS deprecation begins October 26, 2026",
+    "category": "Top 5",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Custom CSS layout and positioning properties in Entra branded sign-in pages are being retired starting October 26, 2026, with full CSS retirement in 2027. If your tenant uses custom CSS for sign-in branding, audit your c"
+  },
+  {
+    "title": "Exchange EWS retirement: October 2026 phased disablement is approaching",
+    "category": "Top 5",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "EWS in Exchange Online begins phased disablement in October 2026 and goes fully dark in April 2027. The Exchange team published field guidance this week on safely testing EWSAllowedAppIDs and a separate post clarifying F"
+  },
+  {
+    "title": "Microsoft Entra ID enhances security of branded sign-ins",
+    "category": "Identity & Access",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - If your tenant relies on custom CSS for sign-in page layout or positioning, you have until October 26, 2026 before Microsoft begins retiring those properties, with full CSS retirement following in 2027. This is pa"
+  },
+  {
+    "title": "Help us shape Exchange Server on-premises to different online org Free/Busy after EWS retirement",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - EWS in Exchange Online enters phased disablement in October 2026 and is fully gone by April 2027, and the Exchange team is now actively soliciting input on how to handle the remaining Free/Busy scenario: Exchange "
+  },
+  {
+    "title": "Notes from the field: testing EWSAllowedAppIDs safely",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - This field guide from the Exchange team is required reading before you lock down EWS access with EWSAllowedAppIDs. It walks through a controlled positive-and-negative test to confirm the allow list is working as e"
+  },
+  {
+    "title": "Understanding the new 100 GB mailbox entitlement for Microsoft 365 Business suites",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Microsoft 365 Business Basic, Standard, and Premium users now get a supported primary mailbox size of up to 100 GB, up from 50 GB. The Exchange team explains how the additional storage is provisioned and what admi"
+  },
+  {
+    "title": "Microsoft named a Leader in the Frost Radar: Cloud Workload Protection Platforms, 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Microsoft received a Frost Radar Leader designation for Cloud Workload Protection Platforms, anchored by Microsoft Defender for Cloud's unified runtime security capabilities. Useful context when building business "
+  },
+  {
+    "title": "Build a Power App in Under a Minute",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Power Apps can now generate a fully working model-driven app from a Dataverse table, SharePoint list, Excel file, SQL database, or uploaded CSV by inspecting the schema automatically. This substantially lowers the"
+  },
+  {
+    "title": "Turn conversations into code with GitHub Copilot in Microsoft Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - GitHub Copilot is now available inside Teams, letting developers @mention it in a channel conversation to convert the discussion context directly into code without switching tools. Admins need to ensure GitHub Cop"
+  },
+  {
+    "title": "Outlook: Manage Multiple Inbox Rules at Once",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - New Outlook for Windows will support bulk selection and bulk actions (delete, enable, disable) across inbox rules, arriving in November 2026. No admin configuration required, but worth flagging to your helpdesk as"
+  },
+  {
+    "title": "Planner: Microsoft Planner tab support for shared and private channels in Microsoft Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Planner tabs can now be added to shared and private Teams channels, not just standard channels. This closes a gap that previously forced teams to use workarounds for task management in sensitive project channels. "
+  },
+  {
+    "title": "Microsoft Teams: Digital signage support for Teams panels",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Idle Teams panel devices can now display digital signage, matching the capability already available on Teams Rooms front-of-room displays. Configuration is handled through the Pro Management portal and requires Te"
+  },
+  {
+    "title": "Planner: Custom Templates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Planner now supports organization-defined reusable plan templates, enabling standardized task structures across teams. This shipped July 2026 and is worth a governance conversation if your organization wants to en"
+  },
+  {
+    "title": "Planner: Capacity view",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - A new Capacity view in Planner shows a timeline of task assignments across team members, making it easier to spot overloaded individuals or idle capacity at a glance. Targeting October 2026 GA."
+  },
+  {
+    "title": "Microsoft Teams: Coordinated meetings support on Teams Rooms on Android",
+    "category": "Collaboration & Productivity",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Teams Rooms on Android devices and Android-based touch boards can now coordinate join, leave, and collaboration actions in the same hybrid meeting. Targeting January 2027. Relevant for facilities teams planning An"
+  },
+  {
+    "title": "CVE-2026-64903 Microsoft Office Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Critical-severity RCE in Microsoft Office with a CVSS base score of 7.8. Confirm that your Office update rings have deployed the fix across managed endpoints and check compliance reporting in Defender for Endpoint"
+  },
+  {
+    "title": "CVE-2026-69836 Microsoft Entra ID Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - MSRC corrected the Exploited status to No for this CVSS 10.0 Critical Entra ID RCE. If your incident response team triaged this as an active exploitation event previously, update your records. Regardless, the maxi"
+  },
+  {
+    "title": "CVE-2026-32202 Windows Shell Spoofing Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Confirmed exploited in the wild with a CVSS base score of 4.3. The low score can mislead prioritization, but active exploitation means this patch must be treated as urgent. Verify Windows endpoint patch compliance"
+  },
+  {
+    "title": "CVE-2026-62834 Azure Data Factory Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Critical-severity EoP in Azure Data Factory with a CVSS score of 9.3, caused by improper verification of cryptographic signatures allowing network-based privilege escalation. If your organization runs Azure Data F"
+  },
+  {
+    "title": "CVE-2026-50661 Windows BitLocker Security Feature Bypass Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 6.1. Acknowledgment updated this week. Verify BitLocker policy compliance across managed devices and confirm the patch is deployed."
+  },
+  {
+    "title": "CVE-2026-65787 Desktop Window Manager Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Acknowledgment update only. Confirm Windows endpoint patch status."
+  },
+  {
+    "title": "CVE-2026-47292 Visual Studio Code MSSQL Extension Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Affected software list updated with new package information. If you manage VS Code deployments via Intune or configuration management, verify the MSSQL extension is updated to the pat"
+  },
+  {
+    "title": "CVE-2026-68801 Microsoft Excel Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Acknowledgment update. Confirm Microsoft 365 Apps update compliance covers Excel."
+  },
+  {
+    "title": "CVE-2026-64899 Microsoft Office Information Disclosure Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 5.5. Acknowledgment update. Included for completeness; patch through your standard Office update cadence."
+  },
+  {
+    "title": "CVE-2026-70335 GitHub Copilot and Visual Studio Code Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Acknowledgment update. If you manage VS Code and GitHub Copilot extensions centrally, verify extension versions are current."
+  },
+  {
+    "title": "CVE-2026-54981 Visual Studio Code Python Extension Security Feature Bypass Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Affected software list updated. Check that the Python extension in managed VS Code deployments is running the patched version."
+  },
+  {
+    "title": "CVE-2026-58547 Windows Universal Plug and Play (UPnP) Device Host Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 5.5. Acknowledgment update. Standard Windows patch cadence applies."
+  },
+  {
+    "title": "CVE-2026-49183 Windows Clipboard Server Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.0. Acknowledgment update. Verify Windows endpoint patch compliance."
+  },
+  {
+    "title": "CVE-2026-55134 Microsoft Word Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Acknowledgment update. Confirm Microsoft 365 Apps update rings have covered Word."
+  },
+  {
+    "title": "CVE-2026-50466 Microsoft Brokering File System Elevation of Privilege Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Important severity, CVSS 7.8. Acknowledgment update. Standard Windows patch cadence applies."
+  },
+  {
+    "title": "Hunting MacSync Stealer infrastructure through behavioral pivots",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - MacSync Stealer is a macOS-targeting infostealer that rapidly rotates domains to evade detection. Microsoft's threat intelligence team documented durable behavioral hunting pivots that uncovered 30+ related domain"
+  },
+  {
+    "title": "Outlook: Purview DLP Wait-on-Send Support for Mac",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Outlook for Mac will enforce Purview DLP wait-on-send policies, blocking email transmission until policy evaluation completes. Targeting September 2026 GA. Admins should plan a phased rollout and set appropriate u"
+  },
+  {
+    "title": "Outlook: Purview DLP Wait-on-Send Support for Outlook mobile apps",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - The same wait-on-send DLP enforcement is coming to Outlook for iOS and Android in September 2026. Mobile users are often overlooked in DLP policy scope reviews; now is the time to audit your DLP policies for mobil"
+  },
+  {
+    "title": "Outlook: Purview Data Loss Prevention support for Calendar Events in Outlook mobile apps",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Purview DLP policies will extend to calendar events in Outlook for iOS and Android, covering meeting subjects, descriptions, and invite content, with policy tips and enforcement. Targeting September 2026. Review e"
+  },
+  {
+    "title": "Universal Print: Universal Print Portal",
+    "category": "Security & Compliance",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[Preview] - A new web-based Universal Print portal lets users release secure print jobs by scanning a QR code at any enrolled printer, authenticated via Microsoft 365 identity. In preview now with GA targeting August 202"
+  },
+  {
+    "title": "Steal A Table Out Of An Image",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - On Windows 365 Cloud PCs with at least 8 vCPUs, the Click to Do feature (Windows key + Q) can extract text from non-selectable graphical images, including tables, and paste the data directly into Excel as live, ed"
+  },
+  {
+    "title": "That App Isn't Native. It's Windows.",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Windows 365 Cloud Apps with Windows 365 Flex publishes individual Windows applications from a shared Cloud PC pool, presenting them full-screen on tablets as if they were native mobile apps, with settings and file"
+  },
+  {
+    "title": "Zero Cloud Tokens To Build And Run This App",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Developer Optimized Windows 365 Cloud PCs running Foundry Local can execute Phi-4-mini entirely on local compute, confirmed via Task Manager NPU/CPU profiling in VS Code. This matters for environments where data s"
+  },
+  {
+    "title": "Why Only One Region Had Bad Connections",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[Preview] - The Windows 365 admin agent, now in preview, accepts natural-language queries and correlates session telemetry across regional cohorts to surface root causes. The demo scenario identified TCP-only transport ("
+  },
+  {
+    "title": "No Windows 365 On My Phone. Still Works.",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Microsoft Scout can interact with a Windows 365 Cloud PC from a Teams chat on a mobile device, accessing files and apps on the Cloud PC without the Windows 365 client installed on the phone. This extends Cloud PC "
+  },
+  {
+    "title": "Scout Did This With My Laptop Closed",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Microsoft Scout located a report in a Cloud PC's Downloads folder (not synced to OneDrive), appended a summary, saved the file, and staged a draft email with the attachment in Outlook, all triggered from a Teams c"
+  },
+  {
+    "title": "Windows 365: Five Years In, See What's New",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - A comprehensive overview of the current Windows 365 capability set: Microsoft Scout agentic workflows, Developer Optimized Cloud PCs with Foundry Local for local AI inference, Windows 365 Flex for shared Cloud PC "
+  },
+  {
+    "title": "Task Manager features for visibility into AI workloads",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - Task Manager now shows per-process NPU and GPU neural engine activity on supported newer devices, alongside existing CPU and GPU metrics, giving IT pros a native tool for troubleshooting AI workload performance wi"
+  },
+  {
+    "title": "Collecting Delivery Optimization logs the easy way",
+    "category": "Endpoint & Device Management",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "[GA] - The Windows IT Pro team documents a free tool for collecting Delivery Optimization and Connected Cache logs, covering scenarios where peering efficiency is low or content is bypassing a Connected Cache node. Bookm"
+  },
+  {
+    "title": "CVE-2026-64903 Microsoft Office Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Critical · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Verify Microsoft Office patches are deployed across all managed endpoints via Intune or Defender for Endpoint compliance reporting. Critical severity deman"
+  },
+  {
+    "title": "CVE-2026-69836 Microsoft Entra ID Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Critical · CVSS 10.0 - Surfaced in the Week of 2026-08-25 digest. MSRC corrected Exploited to No, but a CVSS 10.0 Critical Entra ID RCE requires confirmed remediation. Update any prior incident triage records and verify "
+  },
+  {
+    "title": "CVE-2026-62834 Azure Data Factory Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Critical · CVSS 9.3 - Surfaced in the Week of 2026-08-25 digest. Network-exploitable privilege escalation via improper cryptographic signature verification in Azure Data Factory. Review the MSRC advisory to confirm wheth"
+  },
+  {
+    "title": "CVE-2026-32202 Windows Shell Spoofing Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 4.3 - Exploited in the wild - Surfaced in the Week of 2026-08-25 digest. Active exploitation confirmed. Treat as urgent despite the low base score and verify Windows endpoint patch compliance across the "
+  },
+  {
+    "title": "CVE-2026-65787 Desktop Window Manager Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Confirm Windows endpoint patch status via standard update compliance reporting."
+  },
+  {
+    "title": "CVE-2026-47292 Visual Studio Code MSSQL Extension Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Affected software list updated with new package information. Verify that the MSSQL extension in managed VS Code deployments is running the patched version"
+  },
+  {
+    "title": "CVE-2026-68801 Microsoft Excel Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Confirm Microsoft 365 Apps update compliance covers Excel on all managed devices."
+  },
+  {
+    "title": "CVE-2026-64899 Microsoft Office Information Disclosure Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 5.5 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Address through standard Office update cadence."
+  },
+  {
+    "title": "CVE-2026-70335 GitHub Copilot and Visual Studio Code Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Verify VS Code and GitHub Copilot extension versions are current in managed environments."
+  },
+  {
+    "title": "CVE-2026-54981 Visual Studio Code Python Extension Security Feature Bypass Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Affected software list updated. Confirm the Python extension in managed VS Code deployments is on the patched version."
+  },
+  {
+    "title": "CVE-2026-58547 Windows Universal Plug and Play (UPnP) Device Host Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 5.5 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Address through standard Windows patch cadence."
+  },
+  {
+    "title": "CVE-2026-49183 Windows Clipboard Server Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.0 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Verify Windows endpoint patch compliance."
+  },
+  {
+    "title": "CVE-2026-55134 Microsoft Word Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Confirm Microsoft 365 Apps update rings have covered Word on all managed devices."
+  },
+  {
+    "title": "CVE-2026-50466 Microsoft Brokering File System Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Standard Windows patch cadence applies."
+  },
+  {
+    "title": "CVE-2026-50661 Windows BitLocker Security Feature Bypass Vulnerability",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Important · CVSS 6.1 - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Verify BitLocker policy compliance and confirm the patch is deployed across managed devices."
+  },
+  {
+    "title": "Entra custom branding CSS deprecation: October 26, 2026 deadline",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Deadline: October 26, 2026. Custom CSS layout and positioning properties in Entra branded sign-in pages are retired starting this date, with full CSS retirement in 2027. Audit your custom branding configurations now and "
+  },
+  {
+    "title": "Exchange EWS retirement: phased disablement begins October 2026",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Deadline: October 2026 (phased start), April 2027 (full). If you have not completed your EWS dependency audit and app migration to Microsoft Graph, the window is closing. Test EWSAllowedAppIDs controls now using the fiel"
+  },
+  {
+    "title": "Purview DLP wait-on-send and calendar DLP coming to Mac and mobile: September 2026",
+    "category": "Action Required",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Deadline: September 2026 GA. DLP wait-on-send enforcement and calendar event DLP will activate for Outlook Mac, iOS, and Android. Review DLP policy scope, audit mobile coverage gaps, and set user wait-time thresholds bef"
+  },
+  {
+    "title": "SSO for Linux device configuration guidance updated",
+    "category": "Documentation Updates",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Guidance for configuring Microsoft SSO on Linux devices was updated, reflecting changes in supported configuration steps or prerequisites relevant to Entra-joined Linux endpoints."
+  },
+  {
+    "title": "New article: SAMAccountName attribute in Entra ID",
+    "category": "Documentation Updates",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "A new article documents SAMAccountName behavior and usage in Entra ID, useful for hybrid identity engineers working through attribute mapping and sync rule design."
+  },
+  {
+    "title": "Lifecycle Workflows: cloning an existing workflow now documented",
+    "category": "Documentation Updates",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "New documentation covers how to clone an existing Lifecycle Workflow, which reduces configuration effort when standing up similar workflows for different user populations or scenarios."
+  },
+  {
+    "title": "Lifecycle Workflows: relative time-based triggers now documented",
+    "category": "Documentation Updates",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "New documentation covers relative time-based workflow triggers in Lifecycle Workflows, with a noted update to the preview offset limit to 365 days, expanding the range for pre- and post-event automation."
+  },
+  {
+    "title": "Defender catch-up scan behavior documented",
+    "category": "Documentation Updates",
+    "date": "2026-08-25",
+    "url": "/posts/2026-08-25/",
+    "snippet": "Documentation for Microsoft Defender catch-up scan settings was updated, clarifying configuration behavior relevant to endpoints that miss scheduled scans, which affects Intune antivirus policy design."
+  },
+  {
     "title": "Exchange Server SE August Security Updates are live and need immediate attention.",
     "category": "Top 5",
     "date": "2026-08-18",
@@ -182,6 +672,41 @@
     "snippet": "[Preview] - The redesigned Copilot Notebooks experience in the M365 Copilot app organizes chats, outputs, and references into a persistent workspace where accumulated context carries across sessions, with preview in July"
   },
   {
+    "title": "Defender for Identity sensor updates",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Ongoing sensor update cadence for Defender for Identity; review the migration to sensor v3 documentation to ensure your sensors are current and migration prerequisites are met."
+  },
+  {
+    "title": "Migration readiness reasons on the Sensors page",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Hovering over a server's \"Not ready for migration\" status on the Sensors page now shows a tooltip listing the specific blocking prerequisites, eliminating the need to cross-reference documentation for each server."
+  },
+  {
+    "title": "Microsoft Purview: Permissions audit log improvements",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Enhanced audit logs will capture role and scoped-role access decisions in the Purview portal, targeting GA in September 2026. Start planning how these logs will integrate into your existing SIEM ingestion and comp"
+  },
+  {
+    "title": "Microsoft Purview: eDiscovery - CMK (Customer managed key) for eDiscovery direct export",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[GA] - Customer-managed key support for the eDiscovery direct export workflow is targeting GA in January 2027. If your data sovereignty or compliance requirements mandate CMK for exported content, this closes the gap - a"
+  },
+  {
+    "title": "Microsoft 365 admin center: Organizational Data - Granular access policy controls for custom attributes",
+    "category": "Security & Compliance",
+    "date": "2026-08-18",
+    "url": "/posts/2026-08-18/",
+    "snippet": "[Preview] - Admins will be able to release custom organizational attributes to specific users or groups rather than all employees or all managers, and will control whether leaders can share non-public data with Workforce"
+  },
+  {
     "title": "CVE-2026-40400 Windows PowerShell Remote Code Execution Vulnerability",
     "category": "Security & Compliance",
     "date": "2026-08-18",
@@ -285,41 +810,6 @@
     "date": "2026-08-18",
     "url": "/posts/2026-08-18/",
     "snippet": "[GA] - Microsoft corrected the software listed in the Security Updates table for this RCE and recommends installing the update as soon as possible. If you applied a patch based on the original advisory listing, verify yo"
-  },
-  {
-    "title": "Defender for Identity sensor updates",
-    "category": "Security & Compliance",
-    "date": "2026-08-18",
-    "url": "/posts/2026-08-18/",
-    "snippet": "[GA] - Ongoing sensor update cadence for Defender for Identity; review the migration to sensor v3 documentation to ensure your sensors are current and migration prerequisites are met."
-  },
-  {
-    "title": "Migration readiness reasons on the Sensors page",
-    "category": "Security & Compliance",
-    "date": "2026-08-18",
-    "url": "/posts/2026-08-18/",
-    "snippet": "[GA] - Hovering over a server's \"Not ready for migration\" status on the Sensors page now shows a tooltip listing the specific blocking prerequisites, eliminating the need to cross-reference documentation for each server."
-  },
-  {
-    "title": "Microsoft Purview: Permissions audit log improvements",
-    "category": "Security & Compliance",
-    "date": "2026-08-18",
-    "url": "/posts/2026-08-18/",
-    "snippet": "[GA] - Enhanced audit logs will capture role and scoped-role access decisions in the Purview portal, targeting GA in September 2026. Start planning how these logs will integrate into your existing SIEM ingestion and comp"
-  },
-  {
-    "title": "Microsoft Purview: eDiscovery - CMK (Customer managed key) for eDiscovery direct export",
-    "category": "Security & Compliance",
-    "date": "2026-08-18",
-    "url": "/posts/2026-08-18/",
-    "snippet": "[GA] - Customer-managed key support for the eDiscovery direct export workflow is targeting GA in January 2027. If your data sovereignty or compliance requirements mandate CMK for exported content, this closes the gap - a"
-  },
-  {
-    "title": "Microsoft 365 admin center: Organizational Data - Granular access policy controls for custom attributes",
-    "category": "Security & Compliance",
-    "date": "2026-08-18",
-    "url": "/posts/2026-08-18/",
-    "snippet": "[Preview] - Admins will be able to release custom organizational attributes to specific users or groups rather than all employees or all managers, and will control whether leaders can share non-public data with Workforce"
   },
   {
     "title": "August 2026 Exchange Server Security Updates",
