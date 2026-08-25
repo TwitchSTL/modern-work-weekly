@@ -1135,7 +1135,19 @@ _TOP5_ITEM_RE = re.compile(
     # The optional non-capturing group tolerates the {{< cat "..." >}} shortcode
     # tag_top5_categories() inserts right after the title — present on posts
     # generated after that function existed, absent on older ones.
-    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*(?:\{\{<\s*cat\s+\"[^\"]*\"\s*>\}\})?\s*-\s*(?P<body>.+?)(?=\n\n\d+\.\s+\*\*|\Z)",
+    #
+    # The terminating lookahead used to require a BLANK line before the next
+    # numbered item (\n\n\d+\.\s+\*\*), matching the SYSTEM_PROMPT's formatting
+    # rule ("each numbered item is followed by a blank line"). Confirmed live
+    # 2026-08-25: the model doesn't always follow that formatting rule, and
+    # when it emits Top 5 items back-to-back with no blank line between them,
+    # the old lookahead never found its boundary until \Z — collapsing all 5
+    # items into a single match (item 1's title, with items 2-5 swallowed
+    # into its body) and silently starving extract_top5()/the announcement
+    # post of the other 4 items. \s* tolerates zero, one, or many newlines
+    # between items, so this works whether or not the blank-line rule was
+    # actually followed that week.
+    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*(?:\{\{<\s*cat\s+\"[^\"]*\"\s*>\}\})?\s*-?\s*(?P<body>.+?)(?=\n\s*\d+\.\s+\*\*|\Z)",
     re.MULTILINE | re.DOTALL,
 )
 
@@ -1168,12 +1180,29 @@ def extract_top5(post_content: str) -> list[dict]:
 # LinkedIn body text — a bare username reads as sloppy and may not even be
 # the person's real name.
 def _is_full_name(author: str | None) -> bool:
-    """True only for a real 'First Last'-shaped author, never a bare
-    TechCommunity username or None."""
+    """True only for a real 'First Last'-shaped individual, never a bare
+    TechCommunity username, None, or an org/channel byline that happens to
+    look like a two-word name. Confirmed live 2026-08-18: the plain
+    len(parts) >= 2 check alone flagged "Microsoft Mechanics" (a YouTube
+    channel byline, not a person) and "Microsoft Security Research and
+    Srinivasan Govindarajan" (a team-plus-person compound byline) as safe
+    to credit inline, which they aren't. Rejecting any author string that
+    contains the word "Microsoft" catches both cases, since a real
+    individual's byline never includes the company name itself. This is a
+    narrow, targeted rejection, not a broader org-name denylist, since a
+    compound byline like the Security Research one still deserves manual
+    review (the real name inside it, e.g. Srinivasan Govindarajan, is
+    worth crediting once someone pulls it out by hand) rather than being
+    silently dropped from the candidates list entirely.
+    """
     if not author:
         return False
     parts = author.strip().split()
-    return len(parts) >= 2 and all(p.replace("-", "").isalpha() for p in parts)
+    if len(parts) < 2 or not all(p.replace("-", "").isalpha() for p in parts):
+        return False
+    if any(p.lower() == "microsoft" for p in parts):
+        return False
+    return True
 
 
 def _best_author_match(headline: str, items: list[dict], min_overlap: float = 0.6) -> str | None:
