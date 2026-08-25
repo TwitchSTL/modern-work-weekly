@@ -68,7 +68,7 @@
       {{ end }}
     {{ end }}
     {{ if $rows }}
-    <div class="terms-pillar-group" style="--pillar-color: {{ $color }}">
+    <div class="terms-pillar-group" id="pillar-{{ $pillar | urlize }}" style="--pillar-color: {{ $color }}">
       <h2 class="terms-pillar-heading">{{ $pillar }}</h2>
       <div class="terms-grid">
         {{ range (sort $rows "Count" "desc") }}

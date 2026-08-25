@@ -36,9 +36,23 @@
       "Employee Experience"          "#f778ba"
       "Security & Compliance"        "#d2a8ff"
     }}
+    {{/* Round: per-pillar fill-style, second visual cue beyond color alone —
+         same mapping as PILLAR_STYLE in the Tag Universe globe prototype and
+         the .pillar-style-* rules in main.css. Kept in sync manually with
+         deadlines-sidebar.html / deadlines.html / calendar.js, same as the
+         color map above. */}}
+    {{ $pillarStyles := dict
+      "Identity & Access"            "pillar-style-solid"
+      "Endpoint & Device Management" "pillar-style-donut"
+      "Collaboration & Productivity" "pillar-style-stripe"
+      "AI & Copilot"                 "pillar-style-dashed"
+      "Employee Experience"          "pillar-style-gradient"
+      "Security & Compliance"        "pillar-style-halo"
+    }}
     {{ range $categories }}
       {{ $color := index $pillarColors . | default "#6e7681" }}
-      <span class="pillar-chip" style="--pillar-color: {{ $color }}">{{ . }}</span>
+      {{ $style := index $pillarStyles . | default "" }}
+      <span class="pillar-chip {{ $style }}" style="--pillar-color: {{ $color }}">{{ . }}</span>
     {{ end }}
   </div>
   {{ end }}

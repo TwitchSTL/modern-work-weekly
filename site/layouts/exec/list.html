@@ -48,7 +48,10 @@
 
   <!-- Right sidebar: Key Dates -->
   <aside class="post-sidebar post-sidebar-right">
-    {{ partial "deadlines-calendar.html" . }}
+    <details class="post-sidebar-accordion" open>
+      <summary>Key Dates</summary>
+      {{ partial "deadlines-calendar.html" . }}
+    </details>
   </aside>
 
 </div>

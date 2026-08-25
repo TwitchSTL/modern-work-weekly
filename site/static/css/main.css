@@ -236,6 +236,29 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   min-width: 500px;
 }
 
+/* min-width: 500px above is fine anchored to the toggle on desktop, but
+   on any phone (all narrower than 500px) it pushes the panel off-screen
+   left/right and forces horizontal scroll. Below 600px (matching the
+   header's existing mobile breakpoint) switch to viewport-fixed
+   positioning instead of anchoring to the toggle, so the panel always
+   fits within the screen regardless of where the toggle sits after the
+   header wraps. */
+@media (max-width: 600px) {
+  .portals-panel {
+    position: fixed;
+    top: 4.5rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    min-width: 0;
+    width: auto;
+    max-height: calc(100vh - 5.5rem);
+    overflow-y: auto;
+  }
+  .portals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .portals-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -82,7 +82,10 @@
 
   <!-- Right sidebar: TOC, tags, related digests -->
   <aside class="post-sidebar post-sidebar-right">
-    {{ partial "sidebar-digest.html" . }}
+    <details class="post-sidebar-accordion" open>
+      <summary>In this digest</summary>
+      {{ partial "sidebar-digest.html" . }}
+    </details>
   </aside>
 
 </div>

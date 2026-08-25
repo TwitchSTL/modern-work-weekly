@@ -3,10 +3,20 @@
 
 <div class="post-layout home-layout">
 
-  <!-- Left sidebar: Known Issues + Topics -->
+  <!-- Left sidebar: Known Issues + Topics. Wrapped in <details open> so
+       mobile gets a tap-to-collapse accordion (summary hidden on desktop,
+       where .post-sidebar-accordion[open] always renders — see the
+       max-width:1060px block in main.css for why this replaced flatly
+       hiding sidebars on mobile. -->
   <aside class="post-sidebar post-sidebar-left">
-    {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" false) }}
-    {{ partial "topics-sidebar.html" . }}
+    <details class="post-sidebar-accordion" open>
+      <summary>Known Issues</summary>
+      {{ partial "health-sidebar.html" (dict "Site" .Site "newOnly" false) }}
+    </details>
+    <details class="post-sidebar-accordion" open>
+      <summary>Modern Pillars &amp; Related Topics</summary>
+      {{ partial "topics-sidebar.html" . }}
+    </details>
   </aside>
 
   <!-- Center: hero + post list -->
@@ -45,7 +55,10 @@
 
   <!-- Right sidebar: 30-day deadline calendar -->
   <aside class="post-sidebar post-sidebar-right">
-    {{ partial "deadlines-calendar.html" . }}
+    <details class="post-sidebar-accordion" open>
+      <summary>Key Dates</summary>
+      {{ partial "deadlines-calendar.html" . }}
+    </details>
   </aside>
 
 </div>
