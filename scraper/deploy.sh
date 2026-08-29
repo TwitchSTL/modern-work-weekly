@@ -14,6 +14,23 @@ LOG="/var/log/mww-deploy.log"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
+# Guard against racing with weekly-run.sh / health-run.sh's own git pull,
+# commit, and push against this same repo. Without this, two processes
+# writing refs/remotes/origin/main at once can corrupt the local ref
+# ("cannot lock ref ... is at X but expected Y"), and worse, can silently
+# desync this script's own BEFORE/AFTER HEAD comparison below so a real
+# deploy gets skipped with no error anywhere. Happened for real 2026-08-29:
+# three commits landed on disk but were never built because a concurrent
+# git operation moved HEAD out from under this script's own pull. This is
+# a non-blocking lock (skip and retry in 5 min) since deploy.sh runs so
+# often that waiting is pointless -- see MAINTENANCE.md.
+LOCK="/var/lock/mww-git.lock"
+exec 200>"$LOCK"
+if ! flock -n 200; then
+  log "Another git/deploy operation is in progress — skipping this cycle, will retry in 5 min."
+  exit 0
+fi
+
 # Pull latest — exit quietly if already up to date
 cd "$REPO"
 

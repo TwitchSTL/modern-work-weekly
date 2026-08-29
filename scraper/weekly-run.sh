@@ -19,6 +19,18 @@ DATE=$(date +%Y-%m-%d)
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$LOG"; }
 
+# Hold the same lock deploy.sh and health-run.sh use for their git
+# operations, so this run's pull/commit/push/build can't race with either
+# of them and corrupt refs/remotes/origin/main -- exactly what silently
+# skipped a real deploy on 2026-08-29. This blocks rather than skipping,
+# since missing a Tuesday digest is worse than a short wait: deploy.sh's
+# own critical section is just a git pull plus at most a Hugo build, so
+# normally this clears in seconds. Held for the rest of the script via the
+# open file descriptor, released automatically on exit. See MAINTENANCE.md.
+LOCK="/var/lock/mww-git.lock"
+exec 200>"$LOCK"
+flock 200
+
 log "===== Weekly run starting (week of $DATE) ====="
 
 # Activate Python venv

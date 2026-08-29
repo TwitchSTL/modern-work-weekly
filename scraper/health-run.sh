@@ -14,6 +14,19 @@ TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 mkdir -p "$LOG_DIR"
 echo "[$TIMESTAMP] Health scraper starting..." >> "$LOG_DIR/health.log"
 
+# Hold the same lock deploy.sh and weekly-run.sh use for their git
+# operations, so this run's pull/commit/push can't race with either of
+# them and corrupt refs/remotes/origin/main. Waits up to 60s rather than
+# skipping outright, since deploy.sh's own critical section is short; if
+# it's still held after 60s something else is stuck and this run bails
+# rather than piling onto the problem. See MAINTENANCE.md.
+LOCK="/var/lock/mww-git.lock"
+exec 200>"$LOCK"
+if ! flock -w 60 200; then
+    echo "[$TIMESTAMP] ERROR: could not acquire git lock within 60s — another deploy/weekly run appears stuck. Skipping this health run." >> "$LOG_DIR/health.log"
+    exit 1
+fi
+
 # Pull latest code — discard any local health.json/deadlines.json drift
 # first, same as weekly-run.sh. Without this, a routine purge write here
 # (purge_expired_deadlines() rewrites deadlines.json's "updated" timestamp

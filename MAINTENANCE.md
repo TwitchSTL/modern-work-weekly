@@ -288,6 +288,45 @@ stays untracked and invisible to the repo — `git status` surfaces those too
 under "Untracked files." Commit anything worth keeping (`git add`, `git commit`,
 `git push`), then `git pull` on your local machine so both clones agree.
 
+### Deploy silently skipped after a ref-lock race (fixed 2026-08-29)
+
+Happened for real on 2026-08-29: three real commits (the Tag Universe legend
+feature, GoatCounter, and the Deployment Guides page) landed correctly in
+`/opt/modern-work-weekly/repo` — `git log` showed `HEAD` matching GitHub's
+`main` — but the live site kept serving an older build with no error
+anywhere obvious.
+
+**Root cause:** `deploy.sh`, `weekly-run.sh`, and `health-run.sh` each run
+their own `git pull` (and sometimes `commit`/`push`) against the *same*
+repo directory with no mutual exclusion between them. `mww-deploy.log`
+showed the actual failure: `error: cannot lock ref
+'refs/remotes/origin/main': is at ba70711... but expected 8574df1...` — two
+processes wrote to that ref at once. Worse, `deploy.sh` decides whether to
+rebuild by comparing `HEAD` before and after its own `git pull`; if some
+other process advances `HEAD` in between those two reads, `deploy.sh` sees
+no difference and skips the build entirely, with nothing logged to say so.
+
+**Fix:** all three scripts now hold a shared `flock` (`/var/lock/mww-git.lock`)
+around their git operations, so only one of them can touch the repo's refs
+at a time. `deploy.sh` uses a non-blocking lock (skip this cycle, retry in 5
+minutes, since it polls so often that waiting is pointless). `weekly-run.sh`
+blocks until it gets the lock, since missing the Tuesday digest is worse
+than a short wait. `health-run.sh` waits up to 60 seconds, then bails with
+an error if something else appears stuck.
+
+🖥️ **LXC — if a deploy still looks stuck after this fix,** check first
+whether the lock itself is the problem (a crashed process holding it open
+indefinitely):
+```bash
+# See who (if anyone) currently holds the lock
+sudo lsof /var/lock/mww-git.lock
+
+# If nothing legitimate is running but the lock won't clear, the file
+# itself is never deleted by design (flock doesn't need that) -- the issue
+# would be a hung process still holding the fd open. Find and kill it,
+# then confirm deploy.sh's next cron tick logs "Deploy done" normally.
+```
+
 ---
 
 ## API / cost management
