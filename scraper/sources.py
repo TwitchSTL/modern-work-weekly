@@ -11,7 +11,7 @@ Each source has:
   - health: True if this is a known-issues/service-health source (routed separately)
   - json_api: True if the rss field is a JSON endpoint (not RSS/Atom) — uses fetch_json_status()
   - no_item_dates: True if this feed has no real per-item publish date (see
-    Microsoft 365 Roadmap below) — tells fetch_rss() to record date=None
+    AI at Work Roadmap below) — tells fetch_rss() to record date=None
     instead of faking "now"
 
 Note: sources used to carry a "category" field ("default classification
@@ -28,7 +28,7 @@ before keyword scoring runs. The distinction that keeps it from rotting the
 same way: it's deliberately short, covering only sources whose product name
 maps to exactly one pillar with no real ambiguity (e.g. Intune is always
 Endpoint & Device Management). Sources that legitimately span multiple
-pillars (Microsoft Security Blog, Microsoft 365 Roadmap, Microsoft Security
+pillars (Microsoft Security Blog, AI at Work Roadmap, Microsoft Security
 Response Center, Microsoft Mechanics) are deliberately left out so they
 keep going through keyword scoring. See classify_item()'s docstring for why
 this was needed — keyword-only classification was misfiring on sources
@@ -135,7 +135,7 @@ SOURCES = [
         # (present in 4+ consecutive weekly archives), its recorded date
         # drifting toward "now" on every re-scrape, until it finally slipped
         # inside the freshness window and got published on 2026-08-04 looking
-        # brand new. Same bug class as Microsoft 365 Roadmap below —
+        # brand new. Same bug class as AI at Work Roadmap below —
         # no_item_dates tells fetch_rss() to record date=None instead of
         # faking "now", so item_age_days() honestly reports unknown age
         # (kept, never wrongly aged out or wrongly certified as fresh)
@@ -168,7 +168,14 @@ SOURCES = [
         "selector": "h2, h3, p",
     },
     {
-        "name": "Microsoft 365 Roadmap",
+        # Renamed by Microsoft from "Microsoft 365 Roadmap" to "AI at Work Roadmap"
+        # (MC1461528, ~2026-08-25), which also folded in Dynamics 365/Power
+        # Platform/Dataverse content. URL and RSS endpoint are unchanged, only
+        # the branding. Forward-only per the 2026-07-17 taxonomy norm: this is
+        # a config-level rename only — already-published posts/exec guides and
+        # archived state/*.json keep saying "Microsoft 365 Roadmap" and are not
+        # retroactively touched.
+        "name": "AI at Work Roadmap",
         "url": "https://www.microsoft.com/en-us/microsoft-365/roadmap",
         "cadence": "rolling",
         "rss": "https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS",
@@ -262,6 +269,21 @@ SOURCES = [
         "url": "https://learn.microsoft.com/en-us/autopilot/whats-new",
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=microsoftintuneblog",
+        "selector": "h2, h3, p",
+    },
+    {
+        # Added 2026-08-29: Ryan flagged that Autopilot device-association /
+        # unattended Remote Help content lives on the Intune Customer Success
+        # blog specifically, a distinct TechCommunity board from the main
+        # Intune blog the "Autopilot" source above already tracks. Confirmed
+        # live 2026-08-29: this board's first two items were exactly the
+        # gaps flagged — "Introducing device association for Windows
+        # Autopilot device preparation" and "Remote Help on Windows:
+        # Unattended Support with Remote Sign-In Is Here".
+        "name": "Intune Customer Success",
+        "url": "https://techcommunity.microsoft.com/category/microsoftintune/blog/intunecustomersuccess",
+        "cadence": "rolling",
+        "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=IntuneCustomerSuccess",
         "selector": "h2, h3, p",
     },
     {
@@ -535,6 +557,7 @@ SOURCE_PILLARS = {
     "Windows 365": "Endpoint & Device Management",
     "Windows Autopatch": "Endpoint & Device Management",
     "Autopilot": "Endpoint & Device Management",
+    "Intune Customer Success": "Endpoint & Device Management",
     "Microsoft 365 Copilot": "AI & Copilot",
     "Copilot Studio": "AI & Copilot",
     "Power Platform": "AI & Copilot",
@@ -554,7 +577,7 @@ SOURCE_PILLARS = {
     # security updates: What organizations..."). Falls through to keyword
     # scoring (with source-name-stripping) instead.
     # Deliberately NOT listed (span multiple pillars — keep keyword scoring):
-    # Microsoft Security Blog, Microsoft 365 Roadmap,
+    # Microsoft Security Blog, AI at Work Roadmap,
     # Microsoft Security Response Center, Microsoft Mechanics.
 }
 

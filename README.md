@@ -82,12 +82,12 @@ Three cron jobs run automatically on a self-hosted LXC:
 | Category | Sources |
 |---|---|
 | 🪪 Identity & Access | Entra ID |
-| 💻 Endpoint & Device Management | Intune, Autopilot, Windows 365, Windows Autopatch |
+| 💻 Endpoint & Device Management | Intune, Autopilot, Intune Customer Success, Windows 365, Windows Autopatch |
 | 💬 Collaboration & Productivity | Teams, SharePoint / OneDrive, Exchange Online |
 | 🤖 AI & Copilot | Microsoft 365 Copilot, Copilot Studio, Agent 365, Power Platform |
 | 🌱 Employee Experience | Microsoft Viva |
 | 🛡️ Security & Compliance | Defender XDR, Defender for Endpoint, Defender for Identity, Defender for Office 365, Microsoft Security Response Center, Purview, Global Secure Access, Microsoft Security Blog |
-| 📊 Spans multiple pillars | Microsoft 365 Roadmap, Microsoft Mechanics |
+| 📊 Spans multiple pillars | AI at Work Roadmap (renamed from Microsoft 365 Roadmap, 2026-08-25), Microsoft Mechanics |
 | 🩺 Known Issues *(every 8h)* | Intune, Autopilot, Windows 365, Defender XDR, Purview, Entra ID, Windows Release Health, Azure Status, M365 Service Status |
 
 ---
