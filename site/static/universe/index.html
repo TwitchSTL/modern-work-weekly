@@ -313,6 +313,13 @@
      glance instead of needing a hover on the globe to tell pillars apart. */
   .legend-dot { width: 17px; height: 17px; border-radius: 50%; flex-shrink: 0; box-sizing: border-box; }
   .legend-dot.ring { background: transparent; border: 3px solid var(--pillar-docs); border-radius: 50%; }
+  /* New feature: legend rows for the six pillars now rotate the globe to
+     that pillar's cluster on click (or Enter/Space), mirroring the
+     keyboard "Browse tags" list's existing docs-badge shortcut. Only rows
+     with data-pillar are interactive -- "Documentation Updates" stays a
+     plain legend key. */
+  .legend-row[data-pillar] { cursor: pointer; border-radius: 6px; margin: 0 -6px; padding: 4px 6px; transition: background 0.12s ease; }
+  .legend-row[data-pillar]:hover, .legend-row[data-pillar]:focus-visible { background: rgba(255,255,255,0.08); outline: none; }
 
   /* Round 18: reworked from round 17's per-pillar clip-path SHAPES — those
      only existed on the flat legend/tag-list/flyout panels, not on the
@@ -492,12 +499,12 @@
 
   <div class="legend neon-card">
     <h3>Pillars</h3>
-    <div class="legend-row"><span class="legend-dot style-solid" style="--mc:var(--pillar-identity)"></span>Identity &amp; Access</div>
-    <div class="legend-row"><span class="legend-dot style-donut" style="--mc:var(--pillar-endpoint)"></span>Endpoint &amp; Device Mgmt</div>
-    <div class="legend-row"><span class="legend-dot style-stripe" style="--mc:var(--pillar-collab)"></span>Collaboration &amp; Productivity</div>
-    <div class="legend-row"><span class="legend-dot style-dashed" style="--mc:var(--pillar-ai)"></span>AI &amp; Copilot</div>
-    <div class="legend-row"><span class="legend-dot style-gradient" style="--mc:var(--pillar-ee)"></span>Employee Experience</div>
-    <div class="legend-row"><span class="legend-dot style-halo" style="--mc:var(--pillar-security)"></span>Security &amp; Compliance</div>
+    <div class="legend-row" data-pillar="Identity &amp; Access" tabindex="0" role="button" aria-label="Focus globe on Identity &amp; Access"><span class="legend-dot style-solid" style="--mc:var(--pillar-identity)"></span>Identity &amp; Access</div>
+    <div class="legend-row" data-pillar="Endpoint &amp; Device Management" tabindex="0" role="button" aria-label="Focus globe on Endpoint &amp; Device Management"><span class="legend-dot style-donut" style="--mc:var(--pillar-endpoint)"></span>Endpoint &amp; Device Mgmt</div>
+    <div class="legend-row" data-pillar="Collaboration &amp; Productivity" tabindex="0" role="button" aria-label="Focus globe on Collaboration &amp; Productivity"><span class="legend-dot style-stripe" style="--mc:var(--pillar-collab)"></span>Collaboration &amp; Productivity</div>
+    <div class="legend-row" data-pillar="AI &amp; Copilot" tabindex="0" role="button" aria-label="Focus globe on AI &amp; Copilot"><span class="legend-dot style-dashed" style="--mc:var(--pillar-ai)"></span>AI &amp; Copilot</div>
+    <div class="legend-row" data-pillar="Employee Experience" tabindex="0" role="button" aria-label="Focus globe on Employee Experience"><span class="legend-dot style-gradient" style="--mc:var(--pillar-ee)"></span>Employee Experience</div>
+    <div class="legend-row" data-pillar="Security &amp; Compliance" tabindex="0" role="button" aria-label="Focus globe on Security &amp; Compliance"><span class="legend-dot style-halo" style="--mc:var(--pillar-security)"></span>Security &amp; Compliance</div>
     <div class="legend-row"><span class="legend-dot ring"></span>Documentation Updates (1 per pillar)</div>
     <button id="reset-view-btn" type="button">↺ Reset view</button>
   </div>
@@ -1715,6 +1722,28 @@
     docsPanel.classList.remove("open");
     layoutRightPanels();
     scheduleResume();
+  });
+
+  // New feature: clicking (or keyboard-activating) a pillar's legend row
+  // rotates the globe to that pillar's Documentation Updates badge and
+  // opens its panel -- the same focus+open behavior the "Browse tags" list
+  // already gives its own docs-badge shortcut, just reachable from the
+  // legend itself instead of only the keyboard list below it.
+  function focusLegendPillar(pillarName) {
+    const pillar = PILLARS.find(p => p.name === pillarName);
+    const sprite = spriteByDocsPillar[pillarName];
+    const docNode = DOCS_NODES.find(d => d.pillar === pillarName);
+    if (sprite) focusOnSprite(sprite);
+    if (pillar && docNode) openDocsPanel(docNode, pillar);
+  }
+  document.querySelectorAll(".legend-row[data-pillar]").forEach(row => {
+    row.addEventListener("click", () => focusLegendPillar(row.dataset.pillar));
+    row.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        focusLegendPillar(row.dataset.pillar);
+      }
+    });
   });
 
   // Round 14: per feedback, ALL dots should be visible all the time — not
