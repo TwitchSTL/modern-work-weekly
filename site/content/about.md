@@ -9,7 +9,7 @@ _build:
 
 ## What this is
 
-**Modern Work** is Microsoft's umbrella for how organizations work in the cloud era: identity and access, endpoint and device management, collaboration and productivity, AI and Copilot, employee experience, and security and compliance. Modern Work Weekly is a weekly digest of changes across all six, built for the engineers doing the work.
+[**Modern Work**](/what-is-modern-work/) is Microsoft's umbrella for how organizations work in the cloud era: identity and access, endpoint and device management, collaboration and productivity, AI and Copilot, employee experience, and security and compliance. Modern Work Weekly is a weekly digest of changes across all six, built for the engineers doing the work.
 
 Microsoft publishes updates across dozens of portals every week. Some changes are minor. Some have deadlines. Some will quietly break something in your environment if you miss them. Modern Work Weekly pulls from 30+ official Microsoft sources, filters the noise, and surfaces what actually matters.
 

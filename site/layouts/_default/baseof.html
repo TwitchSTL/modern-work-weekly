@@ -40,17 +40,68 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": {{ .Title | jsonify }},
-    "description": {{ $desc | jsonify }},
+    "headline": {{ .Title | jsonify | safeJS }},
+    "description": {{ $desc | jsonify | safeJS }},
     "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
     "dateModified":  "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
     "url": "{{ .Permalink }}",
-    "author": { "@type": "Person", "name": {{ .Site.Params.author | jsonify }} },
+    "author": { "@type": "Person", "name": {{ .Site.Params.author | jsonify | safeJS }} },
     "publisher": {
       "@type": "Organization",
-      "name": {{ .Site.Title | jsonify }},
-      "url":  {{ .Site.BaseURL | jsonify }}
+      "name": {{ .Site.Title | jsonify | safeJS }},
+      "url":  {{ .Site.BaseURL | jsonify | safeJS }}
     }
+  }
+  </script>
+  {{ end -}}
+
+  {{/* Pillar/explainer pages set pillar_page: true in front matter and
+       optionally defined_term / faq params -- this emits DefinedTerm and
+       FAQPage structured data alongside a WebPage entry, independent of
+       the Article schema above (which is posts-section only). The FAQ
+       list rendered here must stay driven from the same .Params.faq the
+       page body's FAQ accordion renders from (see single.html), so the
+       visible copy and the schema never drift apart. */}}
+  {{ if .Params.pillar_page -}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": {{ printf "%s#webpage" .Permalink | jsonify | safeJS }},
+        "url": {{ .Permalink | jsonify | safeJS }},
+        "name": {{ $title | jsonify | safeJS }},
+        "description": {{ $desc | jsonify | safeJS }},
+        "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+        "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+        "isPartOf": { "@type": "WebSite", "url": {{ .Site.BaseURL | jsonify | safeJS }}, "name": {{ .Site.Title | jsonify | safeJS }} }
+      }
+      {{ with .Params.defined_term -}}
+      ,{
+        "@type": "DefinedTerm",
+        "name": {{ .name | jsonify | safeJS }},
+        "alternateName": {{ .alternate_name | jsonify | safeJS }},
+        "description": {{ .description | jsonify | safeJS }},
+        "inDefinedTermSet": {{ $.Permalink | jsonify | safeJS }}
+      }
+      {{ end -}}
+      {{ with .Params.faq -}}
+      ,{
+        "@type": "FAQPage",
+        "mainEntity": [
+          {{ range $i, $item := . -}}
+          {{ if $i }},{{ end }}
+          {
+            "@type": "Question",
+            "name": {{ $item.q | jsonify | safeJS }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ $item.a | jsonify | safeJS }} }
+          }
+          {{ end -}}
+        ]
+      }
+      {{ end -}}
+    ]
   }
   </script>
   {{ end -}}
@@ -63,6 +114,7 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="stylesheet" href="/css/main.css?v={{ now.Unix }}">
   <link rel="stylesheet" href="/css/review-tray.css?v={{ now.Unix }}">
+  <link rel="stylesheet" href="/css/pillar-page.css?v={{ now.Unix }}">
 
   {{/* Privacy-respecting analytics — GoatCounter (cookie-free, no consent
        banner needed, no personal data collected). No-ops entirely until

@@ -112,6 +112,22 @@
     <div class="post-content">
       {{ .Content }}
     </div>
+
+    {{/* Front-matter-driven FAQ accordion for pillar/explainer pages. Kept
+         out of the markdown body on purpose so the visible copy here and
+         the FAQPage JSON-LD in baseof.html always read from the same
+         .Params.faq list and can never drift apart. */}}
+    {{ with .Params.faq }}
+    <div class="faq-block">
+      <h2 id="faq">Frequently Asked Questions</h2>
+      {{ range . }}
+      <details class="faq-item">
+        <summary>{{ .q }}</summary>
+        <div class="faq-item-body">{{ .a | markdownify }}</div>
+      </details>
+      {{ end }}
+    </div>
+    {{ end }}
   </article>
 </div>
 {{ end }}
