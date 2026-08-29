@@ -31,10 +31,21 @@ RE_H3 = re.compile(r'^### (.+)')
 RE_BULLET_TITLE = re.compile(r'^\s*[-*\d]+\.?\s+\*\*(.+?)\*\*')
 RE_PHASE_TAG = re.compile(r'^`[^`]+`\s*[—–-]?\s*')
 RE_STRIP_INLINE = re.compile(r'\*{1,3}[^*]+\*{1,3}|\`[^`]+\`')  # strip bold/italic/code
+# Added 2026-08-29 alongside the emphasis-tag feature: extracts the
+# optional {{< emphasis "..." >}} shortcode from an item's line so it can
+# be captured into search.json as its own field, and strips both this and
+# the pre-existing {{< cat "..." >}} shortcode out of snippet text — found
+# during this same change that {{< cat >}} was leaking into Top 5 item
+# snippets verbatim (never stripped here, only ever consumed by
+# collapsible.js client-side), so both shortcodes get the same treatment
+# now rather than leaving the emphasis one to repeat that same bug.
+RE_EMPHASIS_TAG = re.compile(r'\{\{<\s*emphasis\s+"([^"]*)"\s*>\}\}')
+RE_ANY_SHORTCODE = re.compile(r'\{\{<[^>]*>\}\}')
 
 
 def strip_markdown_inline(text: str) -> str:
     """Remove common inline markdown so snippets read as plain text."""
+    text = RE_ANY_SHORTCODE.sub('', text)                    # {{< ... >}} shortcodes
     text = re.sub(r'\*{1,3}([^*]+)\*{1,3}', r'\1', text)   # bold/italic
     text = re.sub(r'`([^`]+)`', r'\1', text)                 # inline code
     text = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', text)     # links
@@ -103,22 +114,27 @@ def extract_entries(post_path: Path) -> list[dict]:
     entries: list[dict] = []
     category = ""
     pending_title = ""
+    pending_emphasis: list[str] = []
 
     def flush_pending(snippet_line: str = ""):
-        nonlocal pending_title
+        nonlocal pending_title, pending_emphasis
         if not pending_title:
             return
         snippet = strip_markdown_inline(RE_PHASE_TAG.sub("", snippet_line).strip())
         if not snippet:
             snippet = strip_markdown_inline(snippet_line)
-        entries.append({
+        entry = {
             "title": pending_title,
             "category": category,
             "date": date,
             "url": url,
             "snippet": snippet[:220],
-        })
+        }
+        if pending_emphasis:
+            entry["emphasis"] = pending_emphasis
+        entries.append(entry)
         pending_title = ""
+        pending_emphasis = []
 
     for raw_line in lines[body_start:]:
         line = raw_line.rstrip("\r")
@@ -155,6 +171,13 @@ def extract_entries(post_path: Path) -> list[dict]:
             after = re.sub(r'^\*\*', '', after)
             # Strip phase tag like `GA` or `Preview`
             after = re.sub(r'^`[^`]+`', '', after).strip()
+            # Extract the optional emphasis shortcode (forward-only tag,
+            # see the 2026-08-29 emphasis-tag feature) before stripping it
+            # like any other shortcode below.
+            em_match = RE_EMPHASIS_TAG.search(after)
+            if em_match:
+                pending_emphasis = [t.strip() for t in em_match.group(1).split(",") if t.strip()]
+                after = RE_EMPHASIS_TAG.sub('', after).strip()
             # Strip em-dash separator
             after = re.sub(r'^[—–-]+\s*', '', after).strip()
             if after and len(after) > 10:

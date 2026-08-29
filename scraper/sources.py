@@ -628,11 +628,27 @@ CLASSIFICATION_KEYWORDS = {
         # Identity & Access sense of the same word).
         "windows 365", "cloud pc", "settings catalog", "pre-provision",
         "autopilot",
+        # Added 2026-08-29 during an Intune classification audit (prompted
+        # by Ryan questioning whether locked sources were masking real
+        # substance mismatches). Bare "compliance" below (Security &
+        # Compliance) has no Endpoint-side counterpart for real
+        # device-compliance language that isn't the literal phrase
+        # "compliance policy" — confirmed at least one Intune item would
+        # score purely on that bare hit with nothing competing. Ties
+        # resolve to Endpoint & Device Management (listed first in this
+        # dict), so this gives genuine device-compliance content a fair
+        # shot instead of defaulting to Security on a technicality.
+        "device compliance",
     ],
     "Collaboration & Productivity": [
         # from prior "Apps", minus copilot/viva/yammer/power apps (moved below)
         "teams", "sharepoint", "onedrive", "outlook", "calendar",
-        "meeting", "channel", "loop", "planner", "forms",
+        "meeting", "channel", "loop", "planner",
+        # Narrowed from bare "forms" to "microsoft forms" 2026-08-29: bare
+        # "forms" substring-matches inside "platforms", misrouting Intune
+        # items merely mentioning multi-tenant/partner "platforms" into this
+        # pillar. Same fix style as the rejected bare "notebook" above.
+        "microsoft forms",
         "microsoft 365 apps", "office", "exchange",
         # Added 2026-08-11 (see Endpoint & Device Management comment above
         # for the full audit context). Confirmed real Exchange Online
@@ -699,6 +715,92 @@ CLASSIFICATION_KEYWORDS = {
 # write_classification_stats() tracks the fallback rate per run so a rising
 # trend is visible instead of discovered by accident.
 DEFAULT_CATEGORY = "Security & Compliance"
+
+# Content-emphasis tags — Microsoft's own Zero Trust vocabulary, added
+# 2026-08-29 forward-only (no retroactive tagging of already-published
+# items, same policy as the 2026-07-17 taxonomy migration and the AI at
+# Work Roadmap rename).
+#
+# These are DELIBERATELY SEPARATE from the six Modern Work practice-area
+# pillars above (CLASSIFICATION_KEYWORDS / SOURCE_PILLARS decide primary
+# site structure — which section an item lives under). Emphasis tags are a
+# secondary, optional, cross-cutting layer: an item keeps its one primary
+# pillar for navigation, but can also carry emphasis tags describing what
+# it's substantively about when that diverges from its product-driven
+# pillar. Motivating case (Ryan, 2026-08-29): DLP for Copilot is correctly
+# filed under AI & Copilot as its primary pillar (that's the right site
+# section), but its real substance is a Data Security story — Microsoft's
+# own RBAC even has a dedicated "Purview Data Security AI Admin" role
+# distinct from general Copilot administration. A single-bucket
+# classification can't represent that; this can.
+#
+# The eight EMPHASIS_TAGS mirror Microsoft's seven official Zero Trust
+# technology pillars (learn.microsoft.com/security/zero-trust/deploy/overview:
+# Identities, Endpoints, Data, Apps, Infrastructure, Network, SecOps) plus
+# "AI", the emerging eighth pillar the Zero Trust Workshop guidance added
+# for security of AI models/datasets — deliberately Microsoft's own
+# vocabulary, not an invented scheme, so it reads the same way to a
+# security-minded visitor as Microsoft's own documentation does.
+EMPHASIS_TAGS = [
+    "Identity", "Endpoints", "Data", "Apps", "Infrastructure", "Network",
+    "SecOps", "AI",
+]
+
+# The three CISA Zero Trust Maturity Model cross-cutting capabilities
+# (Microsoft explicitly aligns its own guidance to CISA's model — see
+# learn.microsoft.com/security/zero-trust/cisa-zero-trust-maturity-model-intro).
+# Optional, orthogonal to EMPHASIS_TAGS above: describes the *kind* of
+# capability an item delivers (visibility tooling vs. automation vs.
+# governance/policy) rather than *what* it protects.
+EMPHASIS_CAPABILITY_TAGS = [
+    "Visibility & Analytics", "Automation & Orchestration", "Governance",
+]
+
+# Lightweight keyword sanity-check for emphasis tags Claude assigns during
+# digest generation (see digest.py's SYSTEM_PROMPT/EXEC_SYSTEM_PROMPT and
+# check_emphasis_tags()). This is NOT how emphasis tags are decided — that
+# needs real reading comprehension (e.g. recognizing DLP-for-Copilot is a
+# Data story), which keyword matching can't reliably do, per the 2026-08-29
+# Intune classification audit. This dict exists only to flag drift: if
+# Claude's tag and the keyword signal disagree, or Claude tagged something
+# with zero keyword support, it's logged to state/emphasis_stats.json for
+# human review, never auto-corrected.
+EMPHASIS_KEYWORDS = {
+    "Identity": [
+        "entra", "azure ad", "conditional access", "mfa", "passwordless",
+        "sso", "identity", "authentication", "privileged", "pim",
+    ],
+    "Endpoints": [
+        "intune", "autopatch", "mdm", "enrollment", "endpoint",
+        "device management", "managed device", "autopilot",
+    ],
+    "Data": [
+        "purview", "dlp", "sensitivity label", "insider risk", "dspm",
+        "information protection", "data loss", "data governance",
+        "retention", "ediscovery", "data lifecycle", "data security",
+    ],
+    "Apps": [
+        "teams", "sharepoint", "onedrive", "outlook", "exchange",
+        "microsoft 365 apps", "office", "app management", "saas",
+    ],
+    "Infrastructure": [
+        "virtual machine", "container", "kubernetes", "server",
+        "hybrid", "on-premises", "workload",
+    ],
+    "Network": [
+        "global secure access", "gsa", "vpn", "firewall", "ztna",
+        "remote network", "traffic forwarding", "network segmentation",
+    ],
+    "SecOps": [
+        "defender", "sentinel", "attack disruption", "secure score",
+        "vulnerability", "threat", "incident", "hunting", "xdr", "siem",
+    ],
+    "AI": [
+        "copilot", "ai agent", "agent 365", "shadow ai", "ai gateway",
+        "prompt injection", "llm", "generative ai", "mcp",
+    ],
+}
+
 
 # Rollout phase keywords
 PHASE_KEYWORDS = {

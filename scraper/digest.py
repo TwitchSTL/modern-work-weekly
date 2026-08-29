@@ -26,6 +26,7 @@ import anthropic
 from dotenv import load_dotenv
 import generate_search_index
 from dateutils import parse_item_date, item_age_days
+from sources import EMPHASIS_KEYWORDS, EMPHASIS_TAGS
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,8 @@ PENDING_DRAFT_FILE = STATE_DIR / "pending_draft.json"
 ARCHIVE_DIR = STATE_DIR / "archive"
 HEALTH_DATA_FILE = BASE_DIR / "site" / "data" / "health.json"
 HEALTH_BASELINE_FILE = STATE_DIR / "health_baseline.json"
+EMPHASIS_STATS_FILE = STATE_DIR / "emphasis_stats.json"
+EMPHASIS_STATS_HISTORY_LIMIT = 20
 
 POSTS_DIR.mkdir(parents=True, exist_ok=True)
 EXEC_POSTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -61,8 +64,9 @@ Format rules:
 - Top 5 and CVE items: do not name-check a routine CVE (acknowledgment update, build-number correction, or any CVE whose provided cve_severity is not "Critical" and whose cve_exploited is not "Yes") in the Top 5. Only a CVE that is Critical severity or has cve_exploited: "Yes" belongs in Top 5. Every CVE, regardless of severity, still gets its own bullet in the Action Required section — see that section's rule below.
 - Title format must be exactly: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash — see clean_dashes())
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
-  `- **[Title](source-url)** [phase tag] — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
+  `- **[Title](source-url)** [phase tag] {{< emphasis "Tag" >}} — [1–3 sentences: lead with the practical implication for the engineer's environment, then what changed, then what to watch or do. Read like a senior engineer's key note, not a product description.]`
   Link each title to its source URL from the raw data using Markdown link syntax. If no URL is available for an item, write the title without a link.
+- Emphasis tags (the `{{< emphasis "..." >}}` shortcode above): OPTIONAL, added 2026-08-29, forward-only — only on new items, never inserted into historical content. This is separate from the item's category (which decides what section it lives under) and flags when an item's real substance is best understood through a different lens than its category implies. Use zero, one, or two tags from exactly this list: Identity, Endpoints, Data, Apps, Infrastructure, Network, SecOps, AI — Microsoft's own Zero Trust technology pillar names, not invented terms. Omit the shortcode entirely when an item's category already fully captures what it's about (this should be the common case — most items need no emphasis tag at all). Add one only when there's a genuine, specific reason: e.g. a Copilot item that is substantively about data loss prevention gets {{< emphasis "Data" >}} even though its category is AI & Copilot, because Microsoft's own Purview product team treats Copilot DLP as a Data Security concern (a distinct "Purview Data Security AI Admin" role exists for exactly this). Do not tag an item with the same concept its category already names (e.g. don't tag a Security & Compliance item "SecOps" just because it's security-flavored — that's not adding information). If genuinely undecided, leave the tag off; a missing tag costs nothing, a wrong one is noise.
 - Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → Documentation Updates → sources front matter. Do NOT place Action Required before the category sections.
 - Action Required section: ALWAYS include this section — never omit it. This section is a COMPLETE list, not a curated highlight reel: include EVERY CVE item provided in the data (no exceptions, regardless of severity), plus any non-CVE items with deadlines, required admin steps, governance decisions, or deprecation timelines. Use the same bullet format as category sections. For each CVE bullet, prominently lead with its severity and CVSS base score from the provided cve_severity/cve_base_score fields (e.g. "**Important · CVSS 8.0**") — if cve_severity is null for an item, write "Severity: not yet rated by MSRC" rather than inventing a rating — followed by "Surfaced in the [Week of date] digest." using the exact "Week of:" date given in the DIGEST CONTENT below (do not use any other date for this), then the same practical 1-3 sentence explanation used elsewhere. For non-CVE Action Required items, lead with the deadline date or urgency as before. If there are genuinely zero CVEs and zero other time-sensitive items this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days instead.
 - Documentation Updates section (## Documentation Updates): OPTIONAL — include only when the raw GitHub doc commit data has at least one substantive item; omit the entire section, heading included, if none qualify this week. This data is raw commits to Microsoft's documentation repos, and most commits are NOT worth surfacing: typo fixes, formatting passes, screenshot swaps, minor rewording, and editorial cleanup are all noise. Select only commits that represent a real content change an engineer would want to know about: a newly documented capability or setting, a changed default or behavior, an added or removed prerequisite, a retirement or deprecation notice, a corrected or clarified admin procedure, or a meaningfully rewritten guidance page. It is normal and expected for this section to be short or entirely absent most weeks; do not pad it with marginal commits to make it look substantial. Sub-group selected items under a bold pillar name on its own line (e.g. `**Identity & Access**`), then one bullet per item below it, in this format: `- **[Your own clear, engineer-facing title](commit-url)** — [1 sentence: what actually changed in the docs and why it matters].` Write your own title describing the actual change; do NOT reuse the raw commit message as the title, since commit messages are written for other doc authors, not engineers, and are often unclear standing alone.
@@ -113,6 +117,8 @@ Format rules:
 Regulatory angles to surface where relevant: HIPAA, SOC 2, CMMC, FedRAMP, NIST CSF, cyber insurance requirements, GDPR, state privacy laws.
 
 Strategic framing: when a change affects identity, device, or network access controls, frame its significance in Zero Trust maturity terms where it helps leadership understand posture, e.g. "closes an implicit-trust gap," "strengthens least-privilege enforcement," "extends verification to a previously trusted zone." This is a strategy lens for identity/device/network/security items specifically, used where it adds insight, not a label to attach to every row. Collaboration, AI/Copilot, and employee-experience items don't need it.
+
+Content-emphasis tags: OPTIONAL, added 2026-08-29, forward-only. In Risk & Compliance and Planning Horizon bullets only, when an item's real substance sits under a different Zero Trust pillar than its section implies (e.g. a Copilot item that's really a data-loss-prevention story), you may add `{{< emphasis "Tag" >}}` right after the bolded linked title, using one or two of exactly: Identity, Endpoints, Data, Apps, Infrastructure, Network, SecOps, AI. This is invisible to the reader (rendered as a hidden marker for the site's cross-linking, not printed text) so it never disrupts the prose. Omit it entirely in the common case where the section already makes the item's nature clear.
 
 Source citations — REQUIRED. Executives trust named references, not raw URLs:
 - At the end of EVERY section (including Risk & Compliance, Planning Horizon, and If You Take No Action), you MUST include a line formatted exactly as:
@@ -961,6 +967,98 @@ def tag_top5_categories(content: str) -> str:
     return content[: top5_match.start(1)] + tagged_block + content[top5_match.end(1) :]
 
 
+_EMPHASIS_SHORTCODE_RE = re.compile(r'\{\{<\s*emphasis\s+"([^"]*)"\s*>\}\}')
+# A bullet/numbered-item start: "- **" or "1. **" at the start of a line.
+# Used to find the boundaries of the item the shortcode sits inside, since
+# the shortcode appears early in the bullet (right after the phase tag,
+# BEFORE the actual descriptive sentence) — scoring only the text *before*
+# the shortcode would mostly capture the title/link and miss the
+# keyword-bearing prose entirely.
+_ITEM_BOUNDARY_RE = re.compile(r'^\s*(?:[-*]|\d+\.)\s+\*\*', re.MULTILINE)
+
+
+def check_emphasis_tags(content: str, week_of: str) -> None:
+    """Lightweight keyword sanity check on Claude-assigned emphasis tags.
+
+    Added 2026-08-29 alongside the emphasis-tag feature itself (see
+    SYSTEM_PROMPT/EXEC_SYSTEM_PROMPT). This does NOT decide or correct
+    emphasis tags — Claude's judgment is the actual classification, since
+    keyword matching can't reliably catch a case like "DLP for Copilot is
+    really a Data story" (see the 2026-08-29 Intune classification audit
+    for why keyword-only classification has real blind spots). This
+    function only flags disagreement for human review: an item Claude
+    tagged with zero supporting keyword signal, or an item with a strong
+    keyword signal for a tag Claude didn't use. Purely observational,
+    mirrors write_classification_stats() in scraper.py — never blocks
+    publishing, never rewrites content.
+    """
+    boundaries = [b.start() for b in _ITEM_BOUNDARY_RE.finditer(content)]
+
+    findings = []
+    for m in _EMPHASIS_SHORTCODE_RE.finditer(content):
+        raw_tags = [t.strip() for t in m.group(1).split(",") if t.strip()]
+        unknown = [t for t in raw_tags if t not in EMPHASIS_TAGS]
+
+        # Find the enclosing item's full span: the last bullet-start at or
+        # before the shortcode, through the next bullet-start after it (or
+        # end of content). This captures the whole bullet — title, phase
+        # tag, and the descriptive sentence(s) that follow the shortcode —
+        # not just whatever happens to precede the shortcode itself.
+        item_start = max((b for b in boundaries if b <= m.start()), default=max(0, m.start() - 200))
+        item_end = min((b for b in boundaries if b > m.start()), default=len(content))
+        window = content[item_start:item_end].lower()
+
+        keyword_hits = {
+            tag: [kw for kw in kws if kw in window]
+            for tag, kws in EMPHASIS_KEYWORDS.items()
+        }
+        supported = {t for t in raw_tags if keyword_hits.get(t)}
+        unsupported = [t for t in raw_tags if t not in supported and t not in unknown]
+        # Tags with a strong keyword signal (2+ hits) that Claude didn't use.
+        missed = [
+            tag for tag, hits in keyword_hits.items()
+            if len(hits) >= 2 and tag not in raw_tags
+        ]
+        if unknown or unsupported or missed:
+            title_match = re.search(r'\*\*([^*]+)\*\*', content[item_start:m.start()])
+            findings.append({
+                "title": title_match.group(1) if title_match else "(title not found)",
+                "assigned": raw_tags,
+                "unknown_tags": unknown,
+                "unsupported_tags": unsupported,
+                "keyword_suggests_instead": missed,
+            })
+
+    history = []
+    if EMPHASIS_STATS_FILE.exists():
+        try:
+            with open(EMPHASIS_STATS_FILE) as f:
+                history = json.load(f).get("history", [])
+        except Exception as e:
+            log.warning(f"Could not read {EMPHASIS_STATS_FILE}, starting fresh: {e}")
+
+    total_tagged = len(_EMPHASIS_SHORTCODE_RE.findall(content))
+    entry = {
+        "week_of": week_of,
+        "total_emphasis_tags": total_tagged,
+        "flagged_count": len(findings),
+        "flagged": findings[:15],
+    }
+    history.append(entry)
+    history = history[-EMPHASIS_STATS_HISTORY_LIMIT:]
+
+    with open(EMPHASIS_STATS_FILE, "w") as f:
+        json.dump({"history": history}, f, indent=2)
+
+    if findings:
+        log.info(
+            f"Emphasis tag check — {total_tagged} tags assigned, "
+            f"{len(findings)} flagged for review → {EMPHASIS_STATS_FILE}"
+        )
+    else:
+        log.info(f"Emphasis tag check — {total_tagged} tags assigned, none flagged.")
+
+
 # ── Homepage card quick signals ─────────────────────────────────────────────
 # The homepage card for each week (site/layouts/_default/list.html) shows a
 # reader two quick signals before they click through: how many CVEs this
@@ -1582,6 +1680,7 @@ def run(args):
     content = tag_top5_categories(content)
     content = inject_card_stats(content)
     validate_all_cves_in_action_required(content)
+    check_emphasis_tags(content, week_of)
     post_path = write_post(content, week_of)
 
     # Generate Executive's Guide unless skipped
@@ -1591,6 +1690,7 @@ def run(args):
             exec_prompt = build_exec_prompt(draft, max_age_days=max_age_days)
             exec_content = clean_dashes(call_claude_exec(exec_prompt))
             exec_content = inject_exec_risk_stats(exec_content)
+            check_emphasis_tags(exec_content, f"{week_of}-exec")
             exec_post_path = write_exec_post(exec_content, week_of)
         except Exception as e:
             log.warning(f"Executive's Guide generation failed (non-fatal): {e}")
