@@ -26,17 +26,32 @@
 </div>
 {{ end }}
 
-{{/* Related digests — posts sharing tags with this one */}}
-{{ $related := first 3 (where (.Site.RegularPages.Related .) "Section" "posts") }}
+{{/* Related reading — other pages sharing tags/categories with this one,
+     via Hugo's built-in Related Content index (hugo.toml: tags weight 100,
+     categories weight 50, date weight 10). Widened 2026-08-29 from
+     posts-only to the whole site (minus "exec") so a weekly digest can
+     surface an evergreen reference page (the pillar page, Deployment
+     Guides, Start Here) and not just other weekly digests — previously
+     nothing outside /posts/ could ever appear here. "exec" is excluded
+     because a post's own paired Exec Guide for the same week shares
+     nearly 100% of its tags and would otherwise win the top related slot
+     every time, duplicating the "Sharing with leadership?" link the post
+     footer already has. */}}
+{{ $related := first 3 (where (.Site.RegularPages.Related .) "Section" "!=" "exec") }}
 {{ if $related }}
 <div class="sidebar-panel digest-related-panel">
   <div class="sidebar-panel-header">
-    <span class="sidebar-panel-label">Related digests</span>
+    <span class="sidebar-panel-label">Related reading</span>
   </div>
   <ul class="digest-related-list">
     {{ range $related }}
     <li class="digest-related-item">
-      <a class="digest-related-link" href="{{ .Permalink }}">{{ .Date.Format "Jan 2, 2006" }}</a>
+      {{/* A weekly post's own natural label is its date; an evergreen page
+           (Deployment Guides, the pillar page, Start Here) has no
+           meaningful "week of" date, so showing one would read as if it
+           were a digest for that week. Use the title instead for anything
+           outside /posts/. */}}
+      <a class="digest-related-link" href="{{ .Permalink }}">{{ if eq .Section "posts" }}{{ .Date.Format "Jan 2, 2006" }}{{ else }}{{ .Title }}{{ end }}</a>
       {{ with .Description }}
       <p class="digest-related-desc">{{ . }}</p>
       {{ end }}

@@ -37,6 +37,16 @@
   long comment above the EDGES array) so every tag with real repeat
   presence gets its genuine strongest relationships, not just links to the
   two hub tags.
+  Round 2026-08-29: pillar legend rows now link to their own section of the
+  globe (data-pillar + focusLegendPillar()). Separately, per feedback that
+  instructions still weren't front-and-center enough and the topbar felt
+  like site chrome following you into an immersive page: replaced the
+  static blue instruction banner with an amber "How to navigate" toggle
+  button (distinct from every other panel's blue glow, so it reads as its
+  own callout) that expands an inline instructions panel -- not a
+  popup/modal, just an anchored panel that doesn't resize the page or dim
+  the globe -- and stripped the topbar down to just the back link, dropping
+  the redundant hint text now that the toggle owns that job.
   ============================================================================
 
   CONTEXT FOR A FRESH CLAUDE PROJECT READING THIS FILE:
@@ -214,7 +224,11 @@
     z-index: 20;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* Round 2026-08-29: dropped the middle hint span (redundant with the
+       new "How to navigate" button below), so this bar is now just the
+       one back-link -- simplified to flex-start instead of the
+       space-between that used to spread it across two children. */
+    justify-content: flex-start;
   }
   .universe-topbar a {
     color: #c9d1d9;
@@ -246,30 +260,53 @@
       0 4px 20px rgba(0,0,0,0.55);
   }
 
-  /* Glowing instruction banner -- Ryan's request: move the how-to-use
-     hint out from under the pillar legend (where it was easy to miss)
-     into its own clearly visible, glowing banner near the top of the
-     page. Reuses .neon-card's glow language but stronger/more central
-     so it reads as a deliberate callout, not a footnote. */
-  .universe-instruction-banner {
+  /* Glowing "How to navigate" button -- Round 2026-08-29, replacing the
+     static instruction banner above (itself an earlier fix for the same
+     underlying complaint). That banner used the same blue .neon-card
+     glow as every other panel on the page (legend, graph, docs), so
+     despite being "prominent" in position it didn't read as different
+     from the rest of the UI chrome. This uses gold/amber instead --
+     already established on this page as the "look here" accent color via
+     the twinkling star -- specifically so it stands out from the uniform
+     blue everything else uses, and turns it into a real toggle instead of
+     a passive hint: click it for the full instruction list, click again
+     (or elsewhere) to close. Deliberately NOT a modal/popup -- it's an
+     inline panel anchored to the button, positioned absolutely so opening
+     it never resizes the page or dims the globe underneath. */
+  .universe-help-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 0;
+  }
+  .universe-help-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px auto 0;
+    gap: 8px;
     padding: 9px 20px;
-    max-width: fit-content;
     border-radius: 999px;
     font-size: 12px;
+    font-weight: 600;
+    font-family: inherit;
     color: var(--text);
-    background: rgba(88,166,255,0.08);
-    border: 1px solid rgba(88,166,255,0.55);
+    background: rgba(227,179,65,0.1);
+    border: 1px solid rgba(227,179,65,0.6);
     box-shadow:
-      0 0 2px rgba(88,166,255,0.7),
-      0 0 16px 2px rgba(88,166,255,0.35),
-      0 0 40px 8px rgba(88,166,255,0.16);
+      0 0 2px rgba(227,179,65,0.8),
+      0 0 16px 2px rgba(227,179,65,0.4),
+      0 0 40px 8px rgba(227,179,65,0.18);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, background 0.15s ease;
   }
-  .universe-instruction-banner .ub-star {
+  .universe-help-btn:hover, .universe-help-btn:focus-visible {
+    background: rgba(227,179,65,0.18);
+    outline: none;
+    box-shadow:
+      0 0 2px rgba(227,179,65,0.9),
+      0 0 20px 3px rgba(227,179,65,0.5),
+      0 0 50px 10px rgba(227,179,65,0.22);
+  }
+  .universe-help-btn .ub-star {
     color: #e3b341;
     animation: ub-twinkle 2.4s ease-in-out infinite;
   }
@@ -278,10 +315,28 @@
     50% { opacity: 0.4; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .universe-instruction-banner .ub-star { animation: none; }
+    .universe-help-btn .ub-star { animation: none; }
   }
+  .universe-help-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 21;
+    width: 300px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    background: rgba(22,27,34,0.97);
+  }
+  .universe-help-panel.open { display: block; }
+  .universe-help-panel ul { margin: 0; padding-left: 18px; }
+  .universe-help-panel li { margin-bottom: 4px; }
   @media (max-width: 700px) {
-    .universe-instruction-banner { font-size: 11px; padding: 7px 14px; margin: 8px 10px 0; }
+    .universe-help-btn { font-size: 11px; padding: 7px 14px; }
+    .universe-help-panel { width: calc(100vw - 32px); max-width: 300px; }
   }
 
   .legend {
@@ -486,12 +541,21 @@
 
 <div class="universe-topbar">
   <a href="/">&larr; Modern Work Weekly</a>
-  <span>Tag Universe &middot; drag to rotate &middot; click a star for its trend</span>
 </div>
 
-<div class="universe-instruction-banner neon-card">
-  <span class="ub-star">&#10022;</span>
-  <span>Drag to rotate the globe &middot; hover a star for details &middot; click a star for its weekly trend</span>
+<div class="universe-help-wrap">
+  <button id="universe-help-btn" type="button" class="universe-help-btn" aria-expanded="false" aria-controls="universe-help-panel">
+    <span class="ub-star">&#10022;</span> How to navigate
+  </button>
+  <div id="universe-help-panel" class="universe-help-panel neon-card" role="region" aria-label="How to navigate the Tag Universe">
+    <ul>
+      <li><strong>Drag</strong> to rotate the globe.</li>
+      <li><strong>Hover</strong> a star to see what it is.</li>
+      <li><strong>Click</strong> a star to open its weekly trend.</li>
+      <li><strong>Click a legend row</strong> (left) to jump the view to that pillar.</li>
+      <li><strong>Reset view</strong> (bottom of the legend) snaps back to the default angle.</li>
+    </ul>
+  </div>
 </div>
 
 <div id="universe-root">
@@ -1722,6 +1786,27 @@
     docsPanel.classList.remove("open");
     layoutRightPanels();
     scheduleResume();
+  });
+
+  // "How to navigate" toggle -- Round 2026-08-29, replacing the old
+  // always-visible instruction banner. Click to open/close; click anywhere
+  // outside the button/panel also closes it, same expected behavior as any
+  // other toggled dropdown. Not tied into pinned/focus state on purpose --
+  // this is just informational, so it doesn't need to interrupt or clear
+  // whatever the globe itself is doing.
+  const helpBtn = document.getElementById("universe-help-btn");
+  const helpPanel = document.getElementById("universe-help-panel");
+  function setHelpOpen(open) {
+    helpPanel.classList.toggle("open", open);
+    helpBtn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  helpBtn.addEventListener("click", () => {
+    setHelpOpen(!helpPanel.classList.contains("open"));
+  });
+  document.addEventListener("click", (e) => {
+    if (!helpPanel.classList.contains("open")) return;
+    if (helpBtn.contains(e.target) || helpPanel.contains(e.target)) return;
+    setHelpOpen(false);
   });
 
   // New feature: clicking (or keyboard-activating) a pillar's legend row

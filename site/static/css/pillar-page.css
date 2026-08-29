@@ -151,6 +151,36 @@
   line-height: 1.6;
 }
 
+/* Related reading -- non-digest-page counterpart to the "Related digests"
+   sidebar panel (weekly posts get that one instead, in their right-hand
+   sidebar). See related-content.html for what feeds this. */
+.related-content-block {
+  margin: 2rem 0 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+.related-content-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.related-content-item {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  padding: 0.65rem 0.9rem;
+}
+.related-content-item a {
+  font-weight: 500;
+}
+.related-content-desc {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
 /* ── Deployment Guides cards ─────────────────────────────────────────
    Reuses the .pillar-card shell (colored left border + title color per
    practice area) from the "What Is Modern Work?" page so both pages read

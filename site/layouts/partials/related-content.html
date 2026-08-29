@@ -1,0 +1,32 @@
+{{/* related-content.html — "Related reading" block for non-digest pages
+     (single.html's non-"posts" branch: the pillar page, Deployment
+     Guides, exec guides, Start Here, About). Weekly digest posts already
+     get an equivalent block in their own right-hand sidebar
+     (sidebar-digest.html), which is why this only needs to be called
+     from the else branch of single.html, not globally.
+
+     Uses the same Hugo built-in Related Content index as that sidebar
+     block (hugo.toml: tags weight 100, categories weight 50, date weight
+     10), and excludes "exec" for the same reason: an exec guide mirrors
+     its paired weekly post almost tag-for-tag, so without the exclusion
+     it would crowd out more genuinely-related evergreen pages here too.
+
+     Added 2026-08-29 as part of the site's interconnection pass — before
+     this, evergreen reference pages had no path back into the weekly
+     digest archive (or to each other) beyond the tag taxonomy and footer
+     nav, so older posts covering the same ground had no way to surface
+     from a reader landing on, say, Deployment Guides. */}}
+{{ $related := first 4 (where (.Site.RegularPages.Related .) "Section" "!=" "exec") }}
+{{ with $related }}
+<div class="related-content-block">
+  <h2 id="related-reading">Related reading</h2>
+  <ul class="related-content-list">
+    {{ range . }}
+    <li class="related-content-item">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ with .Description }}<p class="related-content-desc">{{ . }}</p>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

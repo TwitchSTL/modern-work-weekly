@@ -473,6 +473,30 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   color: var(--color-text-muted);
 }
 
+/* "New here?" homepage CTA -- points first-time visitors at the new
+   Start Here guide. Reuses the same solid-gold "click me" treatment as
+   the Exec Guide nav-cta button (see header.html/site-nav comment) since
+   this is a different context (homepage hero, not nav) and doesn't
+   compete with that one for emphasis. */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1300;
+  background: var(--color-cta);
+  border-radius: var(--radius);
+  transition: background 0.15s ease;
+}
+.hero-cta:hover {
+  background: var(--color-cta-hover);
+  color: #1a1300;
+  text-decoration: none;
+}
+
 /* ── Post list ───────────────────────────────────────────────────────── */
 .post-list { padding: 1rem 0 3rem; }
 

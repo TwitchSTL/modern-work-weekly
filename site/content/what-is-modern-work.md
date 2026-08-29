@@ -5,6 +5,25 @@ lastmod: 2026-08-29
 description: "A plain definition of Modern Work: Microsoft's practice areas spanning identity, endpoints, collaboration, AI, employee experience, and security, explained for engineers and executives."
 draft: false
 pillar_page: true
+categories:
+  - Identity & Access
+  - Endpoint & Device Management
+  - Collaboration & Productivity
+  - AI & Copilot
+  - Employee Experience
+  - Security & Compliance
+tags:
+  - modern-work
+  - zero-trust
+  - copilot
+  - entra-id
+  - identity
+  - intune
+  - endpoint-management
+  - teams
+  - sharepoint
+  - defender-xdr
+  - purview
 defined_term:
   name: "Modern Work"
   alternate_name:
