@@ -12,7 +12,7 @@ title = "Modern Work Weekly"
   # Privacy-respecting analytics (GoatCounter, cookie-free) — see baseof.html
   # for the two ways to fill this in (hosted site code, or self-hosted
   # https:// count endpoint). Unset = no analytics script loads at all.
-  # goatcounter = "modernworkweekly"
+  goatcounter = "modernworkweekly"
 
 [markup]
   [markup.goldmark]
