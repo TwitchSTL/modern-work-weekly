@@ -1,0 +1,216 @@
+/* review-tray.css — Exec checklist / send-for-review tray.
+   Kept as its own file (not folded into main.css) so this feature can be
+   iterated on without touching the large, frequently-drifting main.css. */
+
+/* ── Checkbox injected next to each checkable article title ──────────── */
+.review-check-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.review-check {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+li.review-tray-host {
+  transition: background 0.15s;
+}
+li.review-checked {
+  background: rgba(88, 166, 255, 0.07);
+  border-radius: 4px;
+}
+
+/* ── Floating toggle pill ──────────────────────────────────────────────
+   Hidden until at least one item is selected, so the widget doesn't
+   clutter every page for visitors who never use it. */
+#review-tray-root { position: relative; }
+
+.review-tray-toggle {
+  display: none;
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 1500;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.82rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.15s, transform 0.1s;
+}
+.review-tray-toggle:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+#review-tray-root.has-items .review-tray-toggle { display: inline-flex; align-items: center; gap: 0.4rem; }
+.review-tray-toggle #review-tray-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #0d1117;
+  font-weight: 600;
+  font-size: 0.72rem;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────── */
+.review-tray-panel {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 1600;
+  width: min(360px, calc(100vw - 2.2rem));
+  max-height: min(70vh, 560px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+.review-tray-panel.is-open { display: flex; }
+
+.review-tray-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.review-tray-icon-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.1rem 0.3rem;
+}
+.review-tray-icon-btn:hover { color: var(--color-text); }
+
+.review-tray-list {
+  overflow-y: auto;
+  padding: 0.4rem 0.6rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.review-tray-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.45rem 0.4rem;
+  border-radius: 8px;
+}
+.review-tray-row:hover { background: rgba(255, 255, 255, 0.03); }
+
+.review-tray-row-title {
+  flex: 1;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.review-tray-row-title:hover { color: var(--color-accent); }
+
+.review-tray-empty {
+  padding: 1.5rem 1.1rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.review-tray-note,
+.review-tray-recipient {
+  margin: 0 0.85rem;
+  margin-top: 0.6rem;
+  padding: 0.5rem 0.6rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  resize: vertical;
+}
+.review-tray-note:focus,
+.review-tray-recipient:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.review-tray-recipient { margin-bottom: 0; }
+
+.review-tray-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.7rem 0.85rem 0.3rem;
+  flex-shrink: 0;
+}
+
+.review-tray-btn {
+  flex: 1 1 auto;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.76rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, background 0.15s;
+}
+.review-tray-btn:hover { border-color: var(--color-accent); }
+.review-tray-btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #0d1117;
+  font-weight: 600;
+}
+.review-tray-btn-primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+
+.review-tray-disclosure {
+  padding: 0.5rem 0.9rem 0.2rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+.review-tray-clear {
+  margin: 0.5rem 0.85rem 0.85rem;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  text-decoration: underline;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.review-tray-clear:hover { color: var(--color-text); }
+
+@media (max-width: 480px) {
+  .review-tray-panel { right: 0.6rem; bottom: 0.6rem; }
+  .review-tray-toggle { right: 0.6rem; bottom: 0.6rem; }
+}
