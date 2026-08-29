@@ -151,7 +151,31 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 
-/* Exec Guide is the one nav item that gets button treatment instead of
+/* Round 2026-08-29: every top-level menu item now gets a defined chip --
+   border, subtle surface fill, rounded corners -- instead of only the
+   Exec Guide CTA having any button treatment at all. This is deliberately
+   lighter than nav-cta below (outline vs. solid fill), so the row reads
+   as a consistent set of buttons while Exec Guide still visibly outranks
+   the rest. Scoped to the .nav-link class set directly on the menu-loop
+   anchors in header.html, not a bare ".site-nav a" selector, so it can't
+   also catch the GitHub/LinkedIn icon buttons or the Portals dropdown's
+   own buttons that happen to live inside the same <nav>. */
+.site-nav a.nav-link {
+  padding: 0.32rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.site-nav a.nav-link:hover,
+.site-nav a.nav-link.active {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-surface);
+  text-decoration: none;
+}
+
+/* Exec Guide is the one nav item that gets solid-fill button treatment instead of
    plain text — it's the entry point most worth a reader's one extra click,
    and giving every nav item equal emphasis would cancel this out. Solid
    fill, not a glow/shadow effect: reads as "click me" without looking
@@ -3576,7 +3600,8 @@ details[open] .toc-label::before { content: "▼ "; }
   .post-title { font-size: 1.3rem; }
   .hero h1 { font-size: 1.5rem; }
   .site-nav { gap: 0.5rem; flex-wrap: wrap; font-size: 0.82rem; }
-  .site-nav a.nav-cta { padding: 0.25rem 0.55rem; }
+  .site-nav a.nav-cta,
+  .site-nav a.nav-link { padding: 0.25rem 0.55rem; }
   .site-logo { height: 48px; }
 }
 /* ── Exec Sidebar Panels ─────────────────────────────────────────────── */

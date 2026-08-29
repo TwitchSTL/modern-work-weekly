@@ -6,7 +6,14 @@
     <nav class="site-nav">
       {{ range .Site.Menus.main }}
       {{ $isCta := eq .Name "Exec Guide" }}
-      {{ $classes := slice }}
+      {{/* nav-link is the shared button-chip treatment every top-level nav
+           item gets now (border + surface fill), so the row reads as a set
+           of distinct buttons instead of plain text with one outlier.
+           nav-cta layers a solid gold fill on top of that for Exec Guide
+           specifically -- still the one item that gets extra emphasis, per
+           the reasoning below, just no longer the only one that looks like
+           a button at all. */}}
+      {{ $classes := slice "nav-link" }}
       {{ if $isCta }}{{ $classes = $classes | append "nav-cta" }}{{ end }}
       {{ if eq $.RelPermalink .URL }}{{ $classes = $classes | append "active" }}{{ end }}
       <a href="{{ .URL }}"{{ with $classes }} class="{{ delimit . " " }}"{{ end }}>{{ .Name }}</a>
