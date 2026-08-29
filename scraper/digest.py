@@ -724,22 +724,23 @@ def extract_post_tags(content: str) -> list:
 # the site's own brand hashtag.
 BRAND_HASHTAG = "#ModernWork"
 
-# UTM params appended to every link posted to LinkedIn (both the automated
-# announcement-post comment URL below, and the Executive's Guide URL Ryan
-# adds by hand as the second comment — see feedback_linkedin_hashtags memory
-# for why both links only ever appear in comments, never in a post body).
-# utm_content is set per-link (post vs exec) by whoever builds the URL.
-LINKEDIN_UTM_BASE = "utm_source=linkedin&utm_medium=social&utm_campaign=weekly_digest"
+# Both the automated announcement-post comment URL below, and the
+# Executive's Guide URL Ryan adds by hand as the Newsletter's second
+# comment, are plain links with no query string — see
+# feedback_linkedin_hashtags memory for why both links only ever appear
+# in comments, never in a post body. UTM tracking params were dropped
+# 2026-08-25: the long query string made the link look cluttered/spammy
+# on LinkedIn and risked deterring clicks, which mattered more than the
+# attribution data.
 
 
-def linkedin_utm_url(path: str, content: str) -> str:
-    """Build a modernworkweekly.com URL with LinkedIn UTM tracking.
+def modernworkweekly_url(path: str) -> str:
+    """Build a plain modernworkweekly.com URL, no query string.
 
     path: e.g. "posts/2026-08-11" or "exec/2026-08-11" (no leading/trailing slash needed)
-    content: utm_content value, e.g. "post-2026-08-11" or "exec-2026-08-11"
     """
     path = path.strip("/")
-    return f"https://modernworkweekly.com/{path}/?{LINKEDIN_UTM_BASE}&utm_content={content}"
+    return f"https://modernworkweekly.com/{path}/"
 
 
 def build_hashtags(tags: list, max_tags: int = 3) -> list:
@@ -1621,7 +1622,7 @@ def run(args):
             ann_content = clean_dashes(call_claude_announcement(ann_prompt))
             tags = extract_post_tags(content)
             hashtags = " ".join(build_hashtags(tags))
-            post_url = linkedin_utm_url(f"posts/{week_of}", f"post-{week_of}")
+            post_url = modernworkweekly_url(f"posts/{week_of}")
             ann_content = (
                 f"{ann_content}\n\n{hashtags}\n\n"
                 f"[Post this first. Immediately after it publishes, add this as the "
