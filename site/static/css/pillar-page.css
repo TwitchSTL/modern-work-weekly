@@ -1,6 +1,7 @@
 /* pillar-page.css — styling for the "What Is Modern Work?" definitional
    page and any future evergreen/explainer page using the same shortcodes
-   (quickanswer, engview, execview) or the front-matter-driven FAQ block. */
+   (quickanswer, pillarcard, engview, execview) or the front-matter-driven
+   FAQ block. */
 
 .quick-answer {
   border: 1px solid var(--color-accent);
@@ -12,27 +13,109 @@
 }
 .quick-answer p:last-child { margin-bottom: 0; }
 
+/* ── Practice area cards ───────────────────────────────────────────────
+   Colored left border matches the site's canonical pillar tokens (same
+   ones collapsible.js/search.js/calendar.js use), so this page reads as
+   part of the same visual system as the weekly digest instead of a
+   separate essay-styled document. */
+.pillar-card {
+  border: 1px solid var(--color-border);
+  border-left-width: 4px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  padding: 1.35rem 1.5rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.pillar-card h3.pillar-card-title {
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pillar-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+.pillar-card-body > p {
+  grid-column: 1 / -1;
+  margin: 0 0 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+}
+.pillar-card-body > .dual-read { margin: 0; }
+@media (max-width: 640px) {
+  .pillar-card-body { grid-template-columns: 1fr; }
+}
+
+.pillar-card-identity-access { border-left-color: var(--pillar-identity-access); }
+.pillar-card-identity-access .pillar-card-title { color: var(--pillar-identity-access); }
+
+.pillar-card-endpoint-device { border-left-color: var(--pillar-endpoint-device); }
+.pillar-card-endpoint-device .pillar-card-title { color: var(--pillar-endpoint-device); }
+
+.pillar-card-collaboration-productivity { border-left-color: var(--pillar-collaboration-productivity); }
+.pillar-card-collaboration-productivity .pillar-card-title { color: var(--pillar-collaboration-productivity); }
+
+.pillar-card-ai-copilot { border-left-color: var(--pillar-ai-copilot); }
+.pillar-card-ai-copilot .pillar-card-title { color: var(--pillar-ai-copilot); }
+
+.pillar-card-employee-experience { border-left-color: var(--pillar-employee-experience); }
+.pillar-card-employee-experience .pillar-card-title { color: var(--pillar-employee-experience); }
+
+.pillar-card-security-compliance { border-left-color: var(--pillar-security-compliance); }
+.pillar-card-security-compliance .pillar-card-title { color: var(--pillar-security-compliance); }
+
+/* ── Dual-read boxes ──────────────────────────────────────────────────
+   Compact cards with a pill-style label (same visual language as the
+   GA/Preview phase tags used throughout the digest) instead of a plain
+   italic caption, so "which read is this" is legible at a glance rather
+   than something you have to read to figure out. */
 .dual-read {
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: var(--color-surface);
-  padding: 0.85rem 1.1rem;
-  margin: 0.6rem 0 1rem;
+  background: var(--color-bg);
+  padding: 0.9rem 1rem;
 }
-.dual-read-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.35rem;
+.dual-read-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 .dual-read-body p:last-child { margin-bottom: 0; }
 
-.dual-read-eng { border-left: 3px solid var(--color-accent); }
-.dual-read-eng .dual-read-label { color: var(--color-accent); }
+.dual-read-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.55rem;
+}
 
-.dual-read-exec { border-left: 3px solid var(--color-cta); }
-.dual-read-exec .dual-read-label { color: var(--color-cta); }
+.dual-read-eng {
+  border-top: 2px solid var(--color-accent);
+}
+.dual-read-eng .dual-read-label {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--color-accent);
+  border: 1px solid rgba(88, 166, 255, 0.35);
+}
+
+.dual-read-exec {
+  border-top: 2px solid var(--color-cta);
+}
+.dual-read-exec .dual-read-label {
+  background: rgba(210, 153, 34, 0.14);
+  color: var(--color-cta);
+  border: 1px solid rgba(210, 153, 34, 0.35);
+}
 
 /* Front-matter-driven FAQ accordion (rendered by single.html, not markdown
    body, so the visible copy and the FAQPage schema always match). Mirrors

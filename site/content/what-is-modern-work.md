@@ -46,77 +46,17 @@ This site treats the two as the same concept and uses "Modern Work" as the umbre
 
 Everything Microsoft ships under the Modern Work umbrella falls into one of six practice areas. This is also how this site organizes its weekly digest, so a change in any one of these categories maps directly to a section an engineer or an executive can jump to.
 
-### Identity & Access
+{{< pillarcard name="Identity & Access" color="identity-access" desc="Entra ID, Conditional Access, multifactor authentication, passwordless sign-in, Privileged Identity Management, and increasingly, identity for AI agents rather than just human users." eng="Identity is the control plane everything else depends on. Conditional Access policy changes, sign-in log retention, and the expanding agent identity model are the items worth tracking closely here, since a gap in this layer undermines every other practice area." exec="Identity is where access decisions get made: who gets in, from where, and under what conditions. It's the highest-leverage place to invest in security, since a strong identity posture reduces risk across every other system the organization runs." >}}
 
-Entra ID, Conditional Access, multifactor authentication, passwordless sign-in, Privileged Identity Management, and increasingly, identity for AI agents rather than just human users.
+{{< pillarcard name="Endpoint & Device Management" color="endpoint-device" desc="Intune across Windows, macOS, iOS, and Android, plus Autopilot, Autopatch, Windows 365, and the compliance and configuration policies that keep devices in a known-good state." eng="This is where policy meets hardware: compliance baselines, update rings, app deployment, and the Graph API and PowerShell hooks that let device management scale past a few hundred endpoints." exec="Device management is what keeps a distributed workforce productive and secure without a help desk ticket for every laptop. It's also where lost or stolen device risk gets contained, before it becomes a data incident." >}}
 
-{{< engview >}}
-Identity is the control plane everything else depends on. Conditional Access policy changes, sign-in log retention, and the expanding agent identity model are the items worth tracking closely here, since a gap in this layer undermines every other practice area.
-{{< /engview >}}
+{{< pillarcard name="Collaboration & Productivity" color="collaboration-productivity" desc="Teams, SharePoint, OneDrive, Exchange, and Office apps, the tools people spend most of their working day inside." eng="Feature changes here ship constantly and usually land with the least fanfare, but they're the ones most likely to generate help desk tickets when a familiar workflow shifts without warning." exec="This is the practice area employees feel most directly. Changes here shape day-to-day experience and adoption more than almost anything else Microsoft ships, which makes change communication as important as the change itself." >}}
 
-{{< execview >}}
-Identity is where access decisions get made: who gets in, from where, and under what conditions. It's the highest-leverage place to invest in security, since a strong identity posture reduces risk across every other system the organization runs.
-{{< /execview >}}
+{{< pillarcard name="AI & Copilot" color="ai-copilot" desc="Microsoft 365 Copilot, Copilot Studio, Agent 365, and the Power Platform automation layer, along with the licensing and governance work that comes with putting AI in front of company data." eng="Deployment here isn't just a licensing toggle. It touches data governance, DLP scope, and prompt-level access control, which is why AI rollouts increasingly require sign-off from identity and security teams, not just the collaboration team." exec="AI adoption is a productivity opportunity and a governance question at the same time. The organizations getting the most out of Copilot are the ones that treated data readiness and access policy as prerequisites, not afterthoughts." >}}
 
-### Endpoint & Device Management
+{{< pillarcard name="Employee Experience" color="employee-experience" desc="Viva Insights, Viva Engage, Viva Learning, and Viva Goals, along with Microsoft's own workplace research translated into product features." eng="Most of the technical lift here is integration and reporting rather than infrastructure: connecting Viva modules to existing HR and communication systems and keeping the data feeding them clean." exec="This practice area is where workforce sentiment, engagement, and manager effectiveness show up as measurable signal instead of anecdote, useful input for planning decisions that used to run on guesswork." >}}
 
-Intune across Windows, macOS, iOS, and Android, plus Autopilot, Autopatch, Windows 365, and the compliance and configuration policies that keep devices in a known-good state.
-
-{{< engview >}}
-This is where policy meets hardware: compliance baselines, update rings, app deployment, and the Graph API and PowerShell hooks that let device management scale past a few hundred endpoints.
-{{< /engview >}}
-
-{{< execview >}}
-Device management is what keeps a distributed workforce productive and secure without a help desk ticket for every laptop. It's also where lost or stolen device risk gets contained, before it becomes a data incident.
-{{< /execview >}}
-
-### Collaboration & Productivity
-
-Teams, SharePoint, OneDrive, Exchange, and Office apps, the tools people spend most of their working day inside.
-
-{{< engview >}}
-Feature changes here ship constantly and usually land with the least fanfare, but they're the ones most likely to generate help desk tickets when a familiar workflow shifts without warning.
-{{< /engview >}}
-
-{{< execview >}}
-This is the practice area employees feel most directly. Changes here shape day-to-day experience and adoption more than almost anything else Microsoft ships, which makes change communication as important as the change itself.
-{{< /execview >}}
-
-### AI & Copilot
-
-Microsoft 365 Copilot, Copilot Studio, Agent 365, and the Power Platform automation layer, along with the licensing and governance work that comes with putting AI in front of company data.
-
-{{< engview >}}
-Deployment here isn't just a licensing toggle. It touches data governance, DLP scope, and prompt-level access control, which is why AI rollouts increasingly require sign-off from identity and security teams, not just the collaboration team.
-{{< /engview >}}
-
-{{< execview >}}
-AI adoption is a productivity opportunity and a governance question at the same time. The organizations getting the most out of Copilot are the ones that treated data readiness and access policy as prerequisites, not afterthoughts.
-{{< /execview >}}
-
-### Employee Experience
-
-Viva Insights, Viva Engage, Viva Learning, and Viva Goals, along with Microsoft's own workplace research translated into product features.
-
-{{< engview >}}
-Most of the technical lift here is integration and reporting rather than infrastructure: connecting Viva modules to existing HR and communication systems and keeping the data feeding them clean.
-{{< /engview >}}
-
-{{< execview >}}
-This practice area is where workforce sentiment, engagement, and manager effectiveness show up as measurable signal instead of anecdote, useful input for planning decisions that used to run on guesswork.
-{{< /execview >}}
-
-### Security & Compliance
-
-Microsoft Defender across endpoint, identity, and Office 365, Microsoft Purview for data loss prevention, sensitivity labels, and insider risk, plus Global Secure Access and the practical Zero Trust posture work that ties it all together.
-
-{{< engview >}}
-This is the largest and fastest-moving practice area by change volume. DLP scope changes, new sensitivity label capabilities, and Defender detection updates land weekly and often carry real deadlines.
-{{< /engview >}}
-
-{{< execview >}}
-Security and compliance is where regulatory exposure and reputational risk live. It's also the practice area with the clearest audit trail back to specific decisions, which makes it the one worth the closest executive attention.
-{{< /execview >}}
+{{< pillarcard name="Security & Compliance" color="security-compliance" desc="Microsoft Defender across endpoint, identity, and Office 365, Microsoft Purview for data loss prevention, sensitivity labels, and insider risk, plus Global Secure Access and the practical Zero Trust posture work that ties it all together." eng="This is the largest and fastest-moving practice area by change volume. DLP scope changes, new sensitivity label capabilities, and Defender detection updates land weekly and often carry real deadlines." exec="Security and compliance is where regulatory exposure and reputational risk live. It's also the practice area with the clearest audit trail back to specific decisions, which makes it the one worth the closest executive attention." >}}
 
 ## Modern Work and Zero Trust
 

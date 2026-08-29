@@ -1,0 +1,19 @@
+{{ $color := .Get "color" }}
+{{ $name := .Get "name" }}
+{{ $desc := .Get "desc" }}
+{{ $eng := .Get "eng" }}
+{{ $exec := .Get "exec" }}
+<div class="pillar-card pillar-card-{{ $color }}">
+  <h3 id="{{ $name | urlize }}" class="pillar-card-title">{{ $name }}</h3>
+  <div class="pillar-card-body">
+    <p>{{ $desc }}</p>
+    <div class="dual-read dual-read-eng">
+      <div class="dual-read-label">For Engineers</div>
+      <div class="dual-read-body">{{ $eng | markdownify }}</div>
+    </div>
+    <div class="dual-read dual-read-exec">
+      <div class="dual-read-label">For Leadership</div>
+      <div class="dual-read-body">{{ $exec | markdownify }}</div>
+    </div>
+  </div>
+</div>
