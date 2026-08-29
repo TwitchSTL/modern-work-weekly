@@ -113,6 +113,30 @@
       {{ .Content }}
     </div>
 
+    {{/* Front-matter-driven deployment-guide cards, one per Modern Work
+         practice area. Kept out of the markdown body so the visible cards
+         here and the ItemList JSON-LD in baseof.html always read from the
+         same .Params.pillars list and can never drift apart. Reuses the
+         pillar-card shell from the "What Is Modern Work?" page so both
+         pages read as the same visual system. */}}
+    {{ with .Params.pillars }}
+    <div class="guide-pillars">
+      {{ range . }}
+      <div class="pillar-card pillar-card-{{ .color }}">
+        <h2 id="{{ .name | urlize }}" class="pillar-card-title">{{ .name }}</h2>
+        <ul class="guide-list">
+          {{ range .guides }}
+          <li class="guide-list-item">
+            <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title }}</a>
+            {{ with .desc }}<p class="guide-list-desc">{{ . }}</p>{{ end }}
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
     {{/* Front-matter-driven FAQ accordion for pillar/explainer pages. Kept
          out of the markdown body on purpose so the visible copy here and
          the FAQPage JSON-LD in baseof.html always read from the same

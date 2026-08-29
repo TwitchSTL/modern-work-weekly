@@ -150,3 +150,27 @@
   font-size: 0.92rem;
   line-height: 1.6;
 }
+
+/* ── Deployment Guides cards ─────────────────────────────────────────
+   Reuses the .pillar-card shell (colored left border + title color per
+   practice area) from the "What Is Modern Work?" page so both pages read
+   as the same visual system, with a plain link list instead of the
+   dual-read eng/exec boxes. */
+.guide-pillars { margin-top: 1.5rem; }
+.guide-list { list-style: none; margin: 0; padding: 0; }
+.guide-list-item {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border);
+}
+.guide-list-item:first-child { border-top: none; padding-top: 0.25rem; }
+.guide-list-item a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.guide-list-item a:hover { text-decoration: underline; }
+.guide-list-desc {
+  margin: 0.3rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

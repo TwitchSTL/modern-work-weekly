@@ -106,6 +106,44 @@
   </script>
   {{ end -}}
 
+  {{/* Deployment Guides page: emits a CollectionPage with one ItemList per
+       Modern Work practice area, built from the same .Params.pillars list
+       the guide cards in single.html render from, so this schema and the
+       visible links can never drift apart. */}}
+  {{ if .Params.pillars -}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": {{ printf "%s#collectionpage" .Permalink | jsonify | safeJS }},
+    "url": {{ .Permalink | jsonify | safeJS }},
+    "name": {{ $title | jsonify | safeJS }},
+    "description": {{ $desc | jsonify | safeJS }},
+    "about": { "@type": "Thing", "name": "Modern Work" },
+    "hasPart": [
+      {{ range $i, $pillar := .Params.pillars -}}
+      {{ if $i }},{{ end }}
+      {
+        "@type": "ItemList",
+        "name": {{ $pillar.name | jsonify | safeJS }},
+        "itemListElement": [
+          {{ range $j, $guide := $pillar.guides -}}
+          {{ if $j }},{{ end }}
+          {
+            "@type": "ListItem",
+            "position": {{ add $j 1 }},
+            "url": {{ $guide.url | jsonify | safeJS }},
+            "name": {{ $guide.title | jsonify | safeJS }}
+          }
+          {{ end -}}
+        ]
+      }
+      {{ end -}}
+    ]
+  }
+  </script>
+  {{ end -}}
+
   <!-- RSS -->
   {{ range .AlternativeOutputFormats -}}
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title }}">
