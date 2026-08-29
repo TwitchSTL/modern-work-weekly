@@ -117,6 +117,15 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  /* Overrides .container's 740px cap (deliberately narrow for comfortable
+     article reading width) -- a header/nav bar isn't body text, and
+     reusing that same cap left the logo and nav squeezed into a narrow
+     island in the middle of the full-width dark bar, with the "unused"
+     margins on both sides reading as a layout mistake rather than a
+     reading-width choice. Wider, still-centered cap so the header
+     actually uses the space on anything short of an ultra-wide monitor. */
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .site-title {
