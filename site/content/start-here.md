@@ -37,15 +37,19 @@ It's independent and unaffiliated with Microsoft. That matters for how it reads:
 
 ## The three things you'll find here
 
-**The weekly digest** is the core of the site: a new post every week covering what changed, organized into the six pillars below, with a Top 5 for the items that matter most, an Action Required section for anything with a deadline or a real security implication (CVEs included, always, regardless of severity), and a Documentation Updates section for the smaller stuff. Every digest post has a matching **Executive's Guide** for the same week, covering the same changes reframed for a non-technical or leadership audience.
-
-**Evergreen reference pages** don't expire the way a dated digest post does. This page is one; so is the [Deployment Guides](/deployment-guides/) page, which organizes Microsoft's own official setup checklists by pillar and environment (commercial, GCC, GCC High, DoD). These exist for the questions that come up regardless of which week it is.
-
-**The [Tag Universe](/universe/)** is a different way into the same underlying content: every topic this site has ever covered, plotted as stars on a globe, clustered by pillar, sized by how often each one comes up, and linked by which topics tend to show up together in the same week. It's worth the few seconds it takes to get oriented — click the "How to navigate" button on that page for the full control list.
+{{< infocardrow >}}
+{{< infocard color="blue" name="The Weekly Digest" desc="A new post every week: a Top 5 for what matters most, organized into the six pillars below, an Action Required section for deadlines and CVEs (every one, regardless of severity), and a Documentation Updates section for everything smaller. Every post has a matching [Executive's Guide](/exec/) for the same week, reframed for leadership." >}}
+{{< infocard color="gold" name="Evergreen Reference Pages" desc="Pages that don't expire the way a dated digest post does. This page is one; so is [Deployment Guides](/deployment-guides/), which organizes Microsoft's official setup checklists by pillar and environment (commercial, GCC, GCC High, DoD). These exist for the questions that come up regardless of the week." >}}
+{{< infocard color="amber" name="The Tag Universe" desc="Every topic this site has covered, plotted as stars on a globe, clustered by pillar, sized by frequency, and linked by which topics show up together. Click the “How to navigate” button on the [Tag Universe](/universe/) itself for the full control list." >}}
+{{< /infocardrow >}}
 
 ## Why six pillars
 
-Everything on this site, across all three of the above, is organized around the same six practice areas: **Identity & Access**, **Endpoint & Device Management**, **Collaboration & Productivity**, **AI & Copilot**, **Employee Experience**, and **Security & Compliance**. That's deliberate. A digest item, a deployment guide, a globe star, and a tag archive page all use the same six categories, so learning that structure once means you can navigate any part of the site the same way. Read more about what each pillar actually covers on the [What Is Modern Work?](/what-is-modern-work/) page.
+Everything on this site, across all three of the above, is organized around the same six practice areas. That's deliberate: a digest item, a deployment guide, a globe star, and a tag archive page all use the same six categories, so learning that structure once means you can navigate any part of the site the same way.
+
+{{< pillarstrip >}}
+
+Click any pillar above to jump to what it covers on the [What Is Modern Work?](/what-is-modern-work/) page.
 
 ## Finding your way around
 

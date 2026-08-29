@@ -1,0 +1,7 @@
+{{ $color := .Get "color" }}
+{{ $name := .Get "name" }}
+{{ $desc := .Get "desc" }}
+<div class="info-card info-card-{{ $color }}">
+  <h3 class="info-card-title">{{ $name }}</h3>
+  <p class="info-card-desc">{{ $desc | markdownify }}</p>
+</div>
