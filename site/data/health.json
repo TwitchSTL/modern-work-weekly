@@ -206,7 +206,7 @@
         },
         {
           "title": "Administrator protection isn't supported on Cloud PCs",
-          "body": "Windows 365 Cloud PCs don't support Administrator protection. If a policy that enables it is assigned to your Cloud PCs, users might see an unexpected authentication prompt when signing in, extra approval prompts for tasks that require elevation, and elevation failures. The sign-in prompt affects al",
+          "body": "Windows 365 Cloud PCs don't supportAdministrator protection. Components in the remote connection stack require updates to work with Administrator protection's least-privilege model. Support for this environment is planned for a future release. In the meantime, configure users as standard users to ma",
           "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-365/known-issues-enterprise#administrator-protection-isnt-supported-on-cloud-pcs",
           "is_new": false
         },
