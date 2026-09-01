@@ -645,7 +645,14 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   box-shadow: inset 0 0 0 2px var(--pillar-color, #6e7681);
 }
 .pillar-chip.pillar-style-stripe {
-  background-image: repeating-linear-gradient(45deg, transparent 0 4px, var(--pillar-color, #6e7681) 4px 4.6px);
+  /* Tinted wash instead of a literal stripe pattern -- the chip is small
+     and carries text, so a hard-edged repeating-linear-gradient here reads
+     as visual noise/aliasing rather than a texture (unlike the plain
+     6-10px dots in .cal-dot / .deadlines-pillar-dot below, which have
+     room for a real stripe). Keeps Collaboration & Productivity's tint
+     distinct without putting detail inside the chip itself, matching the
+     flat look of every other pillar-style-* variant on this element. */
+  background: rgba(88, 166, 255, 0.14);
 }
 .pillar-chip.pillar-style-dashed {
   border-style: dashed;
