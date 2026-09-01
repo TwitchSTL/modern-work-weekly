@@ -149,6 +149,7 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title }}">
   {{ end -}}
 
+  {{ block "head-extra" . }}{{ end }}
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="stylesheet" href="/css/main.css?v={{ now.Unix }}">
   <link rel="stylesheet" href="/css/review-tray.css?v={{ now.Unix }}">

@@ -1,0 +1,14 @@
+{
+  "name": "Modern Work Weekly — Exec Guide",
+  "short_name": "MWW Exec",
+  "description": "Weekly Executive's Guide — leadership briefing on Microsoft 365 changes.",
+  "start_url": "/latest/exec/?source=homescreen",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080c12",
+  "theme_color": "#080c12",
+  "icons": [
+    { "src": "/images/icon-exec-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/icon-exec-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

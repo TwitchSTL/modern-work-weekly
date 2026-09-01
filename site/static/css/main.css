@@ -530,6 +530,93 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 
+/* "Add to your phone" -- quiet secondary line under the primary Start
+   Here CTA. Deliberately understated (plain links, not another button)
+   so it doesn't compete with .hero-cta above; the actual explanation of
+   what this does lives on the /latest/ pages themselves (see
+   layouts/_default/latest.html). */
+.hero-addhome {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+.hero-addhome a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 2px;
+}
+.hero-addhome a:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+.hero-addhome .addhome-sep {
+  margin: 0 0.4em;
+  color: var(--color-border);
+}
+
+/* ── "Add to Home Screen" landing pages (/latest/, /latest/exec/) ──────
+   Visited normally, this is the whole page -- explains itself and links
+   to this week's issue. It only redirects when opened from an installed
+   home-screen icon (see the display-mode:standalone check in
+   latest.html), so the URL saved when someone taps "Add to Home Screen"
+   is this stable page, not whatever week happened to be current. */
+.latest-redirect {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+}
+.latest-redirect-card {
+  max-width: 440px;
+  text-align: center;
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-surface);
+}
+.latest-redirect-icon {
+  border-radius: 18%;
+  margin-bottom: 1rem;
+}
+.latest-redirect-card h1 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+.latest-redirect-body {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+}
+.latest-redirect-link {
+  display: block;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
+  background: rgba(88, 166, 255, 0.08);
+  margin-bottom: 1.4rem;
+}
+.latest-redirect-link-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 0.2rem;
+}
+.latest-redirect-link-title {
+  display: block;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.latest-redirect-note {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  text-align: left;
+}
+
 /* ── Post list ───────────────────────────────────────────────────────── */
 .post-list { padding: 1rem 0 3rem; }
 

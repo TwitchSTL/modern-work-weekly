@@ -1,0 +1,14 @@
+{
+  "name": "Modern Work Weekly",
+  "short_name": "MWW Digest",
+  "description": "Weekly Microsoft 365 and Modern Work change digest.",
+  "start_url": "/latest/?source=homescreen",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080c12",
+  "theme_color": "#080c12",
+  "icons": [
+    { "src": "/images/icon-tech-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/icon-tech-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

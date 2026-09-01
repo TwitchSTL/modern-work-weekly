@@ -1,0 +1,48 @@
+{{ define "head-extra" }}
+{{/* Only rendered for the two /latest/ pages (this template's own
+     `{{ block "head-extra" }}` call site lives in baseof.html) — these are
+     the only pages that should advertise a manifest/apple-touch-icon, since
+     they're the only ones meant to be added to a home screen. */}}
+<link rel="manifest" href="{{ .Params.manifest }}">
+<link rel="apple-touch-icon" href="{{ .Params.apple_icon }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="{{ .Params.short_name }}">
+<meta name="theme-color" content="#080c12">
+{{ end }}
+
+{{ define "main" }}
+{{ $pages := where site.RegularPages "Section" .Params.target_section }}
+{{ $pages = $pages.ByDate.Reverse }}
+{{ $latest := index $pages 0 }}
+
+<div class="latest-redirect">
+  <div class="latest-redirect-card">
+    <img class="latest-redirect-icon" src="{{ .Params.apple_icon }}" alt="" width="72" height="72">
+    <h1>{{ .Title }}</h1>
+    <p class="latest-redirect-body">{{ .Description }}</p>
+
+    <a class="latest-redirect-link" href="{{ $latest.RelPermalink }}">
+      <span class="latest-redirect-link-label">This week</span>
+      <span class="latest-redirect-link-title">{{ $latest.Title }}</span>
+    </a>
+
+    <p class="latest-redirect-note">
+      Opened as a regular page, this is all this does — nothing redirects.
+      Add it to your home screen from here (iPhone: Share → Add to Home
+      Screen · Android: browser menu → Install app / Add to Home screen),
+      and from then on the icon opens whichever week is newest.
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var isStandalone = window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+  if (isStandalone) {
+    window.location.replace({{ $latest.RelPermalink }});
+  }
+})();
+</script>
+{{ end }}
