@@ -1709,7 +1709,12 @@ def run(args):
             # functional/linkable. build_hashtags()/TAG_HASHTAGS are used below,
             # on the separate short announcement/teaser post — see
             # feedback_linkedin_hashtags memory.
-            li_content = linkify_linkedin_draft(li_content, content, draft)
+            #
+            # No auto-linked Top 5 items either (2026-09-01) — the Newsletter is
+            # deliberately retention-focused: readers stay on this recap and the
+            # linked modernworkweekly.com digest, not source articles picked off
+            # mid-list. linkify_linkedin_draft() is kept below (unused here) since
+            # it's still a reasonable utility if that policy ever changes back.
             linkedin_draft_path = write_linkedin_draft(li_content, week_of)
         except Exception as e:
             log.warning(f"LinkedIn draft generation failed (non-fatal): {e}")
