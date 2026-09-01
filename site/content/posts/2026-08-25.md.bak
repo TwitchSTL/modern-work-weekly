@@ -1,72 +1,26 @@
 ---
 title: "Modern Work Weekly - Week of 2026-08-25"
 date: 2026-08-25
-description: "A Critical Office RCE and a Critical Entra ID RCE correction dominate the CVE list this week, while Purview DLP expands to Mac and mobile and Exchange EWS retirement planning gets urgent with new field guidance."
+description: "A light week on volume but meaningful on compliance depth: Purview adds retention for Copilot memory and a direct DSI launch path from endpoint DLP alerts, giving compliance teams sharper tools for Copilot governance and exfiltration investigation."
 tags:
-  - entra-id
   - purview
-  - exchange
-  - teams
-  - windows-365
-  - defender-for-endpoint
-  - intune
-  - conditional-access
   - data-lifecycle
-  - endpoint-management
-  - modern-work
+  - defender-for-endpoint
   - copilot
+  - modern-work
+  - security & compliance
 categories:
   - Security & Compliance
-  - Identity & Access
-  - Collaboration & Productivity
-  - Endpoint & Device Management
-cve_count: 15
-action_required_count: 18
+cve_count: 0
+action_required_count: 3
 sources:
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50661
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65787
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47292
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-68801
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64903
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64899
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70335
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69836
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54981
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-58547
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-49183
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55134
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50466
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202
-  - https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62834
-  - https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/
-  - https://www.microsoft.com/microsoft-365/roadmap?id=569719
-  - https://www.microsoft.com/microsoft-365/roadmap?id=569718
-  - https://www.microsoft.com/microsoft-365/roadmap?id=569716
-  - https://www.microsoft.com/microsoft-365/roadmap?id=561922
-  - https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471
-  - https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691
-  - https://techcommunity.microsoft.com/t5/exchange-team-blog/notes-from-the-field-testing-ewsallowedappids-safely/ba-p/4548568
-  - https://techcommunity.microsoft.com/t5/exchange-team-blog/understanding-the-new-100-gb-mailbox-entitlement-for-microsoft/ba-p/4548243
-  - https://www.microsoft.com/en-us/security/blog/2026/08/19/microsoft-named-a-leader-in-the-frost-radar-cloud-workload-protection-platforms-2026/
-  - https://www.youtube.com/shorts/sJg_rCw5Jwo
-  - https://techcommunity.microsoft.com/t5/microsoft-teams-blog/turn-conversations-into-code-with-github-copilot-in-microsoft/ba-p/4548305
-  - https://www.microsoft.com/microsoft-365/roadmap?id=569430
-  - https://www.microsoft.com/microsoft-365/roadmap?id=558928
-  - https://www.microsoft.com/microsoft-365/roadmap?id=558852
-  - https://www.microsoft.com/microsoft-365/roadmap?id=512431
-  - https://www.microsoft.com/microsoft-365/roadmap?id=569733
-  - https://www.microsoft.com/microsoft-365/roadmap?id=569420
-  - https://www.youtube.com/shorts/KykT5uUezOE
-  - https://www.youtube.com/shorts/rRA8lVyALO8
-  - https://www.youtube.com/shorts/dJDlftFFj28
-  - https://www.youtube.com/shorts/M7yRVvRzQvs
-  - https://www.youtube.com/shorts/ueoaivM5B8k
-  - https://www.youtube.com/shorts/1wrVbE3NYW8
-  - https://www.youtube.com/watch?v=MK-hCq7Su1w
-  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/task-manager-features-for-visibility-into-ai-workloads/ba-p/4545150
-  - https://techcommunity.microsoft.com/t5/windows-it-pro-blog/collecting-delivery-optimization-logs-the-easy-way/ba-p/4547884
+  - https://techcommunity.microsoft.com/t5/microsoft-security-community/reminder-ask-microsoft-anything-with-david-weston-is-tomorrow-8/ba-p/4549690
+  - https://www.microsoft.com/microsoft-365/roadmap?id=558547
+  - https://www.microsoft.com/microsoft-365/roadmap?id=503564
+  - https://www.microsoft.com/microsoft-365/roadmap?id=569612
   - https://github.com/MicrosoftDocs/entra-docs/commit/229b71bc1380356061995fe528eca7c58b025bf1
   - https://github.com/MicrosoftDocs/entra-docs/commit/58c21f91283136b2713d310cf3c810d3ee6a7e9f
+  - https://github.com/MicrosoftDocs/entra-docs/commit/81ba8429e11ab2c73d9f890ced41c193e1bcf7b4
   - https://github.com/MicrosoftDocs/entra-docs/commit/ecd837b3898d4fd03bc8f320b0013b41a8fe10e5
   - https://github.com/MicrosoftDocs/entra-docs/commit/2f521761794eb9f4eb0da671db264906dd841883
   - https://github.com/MicrosoftDocs/memdocs/commit/439f9830c3d3114e08646bcb25286bece432895c
@@ -74,158 +28,48 @@ sources:
 
 ## Top 5
 
-1. **CVE-2026-64903: Critical Microsoft Office RCE (CVSS 7.8)** {{< cat "Security & Compliance" >}} - A Critical-severity remote code execution vulnerability in Microsoft Office is in the CVE list this week. Patch status is the priority check: confirm your Office update rings have pushed the fix and verify compliance in Intune or Defender for Endpoint before end of week.
+1. **Purview retention for Copilot memory (GA):** Copilot memory items live in a hidden Exchange mailbox folder and have had no retention story until now. GA in this roadmap item closes that gap, giving admins versioning and preservation controls for inactive memory items - a prerequisite for defensible Copilot governance in regulated environments.
 
-2. **CVE-2026-69836: Critical Entra ID RCE corrected to non-exploited (CVSS 10.0)** {{< cat "Security & Compliance" >}} - MSRC corrected the Exploited flag to No for this CVSS 10.0 Critical Entra ID RCE. The score still demands attention: verify your tenant has the remediation applied and review any prior incident triage you performed based on the earlier exploited status.
+2. **DSI launch from endpoint DLP alerts (Preview):** Analysts can now pivot directly from an endpoint DLP alert into Data Security Investigations, automatically pulling the files that triggered the alert. This cuts the manual correlation step out of exfiltration investigations and tightens the response loop considerably.
 
-3. **CVE-2026-32202: Windows Shell Spoofing confirmed exploited in the wild (CVSS 4.3)** {{< cat "Security & Compliance" >}} - Despite a modest CVSS score, this vulnerability carries cve_exploited: Yes, meaning it is actively being used. Prioritize patching Windows endpoints regardless of the low base score, and check your ASR and Windows Update compliance posture now.
+3. **Organizational Messages support for Hybrid-joined devices (Preview):** If you have been holding back on Organizational Messages because your fleet is hybrid-joined rather than Entra-native, this removes that blocker. Hybrid support is now in preview with GA targeted for June 2026.
 
-4. **Entra custom branding CSS deprecation begins October 26, 2026** - Custom CSS layout and positioning properties in Entra branded sign-in pages are being retired starting October 26, 2026, with full CSS retirement in 2027. If your tenant uses custom CSS for sign-in branding, audit your configurations now and begin planning the migration to supported alternatives before the October deadline hits.
+4. **Lifecycle Workflows cloning now documented:** Microsoft has published guidance on cloning existing Lifecycle Workflows, which meaningfully reduces the overhead of maintaining parallel onboarding and offboarding workflow variants across business units or regions.
 
-5. **Exchange EWS retirement: October 2026 phased disablement is approaching** - EWS in Exchange Online begins phased disablement in October 2026 and goes fully dark in April 2027. The Exchange team published field guidance this week on safely testing EWSAllowedAppIDs and a separate post clarifying Free/Busy impact for hybrid and on-premises-to-online org scenarios. If you have not completed your EWS dependency audit, the window is closing fast.
-
-## Identity & Access
-
-- **[Microsoft Entra ID enhances security of branded sign-ins](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)** [GA] - If your tenant relies on custom CSS for sign-in page layout or positioning, you have until October 26, 2026 before Microsoft begins retiring those properties, with full CSS retirement following in 2027. This is part of the Secure Future Initiative push for more consistent, phishing-resistant sign-in experiences. Audit your custom branding configuration now, document what CSS you are using, and track the Microsoft notices that will accompany alternative customization options.
-
-## Collaboration & Productivity
-
-- **[Help us shape Exchange Server on-premises to different online org Free/Busy after EWS retirement](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691)** [GA] - EWS in Exchange Online enters phased disablement in October 2026 and is fully gone by April 2027, and the Exchange team is now actively soliciting input on how to handle the remaining Free/Busy scenario: Exchange Server on-premises sharing calendar availability with a different Exchange Online organization. Purely on-premises org-to-org and hybrid Free/Busy are not affected, but cross-org scenarios with an online tenant on the other side need attention. Respond to the survey and map your Free/Busy dependencies now.
-
-- **[Notes from the field: testing EWSAllowedAppIDs safely](https://techcommunity.microsoft.com/t5/exchange-team-blog/notes-from-the-field-testing-ewsallowedappids-safely/ba-p/4548568)** [GA] - This field guide from the Exchange team is required reading before you lock down EWS access with EWSAllowedAppIDs. It walks through a controlled positive-and-negative test to confirm the allow list is working as expected, and it calls out the common naming confusion between EWSAllowedAppIDs and EWSBlockedApplicationList, which operate at different layers. Run the test in a non-production tenant first to avoid accidental service disruptions.
-
-- **[Understanding the new 100 GB mailbox entitlement for Microsoft 365 Business suites](https://techcommunity.microsoft.com/t5/exchange-team-blog/understanding-the-new-100-gb-mailbox-entitlement-for-microsoft/ba-p/4548243)** [GA] - Microsoft 365 Business Basic, Standard, and Premium users now get a supported primary mailbox size of up to 100 GB, up from 50 GB. The Exchange team explains how the additional storage is provisioned and what admins need to understand about the delivery mechanism. No immediate admin action is required, but update your storage planning baselines and any compliance or eDiscovery configurations that assume a 50 GB ceiling.
-
-- **[Microsoft named a Leader in the Frost Radar: Cloud Workload Protection Platforms, 2026](https://www.microsoft.com/en-us/security/blog/2026/08/19/microsoft-named-a-leader-in-the-frost-radar-cloud-workload-protection-platforms-2026/)** [GA] - Microsoft received a Frost Radar Leader designation for Cloud Workload Protection Platforms, anchored by Microsoft Defender for Cloud's unified runtime security capabilities. Useful context when building business cases for consolidating workload protection onto the Microsoft stack.
-
-- **[Build a Power App in Under a Minute](https://www.youtube.com/shorts/sJg_rCw5Jwo)** [GA] - Power Apps can now generate a fully working model-driven app from a Dataverse table, SharePoint list, Excel file, SQL database, or uploaded CSV by inspecting the schema automatically. This substantially lowers the barrier for line-of-business app creation and is worth a demo to your citizen developer community or governance board if you are managing Power Platform sprawl.
-
-- **[Turn conversations into code with GitHub Copilot in Microsoft Teams](https://techcommunity.microsoft.com/t5/microsoft-teams-blog/turn-conversations-into-code-with-github-copilot-in-microsoft/ba-p/4548305)** [GA] - GitHub Copilot is now available inside Teams, letting developers @mention it in a channel conversation to convert the discussion context directly into code without switching tools. Admins need to ensure GitHub Copilot licensing is in place and that the Teams app is permitted in your app governance policy before developers can use it.
-
-- **[Outlook: Manage Multiple Inbox Rules at Once](https://www.microsoft.com/microsoft-365/roadmap?id=569430)** [GA] - New Outlook for Windows will support bulk selection and bulk actions (delete, enable, disable) across inbox rules, arriving in November 2026. No admin configuration required, but worth flagging to your helpdesk as it will reduce rule-management support tickets.
-
-- **[Planner: Microsoft Planner tab support for shared and private channels in Microsoft Teams](https://www.microsoft.com/microsoft-365/roadmap?id=558928)** [GA] - Planner tabs can now be added to shared and private Teams channels, not just standard channels. This closes a gap that previously forced teams to use workarounds for task management in sensitive project channels. Rolling out August 2026.
-
-- **[Microsoft Teams: Digital signage support for Teams panels](https://www.microsoft.com/microsoft-365/roadmap?id=558852)** [GA] - Idle Teams panel devices can now display digital signage, matching the capability already available on Teams Rooms front-of-room displays. Configuration is handled through the Pro Management portal and requires Teams Rooms Pro or Shared space licensing. Rolling out August 2026.
-
-- **[Planner: Custom Templates](https://www.microsoft.com/microsoft-365/roadmap?id=512431)** [GA] - Planner now supports organization-defined reusable plan templates, enabling standardized task structures across teams. This shipped July 2026 and is worth a governance conversation if your organization wants to enforce consistent project structures.
-
-- **[Planner: Capacity view](https://www.microsoft.com/microsoft-365/roadmap?id=569733)** [GA] - A new Capacity view in Planner shows a timeline of task assignments across team members, making it easier to spot overloaded individuals or idle capacity at a glance. Targeting October 2026 GA.
-
-- **[Microsoft Teams: Coordinated meetings support on Teams Rooms on Android](https://www.microsoft.com/microsoft-365/roadmap?id=569420)** [GA] - Teams Rooms on Android devices and Android-based touch boards can now coordinate join, leave, and collaboration actions in the same hybrid meeting. Targeting January 2027. Relevant for facilities teams planning Android-based meeting room deployments.
+5. **Global Secure Access macOS client documentation reapplied:** Updated GSA macOS client docs re-landed this week after an earlier revert. If you are planning or running a macOS GSA rollout, verify your deployment guidance is sourced from the current article revision.
 
 ## Security & Compliance
 
-- **[CVE-2026-64903 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64903)** [GA] - Critical-severity RCE in Microsoft Office with a CVSS base score of 7.8. Confirm that your Office update rings have deployed the fix across managed endpoints and check compliance reporting in Defender for Endpoint or Intune. This is an acknowledgment update but the Critical severity rating stands.
+- **[Reminder: Ask Microsoft Anything with David Weston (8/25 at 8AM PST)](https://techcommunity.microsoft.com/t5/microsoft-security-community/reminder-ask-microsoft-anything-with-david-weston-is-tomorrow-8/ba-p/4549690)** [GA] - David Weston, who leads Agentic Security at Microsoft, hosted an AMA covering AI-driven defense, frontier security model training, and autonomous defender agents. The session recording is worth tracking down if your team is evaluating agentic security tooling or AI-assisted vulnerability discovery; Weston's team is building the underlying systems that will shape how these capabilities surface in Defender products.
 
-- **[CVE-2026-69836 Microsoft Entra ID Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69836)** [GA] - MSRC corrected the Exploited status to No for this CVSS 10.0 Critical Entra ID RCE. If your incident response team triaged this as an active exploitation event previously, update your records. Regardless, the maximum CVSS score means remediation verification is non-negotiable.
+- **[Microsoft Purview: Data Security Investigations - analyze files tied to endpoint DLP alerts](https://www.microsoft.com/microsoft-365/roadmap?id=558547)** [Preview] - Currently in preview with GA targeted for September 2026, this feature lets you launch a DSI investigation directly from an endpoint DLP alert and automatically collect the relevant files for review. This removes the manual correlation step between DLP alerting and content analysis, which is particularly valuable when investigating large-scale exfiltration events with many triggered alerts across multiple users and endpoints.
 
-- **[CVE-2026-32202 Windows Shell Spoofing Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202)** [GA] - Confirmed exploited in the wild with a CVSS base score of 4.3. The low score can mislead prioritization, but active exploitation means this patch must be treated as urgent. Verify Windows endpoint patch compliance across your estate immediately.
+- **[Microsoft 365 admin center: Organizational Messages now supports Hybrid-joined Devices](https://www.microsoft.com/microsoft-365/roadmap?id=503564)** [Preview] - Hybrid-joined device support for Organizational Messages is now in preview, with GA expected June 2026. Organizations that standardized on hybrid join and previously had to exclude those endpoints from messaging campaigns can now close that coverage gap; validate that your existing message targeting configurations will behave as expected when the feature reaches GA.
 
-- **[CVE-2026-62834 Azure Data Factory Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62834)** [GA] - Critical-severity EoP in Azure Data Factory with a CVSS score of 9.3, caused by improper verification of cryptographic signatures allowing network-based privilege escalation. If your organization runs Azure Data Factory pipelines, confirm whether Microsoft's service-side remediation is complete or whether any customer action is required per the advisory.
-
-- **[CVE-2026-50661 Windows BitLocker Security Feature Bypass Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50661)** [GA] - Important severity, CVSS 6.1. Acknowledgment updated this week. Verify BitLocker policy compliance across managed devices and confirm the patch is deployed.
-
-- **[CVE-2026-65787 Desktop Window Manager Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65787)** [GA] - Important severity, CVSS 7.8. Acknowledgment update only. Confirm Windows endpoint patch status.
-
-- **[CVE-2026-47292 Visual Studio Code MSSQL Extension Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47292)** [GA] - Important severity, CVSS 7.8. Affected software list updated with new package information. If you manage VS Code deployments via Intune or configuration management, verify the MSSQL extension is updated to the patched version.
-
-- **[CVE-2026-68801 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-68801)** [GA] - Important severity, CVSS 7.8. Acknowledgment update. Confirm Microsoft 365 Apps update compliance covers Excel.
-
-- **[CVE-2026-64899 Microsoft Office Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64899)** [GA] - Important severity, CVSS 5.5. Acknowledgment update. Included for completeness; patch through your standard Office update cadence.
-
-- **[CVE-2026-70335 GitHub Copilot and Visual Studio Code Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70335)** [GA] - Important severity, CVSS 7.8. Acknowledgment update. If you manage VS Code and GitHub Copilot extensions centrally, verify extension versions are current.
-
-- **[CVE-2026-54981 Visual Studio Code Python Extension Security Feature Bypass Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54981)** [GA] - Important severity, CVSS 7.8. Affected software list updated. Check that the Python extension in managed VS Code deployments is running the patched version.
-
-- **[CVE-2026-58547 Windows Universal Plug and Play (UPnP) Device Host Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-58547)** [GA] - Important severity, CVSS 5.5. Acknowledgment update. Standard Windows patch cadence applies.
-
-- **[CVE-2026-49183 Windows Clipboard Server Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-49183)** [GA] - Important severity, CVSS 7.0. Acknowledgment update. Verify Windows endpoint patch compliance.
-
-- **[CVE-2026-55134 Microsoft Word Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55134)** [GA] - Important severity, CVSS 7.8. Acknowledgment update. Confirm Microsoft 365 Apps update rings have covered Word.
-
-- **[CVE-2026-50466 Microsoft Brokering File System Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50466)** [GA] - Important severity, CVSS 7.8. Acknowledgment update. Standard Windows patch cadence applies.
-
-- **[Hunting MacSync Stealer infrastructure through behavioral pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/)** [GA] - MacSync Stealer is a macOS-targeting infostealer that rapidly rotates domains to evade detection. Microsoft's threat intelligence team documented durable behavioral hunting pivots that uncovered 30+ related domains. If you have macOS endpoints in your fleet, review your Defender for Endpoint hunting queries and test coverage against the IOCs published in this post.
-
-- **[Outlook: Purview DLP Wait-on-Send Support for Mac](https://www.microsoft.com/microsoft-365/roadmap?id=569719)** [GA] - Outlook for Mac will enforce Purview DLP wait-on-send policies, blocking email transmission until policy evaluation completes. Targeting September 2026 GA. Admins should plan a phased rollout and set appropriate user wait-time thresholds to avoid help desk volume spikes at launch.
-
-- **[Outlook: Purview DLP Wait-on-Send Support for Outlook mobile apps](https://www.microsoft.com/microsoft-365/roadmap?id=569718)** [GA] - The same wait-on-send DLP enforcement is coming to Outlook for iOS and Android in September 2026. Mobile users are often overlooked in DLP policy scope reviews; now is the time to audit your DLP policies for mobile coverage gaps before enforcement arrives.
-
-- **[Outlook: Purview Data Loss Prevention support for Calendar Events in Outlook mobile apps](https://www.microsoft.com/microsoft-365/roadmap?id=569716)** [GA] - Purview DLP policies will extend to calendar events in Outlook for iOS and Android, covering meeting subjects, descriptions, and invite content, with policy tips and enforcement. Targeting September 2026. Review existing DLP policies to determine whether calendar event rules need to be authored or updated to align with organizational compliance requirements.
-
-- **[Universal Print: Universal Print Portal](https://www.microsoft.com/microsoft-365/roadmap?id=561922)** [Preview] - A new web-based Universal Print portal lets users release secure print jobs by scanning a QR code at any enrolled printer, authenticated via Microsoft 365 identity. In preview now with GA targeting August 2026. Useful for organizations running Universal Print who want a device-agnostic print release workflow without a dedicated print client.
-
-## Endpoint & Device Management
-
-- **[Steal A Table Out Of An Image](https://www.youtube.com/shorts/KykT5uUezOE)** [GA] - On Windows 365 Cloud PCs with at least 8 vCPUs, the Click to Do feature (Windows key + Q) can extract text from non-selectable graphical images, including tables, and paste the data directly into Excel as live, editable content. This capability is available now on AI-enabled Cloud PCs and is worth surfacing to productivity-focused user groups.
-
-- **[That App Isn't Native. It's Windows.](https://www.youtube.com/shorts/rRA8lVyALO8)** [GA] - Windows 365 Cloud Apps with Windows 365 Flex publishes individual Windows applications from a shared Cloud PC pool, presenting them full-screen on tablets as if they were native mobile apps, with settings and files roaming with the user. This is a meaningful shift in how you can deliver Windows line-of-business apps to non-Windows devices without provisioning a full dedicated Cloud PC per user.
-
-- **[Zero Cloud Tokens To Build And Run This App](https://www.youtube.com/shorts/dJDlftFFj28)** [GA] - Developer Optimized Windows 365 Cloud PCs running Foundry Local can execute Phi-4-mini entirely on local compute, confirmed via Task Manager NPU/CPU profiling in VS Code. This matters for environments where data sovereignty or cost controls restrict cloud AI API usage during development.
-
-- **[Why Only One Region Had Bad Connections](https://www.youtube.com/shorts/M7yRVvRzQvs)** [Preview] - The Windows 365 admin agent, now in preview, accepts natural-language queries and correlates session telemetry across regional cohorts to surface root causes. The demo scenario identified TCP-only transport (missing UDP/RDP Shortpath) as the culprit for localized connection degradation. Worth evaluating in your tenant if you manage large Windows 365 deployments and want faster root-cause analysis.
-
-- **[No Windows 365 On My Phone. Still Works.](https://www.youtube.com/shorts/ueoaivM5B8k)** [GA] - Microsoft Scout can interact with a Windows 365 Cloud PC from a Teams chat on a mobile device, accessing files and apps on the Cloud PC without the Windows 365 client installed on the phone. This extends Cloud PC utility to scenarios where users are away from their primary device and demonstrates the agentic capability model built on the open-source OpenClaw project.
-
-- **[Scout Did This With My Laptop Closed](https://www.youtube.com/shorts/1wrVbE3NYW8)** [GA] - Microsoft Scout located a report in a Cloud PC's Downloads folder (not synced to OneDrive), appended a summary, saved the file, and staged a draft email with the attachment in Outlook, all triggered from a Teams chat on a phone. Demonstrates practical agentic file handling for Cloud PC users who need async task completion.
-
-- **[Windows 365: Five Years In, See What's New](https://www.youtube.com/watch?v=MK-hCq7Su1w)** [GA] - A comprehensive overview of the current Windows 365 capability set: Microsoft Scout agentic workflows, Developer Optimized Cloud PCs with Foundry Local for local AI inference, Windows 365 Flex for shared Cloud PC pools and published apps, and the new admin agent in preview. Share with stakeholders evaluating Cloud PC investment or planning fiscal year licensing reviews.
-
-- **[Task Manager features for visibility into AI workloads](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/task-manager-features-for-visibility-into-ai-workloads/ba-p/4545150)** [GA] - Task Manager now shows per-process NPU and GPU neural engine activity on supported newer devices, alongside existing CPU and GPU metrics, giving IT pros a native tool for troubleshooting AI workload performance without third-party utilities. Useful for validating NPU utilization on Copilot+ PCs and Developer Optimized Cloud PCs.
-
-- **[Collecting Delivery Optimization logs the easy way](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/collecting-delivery-optimization-logs-the-easy-way/ba-p/4547884)** [GA] - The Windows IT Pro team documents a free tool for collecting Delivery Optimization and Connected Cache logs, covering scenarios where peering efficiency is low or content is bypassing a Connected Cache node. Bookmark this for your next Patch Tuesday troubleshooting cycle; it significantly simplifies log collection before engaging Microsoft support.
+- **[Microsoft Purview: Data Lifecycle Management - Retention for Copilot Memory](https://www.microsoft.com/microsoft-365/roadmap?id=569612)** [GA] - Retention policies can now target Copilot memory items stored in users' Exchange mailboxes, including both explicitly saved memories and inferences derived from chat history. Admins gain versioning and preservation controls over inactive memory items, while active memory remains under Copilot's own management. If your organization has Copilot deployed in a regulated environment, treat this as a required governance control to evaluate and configure now.
 
 ## Action Required
 
-- **[CVE-2026-64903 Microsoft Office Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64903)** - **Critical · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Verify Microsoft Office patches are deployed across all managed endpoints via Intune or Defender for Endpoint compliance reporting. Critical severity demands immediate patch verification regardless of the acknowledgment-only advisory update.
+There are no CVEs and no hard-deadline items in this week's digest. The following items most warrant your attention in the next 30 days:
 
-- **[CVE-2026-69836 Microsoft Entra ID Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69836)** - **Critical · CVSS 10.0** - Surfaced in the Week of 2026-08-25 digest. MSRC corrected Exploited to No, but a CVSS 10.0 Critical Entra ID RCE requires confirmed remediation. Update any prior incident triage records and verify your tenant's patch status.
+- **[Purview Retention for Copilot Memory](https://www.microsoft.com/microsoft-365/roadmap?id=569612)** [GA] - Now GA. If Copilot is deployed in a regulated or eDiscovery-sensitive environment, evaluate and configure retention policies for Exchange-hosted Copilot memory items before users accumulate significant memory history with no preservation controls in place.
 
-- **[CVE-2026-62834 Azure Data Factory Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62834)** - **Critical · CVSS 9.3** - Surfaced in the Week of 2026-08-25 digest. Network-exploitable privilege escalation via improper cryptographic signature verification in Azure Data Factory. Review the MSRC advisory to confirm whether any customer-side action is required or if the fix is service-side only.
+- **[DSI Launch from Endpoint DLP Alerts](https://www.microsoft.com/microsoft-365/roadmap?id=558547)** [Preview] - GA is September 2026. Enroll in preview now to validate how DSI integrates with your existing endpoint DLP policy set and alert workflows before the feature rolls broadly; early testing will also inform any SOC runbook updates needed at GA.
 
-- **[CVE-2026-32202 Windows Shell Spoofing Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202)** - **Important · CVSS 4.3 - Exploited in the wild** - Surfaced in the Week of 2026-08-25 digest. Active exploitation confirmed. Treat as urgent despite the low base score and verify Windows endpoint patch compliance across the full estate immediately.
-
-- **[CVE-2026-65787 Desktop Window Manager Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65787)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Confirm Windows endpoint patch status via standard update compliance reporting.
-
-- **[CVE-2026-47292 Visual Studio Code MSSQL Extension Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47292)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Affected software list updated with new package information. Verify that the MSSQL extension in managed VS Code deployments is running the patched version.
-
-- **[CVE-2026-68801 Microsoft Excel Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-68801)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Confirm Microsoft 365 Apps update compliance covers Excel on all managed devices.
-
-- **[CVE-2026-64899 Microsoft Office Information Disclosure Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-64899)** - **Important · CVSS 5.5** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Address through standard Office update cadence.
-
-- **[CVE-2026-70335 GitHub Copilot and Visual Studio Code Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70335)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Verify VS Code and GitHub Copilot extension versions are current in managed environments.
-
-- **[CVE-2026-54981 Visual Studio Code Python Extension Security Feature Bypass Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-54981)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Affected software list updated. Confirm the Python extension in managed VS Code deployments is on the patched version.
-
-- **[CVE-2026-58547 Windows Universal Plug and Play (UPnP) Device Host Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-58547)** - **Important · CVSS 5.5** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Address through standard Windows patch cadence.
-
-- **[CVE-2026-49183 Windows Clipboard Server Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-49183)** - **Important · CVSS 7.0** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Verify Windows endpoint patch compliance.
-
-- **[CVE-2026-55134 Microsoft Word Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55134)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Confirm Microsoft 365 Apps update rings have covered Word on all managed devices.
-
-- **[CVE-2026-50466 Microsoft Brokering File System Elevation of Privilege Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50466)** - **Important · CVSS 7.8** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Standard Windows patch cadence applies.
-
-- **[CVE-2026-50661 Windows BitLocker Security Feature Bypass Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50661)** - **Important · CVSS 6.1** - Surfaced in the Week of 2026-08-25 digest. Acknowledgment update. Verify BitLocker policy compliance and confirm the patch is deployed across managed devices.
-
-- **[Entra custom branding CSS deprecation: October 26, 2026 deadline](https://techcommunity.microsoft.com/t5/microsoft-entra-blog/microsoft-entra-id-enhances-security-of-branded-sign-ins/ba-p/4537471)** - Deadline: October 26, 2026. Custom CSS layout and positioning properties in Entra branded sign-in pages are retired starting this date, with full CSS retirement in 2027. Audit your custom branding configurations now and begin planning migration to supported alternatives.
-
-- **[Exchange EWS retirement: phased disablement begins October 2026](https://techcommunity.microsoft.com/t5/exchange-team-blog/help-us-shape-exchange-server-on-premises-to-different-online/ba-p/4549691)** - Deadline: October 2026 (phased start), April 2027 (full). If you have not completed your EWS dependency audit and app migration to Microsoft Graph, the window is closing. Test EWSAllowedAppIDs controls now using the field guide published this week. Cross-org Free/Busy for on-premises-to-online scenarios requires input to the Exchange team survey.
-
-- **[Purview DLP wait-on-send and calendar DLP coming to Mac and mobile: September 2026](https://www.microsoft.com/microsoft-365/roadmap?id=569718)** - Deadline: September 2026 GA. DLP wait-on-send enforcement and calendar event DLP will activate for Outlook Mac, iOS, and Android. Review DLP policy scope, audit mobile coverage gaps, and set user wait-time thresholds before rollout to avoid help desk volume spikes.
+- **[Organizational Messages for Hybrid-joined Devices](https://www.microsoft.com/microsoft-365/roadmap?id=503564)** [Preview] - GA targeted June 2026. If your fleet is predominantly hybrid-joined, test current preview behavior against your targeting rules and confirm that message scope aligns with your intended audience before GA rollout.
 
 ## Documentation Updates
 
 **Identity & Access**
 
-- **[SSO for Linux device configuration guidance updated](https://github.com/MicrosoftDocs/entra-docs/commit/229b71bc1380356061995fe528eca7c58b025bf1)** - Guidance for configuring Microsoft SSO on Linux devices was updated, reflecting changes in supported configuration steps or prerequisites relevant to Entra-joined Linux endpoints.
+- **[New article: SAMAccountName attribute in Entra ID](https://github.com/MicrosoftDocs/entra-docs/commit/58c21f91283136b2713d310cf3c810d3ee6a7e9f)** - A new article covering the SAMAccountName attribute in Entra ID context has been published, useful for teams managing hybrid identity scenarios where legacy attribute dependencies matter.
 
-- **[New article: SAMAccountName attribute in Entra ID](https://github.com/MicrosoftDocs/entra-docs/commit/58c21f91283136b2713d310cf3c810d3ee6a7e9f)** - A new article documents SAMAccountName behavior and usage in Entra ID, useful for hybrid identity engineers working through attribute mapping and sync rule design.
+- **[Global Secure Access macOS client docs reapplied](https://github.com/MicrosoftDocs/entra-docs/commit/81ba8429e11ab2c73d9f890ced41c193e1bcf7b4)** - Previously reverted GSA macOS client documentation updates have been re-landed; if you are deploying or troubleshooting the GSA client on macOS, source guidance from the current revision of this article.
 
-- **[Lifecycle Workflows: cloning an existing workflow now documented](https://github.com/MicrosoftDocs/entra-docs/commit/ecd837b3898d4fd03bc8f320b0013b41a8fe10e5)** - New documentation covers how to clone an existing Lifecycle Workflow, which reduces configuration effort when standing up similar workflows for different user populations or scenarios.
+- **[Lifecycle Workflows: cloning an existing workflow](https://github.com/MicrosoftDocs/entra-docs/commit/ecd837b3898d4fd03bc8f320b0013b41a8fe10e5)** - New guidance documents how to clone an existing Lifecycle Workflow, reducing the effort of maintaining parallel workflow variants for different departments or regions.
 
-- **[Lifecycle Workflows: relative time-based triggers now documented](https://github.com/MicrosoftDocs/entra-docs/commit/2f521761794eb9f4eb0da671db264906dd841883)** - New documentation covers relative time-based workflow triggers in Lifecycle Workflows, with a noted update to the preview offset limit to 365 days, expanding the range for pre- and post-event automation.
+- **[Lifecycle Workflows: relative time-based triggers now documented](https://github.com/MicrosoftDocs/entra-docs/commit/2f521761794eb9f4eb0da671db264906dd841883)** - Documentation for relative time-based workflow triggers has been published, with the preview offset limit set to 365 days; relevant for teams building joiner/leaver workflows that fire relative to an attribute date rather than a fixed schedule.
 
 **Endpoint & Device Management**
 
-- **[Defender catch-up scan behavior documented](https://github.com/MicrosoftDocs/memdocs/commit/439f9830c3d3114e08646bcb25286bece432895c)** - Documentation for Microsoft Defender catch-up scan settings was updated, clarifying configuration behavior relevant to endpoints that miss scheduled scans, which affects Intune antivirus policy design.
+- **[Defender catch-up scan behavior updates](https://github.com/MicrosoftDocs/memdocs/commit/439f9830c3d3114e08646bcb25286bece432895c)** - Documentation covering Defender catch-up scan behavior has been updated; review if you manage scan scheduling policies in Intune to ensure your configured behavior aligns with current product guidance.
