@@ -24,6 +24,7 @@
   var NOTE_KEY = 'mww-review-tray-note';
   var RECIPIENT_KEY = 'mww-review-tray-recipient';
   var OPEN_KEY = 'mww-review-tray-open';
+  var HINT_KEY = 'mww-review-hint-dismissed';
 
   /* ── Storage helpers (all wrapped — localStorage can throw or be absent) ── */
 
@@ -92,6 +93,7 @@
       if (cb.checked) li.classList.add('review-checked');
 
       cb.addEventListener('change', function () {
+        dismissReviewHint();
         var current = loadItems();
         if (cb.checked) {
           if (!isInTray(current, url)) {
@@ -108,6 +110,33 @@
       label.appendChild(cb);
       li.insertBefore(label, li.firstChild);
     });
+  }
+
+  /* ── "Did you know?" first-visit explainer ────────────────────────────
+     Anchored to the first checkable article on the page. Shown once per
+     browser; dismissed for good either by clicking "Got it" or by the
+     visitor checking any box themselves (see dismissReviewHint() above). */
+
+  function dismissReviewHint() {
+    safeSet(HINT_KEY, 'true');
+    var hint = document.getElementById('review-hint');
+    if (hint) hint.remove();
+  }
+
+  function showReviewHint(firstLi) {
+    if (safeGet(HINT_KEY) === 'true') return;
+    if (!firstLi) return;
+
+    var hint = document.createElement('div');
+    hint.id = 'review-hint';
+    hint.className = 'review-hint';
+    hint.innerHTML =
+      '<div class="review-hint-title">\ud83d\udca1 Did you know?</div>' +
+      '<div class="review-hint-body">Click the checkbox for as many articles as you\u2019d like, then send them to your colleagues directly \u2014 no sign-up needed.</div>' +
+      '<div class="review-hint-actions"><button type="button" class="review-hint-btn">Got it</button></div>';
+
+    hint.querySelector('.review-hint-btn').addEventListener('click', dismissReviewHint);
+    firstLi.appendChild(hint);
   }
 
   /* ── Floating tray widget ──────────────────────────────────────────── */
@@ -284,6 +313,9 @@
     buildTrayShell();
     renderTray(items);
 
-    if (content) injectCheckboxes(content, items);
+    if (content) {
+      injectCheckboxes(content, items);
+      showReviewHint(content.querySelector('li.review-tray-host'));
+    }
   });
 })();

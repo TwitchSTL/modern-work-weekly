@@ -25,6 +25,71 @@ li.review-checked {
   border-radius: 4px;
 }
 
+/* ── "Did you know?" first-visit explainer ───────────────────────────
+   Anchored to the first checkable article a visitor sees, so the intro
+   lands exactly where the confusion would happen rather than as a generic
+   corner toast. Shown once per browser (localStorage flag) and dismissed
+   permanently the moment a visitor checks any box themselves — at that
+   point they've already figured it out. */
+li.review-tray-host { position: relative; }
+
+.review-hint {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: min(270px, calc(100vw - 3rem));
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
+  padding: 0.85rem 0.95rem 0.8rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  z-index: 1400;
+}
+.review-hint::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 9px solid var(--color-accent);
+}
+.review-hint-title {
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+.review-hint-body {
+  color: var(--color-text);
+  line-height: 1.45;
+  margin-bottom: 0.65rem;
+}
+.review-hint-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.review-hint-btn {
+  background: var(--color-accent);
+  color: #0d1117;
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.review-hint-btn:hover { background: var(--color-accent-hover); }
+
+@media (max-width: 480px) {
+  .review-hint { left: -4px; }
+}
+
 /* ── Floating toggle pill ──────────────────────────────────────────────
    Hidden until at least one item is selected, so the widget doesn't
    clutter every page for visitors who never use it. */
