@@ -121,11 +121,18 @@
     safeSet(HINT_KEY, 'true');
     var hint = document.getElementById('review-hint');
     if (hint) hint.remove();
+    var backdrop = document.getElementById('review-hint-backdrop');
+    if (backdrop) backdrop.remove();
   }
 
-  function showReviewHint(firstLi) {
+  function showReviewHint(hasCheckable) {
     if (safeGet(HINT_KEY) === 'true') return;
-    if (!firstLi) return;
+    if (!hasCheckable) return;
+
+    var backdrop = document.createElement('div');
+    backdrop.id = 'review-hint-backdrop';
+    backdrop.className = 'review-hint-backdrop';
+    backdrop.addEventListener('click', dismissReviewHint);
 
     var hint = document.createElement('div');
     hint.id = 'review-hint';
@@ -136,7 +143,8 @@
       '<div class="review-hint-actions"><button type="button" class="review-hint-btn">Got it</button></div>';
 
     hint.querySelector('.review-hint-btn').addEventListener('click', dismissReviewHint);
-    firstLi.appendChild(hint);
+    document.body.appendChild(backdrop);
+    document.body.appendChild(hint);
   }
 
   /* ── Floating tray widget ──────────────────────────────────────────── */
@@ -315,7 +323,7 @@
 
     if (content) {
       injectCheckboxes(content, items);
-      showReviewHint(content.querySelector('li.review-tray-host'));
+      showReviewHint(!!content.querySelector('li.review-tray-host'));
     }
   });
 })();
