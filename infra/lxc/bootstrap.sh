@@ -1,17 +1,17 @@
 #!/bin/bash
 # bootstrap.sh — Modern Work Weekly LXC setup
 # Run once on a fresh Ubuntu 24.04 LXC on Proxmox.
-# Static IP: 10.127.31.35 (configure in Proxmox before running this)
+# Static IP: <your-lxc-ip> (configure in Proxmox before running this)
 #
 # Usage:
-#   ssh root@10.127.31.35
+#   ssh root@<your-lxc-ip>
 #   chmod +x bootstrap.sh && ./bootstrap.sh
 
 set -e
 
 echo "=========================================="
 echo "  Modern Work Weekly — LXC Bootstrap"
-echo "  Proxmox LXC on 10.127.31.35"
+echo "  Proxmox LXC on <your-lxc-ip>"
 echo "=========================================="
 
 # ── System update ────────────────────────────────────────────────────────────

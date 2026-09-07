@@ -119,7 +119,7 @@ strip it before pasting anywhere. Publish order matters:
 If you need to re-run outside of the Tuesday cron (e.g. sources failed, missed a week):
 
 ```bash
-ssh root@10.127.31.35
+ssh root@<your-lxc-ip>
 
 # Activate the venv
 source /opt/modern-work-weekly/scraper/.venv/bin/activate

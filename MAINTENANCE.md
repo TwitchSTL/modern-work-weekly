@@ -3,10 +3,10 @@
 Day-to-day and occasional commands for keeping the LXC, the pipeline, and the
 site running. Grouped by what you're trying to do.
 
-**SSH target:** `ssh root@10.127.31.35` (hostname `mww`)
+**SSH target:** `ssh root@<your-lxc-ip>` (hostname `mww`)
 
 > **Convention used in this doc:**
-> - 🖥️ **LXC** — run after SSH-ing into the container (`ssh root@10.127.31.35`)
+> - 🖥️ **LXC** — run after SSH-ing into the container (`ssh root@<your-lxc-ip>`)
 > - 💻 **Local** — run on your Windows machine (PowerShell, from the repo directory)
 
 ---
@@ -138,7 +138,7 @@ The LinkedIn draft lives on the LXC (it's gitignored). Copy it to your local mac
 
 💻 **Local**
 ```powershell
-scp root@10.127.31.35:/opt/modern-work-weekly/repo/state/linkedin_draft_YYYY-MM-DD.txt .
+scp root@<your-lxc-ip>:/opt/modern-work-weekly/repo/state/linkedin_draft_YYYY-MM-DD.txt .
 ```
 
 After editing the digest and/or exec guide:

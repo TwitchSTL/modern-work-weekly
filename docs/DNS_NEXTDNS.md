@@ -16,7 +16,7 @@ Since you're using Pi-hole only for ad-blocking (not local hostname resolution),
 | Failover if device dies | Site loses DNS | Automatic (it's cloud) |
 | Cost | Free (your hardware) | Free up to 300k queries/month |
 
-**On local hostname resolution:** If you're not using Pi-hole for custom DNS entries like `proxmox.home.lan` or `10.127.31.35 → mww.local`, you don't need to replace that function. If you are, Proxmox's built-in `/etc/hosts` and Caddy handle it fine for the blog use case.
+**On local hostname resolution:** If you're not using Pi-hole for custom DNS entries like `proxmox.home.lan` or `<your-lxc-ip> → mww.local`, you don't need to replace that function. If you are, Proxmox's built-in `/etc/hosts` and Caddy handle it fine for the blog use case.
 
 ---
 
@@ -98,7 +98,7 @@ Once NextDNS is working:
 
 ## Note for the LXC specifically
 
-The LXC at `10.127.31.35` needs to reach:
+The LXC at `<your-lxc-ip>` needs to reach:
 - `*.microsoft.com` and `learn.microsoft.com` — for the scraper
 - `api.anthropic.com` — for Phase 2 API calls
 - `api.cloudflare.com` — for the tunnel
