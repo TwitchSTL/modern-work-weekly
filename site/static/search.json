@@ -1,5 +1,426 @@
 [
   {
+    "title": "Four Critical CVEs this week - Azure AD B2C and Azure AI Language both score CVSS 10.0.",
+    "category": "Top 5",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "CVE-2026-83711 (Azure AD B2C, CVSS 10.0), CVE-2026-70352 (Azure AI Language, CVSS 10.0), CVE-2026-80098 (Copilot Studio, CVSS 9.3), and CVE-2026-70178 (Microsoft Fabric, CVSS 8.5) are all rated Critical. Three involve pr"
+  },
+  {
+    "title": "Exchange 2016/2019 version-floor enforcement starts the second week of September - that's now.",
+    "category": "Top 5",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "Microsoft is raising the minimum acceptable on-premises Exchange version for hybrid connectors to the final available Public Update. Servers below that baseline will be throttled and eventually blocked from delivering to"
+  },
+  {
+    "title": "GPT-6 Astra and Anthropic Claude Fable 5.1 are both live in Microsoft 365 Copilot today.",
+    "category": "Top 5",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "Both models are available in Copilot Cowork and Copilot Studio. Astra is grounded via Work IQ in your tenant's files, meetings, and chats. Fable 5.1 is optimized for long-running financial and front-end coding tasks. Rev"
+  },
+  {
+    "title": "Teams-based IT support impersonation campaign observed in the wild.",
+    "category": "Top 5",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "Microsoft Threat Intelligence documented a human-operated campaign that exploits Teams external access to impersonate IT support, establishes remote sessions, and deploys a Node.js implant. Review your Teams external acc"
+  },
+  {
+    "title": "Memory integrity (HVCI) expands by default across eligible Windows devices in October 2026.",
+    "category": "Top 5",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "Starting October, Microsoft will automatically enable VBS-based memory integrity on qualifying devices with no admin action required. Validate your hardware inventory now - devices that fail HVCI enablement will surface "
+  },
+  {
+    "title": "What's new in Microsoft Entra: September 2026",
+    "category": "Identity & Access",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[Preview] - The September Entra release brings GA for tenant governance with shadow IT tenant discovery and least-privilege governance relationships, alongside a wave of identity lifecycle and AI-era access security impr"
+  },
+  {
+    "title": "Windows news you can use: August 2026",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - The August Windows roundup covers automated cloud-based device recovery, unattended remote support, post-quantum cryptography readiness, and Windows 365 improvements. Read this for a consolidated view of August ch"
+  },
+  {
+    "title": "Expanding memory integrity protection across Windows devices",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Starting October 2026, Microsoft will automatically enable VBS-based memory integrity (HVCI) on eligible devices, strengthening kernel-level protection against sophisticated attacks by default. Audit your hardware"
+  },
+  {
+    "title": "Take control of your EWSAllowedAppIDs list before EWS access changes",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - As EWS retirement enters its final phase, Microsoft is refining how the EWSAllowedAppIDs allowlist is applied. If you have already configured EWSAllowedAppIDs, Microsoft will not overwrite it, but if you haven't, "
+  },
+  {
+    "title": "Introducing SharePoint News and Viva Engage cross-posting",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Authors can now distribute a SharePoint news post directly to a Viva Engage storyline or community, with comments and reactions synchronized across both surfaces. This closes a long-standing workflow gap for corpo"
+  },
+  {
+    "title": "What's New in Copilot in SharePoint: September 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Personal Copilot skills now follow users across SharePoint and OneDrive, evaluations can measure and improve skill quality, and new guidance covers how AI agents can build live SharePoint-safe experiences. Reusabl"
+  },
+  {
+    "title": "Exchange 2016/2019: Throttling and Blocking up to the Final Public Update Baseline",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Starting the second week of September 2026, Exchange Online will throttle and then block inbound hybrid connector mail from Exchange 2016/2019 servers that are not at the final available Public Update. This is act"
+  },
+  {
+    "title": "Microsoft Teams Rooms: Platform choice delivers flexibility for your spaces",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Microsoft reaffirms its commitment to platform-agnostic Teams Rooms experiences, with Certified for Teams covering a broad range of devices regardless of underlying OS. Useful context when planning meeting room re"
+  },
+  {
+    "title": "Microsoft Teams: QR code protection in Teams messaging",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - QR codes from external senders will be obscured by default in Teams messages, requiring users to actively reveal them before viewing or scanning. This reduces phishing and quishing risk with no admin configuration"
+  },
+  {
+    "title": "Microsoft Teams: Add multiple steps when building a workflow from scratch",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Teams workflow builder now supports multi-step flows when creating from scratch, previously a limitation that pushed users toward Power Automate for more complex scenarios. Rolling out September 2026. Expect incre"
+  },
+  {
+    "title": "OneDrive: Refreshed file browsing and filtering experience in OneDrive Web",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - OneDrive Web is getting multi-filter support across Home, Shared, People, Meetings, and Favorites views, plus the modern SharePoint document library layout extended to folder-based experiences. File-type filtering"
+  },
+  {
+    "title": "Planner: Microsoft Planner tab support for shared and private channels in Microsoft Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Planner can now be added as a tab in shared and private channels, not just standard channels. This enables task management directly within restricted collaboration spaces. Available since August 2026; if you misse"
+  },
+  {
+    "title": "Microsoft Purview: Auto-labeling scalability, policy management, and reporting enhancements",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[Preview]  - Purview auto-labeling is expanding to support larger SharePoint scopes, more flexible policy management, and richer activity reporting. Preview in September 2026, GA in October. If you're running auto-labeli",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Microsoft Teams: Automatic recording and transcription choices align with admin policies",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Meeting organizers will only see automatic recording and transcription options that their assigned meeting policies permit. A new \"Record only\" choice lets recording start without transcription. Rolling out Novemb"
+  },
+  {
+    "title": "Microsoft Teams: Admins can control profanity filtering in meeting transcripts",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - A new meeting policy setting lets admins control whether profane words are masked in live transcription and saved transcripts, defaulting to filtered. When filtering is disabled by policy, the full text appears in"
+  },
+  {
+    "title": "Available today: OpenAI GPT-6 Astra in Microsoft Copilot",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - GPT-6 Astra is now live in Copilot Cowork and Copilot Studio, grounded via Work IQ in tenant files, meetings, chats, and business data within existing permissions. The model is designed for large task delegation r"
+  },
+  {
+    "title": "What's New in Microsoft Copilot | August 2026",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - August updates include effort-level and cost controls in Cowork, text selection and session sharing in Copilot Chat, Copilot Notebooks improvements, language selection for Teams meeting recaps, and hyperlinks and "
+  },
+  {
+    "title": "ASCII smuggling crosses over from AI prompt injection to phishing evasion",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA]  - Invisible Unicode characters originally used to hide instructions from AI models are now being weaponized to bypass email filters. This is a technique shift worth tracking for your Defender for Office 365 and Pur",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "PPCC 2026: Bringing AI and your business processes together",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Microsoft's Power Platform Community Conference 2026 recap covers how AI agents are being integrated into enterprise business processes, with a focus on human-in-the-loop exception handling and cross-system orches"
+  },
+  {
+    "title": "White paper: Choosing between the GitHub Copilot and Standard harnesses in Copilot Studio",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - This white paper clarifies the architectural differences between the Standard and GitHub Copilot harnesses in Copilot Studio, covering how each handles context, instructions, tools, and task progression. If you're"
+  },
+  {
+    "title": "Available today: Anthropic Claude Fable 5.1 in Microsoft Copilot",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Claude Fable 5.1 is live in Copilot Cowork and Copilot Studio, optimized for long-running tasks, financial analysis, and front-end visual coding. Like Astra, it is grounded via Work IQ within your existing permiss"
+  },
+  {
+    "title": "Turbocharge your canvas development with the canvas authoring agent plugin - now generally available!",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Canvas apps agentic coauthoring is now GA in Power Apps, enabling AI-assisted app creation directly in the canvas editor. This expands the low-code surface area for your Power Platform users significantly. Review "
+  },
+  {
+    "title": "Microsoft Copilot (Microsoft 365): Create Videos in the Clipchamp Start Page",
+    "category": "AI & Copilot",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Users can now prompt Copilot from the Clipchamp start page to generate a video from a simple description or existing document, with automated script, visuals, narration, and assembly. This was targeted for April 2"
+  },
+  {
+    "title": "Microsoft Viva: Create and customize PBI reports",
+    "category": "Employee Experience",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Viva Insights leaders and analysts can now view Power BI reports with the ability to customize time ranges, filters, attributes, and visuals, then save the result for later use. Rolling out September 2026. Confirm"
+  },
+  {
+    "title": "How to secure edge AI in customer-owned environments",
+    "category": "Security & Compliance",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA]  - Microsoft's security blog covers verification strategies for AI systems, software, and assets running in customer-controlled environments before releasing sensitive data, credentials, or models. If your organizat",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Deploy an Agent to Azure AI Foundry",
+    "category": "Security & Compliance",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA]  - Short-form walkthrough showing how VS Code's AI Toolkit extension packages a local agent and deploys it into Microsoft Foundry with enterprise controls applied. Practical reference for teams moving from local age",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Help Shape the Microsoft Security Practitioner Community",
+    "category": "Security & Compliance",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Microsoft is soliciting feedback from practitioners on priorities, challenges, and learning preferences to shape future technical content and community programs. Worth five minutes of your time if you want the con"
+  },
+  {
+    "title": "Red Team Your Azure AI Foundry Agent",
+    "category": "Security & Compliance",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA]  - Walkthrough of the AI red teaming agent in Microsoft Foundry, covering automated adversarial attack strategies including AsciiSmuggler, Base64, Jailbreak, StringJoin, UnicodeSubstitution, and IndirectJailbreak. R",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Impersonating IT support: how threat actors turn a remote session into enterprise-wide access",
+    "category": "Security & Compliance",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "[GA] - Microsoft Threat Intelligence documented an active campaign abusing Teams external access to impersonate IT support, establish remote sessions, and deploy a Node.js implant for lateral movement. Review your Teams "
+  },
+  {
+    "title": "CVE-2026-83711 - Microsoft Azure Active Directory B2C Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Critical · CVSS 10.0 | Surfaced in the Week of 2026-09-08 digest. Authorization bypass through user-controlled key allows an unauthenticated attacker to elevate privileges over the network. If you operate Azure AD B2C "
+  },
+  {
+    "title": "CVE-2026-70352 - Azure AI Language Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Critical · CVSS 10.0 | Surfaced in the Week of 2026-09-08 digest. Missing authentication for a critical function allows an unauthenticated attacker to elevate privileges over the network. Validate your Azure AI Languag"
+  },
+  {
+    "title": "CVE-2026-80098 - Copilot Studio Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Critical · CVSS 9.3 | Surfaced in the Week of 2026-09-08 digest. Improper cryptographic signature verification allows an unauthenticated attacker to elevate privileges over the network. Review Copilot Studio agent conf"
+  },
+  {
+    "title": "CVE-2026-70178 - Microsoft Fabric Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Critical · CVSS 8.5 | Surfaced in the Week of 2026-09-08 digest. Missing authorization allows an authenticated attacker to elevate privileges over the network. If you operate Microsoft Fabric workspaces, audit role ass"
+  },
+  {
+    "title": "CVE-2026-62906 - Microsoft Discovery Studio Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Critical · CVSS 7.4 | Surfaced in the Week of 2026-09-08 digest. Improper neutralization of special elements in data query logic allows an unauthenticated attacker to disclose information over a network. Verify patch s"
+  },
+  {
+    "title": "CVE-2026-50376 - Windows Remote Desktop Client Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Important · CVSS 6.5 | Surfaced in the Week of 2026-09-08 digest. Acknowledgment update only this cycle; the underlying vulnerability allows information disclosure via the RDC client. Confirm devices are running the pa"
+  },
+  {
+    "title": "CVE-2026-84358 - Chromium: Improper privilege management in Downloads",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "CVE-2026-84354 - Chromium: Incorrect authorization in FileSystem",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "CVE-2026-84332 - Chromium: Incorrect authorization in SiteSettings",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "CVE-2026-84329 - Chromium: Confused deputy in CredentialProvider",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. CredentialProvider issues carry elevated risk given credential theft implications;"
+  },
+  {
+    "title": "CVE-2026-84327 - Chromium: Incorrect authorization in Autofill",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "CVE-2026-84326 - Chromium: Uninitialized resource in V8",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. V8 uninitialized resource issues can be exploited for memory disclosure or code ex"
+  },
+  {
+    "title": "CVE-2026-84325 - Chromium: Improper input validation in DataTransfer",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "CVE-2026-84324 - Chromium: Use after free in Proxy",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Use-after-free in Proxy is a memory safety issue with potential for exploitation; "
+  },
+  {
+    "title": "CVE-2026-84323 - Chromium: Missing authorization in FileSystem",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Exchange 2016/2019 version-floor enforcement - active as of second week of September 2026.",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "Servers connecting to Exchange Online via an OnPremises inbound connector that are not at the final available Public Update are now subject to throttling and eventual blocking. Run Get-ExchangeDiagnosticInfo or check the"
+  },
+  {
+    "title": "EWSAllowedAppIDs configuration - act before EWS retirement enforcement tightens.",
+    "category": "Action Required",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "If your tenant does not have an explicitly configured EWSAllowedAppIDs list, Microsoft may apply defaults that disrupt apps still relying on EWS. If you have configured the list, it will not be overwritten. Audit EWS usa"
+  },
+  {
+    "title": "Passkey and Authenticator registration campaign guidance rewritten",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "The registration campaign docs for passkeys and the Microsoft Authenticator app have been substantially rewritten; if you're running or planning a phishing-resistant MFA rollout, re-read this guidance before configuring "
+  },
+  {
+    "title": "New how-to: Secure an MCP server with Microsoft Entra ID",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "New guidance added covering how to protect a Model Context Protocol server using Entra ID authentication and authorization, directly relevant for teams deploying AI agent infrastructure that exposes MCP endpoints."
+  },
+  {
+    "title": "New Entra SOC Identity Responder role documented",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "Documentation for the new Entra SOC Identity Responder role has been added, covering its permissions and intended use for security operations center analysts responding to identity-based incidents."
+  },
+  {
+    "title": "Intune device query role requirements updated",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "The required roles for running device queries in Intune have been updated in documentation; verify your role assignments if help desk or security analyst personas use device query for troubleshooting or incident response"
+  },
+  {
+    "title": "HAADJ pre-provisioning policy conflict limitation now documented",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "A known limitation where Autopilot pre-provisioning conflicts with certain policies on Hybrid Azure AD Joined devices is now formally documented; relevant if you're running HAADJ pre-provisioning flows and encountering u"
+  },
+  {
+    "title": "Strong identifier requirements for Defender XDR entity mapping documented",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "New documentation covers the strong identifier requirements needed for correct entity mapping in Defender XDR; gaps here affect alert correlation and incident quality, so review if you're seeing entity mismatches in your"
+  },
+  {
+    "title": "Defender connectivity URLs updated with Microsoft 365 Unified Domains note",
+    "category": "Documentation Updates",
+    "date": "2026-09-08",
+    "url": "/posts/2026-09-08/",
+    "snippet": "The Defender for Endpoint connectivity URL reference now includes a note on Microsoft 365 Unified Domains, which affects firewall and proxy allowlist configurations; verify your network allowlists if you manage Defender "
+  },
+  {
     "title": "Autopilot Device Association is GA",
     "category": "Top 5",
     "date": "2026-09-01",

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01",
+  "updated": "2026-09-08",
   "titles": [
     "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
     "Azure enterprise applications aren't displayed in the Company Portal for Windows or the Intune Company Portal website",
@@ -36,6 +36,7 @@
     "Single sign-on users see a dialog to allow remote desktop connection during the connection attempt",
     "Single sign-on user connections are being denied through Microsoft Entra Conditional Access",
     "Possible cause",
+    "Pre-provisioning fails for Microsoft Entra hybrid join when policy conflict resolution requires domain controller connectivity",
     "ODJ Connector configuration fails with a SeLogonAsServicePrivilege error when using your own gMSA",
     "Microsoft Entra hybrid join Autopilot deployments time out with error code 0x80004005",
     "Local Autopilot Reset can\u00e2\u0080\u0099t be triggered by local administrator when you deny access from network",
@@ -58,7 +59,6 @@
     "TPM attestation isn't working on some platforms with Infineon SLB9672 discrete TPMs",
     "Kiosk device profile not auto logging in",
     "TPM attestation isn't working on AMD platforms with ASP fTPM",
-    "TPM attestation failure with error code 0x81039001",
     "I don't see Microsoft Defender content",
     "Microsoft Defender for Identity alerts are not showing up in the Microsoft Defender incidents",
     "My legitimate file/URL is being detected as malicious",
