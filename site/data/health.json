@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08",
+  "updated": "2026-09-09",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 90,
   "total_new_count": 0,
@@ -262,7 +262,7 @@
         },
         {
           "title": "Devices don't get quality updates during Microsoft Entra hybrid joined deployments",
-          "body": "Date added:January 13, 2026 Scans for quality updates offered during OOBE might time out during provisioning for Windows Autopilot Microsoft Entra hybrid joined deployments when theAllow OOBE Updatespolicy is configured in the enrollment status page profile. When this occurs, devices don't get the q",
+          "body": "Date added:January 13, 2026Date updated:September 8, 2026 Scans for quality updates offered during OOBE might time out during provisioning for Windows Autopilot Microsoft Entra hybrid joined deployments when theAllow OOBE Updatespolicy is configured in the enrollment status page profile. When this o",
           "url": "https://learn.microsoft.com/en-us/autopilot/known-issues#devices-dont-get-quality-updates-during-microsoft-entra-hybrid-joined-deployments",
           "is_new": false
         },
