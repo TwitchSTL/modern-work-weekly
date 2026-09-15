@@ -753,18 +753,43 @@ def modernworkweekly_url(path: str) -> str:
     return f"https://modernworkweekly.com/{path}/"
 
 
-def build_hashtags(tags: list, max_tags: int = 3) -> list:
-    """Convert post tags into hashtags via the compiled TAG_HASHTAGS map.
+def build_hashtags(tags: list, text: str = "", max_total: int = 6) -> list:
+    """Convert post tags into hashtags, ranked by relevance to `text` (the
+    actual announcement post they'll run under) rather than by front-matter
+    tag order.
 
-    Always leads with BRAND_HASHTAG, then up to max_tags content-derived
-    hashtags. Preserves order, dedupes, skips anything not in the map.
+    Always leads with BRAND_HASHTAG, then up to (max_total - 1) more,
+    picked from `tags` that are both in TAG_HASHTAGS AND whose own phrase
+    (hyphens read as spaces, e.g. "defender-xdr" -> "defender xdr") appears
+    at least once in `text`. Front-matter tag order used to decide this by
+    itself -- confirmed 2026-09-15 that's a mechanical first-3-tags-in-
+    list-order pick with zero connection to what a given week's short
+    announcement post is actually about (front-matter tags describe the
+    WHOLE week's digest, not this one paragraph) -- see
+    feedback_linkedin_hashtags memory. A tag with no occurrence in `text`
+    is dropped even if it's high in the front-matter list; ties keep
+    front-matter order (Python's sort is stable and `scored` is built in
+    that order already, so a plain count-descending sort preserves it).
+    Calling with no `text` (or `text=""`) falls back to zero content
+    matches, i.e. just [BRAND_HASHTAG] -- always pass the real text.
     """
-    hashtags = [BRAND_HASHTAG]
+    text_lower = text.lower()
+    scored = []
     for tag in tags:
         hashtag = TAG_HASHTAGS.get(tag)
-        if hashtag and hashtag not in hashtags:
+        if not hashtag or hashtag == BRAND_HASHTAG:
+            continue
+        phrase = tag.replace("-", " ")
+        count = text_lower.count(phrase) if phrase else 0
+        if count > 0:
+            scored.append((count, hashtag))
+    scored.sort(key=lambda item: item[0], reverse=True)
+
+    hashtags = [BRAND_HASHTAG]
+    for _count, hashtag in scored:
+        if hashtag not in hashtags:
             hashtags.append(hashtag)
-        if len(hashtags) >= max_tags + 1:
+        if len(hashtags) >= max_total:
             break
     return hashtags
 
@@ -1836,7 +1861,7 @@ def run(args):
             ann_prompt = build_announcement_prompt(top5, week_of)
             ann_content = clean_dashes(call_claude_announcement(ann_prompt))
             tags = extract_post_tags(content)
-            hashtags = " ".join(build_hashtags(tags))
+            hashtags = " ".join(build_hashtags(tags, text=ann_content))
             post_url = modernworkweekly_url(f"posts/{week_of}")
             ann_content = (
                 f"{ann_content}\n\n{hashtags}\n\n"
