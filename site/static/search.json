@@ -1,5 +1,518 @@
 [
   {
+    "title": "CVE-2026-85921 - Critical Windows Secure Kernel EoP:",
+    "category": "Top 5",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "A double-free in Windows Secure Kernel Mode allows local privilege escalation with a CVSS of 8.2. Patch this immediately across your Windows Server and endpoint fleet before any PoC surface. Critical severity with no rep"
+  },
+  {
+    "title": "Agent 365 GA for cross-vendor AI governance:",
+    "category": "Top 5",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Microsoft's Agent 365 gives admins a single registry to track, approve, and lock down AI agents from Microsoft, Amazon, Google, Salesforce, Databricks, and Anthropic. Shadow AI blocking via Intune policies and Execution "
+  },
+  {
+    "title": "September 2026 Exchange Server Security Updates released:",
+    "category": "Top 5",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Security updates are out for Exchange SE, 2019, and 2016. Exchange 2019 CU14/CU15 and 2016 CU23 require Period 2 ESU enrollment to access. If you run on-premises Exchange, apply these immediately and confirm your ESU enr"
+  },
+  {
+    "title": "Passkey-themed social engineering actively abusing Microsoft Graph:",
+    "category": "Top 5",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "A documented attack chain uses passkey-themed lures to establish MFA persistence, then pivots through Microsoft Graph to reach SharePoint, OneDrive, and email. Review your Conditional Access policies and Graph API access"
+  },
+  {
+    "title": "NTLM retirement FAQ published, slmgr.vbs deprecation in motion:",
+    "category": "Top 5",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Microsoft has published a formal NTLM retirement FAQ covering the Kerberos-first, NTLM-optional path. Separately, slmgr.vbs is on its way out with VBScript removal. Both are medium-term breaking changes: audit NTLM depen"
+  },
+  {
+    "title": "Combined Sensor management tab in Defender for Identity on-premises settings",
+    "category": "Identity & Access",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - The Onboarding and Sensors tabs are now merged into a single Sensor management tab that shows both installed sensors and servers eligible for activation; automatic sensor v3.x activation has moved to the Advanced "
+  },
+  {
+    "title": "Passkey-themed social engineering leading to identity and cloud compromise",
+    "category": "Identity & Access",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Threat actors are using passkey-themed lures to establish MFA persistence, then abusing Microsoft Graph for reconnaissance and accessing SharePoint, OneDrive, and email data. Review Conditional Access policies, au"
+  },
+  {
+    "title": "Defender for Identity sensor v3.x onboarding without Defender for Endpoint (Preview)",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[Preview] - You can now activate the Defender for Identity sensor v3.x on eligible domain controllers running Windows Server 2019 or later without first onboarding those DCs to Defender for Endpoint. This removes a signi"
+  },
+  {
+    "title": "Migrate Windows activation automation from slmgr.vbs to PowerShell",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - VBScript deprecation means any automation relying on slmgr.vbs will eventually break when VBScript is removed from Windows. The OSLicense PowerShell module is now the recommended replacement; start inventorying ac"
+  },
+  {
+    "title": "Run local AI models on a Windows 365 Cloud PC with Foundry Local",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Windows 365 Cloud PCs can run small language models (Qwen, Phi) locally via Foundry Local, letting AI-assisted workloads run on the Cloud PC's own storage without consuming cloud AI tokens. This is worth evaluati",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "NTLM retirement FAQ: Planning your path to Kerberos-first",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Microsoft has published a comprehensive FAQ covering the transition to Kerberos-first, NTLM-optional, and eventually NTLM-free Windows environments. Use this as the reference document when building your NTLM depen"
+  },
+  {
+    "title": "Copilot entry point coming to Classic Outlook for Windows",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - The unified Copilot entry point already shipping in new Outlook, Word, Excel, and PowerPoint is rolling out to Classic Outlook this September. No admin action required, but expect user questions about the new UI ",
+    "emphasis": [
+      "Apps"
+    ]
+  },
+  {
+    "title": "AI-assisted BEC campaign using executive impersonation and invoice fraud",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Microsoft has documented an active business email compromise campaign using AI-generated executive impersonation to target finance teams with fake ACH payment requests. Brief your finance and AP teams, validate y",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "SharePoint AI page authoring: on-canvas selection for Copilot edits",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Authors can now select a specific section or web part on a SharePoint page and instruct Copilot to modify it directly, removing the need to describe the element's location in natural language. No admin configurati"
+  },
+  {
+    "title": "Field guide: Testing EWSAllowedAppIDs before enforcing EWS retirement controls",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - As EWS retirement in Exchange Online approaches its final phase, the Exchange team has published a controlled positive/negative test methodology for validating EWSAllowedAppIDs, including a warning about a commonl"
+  },
+  {
+    "title": "September 2026 Exchange Server Security Updates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Security updates are released for Exchange SE RTM, Exchange 2019 CU14/CU15, and Exchange 2016 CU23; access to 2019 and 2016 updates requires Period 2 ESU enrollment. Apply these patches immediately on all on-premi"
+  },
+  {
+    "title": "Exchange Server AD FS Modern Authentication now extends to Outlook for iOS and Android",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Pure on-premises Exchange organizations using AD FS Modern Authentication can now extend that auth path to Outlook for iOS and Outlook for Android, completing mobile client coverage alongside the existing Windows",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "Queues app for Teams: Collaborative calling for customer-facing teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - The Queues app turns a Teams call queue into a shared workspace where agents and supervisors manage customer calls together inside Teams, with recent updates expanding supervisor controls and queue visibility. Req"
+  },
+  {
+    "title": "Microsoft Teams: Report suspicious guest invitations coming in November 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Users will be able to flag unexpected or potentially malicious guest invitations directly from Teams for IT admin review, adding a human reporting signal to your guest access monitoring. No admin action required b"
+  },
+  {
+    "title": "Outlook Cloud Policy controls coming to Outlook on the web and new Outlook for Windows",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Cloud Policy service support for Outlook on the web and new Outlook for Windows will let admins set and lock default Outlook settings across the organization via a cloud-based policy plane. Arriving October 2026; "
+  },
+  {
+    "title": "Teams Panels: Admin control to hide organizer name in Calendar View",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Admins can toggle the \"Show organizer name\" setting on or off in the Pro Management portal or directly on the panel device, enabling privacy control for sensitive meeting organizer information on room displays. Re"
+  },
+  {
+    "title": "Planner integration coming to Microsoft Cowork",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Cowork will allow users to view, create, and update Planner plans, buckets, goals, and tasks without leaving the app, and can execute Planner tasks across M365 (send emails, schedule meetings, post Teams updates)",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Copilot Settings now in Classic Outlook for Windows (Preview)",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[Preview] - Classic Outlook for Windows is gaining direct access to Copilot settings within the app itself, matching the settings access already available in other Outlook endpoints. Preview available since July 2026; no"
+  },
+  {
+    "title": "Exchange Online Cross-tenant Message Recall now GA",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Exchange Online Message Recall now supports recalling messages sent to external organizations, provided the recipient tenant has added your tenant to their recall allow list. Coordinate with key partner organizati"
+  },
+  {
+    "title": "Block shadow AI on managed devices with Agent 365",
+    "category": "AI & Copilot",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Agent 365 lets admins configure default blocks for unsanctioned local AI agents, enforced through underlying Intune policies, and mandates that any permitted local agent runs isolated from the primary user sessio",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Agent 365: Cross-vendor AI agent registry and governance controls for admins",
+    "category": "AI & Copilot",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Agent 365 provides a unified registry covering agents from Microsoft, Amazon, Google, Salesforce, Databricks, Anthropic, and others, with reusable security policy templates that apply Conditional Access, Access P",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Copilot Notebooks redesigned in Microsoft 365 Copilot app for iOS",
+    "category": "AI & Copilot",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Copilot Notebooks on iOS now let users collect related chats, outputs, and references into a persistent AI workspace that carries context across sessions, so users are not starting from scratch on each interaction"
+  },
+  {
+    "title": "Custom engine agents now available for GCC-M users",
+    "category": "AI & Copilot",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - GCC-M tenants can now use custom engine agents within Microsoft 365 Copilot extensibility, closing a gap between commercial and sovereign cloud feature parity. If you manage a GCC-M environment and have custom age"
+  },
+  {
+    "title": "Chromium CVE-2026-87494: Use after free in Browser",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A use-after-free in the Chromium browser engine is addressed in the latest Edge update; ensure managed Edge deployments are on the current channel version."
+  },
+  {
+    "title": "Chromium CVE-2026-87493: Missing authorization in FileSystem",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A missing authorization flaw in Chromium's FileSystem component is patched in the current Edge release; verify Edge is current across your managed device fleet."
+  },
+  {
+    "title": "Chromium CVE-2026-87492: Incorrect authorization in DevTools",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. An incorrect authorization issue in Chromium DevTools is addressed in the latest Edge channel update; confirm DevTools access restrictions align with your security baseline."
+  },
+  {
+    "title": "Chromium CVE-2026-87490: Information leak in Transactions Platform",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. An information leak in the Chromium Transactions Platform component is patched in the current Edge release; keep managed Edge deployments current."
+  },
+  {
+    "title": "Chromium CVE-2026-87489: Memory corruption in V8",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Memory corruption in the V8 JavaScript engine is addressed in the latest Edge update; V8 memory corruption bugs carry elevated exploitation risk and Edge should be prioritized for "
+  },
+  {
+    "title": "Chromium CVE-2026-87487: Missing authorization in FileSystem",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A second missing authorization flaw in Chromium's FileSystem component is patched alongside CVE-2026-87493 in the current Edge channel; ensure Edge is updated across all endpoints."
+  },
+  {
+    "title": "Chromium CVE-2026-87485: Incorrect authorization in CORS",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. An incorrect authorization issue in Chromium's CORS implementation is addressed in the current Edge release; update managed Edge to the latest build."
+  },
+  {
+    "title": "Chromium CVE-2026-87484: UI misrepresentation in Geometry",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A UI misrepresentation flaw in Chromium's Geometry component is patched in the current Edge update; ensure Edge is current on managed devices."
+  },
+  {
+    "title": "Chromium CVE-2026-87480: Use after free in Printing",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A use-after-free in the Chromium Printing component is addressed in the latest Edge channel release; keep Edge updated across your managed fleet."
+  },
+  {
+    "title": "Chromium CVE-2026-87458: UI misrepresentation in Geometry",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A second UI misrepresentation flaw in Chromium's Geometry component is patched in the current Edge release alongside CVE-2026-87484; update Edge to the latest build."
+  },
+  {
+    "title": "Chromium CVE-2026-87457: Race condition in Updater",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A race condition in the Chromium Updater component is addressed in the current Edge update; confirm managed Edge deployments are on the latest channel version."
+  },
+  {
+    "title": "Chromium CVE-2026-87456: Uninitialized resource in Media",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. An uninitialized resource flaw in the Chromium Media component is patched in the latest Edge release; ensure Edge is updated on all managed endpoints."
+  },
+  {
+    "title": "Chromium CVE-2026-87455: Use after free in Aura",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. A use-after-free in the Chromium Aura window management layer is addressed in the current Edge channel; update managed Edge to the latest build."
+  },
+  {
+    "title": "Chromium CVE-2026-87454: Information leak in Enterprise",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. An information leak in Chromium's Enterprise component is patched in the current Edge release; this is particularly relevant for organizations using enterprise browser policies and"
+  },
+  {
+    "title": "CVE-2026-85921: Critical Windows Secure Kernel Mode Elevation of Privilege",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Critical · CVSS 8.2. A double-free vulnerability in Windows Secure Kernel Mode allows a local authorized attacker to elevate privileges. Patch all affected Windows systems immediately; local EoP in the secure kern"
+  },
+  {
+    "title": "Detect and disrupt AI-themed attacks with Microsoft Defender",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Microsoft Defender's detection and disruption capabilities for AI-themed phishing, malware, and multi-stage attacks are documented here with attack chain coverage. Review your Defender XDR incident response playbo"
+  },
+  {
+    "title": "Cloud Web Applications Threat Matrix: MITRE ATT&CK-aligned framework",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA] - Microsoft has released a new threat matrix covering cloud-hosted web apps and serverless platforms, aligned to MITRE ATT&CK, to help defenders prioritize and mitigate relevant threat vectors. Use this to update yo"
+  },
+  {
+    "title": "Azure AI Foundry: Synthetic test data generation for agent evaluation",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - Azure AI Foundry can generate synthetic evaluation datasets from a natural-language prompt, eliminating the cold-start problem for teams building AI agent evaluation pipelines without existing labeled data. Usefu",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Foundry Toolbox: 90% token reduction through targeted tool routing",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - The Toolbox feature in Microsoft Foundry routes each agent request to only the tools it actually needs rather than broadcasting all tool definitions on every call, cutting one sample run from roughly 4,700 to 467",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "OneDrive mobile: PDF annotation for sensitivity-label protected files on iOS and Android",
+    "category": "Security & Compliance",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "[GA]  - The OneDrive apps for iOS and Android now allow users with edit/annotate rights to add ink, highlights, free text, notes, signatures, stamps, bookmarks, and form fields to sensitivity-label encrypted PDFs without",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "CVE-2026-85921: Critical Windows Secure Kernel Mode Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Critical · CVSS 8.2. Surfaced in the Week of 2026-09-15 digest. A double-free in Windows Secure Kernel Mode allows local privilege escalation. Patch all affected Windows systems immediately; this class of vulnerability i"
+  },
+  {
+    "title": "Chromium CVE-2026-87494: Use after free in Browser",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current Chromium-based channel release to address this use-after-free."
+  },
+  {
+    "title": "Chromium CVE-2026-87493: Missing authorization in FileSystem",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current channel release to address this missing authorization flaw in FileSystem."
+  },
+  {
+    "title": "Chromium CVE-2026-87492: Incorrect authorization in DevTools",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to address this incorrect authorization issue in DevTools."
+  },
+  {
+    "title": "Chromium CVE-2026-87490: Information leak in Transactions Platform",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current release to patch this Chromium information leak."
+  },
+  {
+    "title": "Chromium CVE-2026-87489: Memory corruption in V8",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. V8 memory corruption carries elevated exploitation risk; prioritize Edge updates on all managed endpoints."
+  },
+  {
+    "title": "Chromium CVE-2026-87487: Missing authorization in FileSystem",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current channel release to address this second FileSystem authorization flaw."
+  },
+  {
+    "title": "Chromium CVE-2026-87485: Incorrect authorization in CORS",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to patch this CORS authorization issue."
+  },
+  {
+    "title": "Chromium CVE-2026-87484: UI misrepresentation in Geometry",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current release to address this Geometry UI misrepresentation flaw."
+  },
+  {
+    "title": "Chromium CVE-2026-87480: Use after free in Printing",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to address this use-after-free in the Printing component."
+  },
+  {
+    "title": "Chromium CVE-2026-87458: UI misrepresentation in Geometry",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current release to address this second Geometry UI misrepresentation flaw."
+  },
+  {
+    "title": "Chromium CVE-2026-87457: Race condition in Updater",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to patch this race condition in the Chromium Updater component."
+  },
+  {
+    "title": "Chromium CVE-2026-87456: Uninitialized resource in Media",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to address this uninitialized resource flaw in the Media component."
+  },
+  {
+    "title": "Chromium CVE-2026-87455: Use after free in Aura",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current channel release to address this use-after-free in Aura."
+  },
+  {
+    "title": "Chromium CVE-2026-87454: Information leak in Enterprise",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to patch this Enterprise component information leak; review enterprise browser policy configurations while applying the up"
+  },
+  {
+    "title": "September 2026 Exchange Server Security Updates",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Deadline: apply immediately. Security patches are available for Exchange SE RTM, Exchange 2019 CU14/CU15, and Exchange 2016 CU23. Organizations running Exchange 2019 or 2016 must be enrolled in the Period 2 ESU program t"
+  },
+  {
+    "title": "Migrate Windows activation automation from slmgr.vbs to OSLicense PowerShell module",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "No hard deadline yet, but VBScript removal from Windows is in progress. Inventory all activation scripts that call slmgr.vbs and plan migration to the OSLicense PowerShell module before VBScript removal reaches your targ"
+  },
+  {
+    "title": "Validate EWSAllowedAppIDs configuration before EWS retirement enforcement",
+    "category": "Action Required",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "EWS retirement in Exchange Online is approaching its final phase. Run the documented positive/negative test against your EWSAllowedAppIDs configuration in a controlled environment before enforcing the allowlist; the nami"
+  },
+  {
+    "title": "Updated account discovery requirements and connector support for Entra ID Governance",
+    "category": "Documentation Updates",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "Discovery requirements and connector support scope have been updated, which could affect provisioning configurations relying on specific connector types; review if you manage identity governance connectors."
+  },
+  {
+    "title": "Enterprise State Roaming migration guidance updated",
+    "category": "Documentation Updates",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "The ESR migration docs have been revised; if your organization still relies on Enterprise State Roaming and is planning a migration to the settings sync replacement, check the updated guidance for changed prerequisites o"
+  },
+  {
+    "title": "Improved Global Secure Access scenario health troubleshooting guidance",
+    "category": "Documentation Updates",
+    "date": "2026-09-15",
+    "url": "/posts/2026-09-15/",
+    "snippet": "The GSA scenario health troubleshooting article has been meaningfully expanded; if your team is operating Global Secure Access in production and encountering health check failures, this updated doc is worth reviewing bef"
+  },
+  {
     "title": "Four Critical CVEs this week - Azure AD B2C and Azure AI Language both score CVSS 10.0.",
     "category": "Top 5",
     "date": "2026-09-08",
