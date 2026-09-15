@@ -1327,9 +1327,22 @@ def linkify_linkedin_draft(li_content: str, content: str, draft: dict | None = N
 # the start of the string.
 _TOP5_SECTION_RE = re.compile(r"^## Top 5[^\n]*\n(.*?)(?=\n^## |\Z)", re.DOTALL | re.MULTILINE)
 _TOP5_ITEM_RE = re.compile(
-    # The optional non-capturing group tolerates the {{< cat "..." >}} shortcode
-    # tag_top5_categories() inserts right after the title — present on posts
-    # generated after that function existed, absent on older ones.
+    # The repeated optional non-capturing group strips any {{< cat "..." >}}
+    # and/or {{< reason "..." >}} shortcodes sitting right after the title
+    # (in either order, zero or more of each) before body capture starts —
+    # present on posts generated after tag_top5_categories()/reason tags
+    # existed, absent on older ones. Confirmed 2026-09-15: this group used
+    # to require the shortcode literally touching the closing "**" with no
+    # space, but the actual generated text always has "** {{< cat ..." with
+    # a space in between, so the group never matched anything and the raw
+    # shortcode text leaked straight into extract_top5()'s body — which
+    # flows into the LinkedIn Newsletter draft and the announcement post,
+    # both hand-pasted into LinkedIn as plain text. This had been silently
+    # masked until now because the OTHER Top 5 tagging bug (see
+    # tag_top5_categories()) meant cat shortcodes almost never actually
+    # made it into a published post in the first place; fixing that bug
+    # would have turned this into a real, visible leak starting the very
+    # next published week without this fix alongside it.
     #
     # The terminating lookahead used to require a BLANK line before the next
     # numbered item (\n\n\d+\.\s+\*\*), matching the SYSTEM_PROMPT's formatting
@@ -1342,7 +1355,7 @@ _TOP5_ITEM_RE = re.compile(
     # post of the other 4 items. \s* tolerates zero, one, or many newlines
     # between items, so this works whether or not the blank-line rule was
     # actually followed that week.
-    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*(?:\{\{<\s*cat\s+\"[^\"]*\"\s*>\}\})?\s*-?\s*(?P<body>.+?)(?=\n\s*\d+\.\s+\*\*|\Z)",
+    r"^\d+\.\s+\*\*(?P<title>.+?)\*\*\s*(?:\{\{<\s*(?:cat|reason)\s+\"[^\"]*\"\s*>\}\}\s*)*-?\s*(?P<body>.+?)(?=\n\s*\d+\.\s+\*\*|\Z)",
     re.MULTILINE | re.DOTALL,
 )
 
