@@ -120,6 +120,17 @@ function makeTop5Collapsible(content, expandAll) {
     const color   = categoryColor(pillar);
     if (catTag) catTag.remove();
 
+    // Reason tag (digest.py's {{< reason >}} shortcode) replaces the bare
+    // 1-5 numbering with why the item made the cut -- the numbering
+    // implied a priority ranking that was never real, Top 5 selection is
+    // a fresh newsworthiness call each week, not a maintained ranking.
+    // Posts published before this shipped have no reason tag, so they
+    // keep the plain numbered badge -- forward-only, same as every other
+    // Top 5 tagging feature here (category tags, emphasis tags).
+    const reasonTag = li.querySelector('.top5-reason-tag');
+    const reason    = reasonTag ? reasonTag.dataset.reason.trim() : null;
+    if (reasonTag) reasonTag.remove();
+
     const details = document.createElement('details');
     details.className = 'top5-item';
     details.style.borderLeftColor = color;
@@ -129,8 +140,8 @@ function makeTop5Collapsible(content, expandAll) {
     summary.className = 'top5-summary';
 
     const badge = document.createElement('span');
-    badge.className = 'top5-badge';
-    badge.textContent = index;
+    badge.className = reason ? 'top5-reason-badge' : 'top5-badge';
+    badge.textContent = reason || index;
     badge.style.background = color;
 
     const title = document.createElement('span');

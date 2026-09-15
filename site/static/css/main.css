@@ -1415,6 +1415,26 @@ details[open] .toc-label::before { content: "▼ "; }
   flex-shrink: 0;
 }
 
+/* Reason-tag variant of .top5-badge (e.g. "Patch Now", "Deadline") --
+   text instead of a digit, so it needs a pill shape instead of a circle.
+   Falls back to .top5-badge above on posts published before reason tags
+   shipped. */
+.top5-reason-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--item-color, var(--color-accent));
+  color: #0d1117;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .top5-title {
   flex: 1;
   font-size: 0.9rem;

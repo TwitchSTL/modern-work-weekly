@@ -802,6 +802,47 @@ EMPHASIS_KEYWORDS = {
 }
 
 
+# Top 5 "reason tag" -- replaces the bare 1-5 numbering on the site's Top 5
+# badges (see digest.py's SYSTEM_PROMPT and tag_top5_categories()'s sibling,
+# the {{< reason >}} shortcode). The numbering implied a priority ranking
+# that was never really true -- Top 5 selection is Claude's own judgment
+# call on newsworthiness each week, not a maintained ranking -- and Ryan
+# flagged that readers had no way to tell WHY an item made the cut. Each
+# item gets exactly one of these instead, describing the reason it's here:
+REASON_TAGS = [
+    "Patch Now", "Deadline", "Governance Move", "New Capability",
+    "Worth Watching",
+]
+
+# Lightweight keyword sanity-check for REASON_TAGS, same pattern and same
+# caveat as EMPHASIS_KEYWORDS above: this does not decide the tag (reading
+# comprehension can't be replaced by keyword matching -- "Governance Move"
+# vs. "New Capability" for a GA feature often turns on what the feature
+# actually DOES, not any single word in its description), it only flags
+# disagreement for human review in check_reason_tags().
+REASON_KEYWORDS = {
+    "Patch Now": [
+        "cve", "patch", "vulnerability", "rce", "elevation of privilege",
+        "security update", "exploited", "critical severity", "cvss",
+    ],
+    "Deadline": [
+        "deadline", "retire", "retirement", "deprecat", "sunset",
+        "enforcement", "throttl", "blocked", "must", "before", "expires",
+    ],
+    "Governance Move": [
+        "governance", "policy", "control", "registry", "compliance",
+        "conditional access", "audit", "restrict", "block", "approve",
+    ],
+    "New Capability": [
+        "ga", "generally available", "preview", "now available",
+        "rolling out", "launches", "introducing", "new feature",
+    ],
+    # Deliberately no keyword list for "Worth Watching" -- it's the
+    # catch-all for anything notable but not urgent, not a topic with its
+    # own vocabulary, so there's nothing meaningful to check it against.
+}
+
+
 # Rollout phase keywords
 PHASE_KEYWORDS = {
     "Preview": ["preview", "public preview", "private preview", "beta", "in development"],

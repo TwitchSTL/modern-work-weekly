@@ -26,7 +26,7 @@ import anthropic
 from dotenv import load_dotenv
 import generate_search_index
 from dateutils import parse_item_date, item_age_days
-from sources import EMPHASIS_KEYWORDS, EMPHASIS_TAGS
+from sources import EMPHASIS_KEYWORDS, EMPHASIS_TAGS, REASON_KEYWORDS, REASON_TAGS
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,6 +61,7 @@ Format rules:
 - Front matter: title, date, description (1-2 punchy sentences matching the week's actual tone — highlight what's most notable whether that's a new feature, a deadline, a risk, or a capability unlock; not everything is a warning, some weeks are rich with feature enablements or reporting improvements), tags (see standard list below), categories (from the standard list)
 - Do NOT write an intro paragraph in the post body. The front matter description already serves that purpose and is rendered separately by the site template. Start the body directly with the first section heading.
 - Top 5 section: heading must be exactly "## Top 5" (not "## Top 5 This Week" or any other variant — the LinkedIn draft pipeline's extract_top5() parses this heading verbatim and silently returns nothing on a mismatch). The 5 most important changes this week with a brief why-it-matters for each.
+- Top 5 reason tags: the numbered 1-5 order is just list order, not a ranking — readers should never have to guess why an item made the cut. Immediately after each item's bold title (before the explanation, and before any punctuation continuing your sentence), insert exactly one tag from this list via the shortcode `{{< reason "Tag Name" >}}`: "Patch Now" (an active CVE or vulnerability that needs patching), "Deadline" (a concrete date, retirement, or required admin action before a cutoff), "Governance Move" (a new control, policy, registry, or admin capability for managing risk/access — not a patch and not date-driven), "New Capability" (a GA/preview feature unlock with no urgency attached), "Worth Watching" (notable but not yet actionable — an early signal, a rollback, a survey). Pick based on what the item actually asks the reader to do or notice, not which tag sounds most dramatic — a GA'd AI governance feature is "Governance Move" or "New Capability", not "Patch Now", even if a CVE elsewhere in the same Top 5 is more urgent. Example: `1. **Agent 365 GA for cross-vendor AI governance:** {{< reason "Governance Move" >}} Microsoft's Agent 365 gives admins...`
 - Top 5 and CVE items: do not name-check a routine CVE (acknowledgment update, build-number correction, or any CVE whose provided cve_severity is not "Critical" and whose cve_exploited is not "Yes") in the Top 5. Only a CVE that is Critical severity or has cve_exploited: "Yes" belongs in Top 5. Every CVE, regardless of severity, still gets its own bullet in the Action Required section — see that section's rule below.
 - Title format must be exactly: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash — see clean_dashes())
 - Per-category sections: h2 headings ONLY — never use h3 or h4 inside category sections. One bullet point per item, exactly this format:
@@ -953,6 +954,55 @@ def _best_category_match(headline: str, catalog: list, min_overlap: float = 0.5)
     return best_category if best_score >= min_overlap else None
 
 
+_REASON_SHORTCODE_RE = re.compile(r'\{\{<\s*reason\s+"([^"]*)"\s*>\}\}')
+
+
+def check_reason_tags(content: str, week_of: str) -> None:
+    """Lightweight keyword sanity check on Claude-assigned Top 5 reason
+    tags, same pattern and same caveat as check_emphasis_tags(): this does
+    NOT decide or correct a reason tag, it only flags disagreement for
+    human review (e.g. an item tagged "Patch Now" with no CVE/patch
+    language anywhere in it, or the reverse). Console-only for now --
+    unlike emphasis tags this doesn't yet persist a state/*.json history
+    file; add one later (mirroring write_classification_stats()) if this
+    needs to be reviewed across weeks rather than just at generation time.
+    """
+    top5_match = _TOP5_SECTION_RE.search(content)
+    if not top5_match:
+        return
+    block = top5_match.group(1)
+
+    findings = []
+    for m in _REASON_SHORTCODE_RE.finditer(block):
+        tag = m.group(1).strip()
+        title_matches = list(re.finditer(r'\*\*([^*]+)\*\*', block[:m.start()]))
+        title = title_matches[-1].group(1) if title_matches else "(title not found)"
+
+        if tag not in REASON_TAGS:
+            findings.append(f'  - "{title}": unknown reason tag "{tag}"')
+            continue
+
+        keywords = REASON_KEYWORDS.get(tag)
+        if not keywords:
+            continue  # "Worth Watching" has no keyword list by design
+
+        # Score against this item's own text, not the whole Top 5 block --
+        # bound it to the next numbered item (or end of block).
+        item_end = block.find("\n\n", m.end())
+        item_end = item_end if item_end != -1 else len(block)
+        window = block[m.start():item_end].lower()
+        if not any(kw in window for kw in keywords):
+            findings.append(f'  - "{title}": tagged "{tag}" with no supporting keyword found')
+
+    tagged_count = len(_REASON_SHORTCODE_RE.findall(block))
+    numbered_count = len(re.findall(r'^\d+\.\s+\*\*', block, re.MULTILINE))
+    if tagged_count < numbered_count:
+        findings.append(f'  - {numbered_count - tagged_count} of {numbered_count} Top 5 items have no reason tag at all')
+
+    if findings:
+        log.warning(f"Top 5 reason tag check ({week_of}) flagged {len(findings)} item(s) for review:\n" + "\n".join(findings))
+
+
 def tag_top5_categories(content: str) -> str:
     """Tag each Top 5 item with the real category section it best matches,
     via an inline {{< cat "..." >}} shortcode right after the bold title.
@@ -1723,6 +1773,7 @@ def run(args):
         return
 
     content = clean_dashes(call_claude(prompt))
+    check_reason_tags(content, week_of)
     content = tag_top5_categories(content)
     content = inject_card_stats(content)
     validate_all_cves_in_action_required(content)
