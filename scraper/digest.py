@@ -865,11 +865,31 @@ CATEGORY_NAMES = [
 ]
 _CATEGORY_NAME_SET = {name.lower() for name in CATEGORY_NAMES}
 
+# Some Top 5 items (a bare CVE, a deadline/survey item) never get placed in
+# any of the six pillar sections above -- their only real home on the page
+# is "Action Required". Confirmed 2026-09-01/09-08/09-15: without this,
+# those items simply had no ground-truth section to match against and
+# always fell through to the client-side detectPillar() guess. "Action
+# Required" is deliberately NOT added to CATEGORY_NAMES itself (front
+# matter `categories:` and the six-pillar prompt instructions elsewhere in
+# this file still mean exactly the six pillars) -- it's additive only for
+# Top 5 tagging's own ground-truth catalog.
+_TOP5_CATALOG_SECTION_NAMES = _CATEGORY_NAME_SET | {"action required"}
+
 _CATEGORY_SECTION_RE = re.compile(r"^## (?P<heading>.+?)\s*\n(?P<body>.*?)(?=\n## |\Z)", re.MULTILINE | re.DOTALL)
-_CATEGORY_ITEM_RE = re.compile(r"^-\s+\*\*(?:\[(?P<linked>[^\]]+)\]\([^)]+\)|(?P<plain>[^*]+))\*\*", re.MULTILINE)
+# The `(?P<lextra>[^*]*)` tail handles Action Required's bullet format,
+# where the bold run is "**[Title](url) - extra qualifier text**" rather
+# than category-section bullets' plain "**[Title](url)**" -- without it,
+# the alternation fell through to the `plain` branch instead and captured
+# the raw "[Title](url) - extra" text, brackets/parens/URL and all, which
+# poisoned word-overlap matching with URL fragments.
+_CATEGORY_ITEM_RE = re.compile(
+    r"^-\s+\*\*(?:\[(?P<linked>[^\]]+)\]\([^)]+\)(?P<lextra>[^*]*)|(?P<plain>[^*]+))\*\*",
+    re.MULTILINE,
+)
 
 
-def extract_category_sections(content: str) -> dict[str, list[str]]:
+def extract_category_sections(content: str, section_names: set = _CATEGORY_NAME_SET) -> dict[str, list[str]]:
     """Map each real category section heading in a generated post to the
     titles of the items actually placed under it.
 
@@ -877,17 +897,21 @@ def extract_category_sections(content: str) -> dict[str, list[str]]:
     trusting Claude to self-report a Top 5 item's category, or re-guessing
     it client-side from keywords, we read it straight from the section
     Claude actually filed the item under in this same post.
+
+    `section_names` defaults to just the six pillars; pass
+    _TOP5_CATALOG_SECTION_NAMES to also include Action Required.
     """
     sections: dict[str, list[str]] = {}
     for m in _CATEGORY_SECTION_RE.finditer(content):
         heading = m.group("heading").strip()
-        if heading.lower() not in _CATEGORY_NAME_SET:
+        if heading.lower() not in section_names:
             continue
-        titles = [
-            (item.group("linked") or item.group("plain") or "").strip()
-            for item in _CATEGORY_ITEM_RE.finditer(m.group("body"))
-        ]
-        titles = [t for t in titles if t]
+        titles = []
+        for item in _CATEGORY_ITEM_RE.finditer(m.group("body")):
+            title = (item.group("linked") or item.group("plain") or "") + (item.group("lextra") or "")
+            title = title.strip(" -")
+            if title:
+                titles.append(title)
         if titles:
             sections[heading] = titles
     return sections
@@ -937,7 +961,7 @@ def tag_top5_categories(content: str) -> str:
     back to its own keyword guess for that one item, same as it already
     does for every pre-existing post.
     """
-    sections = extract_category_sections(content)
+    sections = extract_category_sections(content, _TOP5_CATALOG_SECTION_NAMES)
     if not sections:
         return content
 
@@ -952,8 +976,15 @@ def tag_top5_categories(content: str) -> str:
         return content
 
     def tag_item(m):
+        prefix = m.group("prefix")
         title = m.group("title").strip()
-        category = _best_category_match(title, catalog)
+        # 0.4, not the 0.6 _best_link_match uses: a miss here just falls
+        # back to the pre-existing client-side color guess (cosmetic), not
+        # a wrong hyperlink -- and 0.5 was still missing real matches, e.g.
+        # "NTLM retirement FAQ published, slmgr.vbs deprecation in motion"
+        # (2026-09-15) scored 0.43 against its actual Endpoint & Device
+        # Management section item and fell through unnecessarily.
+        category = _best_category_match(title, catalog, min_overlap=0.4)
         if category:
             # A space is required before the shortcode call -- without it,
             # Goldmark fails to close the ** emphasis run (placeholder sits
@@ -963,10 +994,22 @@ def tag_top5_categories(content: str) -> str:
             # each Top 5 <li> to build the item. Confirmed live on the
             # 2026-08-11 post, the first week this tagging shipped -- all 5
             # Top 5 items vanished from the page.
-            return f"**{title}** {{{{< cat \"{category}\" >}}}}"
+            return f"{prefix}**{title}** {{{{< cat \"{category}\" >}}}}"
         return m.group(0)
 
-    tagged_block = re.sub(r"\*\*(?P<title>[^*]+)\*\*(?=\s*-\s)", tag_item, top5_match.group(1))
+    # Anchored on "N. **" at the start of a numbered-list line, not on
+    # whatever comes AFTER the closing "**" -- the previous regex required
+    # a literal " - " right after the bold run (matching category-section
+    # bullets' own format), but Top 5 items' bold title is followed by
+    # whatever punctuation Claude happened to write that week (a colon or
+    # period inside the bold, e.g. "**Title:**", or nothing at all before
+    # the explanation), which that lookahead never matched. Confirmed this
+    # meant tag_item() silently never ran on ANY Top 5 item on weeks using
+    # that format (2026-08-18, 2026-09-08, 2026-09-15 all had zero {{< cat
+    # >}} tags despite the feature shipping 2026-08-11) -- every Top 5 badge
+    # on those posts was riding entirely on the client-side keyword guess.
+    _top5_item_re = re.compile(r"^(?P<prefix>\d+\.\s+)\*\*(?P<title>[^*]+)\*\*", re.MULTILINE)
+    tagged_block = _top5_item_re.sub(tag_item, top5_match.group(1))
     return content[: top5_match.start(1)] + tagged_block + content[top5_match.end(1) :]
 
 
