@@ -1,15 +1,21 @@
 {
   "updated": "2026-09-16",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 90,
-  "total_new_count": 0,
+  "total_count": 91,
+  "total_new_count": 1,
   "sources": [
     {
       "name": "Intune Known Issues",
-      "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#apps-deployed-with-configuration-manager-take-a-long-time-to-load-on-the-windows-apps-page-in-company-portal",
-      "count": 21,
-      "new_count": 0,
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#regional-selection-for-microsoft-store-apps-is-temporarily-unavailable",
+      "count": 22,
+      "new_count": 1,
       "items": [
+        {
+          "title": "Regional selection for Microsoft Store apps is temporarily unavailable",
+          "body": "Regional selection for Microsoft Store apps is temporarily unavailable while Microsoft addresses an issue affecting app creation. During this time, Intune uses the default United States Microsoft Store catalog when searching for and adding Microsoft Store apps. Existing Microsoft Store apps aren't a",
+          "url": "https://learn.microsoft.com/en-us/troubleshoot/mem/intune/known-issues#regional-selection-for-microsoft-store-apps-is-temporarily-unavailable",
+          "is_new": true
+        },
         {
           "title": "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
           "body": "There's a known issue in Company Portal where Windows apps deployed with Configuration Manager might take multiple seconds (up to a few minutes) to load on the Windows apps page. Microsoft is investigating this issue and will update this article when more information becomes available.",
