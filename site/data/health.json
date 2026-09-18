@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 87,
+  "total_count": 91,
   "total_new_count": 1,
   "sources": [
     {
@@ -416,6 +416,38 @@
           "title": "I can't submit files",
           "body": "In some instances, an administrator block might cause submission issues when you try to submit a potentially infected file to theMicrosoft Security intelligence websitefor analysis. The following process shows how to resolve this problem.",
           "url": "https://learn.microsoft.com/en-us/defender-xdr/troubleshoot#i-cant-submit-files",
+          "is_new": false
+        }
+      ]
+    },
+    {
+      "name": "Purview Known Issues",
+      "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#browser-issues",
+      "count": 4,
+      "new_count": 0,
+      "items": [
+        {
+          "title": "Browser issues",
+          "body": "To learn about browser issues that might affect use of data governance solutions, see these resources: If you need further assistance, contact Microsoft support.",
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#browser-issues",
+          "is_new": false
+        },
+        {
+          "title": "Unified Catalog management issues",
+          "body": "",
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#unified-catalog-management-issues",
+          "is_new": false
+        },
+        {
+          "title": "Discovery issues",
+          "body": "",
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#discovery-issues",
+          "is_new": false
+        },
+        {
+          "title": "Health management issues",
+          "body": "",
+          "url": "https://learn.microsoft.com/en-us/purview/data-governance-known-issues#health-management-issues",
           "is_new": false
         }
       ]
