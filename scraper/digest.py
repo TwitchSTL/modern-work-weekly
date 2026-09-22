@@ -1947,6 +1947,8 @@ def run(args):
 
     # Generate LinkedIn newsletter draft unless skipped
     linkedin_draft_path = None
+    li_content = ""  # populated on success; announcement hashtag matching
+    # below also scans this, so it must exist even if this block fails.
     if not args.skip_linkedin:
         try:
             li_prompt = build_linkedin_prompt(draft, week_of, content, max_age_days=max_age_days)
@@ -1977,7 +1979,15 @@ def run(args):
             ann_prompt = build_announcement_prompt(top5, week_of)
             ann_content = clean_dashes(call_claude_announcement(ann_prompt))
             tags = extract_post_tags(content)
-            hashtags = " ".join(build_hashtags(tags, text=ann_content))
+            # Match against the newsletter draft too, not just the short
+            # announcement paragraph -- the announcement is intentionally
+            # terse (see ANNOUNCEMENT_SYSTEM_PROMPT), so on its own it
+            # rarely contains enough of a tag's exact phrase to hashtag it,
+            # even when that tag is squarely what the paired newsletter (and
+            # the digest behind the link) is actually about. Ryan flagged
+            # 2026-09-22 that a 3-hashtag result was too thin.
+            hashtag_source = f"{ann_content}\n{li_content}"
+            hashtags = " ".join(build_hashtags(tags, text=hashtag_source))
             post_url = modernworkweekly_url(f"posts/{week_of}")
             ann_content = (
                 f"{ann_content}\n\n{hashtags}\n\n"

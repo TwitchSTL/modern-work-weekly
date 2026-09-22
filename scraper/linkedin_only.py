@@ -70,6 +70,8 @@ def main():
     draft = json.loads(archived_draft_path.read_text(encoding="utf-8"))
 
     linkedin_draft_path = None
+    li_content = ""  # populated on success; announcement hashtag matching
+    # below also scans this, so it must exist even if this block fails.
     try:
         li_prompt = digest.build_linkedin_prompt(draft, week_of, content)
         li_content = digest.clean_dashes(digest.call_claude_linkedin(li_prompt))
@@ -84,7 +86,8 @@ def main():
         ann_prompt = digest.build_announcement_prompt(top5, week_of)
         ann_content = digest.clean_dashes(digest.call_claude_announcement(ann_prompt))
         tags = digest.extract_post_tags(content)
-        hashtags = " ".join(digest.build_hashtags(tags, text=ann_content))
+        hashtag_source = f"{ann_content}\n{li_content}"
+        hashtags = " ".join(digest.build_hashtags(tags, text=hashtag_source))
         post_url = digest.modernworkweekly_url(f"posts/{week_of}")
         ann_content = (
             f"{ann_content}\n\n{hashtags}\n\n"
