@@ -1,6 +1,7 @@
 {
-  "updated": "2026-09-15",
+  "updated": "2026-09-22",
   "titles": [
+    "Regional selection for Microsoft Store apps is temporarily unavailable",
     "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
     "Azure enterprise applications aren't displayed in the Company Portal for Windows or the Intune Company Portal website",
     "Remediation message doesn't list all valid builds in Company Portal for Windows 10/11",

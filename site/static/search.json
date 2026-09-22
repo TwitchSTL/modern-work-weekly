@@ -1,5 +1,532 @@
 [
   {
+    "title": "CVE-2026-78510 Critical Outlook and Word RCE on Mac, CVSS 9.8:",
+    "category": "Top 5",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "A network-exploitable remote code execution vulnerability in Microsoft Outlook and Word for Mac carries the highest-severity CVSS score in this week's batch. Users running affected Mac Office software need the security u"
+  },
+  {
+    "title": "Agent 365 unified registry now governs cross-platform AI agents:",
+    "category": "Top 5",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Microsoft Agent 365's unified registry is GA and can now pull in agents from AWS Bedrock, Google Cloud, Databricks, Anthropic, and Salesforce alongside all Microsoft-native agents. This is the practical answer to the que"
+  },
+  {
+    "title": "Intune deployment plans GA for staged app and policy rollout:",
+    "category": "Top 5",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Staged rollouts for apps and configuration policies are now available natively in Intune, with ring-based sequencing, timing controls, and Multiple Admin Approval integration. For large device fleets this replaces improv"
+  },
+  {
+    "title": "Six AI-Readiness Secure Score recommendations now GA in Defender:",
+    "category": "Top 5",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Defender for Endpoint has added six new Secure Score recommendations specifically targeting endpoint hardening against AI-accelerated attacks, covering external attack surface reduction, hardware-backed boot trust, VBS, "
+  },
+  {
+    "title": "Autopilot device preparation: migration guidance now published:",
+    "category": "Top 5",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Microsoft has published the official migration guide from classic Windows Autopilot to Autopilot device preparation, which re-architects provisioning around simpler configuration, faster setup, and near-real-time deploym"
+  },
+  {
+    "title": "Prepare your tenant estate for AI: Entra Tenant Governance webinars",
+    "category": "Identity & Access",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Entra Tenant Governance is now GA and gives you visibility and consistent policy enforcement across every tenant in your estate, including shadow tenants from M&A and test environments. Microsoft is running webina"
+  },
+  {
+    "title": "Public preview: Self-service onboarding for Entra App Gallery",
+    "category": "Identity & Access",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[Preview] - ISVs can now validate and publish new App Gallery integrations through a guided self-service workflow instead of iterative review cycles with Microsoft. For admins, this means faster time-to-availability for "
+  },
+  {
+    "title": "Replace VPN with Entra Private Access, identity-driven per-app connectivity",
+    "category": "Identity & Access",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA]  - Entra Private Access within the Global Secure Access framework is GA and provides per-app, identity-driven connectivity to private resources as a direct VPN replacement. The post clarifies the architecture clearl",
+    "emphasis": [
+      "Network"
+    ]
+  },
+  {
+    "title": "Stage app and policy rollout with deployment plans",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Intune now supports native deployment plans for staged rollout of apps and configuration policies across rings, with timing controls and Multiple Admin Approval integration. This directly addresses the risk of bro"
+  },
+  {
+    "title": "Windows 365 Reserve: User-initiated provisioning now GA",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Eligible users can now provision their own Reserve Cloud PC directly from Windows App when their primary device fails, operating within IT-defined policy boundaries. This reduces help desk load during device outag"
+  },
+  {
+    "title": "Moving from Windows Autopilot to Windows Autopilot device preparation",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Microsoft has published a detailed migration guide for organizations moving from classic Autopilot to the re-architected Autopilot device preparation experience, which delivers simpler configuration, faster provis"
+  },
+  {
+    "title": "Ask the Windows 365 admin agent why Cloud PCs are slow",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA]  - The Windows 365 admin agent can now analyze Cloud PC connectivity device by device, identify where RDP Shortpath is not in use, and recommend configuration changes to improve performance. If you're regularly tria",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "CVE-2026-78510 Microsoft Outlook and Word RCE on Mac, CVSS 9.8",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Critical · CVSS 9.8. A network-exploitable remote code execution vulnerability in Office for Mac affects both Outlook and Word. Apply the Mac Office security update immediately across your managed Mac fleet; users"
+  },
+  {
+    "title": "Queues app for Teams: Collaborative calling now GA",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - The Queues app turns Teams call queues into a shared workspace where calling reps and supervisors work the same customer conversations together inside Teams. This targets bank branches, IT help desks, and similar "
+  },
+  {
+    "title": "Microsoft Teams: Granular Conditional Access for Teams meetings",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA]  - Admins will be able to apply Conditional Access policies to individual meetings, enforcing organizational security requirements before participants can join. GA target is November 2026. Start identifying which me",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Customer Service: Inactivate quality evaluation records",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Quality managers can now inactivate evaluation records that should not contribute to scoring, preserving them for audit purposes while excluding them from active score calculations. GA target is September 2026. Us"
+  },
+  {
+    "title": "Dynamics 365 Customer Service: Detailed quality evaluation score breakdown",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Evaluation details now show scoring at the overall, section, and question level so quality teams can see exactly how scores are composed and identify where coaching or calibration is needed. GA target is September"
+  },
+  {
+    "title": "Microsoft Teams: Events app coming to GCC High and DoD",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - The Meet app is being renamed to Events app and will be available in GCC High and DoD tenants, allowing users to discover, plan, and organize professional events from within Teams. GA target is November 2026. GCC "
+  },
+  {
+    "title": "Microsoft Teams: Pop out sign language interpreter video for continuous visibility",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Users can pop out any participant's video, including sign language interpreters, into a persistent, resizable window that stays visible across monitors and apps during meetings. GA target is December 2026. This ad"
+  },
+  {
+    "title": "Microsoft Teams: Express face enrollment",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Users can enroll their face profile during eligible meetings using their camera, enabling recognition in Teams Rooms experiences for improved Copilot and recap features. Admins can enable or disable this for their"
+  },
+  {
+    "title": "Microsoft Teams: Report a Security Concern in Meetings",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Meeting organizers and attendees can now report suspicious or potentially fraudulent activity directly from within Teams meetings, with reports flowing into Microsoft security and admin workflows. GA target is Sep"
+  },
+  {
+    "title": "Microsoft Teams: Identify custom apps needing updates for private and shared channels",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Teams Admin Center will surface a list of custom apps that need developer updates to work in private and shared channels. GA target is September 2026. Run this report as soon as it's available and engage app owner"
+  },
+  {
+    "title": "Microsoft Teams Admin Center: Single pane for meeting and call monitoring",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Admins can now monitor meeting and call health, identify recurring patterns, and proactively troubleshoot issues across both active and completed sessions from a single view in Teams Admin Center. GA target is Sep"
+  },
+  {
+    "title": "Power Pages: Invoke Power Automate cloud flows from Server Logic",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Server Logic in Power Pages can now call Power Automate cloud flows directly, letting portal experiences participate in broader enterprise automation without custom code. This extends what you can build in Power P"
+  },
+  {
+    "title": "Power Platform: September 2026 feature update",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - The September update includes Power Series, a set of 20 hands-on labs from the Power CAT team covering Power Platform and AI skills, now available for customers, partners, and field teams. Worth distributing to yo"
+  },
+  {
+    "title": "Power Pages: Microsoft-managed SSL/TLS certificates for custom domains",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Microsoft now provisions, configures, and renews SSL/TLS certificates automatically for custom domains on Power Pages. This eliminates certificate expiry risk for portals using custom domains. If you manage Power "
+  },
+  {
+    "title": "Agent 365 Registry Sync: Pull AWS, Google, and other platform agents into your registry",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Registry Sync in Agent 365 ingests agents from AWS Bedrock, Google Cloud, Databricks Genie, Anthropic Claude, and Salesforce AgentForce into the unified agent registry using API or service domain connection detail"
+  },
+  {
+    "title": "Managing apps built in Copilot Studio",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Copilot Studio now supports full-stack app building with built-in source control, deployment stages, and version isolation on Microsoft-hosted infrastructure. Apps are created in the maker's personal developer env"
+  },
+  {
+    "title": "Microsoft 365 G7: AI, Copilot, and agent governance for government",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Microsoft 365 G7 bundles AI, Copilot, agent governance, security, and compliance capabilities for government agencies modernizing securely. Relevant for public sector-adjacent tenants and agencies evaluating their"
+  },
+  {
+    "title": "See every AI agent in your tenant with Agent 365 unified registry",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - The unified agent registry in Agent 365 surfaces all agents across Microsoft Foundry, Copilot Studio, Agent Builder, SharePoint, partner-built agents, and external providers in one view with owner, usage, and risk"
+  },
+  {
+    "title": "Microsoft 365 Copilot: Local inferencing for sovereign AI processing",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Local inferencing will allow supported Copilot interactions to run AI processing within the user's local geography, launching in Australia, India, UAE, UK, and US. GA target is December 2026. Organizations with da"
+  },
+  {
+    "title": "Dynamics 365 Customer Service: Knowledge-grounded quality evaluation criteria",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[Preview] - Quality evaluation criteria can now reference knowledge sources, letting organizations ground evaluations in approved policies and guidance. Preview in September 2026, GA target January 2027. Useful for conta"
+  },
+  {
+    "title": "Dynamics 365 Customer Service: Not Applicable answer option for quality evaluation",
+    "category": "AI & Copilot",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Evaluation questions marked as Not Applicable are now excluded from scoring rather than negatively affecting results. GA target is September 2026. This prevents skewed scores when a specific criterion simply doesn"
+  },
+  {
+    "title": "Microsoft Viva Insights: Leaders can now publish Power BI reports",
+    "category": "Employee Experience",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Viva Insights is extending report publishing from analysts to leader personas (Chief Officers, Managers, and their delegates), enabling direct distribution of curated reports within their organizations through a l"
+  },
+  {
+    "title": "Defender for Office 365: User reporting in Teams extended to group calls",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Users can now report completed or missed group Teams calls as malicious or non-malicious directly from call history. Reports route to your configured reporting mailbox, to Microsoft, or both depending on your user"
+  },
+  {
+    "title": "Security fundamentals guidance: From exposure management to action",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Microsoft's Security Blog outlines how AI is changing the threat environment and maps exposure management recommendations to concrete controls. Worth reading alongside your current Secure Score posture to identify"
+  },
+  {
+    "title": "Defender for Endpoint email security benchmarking report",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - The latest email security benchmarking results show Defender for Office 365 performance across pre-delivery and post-delivery scenarios. If leadership or procurement is asking for comparative data on Defender emai"
+  },
+  {
+    "title": "Defender for Endpoint macOS: Build 101.26072.0017 released",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Release version 20.126072.17.0 is now GA for macOS. Check the release notes for specific enhancements and verify your macOS fleet is picking up this build through your deployment channel."
+  },
+  {
+    "title": "Defender for Endpoint: Six AI-Readiness Secure Score recommendations now GA",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[GA] - Six new Secure Score recommendations targeting AI-accelerated attack surface reduction are now in the Defender portal, covering external entry point reduction, hardware-backed boot trust, VBS, kernel code integrit"
+  },
+  {
+    "title": "Defender for Endpoint: Memory scan for Linux now in preview",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[Preview] - Memory Scan extends MDE on Linux to inspect process memory for known malicious behaviors and memory-resident threats, adding a detection layer specifically for threats that execute in memory with little or no"
+  },
+  {
+    "title": "Defender for Endpoint: WSL container (WSLc) plug-in support now in preview",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "[Preview] - MDE protection extends to workloads running in WSL containers, with visibility through device inventory, alerts, incidents, device timeline, and Advanced Hunting. If your developer fleet runs WSL containers, "
+  },
+  {
+    "title": "CVE-2026-68825 Windows Bind Filter Driver EoP",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.0. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-78517 Microsoft Office Word RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-77901 Microsoft Office Word RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-78524 Microsoft Office RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-78526 Microsoft Office Word RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-83498 Windows VBS Enclave EoP",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-63516 Microsoft SharePoint Server Spoofing",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 6.5. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-62871 .NET EoP",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-63532 Microsoft Office RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-68798 Microsoft Excel RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-68804 Microsoft Excel RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-55039 Microsoft Excel RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-55123 Microsoft PowerPoint RCE",
+    "category": "Security & Compliance",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+  },
+  {
+    "title": "CVE-2026-78510 Critical Outlook and Word RCE on Mac, CVSS 9.8",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Critical · CVSS 9.8. Surfaced in the Week of 2026-09-22 digest. Network-exploitable RCE in Microsoft Outlook and Word for Mac; apply the Mac Office security update to all managed Macs immediately and notify users on unma"
+  },
+  {
+    "title": "CVE-2026-83498 Windows VBS Enclave EoP",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; confirm this was patched in your environment during the originating Patch Tuesday. Elevation of privilege in Windows "
+  },
+  {
+    "title": "CVE-2026-63532 Microsoft Office RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; confirm this was addressed in your managed Office estate during the originating Patch Tuesday."
+  },
+  {
+    "title": "CVE-2026-68804 Microsoft Excel RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; verify your Excel patch compliance against the originating Patch Tuesday release."
+  },
+  {
+    "title": "CVE-2026-55123 Microsoft PowerPoint RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; verify your PowerPoint patch compliance against the originating Patch Tuesday release."
+  },
+  {
+    "title": "CVE-2026-78517 Microsoft Office Word RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm Office Word patching is current across your managed estate."
+  },
+  {
+    "title": "CVE-2026-77901 Microsoft Office Word RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm Office Word patching is current across your managed estate."
+  },
+  {
+    "title": "CVE-2026-78524 Microsoft Office RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm your Office update compliance for the originating Patch Tuesday."
+  },
+  {
+    "title": "CVE-2026-78526 Microsoft Office Word RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm your Office Word update compliance."
+  },
+  {
+    "title": "CVE-2026-62871 .NET EoP",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; verify .NET patching is current across your managed endpoints."
+  },
+  {
+    "title": "CVE-2026-68798 Microsoft Excel RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; verify Excel patching is current."
+  },
+  {
+    "title": "CVE-2026-55039 Microsoft Excel RCE",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; verify Excel patching is current."
+  },
+  {
+    "title": "CVE-2026-68825 Windows Bind Filter Driver EoP",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 7.0. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm Windows patching is current on your managed device fleet."
+  },
+  {
+    "title": "CVE-2026-63516 Microsoft SharePoint Server Spoofing",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Important · CVSS 6.5. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; if you run on-premises SharePoint Server, confirm the originating patch is applied."
+  },
+  {
+    "title": "Teams meetings security reporting: Verify your reporting mailbox configuration",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "The Teams \"Report a Security Concern in Meetings\" feature is GA in September 2026. Before it lands in your tenant, confirm your user-reported settings and reporting mailbox are correctly configured in the Defender portal"
+  },
+  {
+    "title": "Teams custom apps for private/shared channels: Identify apps needing updates",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Teams Admin Center will surface custom apps that need developer updates for private and shared channel compatibility, GA September 2026. Run this report immediately on availability and contact app owners for any business"
+  },
+  {
+    "title": "Teams Express face enrollment: Review biometric data policy before November GA",
+    "category": "Action Required",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Express face enrollment reaches GA in November 2026. Determine your organization's stance on biometric data collection and configure the admin control to enable or disable the feature before it rolls out to your users."
+  },
+  {
+    "title": "Access reconciliation documentation added to Entra ID Governance",
+    "category": "Documentation Updates",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "New documentation covering access reconciliation in Entra ID Governance has been published, relevant for teams managing entitlement reviews and access certification workflows."
+  },
+  {
+    "title": "Continuous Access Evaluation extended to Global Secure Access web filtering",
+    "category": "Documentation Updates",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "Documentation now covers Continuous Access Evaluation (CAE) signals applying to web filtering in Global Secure Access, meaning token revocation events can influence filtering enforcement in near real-time rather than wai"
+  },
+  {
+    "title": "Universal Continuous Access Evaluation new signals documentation revised",
+    "category": "Documentation Updates",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "The Universal CAE documentation has been substantially revised to cover new signals available in preview, relevant for organizations planning to rely on CAE for zero-trust access enforcement across non-Microsoft workload"
+  },
+  {
     "title": "CVE-2026-85921 - Critical Windows Secure Kernel EoP:",
     "category": "Top 5",
     "date": "2026-09-15",
@@ -952,21 +1479,21 @@
     "category": "Top 5",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "A Critical-severity remote code execution vulnerability in Windows DHCP Server is patched. Any internet- or network-adjacent DHCP server exposure raises the blast radius here; verify patching is complete across your Wind"
+    "snippet": "- A Critical-severity remote code execution vulnerability in Windows DHCP Server is patched. Any internet- or network-adjacent DHCP server exposure raises the blast radius here; verify patching is complete across your Wi"
   },
   {
     "title": "CVE-2026-62889: Critical Windows SSTP RCE (CVSS 8.1)",
     "category": "Top 5",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Secure Socket Tunneling Protocol stacks are an RCE target with this Critical patch. If you're running SSTP-based VPN infrastructure on Windows Server, confirm this update is applied before your next maintenance window."
+    "snippet": "- Secure Socket Tunneling Protocol stacks are an RCE target with this Critical patch. If you're running SSTP-based VPN infrastructure on Windows Server, confirm this update is applied before your next maintenance window."
   },
   {
     "title": "Exchange Online identifier deprecation survey",
     "category": "Top 5",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "The Exchange team is evaluating the future of ObjectGuid, SamAccountName, and DistinguishedName in Exchange Online as part of directory modernization. If your automation, scripts, or integrations depend on any of these, "
+    "snippet": "- The Exchange team is evaluating the future of ObjectGuid, SamAccountName, and DistinguishedName in Exchange Online as part of directory modernization. If your automation, scripts, or integrations depend on any of these"
   },
   {
     "title": "Instant revocation of service principal bearer tokens with CAE",
