@@ -97,7 +97,7 @@ function makeTop5Collapsible(content, expandAll) {
 
   const heading = document.createElement('div');
   heading.className = 'top5-heading';
-  heading.textContent = top5H2 ? top5H2.textContent : 'Top 5 This Week';
+  heading.textContent = 'On the Radar';
   section.appendChild(heading);
 
   const list = document.createElement('div');
