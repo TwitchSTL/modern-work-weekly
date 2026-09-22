@@ -73,6 +73,7 @@ def main():
     try:
         li_prompt = digest.build_linkedin_prompt(draft, week_of, content)
         li_content = digest.clean_dashes(digest.call_claude_linkedin(li_prompt))
+        li_content = digest.append_linkedin_closer(li_content, content)
         linkedin_draft_path = digest.write_linkedin_draft(li_content, week_of)
     except Exception as e:
         print(f"LinkedIn draft generation failed: {e}")

@@ -170,7 +170,7 @@ Then write the hook: one punchy sentence naming the story that best fits the cho
 3. **⚡ ON THE RADAR** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. This is the Newsletter edition, read natively inside LinkedIn by subscribers who want the whole thing without leaving the app — give each item a real, complete explanation, not a teaser. (The separate short Announcement post is the one whose only job is earning a click to the site; don't duplicate that job here.) If a source has a real full author name available (not a bare username), it's fine to credit them by name (e.g. "..., per [Name]'s writeup"), but never invent or guess a name that wasn't provided. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
-6. Closing line — one short sentence pointing to this week's guides. Format: "This week's guides in the comments!" Do not include a URL in this line - the Technical Digest URL gets posted as the first comment and the Executive's Guide URL as the second comment after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
+6. Do not write a closing line yourself. Stop after the HELP DESK section (or WORTH YOUR ATTENTION if HELP DESK was skipped). A closing line is appended automatically after generation, built from the week's real item count and category breakdown pulled straight from the published post, so it never has to be invented or estimated here.
 
 Do not include any hashtags in your output — hashtags aren't functional inside LinkedIn's Newsletter article editor, so they're never added to this draft. Do not add a sign-off. Do not wrap output in code fences.
 
@@ -752,6 +752,97 @@ def extract_post_tags(content: str) -> list:
         return [t.strip().strip('"\'') for t in inline_match.group(1).split(",") if t.strip()]
 
     return []
+
+
+def extract_post_categories(content: str) -> list:
+    """Pull the `categories:` list out of a generated post's YAML front matter.
+
+    Same block-list shape as extract_post_tags(). Used by
+    build_linkedin_closer() to name the coverage areas behind this week's
+    digest link without asking the model to enumerate or count them itself.
+    """
+    front_matter_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+    if not front_matter_match:
+        return []
+    front_matter = front_matter_match.group(1)
+
+    block_match = re.search(r"^categories:\s*\n((?:[ \t]*-[ \t]*.+\n?)+)", front_matter, re.MULTILINE)
+    if not block_match:
+        return []
+    return [
+        line.strip().lstrip("-").strip().strip('"\'')
+        for line in block_match.group(1).splitlines()
+        if line.strip()
+    ]
+
+
+def extract_post_stats(content: str) -> dict:
+    """Pull cve_count and a total-items count out of a published post's
+    front matter, for the deterministic LinkedIn closing line built by
+    build_linkedin_closer(). Total items is proxied by the `sources:`
+    list length (see inject_card_stats()/build_prompt() for how that
+    front matter is written) — one primary source URL per item, already
+    deduplicated, already sitting in the front matter, so there's no
+    need to recount anything from the raw item pool.
+    """
+    front_matter_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+    front_matter = front_matter_match.group(1) if front_matter_match else ""
+
+    cve_match = re.search(r"^cve_count:\s*(\d+)", front_matter, re.MULTILINE)
+    cve_count = int(cve_match.group(1)) if cve_match else 0
+
+    sources_block = re.search(r"^sources:\s*\n((?:[ \t]*-[ \t]*.+\n?)+)", front_matter, re.MULTILINE)
+    total_items = len(sources_block.group(1).strip().splitlines()) if sources_block else 0
+
+    return {
+        "cve_count": cve_count,
+        "total_items": total_items,
+        "categories": extract_post_categories(content),
+    }
+
+
+def build_linkedin_closer(post_content: str) -> str:
+    """Deterministic replacement for the LinkedIn newsletter's closing line.
+
+    Ryan's feedback 2026-09-22: the newsletter felt too small next to the
+    full site digest, and the close should actively sell the scope of
+    what's behind the comment link, not just point at it vaguely ("This
+    week's guides in the comments!"). Letting the model write that line
+    risks inventing or rounding the numbers (the same failure mode
+    feedback_mww_prompt_reliability warns about generally), so this reads
+    the real count and category breakdown straight off the published
+    post's own front matter instead. See append_linkedin_closer() for
+    where this gets attached to a generated draft.
+    """
+    stats = extract_post_stats(post_content)
+    top5_count = len(extract_top5(post_content))
+    categories = stats["categories"]
+
+    if len(categories) > 1:
+        area_list = ", ".join(categories[:-1]) + f", and {categories[-1]}"
+    elif categories:
+        area_list = categories[0]
+    else:
+        area_list = ""
+    area_clause = f" spanning {area_list}" if area_list else ""
+
+    cve_clause = f", plus {stats['cve_count']} CVEs" if stats["cve_count"] else ""
+    total_clause = f"{stats['total_items']} updates" if stats["total_items"] else "the full digest"
+
+    return (
+        f"That's {top5_count} of this week's headlines. The full breakdown, "
+        f"{total_clause}{area_clause}{cve_clause}, is one click away in the comments."
+    )
+
+
+def append_linkedin_closer(li_content: str, post_content: str) -> str:
+    """Attach the deterministic closing line (build_linkedin_closer()) to a
+    generated LinkedIn newsletter draft, in the same divider-separated
+    format the model uses between its own sections.
+    """
+    closer = build_linkedin_closer(post_content)
+    return f"{li_content.rstrip()}\n\n\u2e3b\n\n{closer}"
+
 
 
 # Always included first, on every post, regardless of that week's tags --
@@ -1860,6 +1951,7 @@ def run(args):
         try:
             li_prompt = build_linkedin_prompt(draft, week_of, content, max_age_days=max_age_days)
             li_content = clean_dashes(call_claude_linkedin(li_prompt))
+            li_content = append_linkedin_closer(li_content, content)
             # No hashtags here — this is the long-form newsletter article body,
             # pasted into LinkedIn's Newsletter editor, where hashtags aren't
             # functional/linkable. build_hashtags()/TAG_HASHTAGS are used below,
