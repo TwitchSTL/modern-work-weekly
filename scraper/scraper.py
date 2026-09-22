@@ -495,6 +495,26 @@ def _parse_section_date(heading_text: str, page_date: str, is_top_section: bool)
     return None
 
 
+def resolve_item_url(base_url: str, href: str | None) -> str:
+    """urljoin() a scraped item's href against its source page, then strip a
+    known-bad artifact: Learn's Intune whats-new page is itself reachable at
+    a URL containing an "/intune-service/" segment
+    (https://learn.microsoft.com/en-us/intune/intune-service/fundamentals/whats-new),
+    but the page's own relative "see also" links are document-relative to
+    the *canonical* path (which has no such segment) — so urljoin() against
+    the intune-service URL produces a resolved link with an extra
+    "/intune-service/" segment baked in, which 404s. Confirmed 2026-08-04
+    (8 URLs, e.g. .../intune/intune-service/device-updates/android/setup-samsung-knox)
+    and recurring since (e.g. 2026-09-22,
+    .../intune/intune-service/device-management/deployments/overview) — see
+    modern-work-weekly-ops skill, "Verify scraped metadata before trusting
+    it". Stripping the segment here fixes it at the source instead of
+    needing another one-off hand-edit on the published post every time.
+    """
+    resolved = urljoin(base_url, href) if href else base_url
+    return resolved.replace("/intune/intune-service/", "/intune/")
+
+
 def fetch_whatsnew(source: dict) -> list[dict]:
     """Supplemental fetch for learn.microsoft.com 'What's new' changelog pages.
 
@@ -603,7 +623,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                     # which a leading-slash-only check silently leaves
                     # unresolved. urljoin handles absolute, root-relative,
                     # document-relative, and fragment-only hrefs correctly.
-                    item_url = urljoin(source["url"], link["href"]) if link and link.get("href") else source["url"]
+                    item_url = resolve_item_url(source["url"], link.get("href") if link else None)
                     items.append({
                         "source": source["name"],
                         "title": title,
@@ -632,7 +652,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         if len(title) < 8:
                             continue
                         link = row.find("a")
-                        item_url = urljoin(source["url"], link["href"]) if link and link.get("href") else source["url"]
+                        item_url = resolve_item_url(source["url"], link.get("href") if link else None)
                         items.append({
                             "source": source["name"],
                             "title": title,
@@ -657,7 +677,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         continue
                     title = text.split(":", 1)[0].strip(" *")[:120] if ":" in text[:80] else text[:100]
                     link = li.find("a")
-                    item_url = urljoin(source["url"], link["href"]) if link and link.get("href") else source["url"]
+                    item_url = resolve_item_url(source["url"], link.get("href") if link else None)
                     items.append({
                         "source": source["name"],
                         "title": title,
