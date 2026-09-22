@@ -29,11 +29,13 @@ Requires (same as the normal pipeline):
 """
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import digest  # noqa: E402
+from dotenv import load_dotenv  # noqa: E402
 
 
 def main():
@@ -41,6 +43,16 @@ def main():
     parser.add_argument("--week", required=True, help="Week date, e.g. 2026-09-22")
     args = parser.parse_args()
     week_of = args.week
+
+    # digest.py only loads .env inside its own main(), which we never call —
+    # replicate that step here or anthropic.Anthropic() can't find the key.
+    if digest.ENV_FILE.exists():
+        load_dotenv(digest.ENV_FILE)
+    else:
+        load_dotenv()
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        print(f"ERROR: ANTHROPIC_API_KEY not set and not found in {digest.ENV_FILE}")
+        sys.exit(1)
 
     post_path = digest.POSTS_DIR / f"{week_of}.md"
     if not post_path.exists():
