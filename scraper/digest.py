@@ -90,7 +90,7 @@ Map content accordingly: Entra/MFA/PIM → Identity & Access; Intune/Autopatch/M
 
 Tone: confident, peer-to-peer, no fluff. Write like a senior engineer briefing their team.
 
-Style: Never use em dashes. Use a comma, a colon, a semicolon, or split into two separate sentences instead. Also avoid the contrastive construction "X isn't Y, it's Z" and its variants ("This isn't..., it's...", "That isn't..., it's..."); state the point directly instead of setting up a false contrast first.
+Style: Never use em dashes, and never fall back on a spaced double hyphen (" -- ") to do the same job, that's the same construction with a different keyboard shortcut. Use a comma, a colon, a semicolon, or split into two separate sentences instead. Also avoid the contrastive construction "X isn't Y, it's Z" and its variants ("This isn't..., it's...", "That isn't..., it's..."); state the point directly instead of setting up a false contrast first.
 
 Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
@@ -134,7 +134,7 @@ Source citations — REQUIRED. Executives trust named references, not raw URLs:
 
 Tone: trusted advisor, calm, factual, direct. Not alarmist. Not dismissive. Like a Friday briefing from your CISO to the board.
 
-Style: Never use em dashes. Use a comma, a colon, a semicolon, or split into two separate sentences instead. Also avoid the contrastive construction "X isn't Y, it's Z" and its variants ("This isn't..., it's...", "That isn't..., it's..."); state the point directly instead of setting up a false contrast first.
+Style: Never use em dashes, and never fall back on a spaced double hyphen (" -- ") to do the same job, that's the same construction with a different keyboard shortcut. Use a comma, a colon, a semicolon, or split into two separate sentences instead. Also avoid the contrastive construction "X isn't Y, it's Z" and its variants ("This isn't..., it's...", "That isn't..., it's..."); state the point directly instead of setting up a false contrast first.
 
 Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
@@ -176,7 +176,7 @@ Do not include any hashtags in your output — hashtags aren't functional inside
 
 Do not include hyperlinks or Markdown link syntax (no `[text](url)`) anywhere in the output — write plain bolded headline text only, e.g. "**Item title:**". Source links for each item are added automatically after generation by matching your headlines against the links already present in this week's technical post — inventing your own URL here would risk linking to the wrong (or a nonexistent) page.
 
-Style: Never use em dashes. Use a comma, a colon, a semicolon, or split into two separate sentences instead. Also avoid the contrastive construction "X isn't Y, it's Z" and its variants ("This isn't..., it's...", "That isn't..., it's..."); state the point directly instead of setting up a false contrast first.
+Style: Never use em dashes, and never fall back on a spaced double hyphen (" -- ") to do the same job, that's the same construction with a different keyboard shortcut. Use a comma, a colon, a semicolon, or split into two separate sentences instead. Also avoid the contrastive construction "X isn't Y, it's Z" and its variants ("This isn't..., it's...", "That isn't..., it's..."); state the point directly instead of setting up a false contrast first.
 
 Language: American English throughout. Use American spellings — "organization" not "organisation", "behavior" not "behaviour", "license" not "licence", "customize" not "customise", etc."""
 
@@ -217,14 +217,14 @@ State which lens you picked on its own line first, prefixed "LENS: " (e.g. "LENS
 Format:
 - Plain text only. No markdown, no bold, no headers, no numbered lists, no emoji section anchors.
 - 80-120 words total.
-- Opening hook: 1-2 sentences leading with the item that best fits the chosen lens, with one real, specific, credible detail (a product name, a number) but withholding the "so what."
-- Then reference 2-3 more items as short headline fragments only, in a sentence or two of prose, not a list. No colon-explanation, no "why it matters" sentence for any of them. Just enough to create curiosity. These don't need to fit the lens, only the hook and closing question do.
+- Opening hook: 1-2 sentences leading with the item that best fits the chosen lens, with one real, specific, credible detail (a product name, a number) but withholding the "so what." State only the fact of what changed or launched, never its implication, benefit, risk, or why someone should care, that reasoning is exactly what the site answers, not this post. If a sentence explains why the fact matters, or characterizes its significance ("worth understanding," "a good prompt to revisit," "worth a read," "keep an eye on"), cut that clause, name the fact and stop.
+- Then reference 2-3 more items as short headline fragments only, in a sentence or two of prose, not a list. No colon-explanation, no "why it matters" sentence for any of them, and no editorializing on their significance either. Just enough to create curiosity: a fragment should raise a question in the reader's head, not answer one. These don't need to fit the lens, only the hook and closing question do.
 - Closing line: an open question inviting a comment, tied to the same lens as the hook (a Licensing lens closes on a licensing question, not a security one). Never a generic "thoughts?"
 - Do not include a URL anywhere in the body. The link is posted separately as the first comment immediately after publishing, to avoid LinkedIn's reach penalty on posts with outbound links in the body.
 - Do not write "link in comments," "full digest below," or any variant as a separate closing line — the question is the close.
 - Never estimate or promise a reading time ("five minute read," "quick read," etc.) — the digest's actual length varies week to week, and a wrong promise breaks trust before the reader even clicks. If you want urgency, tie it to relevance instead ("before your next license renewal conversation," "before Friday," "before your next travel booking"), never a time commitment.
 
-Do not use em dashes. Do not use the contrastive "X isn't Y, it's Z" construction. American English spellings throughout ("organization," "behavior," "license," "customize")."""
+Do not use em dashes, and do not use a spaced double hyphen (" -- ") as a substitute, restructure the sentence with a period or comma instead. Do not use the contrastive "X isn't Y, it's Z" construction. American English spellings throughout ("organization," "behavior," "license," "customize")."""
 
 ANNOUNCEMENT_PROMPT_TEMPLATE = """Here is this week's confirmed Top 5 (already reviewed and published in the technical post). Produce the short LinkedIn announcement post that teases this content without explaining it.
 
@@ -491,9 +491,17 @@ def clean_dashes(text: str) -> str:
     compliance doesn't depend on the model's mood. Covers em dash (—,
     U+2014) and en dash (–, U+2013); both are typically already surrounded
     by spaces in Claude's output, so a straight character swap is enough.
-    Deliberately does NOT touch the three-em dash (⸻, U+2E3B) — that's the
-    intentional LinkedIn section divider character, a different glyph.
+    Deliberately does NOT touch the three-em dash (⸻, U+2E3B) - that's
+    the intentional LinkedIn section divider character, a different glyph.
+
+    Also catches the model's favorite workaround once it's told not to use
+    em dashes: a spaced double hyphen (" -- ") doing the exact same job as
+    an aside/pause. That's not a real em dash character so the replace()
+    calls below never touch it, and it showed up live in the 2026-09-22
+    announcement post despite the prompt instruction. Collapse it to a
+    comma, which reads naturally in the same sentence position.
     """
+    text = re.sub(r"\s+--\s+", ", ", text)
     return text.replace("—", "-").replace("–", "-")
 
 
