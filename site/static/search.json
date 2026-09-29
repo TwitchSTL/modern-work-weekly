@@ -1,10 +1,592 @@
 [
   {
-    "title": "CVE-2026-78510 Critical Outlook and Word RCE on Mac, CVSS 9.8:",
+    "title": "Agent 365 MCP server governance is GA:",
     "category": "Top 5",
-    "date": "2026-09-22",
-    "url": "/posts/2026-09-22/",
-    "snippet": "A network-exploitable remote code execution vulnerability in Microsoft Outlook and Word for Mac carries the highest-severity CVSS score in this week's batch. Users running affected Mac Office software need the security u"
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Microsoft Agent 365 gives admins a unified console to view all MCP servers, plugins, and connectors in use across the tenant, block risky tools outright, and approve or reject new tool requests before agents act on them."
+  },
+  {
+    "title": "MDE AI agent runtime protection configurable from Intune:",
+    "category": "Top 5",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "A new Intune endpoint security template lets you enforce Audit or Block mode for AI agent runtime activity on Windows, covering both Intune-managed and MDE security settings management devices. This is the enforcement la"
+  },
+  {
+    "title": "Cloud PKI now available for GCC High tenants:",
+    "category": "Top 5",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Intune Cloud PKI reaches GCC High, removing the last major on-premises dependency for certificate-based authentication in sovereign environments. GCC High tenants can now automate certificate issuance, renewal, and revoc"
+  },
+  {
+    "title": "EvilTokens device code phishing platform disrupted:",
+    "category": "Top 5",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Microsoft DCU, in collaboration with partners, disrupted the EvilTokens PhaaS infrastructure that automated device code phishing with AI-assisted lures and token theft. The threat is real and the TTP is still live elsewh"
+  },
+  {
+    "title": "CVE-2026-81355 VHD Miniport Driver RCE rated Critical:",
+    "category": "Top 5",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "This Critical-rated remote code execution vulnerability in the Virtual Hard Disk Miniport Driver received an acknowledgment update this week. Confirm patched build versions are deployed across your Windows fleet; this af"
+  },
+  {
+    "title": "Storm-3168: Agentic-driven cloud attacks using compromised service principals",
+    "category": "Identity & Access",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Service principal compromise is the entry point here: Storm-3168 (JADEPUFFER-linked) uses stolen SP credentials to conduct Azure reconnaissance, delete resources, and harvest additional credentials. Audit your se",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Field Service: Track costs for non-billable field work",
+    "category": "Identity & Access",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Field Service Work Orders can now connect to a project as a financial container for internal operational work, letting labor, material, and expense costs flow through project accounting without requiring a separat"
+  },
+  {
+    "title": "Microsoft Cloud PKI support for US Government GCC High",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - GCC High tenants can now build and manage a fully cloud-based PKI through Intune, eliminating the requirement for on-premises CA infrastructure, NDES, or the Intune Certificate Connector. Certificate-based auth fo"
+  },
+  {
+    "title": "Faster delivery of Win32 apps",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Intune now uses push notifications to signal managed devices when admin-initiated or service-side Win32 app changes occur, so devices check in immediately rather than waiting for the next polling cycle. Expect not"
+  },
+  {
+    "title": "Require Managed Home Screen authentication for protected app activities",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - MAM-integrated apps now redirect users to MHS for sign-in or PIN before allowing access to protected content, preventing authentication bypass at the app layer on Android Enterprise. Assign an app protection polic"
+  },
+  {
+    "title": "Faster Win32 app delivery after Windows enrollment",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - The Intune Management Extension now polls for app assignments immediately after the Enrollment Status Page completes, closing the gap where required Win32 apps not installed during ESP would sit idle until the nex"
+  },
+  {
+    "title": "New Apple settings in the Settings Catalog for iOS/iPadOS and macOS",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - The Intune Settings Catalog adds new Apple-sourced options covering app controls, Apple Intelligence, network and web-content filtering, and the macOS login window. If you manage Apple fleets and have been waiting"
+  },
+  {
+    "title": "Assignment filters for Android Settings Catalog policies",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Intune assignment filters now work with Android Enterprise and AOSP Settings Catalog policies, enabling include/exclude targeting based on device properties. This closes a gap that previously required separate pol"
+  },
+  {
+    "title": "Automatically launch Microsoft Defender for Endpoint during Android Enterprise device setup",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - For corporate-owned Android Enterprise devices, Intune can now automatically open MDE during out-of-box setup so users complete Defender's initial configuration as part of enrollment rather than skipping it. Requi"
+  },
+  {
+    "title": "Upgrade an existing Android Enterprise connection to a managed Google domain",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Tenants that originally connected Android Enterprise with a Gmail account can now upgrade to a managed Google domain and tie the Google-Intune connection to a Microsoft Entra work account. Navigate to Devices > En"
+  },
+  {
+    "title": "Bulk manage eSIMs on corporate-owned Android Enterprise devices",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Admins can now activate eSIMs on up to 100 corporate-owned Android Enterprise devices at once (Android 15+) via a carrier activation server URL, and bulk wipe operations preserve eSIM data plans by default with an"
+  },
+  {
+    "title": "Configure MDE AI agent runtime protection for Windows",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - A new Intune endpoint security template surfaces MDE's AI agent runtime protection settings for Windows, with Audit mode for detection-only visibility and Block mode for pre-execution enforcement. Start with Audi",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Onboard MDM compliance partners with new self-service functionality",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Compliance partners can now self-onboard their connectors using Intune documentation, contracts, and validation hooks, and admins can opt in by providing vendor information directly in the admin center. This expan"
+  },
+  {
+    "title": "Microsoft Intune and Apple OS 27: New settings, support, and platform changes",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Intune ships day-zero support for Apple OS 27, including new DDM configurations via the Settings Catalog, continued investment in data-driven infrastructure for rapid settings delivery, and compatibility for exist"
+  },
+  {
+    "title": "Giving you more control over camera, microphone, and location",
+    "category": "Endpoint & Device Management",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Windows Insiders in the Experimental channel can now manage camera, microphone, and location access on a per-desktop-app basis rather than via a single global toggle. This is an Insider-channel preview only for no"
+  },
+  {
+    "title": "SharePoint AI innovations hit GA, powering new Copilot app and agents",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[Preview]  - SharePoint's AI-enriched content infrastructure now underpins the new Copilot app experience through Work IQ, and Microsoft's own evaluations show a 17-point improvement in Copilot response quality when cont",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "A Copilot Agent Writes the Status Report",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - A shared Copilot agent built in Agent Builder can generate a standardized weekly status report by reasoning over a user's meetings, emails, and a reference template defined by the admin, producing outputs in the o"
+  },
+  {
+    "title": "What Can a Copilot Agent Actually Read?",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Copilot Agent Builder agents can be grounded in SharePoint, OneDrive, Outlook email and calendar, Teams chats, channels, and recorded meetings, plus business systems via Copilot connectors. Understanding the full",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "OneDrive: Prompt gallery for Copilot",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[Preview] - A new Prompt Gallery in OneDrive surfaces ready-to-use prompts for file tasks across Create, Analyze, Find, and Collaborate categories, accessible from the Copilot button or the chat pane's + button. GA is ta"
+  },
+  {
+    "title": "Outlook: Send availability in Outlook mobile apps",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Send Later availability returns to Outlook iOS and Android, with iOS also gaining improved keyboard and VoiceOver accessibility for this feature. GA is targeted for October CY2026."
+  },
+  {
+    "title": "Microsoft Teams: Multi-line call history tabs in the Calls app",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Multi-line Teams Phone users get per-line tabs in the Calls app, separating call history, voicemails, and recordings by line. GA targets November CY2026; relevant for contact center and front-line phone deployment"
+  },
+  {
+    "title": "Planner: Refreshed experience and new capabilities",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Planner is shipping a modernized interface with improved navigation, responsive layouts, consistency across Teams and web, and Goals in basic plans. GA is targeted for September CY2026, meaning this may already be"
+  },
+  {
+    "title": "Planner: Refreshed experience and new capabilities",
+    "category": "Collaboration & Productivity",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - A second roadmap entry tracks the same Planner refresh wave, confirming the September CY2026 GA target for the updated interface and Goals feature across both the Teams app and Planner for the web."
+  },
+  {
+    "title": "Introducing the new Copilot with Home, Code and Autopilot",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Microsoft has announced a reimagined Copilot experience organized around Home, Code, and Autopilot modes, positioning the product as a unified surface for individual work and organizational automation. This is the"
+  },
+  {
+    "title": "How to Tell If Your Copilot Agent Is Used",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - The new Monitor tab in Agent Builder surfaces total sessions, daily active users, average messages per session, average duration, engagement over time, and which knowledge sources are actually used in conversation"
+  },
+  {
+    "title": "One Prompt Builds Your Copilot Agent",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Copilot Agent Builder generates an agent's name, description, instructions, skills, knowledge sources, and suggested prompts from a single natural-language description, scoped only to the SharePoint sites and file"
+  },
+  {
+    "title": "What's new in Microsoft Security: September 2026",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Microsoft's September security roundup highlights discovering and controlling local AI agents, extending Zero Trust to agent traffic, and strengthening SOC foundations - all themes that intersect directly with th",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Teach Your Copilot Agent a Repeatable Skill",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Skills in Agent Builder define repeatable tasks in natural language with no code required; Agent Builder generates one from your initial prompt and you can layer additional skills on top, such as a weekly status e"
+  },
+  {
+    "title": "How to Share a Copilot Agent With Your Team",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Sharing a Copilot agent works like sharing a file: you add people or groups and assign Use or Edit permissions individually, after which the agent appears in the Agent Store and is delivered via email notificatio",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Building the system for AI at work",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Microsoft's AI at Work blog outlines the broader system architecture behind the Copilot platform, framing Work IQ, agents, and the Agent Store as an integrated stack. Worth reading for context on where Microsoft i"
+  },
+  {
+    "title": "Modern List in Power Pages is now generally available",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Power Pages' Modern List component is GA, delivering Fluent UI styling, infinite scrolling, inline filtering, shimmer loading, and both low-code and custom JavaScript customization for Dataverse data presentation."
+  },
+  {
+    "title": "Create agents fast with Agent Builder in Copilot",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[Preview] - The full Microsoft Mechanics walkthrough covers the complete Agent Builder workflow: single-prompt creation, knowledge scoping, skill definition, preview and test, sharing with permissions, Monitor tab analyt"
+  },
+  {
+    "title": "Governance is becoming agentic, too: How enterprises can operate AI at scale",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Copilot Studio's governance blog frames the core operational questions for a growing agent estate: what agents exist, who owns them, what data and systems they can reach, what they cost, and when their risk profi",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Block Risky MCP Servers Across Your Org",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - In Microsoft Agent 365, admins get a unified view of all MCP servers, plugins, and connectors in use across the tenant, with the ability to block high-risk tools, approve or reject new tool requests from a dedicat"
+  },
+  {
+    "title": "Word: Legal plugins in Copilot",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[Preview] - Purpose-built legal plugins for Copilot in Word and Cowork surface summarization, drafting, review, and redlining skills that connect to M365 work context and supported third-party legal sources. GA is target"
+  },
+  {
+    "title": "Microsoft Clipchamp: Copilot video creation updates",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[Preview] - Copilot in Clipchamp Video Hub will support agentic video creation from prompts grounded in documents or WorkIQ knowledge, with preview playback in chat and iterative refinement. Preview targets December CY20"
+  },
+  {
+    "title": "Microsoft Copilot: Copilot Chat can now better match search results from text inside images in Word and PowerPoint files",
+    "category": "AI & Copilot",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Copilot Chat now extracts and searches text embedded in images within Word and PowerPoint files, including scanned contracts and image-based tables that were previously unsearchable. GA targets October CY2026; org"
+  },
+  {
+    "title": "Chromium CVE-2026-91728: Integer overflow",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; CVSS base score 9.6. An integer overflow in Chromium affecting Edge affects a very broad installed base - ensure Edge is on the current Chromium-integrated build and that auto-updat"
+  },
+  {
+    "title": "Chromium CVE-2026-91745: Use after free",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; CVSS base score 8.8. Use-after-free in Chromium; verify Edge has auto-updated to the patched build in your environment."
+  },
+  {
+    "title": "NeedyMantis: Unpacking a post-compromise malware family used in targeted operations",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Microsoft Threat Intelligence details NeedyMantis, a modular post-compromise framework using custom loaders, encrypted archives, and extensible components for long-term access and follow-on operations. Review the",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "CVE-2026-81355 Virtual Hard Disk (VHD) Miniport Driver Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Critical · CVSS 7.5. RCE in the VHD Miniport Driver; this week's update was an acknowledgment change only, but the Critical rating stands. Confirm your Windows fleet is on the patched build, especially for hosts r"
+  },
+  {
+    "title": "CVE-2026-69522 .NET and Visual Studio Remote Code Execution Vulnerability",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Important · CVSS 8.8. Security Updates table now links to KB articles and Download Center packages; Microsoft recommends installing the updates. Any build pipeline or developer workstation running .NET or Visual S"
+  },
+  {
+    "title": "Chromium CVE-2026-95274: Improper output encoding in DevTools",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; no CVSS score published. Assigned by Chrome and ingested by Edge; see Google Chrome Releases for patched build details and ensure Edge is current."
+  },
+  {
+    "title": "Chromium CVE-2026-95275: Incorrect reference resolution in MediaStream",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; no CVSS score published. Chromium MediaStream reference resolution flaw ingested by Edge; keep Edge on auto-update."
+  },
+  {
+    "title": "Chromium CVE-2026-95276: Improper input validation in Themes",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; no CVSS score published. Input validation flaw in Chromium Themes, ingested by Edge; ensure managed Edge deployments are on the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-95277: Use after free in Views",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; no CVSS score published. Use-after-free in Chromium Views, ingested by Edge; standard Edge update cadence covers this."
+  },
+  {
+    "title": "Chromium CVE-2026-87612: Type confusion in V8",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; CVSS base score 8.8. Type confusion in V8 is a class of vulnerability with a history of exploitation; ensure Edge is updated promptly on all managed endpoints."
+  },
+  {
+    "title": "Chromium CVE-2026-87536: Use after free in V8",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; no CVSS score published. Use-after-free in V8; keep Edge current via Intune or your update management tooling."
+  },
+  {
+    "title": "Chromium CVE-2026-87625: Use after free in V8",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; CVSS base score 8.8. Second use-after-free in V8 this week; with multiple V8 issues in one cycle, prioritize Edge update verification across your managed device inventory."
+  },
+  {
+    "title": "Chromium CVE-2026-87601: Race condition in V8",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA] - Severity not yet rated by MSRC; CVSS base score 7.5. Race condition in V8 ingested by Edge; covered by the same Edge stable channel update as the other Chromium CVEs this week."
+  },
+  {
+    "title": "Beyond the ransomware: Tracking Storm-2570's consistent tradecraft across deployments",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Storm-2570 is a ransomware affiliate operating across Qilin, DragonForce, Anubis, and BERT families using consistent post-compromise tooling, and Microsoft has published detection and disruption guidance. Map the",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Reimagining the SOC for the agentic era in Microsoft Defender",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Microsoft announces ISOC (Intelligent SOC) in Defender, a converged foundation bringing SIEM and threat protection together with agentic security as a design principle. This is the architectural direction for Def",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Unmasking EvilTokens: Getting to the root of device code phishing",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - EvilTokens automated device code phishing at scale with AI-assisted lures and token theft infrastructure; Microsoft DCU and partners disrupted the platform. Block device code flow in Conditional Access for all us",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "Microsoft Edge: Updated performance information in tab hover cards",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[Preview] - Edge will update tab hover cards to show clearer memory usage and savings information when inactive tabs are discarded, with separate settings for tab previews and memory info. GA targets October CY2026; low "
+  },
+  {
+    "title": "Microsoft Purview: Information Protection auto-labeling scale increase for SharePoint and OneDrive",
+    "category": "Security & Compliance",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "[GA]  - Auto-labeling capacity for SharePoint and OneDrive increases from 100,000 to 500,000 files per tenant per day, accelerating sensitivity label coverage across existing content at rest. GA targets November CY2026; ",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "CVE-2026-81355 VHD Miniport Driver RCE",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Critical · CVSS 7.5. Surfaced in the Week of 2026-09-29 digest. Remote code execution in the Virtual Hard Disk Miniport Driver; the week's update was an acknowledgment change only but the Critical rating is unchanged. Ve"
+  },
+  {
+    "title": "CVE-2026-69522 .NET and Visual Studio RCE",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. KB articles and Download Center links are now published; Microsoft explicitly recommends installing the updates. Target any host running .NET runtimes or V"
+  },
+  {
+    "title": "Chromium CVE-2026-91728: Integer overflow in Chromium",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6. Surfaced in the Week of 2026-09-29 digest. High base score with no exploited flag; verify Edge is on the current stable channel build and that update policies are not blocking "
+  },
+  {
+    "title": "Chromium CVE-2026-91745: Use after free in Chromium",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. Use-after-free class; ensure Edge auto-update is unblocked across managed endpoints."
+  },
+  {
+    "title": "Chromium CVE-2026-87612: Type confusion in V8",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. Type confusion in V8 has a significant exploitation history; treat Edge update verification as a priority action this cycle."
+  },
+  {
+    "title": "Chromium CVE-2026-87625: Use after free in V8",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. Second V8 use-after-free this week; combined with CVE-2026-87612, this is a notable V8 vulnerability cluster and warrants prompt Edge"
+  },
+  {
+    "title": "Chromium CVE-2026-87601: Race condition in V8",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 7.5. Surfaced in the Week of 2026-09-29 digest. Race condition in V8; covered by the same Edge stable channel update as the other Chromium CVEs this cycle."
+  },
+  {
+    "title": "Chromium CVE-2026-95274: Improper output encoding in DevTools",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Assigned by Chrome and ingested by Edge; see Google Chrome Releases for patched build confirmation."
+  },
+  {
+    "title": "Chromium CVE-2026-95275: Incorrect reference resolution in MediaStream",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Keep Edge on auto-update; no additional admin action required beyond confirming update policy is not blocking."
+  },
+  {
+    "title": "Chromium CVE-2026-95276: Improper input validation in Themes",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Input validation flaw in Themes; Edge stable channel update resolves this."
+  },
+  {
+    "title": "Chromium CVE-2026-95277: Use after free in Views",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Use-after-free in Views; Edge stable channel update resolves this alongside the other Chromium issues this week."
+  },
+  {
+    "title": "Chromium CVE-2026-87536: Use after free in V8",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Third V8 vulnerability this cycle; ensure managed Edge deployments are confirmed current before end of week."
+  },
+  {
+    "title": "Block device code flow in Conditional Access",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "The EvilTokens PhaaS disruption this week confirms that device code phishing remains an active, scalable attack. If device code flow is not explicitly required by a workload, restrict it via Conditional Access authentica"
+  },
+  {
+    "title": "Review Agent 365 MCP tool exposure",
+    "category": "Action Required",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "With Agent 365 governance tooling now GA, run a full inventory of MCP servers, plugins, and connectors in use across your tenant. Block any tools that are not explicitly approved, and establish a review process for the r"
+  },
+  {
+    "title": "Cloud Kerberos trust user requirements clarified",
+    "category": "Documentation Updates",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "The Entra ID docs now clarify which user types and account configurations meet the prerequisites for cloud Kerberos trust, which matters if you're mid-deployment and troubleshooting which users are falling back to certif"
+  },
+  {
+    "title": "Conditional Access device platform condition: new security warnings added",
+    "category": "Documentation Updates",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "The docs now include an explicit warning about the risks of using device platform as a sole Conditional Access condition, noting that platform claims can be spoofed; if you're using platform-only conditions without addit"
+  },
+  {
+    "title": "Conditional Access device platform section enhanced with security note",
+    "category": "Documentation Updates",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "A follow-on commit to the same section adds further detail on mitigating the spoofability risk when using device platform conditions, recommending pairing with compliant device or hybrid join requirements."
+  },
+  {
+    "title": "App role and permission scope limit documented at 700 values",
+    "category": "Documentation Updates",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "Entra ID now officially documents a 700-value ceiling on app roles and permission scopes per application registration; if you're building or managing complex enterprise apps with large permission models, validate you're "
+  },
+  {
+    "title": "Microsoft Entra COOP preparation guidance added",
+    "category": "Documentation Updates",
+    "date": "2026-09-29",
+    "url": "/posts/2026-09-29/",
+    "snippet": "New guidance covers preparing for Cross-Origin Opener Policy (COOP) enforcement in Entra ID, which affects browser-based authentication flows in apps that don't already configure COOP headers; review if you manage any we"
   },
   {
     "title": "Agent 365 unified registry now governs cross-platform AI agents:",
@@ -33,6 +615,13 @@
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
     "snippet": "Microsoft has published the official migration guide from classic Windows Autopilot to Autopilot device preparation, which re-architects provisioning around simpler configuration, faster setup, and near-real-time deploym"
+  },
+  {
+    "title": "CVE-2026-78510 Critical Outlook and Word RCE on Mac, CVSS 9.8:",
+    "category": "Top 5",
+    "date": "2026-09-22",
+    "url": "/posts/2026-09-22/",
+    "snippet": "A network-exploitable remote code execution vulnerability in Microsoft Outlook and Word for Mac carries the highest-severity CVSS score in this week's batch. Users running affected Mac Office software need the security u"
   },
   {
     "title": "Prepare your tenant estate for AI: Entra Tenant Governance webinars",
