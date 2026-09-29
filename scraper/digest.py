@@ -16,6 +16,7 @@ Requires ANTHROPIC_API_KEY in /opt/modern-work-weekly/.env or environment.
 import argparse
 import json
 import logging
+import html
 import os
 import random
 import re
@@ -945,62 +946,172 @@ def extract_post_stats(content: str) -> dict:
     }
 
 
-def build_linkedin_closer(post_content: str) -> str:
-    """Deterministic replacement for the LinkedIn newsletter's closing line.
+# Newsletter links (Ryan, 2026-09-29): the Newsletter now carries direct
+# links into modernworkweekly.com, one per category section plus the tech
+# digest and Executive's Guide in the closer. Source (Microsoft) links stay
+# out, per the 2026-09-01 retention decision. Links are written as
+# [label](url) tokens here, then rendered two ways by write_linkedin_draft():
+#   .html - real hyperlinks with UTM params hidden behind the label text,
+#           which is what gets copy-pasted into LinkedIn's article editor
+#   .txt  - label (plain url), a readable review copy with no UTM clutter
+# UTM params were dropped 2026-08-25 because a long visible query string
+# looked spammy; behind link text in the HTML that concern goes away. The
+# Announcement's first-comment link is a visible bare URL, so it stays plain.
+NEWSLETTER_UTM = "utm_source=linkedin&utm_medium=newsletter&utm_campaign={week_of}"
+_LINK_TOKEN_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+_LINK_SKIP_SECTIONS = {"Top 5", "Action Required", "Documentation Updates"}
 
-    Ryan's feedback 2026-09-22: the newsletter felt too small next to the
-    full site digest, and the close should actively sell the scope of
-    what's behind the comment link, not just point at it vaguely ("This
-    week's guides in the comments!"). Letting the model write that line
-    risks inventing or rounding the numbers (the same failure mode
-    feedback_mww_prompt_reliability warns about generally), so this reads
-    the real count and category breakdown straight off the published
-    post's own front matter instead. See append_linkedin_closer() for
-    where this gets attached to a generated draft.
-    """
+
+def hugo_heading_anchor(heading: str) -> str:
+    """Match Hugo/Goldmark's default 'github' heading IDs:
+    "Endpoint & Device Management" -> "endpoint--device-management"."""
+    t = re.sub(r"[^\w\- ]", "", heading.strip().lower())
+    return t.replace(" ", "-")
+
+
+def newsletter_link(path: str, week_of: str, anchor: str | None = None) -> str:
+    url = modernworkweekly_url(path) + "?" + NEWSLETTER_UTM.format(week_of=week_of)
+    return url + (f"#{anchor}" if anchor else "")
+
+
+def extract_category_counts(post_content: str) -> list[tuple[str, int]]:
+    """(section heading, bullet count) for each category section, in post order."""
+    counts, section = {}, None
+    for line in post_content.splitlines():
+        if line.startswith("## "):
+            section = line[3:].strip()
+            if section not in _LINK_SKIP_SECTIONS:
+                counts.setdefault(section, 0)
+            continue
+        if section in counts and line.startswith("- **"):
+            counts[section] += 1
+    return [(k, v) for k, v in counts.items() if v]
+
+
+def build_category_links(post_content: str, week_of: str) -> str:
+    rows = extract_category_counts(post_content)
+    if not rows:
+        return ""
+    lines = ["**BY CATEGORY**", ""]
+    for name, n in rows:
+        url = newsletter_link(f"posts/{week_of}", week_of, hugo_heading_anchor(name))
+        lines.append(f"- For the latest on [{name}]({url}): {n} update{'s' if n != 1 else ''} this week")
+    return "\n".join(lines)
+
+
+def build_linkedin_closer(post_content: str, week_of: str) -> str:
+    """Deterministic closing line (option #3, chosen 2026-09-29): one link
+    for engineers, one for leadership. Numbers come from the published
+    post's front matter so they're never invented or rounded (see
+    feedback_mww_prompt_reliability)."""
     stats = extract_post_stats(post_content)
-    top5_count = len(extract_top5(post_content))
-    categories = stats["categories"]
-
-    if len(categories) > 1:
-        area_list = ", ".join(categories[:-1]) + f", and {categories[-1]}"
-    elif categories:
-        area_list = categories[0]
-    else:
-        area_list = ""
-    area_clause = f" spanning {area_list}" if area_list else ""
-
-    cve_clause = f", plus {stats['cve_count']} CVEs" if stats["cve_count"] else ""
-    total_clause = f"{stats['total_items']} updates" if stats["total_items"] else "the full digest"
-
+    total = f"{stats['total_items']} updates" if stats["total_items"] else "every update"
+    cves = f" and {stats['cve_count']} CVEs" if stats["cve_count"] else ""
+    tech = newsletter_link(f"posts/{week_of}", week_of)
+    exec_url = newsletter_link(f"exec/{week_of}", week_of)
     return (
-        f"That's {top5_count} of this week's headlines. The full breakdown, "
-        f"{total_clause}{area_clause}{cve_clause}, is one click away in the comments."
+        f"Engineers, the full breakdown of {total}{cves} is in "
+        f"[this week's digest]({tech}). Leadership, the business view is in "
+        f"[the Executive's Guide]({exec_url})."
     )
 
 
-def append_linkedin_closer(li_content: str, post_content: str) -> str:
-    """Attach the deterministic closing line (build_linkedin_closer()) to a
-    generated LinkedIn newsletter draft, in the same divider-separated
-    format the model uses between its own sections.
-    """
-    closer = build_linkedin_closer(post_content)
-    return f"{li_content.rstrip()}\n\n\u2e3b\n\n{closer}"
+def append_linkedin_closer(li_content: str, post_content: str, week_of: str) -> str:
+    """Attach the category links and closing line, divider-separated like
+    the model's own sections."""
+    parts = [li_content.rstrip()]
+    cat = build_category_links(post_content, week_of)
+    if cat:
+        parts.append(cat)
+    parts.append(build_linkedin_closer(post_content, week_of))
+    return "\n\n\u2e3b\n\n".join(parts)
 
+
+def render_newsletter_txt(content: str) -> str:
+    """Review copy: [label](url) -> label (plain url, no UTM)."""
+    def plain(m):
+        url = re.sub(r"\?utm_[^#]*", "", m.group(2))
+        return f"{m.group(1)} ({url})"
+    return _LINK_TOKEN_RE.sub(plain, content)
+
+
+def _inline_html(text: str) -> str:
+    out, pos = [], 0
+    for m in _LINK_TOKEN_RE.finditer(text):
+        out.append(html.escape(text[pos:m.start()]))
+        out.append(f'<a href="{html.escape(m.group(2))}">{html.escape(m.group(1))}</a>')
+        pos = m.end()
+    out.append(html.escape(text[pos:]))
+    joined = "".join(out)
+    return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", joined)
+
+
+def render_newsletter_html(content: str, week_of: str) -> str:
+    """Standalone page: open in a browser, click Copy, paste into LinkedIn's
+    article editor. Rich-text paste keeps the hyperlinks; the .txt can't."""
+    title, blocks, bullets = "", [], []
+    for raw in content.splitlines():
+        line = raw.strip()
+        if line.startswith("LENS:"):
+            continue
+        if line.startswith("TITLE:"):
+            title = line[len("TITLE:"):].strip()
+            continue
+        if line.startswith("- "):
+            bullets.append(f"<li>{_inline_html(line[2:])}</li>")
+            continue
+        if bullets:
+            blocks.append("<ul>" + "".join(bullets) + "</ul>")
+            bullets = []
+        if line:
+            blocks.append(f"<p>{_inline_html(line)}</p>")
+    if bullets:
+        blocks.append("<ul>" + "".join(bullets) + "</ul>")
+    body = "\n".join(blocks)
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkedIn Newsletter {html.escape(week_of)}</title>
+<style>
+ body{{font-family:Segoe UI,system-ui,sans-serif;max-width:760px;margin:24px auto;padding:0 16px;line-height:1.55;color:#1d1d1f;background:#fff}}
+ .bar{{position:sticky;top:0;background:#f3f6f8;border:1px solid #d0d7de;border-radius:8px;padding:12px;margin-bottom:20px}}
+ .bar code{{background:#fff;padding:2px 6px;border-radius:4px}}
+ button{{font:inherit;padding:6px 14px;border-radius:6px;border:1px solid #0a66c2;background:#0a66c2;color:#fff;cursor:pointer;margin-right:8px}}
+ #status{{margin-left:6px;color:#057642}}
+ #article a{{color:#0a66c2}}
+</style></head><body>
+<div class="bar">
+ <div><b>Article title:</b> <code id="title">{html.escape(title)}</code></div>
+ <div style="margin-top:8px"><button onclick="copyTitle()">Copy title</button><button onclick="copyBody()">Copy article body</button><span id="status"></span></div>
+</div>
+<div id="article">
+{body}
+</div>
+<script>
+function flash(m){{var s=document.getElementById('status');s.textContent=m;setTimeout(function(){{s.textContent=''}},2500)}}
+function copyTitle(){{navigator.clipboard.writeText(document.getElementById('title').textContent).then(function(){{flash('Title copied')}})}}
+function copyBody(){{
+ var el=document.getElementById('article');
+ try{{
+  var item=new ClipboardItem({{'text/html':new Blob([el.innerHTML],{{type:'text/html'}}),'text/plain':new Blob([el.innerText],{{type:'text/plain'}})}});
+  navigator.clipboard.write([item]).then(function(){{flash('Body copied with links')}},fallback);
+ }}catch(e){{fallback()}}
+ function fallback(){{var r=document.createRange();r.selectNodeContents(el);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);document.execCommand('copy');sel.removeAllRanges();flash('Body copied')}}
+}}
+</script>
+</body></html>
+"""
 
 
 # Always included first, on every post, regardless of that week's tags --
 # the site's own brand hashtag.
 BRAND_HASHTAG = "#ModernWork"
 
-# Both the automated announcement-post comment URL below, and the
-# Executive's Guide URL Ryan adds by hand as the Newsletter's second
-# comment, are plain links with no query string — see
-# feedback_linkedin_hashtags memory for why both links only ever appear
-# in comments, never in a post body. UTM tracking params were dropped
-# 2026-08-25: the long query string made the link look cluttered/spammy
-# on LinkedIn and risked deterring clicks, which mattered more than the
-# attribution data.
+# The announcement-post comment URL below is a plain link with no query
+# string: it's a visible bare URL, and UTM params were dropped 2026-08-25
+# because the long query string looked cluttered/spammy there. Since
+# 2026-09-29 the Newsletter body carries its own site links (tracked, but
+# hidden behind link text in the .html copy) - see build_category_links().
 
 
 def modernworkweekly_url(path: str) -> str:
@@ -1996,8 +2107,11 @@ def write_tag_candidates(candidates: list[dict], week_of: str) -> Path:
 
 def write_linkedin_draft(content: str, week_of: str) -> Path:
     path = STATE_DIR / f"linkedin_draft_{week_of}.txt"
-    path.write_text(content, encoding="utf-8")
+    path.write_text(render_newsletter_txt(content), encoding="utf-8")
     log.info(f"LinkedIn draft written → {path}")
+    html_path = STATE_DIR / f"linkedin_draft_{week_of}.html"
+    html_path.write_text(render_newsletter_html(content, week_of), encoding="utf-8")
+    log.info(f"LinkedIn draft (copy-paste HTML with links) written → {html_path}")
     return path
 
 
@@ -2200,7 +2314,7 @@ def run(args):
         try:
             li_prompt = build_linkedin_prompt(draft, week_of, content, max_age_days=max_age_days)
             li_content = clean_dashes(call_claude_linkedin(li_prompt))
-            li_content = append_linkedin_closer(li_content, content)
+            li_content = append_linkedin_closer(li_content, content, week_of)
             check_linkedin_opener(li_content, get_recent_linkedin_openers("linkedin_draft", week_of), "LinkedIn newsletter")
             # No hashtags here — this is the long-form newsletter article body,
             # pasted into LinkedIn's Newsletter editor, where hashtags aren't

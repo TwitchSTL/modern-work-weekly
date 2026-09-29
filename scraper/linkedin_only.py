@@ -75,7 +75,7 @@ def main():
     try:
         li_prompt = digest.build_linkedin_prompt(draft, week_of, content)
         li_content = digest.clean_dashes(digest.call_claude_linkedin(li_prompt))
-        li_content = digest.append_linkedin_closer(li_content, content)
+        li_content = digest.append_linkedin_closer(li_content, content, week_of)
         linkedin_draft_path = digest.write_linkedin_draft(li_content, week_of)
     except Exception as e:
         print(f"LinkedIn draft generation failed: {e}")
@@ -83,7 +83,7 @@ def main():
     announcement_path = None
     try:
         top5 = digest.extract_top5(content)
-        ann_prompt = digest.build_announcement_prompt(top5, week_of)
+        ann_prompt = digest.build_announcement_prompt(top5, week_of, content)
         ann_content = digest.clean_dashes(digest.call_claude_announcement(ann_prompt))
         tags = digest.extract_post_tags(content)
         hashtag_source = f"{ann_content}\n{li_content}"
