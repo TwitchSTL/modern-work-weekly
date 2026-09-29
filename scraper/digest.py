@@ -17,6 +17,7 @@ import argparse
 import json
 import logging
 import os
+import random
 import re
 import sys
 from datetime import datetime, timezone
@@ -503,6 +504,155 @@ def clean_dashes(text: str) -> str:
     """
     text = re.sub(r"\s+--\s+", ", ", text)
     return text.replace("—", "-").replace("–", "-")
+
+
+
+# ── Opener rotation (card description) ──────────────────────────────────────
+# The post's front matter `description` is what renders as the summary line on
+# every homepage card, so it's the first thing a returning reader sees. Three
+# weeks running (2026-09-15/22/29) it opened with "Agent 365..." because each
+# week really did have a new Agent 365 story and digest.py had no memory of
+# what it led with last time. Different stories, but identical openers read as
+# a bias. Two layers, per the "prompt rules aren't reliable for hard
+# requirements" lesson:
+#   1. Prompt: tell Claude which openers were used recently and give it a
+#      randomly chosen opening angle (seeded by week_of, so a regen of the
+#      same week gets the same angle).
+#   2. Code: after generation, compare the new description's leading words to
+#      the recent ones. On a collision, ask Claude to rewrite ONLY the
+#      description (up to OPENER_MAX_REWRITES tries), re-checking each time.
+# Top 5 ordering is deliberately untouched - ranking stays editorial.
+OPENER_LOOKBACK = 2        # how many previous posts' openers to avoid
+OPENER_KEY_WORDS = 2       # leading words compared (after dropping filler)
+OPENER_MAX_REWRITES = 2
+_OPENER_FILLER = {"microsoft", "microsofts", "the", "a", "an", "this", "new", "week", "weeks"}
+
+OPENER_ANGLES = [
+    "Open with the week's overall theme in plain words (what connects the biggest stories), not a product name.",
+    "Open with the most urgent action an admin needs to take this week (a patch, deadline, or config change).",
+    "Open with who is most affected (e.g. endpoint teams, identity admins, compliance owners) and what changes for them.",
+    "Open with a concrete number from this week's content (CVE count, action items, new GA features) and what it means.",
+    "Open with the contrast or tension between two of this week's biggest stories.",
+]
+
+_DESC_RE = re.compile(r'^(description:\s*)(["\']?)(.*?)\2\s*$', re.MULTILINE)
+
+
+def extract_description(content: str) -> str | None:
+    """Return the front matter description string, or None if missing."""
+    fm = content.split("---", 2)
+    if len(fm) < 3:
+        return None
+    m = _DESC_RE.search(fm[1])
+    return m.group(3).strip() if m else None
+
+
+def opener_key(text: str, n_words: int = OPENER_KEY_WORDS) -> str:
+    """Normalized leading words of a description, for collision checks.
+
+    Lowercased, possessives dropped ("Agent 365's" -> "agent 365"), and
+    leading filler like "Microsoft"/"The"/"This week" skipped so "Microsoft
+    Agent 365 ..." and "Agent 365's ..." both key to "agent 365".
+    """
+    t = text.lower().replace("’", "'")
+    t = re.sub(r"'s\b", "", t)
+    words = re.findall(r"[a-z0-9]+", t)
+    while words and words[0] in _OPENER_FILLER:
+        words.pop(0)
+    return " ".join(words[:n_words])
+
+
+def get_recent_openers(week_of: str, lookback: int = OPENER_LOOKBACK) -> list[str]:
+    """Descriptions of the most recent published posts before week_of."""
+    dated = sorted(
+        p for p in POSTS_DIR.glob("*.md")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.stem) and p.stem < week_of
+    )
+    out = []
+    for p in reversed(dated):
+        try:
+            d = extract_description(p.read_text(encoding="utf-8"))
+        except OSError:
+            d = None
+        if d:
+            out.append(d)
+        if len(out) >= lookback:
+            break
+    return out
+
+
+def build_opener_guidance(week_of: str) -> str:
+    """Prompt block appended to the digest prompt: avoid recent openers,
+    plus a randomly chosen (week-seeded) opening angle."""
+    recent = get_recent_openers(week_of)
+    angle = random.Random(week_of).choice(OPENER_ANGLES)
+    lines = ["", "", "FRONT MATTER DESCRIPTION - OPENING VARIETY:"]
+    if recent:
+        lines.append("Recent weeks' descriptions (these already ran on the homepage):")
+        lines += [f'- "{d}"' for d in recent]
+        banned = sorted({opener_key(d) for d in recent if opener_key(d)})
+        lines.append(
+            "This week's description must NOT begin with the same words or lead with the same "
+            f"product/feature name as those (avoid starting with: {', '.join(banned)}). "
+            "That product can still appear later in the sentence if it's genuinely big this week."
+        )
+    lines.append(f"Opening angle for this week: {angle}")
+    return "\n".join(lines)
+
+
+def _rewrite_description(desc: str, banned: list[str], top5: list[dict], angle: str) -> str:
+    client = anthropic.Anthropic()
+    stories = "\n".join(f"- {t['title']}" for t in top5) or "(Top 5 unavailable)"
+    prompt = (
+        "Rewrite this one-line summary for a weekly Microsoft 365 digest homepage card.\n\n"
+        f"Current summary:\n{desc}\n\nThis week's Top 5:\n{stories}\n\n"
+        f"Hard rule: the summary must NOT start with any of these words/phrases: {', '.join(banned)}. "
+        "Mentioning them later in the sentence is fine.\n"
+        f"Opening angle: {angle}\n"
+        "Keep it 1-2 sentences, same facts, same tone, no em dashes, no marketing language. "
+        "Return ONLY the summary text, no quotes, no preamble."
+    )
+    msg = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=300,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return clean_dashes(msg.content[0].text.strip().strip('"').strip())
+
+
+def enforce_fresh_opener(content: str, week_of: str) -> str:
+    """Deterministic backstop: if the description's leading words match a
+    recent week's, rewrite just the description. Never fails the run."""
+    desc = extract_description(content)
+    recent = get_recent_openers(week_of)
+    if not desc or not recent:
+        return content
+    banned = [k for k in dict.fromkeys(opener_key(d) for d in recent) if k]
+    if opener_key(desc) not in banned:
+        log.info(f"Opener check: '{opener_key(desc)}' is fresh vs recent {banned}.")
+        return content
+    log.warning(f"Opener check: description opens with '{opener_key(desc)}', same as a recent week. Rewriting.")
+    angle = random.Random(week_of).choice(OPENER_ANGLES)
+    top5 = extract_top5(content)
+    new_desc = desc
+    for attempt in range(1, OPENER_MAX_REWRITES + 1):
+        try:
+            candidate = _rewrite_description(desc, banned, top5, angle)
+        except Exception as e:
+            log.warning(f"Opener rewrite attempt {attempt} failed: {e}")
+            continue
+        if candidate and opener_key(candidate) not in banned:
+            new_desc = candidate
+            break
+        log.warning(f"Opener rewrite attempt {attempt} still opens with '{opener_key(candidate)}'.")
+    if new_desc == desc:
+        log.warning("Opener check: could not produce a fresh opener; keeping original. Hand-edit the description before sharing.")
+        return content
+    log.info(f"Opener rewritten: {new_desc}")
+    safe = new_desc.replace("\\", "\\\\").replace('"', '\\"')
+    head, fm, body = content.split("---", 2)
+    fm = _DESC_RE.sub(lambda m: f'{m.group(1)}"{safe}"', fm, count=1)
+    return "---".join([head, fm, body])
 
 
 def write_deadline_candidates(candidates: list[dict]) -> Path:
@@ -1905,6 +2055,8 @@ def run(args):
         log.info(f"Freshness window overridden to {max_age_days} days (default is {MAX_AGE_DAYS}) via --max-age-days")
     publish_gap_days = check_publish_gap(week_of)
     prompt = build_prompt(draft, max_age_days=max_age_days)
+    opener_guidance = build_opener_guidance(week_of)
+    prompt += opener_guidance
     deadline_candidates = detect_deadline_candidates(draft)
 
     if args.dry_run:
@@ -1913,6 +2065,7 @@ def run(args):
         print(SYSTEM_PROMPT)
         print("\nUSER PROMPT:")
         print(prompt[:2000] + "..." if len(prompt) > 2000 else prompt)
+        print("\nOPENER GUIDANCE (appended to prompt):" + opener_guidance)
         print("="*60)
         if deadline_candidates:
             print(f"\nKey Date candidates ({len(deadline_candidates)}):")
@@ -1929,6 +2082,7 @@ def run(args):
     check_reason_tags(content, week_of)
     content = tag_top5_categories(content)
     content = inject_card_stats(content)
+    content = enforce_fresh_opener(content, week_of)
     validate_all_cves_in_action_required(content)
     check_emphasis_tags(content, week_of)
     post_path = write_post(content, week_of)
