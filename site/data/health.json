@@ -2,7 +2,7 @@
   "updated": "2026-09-29",
   "status_url": "https://status.cloud.microsoft",
   "total_count": 91,
-  "total_new_count": 0,
+  "total_new_count": 1,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -560,13 +560,19 @@
       "name": "Windows Release Health",
       "url": "https://learn.microsoft.com/en-us/windows/release-health/",
       "count": 7,
-      "new_count": 0,
+      "new_count": 1,
       "items": [
         {
           "title": "Message center",
           "body": "",
           "url": "https://learn.microsoft.com/en-us/windows/release-health/",
           "is_new": false
+        },
+        {
+          "title": "Windows 11, version 26H2",
+          "body": "",
+          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
+          "is_new": true
         },
         {
           "title": "Windows 11, version 26H1",
@@ -576,12 +582,6 @@
         },
         {
           "title": "Windows 11, version 25H2",
-          "body": "",
-          "url": "https://learn.microsoft.com/en-us/windows/release-health/",
-          "is_new": false
-        },
-        {
-          "title": "Windows 11, version 24H2",
           "body": "",
           "url": "https://learn.microsoft.com/en-us/windows/release-health/",
           "is_new": false
