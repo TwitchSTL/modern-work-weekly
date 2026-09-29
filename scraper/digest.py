@@ -990,9 +990,16 @@ def extract_category_counts(post_content: str) -> list[tuple[str, int]]:
 
 def build_category_links(post_content: str, week_of: str) -> str:
     rows = extract_category_counts(post_content)
+    lines = []
+    # "Must-dos" line (Ryan, 2026-09-29): links straight to the post's
+    # Action Required section, using the same count shown on the site card.
+    n_actions = compute_card_stats(post_content)["action_required_count"]
+    if n_actions:
+        url = newsletter_link(f"posts/{week_of}", week_of, "action-required")
+        lines += [f"Start with this week's must-dos: [{n_actions} action item{'s' if n_actions != 1 else ''}]({url})", ""]
     if not rows:
-        return ""
-    lines = ["**BY CATEGORY**", ""]
+        return "\n".join(lines).strip()
+    lines += ["**BY CATEGORY**", ""]
     for name, n in rows:
         url = newsletter_link(f"posts/{week_of}", week_of, hugo_heading_anchor(name))
         lines.append(f"- For the latest on [{name}]({url}): {n} update{'s' if n != 1 else ''} this week")
