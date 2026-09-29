@@ -154,20 +154,12 @@ Format — optimised for pasting into LinkedIn's newsletter article editor. Use 
 
 Structure (in order):
 1. Title — format exactly as: "Modern Work Weekly - Week of YYYY-MM-DD" (plain hyphen, not an em dash; this goes in the LinkedIn article title field, output it on its own line prefixed with "TITLE: ")
-2. Hook line — one punchy sentence opening the newsletter. No greeting, no "this week in M365".
-
-Before writing it, pick exactly ONE governing lens from this list, whichever the week's Top 5 most strongly supports as a whole, not just whichever single item sounds most dramatic in isolation:
-- Security/Risk - an active threat, vulnerability, or exposure that demands attention
-- Licensing/Cost - a capability that's now included, bundled, or newly billed differently
-- End-User Impact - a change end users will notice or generate helpdesk tickets over
-- Action Required/Deadline - something with a concrete date or required admin step
-- Architecture/Strategic - a structural or governance shift worth planning around
-
-A CVE or vulnerability does not automatically win the Security/Risk lens by default, and feature launches, licensing changes, and capability GAs in Intune, Defender, Purview, Entra ID, and Microsoft 365 Business Premium/E5 licensing take priority over a CVE-led hook. Pick the Security/Risk lens for a CVE only when it is actively exploited in the wild or clearly affects a broad, common environment (e.g. all Windows versions, all Exchange Online tenants) rather than a narrow platform slice (e.g. Mac-only, a single app) with no confirmed exploitation. Modern Work spans identity, endpoints, collaboration, AI, employee experience, and security - most weeks the real headline isn't a CVE, so don't let the hook default there out of habit.
-
-State which lens you picked on its own line first, prefixed "LENS: " (e.g. "LENS: Architecture/Strategic"), before the title. This line is for editorial review only - it gets stripped before posting, never leave it in what actually goes on LinkedIn.
-
-Then write the hook: one punchy sentence naming the story that best fits the chosen lens.
+2. Quick-hits opener: one or two sentences opening the newsletter (no greeting, no "this week in M365") that rapid-fire name 3 to 4 concrete, high-signal changes from across the whole week, picked from the QUICK-HIT POOL in the digest content. Rules:
+- Span at least 3 different categories. At most ONE item may be AI, Copilot, or agent-related, and it must never be the first item named.
+- Each item is a short fact fragment with one specific detail (a number, a platform, a product surface). Example of the shape: "Win32 apps now land faster after enrollment, new Apple settings hit the Settings Catalog, one prompt builds a full Copilot agent, and Purview auto-labeling jumps to 500,000 files a day."
+- Favor practical changes an admin will actually touch over the week's biggest headline; ON THE RADAR already carries the headlines. These items do not need to be in the Top 5 or appear anywhere else in the newsletter.
+- Facts only in the opener: no implications, no "why it matters".
+- If RECENT OPENERS are listed in the digest content, do not start with the same product or the same first words as any of them.
 3. **⚡ ON THE RADAR** — the digest content below provides a "CONFIRMED TOP 5" list when available; use exactly those 5 items, in that order, reworded for LinkedIn voice and length, never substituted or reordered. If no confirmed list is provided, select the 5 most important changes yourself. Numbered, one line each, blank line after each. Bold the item title, then a colon, then the explanation. This is the Newsletter edition, read natively inside LinkedIn by subscribers who want the whole thing without leaving the app — give each item a real, complete explanation, not a teaser. (The separate short Announcement post is the one whose only job is earning a click to the site; don't duplicate that job here.) If a source has a real full author name available (not a bare username), it's fine to credit them by name (e.g. "..., per [Name]'s writeup"), but never invent or guess a name that wasn't provided. Format: "1. **Item title:** explanation."
 4. **👀 WORTH YOUR ATTENTION** — 2–3 items that aren't urgent but signal where things are heading. One sentence each, dash-prefixed.
 5. **🛠️ ONE FOR THE HELP DESK** (optional) — a single change that's going to generate tickets or questions. Skip if nothing fits.
@@ -205,7 +197,7 @@ This is a native LinkedIn post, NOT the newsletter itself and not a summary of i
 
 Voice: peer-professional, direct, occasionally dry, punchier and more informal than the newsletter edition. Confident, not hype-y. First-person is fine here.
 
-Lens of the week: not everyone reading cares about the same thing — a security engineer, a licensing/procurement person, and a helpdesk lead each want a different item leading the post. Before writing, pick exactly ONE governing angle from this list, whichever the week's Top 5 most strongly supports, and frame the whole post (hook and closing question, not necessarily the other fragments) consistently through it. Do not default to "biggest story" or blend two lenses.
+Lens of the week: not everyone reading cares about the same thing — a security engineer, a licensing/procurement person, and a helpdesk lead each want a different item leading the post. Before writing, pick exactly ONE governing angle from this list, whichever the week's Top 5 most strongly supports, and frame the closing question through it. Do not default to "biggest story" or blend two lenses.
 - Security/Risk — an active threat, vulnerability, or exposure that demands attention
 - Licensing/Cost — a capability that's now included, bundled, or newly billed differently
 - End-User Impact — a change end users will notice or generate helpdesk tickets over
@@ -218,9 +210,9 @@ State which lens you picked on its own line first, prefixed "LENS: " (e.g. "LENS
 Format:
 - Plain text only. No markdown, no bold, no headers, no numbered lists, no emoji section anchors.
 - 80-120 words total.
-- Opening hook: 1-2 sentences leading with the item that best fits the chosen lens, with one real, specific, credible detail (a product name, a number) but withholding the "so what." State only the fact of what changed or launched, never its implication, benefit, risk, or why someone should care, that reasoning is exactly what the site answers, not this post. If a sentence explains why the fact matters, or characterizes its significance ("worth understanding," "a good prompt to revisit," "worth a read," "keep an eye on"), cut that clause, name the fact and stop.
-- Then reference 2-3 more items as short headline fragments only, in a sentence or two of prose, not a list. No colon-explanation, no "why it matters" sentence for any of them, and no editorializing on their significance either. Just enough to create curiosity: a fragment should raise a question in the reader's head, not answer one. These don't need to fit the lens, only the hook and closing question do.
-- Closing line: an open question inviting a comment, tied to the same lens as the hook (a Licensing lens closes on a licensing question, not a security one). Never a generic "thoughts?" It must be concrete and answerable in one sentence, something a reader can actually type a real answer to in a comment. Avoid abstract or rhetorical framing that sounds thought-provoking but doesn't resolve to a real answer (e.g. "how are you thinking about governance boundaries before the registry shapes them for you?" gives the reader nothing to grab onto). Prefer something closer to "Who owns agent governance at your org today: IT, security, or nobody yet?" or "What's blocking your team from adopting this?" A good test: could a reader type a genuine one-line reply without having to think about what you're actually asking?
+- Opening: a quick-hits line, 1-2 sentences that rapid-fire name 3 to 4 concrete, high-signal changes picked from the QUICK-HIT POOL, spanning at least 3 categories. At most ONE item may be AI, Copilot, or agent-related, and it must never be the first item named. Each item is a fact fragment with one specific detail (a number, a platform, a product surface), never its implication or why it matters. These do not need to be Top 5 items. If RECENT OPENERS are listed, do not start with the same product or first words as any of them.
+- Then, optionally, one short sentence naming 1-2 of the Top 5 as headline fragments only (e.g. "Also in this week's breakdown: ..."). No colon-explanations, no "why it matters", no editorializing.
+- Closing line: an open question inviting a comment, tied to the chosen lens (a Licensing lens closes on a licensing question, not a security one). Never a generic "thoughts?" It must be concrete and answerable in one sentence, something a reader can actually type a real answer to in a comment. Avoid abstract or rhetorical framing that sounds thought-provoking but doesn't resolve to a real answer (e.g. "how are you thinking about governance boundaries before the registry shapes them for you?" gives the reader nothing to grab onto). Prefer something closer to "Who owns agent governance at your org today: IT, security, or nobody yet?" or "What's blocking your team from adopting this?" A good test: could a reader type a genuine one-line reply without having to think about what you're actually asking?
 - Do not include a URL anywhere in the body, and do not name the site by its plain domain either (e.g. "modernworkweekly.com") — LinkedIn auto-links bare domain text the same as a real hyperlink, which defeats the entire reason the link is posted as a comment instead of in the body. Refer to it only as "the digest," "this week's breakdown," "the full post," or similar if you need to refer to it at all, never by name or URL.
 - Do not write "link in comments," "full digest below," "it's in the comments," "all of it is at [site]," or any variant of pointing the reader toward where the link lives, as a separate closing line or folded into another sentence — the question is the close, and the reader already knows how this format works.
 - Never estimate or promise a reading time ("five minute read," "quick read," etc.) — the digest's actual length varies week to week, and a wrong promise breaks trust before the reader even clicks. If you want urgency, tie it to relevance instead ("before your next license renewal conversation," "before Friday," "before your next travel booking"), never a time commitment.
@@ -231,8 +223,10 @@ ANNOUNCEMENT_PROMPT_TEMPLATE = """Here is this week's confirmed Top 5 (already r
 
 Week of: {week_of}
 
-CONFIRMED TOP 5 (choose the single strongest lead story for the hook; name 2-3 more only as headline fragments; do not use all 5, do not explain any of them, do not invent items not listed here):
+CONFIRMED TOP 5 (optional follow-up fragments only; name at most 2, do not explain any of them, do not invent items not listed here):
 {top5_lines}
+
+{quick_hits}
 
 Output plain text only. No markdown. No preamble."""
 
@@ -1734,6 +1728,102 @@ def _best_author_match(headline: str, items: list[dict], min_overlap: float = 0.
     return best_author if best_score >= min_overlap else None
 
 
+
+# ── LinkedIn quick-hits opener ───────────────────────────────────────────────
+# Ryan, 2026-09-29: two weeks of LinkedIn openers led with Agent 365 / AI,
+# reading as a bias even though each week's story was different. Both
+# LinkedIn pieces now open with a rapid-fire line of 3-4 practical, high-
+# signal items from across the whole week (Win32, Apple settings, Purview
+# limits, etc.), drawn from the PUBLISHED post so nothing unpublished leaks
+# in. Those items may not appear in the Newsletter body; that's intended,
+# they're all on the site.
+_QH_SKIP_SECTIONS = {"Top 5", "Action Required", "Documentation Updates"}
+_QH_ITEM_RE = re.compile(r"^- \*\*\[(?P<title>[^\]]+)\]\([^)]*\)\*\*(?P<rest>.*)$")
+_QH_DETAIL_CHARS = 160
+QUICK_HIT_MAX = 40
+
+
+def extract_quick_hit_pool(post_content: str) -> list[tuple[str, str]]:
+    """(category, title) for linked bullets in the post's category sections.
+
+    CVE bullets are skipped (they belong to Action Required, not a quick-hits
+    line), and items are interleaved round-robin across categories so the
+    QUICK_HIT_MAX cap never starves the sections that come last in the post
+    (Security & Compliance, where the Purview items live)."""
+    by_cat, section = {}, None
+    for line in post_content.splitlines():
+        if line.startswith("## "):
+            section = line[3:].strip()
+            continue
+        if section and section not in _QH_SKIP_SECTIONS:
+            m = _QH_ITEM_RE.match(line)
+            if m and "CVE-" not in m.group("title"):
+                # Short detail snippet so the opener can cite a real number
+                # (e.g. "500,000 files a day") instead of just a title.
+                rest = re.sub(r"\{\{<[^>]*>\}\}|\[[A-Za-z ]+\]", "", m.group("rest"))
+                detail = rest.split(" - ", 1)[-1].strip()[:_QH_DETAIL_CHARS]
+                by_cat.setdefault(section, []).append(f"{m.group('title').strip()}: {detail}")
+    pool, i = [], 0
+    while len(pool) < QUICK_HIT_MAX and any(i < len(v) for v in by_cat.values()):
+        for cat, titles in by_cat.items():
+            if i < len(titles) and len(pool) < QUICK_HIT_MAX:
+                pool.append((cat, titles[i]))
+        i += 1
+    return pool
+
+
+def _linkedin_hook(text: str) -> str | None:
+    """First real line of a LinkedIn draft (skips LENS:/TITLE: lines)."""
+    for line in text.splitlines():
+        t = line.strip()
+        if t and not t.startswith(("LENS:", "TITLE:")):
+            return t
+    return None
+
+
+def get_recent_linkedin_openers(prefix: str, week_of: str, lookback: int = OPENER_LOOKBACK) -> list[str]:
+    """Hooks from the most recent state/<prefix>_<date>.txt files before week_of."""
+    files = sorted(
+        f for f in STATE_DIR.glob(f"{prefix}_*.txt")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}", f.stem[len(prefix) + 1:]) and f.stem[len(prefix) + 1:] < week_of
+    )
+    out = []
+    for f in reversed(files):
+        try:
+            h = _linkedin_hook(f.read_text(encoding="utf-8"))
+        except OSError:
+            h = None
+        if h:
+            out.append(h)
+        if len(out) >= lookback:
+            break
+    return out
+
+
+def build_quick_hits_block(post_content: str, recent_openers: list[str]) -> str:
+    lines = ["QUICK-HIT POOL (published items across the week, for the opener only; category in brackets):"]
+    lines += [f"  - [{cat}] {title}" for cat, title in extract_quick_hit_pool(post_content)]
+    if recent_openers:
+        lines.append("")
+        lines.append("RECENT OPENERS (do not start with the same product or first words):")
+        lines += [f'  - "{o}"' for o in recent_openers]
+    return "\n".join(lines)
+
+
+def check_linkedin_opener(text: str, recent_openers: list[str], label: str) -> None:
+    """Warn-only backstop: Ryan reviews LinkedIn copy by hand before posting,
+    so flag a repeated opener loudly instead of silently rewriting it."""
+    hook = _linkedin_hook(text) or ""
+    key = opener_key(hook)
+    banned = {opener_key(o) for o in recent_openers if opener_key(o)}
+    if key and key in banned:
+        log.warning(f"{label}: opener starts with '{key}', same as a recent week. Edit the first line before posting.")
+    elif re.match(r"^(microsoft\s+)?(agent|copilot|ai\b)", hook.lower()):
+        log.warning(f"{label}: opener leads with an AI/Copilot/agent item. Consider reordering the quick hits.")
+    else:
+        log.info(f"{label}: opener check passed ('{key}').")
+
+
 def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_days: int = MAX_AGE_DAYS) -> str:
     """Build a compact digest summary to feed the LinkedIn draft.
 
@@ -1788,6 +1878,8 @@ def build_linkedin_prompt(draft: dict, week_of: str, post_content: str, max_age_
         for item in fresh_items:
             byline = f" [byline: {item['author']}]" if _is_full_name(item.get("author")) else ""
             lines.append(f"  - {item['title']}: {(item.get('body') or '')[:200]}{byline}")
+    lines.append("")
+    lines.append(build_quick_hits_block(post_content, get_recent_linkedin_openers("linkedin_draft", week_of)))
     return LINKEDIN_PROMPT_TEMPLATE.format(
         week_of=week_of,
         digest_content="\n".join(lines),
@@ -1909,7 +2001,7 @@ def write_linkedin_draft(content: str, week_of: str) -> Path:
     return path
 
 
-def build_announcement_prompt(top5: list[dict], week_of: str) -> str:
+def build_announcement_prompt(top5: list[dict], week_of: str, post_content: str = "") -> str:
     """Build the prompt for the short native-post teaser (see
     ANNOUNCEMENT_SYSTEM_PROMPT for why this is a separate, deliberately
     thinner draft from the Newsletter edition).
@@ -1922,6 +2014,7 @@ def build_announcement_prompt(top5: list[dict], week_of: str) -> str:
     return ANNOUNCEMENT_PROMPT_TEMPLATE.format(
         week_of=week_of,
         top5_lines="\n".join(lines),
+        quick_hits=build_quick_hits_block(post_content, get_recent_linkedin_openers("linkedin_post", week_of)),
     )
 
 
@@ -2108,6 +2201,7 @@ def run(args):
             li_prompt = build_linkedin_prompt(draft, week_of, content, max_age_days=max_age_days)
             li_content = clean_dashes(call_claude_linkedin(li_prompt))
             li_content = append_linkedin_closer(li_content, content)
+            check_linkedin_opener(li_content, get_recent_linkedin_openers("linkedin_draft", week_of), "LinkedIn newsletter")
             # No hashtags here — this is the long-form newsletter article body,
             # pasted into LinkedIn's Newsletter editor, where hashtags aren't
             # functional/linkable. build_hashtags()/TAG_HASHTAGS are used below,
@@ -2130,8 +2224,9 @@ def run(args):
     if not args.skip_linkedin:
         try:
             top5 = extract_top5(content)
-            ann_prompt = build_announcement_prompt(top5, week_of)
+            ann_prompt = build_announcement_prompt(top5, week_of, content)
             ann_content = clean_dashes(call_claude_announcement(ann_prompt))
+            check_linkedin_opener(ann_content, get_recent_linkedin_openers("linkedin_post", week_of), "LinkedIn announcement")
             tags = extract_post_tags(content)
             # Match against the newsletter draft too, not just the short
             # announcement paragraph -- the announcement is intentionally
