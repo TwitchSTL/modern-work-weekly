@@ -360,14 +360,14 @@
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Critical · CVSS 8.8. Unauthenticated or network-based RCE in the Windows KDC. Acknowledgment updated this week; patch status should be verified against your September CU deployment for all domain controllers. Surf"
+    "snippet": "[GA] - Critical · CVSS 8.8. Unauthenticated or network-based RCE in the Windows KDC. Acknowledgment updated this week; patch status should be verified against your September CU deployment for all domain controllers."
   },
   {
     "title": "CVE-2026-96940 Microsoft Exchange Server Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 8.8. Weak authorization in Exchange Server allows an authenticated attacker to elevate privileges over a network. Apply the September 2026 V2 SU to affected Exchange Server versions. Surfaced in t"
+    "snippet": "[GA] - Important · CVSS 8.8. Weak authorization in Exchange Server allows an authenticated attacker to elevate privileges over a network. Apply the September 2026 V2 SU to affected Exchange Server versions."
   },
   {
     "title": "CVE-2026-69586 Microsoft Windows PDF Remote Code Execution",
@@ -381,63 +381,63 @@
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 7.8. Local EoP in Windows Storage. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 7.8. Local EoP in Windows Storage. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "CVE-2026-69451 Windows Management Instrumentation Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 7.1. Local EoP in WMI. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 7.1. Local EoP in WMI. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "CVE-2026-69605 Microsoft Install Service Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 7.0. Local EoP in Microsoft Install Service. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 7.0. Local EoP in Microsoft Install Service. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "CVE-2026-70562 Windows Audio Service Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 7.0. Local EoP in Windows Audio Service. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 7.0. Local EoP in Windows Audio Service. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "CVE-2026-70125 Microsoft Office Outlook Remote Code Execution",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 8.8. RCE in Microsoft Office Outlook. CWE added this week as an informational update. Verify patch coverage across your Outlook client fleet. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 8.8. RCE in Microsoft Office Outlook. CWE added this week as an informational update. Verify patch coverage across your Outlook client fleet."
   },
   {
     "title": "CVE-2026-69267 Windows Connected User Experiences and Telemetry Information Disclosure",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 6.5. Information disclosure in the DiagTrack service. Acknowledgment updated this week; informational change only. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 6.5. Information disclosure in the DiagTrack service. Acknowledgment updated this week; informational change only. Verify patch deployment."
   },
   {
     "title": "CVE-2026-69504 Windows NTFS Information Disclosure",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 5.5. Local information disclosure in NTFS. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 5.5. Local information disclosure in NTFS. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "CVE-2026-69288 Windows GDI+ Information Disclosure",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 5.5. Information disclosure in Windows GDI+. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 5.5. Information disclosure in Windows GDI+. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "CVE-2026-62699 Windows UDFS Driver Remote Code Execution",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Important · CVSS 6.8. RCE via the Windows Universal Disk Format File System driver. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+    "snippet": "[GA] - Important · CVSS 6.8. RCE via the Windows Universal Disk Format File System driver. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment."
   },
   {
     "title": "Chromium: CVE-2025-2137 Out-of-Bounds Read in V8",
@@ -451,14 +451,14 @@
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Severity: not yet rated by MSRC. Type confusion in V8 affecting Chromium-based browsers. Information published this week. Ensure Edge is updated to the latest stable channel build. Surfaced in the Week of 2026-10-"
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Type confusion in V8 affecting Chromium-based browsers. Information published this week. Ensure Edge is updated to the latest stable channel build."
   },
   {
     "title": "Chromium: CVE-2025-10502 Heap Buffer Overflow in ANGLE",
     "category": "Action Required",
     "date": "2026-10-06",
     "url": "/posts/2026-10-06/",
-    "snippet": "[GA] - Severity: not yet rated by MSRC. Heap buffer overflow in ANGLE (graphics layer) affecting Chromium-based browsers. Information published this week. Ensure Edge is updated to the latest stable channel build. Surfac"
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Heap buffer overflow in ANGLE (graphics layer) affecting Chromium-based browsers. Information published this week. Ensure Edge is updated to the latest stable channel build."
   },
   {
     "title": "Passkey Credential Management API Reference Added to Entra Docs",
@@ -949,84 +949,84 @@
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Critical · CVSS 7.5. Surfaced in the Week of 2026-09-29 digest. Remote code execution in the Virtual Hard Disk Miniport Driver; the week's update was an acknowledgment change only but the Critical rating is unchanged. Ve"
+    "snippet": "Critical · CVSS 7.5. Remote code execution in the Virtual Hard Disk Miniport Driver; the week's update was an acknowledgment change only but the Critical rating is unchanged. Verify your Windows fleet is fully patched, w"
   },
   {
     "title": "CVE-2026-69522 .NET and Visual Studio RCE",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. KB articles and Download Center links are now published; Microsoft explicitly recommends installing the updates. Target any host running .NET runtimes or V"
+    "snippet": "Important · CVSS 8.8. KB articles and Download Center links are now published; Microsoft explicitly recommends installing the updates. Target any host running .NET runtimes or Visual Studio, including build agents and de"
   },
   {
     "title": "Chromium CVE-2026-91728: Integer overflow in Chromium",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6. Surfaced in the Week of 2026-09-29 digest. High base score with no exploited flag; verify Edge is on the current stable channel build and that update policies are not blocking "
+    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6. High base score with no exploited flag; verify Edge is on the current stable channel build and that update policies are not blocking deployment."
   },
   {
     "title": "Chromium CVE-2026-91745: Use after free in Chromium",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. Use-after-free class; ensure Edge auto-update is unblocked across managed endpoints."
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Use-after-free class; ensure Edge auto-update is unblocked across managed endpoints."
   },
   {
     "title": "Chromium CVE-2026-87612: Type confusion in V8",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. Type confusion in V8 has a significant exploitation history; treat Edge update verification as a priority action this cycle."
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Type confusion in V8 has a significant exploitation history; treat Edge update verification as a priority action this cycle."
   },
   {
     "title": "Chromium CVE-2026-87625: Use after free in V8",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Surfaced in the Week of 2026-09-29 digest. Second V8 use-after-free this week; combined with CVE-2026-87612, this is a notable V8 vulnerability cluster and warrants prompt Edge"
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8. Second V8 use-after-free this week; combined with CVE-2026-87612, this is a notable V8 vulnerability cluster and warrants prompt Edge update confirmation."
   },
   {
     "title": "Chromium CVE-2026-87601: Race condition in V8",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · CVSS 7.5. Surfaced in the Week of 2026-09-29 digest. Race condition in V8; covered by the same Edge stable channel update as the other Chromium CVEs this cycle."
+    "snippet": "Severity: not yet rated by MSRC · CVSS 7.5. Race condition in V8; covered by the same Edge stable channel update as the other Chromium CVEs this cycle."
   },
   {
     "title": "Chromium CVE-2026-95274: Improper output encoding in DevTools",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Assigned by Chrome and ingested by Edge; see Google Chrome Releases for patched build confirmation."
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Assigned by Chrome and ingested by Edge; see Google Chrome Releases for patched build confirmation."
   },
   {
     "title": "Chromium CVE-2026-95275: Incorrect reference resolution in MediaStream",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Keep Edge on auto-update; no additional admin action required beyond confirming update policy is not blocking."
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Keep Edge on auto-update; no additional admin action required beyond confirming update policy is not blocking."
   },
   {
     "title": "Chromium CVE-2026-95276: Improper input validation in Themes",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Input validation flaw in Themes; Edge stable channel update resolves this."
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Input validation flaw in Themes; Edge stable channel update resolves this."
   },
   {
     "title": "Chromium CVE-2026-95277: Use after free in Views",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Use-after-free in Views; Edge stable channel update resolves this alongside the other Chromium issues this week."
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Use-after-free in Views; Edge stable channel update resolves this alongside the other Chromium issues this week."
   },
   {
     "title": "Chromium CVE-2026-87536: Use after free in V8",
     "category": "Action Required",
     "date": "2026-09-29",
     "url": "/posts/2026-09-29/",
-    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Surfaced in the Week of 2026-09-29 digest. Third V8 vulnerability this cycle; ensure managed Edge deployments are confirmed current before end of week."
+    "snippet": "Severity: not yet rated by MSRC · no CVSS score published. Third V8 vulnerability this cycle; ensure managed Edge deployments are confirmed current before end of week."
   },
   {
     "title": "Block device code flow in Conditional Access",
@@ -1378,189 +1378,189 @@
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.0. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.0."
   },
   {
     "title": "CVE-2026-78517 Microsoft Office Word RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8."
   },
   {
     "title": "CVE-2026-77901 Microsoft Office Word RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8."
   },
   {
     "title": "CVE-2026-78524 Microsoft Office RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8."
   },
   {
     "title": "CVE-2026-78526 Microsoft Office Word RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 8.8."
   },
   {
     "title": "CVE-2026-83498 Windows VBS Enclave EoP",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8."
   },
   {
     "title": "CVE-2026-63516 Microsoft SharePoint Server Spoofing",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 6.5. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 6.5."
   },
   {
     "title": "CVE-2026-62871 .NET EoP",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8."
   },
   {
     "title": "CVE-2026-63532 Microsoft Office RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8."
   },
   {
     "title": "CVE-2026-68798 Microsoft Excel RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8."
   },
   {
     "title": "CVE-2026-68804 Microsoft Excel RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8."
   },
   {
     "title": "CVE-2026-55039 Microsoft Excel RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Important · CVSS 7.8."
   },
   {
     "title": "CVE-2026-55123 Microsoft PowerPoint RCE",
     "category": "Security & Compliance",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest."
+    "snippet": "Acknowledgment update only, no new patch. Critical · CVSS 7.8."
   },
   {
     "title": "CVE-2026-78510 Critical Outlook and Word RCE on Mac, CVSS 9.8",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Critical · CVSS 9.8. Surfaced in the Week of 2026-09-22 digest. Network-exploitable RCE in Microsoft Outlook and Word for Mac; apply the Mac Office security update to all managed Macs immediately and notify users on unma"
+    "snippet": "Critical · CVSS 9.8. Network-exploitable RCE in Microsoft Outlook and Word for Mac; apply the Mac Office security update to all managed Macs immediately and notify users on unmanaged devices. This is the only CVE this we"
   },
   {
     "title": "CVE-2026-83498 Windows VBS Enclave EoP",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; confirm this was patched in your environment during the originating Patch Tuesday. Elevation of privilege in Windows "
+    "snippet": "Critical · CVSS 7.8. Acknowledgment update only this cycle; confirm this was patched in your environment during the originating Patch Tuesday. Elevation of privilege in Windows Virtualization-Based Security Enclave."
   },
   {
     "title": "CVE-2026-63532 Microsoft Office RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; confirm this was addressed in your managed Office estate during the originating Patch Tuesday."
+    "snippet": "Critical · CVSS 7.8. Acknowledgment update only this cycle; confirm this was addressed in your managed Office estate during the originating Patch Tuesday."
   },
   {
     "title": "CVE-2026-68804 Microsoft Excel RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; verify your Excel patch compliance against the originating Patch Tuesday release."
+    "snippet": "Critical · CVSS 7.8. Acknowledgment update only this cycle; verify your Excel patch compliance against the originating Patch Tuesday release."
   },
   {
     "title": "CVE-2026-55123 Microsoft PowerPoint RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Critical · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only this cycle; verify your PowerPoint patch compliance against the originating Patch Tuesday release."
+    "snippet": "Critical · CVSS 7.8. Acknowledgment update only this cycle; verify your PowerPoint patch compliance against the originating Patch Tuesday release."
   },
   {
     "title": "CVE-2026-78517 Microsoft Office Word RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm Office Word patching is current across your managed estate."
+    "snippet": "Important · CVSS 8.8. Acknowledgment update only; confirm Office Word patching is current across your managed estate."
   },
   {
     "title": "CVE-2026-77901 Microsoft Office Word RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm Office Word patching is current across your managed estate."
+    "snippet": "Important · CVSS 8.8. Acknowledgment update only; confirm Office Word patching is current across your managed estate."
   },
   {
     "title": "CVE-2026-78524 Microsoft Office RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm your Office update compliance for the originating Patch Tuesday."
+    "snippet": "Important · CVSS 8.8. Acknowledgment update only; confirm your Office update compliance for the originating Patch Tuesday."
   },
   {
     "title": "CVE-2026-78526 Microsoft Office Word RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 8.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm your Office Word update compliance."
+    "snippet": "Important · CVSS 8.8. Acknowledgment update only; confirm your Office Word update compliance."
   },
   {
     "title": "CVE-2026-62871 .NET EoP",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; verify .NET patching is current across your managed endpoints."
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only; verify .NET patching is current across your managed endpoints."
   },
   {
     "title": "CVE-2026-68798 Microsoft Excel RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; verify Excel patching is current."
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only; verify Excel patching is current."
   },
   {
     "title": "CVE-2026-55039 Microsoft Excel RCE",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 7.8. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; verify Excel patching is current."
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only; verify Excel patching is current."
   },
   {
     "title": "CVE-2026-68825 Windows Bind Filter Driver EoP",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 7.0. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; confirm Windows patching is current on your managed device fleet."
+    "snippet": "Important · CVSS 7.0. Acknowledgment update only; confirm Windows patching is current on your managed device fleet."
   },
   {
     "title": "CVE-2026-63516 Microsoft SharePoint Server Spoofing",
     "category": "Action Required",
     "date": "2026-09-22",
     "url": "/posts/2026-09-22/",
-    "snippet": "Important · CVSS 6.5. Surfaced in the Week of 2026-09-22 digest. Acknowledgment update only; if you run on-premises SharePoint Server, confirm the originating patch is applied."
+    "snippet": "Important · CVSS 6.5. Acknowledgment update only; if you run on-premises SharePoint Server, confirm the originating patch is applied."
   },
   {
     "title": "Teams meetings security reporting: Verify your reporting mailbox configuration",
@@ -1975,105 +1975,105 @@
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Critical · CVSS 8.2. Surfaced in the Week of 2026-09-15 digest. A double-free in Windows Secure Kernel Mode allows local privilege escalation. Patch all affected Windows systems immediately; this class of vulnerability i"
+    "snippet": "Critical · CVSS 8.2. A double-free in Windows Secure Kernel Mode allows local privilege escalation. Patch all affected Windows systems immediately; this class of vulnerability is routinely leveraged in post-compromise la"
   },
   {
     "title": "Chromium CVE-2026-87494: Use after free in Browser",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current Chromium-based channel release to address this use-after-free."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current Chromium-based channel release to address this use-after-free."
   },
   {
     "title": "Chromium CVE-2026-87493: Missing authorization in FileSystem",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current channel release to address this missing authorization flaw in FileSystem."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current channel release to address this missing authorization flaw in FileSystem."
   },
   {
     "title": "Chromium CVE-2026-87492: Incorrect authorization in DevTools",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to address this incorrect authorization issue in DevTools."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to address this incorrect authorization issue in DevTools."
   },
   {
     "title": "Chromium CVE-2026-87490: Information leak in Transactions Platform",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current release to patch this Chromium information leak."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current release to patch this Chromium information leak."
   },
   {
     "title": "Chromium CVE-2026-87489: Memory corruption in V8",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. V8 memory corruption carries elevated exploitation risk; prioritize Edge updates on all managed endpoints."
+    "snippet": "Severity: not yet rated by MSRC. V8 memory corruption carries elevated exploitation risk; prioritize Edge updates on all managed endpoints."
   },
   {
     "title": "Chromium CVE-2026-87487: Missing authorization in FileSystem",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current channel release to address this second FileSystem authorization flaw."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current channel release to address this second FileSystem authorization flaw."
   },
   {
     "title": "Chromium CVE-2026-87485: Incorrect authorization in CORS",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to patch this CORS authorization issue."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to patch this CORS authorization issue."
   },
   {
     "title": "Chromium CVE-2026-87484: UI misrepresentation in Geometry",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current release to address this Geometry UI misrepresentation flaw."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current release to address this Geometry UI misrepresentation flaw."
   },
   {
     "title": "Chromium CVE-2026-87480: Use after free in Printing",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to address this use-after-free in the Printing component."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to address this use-after-free in the Printing component."
   },
   {
     "title": "Chromium CVE-2026-87458: UI misrepresentation in Geometry",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current release to address this second Geometry UI misrepresentation flaw."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current release to address this second Geometry UI misrepresentation flaw."
   },
   {
     "title": "Chromium CVE-2026-87457: Race condition in Updater",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to patch this race condition in the Chromium Updater component."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to patch this race condition in the Chromium Updater component."
   },
   {
     "title": "Chromium CVE-2026-87456: Uninitialized resource in Media",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to address this uninitialized resource flaw in the Media component."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to address this uninitialized resource flaw in the Media component."
   },
   {
     "title": "Chromium CVE-2026-87455: Use after free in Aura",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to the current channel release to address this use-after-free in Aura."
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to the current channel release to address this use-after-free in Aura."
   },
   {
     "title": "Chromium CVE-2026-87454: Information leak in Enterprise",
     "category": "Action Required",
     "date": "2026-09-15",
     "url": "/posts/2026-09-15/",
-    "snippet": "Severity: not yet rated by MSRC. Surfaced in the Week of 2026-09-15 digest. Update Microsoft Edge to patch this Enterprise component information leak; review enterprise browser policy configurations while applying the up"
+    "snippet": "Severity: not yet rated by MSRC. Update Microsoft Edge to patch this Enterprise component information leak; review enterprise browser policy configurations while applying the update."
   },
   {
     "title": "September 2026 Exchange Server Security Updates",
@@ -2375,105 +2375,105 @@
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Critical · CVSS 10.0 | Surfaced in the Week of 2026-09-08 digest. Authorization bypass through user-controlled key allows an unauthenticated attacker to elevate privileges over the network. If you operate Azure AD B2C "
+    "snippet": "| Critical · CVSS 10.0 | Authorization bypass through user-controlled key allows an unauthenticated attacker to elevate privileges over the network. If you operate Azure AD B2C tenants, treat this as highest priority thi"
   },
   {
     "title": "CVE-2026-70352 - Azure AI Language Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Critical · CVSS 10.0 | Surfaced in the Week of 2026-09-08 digest. Missing authentication for a critical function allows an unauthenticated attacker to elevate privileges over the network. Validate your Azure AI Languag"
+    "snippet": "| Critical · CVSS 10.0 | Missing authentication for a critical function allows an unauthenticated attacker to elevate privileges over the network. Validate your Azure AI Language endpoints and confirm whether Microsoft's"
   },
   {
     "title": "CVE-2026-80098 - Copilot Studio Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Critical · CVSS 9.3 | Surfaced in the Week of 2026-09-08 digest. Improper cryptographic signature verification allows an unauthenticated attacker to elevate privileges over the network. Review Copilot Studio agent conf"
+    "snippet": "| Critical · CVSS 9.3 | Improper cryptographic signature verification allows an unauthenticated attacker to elevate privileges over the network. Review Copilot Studio agent configurations and confirm service-side remedia"
   },
   {
     "title": "CVE-2026-70178 - Microsoft Fabric Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Critical · CVSS 8.5 | Surfaced in the Week of 2026-09-08 digest. Missing authorization allows an authenticated attacker to elevate privileges over the network. If you operate Microsoft Fabric workspaces, audit role ass"
+    "snippet": "| Critical · CVSS 8.5 | Missing authorization allows an authenticated attacker to elevate privileges over the network. If you operate Microsoft Fabric workspaces, audit role assignments and verify Microsoft's patch statu"
   },
   {
     "title": "CVE-2026-62906 - Microsoft Discovery Studio Information Disclosure",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Critical · CVSS 7.4 | Surfaced in the Week of 2026-09-08 digest. Improper neutralization of special elements in data query logic allows an unauthenticated attacker to disclose information over a network. Verify patch s"
+    "snippet": "| Critical · CVSS 7.4 | Improper neutralization of special elements in data query logic allows an unauthenticated attacker to disclose information over a network. Verify patch status via MSRC and assess exposure of any D"
   },
   {
     "title": "CVE-2026-50376 - Windows Remote Desktop Client Information Disclosure",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Important · CVSS 6.5 | Surfaced in the Week of 2026-09-08 digest. Acknowledgment update only this cycle; the underlying vulnerability allows information disclosure via the RDC client. Confirm devices are running the pa"
+    "snippet": "| Important · CVSS 6.5 | Acknowledgment update only this cycle; the underlying vulnerability allows information disclosure via the RDC client. Confirm devices are running the patched build documented in the original MSRC"
   },
   {
     "title": "CVE-2026-84358 - Chromium: Improper privilege management in Downloads",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
   },
   {
     "title": "CVE-2026-84354 - Chromium: Incorrect authorization in FileSystem",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
   },
   {
     "title": "CVE-2026-84332 - Chromium: Incorrect authorization in SiteSettings",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
   },
   {
     "title": "CVE-2026-84329 - Chromium: Confused deputy in CredentialProvider",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. CredentialProvider issues carry elevated risk given credential theft implications;"
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. CredentialProvider issues carry elevated risk given credential theft implications; prioritize Edge channel updates accordingl"
   },
   {
     "title": "CVE-2026-84327 - Chromium: Incorrect authorization in Autofill",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
   },
   {
     "title": "CVE-2026-84326 - Chromium: Uninitialized resource in V8",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. V8 uninitialized resource issues can be exploited for memory disclosure or code ex"
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. V8 uninitialized resource issues can be exploited for memory disclosure or code execution; confirm Edge is current."
   },
   {
     "title": "CVE-2026-84325 - Chromium: Improper input validation in DataTransfer",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
   },
   {
     "title": "CVE-2026-84324 - Chromium: Use after free in Proxy",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Use-after-free in Proxy is a memory safety issue with potential for exploitation; "
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Use-after-free in Proxy is a memory safety issue with potential for exploitation; treat Edge update as urgent."
   },
   {
     "title": "CVE-2026-84323 - Chromium: Missing authorization in FileSystem",
     "category": "Action Required",
     "date": "2026-09-08",
     "url": "/posts/2026-09-08/",
-    "snippet": "| Severity: not yet rated by MSRC | Surfaced in the Week of 2026-09-08 digest. Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
+    "snippet": "| Severity: not yet rated by MSRC | Assigned by Chrome; Edge (Chromium-based) ingests the fix. Ensure Edge is updated to the current stable channel build."
   },
   {
     "title": "Exchange 2016/2019 version-floor enforcement - active as of second week of September 2026.",
@@ -2808,105 +2808,105 @@
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Critical · CVSS 8.8 - Surfaced in the Week of 2026-09-01 digest. A Critical-severity RCE in the Windows DHCP Server service; network-adjacent attackers could exploit this without authentication. Verify all Windows Server"
+    "snippet": "Critical · CVSS 8.8 - A Critical-severity RCE in the Windows DHCP Server service; network-adjacent attackers could exploit this without authentication. Verify all Windows Server DHCP roles are patched across your estate "
   },
   {
     "title": "CVE-2026-62889 - Windows SSTP Remote Code Execution",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Critical · CVSS 8.1 - Surfaced in the Week of 2026-09-01 digest. Critical RCE in the Secure Socket Tunneling Protocol stack on Windows Server; if you're running SSTP-based VPN endpoints, apply this patch before your next"
+    "snippet": "Critical · CVSS 8.1 - Critical RCE in the Secure Socket Tunneling Protocol stack on Windows Server; if you're running SSTP-based VPN endpoints, apply this patch before your next maintenance window and consider temporary "
   },
   {
     "title": "CVE-2026-65775 - Windows Win32k Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-09-01 digest. EoP in Win32k; acknowledgment-only update this cycle, patch was previously released. Confirm deployed."
+    "snippet": "Important · CVSS 7.8 - EoP in Win32k; acknowledgment-only update this cycle, patch was previously released. Confirm deployed."
   },
   {
     "title": "CVE-2026-65776 - Windows Win32k Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.0 - Surfaced in the Week of 2026-09-01 digest. Second Win32k EoP this week; acknowledgment update, verify prior patch is applied."
+    "snippet": "Important · CVSS 7.0 - Second Win32k EoP this week; acknowledgment update, verify prior patch is applied."
   },
   {
     "title": "CVE-2026-55134 - Microsoft Word Remote Code Execution",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-09-01 digest. RCE in Word via crafted documents; acknowledgment update, confirm patch is deployed across managed Office clients."
+    "snippet": "Important · CVSS 7.8 - RCE in Word via crafted documents; acknowledgment update, confirm patch is deployed across managed Office clients."
   },
   {
     "title": "CVE-2026-50448 - Windows NTFS Remote Code Execution",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-09-01 digest. RCE in the NTFS driver; acknowledgment update, verify prior patch coverage."
+    "snippet": "Important · CVSS 7.8 - RCE in the NTFS driver; acknowledgment update, verify prior patch coverage."
   },
   {
     "title": "CVE-2026-50344 - Windows OLE Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-09-01 digest. EoP via Windows OLE; acknowledgment update, confirm patch is applied."
+    "snippet": "Important · CVSS 7.8 - EoP via Windows OLE; acknowledgment update, confirm patch is applied."
   },
   {
     "title": "CVE-2026-50462 - Windows Ancillary Function Driver for WinSock Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.8 - Surfaced in the Week of 2026-09-01 digest. EoP in the WinSock AFD driver; acknowledgment update, verify patch deployment."
+    "snippet": "Important · CVSS 7.8 - EoP in the WinSock AFD driver; acknowledgment update, verify patch deployment."
   },
   {
     "title": "CVE-2026-59134 - Remote Desktop Client Remote Code Execution",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.5 - Surfaced in the Week of 2026-09-01 digest. RCE in the Remote Desktop Client; acknowledgment update, confirm patch is applied to client devices."
+    "snippet": "Important · CVSS 7.5 - RCE in the Remote Desktop Client; acknowledgment update, confirm patch is applied to client devices."
   },
   {
     "title": "CVE-2026-68821 - Windows Package Manager Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.3 - Surfaced in the Week of 2026-09-01 digest. EoP in Windows Package Manager (winget); security update link information was revised, verify the correct patch is deployed."
+    "snippet": "Important · CVSS 7.3 - EoP in Windows Package Manager (winget); security update link information was revised, verify the correct patch is deployed."
   },
   {
     "title": "CVE-2026-26174 - Windows Server Update Service (WSUS) Elevation of Privilege",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 7.0 - Surfaced in the Week of 2026-09-01 digest. EoP in WSUS; acknowledgment update, confirm patch is applied to any WSUS infrastructure still in use."
+    "snippet": "Important · CVSS 7.0 - EoP in WSUS; acknowledgment update, confirm patch is applied to any WSUS infrastructure still in use."
   },
   {
     "title": "CVE-2026-64899 - Microsoft Office Information Disclosure",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 5.5 - Surfaced in the Week of 2026-09-01 digest. Information disclosure in Office; acknowledgment-only update, patch was previously released. Confirm applied."
+    "snippet": "Important · CVSS 5.5 - Information disclosure in Office; acknowledgment-only update, patch was previously released. Confirm applied."
   },
   {
     "title": "CVE-2026-49177 - Windows TCP/IP Information Disclosure",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Important · CVSS 5.5 - Surfaced in the Week of 2026-09-01 digest. Information disclosure in the Windows TCP/IP stack; acknowledgment update, verify prior patch is deployed."
+    "snippet": "Important · CVSS 5.5 - Information disclosure in the Windows TCP/IP stack; acknowledgment update, verify prior patch is deployed."
   },
   {
     "title": "CVE-2026-70331 - Microsoft Edge for iOS Spoofing",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Moderate · CVSS 5.4 - Surfaced in the Week of 2026-09-01 digest. Spoofing via improper neutralization of LLM prompt input in Edge for iOS; ensure managed iOS devices have the latest Edge version deployed via Intune MAM/M"
+    "snippet": "Moderate · CVSS 5.4 - Spoofing via improper neutralization of LLM prompt input in Edge for iOS; ensure managed iOS devices have the latest Edge version deployed via Intune MAM/MDM policies."
   },
   {
     "title": "CVE-2026-58616 - Copilot Chat (Microsoft Edge) Information Disclosure",
     "category": "Action Required",
     "date": "2026-09-01",
     "url": "/posts/2026-09-01/",
-    "snippet": "Moderate · CVSS 4.4 - Surfaced in the Week of 2026-09-01 digest. Race condition in Copilot Chat within Edge can allow an authorized attacker to disclose information over a network; update Edge to the latest version acros"
+    "snippet": "Moderate · CVSS 4.4 - Race condition in Copilot Chat within Edge can allow an authorized attacker to disclose information over a network; update Edge to the latest version across managed devices."
   },
   {
     "title": "Exchange Online identifier deprecation survey",

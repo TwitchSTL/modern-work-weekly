@@ -73,7 +73,7 @@ Format rules:
 - Emphasis tags (the `{{< emphasis "..." >}}` shortcode above): OPTIONAL, added 2026-08-29, forward-only — only on new items, never inserted into historical content. This is separate from the item's category (which decides what section it lives under) and flags when an item's real substance is best understood through a different lens than its category implies. Use zero, one, or two tags from exactly this list: Identity, Endpoints, Data, Apps, Infrastructure, Network, SecOps, AI — Microsoft's own Zero Trust technology pillar names, not invented terms. Omit the shortcode entirely when an item's category already fully captures what it's about (this should be the common case — most items need no emphasis tag at all). Add one only when there's a genuine, specific reason: e.g. a Copilot item that is substantively about data loss prevention gets {{< emphasis "Data" >}} even though its category is AI & Copilot, because Microsoft's own Purview product team treats Copilot DLP as a Data Security concern (a distinct "Purview Data Security AI Admin" role exists for exactly this). Do not tag an item with the same concept its category already names (e.g. don't tag a Security & Compliance item "SecOps" just because it's security-flavored — that's not adding information). If genuinely undecided, leave the tag off; a missing tag costs nothing, a wrong one is noise.
 - Pillar page link: OPTIONAL, added 2026-08-29, forward-only, never retrofit to historical posts. If the body text genuinely uses the phrase "Modern Work" as a concept that benefits from a definition (not as part of the site's own name "Modern Work Weekly," and at most once per post), link that single occurrence to `/what-is-modern-work/`. Skip this entirely most weeks; it is not a section to fill in, just an option when it's a natural fit.
 - Section order must be: Top 5 → pillar category sections (Identity & Access, Endpoint & Device Management, Collaboration & Productivity, AI & Copilot, Employee Experience, Security & Compliance) → Action Required → Documentation Updates → sources front matter. Do NOT place Action Required before the category sections.
-- Action Required section: ALWAYS include this section — never omit it. This section is a COMPLETE list, not a curated highlight reel: include EVERY CVE item provided in the data (no exceptions, regardless of severity), plus any non-CVE items with deadlines, required admin steps, governance decisions, or deprecation timelines. Use the same bullet format as category sections. For each CVE bullet, prominently lead with its severity and CVSS base score from the provided cve_severity/cve_base_score fields (e.g. "**Important · CVSS 8.0**") — if cve_severity is null for an item, write "Severity: not yet rated by MSRC" rather than inventing a rating — followed by "Surfaced in the [Week of date] digest." using the exact "Week of:" date given in the DIGEST CONTENT below (do not use any other date for this), then the same practical 1-3 sentence explanation used elsewhere. For non-CVE Action Required items, lead with the deadline date or urgency as before. If there are genuinely zero CVEs and zero other time-sensitive items this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days instead.
+- Action Required section: ALWAYS include this section — never omit it. This section is a COMPLETE list, not a curated highlight reel: include EVERY CVE item provided in the data (no exceptions, regardless of severity), plus any non-CVE items with deadlines, required admin steps, governance decisions, or deprecation timelines. Use the same bullet format as category sections. For each CVE bullet, prominently lead with its severity and CVSS base score from the provided cve_severity/cve_base_score fields (e.g. "**Important · CVSS 8.0**") — if cve_severity is null for an item, write "Severity: not yet rated by MSRC" rather than inventing a rating —, then the same practical 1-3 sentence explanation used elsewhere. For non-CVE Action Required items, lead with the deadline date or urgency as before. If there are genuinely zero CVEs and zero other time-sensitive items this week, include the 2-3 items that most warrant an engineer's attention in the next 30 days instead.
 - Documentation Updates section (## Documentation Updates): OPTIONAL — include only when the raw GitHub doc commit data has at least one substantive item; omit the entire section, heading included, if none qualify this week. This data is raw commits to Microsoft's documentation repos, and most commits are NOT worth surfacing: typo fixes, formatting passes, screenshot swaps, minor rewording, and editorial cleanup are all noise. Select only commits that represent a real content change an engineer would want to know about: a newly documented capability or setting, a changed default or behavior, an added or removed prerequisite, a retirement or deprecation notice, a corrected or clarified admin procedure, or a meaningfully rewritten guidance page. It is normal and expected for this section to be short or entirely absent most weeks; do not pad it with marginal commits to make it look substantial. Sub-group selected items under a bold pillar name on its own line (e.g. `**Identity & Access**`), then one bullet per item below it, in this format: `- **[Your own clear, engineer-facing title](commit-url)** — [1 sentence: what actually changed in the docs and why it matters].` Write your own title describing the actual change; do NOT reuse the raw commit message as the title, since commit messages are written for other doc authors, not engineers, and are often unclear standing alone.
 - List all source URLs in the YAML front matter under a `sources:` key as a YAML list. Do NOT include a {{< sources >}} shortcode in the post body.
 - Category sections must include EVERY item provided for that category in the input data. Do not selectively cover only some items and silently drop the rest — every item in the data has already been filtered for relevance and freshness upstream before it ever reaches you, so there is no such thing as a provided item that isn't worth including. A category with 7 items provided must produce 7 bullets, not your own trimmed-down selection of 5. This applies regardless of category size; do not artificially cap any section at a round number.
@@ -475,6 +475,38 @@ def detect_deadline_candidates(draft: dict) -> list[dict]:
                 "suggested_type": _guess_deadline_type(matched_kw, text_lower),
             })
     return candidates
+
+
+SURFACED_IN_RE = re.compile(r"\s*Surfaced in the Week of \d{4}-\d{2}-\d{2} digest\.")
+
+
+def strip_surfaced_in(text: str) -> str:
+    """Remove the redundant "Surfaced in the Week of YYYY-MM-DD digest."
+    sentence from Action Required bullets.
+
+    The SYSTEM_PROMPT used to ask for it on every CVE bullet, which put the
+    same line on every item in a post that is already dated (2026-10-06:
+    16 identical copies). The prompt instruction is gone, but per
+    feedback_mww_prompt_reliability a stale habit can outlive the prompt,
+    so strip it deterministically too.
+    """
+    return SURFACED_IN_RE.sub("", text)
+
+
+def check_not_truncated(message, label: str) -> str:
+    """Return the text of a Claude response, or raise if it hit max_tokens.
+
+    The 2026-10-06 LinkedIn Newsletter draft was cut off mid-sentence in
+    ONE FOR THE HELP DESK because max_tokens=1024 ran out, and nothing
+    flagged it: the file was written and looked finished. Raising here
+    makes the existing non-fatal try/except log a visible
+    "generation failed" warning instead of shipping a half-written draft.
+    """
+    if getattr(message, "stop_reason", None) == "max_tokens":
+        raise RuntimeError(
+            f"{label} hit max_tokens and was truncated; raise the limit in digest.py"
+        )
+    return message.content[0].text
 
 
 def clean_dashes(text: str) -> str:
@@ -2009,11 +2041,11 @@ def call_claude_linkedin(prompt: str) -> str:
     log.info("Calling Claude API for LinkedIn newsletter draft...")
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=1024,
+        max_tokens=3000,
         system=LINKEDIN_SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt}],
     )
-    return message.content[0].text
+    return check_not_truncated(message, "LinkedIn newsletter draft")
 
 
 # ── LinkedIn tag candidates ──────────────────────────────────────────────────
@@ -2144,11 +2176,11 @@ def call_claude_announcement(prompt: str) -> str:
     log.info("Calling Claude API for LinkedIn announcement post...")
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=512,
+        max_tokens=1024,
         system=ANNOUNCEMENT_SYSTEM_PROMPT,
         messages=[{"role": "user", "content": prompt}],
     )
-    return message.content[0].text
+    return check_not_truncated(message, "LinkedIn announcement post")
 
 
 def write_announcement_draft(content: str, week_of: str) -> Path:
@@ -2292,7 +2324,7 @@ def run(args):
         log.info("Dry run complete — no API call made.")
         return
 
-    content = clean_dashes(call_claude(prompt))
+    content = strip_surfaced_in(clean_dashes(call_claude(prompt)))
     check_reason_tags(content, week_of)
     content = tag_top5_categories(content)
     content = inject_card_stats(content)
