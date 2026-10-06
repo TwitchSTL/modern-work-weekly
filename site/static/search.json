@@ -1,5 +1,494 @@
 [
   {
+    "title": "EWS Deprecation Is Live in Exchange Online:",
+    "category": "Top 5",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "As of early October 2026, setting EWSEnabled to True alone no longer keeps EWS working. You must now populate EWSAllowedAppIDs with an explicit app allow list or EWS traffic breaks for unlisted apps. Hybrid customers wit"
+  },
+  {
+    "title": "Upgrade ExchangeOnlineManagement PowerShell Module to v3.10.1 or newer:",
+    "category": "Top 5",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "Microsoft has hardened the Exchange Online PowerShell authentication flow in v3.10.1, and older module versions will progressively fail to meet future authentication requirements. If your automation or admin scripts run "
+  },
+  {
+    "title": "CVE-2026-69712 Windows Key Distribution Center Remote Code Execution:",
+    "category": "Top 5",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "Critical, CVSS 8.8 RCE in the Windows Key Distribution Center. An acknowledgment update surfaced this week, but the vulnerability class (KDC RCE) and severity mean any domain controller exposure warrants immediate patch "
+  },
+  {
+    "title": "Windows 11 26H2 GA and Intune Security Baseline Available:",
+    "category": "Top 5",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "Windows 11 version 26H2 is generally available and ships as an enablement package for devices already on 25H2 or 24H2, making adoption low-disruption. The matching Intune security baseline is live now, and the Settings C"
+  },
+  {
+    "title": "Purview Unified Classifiers Experience in Public Preview:",
+    "category": "Top 5",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "The new unified classifiers experience consolidates all Purview classification types into a single admin surface with classified-item counts and policy dependency visibility. This makes it materially safer to modify or r"
+  },
+  {
+    "title": "Every AI Agent Gets a Microsoft Entra ID",
+    "category": "Identity & Access",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - Every agent deployed to Microsoft Foundry receives a unique Entra identity with scoped permissions, enabling traceable, auditable agent actions either autonomously or on behalf of a signed-in user in an isolated ",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Beyond Source Code: A Path to the Keys to the Kingdom",
+    "category": "Identity & Access",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft Threat Intelligence details how Storm-3068 pivoted from a compromised developer identity to broad cloud access, including CI/CD pipelines and cloud infrastructure. If your organization stores credentials"
+  },
+  {
+    "title": "Passkeys from External Identity Providers Now Work Across Microsoft Apps",
+    "category": "Identity & Access",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft apps including Outlook, Teams, OneDrive, and Office apps on Android, iOS, and managed macOS now support FIDO2 passkeys and security keys issued by external IdPs. Previously, embedded web views blocked th"
+  },
+  {
+    "title": "Dynamics 365 Commerce: Bulk Item Entry for Store Transactions",
+    "category": "Identity & Access",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Store Commerce associates can now paste or enter multiple item-quantity pairs in a single bulk-entry dialog rather than scanning items one at a time. Supported delimiters include spaces, commas, tabs, and the x ch"
+  },
+  {
+    "title": "Intune Security Baseline for Windows 11, Version 26H2",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - The Windows 11 26H2 security baseline is live in Intune with new settings, updated defaults, and revised guidance. Existing profiles do not auto-migrate; you need to explicitly create a new profile or upgrade an e"
+  },
+  {
+    "title": "Windows 11, Version 26H2 Generally Available",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - 26H2 delivers as an enablement package on top of 25H2 or 24H2, minimizing deployment complexity and avoiding a full OS image replacement. Review the support lifecycle and feature-on-by-default list before allowing"
+  },
+  {
+    "title": "Intune Settings Catalog Updated for Windows 11 26H2",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Day-zero Settings Catalog support for 26H2 policy settings is rolling out globally across all Intune tenants this week. New OS-level settings introduced in 26H2 are immediately configurable without waiting for a c"
+  },
+  {
+    "title": "What's New in Microsoft Intune - September 2026",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - September's Intune release expands advanced management capabilities to more government organizations and adds staged app and policy rollout controls to reduce deployment risk. Admins gain a consolidated device inv"
+  },
+  {
+    "title": "What's New in Windows 365: September 2026 Recap",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[Preview] - This month's combined Windows 365 and Azure Virtual Desktop roundup covers improvements to Cloud PC resilience, security and recovery, IT management, and deployment flexibility. Notable items include provisio"
+  },
+  {
+    "title": "Windows News You Can Use: September 2026",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft's September Windows roundup consolidates 26H2 readiness resources including the enablement package details, updated adoption tools, and management tooling updates. Bookmark this as your single source for"
+  },
+  {
+    "title": "Ctrl + Manage: New Monthly Podcast for Windows IT Pros",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft launched a monthly ~30-minute podcast translating Windows management updates into practical admin guidance, starting October 1. The format targets the gap between release notes (what changed) and operati"
+  },
+  {
+    "title": "EWS Deprecation Is Here: What This Means to You",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - EWS deprecation in Exchange Online began early October 2026. EWSEnabled = True no longer suffices; you must explicitly configure EWSAllowedAppIDs to permit specific app access or those apps lose EWS connectivity. "
+  },
+  {
+    "title": "Impact of EWS Deprecation on Hybrid Coexistence and Cross-Org Sharing",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - On-premises Exchange customers in hybrid deployments and cross-org free/busy or calendar sharing scenarios face specific EWS deprecation impact between October 2026 and April 2027. Read this post alongside the mai"
+  },
+  {
+    "title": "Action Required: Upgrade ExchangeOnlineManagement Module to v3.10.1+",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Security enhancements to the Exchange Online PowerShell authentication flow require module version 3.10.1 or newer. Older versions will increasingly fail as Exchange Online authentication evolves. Audit all automa"
+  },
+  {
+    "title": "Released: September 2026 V2 Exchange Server Security Updates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Security updates are available for Exchange Server SE RTM, 2019 CU14/CU15, and 2016 CU23. The 2019 and 2016 updates require Period 2 ESU enrollment. If you're running on-premises Exchange, apply the September V2 S"
+  },
+  {
+    "title": "What's New in Copilot in SharePoint: October 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - Copilot in SharePoint reached GA on September 30, and October's update focuses on post-generation workflows: reshaping documents and images, reviewing and publishing generated HTML, and distributing output withou",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "What's New in Microsoft Teams: August-September 2026",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Teams' What's New cadence is shifting from monthly to quarterly (next edition in December). This edition covers two major themes: AI agents integrated into teamwork flows and a simplified, more secure platform fou"
+  },
+  {
+    "title": "Teams Phone Agent: AI-Powered Calling Receptionist",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - Teams Phone Agent answers incoming calls autonomously, handles routine customer requests, and scales to after-hours coverage without requiring human staff. This is a Teams Phone add-on capability, so licensing an",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Queues App: Collaborative Calling for Microsoft Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - The Queues app turns an existing Teams call queue into a shared workspace where agents and supervisors manage customer conversations together in Teams. It targets teams that handle customer calls alongside other r"
+  },
+  {
+    "title": "Microsoft Teams: Deepfake Detection Integration via Third-Party Providers",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Teams will support certified third-party synthetic audio and video detection solutions that analyze meeting media and surface detection signals directly in the Teams meeting experience. Detection is performed by t"
+  },
+  {
+    "title": "Microsoft Teams: Impersonation Protection for Meetings",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - When Teams detects a potential impersonation attempt in a meeting, it will surface warnings and risk indicators to participants and organizers. This is a platform-level control targeting social engineering in call"
+  },
+  {
+    "title": "Microsoft Teams: Intelligent Call Delegation",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - Intelligent call delegation uses AI to screen incoming calls, gather context, and optionally schedule follow-up appointments via Microsoft Bookings integration. GA is targeted for November 2026. Assess whether yo",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Teams: Alternate Text for Images Shared from OneDrive and SharePoint",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Users will be able to add alt text to images shared into Teams from OneDrive and SharePoint, improving accessibility for screen reader users. GA is targeted for November 2026. No admin configuration is required; r"
+  },
+  {
+    "title": "OneDrive: Presentation Mode for PDFs on iPad",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - The OneDrive iOS app for iPad will gain a presentation mode for PDFs that locks out free-scroll gestures during presenting, preventing accidental page changes. GA is targeted for December 2026. Not available on iP"
+  },
+  {
+    "title": "Outlook: New Outlook for Windows in GCC-H and DoD",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[Preview] - The new Outlook for Windows is now in preview for GCC-H and DoD sovereign environments, with GA targeted for September 2026 (now current). Government tenants on these clouds can begin piloting; verify that an"
+  },
+  {
+    "title": "Outlook iOS: MIP-Label Protected PDFs Now Supported in PDF Previewer",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[Preview] - MIP-labeled protected PDFs can now be previewed natively in the Outlook iOS PDF viewer with a built-in navigation toolbar. GA is listed as July 2026, suggesting this may already be rolling out. Verify with yo"
+  },
+  {
+    "title": "Phishing Campaigns Abusing RMM Tools for Persistent Access",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - Microsoft observed phishing campaigns deploying MSP360 RMM and ScreenConnect to establish redundant remote-access channels after initial compromise. If your environment permits RMM tools or allows ScreenConnect t",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Unauthenticated Command Injection on Internet-Facing Mail Servers: CVE-2026-73570 (Zimbra)",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - Microsoft Threat Intelligence analyzed active exploitation of CVE-2026-73570 in Zimbra, an unauthenticated command injection flaw in internet-facing mail servers. Primarily relevant to organizations that run or s",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Secure What's Next: Microsoft Security at Ignite 2026 Preview",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft previews its Ignite 2026 security announcements, centering on an AI-first end-to-end platform covering identities, devices, data, apps, clouds, infrastructure, and AI agents. Use this to set expectations"
+  },
+  {
+    "title": "Build Automated Agents, Workflows, and Apps in Copilot Studio",
+    "category": "AI & Copilot",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Copilot Studio now consolidates agent building, workflow automation, and app generation in one surface: describe the agent, generate instructions and skills, connect MCP tools and specialist agents, and test at sc"
+  },
+  {
+    "title": "Copilot Studio: Agent Evaluation at Scale",
+    "category": "AI & Copilot",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Copilot Studio's Evaluations feature runs structured tests against agents using your own conversations, auto-generated test cases, or a CSV upload. This is the mechanism for validating agent behavior before produc"
+  },
+  {
+    "title": "Copilot Studio: Bid Evaluation Agent Demo",
+    "category": "AI & Copilot",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - A worked example of a Bid Evaluation Agent that checks supplier bids against tender requirements and flags missing certifications, cold-chain handling, and insurance minimums. Useful reference architecture for pro"
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Recurring Quality Evaluations GA in October 2026",
+    "category": "AI & Copilot",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Quality Evaluation in Dynamics 365 Contact Center now supports recurring bulk evaluation runs over previously closed conversations, not just event-triggered evaluations at conversation close. This enables retrospe"
+  },
+  {
+    "title": "Your AI Transformation Starts with What You've Already Built",
+    "category": "AI & Copilot",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft's PPCC 2026 recap reinforces the Power Platform and Copilot Studio path for converting existing business processes into AI-powered solutions without starting from scratch. Useful framing for internal bus"
+  },
+  {
+    "title": "Meet the New Microsoft Purview Classifiers Experience (Public Preview)",
+    "category": "Security & Compliance",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[Preview]  - The unified classifiers experience consolidates trainable classifiers, sensitive information types, and other classification types into a single admin view with item counts and policy dependency mapping. Bef",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Scaling Classification and Labeling: Updated Interactive Architecture",
+    "category": "Security & Compliance",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[Preview]  - Microsoft published an updated interactive Purview reference architecture focused on classification and labeling at scale, incorporating the wave of current auto-labeling public previews. Download the intera",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Insights from the 2026 Microsoft Digital Defense Report",
+    "category": "Security & Compliance",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - The 2026 MDDR reflects a more interconnected threat environment with government agencies accounting for 27% of observed cyber threat activity, up from 17% in 2025. Read the full report for threat actor patterns an"
+  },
+  {
+    "title": "Preparing Governments for an Era of Interconnected Cyber Risk",
+    "category": "Security & Compliance",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Microsoft's policy perspective on the 2026 MDDR findings, focused on government sector exposure. Relevant if you support public sector customers or operate in regulated environments where government threat intelli"
+  },
+  {
+    "title": "Why Every Chat Turn Costs More Tokens",
+    "category": "Security & Compliance",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA]  - A practical explainer on AI tokenomics: stateless language models resend the full conversation history and system prompt on every turn, meaning longer sessions accumulate prompt token costs faster than shorter qu",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "EWS Deprecation Is Live: Configure EWSAllowedAppIDs Now",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Deadline: active as of early October 2026, with additional phases through April 2027. Setting EWSEnabled = True alone no longer permits EWS access; populate EWSAllowedAppIDs with your approved app list immediately"
+  },
+  {
+    "title": "Upgrade ExchangeOnlineManagement PowerShell Module to v3.10.1+",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Deadline: no hard cutoff published, but older module versions will progressively fail as Exchange Online authentication requirements evolve. Audit all scripts, runbooks, and admin workstations and update to v3.10."
+  },
+  {
+    "title": "Apply September 2026 V2 Exchange Server Security Updates",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Deadline: apply promptly. SUs are available for Exchange SE RTM, 2019 CU14/CU15, and 2016 CU23 (2019 and 2016 require Period 2 ESU enrollment). This addresses CVE-2026-96940 (EoP, CVSS 8.8) and other vulnerabiliti"
+  },
+  {
+    "title": "CVE-2026-69712 Windows Key Distribution Center RCE",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Critical · CVSS 8.8. Unauthenticated or network-based RCE in the Windows KDC. Acknowledgment updated this week; patch status should be verified against your September CU deployment for all domain controllers. Surf"
+  },
+  {
+    "title": "CVE-2026-96940 Microsoft Exchange Server Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 8.8. Weak authorization in Exchange Server allows an authenticated attacker to elevate privileges over a network. Apply the September 2026 V2 SU to affected Exchange Server versions. Surfaced in t"
+  },
+  {
+    "title": "CVE-2026-69586 Microsoft Windows PDF Remote Code Execution",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 9.8. High-severity RCE in Windows PDF handling despite the Important rating; CVSS 9.8 warrants treating this with Critical-level urgency. Acknowledgment updated this week; verify patch coverage ac"
+  },
+  {
+    "title": "CVE-2026-69328 Windows Storage Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 7.8. Local EoP in Windows Storage. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-69451 Windows Management Instrumentation Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 7.1. Local EoP in WMI. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-69605 Microsoft Install Service Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 7.0. Local EoP in Microsoft Install Service. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-70562 Windows Audio Service Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 7.0. Local EoP in Windows Audio Service. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-70125 Microsoft Office Outlook Remote Code Execution",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 8.8. RCE in Microsoft Office Outlook. CWE added this week as an informational update. Verify patch coverage across your Outlook client fleet. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-69267 Windows Connected User Experiences and Telemetry Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 6.5. Information disclosure in the DiagTrack service. Acknowledgment updated this week; informational change only. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-69504 Windows NTFS Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 5.5. Local information disclosure in NTFS. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-69288 Windows GDI+ Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 5.5. Information disclosure in Windows GDI+. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "CVE-2026-62699 Windows UDFS Driver Remote Code Execution",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Important · CVSS 6.8. RCE via the Windows Universal Disk Format File System driver. Acknowledgment updated this week; no exploitation confirmed. Verify patch deployment. Surfaced in the Week of 2026-10-06 digest."
+  },
+  {
+    "title": "Chromium: CVE-2025-2137 Out-of-Bounds Read in V8",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Out-of-bounds read in the V8 JavaScript engine affecting Chromium-based browsers including Edge. Information published this week. Ensure Edge is updated to the latest stable channe"
+  },
+  {
+    "title": "Chromium: CVE-2025-1920 Type Confusion in V8",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Type confusion in V8 affecting Chromium-based browsers. Information published this week. Ensure Edge is updated to the latest stable channel build. Surfaced in the Week of 2026-10-"
+  },
+  {
+    "title": "Chromium: CVE-2025-10502 Heap Buffer Overflow in ANGLE",
+    "category": "Action Required",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Heap buffer overflow in ANGLE (graphics layer) affecting Chromium-based browsers. Information published this week. Ensure Edge is updated to the latest stable channel build. Surfac"
+  },
+  {
+    "title": "Passkey Credential Management API Reference Added to Entra Docs",
+    "category": "Documentation Updates",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "Microsoft added the API reference for passkey credential management, giving developers and admins the schema and endpoint details needed to programmatically manage passkeys in Entra ID."
+  },
+  {
+    "title": "Delegated Passkey Credential Management Sample Documented",
+    "category": "Documentation Updates",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "A new sample covering delegated passkey credential management is now documented in the Entra developer guidance, providing a reference implementation for orgs building helpdesk or self-service passkey flows."
+  },
+  {
+    "title": "Guest Lifecycle Policies Documentation Added",
+    "category": "Documentation Updates",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "New documentation covers guest lifecycle policy configuration in Entra ID, filling a gap for admins managing external identity governance and access review automation for guest accounts."
+  },
+  {
+    "title": "Entra Connect Health Agent: Corrected Required Permissions",
+    "category": "Documentation Updates",
+    "date": "2026-10-06",
+    "url": "/posts/2026-10-06/",
+    "snippet": "The required permissions to operate the Entra Connect Health agent were incorrect in the docs; this fix matters for hybrid admins who delegated Connect Health operations to a non-Global Admin account and found permission"
+  },
+  {
     "title": "Agent 365 MCP server governance is GA:",
     "category": "Top 5",
     "date": "2026-09-29",
