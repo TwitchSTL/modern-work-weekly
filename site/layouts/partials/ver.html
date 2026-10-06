@@ -1,0 +1,7 @@
+{{- /* Content-hash cache buster: URL only changes when the file does, so
+       Cloudflare and browsers can keep CSS/JS cached between daily builds.
+       Usage: partial "ver.html" "/css/main.css" */ -}}
+{{- $p := printf "static%s" . -}}
+{{- $v := "0" -}}
+{{- if fileExists $p -}}{{- $v = substr (md5 (readFile $p)) 0 10 -}}{{- end -}}
+{{- return $v -}}

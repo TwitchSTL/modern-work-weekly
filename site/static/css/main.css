@@ -59,6 +59,7 @@ body {
   color: var(--color-text);
   line-height: 1.7;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -285,6 +286,7 @@ a:hover { color: var(--color-accent-hover); text-decoration: underline; }
     min-width: 0;
     width: auto;
     max-height: calc(100vh - 5.5rem);
+    max-height: calc(100dvh - 5.5rem);
     overflow-y: auto;
   }
   .portals-grid {
@@ -1744,6 +1746,7 @@ details[open] .toc-label::before { content: "▼ "; }
   position: sticky;
   top: 4.5rem;
   max-height: calc(100vh - 5rem);
+  max-height: calc(100dvh - 5rem);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
@@ -3797,4 +3800,95 @@ details[open] .toc-label::before { content: "▼ "; }
 .exec-checklist-item:has(.exec-checklist-cb:checked) span {
   color: var(--color-text-muted);
   text-decoration: line-through;
+}
+
+/* ── Mobile & touch pass (2026-10-06) ────────────────────────────────────
+   Driven by Cloudflare Web Analytics: ~8% of visits are mobile (all iOS
+   Safari so far), none Android. Appended last so it wins the cascade over
+   the older 600px header rule above. */
+.nav-toggle { display: none; }
+
+@media (max-width: 700px) {
+  .site-header { padding: 0.6rem 0; }
+  .header-inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .site-logo { height: 44px; }
+
+  /* Collapsed menu only when JS has attached the toggle (header.html adds
+     .has-nav-toggle), so no-JS visitors still see every link. */
+  .site-header.has-nav-toggle .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    padding: 0 0.9rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  .site-header.has-nav-toggle .site-nav { display: none; }
+  .site-header.has-nav-toggle.nav-open .site-nav { display: flex; }
+  .site-header .site-nav {
+    flex: 1 1 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .site-nav a.nav-link,
+  .site-nav a.nav-cta {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5rem 0.9rem;
+  }
+  .site-nav .search-btn {
+    flex: 1 1 auto;
+    min-height: 44px;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+  .site-nav .nav-icon-btn { min-width: 44px; min-height: 44px; }
+
+  /* Wide tables scroll sideways instead of being clipped by the body's
+     overflow-x:hidden. */
+  .post-content table,
+  .exec-content table,
+  .exec-section-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .exec-checklist-cb { width: 20px; height: 20px; }
+  .post-content pre { max-width: 100%; }
+}
+
+/* Keyboard-shortcut hints mean nothing without a hardware keyboard. */
+@media (hover: none) {
+  .search-btn kbd,
+  .search-hint { display: none; }
+}
+
+/* Comfortable tap targets for accordion toggles on touch screens. */
+@media (pointer: coarse) {
+  .post-sidebar-accordion summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
