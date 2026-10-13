@@ -1,5 +1,377 @@
 [
   {
+    "title": "Send-from-alias GA in Exchange Online:",
+    "category": "Top 5",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "Users can now send from any proxy address on their mailbox, not just the primary SMTP address. This closes a long-standing gap that forced workarounds like shared mailboxes or send-as delegation for alias-based identitie"
+  },
+  {
+    "title": "Purview DLP policies for Copilot grounding now GA:",
+    "category": "Top 5",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "Two new Purview DLP policies ship this week: one restricts Copilot from grounding responses in external email (reducing prompt injection risk), and a second blocks sensitive data types from leaking into Copilot's externa"
+  },
+  {
+    "title": "Project Perception multi-agent security defense GA:",
+    "category": "Top 5",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "Microsoft Defender's Project Perception orchestrates red, blue, and green AI agent teams to validate attacker reachability, generate KQL detections, harden posture, and push tested code fixes in minutes. The human-approv"
+  },
+  {
+    "title": "Windows Update certificate rotation deadline: May and June 2027:",
+    "category": "Top 5",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "Certificates used to establish trust with Windows Update servers expire May 17 and June 19, 2027. Devices that haven't been updated before then will lose connectivity to Windows Update. Start identifying devices that are"
+  },
+  {
+    "title": "Entra ID Agent ID lifecycle policies now documented:",
+    "category": "Top 5",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "Microsoft has published new documentation covering lifecycle policies for Entra Agent IDs, including sign-in health investigation for both interactive and autonomous agent sign-ins. As AI agents accumulate Entra identiti"
+  },
+  {
+    "title": "Post-quantum authentication: Why organizations should start testing certificate ecosystems now",
+    "category": "Identity & Access",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Your existing PKI and certificate-dependent authentication flows will need to be PQC-compatible before quantum threats become practical, and the migration complexity means starting now is the right call. Microsoft"
+  },
+  {
+    "title": "3 lessons from frontier AI vulnerability research",
+    "category": "Identity & Access",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Microsoft's FORGE Lab has extended AI-assisted vulnerability discovery from Windows to the Linux kernel, surfacing lessons relevant to any team running large-scale security research. The methodological takeaways a"
+  },
+  {
+    "title": "Prepare for Windows Update certificate rotation in 2027",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Certificates anchoring trust for Windows Update connections expire May 17 and June 19, 2027; devices that miss the update carrying new certificates will lose Windows Update connectivity entirely. Microsoft is hand"
+  },
+  {
+    "title": "Remote PC connections in Windows App on Windows now GA",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Windows App now supports direct remote PC connections alongside Windows 365, Azure Virtual Desktop, and Dev Box in a single pane, without requiring a work or school account. This is a meaningful change for helpdes"
+  },
+  {
+    "title": "Sending From Email Aliases - General Availability",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Exchange Online users can now send mail from any proxy address on their mailbox, not just the primary SMTP address. This eliminates the need for shared mailboxes or delegate permissions to cover alias-based sendin"
+  },
+  {
+    "title": "Microsoft Teams: View files and conversations side by side",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[Preview] - Opening a PDF, Markdown, or HTML file from Teams chat or a channel message will show the conversation panel alongside the file, anchored to where the file was shared. Reduces context-switching during document"
+  },
+  {
+    "title": "Work IQ: Updating documents in Office",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[Preview] - Work IQ gains the ability to create and edit Office documents using organizational context through agents. Preview in November 2026, GA in January 2027. Plan your data governance posture around agent-authored"
+  },
+  {
+    "title": "Microsoft Teams: Events now support up to 20,000 registrations",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Teams Events capacity increases to 20,000 registrations for organizers with valid Attendee packs. If you're planning large-scale events and were previously constrained by lower limits, this removes that ceiling. G"
+  },
+  {
+    "title": "Microsoft Teams: Event Chat for large-audience Events in GCC, GCC High, and DoD",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Public event chat is now available for events over 1,000 attendees or any event optimized for a large audience in sovereign cloud environments. GA in November 2026. GCC and GCC High admins running large-audience e"
+  },
+  {
+    "title": "Microsoft Teams: Events in Meet app in Teams in GCC",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - The Meet app in Teams GCC is being renamed to Events app and now surfaces organization-wide event discovery, upcoming event tracking, and event planning. Rolling out October 2026. No admin action required, but com"
+  },
+  {
+    "title": "Are bigger agents better? How to design agents that scale",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Copilot Studio's engineering blog makes the practical case that agent reliability degrades as scope expands unchecked: more tools and knowledge sources create more execution paths and more failure modes. If your t"
+  },
+  {
+    "title": "Copilot Studio Now Builds Agents, Workflows, Apps",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Copilot Studio now covers agents (with model, skills, connectors, APIs, MCPs, knowledge, and memory), multi-step workflows involving other agents or human reviewers, and full-stack apps generated from natural lang"
+  },
+  {
+    "title": "Describe an App, Get a Working App",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Copilot Studio Apps let makers describe a business app connected to Dataverse or SharePoint via connectors, generating summary tiles and detail views without writing code. Company branding can be applied through a"
+  },
+  {
+    "title": "Build an AI Agent From One Prompt",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Copilot Studio can generate a full agent, including reusable skills for requirement coverage and evidence verification, from a single descriptive prompt. Skills created this way are reusable across other agents in"
+  },
+  {
+    "title": "Add Human Review to an AI Agent Workflow",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Copilot Studio workflows now include an if/else Human Review step that pauses automation when the agent flags a decision, routing to a human before continuing. Each workflow step can be tested independently. This "
+  },
+  {
+    "title": "Microsoft Copilot: Sales Development Agent integrates with Salesforce",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - The Sales Development Agent now connects to Salesforce CRM via Microsoft's Salesforce MCP server, enabling lead access, prospect record management, and activity logging directly in Salesforce from SDA. GA October "
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Unify product receipt and item requirement posting",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[Preview] - A new feature combines purchase order product receipt posting and linked project item requirement consumption into a single atomic transaction, preventing duplicate project postings and rolling back both on e"
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Import tasks from other projects",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Project managers can now select and import tasks from one or more existing projects into a new project, replacing the previous workaround of full project copy or manual task entry via schedule APIs. GA now. If you"
+  },
+  {
+    "title": "Power Apps: Model-driven apps in Business Apps in Work IQ",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[Preview]  - Power Apps model-driven apps surface in Work IQ as Business Apps, accessible via Copilot Studio or the Work IQ MCP with natural-language prompts for listing, reading, creating, updating, and deleting records",
+    "emphasis": [
+      "Apps"
+    ]
+  },
+  {
+    "title": "Microsoft Power Pages now available in Sweden Central and Italy North",
+    "category": "AI & Copilot",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Power Pages is now GA in two additional Azure regions, relevant for organizations with data residency requirements in Sweden or Italy. If you've been holding off on Power Pages deployments for residency reasons, t"
+  },
+  {
+    "title": "Microsoft Viva: Custom branding in Engage rolling out",
+    "category": "Employee Experience",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Engage-level admins can now configure a tenant-wide brand identity across Engage web and mobile, including brand name, large and small logos, and a theme color, managed from a new Brand Center in the Viva Engage a"
+  },
+  {
+    "title": "Fight AI with AI: Multi-Agent Security Defense (Project Perception)",
+    "category": "Security & Compliance",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA]  - Project Perception in Microsoft Defender orchestrates red, blue, and green AI agent teams against a specified threat actor profile, confirming attacker-reachable vulnerabilities, deploying KQL detections, hardeni",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Protecting Organizations from External Email Risks in Microsoft 365 Copilot",
+    "category": "Security & Compliance",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA]  - A new Purview DLP policy lets you restrict Copilot from grounding responses in external or unverified email, reducing cross-prompt injection risk while keeping internal email grounding intact. Configure this in t",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "DLP for External Web Search in Microsoft 365 Copilot",
+    "category": "Security & Compliance",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA]  - A complementary Purview DLP policy detects and blocks sensitive data types (credit card numbers, passport numbers, SSNs) from being included in Copilot's external Bing web search queries. Configure alongside the ",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "The Microsoft AI and Agent Platform: Securing and Governing Intelligent Agents",
+    "category": "Security & Compliance",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA]  - Part 2 of Microsoft's AI and Agent Platform series covers how the security model changes when agents move from answering questions to taking actions: delegated identity, API calls, tool invocations, cross-agent c",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "CISO perspectives on managing vulnerability risks in the age of AI",
+    "category": "Security & Compliance",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Microsoft's security blog covers how CISOs can apply AI-powered vulnerability management to increase resilience, including prioritization strategies and tooling considerations. Useful context for framing your own "
+  },
+  {
+    "title": "CVE-2026-62744 - Microsoft Windows Media Foundation RCE",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 8.8 - Acknowledgment update only, no new patch action required. Remote code execution vulnerability in Windows Media Foundation; verify the fix is applied in your patch cycle if not already deploy"
+  },
+  {
+    "title": "CVE-2026-68875 - Windows NTFS Remote Code Execution",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 7.8 - Acknowledgment update only, no new patch action required. Confirm NTFS RCE fix is included in your current Windows patch baseline."
+  },
+  {
+    "title": "CVE-2026-68878 - Windows Fast FAT Driver Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 8.0 - Acknowledgment update only. EoP in the Fast FAT filesystem driver; ensure this is covered in your deployed patches."
+  },
+  {
+    "title": "CVE-2026-69281 - Windows License Manager Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 7.0 - Acknowledgment update only. EoP in License Manager; confirm patch status across your Windows endpoints."
+  },
+  {
+    "title": "CVE-2026-69337 - Windows Registry Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 7.1 - Acknowledgment update only. Registry EoP; verify inclusion in your current patch deployment."
+  },
+  {
+    "title": "CVE-2026-69451 - Windows Management Instrumentation Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 7.1 - Acknowledgment update only. WMI EoP; confirm this is patched across managed endpoints before an adversary chains it with an initial access vector."
+  },
+  {
+    "title": "CVE-2026-69582 - Windows Volume Manager Extension Driver Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 7.8 - Acknowledgment update only. Kernel-mode driver EoP; validate patch deployment status."
+  },
+  {
+    "title": "CVE-2026-69693 - Windows Device Association Broker Service Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 7.0 - Acknowledgment update only. EoP in the Device Association Broker Service; confirm patch status."
+  },
+  {
+    "title": "CVE-2026-69732 - Windows Link Layer Topology Discovery Protocol RCE",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Important · CVSS 8.1 - Acknowledgment update only. Network-based RCE via LLTDP; if your environment exposes LLTDP broadly, consider whether this warrants prioritized review given the higher CVSS score and network "
+  },
+  {
+    "title": "CVE-2025-12428 - Chromium: Type Confusion in V8",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC - Information published. Ensure Edge is on the latest channel release which incorporates this Chromium fix."
+  },
+  {
+    "title": "CVE-2025-12429 - Chromium: Inappropriate implementation in V8",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC - Information published. Verify Edge version includes this Chromium patch."
+  },
+  {
+    "title": "CVE-2025-12432 - Chromium: Race in V8",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC - Information published. Update Edge to the current release to pick up this fix."
+  },
+  {
+    "title": "CVE-2025-12433 - Chromium: Inappropriate implementation in V8",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC - Information published. Confirm Edge deployment includes this Chromium build."
+  },
+  {
+    "title": "CVE-2025-12441 - Chromium: Out of bounds read in V8",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC - Information published. Apply current Edge release to address this OOB read."
+  },
+  {
+    "title": "CVE-2025-12727 - Chromium: Inappropriate implementation in V8",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC - Information published. Update Edge to incorporate this Chromium fix."
+  },
+  {
+    "title": "Windows Update certificate rotation: May 17 and June 19, 2027 deadlines",
+    "category": "Action Required",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "[GA] - Devices that haven't received the update carrying new Windows Update trust certificates before those dates will lose connectivity to Windows Update. Most managed devices will receive this automatically, but begin "
+  },
+  {
+    "title": "Entra Agent ID lifecycle policies article added",
+    "category": "Documentation Updates",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "New article documenting lifecycle policies for Entra Agent IDs, covering how to manage the identity lifecycle of AI agents registered in your tenant. Essential reading as agent identities accumulate in Entra."
+  },
+  {
+    "title": "Agent ID sign-in health investigation now documented",
+    "category": "Documentation Updates",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "New guidance covers how to investigate sign-in health for both interactive and autonomous agent sign-ins in Entra ID, giving admins a concrete investigation path when agent authentication behaves unexpectedly."
+  },
+  {
+    "title": "Passkey nudge suppression terminology updated",
+    "category": "Documentation Updates",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "The registration campaign nudge documentation now uses the correct \"passkey\" terminology for nudge suppression scenarios, aligning with current product behavior. Relevant if you're configuring phishing-resistant MFA nudg"
+  },
+  {
+    "title": "Windows Hello for Business profile exception behavior clarified",
+    "category": "Documentation Updates",
+    "date": "2026-10-13",
+    "url": "/posts/2026-10-13/",
+    "snippet": "Documentation now explicitly describes the exception behavior for Windows Hello for Business profiles in the context of passkey registration campaigns, clarifying when WHfB profiles suppress or allow nudges."
+  },
+  {
     "title": "EWS Deprecation Is Live in Exchange Online:",
     "category": "Top 5",
     "date": "2026-10-06",
