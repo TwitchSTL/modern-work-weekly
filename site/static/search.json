@@ -1,5 +1,450 @@
 [
   {
+    "title": "October 2026 Windows updates destabilizing on-prem Exchange Servers:",
+    "category": "Top 5",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "If you applied October Patch Tuesday updates to Exchange Server SE, 2019, or 2016 hosts, check your OWA error logs and mail queue depths now. Reported symptoms include MapiExceptionMdbOffline failures, crawling email que"
+  },
+  {
+    "title": "Microsoft 365 E7 agent insider risk controls GA:",
+    "category": "Top 5",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Microsoft is framing AI agents as the newest insider threat vector, and E7 plus Project Perception now give admins containment controls that adapt protection continuously as agent behavior evolves. If your org has deploy"
+  },
+  {
+    "title": "Intune CNAME auto-discovery end of support - January 15, 2027:",
+    "category": "Top 5",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "MDM-only Windows enrollment via EnterpriseEnrollment DNS CNAME records stops working in Intune on January 15, 2027. Audit your enrollment flows now and update any user-facing documentation or deployment scripts that rely"
+  },
+  {
+    "title": "New Defender for Identity alerts for Entra ID and Active Directory:",
+    "category": "Top 5",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "The October update adds new alerts covering suspicious sign-in via Temporary Access Pass and additional Active Directory attack patterns. Review your alert tuning and incident response playbooks to account for the new si"
+  },
+  {
+    "title": "Purview auto-labeling troubleshooting playbook published (500K files/day scale):",
+    "category": "Top 5",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Microsoft raised the tenant ceiling for service-side auto-labeling to 500,000 files per day and published a structured field-fix playbook for SharePoint and OneDrive policies. If you run auto-labeling at scale and have u"
+  },
+  {
+    "title": "New Defender for Identity security alerts",
+    "category": "Identity & Access",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - New October alerts cover suspicious sign-in via Temporary Access Pass in Entra ID and additional Active Directory attack patterns. Pull these into your incident response playbooks and validate that your alert tuni"
+  },
+  {
+    "title": "What's new in Microsoft Entra: October 2026",
+    "category": "Identity & Access",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - The October Entra roundup focuses on securing environments where people and AI agents both act on behalf of the business, with updates spanning identity, network access, and workload identity. Read the full post t"
+  },
+  {
+    "title": "Master Microsoft Entra with live webinars, AMAs, and on-demand videos",
+    "category": "Identity & Access",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Microsoft has consolidated the Entra learning calendar, covering Zero Trust adoption, AI-driven automation, and hybrid security strategies. Worth bookmarking for team upskilling, especially if you have engineers n"
+  },
+  {
+    "title": "Dynamics 365 Business Central: Shopify tax line matching (US preview)",
+    "category": "Identity & Access",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview] - AI-assisted Shopify Tax Matching is in public preview for US tenants using the Shopify connector, suggesting tax jurisdiction mappings before sales documents are created. Low identity impact directly, but not"
+  },
+  {
+    "title": "Task Manager visibility into AI workloads (NPU/GPU neural engine)",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - On supported newer Windows devices, Task Manager now surfaces per-process NPU and GPU neural engine activity in the Processes tab, with overall utilization on the Performance tab. Useful for troubleshooting AI wor"
+  },
+  {
+    "title": "Intune CNAME auto-discovery end of support - January 15, 2027",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - MDM-only Windows enrollment via EnterpriseEnrollment DNS CNAME records will stop working in Intune on January 15, 2027. Audit enrollment flows, update deployment scripts, and prepare user communications now so use"
+  },
+  {
+    "title": "Updated Windows 11 Photos experience rolling out to managed devices",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - The refreshed Photos app unifies local and OneDrive photo libraries and is rolling out first to Windows Insiders before broader release later this year. Review how existing management policies apply to the updated"
+  },
+  {
+    "title": "Released: October 2026 Exchange Server Security Updates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - October security updates are available for Exchange Server SE RTM, 2019 CU14/CU15, and 2016. Apply these, but read the instability advisory below first before proceeding on any host."
+  },
+  {
+    "title": "Exchange servers may become unstable after October 2026 Windows updates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - October 13 Patch Tuesday updates are causing OWA failures (MapiExceptionMdbOffline), growing mail queues, and DAG quorum problems on Exchange SE, 2019, and 2016 servers. Consult the Exchange Team blog post for cur"
+  },
+  {
+    "title": "Introducing a team knowledge base curated by Copilot and agents",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview]  - In Frontier Preview, Copilot and agents can now build and maintain a team knowledge base in SharePoint to give agent teammates the context they need for tasks and Q&A. This addresses fragmented and outdated ",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Teams: AI Interpreter for Teams Events",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Real-time AI-powered audio interpretation for Teams Town Halls and Webinars reaches GA in November 2026. Organizers configure supported languages, giving global attendees a more natural multilingual experience bey"
+  },
+  {
+    "title": "Microsoft 365 Apps admin center: Inventory Update Repair",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview] - Preview is live now, with GA targeting November 2026. Admins can identify Windows devices with outdated or broken Microsoft 365 Apps, trigger remote Online Repair, and follow guided manual remediation steps, "
+  },
+  {
+    "title": "Microsoft Teams: Expanded Markdown support in the compose box",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Full Markdown syntax support in the Teams compose box reaches GA in November 2026. Engineers and technical teams who already write in Markdown will get consistent formatting without switching authoring modes."
+  },
+  {
+    "title": "Work IQ: Human in the loop for agent flows",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview]  - Preview in November 2026, GA in January 2027. Agent and agent flows can now pause for human input or approval before continuing, giving admins and process owners a governance checkpoint inside automated work",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Work IQ: Real-time transcripts for Teams meetings",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview]  - Applications and agents can now access Teams meeting transcripts in real time, with GA targeting November 2026. This unlocks live assistance and insight scenarios during meetings, not just post-meeting analy",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Teams: Audio announcement for recording and transcription",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Admins can enable a policy that plays an audio announcement when recording or transcription starts, applicable tenant-wide or to specific groups. GA targets December 2026; evaluate your compliance and accessibilit"
+  },
+  {
+    "title": "Human in the loop for AI pen testing agents in Project Perception",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Project Perception's pen test agents pause for human approval before executing any consequential action, letting security teams steer agent reasoning and confirm assumptions. Worth reviewing if your org is evaluat"
+  },
+  {
+    "title": "Agents are your newest insiders: Security must move at their speed",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Microsoft 365 E7 and Project Perception introduce controls to contain agent risk and adapt protection continuously as agent behavior evolves. If your org is rolling out Copilot agents or integrating third-party ag"
+  },
+  {
+    "title": "What each AI agent team does in Project Perception",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Project Perception structures agents into red, blue, and green teams: red agents find attack paths and prove vulnerabilities, blue agents investigate and build detections, green agents harden posture and remediate"
+  },
+  {
+    "title": "MAI Cyber Flash: Dedicated cybersecurity model in MDASH",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - MAI Cyber Flash handles roughly 90% of security queries including vulnerability finding, patching, and fix validation, deferring only the hardest tasks to a larger frontier model. The token-efficiency angle matter"
+  },
+  {
+    "title": "Managing open-weight model risk in enterprise deployments",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA]  - Microsoft and NVIDIA published a joint whitepaper with a shared taxonomy, evaluation framework, and controls for managing open-weight AI model risk. Reference material for any org running or planning to run self-",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Go multilingual with the Power Pages plugin",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - The Power Pages plugin for GitHub Copilot CLI and Claude Code now supports localization across 43+ languages, including right-to-left languages like Arabic and Hebrew. Relevant for orgs building externally facing "
+  },
+  {
+    "title": "Create Power Pages sites from SPA templates",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - The /create-site skill in the Power Pages plugin now generates sites from ready-made SPA templates rather than building every component from scratch. Significantly speeds up new portal scaffolding for Power Platfo"
+  },
+  {
+    "title": "Microsoft Viva: Enhanced Copilot in Viva Engage",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Powered by Engage MCP and Work IQ integration, Copilot in Viva Engage now goes beyond catch-ups and summaries, enabling users to synthesize discussions, analyze leader post feedback, surface key themes, and export"
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Zero-effort task completion",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - GA in November 2026, this lets project managers and team members mark tasks complete even when no effort was planned or recorded, covering milestones, admin activities, and checklists. Relevant for orgs using Proj"
+  },
+  {
+    "title": "Copilot Studio: Computer Use for web browsing via GitHub Copilot Harness",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview] - Preview targets November 2026, GA in January 2027. Agents can browse websites, extract information, and download files using natural language, extending agent reach beyond configured knowledge sources. Evalua"
+  },
+  {
+    "title": "Microsoft Dataverse: Add unlicensed Entra users as activity recipients",
+    "category": "AI & Copilot",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[Preview] - Preview is live now, GA in January 2027. Active Entra users without Dataverse or Power Apps licenses can be added to activity recipient fields; created records remain disabled and grant no Dynamics 365 app ac"
+  },
+  {
+    "title": "Troubleshooting playbook for auto-labeling in SharePoint and OneDrive",
+    "category": "Security & Compliance",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA]  - Tenant auto-labeling is now capped at 500,000 files per day, and Microsoft has published a structured checklist for diagnosing labeling gaps caused by missing prerequisites, simulation behavior, or label-preceden",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Endpoint DLP: FTP/SFTP egress controls",
+    "category": "Security & Compliance",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA]  - Purview Endpoint DLP now supports policy enforcement for FTP and SFTP file transfers, closing a common exfiltration vector that was previously outside DLP scope. Review your existing Endpoint DLP policies and det",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Agents are your newest insiders: Microsoft 365 E7 agent risk controls",
+    "category": "Security & Compliance",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - E7 and Project Perception introduce adaptive protection for AI agent activity, treating agents as a distinct insider risk vector rather than lumping them with user risk. Security architects planning E7 or reviewin"
+  },
+  {
+    "title": "Managing open-weight model risk: Microsoft and NVIDIA whitepaper",
+    "category": "Security & Compliance",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Shared taxonomy, evaluation framework, and enterprise controls for open-weight AI model risk. Bookmark for AI governance teams and any team running self-hosted models; the taxonomy is useful for building internal "
+  },
+  {
+    "title": "CVE-2026-83831 Microsoft Edge (Chromium-based) Remote Code Execution",
+    "category": "Security & Compliance",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "[GA] - Severity not yet rated by MSRC. A double-free vulnerability in Edge allows an unauthorized attacker to execute code over a network. Monitor MSRC for a severity rating update and Edge channel release notes for the "
+  },
+  {
+    "title": "Exchange servers may become unstable after October 2026 Windows updates",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Check all on-prem Exchange SE, 2019, and 2016 servers for OWA MapiExceptionMdbOffline errors, queue growth, and DAG instability before proceeding with October Patch Tuesday updates. Apply Exchange SUs only after reviewin"
+  },
+  {
+    "title": "Intune CNAME auto-discovery end of support: January 15, 2027",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Audit all MDM-only Windows enrollment flows that use EnterpriseEnrollment DNS CNAME records. Update deployment documentation and user-facing instructions before January 15, 2027 or affected users will be prompted to manu"
+  },
+  {
+    "title": "CVE-2026-70197 .NET Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Important · CVSS 8.1. Microsoft confirms the vulnerability is not yet addressed and a complete mitigation is in preparation. Monitor the MSRC advisory for patch availability; consider whether any public-facing .NET servi"
+  },
+  {
+    "title": "CVE-2026-103572 Visual Studio Tools for Applications and SQL Server Management Studio RCE",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Important · CVSS 8.8. The advisory was updated to add Visual Studio download and KB article links; fixed builds are unchanged. Confirm affected Visual Studio versions are patched against this RCE in your developer workst"
+  },
+  {
+    "title": "CVE-2026-108465 Windows Update Delivery Optimization Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Important · CVSS 7.0. An acknowledgment update; fixed builds are unchanged. Verify this patch is applied across your Windows endpoints."
+  },
+  {
+    "title": "CVE-2026-80092 Microsoft Identity Web Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Important · CVSS 5.3. The advisory now lists Identity Web v3 and v4 separately with version ranges clarified; fixed builds are v3.16.0 and v4.16.1. If your apps reference Microsoft.Identity.Web, confirm you're on or abov"
+  },
+  {
+    "title": "Chromium CVE-2026-106268: Use after free in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 (Chrome). A use-after-free vulnerability addressed in the Chromium base ingested by Edge. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106274: Incorrect reference resolution in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 (Chrome). Incorrect reference resolution addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106278: Use after free in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 (Chrome). A second use-after-free in the Chromium base addressed in Edge. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106271: Missing authorization in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.1 (Chrome). Missing authorization issue addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106263: Improper input validation in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 6.5 (Chrome). Improper input validation addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106264: Missing authorization in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 5.4 (Chrome). Missing authorization addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106270: Incorrect authorization in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 5.4 (Chrome). Incorrect authorization addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106276: UI misrepresentation in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 5.4 (Chrome). UI misrepresentation addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106258: Uninitialized resource in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 4.7 (Chrome). Uninitialized resource vulnerability addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-106273: Uninitialized resource in Edge",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 4.7 (Chrome). A second uninitialized resource issue addressed in the Chromium base. Ensure Edge is updated to the latest stable channel build."
+  },
+  {
+    "title": "CVE-2026-83831 Microsoft Edge RCE (double free)",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Severity: not yet rated by MSRC. A double-free in Edge allows unauthenticated network-based code execution. Monitor MSRC for severity and patch details; treat as high-priority once a rating is published."
+  },
+  {
+    "title": "Copilot Studio: Computer Use for web browsing (preview November 2026)",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "GA January 2027. Before enabling agents to browse arbitrary websites and download files, review your data handling policies, acceptable use policies, and any DLP rules that should apply to agent-sourced content."
+  },
+  {
+    "title": "Teams audio announcement for recording/transcription (GA December 2026)",
+    "category": "Action Required",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Decide before December GA whether to enable this tenant-wide or scope it to specific groups; some compliance frameworks may require it, while others may create friction if applied broadly without user communication."
+  },
+  {
+    "title": "ID Governance licensing docs updated with E7 tier column",
+    "category": "Documentation Updates",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "The ID Governance licensing fundamentals article now includes a Microsoft 365 E7 column, reflecting the new licensing tier and its entitlements for governance features."
+  },
+  {
+    "title": "Entra ID Governance access review navigation pages marked GA",
+    "category": "Documentation Updates",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Preview labels removed from the access review navigation documentation, confirming those features are fully GA; update any internal runbooks that flagged these steps as preview-only."
+  },
+  {
+    "title": "SAP IAG integration documentation marked GA",
+    "category": "Documentation Updates",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "The Entra ID SAP Identity Access Governance integration documentation has had its preview label removed, indicating the integration is now generally available."
+  },
+  {
+    "title": "Azure Files access via Platform SSO Kerberos TGT now in public preview",
+    "category": "Documentation Updates",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "Docs now document that Platform SSO can issue a Kerberos TGT for Azure Files access, a new public preview capability relevant to macOS device management scenarios."
+  },
+  {
+    "title": "Atypical travel detection behavior and table updated",
+    "category": "Documentation Updates",
+    "date": "2026-10-20",
+    "url": "/posts/2026-10-20/",
+    "snippet": "The Identity Protection atypical travel detection documentation has been updated with revised detection details and an updated reference table; review if you have conditional access policies or Identity Protection polici"
+  },
+  {
     "title": "Send-from-alias GA in Exchange Online:",
     "category": "Top 5",
     "date": "2026-10-13",
