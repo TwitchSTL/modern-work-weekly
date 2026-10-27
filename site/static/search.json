@@ -1,5 +1,417 @@
 [
   {
+    "title": "Storm-0940 ARTEX agentic AI supply chain campaign targeting M365:",
+    "category": "Top 5",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "A nation-state actor (Storm-0940) used an agentic AI tool called ARTEX to accelerate a ConnectWise supply chain compromise, leading to application credential abuse across M365 tenants. Review your ConnectWise integration"
+  },
+  {
+    "title": "CVE-2026-105014 Azure Pipelines Remote Code Execution - Critical CVSS 9.1:",
+    "category": "Top 5",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Command injection in Azure Pipelines allows an unauthenticated attacker to execute code over a network. If your pipelines are internet-exposed or use shared hosted agents, treat this as urgent. Validate your patching pos"
+  },
+  {
+    "title": "CVE-2026-111497 Brotli decoder buffer overflow in .NET - Critical CVSS 8.1:",
+    "category": "Top 5",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "An out-of-bounds write in .NET's Brotli decoder allows network-based privilege escalation. Any .NET workload processing compressed content from external sources is exposed. Patch .NET runtimes across all managed endpoint"
+  },
+  {
+    "title": "Exchange Online EWS retirement - apps are breaking now:",
+    "category": "Top 5",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "EWS is being turned off in Exchange Online and applications are actively failing, including Apple Mail and Calendar on macOS, classic Outlook for Mac, and third-party backup tools. Run the EWS usage report in the Exchang"
+  },
+  {
+    "title": "Power Platform Admin Plugin for Copilot Cowork - natural language governance:",
+    "category": "Top 5",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Admins can now query tenant-specific Power Platform data in natural language through Cowork, surfacing things like orphaned assets owned by departed employees without manually correlating multiple admin views. If Power P"
+  },
+  {
+    "title": "Designing smarter access policies for hybrid enterprises",
+    "category": "Identity & Access",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - As AI agents act on users' behalf across distributed environments, perimeter-based trust assumptions break down further. This Entra blog walks through a structured approach to Conditional Access policy design that"
+  },
+  {
+    "title": "Dynamics 365 Finance: Optimized Customer data entities",
+    "category": "Identity & Access",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[Preview] - Finance introduces purpose-specific customer data entities for core info, addresses, electronic contacts, and associations, replacing the need to use a single broad entity for all integration scenarios. Relev"
+  },
+  {
+    "title": "Excel: Get and transform data with Copilot in Excel",
+    "category": "Identity & Access",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - Copilot can now connect to data sources, build Power Query transformations from a natural language description, and load results directly into a workbook. Authentication is still required per data source, so this",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Commerce: Support trade counter sales in POS",
+    "category": "Identity & Access",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Trade Counter POS capabilities are now GA in D365 Commerce, enabling bulk item entry, customer credit term visibility, and contract pricing at the point of sale. Relevant for Commerce deployments in wholesale or B"
+  },
+  {
+    "title": "Your guide to Intune at Microsoft Ignite 2026",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Microsoft has published the session guide for Intune content at Ignite 2026, covering endpoint management, AI security, and cross-platform device management. Block time for the relevant sessions now; Ignite announ"
+  },
+  {
+    "title": "Your Windows release information toolbox",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Microsoft has published a consolidated guide mapping all Windows release information resources (release health, release notes, Windows Update for Business reports, lifecycle dashboards) to specific admin use cases"
+  },
+  {
+    "title": "Outlook: Multiple Intune Accounts in Outlook for Android",
+    "category": "Endpoint & Device Management",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Multiple MAM-enrolled accounts will be supported in Outlook for Android, while MDM remains limited to one account per device. GA is November 2026. If your users have personal and work MAM policies applied simultan"
+  },
+  {
+    "title": "Publish rich and interactive content with HTML pages in SharePoint",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - SharePoint now supports HTML pages stored in the Site Pages library alongside modern pages, buildable via Copilot or by uploading existing HTML files. This meaningfully expands what site owners can publish withou",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Exchange Online EWS application stopped working? Do this.",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - EWS is being retired in Exchange Online and breakages are happening now. Apple Mail, classic Outlook for Mac, some Outlook Desktop add-ins, and third-party backup tools are all affected. Run the EWS usage diagnost"
+  },
+  {
+    "title": "Turn GitHub notifications into code with GitHub Copilot in Microsoft Teams",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - GitHub Copilot integration in Teams now lets users @mention GitHub in a notification thread to trigger actions: reproducing bugs, running tests, implementing fixes, and opening pull requests. This is a meaningful",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Making Microsoft Teams more responsive, reliable, and ready for work",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Microsoft is continuing to publish performance gains from the Teams client re-architecture, with improvements to chat switching speed, freeze reduction, and hardware-accelerated rendering. No action required, but "
+  },
+  {
+    "title": "Cross-Platform Meeting Connect: Teams Rooms joining Zoom Meetings",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Direct Guest Join now allows Teams Rooms to join Zoom Meetings and Zoom Rooms to join Teams meetings, using the room's full AV setup. If your organization manages Teams Rooms and your users regularly join Zoom mee"
+  },
+  {
+    "title": "Microsoft Copilot (Microsoft 365): App Blocks",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - M365 Copilot Chat users can now generate interactive mini-apps (calculators, dashboards, forms, simulations) inline within their Copilot conversation, grounded in live data. This is GA in October 2026. Understand",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Teams: Workflow to automatically add tag members to relevant channels",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Teams will support associating channels with tags so members added to a tag are automatically enrolled in the corresponding channels. GA is November 2026. For large orgs managing Teams channel membership at scale,"
+  },
+  {
+    "title": "Microsoft Copilot (Microsoft 365): SharePoint Site Builder",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[Preview]  - Copilot can now generate a full SharePoint site plan and build the site on confirmation, currently in preview with GA targeted for December 2026. Review SharePoint site creation policies in your tenant; if s",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Real-time streaming analytics",
+    "category": "Collaboration & Productivity",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - The new supervisor application in D365 Contact Center ships with near-real-time streaming dashboards, visual anomaly alerts, and full-screen wallboard support. Relevant for Contact Center deployments; no broad M36"
+  },
+  {
+    "title": "Power Platform Admin Plugin for Copilot Cowork - agentic governance with natural language",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - The new plugin surfaces tenant Power Platform data directly in Cowork, enabling natural language queries over connector inventory, asset ownership, and sharing configurations. For orgs where Power Platform sprawl",
+    "emphasis": [
+      "Infrastructure"
+    ]
+  },
+  {
+    "title": "AI that understands your business: Dataverse and Work IQ at PPCC 2026",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[Preview] - Work IQ business applications entered public preview, giving Copilot and agents awareness of business-specific context stored in Dataverse. If your org is building agents in Copilot Studio that need to reason"
+  },
+  {
+    "title": "Inside the LiteLLM 1.107.0 supply chain compromise",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - Microsoft Threat Intelligence details how LiteLLM version 1.107.0 was trojanized to steal credentials via Python startup hooks and load remote code at runtime. If any team in your org uses LiteLLM in an AI develo",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Microsoft named a Leader in two next-generation app development platform evaluations",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Analyst recognition for Power Platform and Copilot Studio across AI-powered development and enterprise governance categories. Useful as procurement and business case support if your org is evaluating low-code plat"
+  },
+  {
+    "title": "Introducing the customer conversation harness in Microsoft Copilot Studio",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Copilot Studio now includes a customer conversation harness for testing and evaluating agent conversations at scale, enabling builders to validate personalization and context handling before production deployment."
+  },
+  {
+    "title": "Dynamics 365 Finance: Expand localization in LATAM countries for Argentina",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[Preview] - Argentina localization is now in preview, completing the 14-country LATAM expansion framework in D365 Finance (alongside Brazil and Mexico). Scope covers VAT, provincial taxes, taxpayer register imports, and "
+  },
+  {
+    "title": "Dynamics 365 Sustainability: Restate previously calculated emissions",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[Preview] - Organizations can now restate prior emissions calculations in D365 Sustainability while preserving the original result and capturing the reason for restatement. Supports audit trails for ESG reporting correct"
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Configure actions on task grid",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[Preview] - Administrators can now configure which task-grid actions and views are visible to users within Task Grid View Templates, covering toolbar commands, row-level controls, and context menu items. Useful for Proje"
+  },
+  {
+    "title": "Excel: Edit with Copilot in Excel on iPhone",
+    "category": "AI & Copilot",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - Copilot can now make edits and transformations to Excel workbooks directly on iPhone using natural language, including background processing when users switch apps. GA is October 2026. Confirm your M365 Copilot m",
+    "emphasis": [
+      "Endpoints"
+    ]
+  },
+  {
+    "title": "AI-driven nation-state campaign using ARTEX enables supply chain compromise",
+    "category": "Security & Compliance",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - Storm-0940 used ARTEX agentic AI to accelerate a ConnectWise supply chain attack, resulting in application credential abuse across M365 environments. Review all ConnectWise-related app registrations and OAuth perm"
+  },
+  {
+    "title": "Power Pages: First Class Support for Connector APIs",
+    "category": "Security & Compliance",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA]  - Power Pages can now connect directly to enterprise back-end systems (SQL, SAP, Oracle) via the Power Platform on-premises data gateway and native connector framework, without custom integration middleware. For re",
+    "emphasis": [
+      "Network"
+    ]
+  },
+  {
+    "title": "PowerPoint: Clear view-only messaging",
+    "category": "Security & Compliance",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "[GA] - PowerPoint will display a prominent \"Viewing Only\" message bar when a user opens a file they lack edit permission for, identifying the file creator and directing them to request access. GA is November 2026. Low ad"
+  },
+  {
+    "title": "CVE-2026-105014 Azure Pipelines RCE",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Critical · CVSS 9.1. Command injection in Azure Pipelines allows an unauthenticated attacker to execute code over a network. Validate patch status for all Azure Pipelines environments, particularly internet-exposed or sh"
+  },
+  {
+    "title": "CVE-2026-111497 Brotli decoder buffer overflow in .NET",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Critical · CVSS 8.1. Out-of-bounds write in .NET's Brotli decoder allows a network-based attacker to elevate privileges. Patch all .NET runtimes across managed endpoints and servers, prioritizing any workloads that decom"
+  },
+  {
+    "title": "CVE-2026-83519 Windows Error Reporting RCE",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 9.8. Acknowledgment update only; no new patch action required if already deployed. High CVSS score warrants confirming the fix is in place across your Windows fleet."
+  },
+  {
+    "title": "CVE-2026-102870 ASP.NET Core RCE",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 8.8. Product information update to the Software Update table; informational change. Confirm patching is current for affected ASP.NET Core versions."
+  },
+  {
+    "title": "CVE-2026-83862 Windows Network Load Balancing RCE",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 8.8 (revised from 9.8; Attack Vector corrected from Network to Adjacent, reflecting Layer 2 adjacency requirement). Informational change only; no new patch required for environments that have already app"
+  },
+  {
+    "title": "CVE-2026-70197 .NET and Visual Studio RCE",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 8.1. Product information update only. Verify affected .NET and Visual Studio versions are patched in your environment."
+  },
+  {
+    "title": "CVE-2026-114148 ASP.NET Core Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.8. Incorrect default permissions in ASP.NET Core allow a local authorized attacker to elevate privileges. New CVE entry this week; patch ASP.NET Core deployments."
+  },
+  {
+    "title": "CVE-2026-70338 PowerShell Security Feature Bypass",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only. Confirm PowerShell patches are current across your managed endpoints."
+  },
+  {
+    "title": "CVE-2026-70054 Windows NetBIOS Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only. Validate patch deployment across Windows estate; if NetBIOS is enabled in your environment, this warrants extra attention."
+  },
+  {
+    "title": "CVE-2026-69923 Windows AI Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only. Affects the Windows AI subsystem; confirm patch status on devices running AI-enabled Windows builds."
+  },
+  {
+    "title": "CVE-2026-69926 Desktop Window Manager Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.8. Acknowledgment update only. DWM EoP vulnerabilities are frequently chained with other exploits; confirm patching is current."
+  },
+  {
+    "title": "CVE-2026-102208 Windows Win32 Kernel Subsystem Elevation of Privilege",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.0. Acknowledgment update only. Confirm kernel patch is deployed across managed Windows devices."
+  },
+  {
+    "title": "CVE-2026-105728 Dynamics Business Central Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 7.5. Acknowledgment update only. Relevant for orgs running Business Central; confirm the patch is applied."
+  },
+  {
+    "title": "CVE-2026-96234 .NET Information Disclosure",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 5.3. Acknowledgment update only. Low severity but relevant for .NET workloads handling sensitive data; confirm patch currency."
+  },
+  {
+    "title": "CVE-2026-96311 Windows Network List Service Tampering",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Important · CVSS 5.5. Acknowledgment update only. Confirm Windows patches are current; no additional action for already-patched devices."
+  },
+  {
+    "title": "Exchange Online EWS retirement - apps are breaking now",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "EWS is actively being turned off in Exchange Online and dependent applications are failing. Run the EWS usage diagnostic in the Exchange admin center, compile the full list of dependent apps (Apple Mail/Calendar on Mac, "
+  },
+  {
+    "title": "LiteLLM 1.107.0 supply chain compromise - credential theft via Python startup hooks",
+    "category": "Action Required",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "If any team uses LiteLLM in AI development or agentic pipelines, audit the installed version immediately. Version 1.107.0 was trojanized to steal credentials at Python startup and load remote code. Rotate any credentials"
+  },
+  {
+    "title": "New Conditional Access policy planning documentation",
+    "category": "Documentation Updates",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Microsoft has added dedicated Conditional Access policy plan documentation to the Entra docs, giving admins structured guidance for designing and documenting CA policy intent before implementation."
+  },
+  {
+    "title": "Provisioning object connections documented (Preview)",
+    "category": "Documentation Updates",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "New documentation covers the preview provisioning object connections feature, which lets admins visualize relationships between provisioned objects across connected systems. Worth reviewing if you manage HR-driven or cro"
+  },
+  {
+    "title": "Passkey selection behavior clarified for system-preferred authentication",
+    "category": "Documentation Updates",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "The docs now clarify how local passkey selection behaves in system-preferred MFA mode, which affects how authenticator prompts appear when users have multiple credentials registered."
+  },
+  {
+    "title": "HR provisioning timeout troubleshooting guide added",
+    "category": "Documentation Updates",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "New troubleshooting content documents how to diagnose and resolve timeout errors in HR-driven provisioning scenarios, a gap that previously forced admins to rely on support tickets or community posts."
+  },
+  {
+    "title": "Who can revoke application credentials - clarified and troubleshooting guidance added",
+    "category": "Documentation Updates",
+    "date": "2026-10-27",
+    "url": "/posts/2026-10-27/",
+    "snippet": "Documentation now explicitly states which roles can revoke application credentials and links to a new troubleshooting article for revocation failures, useful for incident response runbooks."
+  },
+  {
     "title": "October 2026 Windows updates destabilizing on-prem Exchange Servers:",
     "category": "Top 5",
     "date": "2026-10-20",
