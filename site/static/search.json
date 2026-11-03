@@ -1,5 +1,447 @@
 [
   {
+    "title": "Global Secure Access unifies Private Access and Internet Access into a single SASE purchase:",
+    "category": "Top 5",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "Microsoft is now selling Private Access and Internet Access together as one offering, completing the commercial SASE story that has been in preview for over a year. If you have been piloting either component separately, "
+  },
+  {
+    "title": "Conditional Access policy plans GA in Microsoft Entra:",
+    "category": "Top 5",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "Policy plans let you define shared conditions (users, resources, risk levels, network locations) once at the plan level, then add individual rules for each access requirement, including AI agent risk. The built-in migrat"
+  },
+  {
+    "title": "Defender for Endpoint now discovers local AI agents and MCP servers on managed endpoints:",
+    "category": "Top 5",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "GA for Windows (requires Defender AV platform 4.18.26090.9+) and macOS (requires MDE 101.26072.0017+), this feature populates the AI agent inventory and enables advanced hunting queries against locally running agents and",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "October Intune release: Windows 365 for Agents security baseline and expanded compliance controls:",
+    "category": "Top 5",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "The new Windows 365 for Agents Cloud PC security baseline gives admins a ready-made configuration set for agent-accessible Cloud PCs. Combined with expanded BitLocker compliance controls and update scheduling improvement"
+  },
+  {
+    "title": "Critical CVE-2026-111497: Brotli decoder buffer overflow affects Microsoft products:",
+    "category": "Top 5",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "Critical severity, CVSS 8.1, this buffer overflow in the Brotli decoder is inherited by any Microsoft product that bundles the library. Exploitation status is currently No, but the attack surface is broad given how widel"
+  },
+  {
+    "title": "Global Secure Access: Private Access and Internet Access in one offering",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Microsoft has consolidated Private Access and Internet Access into a single purchasable SASE offering, meaning you no longer need separate licensing tracks for outbound internet filtering and private app tunneling"
+  },
+  {
+    "title": "New Conditional Access policy plans in Microsoft Entra",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Policy plans replace the pattern of duplicating users and conditions across dozens of individual policies: define your shared scope once at the plan level, then add rules per access requirement. Templates for comm"
+  },
+  {
+    "title": "Migrate Conditional Access Policies to Policy Plans",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - The migration tool in the Entra admin center identifies shared conditions across selected policies, elevates them to the plan level, and converts each original policy into a rule, leaving your existing policies en"
+  },
+  {
+    "title": "What Are Conditional Access Policy Plans?",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Policy plans organize access controls around an objective (a persona such as employees or admins, or a security goal such as requiring phishing-resistant MFA) rather than managing policies one at a time. If your c"
+  },
+  {
+    "title": "How Conditional Access Plans and Rules Work",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Each plan defines identities, resources, user actions, authentication context, and shared conditions once; every rule inherits them automatically and adds its own grant or session controls. Plan metadata (name, de"
+  },
+  {
+    "title": "Conditional Access for AI Agents in Microsoft Entra",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - A plan built for agent access uses a single shared condition (high agent risk) and separate rules for high-risk agent users versus high-risk autonomous agents, covering both delegated and agent-specific permission"
+  },
+  {
+    "title": "Phishing-Resistant MFA with Conditional Access Authentication Strength",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - New rules in a policy plan inherit the plan's included and excluded groups automatically, so adding a phishing-resistant MFA authentication strength requirement for all HQ users across all resources requires confi"
+  },
+  {
+    "title": "AI agents are coming: are your identity controls prepared?",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA]  - AI is accelerating credential theft (automated phishing, social engineering, privilege escalation) while simultaneously creating new exposure through agent identities that need the same Zero Trust treatment as us",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Why identity needs network insight to make Zero Trust work",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Identity controls authenticate the session, but session hijacking, degrading device posture, and traffic to non-federated SaaS and AI apps all happen after sign-in. This post makes the case for combining Entra ide"
+  },
+  {
+    "title": "From help desk impersonation to AD CS abuse: Investigating ESC1 and ESC8 intrusion paths",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Attackers used Teams support impersonation to gain remote access, then escalated through Active Directory Certificate Services via ESC1 (misconfigured certificate templates) and ESC8 (NTLM relay to AD CS web enrol"
+  },
+  {
+    "title": "The CISO's evolving role: Protecting and defending in the agentic era",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Aarti Borkar's framing of the dual CISO mandate (enabling innovation with identity and data guardrails, and modernizing defense against AI-powered threats) is a useful reference for building the security leadershi"
+  },
+  {
+    "title": "Dynamics 365 Business Central: USA - Manually upload 1099 forms to the IRIS",
+    "category": "Identity & Access",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[Preview] - The IRS FIRE system retires at end of 2026; IRIS becomes the only electronic filing channel from January 1, 2027. Business Central will support generating IRIS-compatible 1099 submission files for manual uplo"
+  },
+  {
+    "title": "What's new in Microsoft Intune - October",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - October's Intune release introduces a security baseline for Windows 365 for Agents Cloud PCs, giving admins a recommended configuration set to deploy before agent workloads run. Additional updates include expanded"
+  },
+  {
+    "title": "Establish a macOS security baseline with mSCP and Microsoft Intune custom compliance",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Intune custom compliance for macOS now supports NIST mSCP-mapped rules delivered via a discovery script and JSON file, giving Mac-heavy environments a recognized, auditable compliance baseline without third-party "
+  },
+  {
+    "title": "Known limitation: Sensor v3.x activation without Defender for Endpoint isn't supported in government clouds",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Activating the Defender for Identity v3.x sensor on servers without a co-deployed Defender for Endpoint instance is temporarily blocked in government cloud environments. Government cloud tenants planning Defender "
+  },
+  {
+    "title": "IDC MarketScape names Microsoft a Leader in the 2026 Worldwide Modern Endpoint Security for Enterprises Vendor Assessment",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[Broad] - IDC's 2026 MarketScape places Microsoft in the Leader category for enterprise endpoint security. Useful context for procurement conversations or board-level security strategy decks, but no operational action re"
+  },
+  {
+    "title": "SharePoint Showcase: Refreshed SharePoint mobile app",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - The redesigned SharePoint mobile app aligns with the Discover experience on web, bringing sites, files, news, and people into a single starting point for mobile workers. No admin configuration required; the update"
+  },
+  {
+    "title": "The GitHub app in Microsoft Teams is now generally available!",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[Preview] - The GitHub app in Teams moves to GA, enabling engineering, support, and business teams to file issues, investigate bugs, and build prototypes from Teams channels. The new GitHub Canvas surfaces work review di"
+  },
+  {
+    "title": "Microsoft Teams: Default meeting templates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - IT admins can now configure default meeting templates that automatically apply preferred settings (including protection settings) whenever a user schedules a Teams meeting through Outlook or Teams calendar. Requir"
+  },
+  {
+    "title": "Microsoft Teams: Customize blocked file extensions for Weaponizable File Protection",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Admins will be able to override the Microsoft-default blocked file type list for Weaponizable File Protection in Teams, aligning restrictions to organization-specific security requirements. GA is December 2026. Re"
+  },
+  {
+    "title": "Microsoft Teams: Intelligent call recap for call queue calls on Mobile",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA]  - AI-generated notes, key discussion points, and follow-up tasks will be available in the Queues app on Teams Mobile after call queue calls, extending the intelligent recap capability to mobile agents and superviso",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Teams: Automatic recording indicator for call queue calls on Mobile",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Teams Mobile will surface a clear indicator when a call queue call is being automatically recorded and transcribed, with no option to stop it, matching the desktop experience. GA is December 2026. Relevant for com"
+  },
+  {
+    "title": "Microsoft Teams: Manage call groups on Mobile",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Users will be able to create, manage, and configure call groups (including ring settings and forwarding rules) directly from Teams on Mobile, eliminating the need to switch to desktop for call handling configurati"
+  },
+  {
+    "title": "OneDrive: Respond to access requests directly in the Share dialog",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Pending access requests for files, folders, and libraries will appear inside the Share dialog, letting anyone with share permission approve, decline, or bulk-action requests and message requesters without leaving "
+  },
+  {
+    "title": "Microsoft Teams: Activity in other accounts and orgs improvements",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[Preview] - Users will be able to preview and open chats, channels, and activity from other accounts and organizations directly from their main Teams window without a full tenant switch. GA is January 2027. Relevant for "
+  },
+  {
+    "title": "From one prompt to a governed Dataverse app: the Dataverse plugin lands in Copilot Cowork",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA]  - The Dataverse plugin for Copilot Cowork converts natural-language requests into Dataverse tables, sample data, and published apps, with each change requiring explicit user approval and running under the user's ow",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Invite agentic coauthors to collaborate with you directly in canvas studio!",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[Preview] - Agentic authoring in canvas studio via GitHub account is now in preview, allowing GitHub Copilot CLI, Claude Code, and similar coding agents to co-author canvas apps directly in Power Apps Studio. Evaluate ag"
+  },
+  {
+    "title": "Microsoft Copilot: New M365 Copilot usage reports for GCC, GCC High, and DoD",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Copilot Search, Connectors, and Agents usage reports will be available for US Government customers across GCC Moderate, GCC High, and DoD, providing org-level and user-level adoption insights. GA is December 2026."
+  },
+  {
+    "title": "Dynamics 365 Sales: Autonomously generate quotes and drive sales with Sales Development Agent",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - The Sales Development Agent can take leads from qualified opportunities to closed deals, generating quotes through D365 Sales and third-party systems, answering customer questions about quotes, and escalating to h"
+  },
+  {
+    "title": "Dynamics 365 Field Service: Use AI recommendations for mobile offline profile configuration",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA]  - AI-assisted recommendations surface opportunities to improve mobile offline profile design during profile creation and editing, helping admins avoid sync cost overruns, app responsiveness issues, and late-discove",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Enable multiple baselines for a project",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Project managers can now capture and maintain multiple project plan snapshots, load any baseline into the project schedule view, and compare baselines to track schedule and effort variances over time. GA is Octobe"
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Support What-If Analysis for multiple budget versions",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[Preview] - Project managers will be able to compare multiple budget versions and select a preferred version before submission and approval, enabling scenario analysis before committing to a plan. Preview in March 2027, "
+  },
+  {
+    "title": "Built by makers: Five years of Power Platform Community Conference",
+    "category": "AI & Copilot",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - PPCC 2026 recap post covering community innovations and event highlights. No operational action; useful for maker community engagement and internal Power Platform champion programs."
+  },
+  {
+    "title": "Introducing Glint Labs and The Next Generation of Employee Listening Research Report",
+    "category": "Employee Experience",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Microsoft People Science launches Glint Labs as the public home for employee listening research and AI-powered HR tools, alongside a new report on adaptive listening systems and the Analyze tool for exploring surv"
+  },
+  {
+    "title": "CVE-2026-111497: Critical Brotli decoder buffer overflow",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Critical · CVSS 8.1 A buffer overflow in the Brotli decoder library is inherited by Microsoft products that bundle it. No confirmed exploitation, but the attack surface is wide given Brotli's prevalence. Verify af"
+  },
+  {
+    "title": "Chromium CVE-2026-118304: Improper input validation in SVG",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Microsoft Edge (Chromium-based). Ensure Edge is updated to the current stable channel build. See Google Chrome Releases for upstream details."
+  },
+  {
+    "title": "Chromium CVE-2026-118305: Memory corruption in Turbolev",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118306: Memory corruption in FileSystem",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118307: Use after free in Paint",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118308: Use after free in SVG",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118310: Improper input validation in Views",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118311: Memory corruption in Media",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118312: Memory corruption in Paint",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118313: Use after free in Video",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118315: Improper input validation in SVG",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118316: Improper input validation in V8",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. V8 input validation flaws have historically been a frequent exploitation target; prioritize Edge update verification."
+  },
+  {
+    "title": "Chromium CVE-2026-118317: Memory corruption in HTML",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "Chromium CVE-2026-118318: Improper access control in V8",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Access control flaws in V8 can enable sandbox escapes; verify Edge update status promptly."
+  },
+  {
+    "title": "Chromium CVE-2026-118319: Memory corruption in Skia",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC Assigned by Chrome and ingested by Edge. Ensure Edge is updated to the current stable channel build."
+  },
+  {
+    "title": "IRS FIRE system retirement: Business Central 1099 filing must move to IRIS by January 1, 2027",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "The FIRE electronic filing channel closes at end of 2026. Business Central's IRIS-compatible manual upload feature previews in December 2026 and GAs in January 2027. US customers filing 1099s through Business Central mus"
+  },
+  {
+    "title": "Malicious Claude Code-branded extension with persistent SSH backdoor: review developer endpoint posture",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "Microsoft has documented a trojanized Claude Code-branded IDE extension that installs a persistent SSH backdoor. If your developers use Cursor or similar AI coding tools, audit installed extensions against official sourc"
+  },
+  {
+    "title": "Defender for Identity v3.x sensor: government cloud deployment must be sequenced with MDE",
+    "category": "Action Required",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "Activating the v3.x sensor without a co-deployed Defender for Endpoint instance is temporarily blocked in government clouds. Government cloud tenants planning Defender for Identity v3.x rollouts must deploy MDE on target"
+  },
+  {
+    "title": "New deployment guide for Private Access \"sign-in every time\" strict enforcement",
+    "category": "Documentation Updates",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "Microsoft added a full how-to guide for deploying the \"Private Access sign-in every time\" strict mode (currently in preview), including the new \"Every time strict\" session control behavior, covering a previously undocume"
+  },
+  {
+    "title": "Clarified Office perpetual client support boundaries for Token Protection",
+    "category": "Documentation Updates",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "The Token Protection documentation now explicitly documents which Office perpetual (non-subscription) client versions are and are not supported, closing an ambiguity that affected planning for Conditional Access Token Pr"
+  },
+  {
+    "title": "Added PowerShell alternatives for user, group, and contact Sign-on Authority (SOA) management",
+    "category": "Documentation Updates",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "The SOA guidance now documents PowerShell cmdlet-based setup and transfer procedures as an alternative to the admin center, filling a gap for admins who manage SOA at scale or through automation pipelines."
+  },
+  {
+    "title": "Updated RHEL SSH sign-in troubleshooting for Entra ID-joined Linux VMs",
+    "category": "Documentation Updates",
+    "date": "2026-11-03",
+    "url": "/posts/2026-11-03/",
+    "snippet": "New troubleshooting steps for SSH sign-in failures following RHEL upgrades on Entra ID-joined Linux VMs, addressing a known break pattern that appeared with recent RHEL version transitions."
+  },
+  {
     "title": "Storm-0940 ARTEX agentic AI supply chain campaign targeting M365:",
     "category": "Top 5",
     "date": "2026-10-27",
