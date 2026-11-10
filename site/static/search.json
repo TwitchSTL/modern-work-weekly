@@ -1,5 +1,460 @@
 [
   {
+    "title": "Microsoft Copilot harness in Copilot Studio now GA for production agents:",
+    "category": "Top 5",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "The Microsoft Copilot harness moves out of preview and into production support, giving Copilot Studio agents a full agentic loop with planning, subagent calls, code execution, and file reasoning. If your org is building "
+  },
+  {
+    "title": "OAuth authentication now GA for on-premises Exchange mailbox migrations:",
+    "category": "Top 5",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "MRS now accepts OAuth in place of Basic auth credentials for on-premises-to-M365 mailbox migrations, closing a long-standing privileged-credential exposure in hybrid migration workflows. If you have outstanding or recurr"
+  },
+  {
+    "title": "Chromium Edge patch batch: multiple CVEs with CVSS up to 9.6:",
+    "category": "Top 5",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Thirteen Chromium CVEs landed this week covering use-after-free, memory corruption, integer overflow, and input validation bugs, with four entries scoring 9.6. Severity ratings from MSRC are not yet assigned (Chrome-orig"
+  },
+  {
+    "title": "Conditional Access policy plans enter public preview:",
+    "category": "Top 5",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Policy plans let you define access intent once and enforce it uniformly across all identities, replacing the sprawl of individually managed CA policies. For large tenants carrying dozens of overlapping policies, this is "
+  },
+  {
+    "title": "Threat actors using ARTEX agentic framework to harvest OAuth secrets from GitHub:",
+    "category": "Top 5",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Storm-3358 is actively using an AI-driven offensive framework to scan GitHub repos for exposed OAuth application secrets and then pivot into tenant environments using those compromised app identities. Audit your GitHub r"
+  },
+  {
+    "title": "What's new in Microsoft Entra: November 2026",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - The November Entra roundup lands ahead of Ignite and covers AI agent identity, real-time risk controls, and access lifecycle improvements. Review the full list to identify any capabilities that apply to your tenan"
+  },
+  {
+    "title": "Scale access controls with Microsoft Entra Conditional Access policy plans",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview] - Policy plans introduce a framework where access intent is defined once and enforced consistently across every identity in the tenant, replacing ad hoc per-policy management. Large environments with coverage g"
+  },
+  {
+    "title": "Threat actors use agentic AI tooling to find and abuse exposed secrets",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA]  - Storm-3358 is deploying the ARTEX framework to scan GitHub for exposed OAuth app secrets, then using those secrets to perform authenticated actions inside compromised tenants. Run a secret-scanning pass on your G",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Email threat landscape: Q3 2026 trends and insights",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA]  - Q3 saw a sharp rise in email phishing volume even as QR code attacks declined, and CAPTCHA-gated phishing recovered after a dip. Spoofed business-service sender domains are a growing vector, and existing security",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Catch Microsoft Entra at Ignite 2026",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Entra sessions at Ignite (November 17-20, Moscone Center and online) cover stopping identity attacks, simplifying access policies, and securing AI agents. Worth blocking calendar time for the product roadmap demos"
+  },
+  {
+    "title": "Microsoft Entra deep dives: Join our December 15-17 webinar series",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - The post-Ignite deep-dive series runs December 15-17 and focuses on putting Ignite announcements into practice for identity and network access security. Register now if you want structured follow-through on whatev"
+  },
+  {
+    "title": "Dynamics 365 Commerce: Improve order capture workflows in Store Commerce",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Adds free-text note attachment during order capture and standing customer PO number fields to Store Commerce transactions, reducing data-entry friction and downstream reconciliation errors. Relevant for retail ope"
+  },
+  {
+    "title": "Dynamics 365 Commerce: Label printing in Store Commerce",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Targeted] - Label printing is now configurable from Commerce headquarters, with on-demand and scheduled print requests triggered by price or promotion changes. Targeted release; retail admins should review the format de"
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Use bullseye routing with user groups to orchestrate conversations",
+    "category": "Identity & Access",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Tiered assignment strategy expands the eligible representative pool as wait time increases, moving away from fixed pools or manual overflow rules. Contact center admins configure user groups and wait-time threshol"
+  },
+  {
+    "title": "Enhanced resilience with Windows settings backup and restore",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - The renamed Windows settings backup and restore (formerly Windows Backup for Organizations) now unifies Enterprise State Roaming management, makes backup the default behavior, and surfaces a restore summary for en"
+  },
+  {
+    "title": "What's new in Windows 365: October 2026 recap",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview] - October's Windows 365 updates include Azure Government connectivity, session continuity for Windows 365 Flex, external identity and redirection controls, and new Intune settings for Cloud PC targeting. Reserv"
+  },
+  {
+    "title": "Windows news you can use: October 2026",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - The October Windows roundup flags a critical planning item: Windows Update certificates expire in May-June 2027, and some devices won't receive replacement certificates automatically through monthly updates. Ident"
+  },
+  {
+    "title": "OAuth authentication now GA for on-premises Exchange mailbox migrations",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA]  - MRS now supports OAuth as the authentication method for on-premises-to-M365 and M365-to-on-premises mailbox migrations, eliminating the requirement to store a privileged AD account credential in migration endpoin",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "SharePoint and OneDrive at Microsoft Ignite 2026: What to Expect",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - SharePoint and OneDrive sessions at Ignite focus on the knowledge platform underpinning Copilot and agents, covering secure content creation, sharing, and surfacing content as agent-consumable knowledge. Worth att"
+  },
+  {
+    "title": "Introducing SharePoint tools in Work IQ",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview]  - Over 60 native SharePoint operations are now exposed through the Work IQ MCP server, making the same toolset that powers Copilot in SharePoint available to custom agents in Copilot Studio. This is the right ",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Set invoice limits for time and material billing",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Invoice amount limits can now be set per billing period on time-and-material contract lines, replacing spreadsheet-based tracking and manual invoice checks. Project billing teams should configure limits on active "
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Segmentation of recordings and transcripts",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview] - Interaction data can now be segmented by Business Unit, Team, or Queue boundaries, restricting recording and transcript access to authorized users while preserving supervisory and compliance visibility. Relev"
+  },
+  {
+    "title": "Dynamics 365 Human Resources: Streamline the preboarding experience",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - A structured preboarding workflow now guides candidates through personal information, document uploads, right-to-work verification, and banking details before their first day. HR admins should review the validatio"
+  },
+  {
+    "title": "Microsoft Teams: Facilitator follow-up mode",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Teams Facilitator will support conversational follow-up without requiring an explicit tag each time, arriving December 2026. Plan for this in meeting facilitation workflows where Facilitator is already in use."
+  },
+  {
+    "title": "Microsoft Teams: Multiple screen shares in Teams Rooms on Windows",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Teams Rooms on Windows (Pro license) will support viewing two shared screens side by side starting January 2027, with presenter identification and optimized layouts for single and dual displays. Rooms admins shoul"
+  },
+  {
+    "title": "Microsoft 365 Frontier expands to Teams, Outlook, OneDrive, and SharePoint previews",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview] - Frontier now delivers eligible public preview features across Teams, new Outlook for Windows, OneDrive, SharePoint, and Copilot through a single admin-controlled enrollment, separate from Standard and Deferre"
+  },
+  {
+    "title": "Microsoft Copilot harness in Copilot Studio now GA for production agents",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview]  - The Microsoft Copilot harness (renamed from GitHub Copilot harness) is now production-ready, delivering a model-centered agentic loop with subagent orchestration, code execution, and file-based reasoning ins",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "New Microsoft Copilot harness: power, token efficiency, and control in Foundry",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - The Microsoft Mechanics walkthrough covers building agents on the Copilot harness in Foundry, including bringing your own harness (such as the Claude Agent SDK), running hosted agents with isolated VM sandboxes an"
+  },
+  {
+    "title": "Paper: How the Microsoft Copilot harness enables complex task execution in Copilot Studio",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - The engineering paper details how the Copilot harness runs a single model-centered loop with command-line and file tools, allowing agents to reason iteratively over large data sets across many turns. Essential rea"
+  },
+  {
+    "title": "Create and edit non-SPA Power Pages sites with agentic coding tools",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview] - The Power Pages plugin for GitHub Copilot CLI and Claude Code now supports traditional web-template and Liquid-based portal sites, letting developers describe changes in natural language and have the agent up"
+  },
+  {
+    "title": "What's new in Microsoft Security: November 2026",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA]  - November's security release strengthens AI agent security controls, least-privilege enforcement, threat protection, and exposure management across the Microsoft Security portfolio. Work through the full list to i",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Microsoft named a Leader in the 2026 Gartner Magic Quadrant for AI Agent Management Platforms",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Gartner's inaugural AI Agent Management Platform Magic Quadrant positions Microsoft as a Leader. Useful context for procurement or vendor-justification conversations, particularly if your org is evaluating competi"
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Deprecate transaction origins",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[Preview] - Transaction origin records are being phased out in favor of direct source document references on journal lines, actuals, and invoice line details, with GA targeted for December 2026. If you have custom integr"
+  },
+  {
+    "title": "Dynamics 365 Finance: Merge bank account financial dimensions when generating vouchers from reconciliation rules",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Vouchers generated from bank reconciliation rules now merge financial dimensions from both the bank account and the rule, with rule-defined dimensions taking precedence. This allows a single rule to serve multiple"
+  },
+  {
+    "title": "Dynamics 365 Commerce: Release commerce orders from POS to the warehouse",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Routine orders now release automatically to the warehouse management system on a schedule, with an on-demand manual release for urgent orders. Trade counter and call center operations using Commerce should configu"
+  },
+  {
+    "title": "Dynamics 365 Commerce: Commerce MCP Tools for POS Shift and Cash Management",
+    "category": "AI & Copilot",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Reusable MCP tools now expose Store Commerce shift and cash management operations as structured actions for agentic experiences, covering register and drawer enumeration, shift lifecycle queries, and detailed shif"
+  },
+  {
+    "title": "Enhancements to the Protection and Posture Insights report in Defender for Office 365",
+    "category": "Security & Compliance",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - URL protection visibility now extends beyond email to Teams conversations, Office files, and Copilot responses, and the report adds per-tenant configuration recommendations shaped by customer feedback. Run the upd"
+  },
+  {
+    "title": "New investments to reduce on-premises security risk",
+    "category": "Security & Compliance",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Microsoft's new on-premises security initiative bundles guidance, migration tooling, and product investments targeting server workloads, framed explicitly around AI lowering the bar for attackers to analyze and ex"
+  },
+  {
+    "title": "ARTEX abuse expands as cybercriminals target the financial sector",
+    "category": "Security & Compliance",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA]  - Storm-3358 is using the ARTEX agentic AI offensive framework to attack financial sector organizations, automating the discovery and exploitation of weaknesses at speed and scale. Financial services tenants should",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "FORGE Lab uses agentic tools to identify memory safety issues in Rust",
+    "category": "Security & Compliance",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - Microsoft FORGE Lab found memory-safety bugs in Rust's core and std libraries where safe Rust code can trigger undefined behavior via misplaced trust in unsafe code blocks. Relevant for teams shipping Rust-based t"
+  },
+  {
+    "title": "The CISO Cheat Sheet to Microsoft Digital Defense Report 2026",
+    "category": "Security & Compliance",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "[GA] - A condensed cut of the 2026 MDDR focused on AI lowering attacker skill and cost thresholds, compressing attack timelines, and enabling agentic automation of exploitation workflows. Worth sharing with leadership to"
+  },
+  {
+    "title": "Chromium CVE-2026-118321: Use after free in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6 Push the latest Microsoft Edge update to all managed endpoints immediately. This Chrome-originated use-after-free vulnerability carries a 9.6 base score; patch through your stan"
+  },
+  {
+    "title": "Chromium CVE-2026-118309: Incorrect reference resolution in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6 Same Edge update batch as CVE-2026-118321. Incorrect reference resolution at CVSS 9.6; ensure Edge is updated across all endpoints."
+  },
+  {
+    "title": "Chromium CVE-2026-119261: Improper input validation in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6 Improper input validation in the Chromium engine underlying Edge. Covered by the same Edge release; verify deployment completion in Intune."
+  },
+  {
+    "title": "Chromium CVE-2026-119263: Memory corruption in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 9.6 Memory corruption in the Chromium engine. Addressed in the current Edge update; confirm rollout in your endpoint management console."
+  },
+  {
+    "title": "Chromium CVE-2026-119260: Use after free in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Use-after-free vulnerability in Chromium addressed by the current Edge release. Include in the same update push as the 9.6-scored items above."
+  },
+  {
+    "title": "Chromium CVE-2026-118314: Incorrect reference resolution in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Incorrect reference resolution; addressed in the same Edge update batch. No separate action required beyond deploying the current Edge version."
+  },
+  {
+    "title": "Chromium CVE-2026-119262: Improper input validation in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Improper input validation addressed in the current Edge release alongside the other Chromium CVEs this week."
+  },
+  {
+    "title": "Chromium CVE-2026-119264: Memory corruption in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Memory corruption addressed in the current Edge update. Confirm deployment in your patch management tooling."
+  },
+  {
+    "title": "Chromium CVE-2026-119265: Memory corruption in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Memory corruption in Chromium; covered by the same Edge release. No separate action beyond the standard update push."
+  },
+  {
+    "title": "Chromium CVE-2026-119266: Use after free in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Use-after-free addressed in the current Edge update. Verify deployment status across managed devices."
+  },
+  {
+    "title": "Chromium CVE-2026-119267: Memory corruption in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Memory corruption addressed in the current Edge release. Covered by the same update as all other Chromium CVEs this week."
+  },
+  {
+    "title": "Chromium CVE-2026-119268: Integer overflow in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Integer overflow in Chromium; addressed by the current Edge update. No separate remediation beyond the standard Edge update deployment."
+  },
+  {
+    "title": "Chromium CVE-2026-119269: Use after free in Edge",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Severity: not yet rated by MSRC · CVSS 8.8 Use-after-free in Chromium addressed by the current Edge release. Final item in this week's Chromium batch; confirm all 13 CVEs are resolved by validating the Edge version deplo"
+  },
+  {
+    "title": "CVE-2026-83844: Windows Paint Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Important · CVSS 7.0 This week's update added an FAQ and corrected the CVSS score; no new patch action is required beyond what was communicated at original disclosure. Verify that the original patch is applied on all in-"
+  },
+  {
+    "title": "Windows Update certificates expiring May-June 2027",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Replacement certificates will reach most devices via monthly updates, but some devices outside the standard update path may not receive them automatically. Identify any devices that could be affected and begin remediatio"
+  },
+  {
+    "title": "OAuth secrets exposed in GitHub repos actively targeted by ARTEX",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Run secret scanning across your GitHub organization and rotate any exposed OAuth application credentials immediately. Follow up with an Entra tenant review to identify OAuth apps that may have been compromised and check "
+  },
+  {
+    "title": "Dynamics 365 Project Operations: Transaction origin deprecation, GA December 2026",
+    "category": "Action Required",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "Custom integrations and reports that reference transaction origin records need to be updated to use direct source document references before December 2026. Begin impact assessment now; this is a schema-level change with "
+  },
+  {
+    "title": "Conditional Access policy plan limits and overview clarified",
+    "category": "Documentation Updates",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "The Conditional Access policy plans docs now document specific plan limits and present a streamlined overview; check these before scoping your pilot of the new public preview feature."
+  },
+  {
+    "title": "Hard Deletion Protection (preview) now documented",
+    "category": "Documentation Updates",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "New documentation covers the preview Hard Deletion Protection capability in Entra ID, which prevents permanent object deletion under defined conditions; review the prerequisites and scope before enabling in your tenant."
+  },
+  {
+    "title": "Global Secure Access: Custom Acquire and cloud firewall replace browser QUIC disable workaround",
+    "category": "Documentation Updates",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "The recommended approach for handling QUIC traffic in Global Secure Access deployments has changed from disabling browser QUIC to using Custom Acquire combined with the cloud firewall; update any deployment guides or run"
+  },
+  {
+    "title": "Domainless SAML federation configuration guidance expanded",
+    "category": "Documentation Updates",
+    "date": "2026-11-10",
+    "url": "/posts/2026-11-10/",
+    "snippet": "The domainless SAML federation docs now include fuller configuration guidance; relevant if you're setting up SAML federation for external identities without a verified domain in your tenant."
+  },
+  {
     "title": "Global Secure Access unifies Private Access and Internet Access into a single SASE purchase:",
     "category": "Top 5",
     "date": "2026-11-03",
