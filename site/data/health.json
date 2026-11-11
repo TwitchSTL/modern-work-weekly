@@ -1,8 +1,8 @@
 {
   "updated": "2026-11-11",
   "status_url": "https://status.cloud.microsoft",
-  "total_count": 91,
-  "total_new_count": 0,
+  "total_count": 92,
+  "total_new_count": 1,
   "sources": [
     {
       "name": "Intune Known Issues",
@@ -455,8 +455,8 @@
     {
       "name": "Entra ID Known Issues",
       "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#cross-tenant-synchronization",
-      "count": 16,
-      "new_count": 0,
+      "count": 17,
+      "new_count": 1,
       "items": [
         {
           "title": "Cross-tenant synchronization",
@@ -499,6 +499,12 @@
           "body": "Configuring synchronization from the target tenant isn't supported. All configurations must be done in the source tenant. The target administrator is able to turn off cross-tenant synchronization at any time.",
           "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#configuring-synchronization-from-target-tenant",
           "is_new": false
+        },
+        {
+          "title": "Users removed from scope aren't deleted after an immediate restart",
+          "body": "If you remove a previously synchronized user from the scope of a cross-tenant synchronization job and restart the job before the next synchronization cycle, the user isn't deleted from the target tenant in subsequent cycles. The user remains in the target tenant until a change to the source user obj",
+          "url": "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/known-issues#users-removed-from-scope-arent-deleted-after-an-immediate-restart",
+          "is_new": true
         },
         {
           "title": "Two users in the source tenant matched with the same user in the target tenant",
