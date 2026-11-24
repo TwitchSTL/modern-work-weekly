@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10",
+  "updated": "2026-11-24",
   "titles": [
     "Regional selection for Microsoft Store apps is temporarily unavailable",
     "Apps deployed with Configuration Manager take a long time to load on the Windows apps page in Company Portal",
@@ -37,6 +37,7 @@
     "Single sign-on users see a dialog to allow remote desktop connection during the connection attempt",
     "Single sign-on user connections are being denied through Microsoft Entra Conditional Access",
     "Possible cause",
+    "Windows Autopilot deployment report shows failure after successful pre-provisioning",
     "Pre-provisioning fails for Microsoft Entra hybrid join when policy conflict resolution requires domain controller connectivity",
     "ODJ Connector configuration fails with a SeLogonAsServicePrivilege error when using your own gMSA",
     "Microsoft Entra hybrid join Autopilot deployments time out with error code 0x80004005",
@@ -59,7 +60,6 @@
     "Filtering Windows Autopilot devices not working as expected",
     "TPM attestation isn't working on some platforms with Infineon SLB9672 discrete TPMs",
     "Kiosk device profile not auto logging in",
-    "TPM attestation isn't working on AMD platforms with ASP fTPM",
     "I don't see Microsoft Defender content",
     "Microsoft Defender for Identity alerts are not showing up in the Microsoft Defender incidents",
     "My legitimate file/URL is being detected as malicious",
@@ -76,6 +76,7 @@
     "Updating the showInAddressList property fails",
     "Mail attribute is not updated",
     "Configuring synchronization from target tenant",
+    "Users removed from scope aren't deleted after an immediate restart",
     "Two users in the source tenant matched with the same user in the target tenant",
     "Usage of Microsoft Entra B2B collaboration for cross-tenant access",
     "Authorization",

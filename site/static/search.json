@@ -1,5 +1,593 @@
 [
   {
+    "title": "Local AI agent governance controls GA in Intune:",
+    "category": "Top 5",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Intune now ships production controls for discovering, restricting, and containing local AI agents on managed Windows devices, covering repository access, file analysis, task automation, and external service calls. If you"
+  },
+  {
+    "title": "Windows endpoint security platform GA on Windows 11:",
+    "category": "Top 5",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "The Windows endpoint security platform reaches general availability, giving security ISVs a new userspace model for delivering critical protections with reduced kernel-mode reliance. This matters for your endpoint securi"
+  },
+  {
+    "title": "Intune Windows Server management preview via Windows Server Insider:",
+    "category": "Top 5",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Intune is extending familiar endpoint management workflows to eligible Windows Servers, including RDS session hosts, workstation-role servers, and branch-office boxes, through the Windows Server Insider program. This is "
+  },
+  {
+    "title": "Device code phishing risk extended to AI coding agents:",
+    "category": "Top 5",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Microsoft Security Blog research shows device code flow phishing, already a known identity attack vector, extends directly to AI coding agents using device-flow authentication, with GitHub Copilot CLI as the documented e"
+  },
+  {
+    "title": "Entra Agent ID and egress rules for enterprise AI agents:",
+    "category": "Top 5",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Every agent deployed through Microsoft Foundry now gets an Entra-managed identity at deploy time, with egress rules that restrict outbound web calls to explicitly allowed paths and full audit logging for security teams. "
+  },
+  {
+    "title": "Demystifying macOS Platform SSO: How Apple and Microsoft Entra ID work together",
+    "category": "Identity & Access",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Deep-dive into how Platform SSO actually works under the hood: credential creation, PRT distribution, and which applications do and don't receive the Platform SSO token. Essential reading if you're deploying or tr"
+  },
+  {
+    "title": "Microsoft Entra Agent ID and Egress Rules",
+    "category": "Identity & Access",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Every agent deployed in Microsoft Foundry automatically gets an Entra enterprise identity, egress rules scoped to your allowed web paths, and a full audit log for the security team. The short-form demo covers the",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "AI is changing access: See how Microsoft Entra helps you stay ahead",
+    "category": "Identity & Access",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Microsoft's Ignite Identity keynote post covers agent identity sprawl as the new shadow IT problem, with Entra positioned as the centralized control plane across user and workload identities. The demos cover Entr",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "AI is changing access: Catch Microsoft Entra at Ignite 2026",
+    "category": "Identity & Access",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Session guide for the Entra track at Ignite 2026, covering identity attack prevention, access policy simplification, and agent security sessions. Useful as a structured learning path even after the event, since mo"
+  },
+  {
+    "title": "The risks of device code authentication for AI coding agents",
+    "category": "Identity & Access",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Lab research documents how device code phishing extends to AI coding agents that use device flow, using GitHub Copilot CLI as the concrete example. The attack vector is the same as classic device code phishing bu",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Dynamics 365 Human Resources: Expand talent sourcing through employee referrals",
+    "category": "Identity & Access",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Employee referral functionality is now GA in Dynamics 365 HR, enabling employees to submit referrals directly into the recruitment pipeline. Primarily a Dynamics HR admin story, but relevant if your org uses M365-"
+  },
+  {
+    "title": "Expand passwordless access with confidence",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - This post frames the three requirements for a credible passwordless deployment at scale: a reliable sign-in method across device types, admin visibility into how devices are being unlocked, and credential protecti"
+  },
+  {
+    "title": "What's new in Microsoft Intune at Microsoft Ignite",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - The Ignite Intune roundup covers agent governance and containment controls, faster device provisioning, Windows Server management preview, and Microsoft Perception integration for vulnerability prioritization. Th",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Intune's journey to faster device management",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Covers recent Intune performance improvements on two axes: how quickly policy and app changes reach the device during and after enrollment, and how quickly results surface back in the admin console. Specific impro"
+  },
+  {
+    "title": "Windows 365 at Ignite 2026: Introducing new Cloud PC capabilities for people, agents and IT",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Ignite announcement covering on-demand developer Cloud PCs, secure contractor BYOD access via Windows 365, frontline worker access to sensitive data from customer sites, and hardware refresh scenarios. The agent-a"
+  },
+  {
+    "title": "Build faster, trusted remote support with Diagnostic Data Reports in Remote Help",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Diagnostic Data Reports are now available in attended Remote Help sessions on Windows, surfacing device context (hardware, OS version, compliance state) to the helpdesk technician before they need to ask the user."
+  },
+  {
+    "title": "Rethinking Windows management for modern IT",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Strategic post from the Windows team arguing for consolidating management tooling rather than adding layers, with security update velocity as the primary forcing function. The Microsoft Digital Defense Report 2026"
+  },
+  {
+    "title": "A verifiable security state with Windows baseline protection",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Covers the evolving Windows security posture model: system-enforced transparency, user-centric consent, and verifiable compliance state for both users and IT admins. This builds on the February platform direction "
+  },
+  {
+    "title": "What's next: Windows endpoint security platform and driver quality",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - The Windows endpoint security platform reaches GA on Windows 11, enabling security partners to deliver kernel-adjacent protections through userspace APIs rather than kernel drivers. The Driver Quality Initiative u"
+  },
+  {
+    "title": "Manage Windows Servers alongside PCs with Microsoft Intune",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview] - Available through the Windows Server Insider program, this preview extends Intune enrollment and policy workflows to eligible Windows Servers: session hosts, workstation-role servers, and branch-office boxes."
+  },
+  {
+    "title": "A guide to governing local AI agents with Intune",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - The hands-on companion to the Ignite Intune announcement, explaining exactly which controls apply to which agent types and host apps, platform by platform. Covers app management policies, network controls, and co",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft Perception helps IT drive outcomes and scale",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Microsoft Perception bridges the gap between security team vulnerability prioritization and IT team remediation at scale, surfacing which CVEs actually matter for your device estate and feeding that context into ",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "SharePoint and OneDrive at Microsoft Ignite 2026: Putting AI-powered content to work",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview]  - The Ignite SharePoint keynote covers SharePoint's evolution as the knowledge platform for Copilot and agents, including SharePoint tools in Word, agent-readable metadata, and content governance features for ",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Microsoft 365 Copilot and AI Agent readiness and resiliency with SharePoint Content Governance",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - New SharePoint content governance capabilities announced at Ignite target AI readiness and recovery: controls for what content agents can access, versioning and backup improvements for resilience, and governance ",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Microsoft Copilot Harness in Microsoft Foundry",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Short demo of an agent running on the Microsoft Copilot harness inside Microsoft Foundry, handling multi-step planning, data retrieval, skill execution, and subagent calls within a secure sandbox. The agent produ",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Bring Your Own Agent Harness",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Microsoft Foundry Agent Service now supports hosting agents written against third-party SDKs (Claude Agent SDK shown), with your own harness controlling the loop, tools, and middleware. Each session runs in a VM-",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Agent Loop and Context Management Explained",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Concise explainer on what an agent harness actually does: the agent loop (reason, act, observe, iterate) and context management (compression and prioritization as context grows). Essential background for IT teams",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Introducing Autopilot, your personal and proactive agent",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA]  - Autopilot in Microsoft Copilot is a persistent cloud-running agent that continues working after the user's device is off, monitoring channels, tracking commitments, following up on conversations, and driving mult",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "The designs we didn't ship: How user feedback shaped the new Teams meeting controls",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Behind-the-scenes post on the Teams meeting controls redesign process, covering which approaches were prototyped and rejected based on user research. Useful context for change management conversations when rolling"
+  },
+  {
+    "title": "Microsoft Teams: Improved device settings experience on Teams Rooms on Android",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - On-device admin settings for Teams Rooms on Android are getting a navigation and information architecture overhaul, making it easier to find and adjust settings directly from the console. GA is targeted for Januar"
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Visualize and manage your contact center setup with visual designer",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview] - Visual Designer renders the entire contact center configuration as an interactive map, showing channels, workstreams, routing rules, queues, and overflow handling with live relationship lines. Common changes "
+  },
+  {
+    "title": "Microsoft Teams: Raise your hand to speak up at large events with up to 100,000 attendees",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Raise Hand is coming to Teams events at the 100,000-attendee scale, allowing organizers to selectively unmute attendees who have raised their hand. GA is targeted for December 2026. Relevant for orgs running large"
+  },
+  {
+    "title": "Microsoft Teams: Share reactions at events with up to 100,000 attendees",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Emoji reactions are expanding to Teams events at the 100,000-attendee scale, with reactions visible to all participants. GA is targeted for December 2026. Low admin overhead, but worth communicating to event organ"
+  },
+  {
+    "title": "Microsoft Copilot (Microsoft 365): The more you use Copilot in Office the better it gets",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview]  - Copilot in Word, Excel, PowerPoint, and OneNote is gaining memory that learns individual work patterns and personalizes responses over time. Preview is rolling out in November 2026. Admins should review the ",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Outlook: Add Custom Flag Descriptions for Clearer Follow-Ups",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - New Outlook for Windows gains support for custom text on follow-up flags, letting users describe the specific next action on a flagged message. GA is targeted for February 2027. No admin action required; purely a "
+  },
+  {
+    "title": "Microsoft Teams: Voice phishing detection for external calls",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview]  - Teams will use AI to analyze one-to-one external calls in real time for social engineering patterns and alert users when suspicious activity is detected. Preview is targeted for December 2026, with GA in Jan",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Agent 365 Business Analytics AI Value Explained",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Agent 365 Business Analytics surfaces per-use-case session counts, AI credit cost, and calculated AI value (derived from U.S. Department of Labor time equivalency data) for services like Cowork. This gives finance"
+  },
+  {
+    "title": "GitHub Copilot Skill for Azure SQL Hyperscale",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - The Azure SQL Hyperscale configuration skill for GitHub Copilot in VS Code takes natural-language requirements and recommends a database configuration, then deploys it on approval. Useful for developer self-servic"
+  },
+  {
+    "title": "Discover and review Power Pages sites with Power Platform inventory (public preview)",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview] - Power Pages sites are now discoverable in the Power Platform inventory alongside apps, flows, and agents, giving admins a single place to audit the full low-code estate across environments. This closes a visi"
+  },
+  {
+    "title": "Turn AI ambition into real business value with Power Platform",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Ignite Power Platform overview covering how to extend and automate M365 workloads with AI without rebuilding existing systems. Primarily a strategic framing post rather than a feature announcement; useful backgrou"
+  },
+  {
+    "title": "Build apps by describing what you want: Copilot Code",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Copilot Code converts plain-language descriptions into interactive web apps grounded in Work IQ data, deployed within the tenant boundary and subject to org security controls. Admins can track usage, health, and c"
+  },
+  {
+    "title": "Manage AI Cost and ROI with Copilot and Agent 365",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Full walkthrough of AI cost management across Microsoft Copilot, Cowork, and third-party agents: per-task Copilot Credit tracking, cost-vs-value analysis in Agent 365 Business Analytics, month-end spend forecastin"
+  },
+  {
+    "title": "Azure SQL Database Hyperscale: Now for any size workload",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Full Ignite session covering Azure SQL Hyperscale's expanded positioning: serverless compute with auto-pause, elastic pools with cross-database joins, hybrid vector search at billion-row scale with DiskANN, and Fo"
+  },
+  {
+    "title": "Dynamics 365 Customer Insights - Journeys: Stop tracking email opens without disabling other tracking",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - A new dedicated consent purpose in D365 Customer Insights - Journeys lets admins omit tracking pixels from emails while preserving link click, UTM, and form prefill tracking under their existing consent settings. "
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Set wait times as short as 5 seconds in orchestration playbooks",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Orchestration playbooks can now re-evaluate routing conditions every 5 seconds instead of every 30 seconds, enabling finer-grained priority escalation and Bullseye pool expansion. This is already GA as of October "
+  },
+  {
+    "title": "Dynamics 365 Sales: Customize how Recommended Actions are prioritized with custom instructions",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Admins can now configure natural-language prioritization instructions for individual source agents feeding the Recommended Actions experience, letting organizations align AI-generated sales recommendations with th"
+  },
+  {
+    "title": "Dynamics 365 Contact Center: Trace conversation journeys end to end across your contact center",
+    "category": "AI & Copilot",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[Preview] - Journey Visualization maps live conversation data onto your contact center configuration, letting admins see actual conversation flow versus designed flow and drill into individual conversation paths. Preview"
+  },
+  {
+    "title": "Microsoft named a Leader in the 2026 Gartner Magic Quadrant for SIEM",
+    "category": "Security & Compliance",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Microsoft Sentinel retains its Leader position in the 2026 Gartner SIEM MQ. For orgs still evaluating SIEM consolidation onto the M365 stack, this is useful external validation to include in vendor comparison docu"
+  },
+  {
+    "title": "Azure SQL Hyperscale Named Replicas Explained",
+    "category": "Security & Compliance",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Short demo showing how Hyperscale named replicas share the primary's page servers and log service, enabling read-heavy workload offload and vector search without a data copy. Primarily a database architecture refe"
+  },
+  {
+    "title": "Azure SQL Hyperscale Cross-Database Queries",
+    "category": "Security & Compliance",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Demonstrates cross-database queries within a Hyperscale elastic pool, including cross-database transactions that update remote databases atomically. Relevant for multi-tenant application architectures where data i"
+  },
+  {
+    "title": "Azure SQL Automatic Index Compaction Demo",
+    "category": "Security & Compliance",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Automatic index compaction in Azure SQL uses background tasks to find and compact sparse index pages without a full rebuild. Enable with ALTER DATABASE in SSMS. Useful for large reporting databases where index blo"
+  },
+  {
+    "title": "Hyperscale Serverless Auto-Pause and Billing",
+    "category": "Security & Compliance",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Demo of Azure SQL Database Hyperscale serverless auto-pause: the database pauses after configurable idle time, compute billing stops during the pause, and the database resumes automatically when users reconnect. R"
+  },
+  {
+    "title": "Azure SQL Hyperscale Vector Search at Scale",
+    "category": "Security & Compliance",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Demonstrates vector search performance on a 1-billion-row dataset at 192 vCores and approximately 8 TB, with sub-millisecond vector search latency measured inside the engine. Relevant benchmark data for architects"
+  },
+  {
+    "title": "CVE-2026-69291 Windows Volume Manager Extension Driver Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 8.8 This is an acknowledgment update only, with no new patch content. Confirm your November Patch Tuesday deployment covered this CVE; no additional action required if already patched."
+  },
+  {
+    "title": "CVE-2026-78462 Visual Studio Code Security Feature Bypass Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 8.8 Acknowledgment update only. If VS Code is in your managed estate, verify the patched version is deployed; no new remediation action from this update."
+  },
+  {
+    "title": "CVE-2026-72965 Windows WebClient Service Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 7.8 Acknowledgment update only. WebClient Service EoP vulnerabilities are a classic lateral movement enabler; confirm patch status on all Windows endpoints in your environment."
+  },
+  {
+    "title": "CVE-2026-87697 .NET Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 8.8 Acknowledgment update only. Verify the relevant .NET version patch is deployed across your Windows server and workstation estate; no new remediation from this update."
+  },
+  {
+    "title": "CVE-2026-70175 ASP.NET Core Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 8.1 Acknowledgment update only. If you host ASP.NET Core applications, confirm the patched runtime version is deployed in your app hosting environment."
+  },
+  {
+    "title": "CVE-2026-70197 .NET and Visual Studio Remote Code Execution Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 8.1 Acknowledgment update only. Affects both .NET runtime and Visual Studio; verify patch status for developer workstations in addition to server workloads."
+  },
+  {
+    "title": "CVE-2026-96225 .NET Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 7.8 Acknowledgment update only. Verify .NET patch deployment status across your environment; no new remediation action required from this update."
+  },
+  {
+    "title": "CVE-2026-96233 ASP.NET Core Denial of Service Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 7.5 Acknowledgment update only. If ASP.NET Core is in your hosted application stack, confirm patch status to protect against availability impact."
+  },
+  {
+    "title": "CVE-2026-109481 ASP.NET Core Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 7.5 Acknowledgment update only. Second ASP.NET Core EoP this week; review your ASP.NET Core runtime version across all hosting environments."
+  },
+  {
+    "title": "CVE-2026-119848 Windows Message Queuing Denial of Service Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 5.3 Acknowledgment update only. If MSMQ is enabled in your environment, confirm patch status; consider disabling MSMQ on systems where it isn't operationally required."
+  },
+  {
+    "title": "CVE-2026-105584 Windows Inventory Backup Information Disclosure Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 5.5 Acknowledgment update only. No new remediation action; confirm the original patch is deployed if Windows Inventory Backup is in use in your environment."
+  },
+  {
+    "title": "CVE-2026-95874 Xbox Gaming Services Elevation of Privilege Vulnerability",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Important · CVSS 7.8 Acknowledgment update only. Xbox Gaming Services runs on Windows endpoints even in enterprise environments; confirm patch status or consider blocking the package via Intune where it serves no "
+  },
+  {
+    "title": "Chromium: CVE-2024-7533 Use after free in Sharing",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Severity: not yet rated by MSRC. Chromium-inherited CVE published to MSRC; ensure Microsoft Edge is current in your environment. No CVSS score or exploited status provided by MSRC at this time."
+  },
+  {
+    "title": "Chromium: CVE-2023-1531 Use after free in ANGLE",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "[GA] - Severity: None (MSRC rating) · CVSS 8.8 Chromium-inherited CVE; no Microsoft-specific severity assigned. Ensure Edge is current regardless; ANGLE use-after-free vulnerabilities have historically been exploitable f"
+  },
+  {
+    "title": "Local AI agent governance controls GA in Intune:",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "New GA capability with governance implications for every Intune-managed Windows estate. Build your agent inventory, review the control guide, and establish policy before local agents proliferate beyond visibility. No dea"
+  },
+  {
+    "title": "Device code flow phishing risk for AI coding agents:",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Review Conditional Access policies to restrict or block device code flow for identities where it isn't required. Audit which agents in your environment authenticate via device flow, and prioritize the highest-privilege i"
+  },
+  {
+    "title": "Copilot memory in Office apps entering preview (November 2026):",
+    "category": "Action Required",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Memory that learns individual work patterns is rolling out in preview for Word, Excel, PowerPoint, and OneNote. Review data handling documentation now and determine whether any organizational governance configuration is "
+  },
+  {
+    "title": "Entra ID TRv2 proxy configuration guidance replaced with testing approach",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Explicit proxy exclusion lists for TRv2 have been removed in favor of testing guidance; if you maintain a proxy exclusion list for Trusted Root v2, review this updated approach to validate your current configuration."
+  },
+  {
+    "title": "TRv2 sign-in domain list expanded and proxy header requirements clarified",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "The list of sign-in domains for TRv2 has grown and proxy header requirements have been spelled out more precisely; update any firewall or proxy rules that were scoped to the previous domain list."
+  },
+  {
+    "title": "Local administrator group limitation for SMB administrative shares clarified",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Docs now explicitly document a limitation affecting Entra-joined device local admin group membership and SMB administrative share access; relevant for environments relying on LAPS or Entra-joined devices for file share a"
+  },
+  {
+    "title": "Entra Verified ID advanced setup updated for both Key Vault permission models",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Setup instructions now cover both vault access policies and Azure RBAC permission models, closing a gap that caused confusion for orgs using the newer RBAC model."
+  },
+  {
+    "title": "Authenticator credential registration availability date updated to January 2027",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "The rollout date for Authenticator credential registration has slipped to January 2027; adjust any deployment timelines or user communication plans that referenced an earlier date."
+  },
+  {
+    "title": "AI agent discovery docs updated: discovered agents and unclassified agent discovery",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Entra's AI agent discovery article has been updated to cover how discovered agents and unclassified agents are surfaced; relevant for admins building agent inventory and governance processes using Entra."
+  },
+  {
+    "title": "Entra Agent ID: CIMD consent and MCP token validation clarified",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Consent behavior for Client Identity and Model Delegation (CIMD) and how MCP tokens are validated in Agent ID are now documented more precisely; review if you're implementing agent-to-agent or MCP-connected agent workflo"
+  },
+  {
+    "title": "Sponsored guest management marked as generally available",
+    "category": "Documentation Updates",
+    "date": "2026-11-24",
+    "url": "/posts/2026-11-24/",
+    "snippet": "Preview labels have been removed from the sponsored guest management feature; if you deferred deployment pending GA, the capability is now production-ready."
+  },
+  {
     "title": "Microsoft Copilot harness in Copilot Studio now GA for production agents:",
     "category": "Top 5",
     "date": "2026-11-10",
