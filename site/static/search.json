@@ -588,6 +588,319 @@
     "snippet": "Preview labels have been removed from the sponsored guest management feature; if you deferred deployment pending GA, the capability is now production-ready."
   },
   {
+    "title": "Copilot Studio agent governance deep-dive published:",
+    "category": "Top 5",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "With agent user accounts now giving Copilot Studio agents their own M365 identity, directory profile, and Teams/Outlook presence, Microsoft's published governance guide is required reading. Twenty-nine percent of employe"
+  },
+  {
+    "title": "Windows Autopatch granular update controls in preview:",
+    "category": "Top 5",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "A single quality update policy in Intune can now independently govern Windows quality updates, .NET Framework updates, and quick machine recovery updates with per-type automatic or manual approval. This is the update con"
+  },
+  {
+    "title": "Microsoft data governance strategy pivots to Microsoft Fabric:",
+    "category": "Top 5",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "Microsoft has announced that the next chapter of its data governance strategy moves natively into Microsoft Fabric, with the OneLake catalog becoming the unified governance foundation. If your org has Purview standalone "
+  },
+  {
+    "title": "AI supply chain attacks targeting coding agents documented by Microsoft Research:",
+    "category": "Top 5",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "Microsoft's AI Red Team detailed how poisoned datasets and model checkpoints can trigger remote code execution in coding agents by editing fewer than ten neurons. While no immediate patch action is required, orgs deployi"
+  },
+  {
+    "title": "CIS benchmark auditing for Windows 11 in Intune (public preview):",
+    "category": "Top 5",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "Intune Advanced Analytics subscribers can now audit Windows 11 devices against the CIS Microsoft Intune for Windows 11 Benchmark, with per-setting results and export capability. This is audit-only and does not remediate,"
+  },
+  {
+    "title": "Share device diagnostics during Remote Help sessions on Windows",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Helpdesk agents can now review system details and resource usage during attended Remote Help sessions on Windows, with explicit end-user consent required and user control to stop sharing at any time. Declining the"
+  },
+  {
+    "title": "Keep work files in OneDrive for Business with Edge for Business on Windows",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Edge for Business on Windows can now be forced to save downloaded work files to OneDrive for Business instead of local disk via app protection policy. Set \"Send org data to\" to \"Selected apps\" and add OneDrive fo",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "New and updated settings for Windows in the settings catalog",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - The Windows settings catalog now includes refreshed Microsoft Edge (155+) and Google Chrome (153.0.8010.53) administrative templates, plus new Cloud PC device reset settings. Review the updated Edge policy text fo"
+  },
+  {
+    "title": "Automate tasks with local actions on Android Enterprise devices",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Intune now supports local automation triggers on Android Enterprise fully managed and dedicated devices, covering device restarts, Managed Home Screen sign-in/sign-out, power connection changes, and scheduled time"
+  },
+  {
+    "title": "Require Google Workspace authentication on Android Enterprise devices",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Intune now supports requiring managed Google Account authentication on personally owned Android Enterprise work profile devices, extending a capability previously limited to corporate-owned fully managed and work "
+  },
+  {
+    "title": "Increase Intune management agent check-ins on macOS",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - macOS Intune agent check-in frequency changes significantly: newly enrolled devices check every three minutes for 15 minutes, then every 15 minutes for two hours, then settle into a new standard cadence of approxi"
+  },
+  {
+    "title": "Maintenance windows for operating system and driver updates on Windows",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Intune now supports configuring maintenance windows specifically for OS and driver updates on Windows devices, with controls for start date, time, duration, and repeat schedule. Create profiles under Devices > Man"
+  },
+  {
+    "title": "Configure evaluation frequency for custom compliance scripts on Windows and macOS",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Custom compliance script evaluation intervals on Windows and macOS can now be set to 15 minutes, 30 minutes, or one to eight hours, replacing a fixed schedule. Tune this to match your compliance SLA requirements; "
+  },
+  {
+    "title": "CIS benchmark auditing for Windows 11 devices (public preview)",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview] - Intune Advanced Analytics subscribers can now create and assign CIS benchmark audit profiles for Windows 11, review per-setting gap results, and export findings. This is read-only and does not remediate, but "
+  },
+  {
+    "title": "Support tip: Why Windows driver recommendations may vary between deployment rings",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Windows Update evaluates driver updates independently per deployment ring, which means the same driver can appear as \"Recommended\" in one ring and \"Other\" in another, change classification over time, or not appear"
+  },
+  {
+    "title": "Granular controls for multiple updates in Windows Autopatch",
+    "category": "Endpoint & Device Management",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview] - A single Autopatch quality update policy can now independently manage Windows quality updates, supported .NET Framework updates, and quick machine recovery updates, each with its own automatic or manual appro"
+  },
+  {
+    "title": "Released: November 2026 Exchange Server Security Updates",
+    "category": "Collaboration & Productivity",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Microsoft has released November 2026 Security Updates for Exchange Server Subscription Edition RTM. Exchange Online customers are already protected and need no action, but any org still running Exchange Server on-"
+  },
+  {
+    "title": "Where do I govern my Copilot Studio agents?",
+    "category": "AI & Copilot",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Copilot Studio agents can now carry their own M365 account, directory profile, org-chart position, and Teams/Outlook presence via agent user accounts, making them a first-class actor in your tenant that requires ",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "Act faster: hourly alerts for your critical flows, apps, and agents",
+    "category": "AI & Copilot",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Power Platform Monitor now checks supported health metrics hourly instead of daily, giving teams much faster signal on reliability and performance issues across Power Apps, Power Automate flows, and agents. Update"
+  },
+  {
+    "title": "What's new in Power Platform: October/November 2026 feature update",
+    "category": "AI & Copilot",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview] - The October/November Power Platform update includes a new modern attachments control for Power Apps in public preview, offering a Fluent file experience that works inside forms or as a standalone canvas contr"
+  },
+  {
+    "title": "New Authentication Governance Controls in Power Pages",
+    "category": "AI & Copilot",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview]  - PPAC admins can now individually allow or block authentication protocols, specific OAuth 2.0 identity providers, and local authentication for Power Pages sites in public preview. This directly addresses a go",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "Expanded identity activity visibility in advanced hunting",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Defender XDR advanced hunting now includes additional Active Directory activity: DRSR and GPO update events in IdentityDirectoryEvents, LDAP search and LDAP ping events in IdentityQueryEvents, and Kerberos and LD",
+    "emphasis": [
+      "Identity"
+    ]
+  },
+  {
+    "title": "(Preview) Alert grouping for custom detection rules",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview] - Starting November 17, 2026, custom detection rules in Defender XDR can be configured to group related alerts from the same rule into a single incident using a time frame and matching criteria. This reduces in"
+  },
+  {
+    "title": "(Preview) Protect AI assets from trusted-identity attacks",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview]  - Defender XDR now includes detections and automated disruption for device code phishing scenarios targeting GitHub Copilot CLI as part of its security-for-AI coverage. Connect the GitHub connector at the Ente",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "(Preview) New navigation in the Microsoft Defender portal",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview] - Microsoft Sentinel pages are being reorganized into the main Defender portal navigation, integrating them into the areas where they're contextually used rather than a separate Sentinel section. If your org is"
+  },
+  {
+    "title": "(Preview) Entity mapping enhancements for custom detection rules",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[Preview] - Custom detection rules in Defender XDR can now map up to four identifiers per entity and support adding the same entity type more than once, with expanded identifier support for Impacted Assets and Related Ev"
+  },
+  {
+    "title": "Secure Data at Microsoft Ignite 2026: Plan Your Experience",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Microsoft Purview's Ignite 2026 session guide covers data security as AI adoption scales, with sessions on data readiness, management, and protection for Copilot and AI agent workloads. Ignite runs November 17-20 "
+  },
+  {
+    "title": "SCKit abuses ScreenConnect to deploy remote access and target technician sessions",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - The SCKit threat cluster is abusing ScreenConnect to establish unauthorized remote access and specifically targeting technician sessions, turning your own support tooling into an attack vector. Review the attack ",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Plan your Ignite agenda: Securing agentic insiders at scale",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Microsoft Security's Ignite sessions focus on Project Perception's expanded capabilities for governing AI agents as a new insider risk category, covering agents that can be manipulated or compromised while operat",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "A next step in the evolution of the Microsoft Data Governance strategy",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Microsoft has announced that data governance is moving natively into Microsoft Fabric, with the OneLake catalog becoming the unified governance layer across the enterprise data estate. Organizations with standalo",
+    "emphasis": [
+      "Data"
+    ]
+  },
+  {
+    "title": "Trained to betray: How post-training supply chain attacks hijack coding agents",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Microsoft's AI Red Team published research showing that poisoned datasets or model checkpoints can trigger remote code execution and other malicious behavior in coding agents by modifying fewer than ten neurons i",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "The global socket: how threat actors are weaponizing GSocket for stealthy C2",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Threat actors are deploying GSocket on compromised Linux servers to maintain encrypted C2 channels after the original vulnerability is patched, creating a persistent backdoor that survives remediation. Review the",
+    "emphasis": [
+      "SecOps"
+    ]
+  },
+  {
+    "title": "Lessons from 59 Linux Kernel Bug Reports",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA] - Microsoft's FORGE Lab used AI-assisted research (MDASH) to generate 59 upstream Linux kernel bug reports, resulting in 33 CVEs and 38 merged fixes, including eight demonstrated local root privilege-escalation expl"
+  },
+  {
+    "title": "Detecting sleeper agents hiding in AI model neurons",
+    "category": "Security & Compliance",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "[GA]  - Microsoft Research found that an AI agent model can be turned into a sleeper agent by editing fewer than ten neurons to inject a payload, but also that frontier agents can detect these anomalous weight edits. Thi",
+    "emphasis": [
+      "AI"
+    ]
+  },
+  {
+    "title": "Released: November 2026 Exchange Server Security Updates",
+    "category": "Action Required",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "Severity: not yet rated by MSRC. Exchange Server on-premises administrators must apply the November 2026 Security Updates for Exchange Server Subscription Edition RTM. Exchange Online customers are already protected and "
+  },
+  {
+    "title": "SCKit ScreenConnect abuse: audit and restrict active sessions",
+    "category": "Action Required",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "Active threat campaign. If ScreenConnect is deployed in your environment, audit all active sessions now, restrict access to known-good endpoints, and validate that no unauthorized agents are present. Review the Microsoft"
+  },
+  {
+    "title": "GSocket C2 persistence on Linux: update hunting queries",
+    "category": "Action Required",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "Active threat technique. Add GSocket to your Linux-focused threat hunting queries and verify that your Linux EDR coverage is current. Threat actors are using this specifically to maintain access after initial vulnerabili"
+  },
+  {
+    "title": "Linux kernel privilege-escalation fixes now upstream: verify patch cadence",
+    "category": "Action Required",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "No specific deadline, but 33 CVEs and eight demonstrated local root exploits now have upstream fixes. Confirm your Linux kernel patching cadence is pulling these fixes, particularly for server workloads where local privi"
+  },
+  {
+    "title": "Power Pages authentication governance controls in preview: audit current auth posture",
+    "category": "Action Required",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "No hard deadline, but preview controls are available now. Inventory your Power Pages sites and their current authentication configurations; use the new PPAC controls to enforce a minimal-provider policy before these sett"
+  },
+  {
+    "title": "Copilot Studio agent user accounts: assign a governance owner",
+    "category": "Action Required",
+    "date": "2026-11-17",
+    "url": "/posts/2026-11-17/",
+    "snippet": "No hard deadline, but agent user accounts are GA. Agents with their own M365 identities are already operating in tenants where makers have enabled this. Assign an owner for agent governance now, review the linked guide, "
+  },
+  {
     "title": "Microsoft Copilot harness in Copilot Studio now GA for production agents:",
     "category": "Top 5",
     "date": "2026-11-10",
