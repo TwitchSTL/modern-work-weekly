@@ -295,6 +295,13 @@ SOURCES = [
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=Microsoft365CopilotBlog",
         "selector": "h2, h3, p",
+        # Added 2026-11-28: the dated Learn changelog alongside the blog.
+        # Needs its own parser (see _parse_release_notes_page in
+        # scraper.py): releases are full-date h2s with h3 product-area
+        # dividers, and only Copilot/agent/AI items are kept (max 10).
+        "whatsnew_html": True,
+        "whatsnew_mode": "release_notes",
+        "whatsnew_url": "https://learn.microsoft.com/en-us/copilot/microsoft-365/release-notes",
     },
     {
         "name": "Copilot Studio",
@@ -305,6 +312,12 @@ SOURCES = [
         "cadence": "monthly",
         "rss": "https://techcommunity.microsoft.com/t5/s/gxcuf89792/rss/board?board.id=copilot-studio-blog",
         "selector": "h2, h3, p",
+        # Added 2026-11-28: Learn "What's new in Copilot Studio". Month
+        # headings are h3 under a non-dated h2, so the generic whats-new
+        # parser finds nothing; see _parse_month_bullets_page in scraper.py.
+        "whatsnew_html": True,
+        "whatsnew_mode": "month_bullets",
+        "whatsnew_url": "https://learn.microsoft.com/en-us/microsoft-copilot-studio/whats-new",
     },
     {
         "name": "Power Platform",
@@ -672,6 +685,16 @@ CLASSIFICATION_KEYWORDS = {
         # unambiguous Dataverse/Power Pages/Dynamics 365 content with zero
         # prior keyword coverage across the full archive.
         "dataverse", "power pages", "dynamics 365",
+        # Added 2026-11-28: newer Copilot/agent product vocabulary that was
+        # falling through to DEFAULT_CATEGORY or landing in the wrong pillar
+        # (e.g. "Copilot Chat in Outlook" matched Collaboration via "outlook").
+        # Microsoft-specific phrases only; Foundry intentionally left out
+        # (Azure platform, not Modern Work).
+        "copilot chat", "copilot agent", "agent builder", "declarative agent",
+        "copilot control system", "copilot credits", "copilot connector",
+        "model context protocol", "ai governance", "responsible ai",
+        "dspm for ai", "agent mode", "work iq", "researcher agent",
+        "analyst agent", "ai builder", "power fx",
     ],
     "Employee Experience": [
         # viva/yammer moved from prior "Apps"; rest are new additions

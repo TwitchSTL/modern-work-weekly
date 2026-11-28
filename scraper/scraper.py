@@ -22,7 +22,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 
 import feedparser
 import requests
@@ -515,6 +515,147 @@ def resolve_item_url(base_url: str, href: str | None) -> str:
     return resolved.replace("/intune/intune-service/", "/intune/")
 
 
+_FULL_DATE_RE = re.compile(r"^([A-Z][a-z]+)\s+(\d{1,2}),\s+(\d{4})$")
+# Release-notes items are kept only when their area/title/description is
+# about Copilot, agents or AI -- the page also lists plain Outlook/Teams/
+# admin-center changes that other sources already cover and that would be
+# misfiled if pinned to AI & Copilot.
+_AI_RELEVANT_RE = re.compile(r"\b(copilot|agents?|ai|mcp)\b", re.IGNORECASE)
+
+
+def _parse_full_date(heading_text: str) -> str | None:
+    """'November 17, 2026' -> '2026-11-17'. None if the heading isn't a full date."""
+    m = _FULL_DATE_RE.match(heading_text.strip())
+    if not m:
+        return None
+    month, day, year = m.groups()
+    try:
+        return datetime.strptime(f"{month} {day} {year}", "%B %d %Y").date().isoformat()
+    except ValueError:
+        return None
+
+
+def _parse_release_notes_page(main, source: dict, page_url: str) -> list[dict]:
+    """Parse learn.microsoft.com/.../copilot/microsoft-365/release-notes.
+
+    Layout (confirmed against a saved copy of the live page, 2026-11-28):
+    one <h2> per release dated with a full date ('November 17, 2026'),
+    newest first; inside each, <h3> product-area dividers (Outlook, Teams,
+    Microsoft 365 admin center...) each followed by one or more <ul>. Each
+    top-level <li> is ONE feature: <p><strong>Title</strong> [Platform]</p>,
+    a description <p>, then 'What changed / Why / Try this' sub-blocks
+    (including a nested <ul>, which is why only top-level <li> are taken).
+    The generic fetch_whatsnew() path would treat the <h3> area names as the
+    items and miss the real features, so this page needs its own mode.
+
+    Only the single most recent release is parsed (not two like the generic
+    path): the page is ~1 MB and a release carries dozens of features, so a
+    second section would flood the first scrape. MAX_ITEMS caps the rest.
+    Link preference: a Learn/support link inside the item, else its
+    Microsoft 365 Roadmap link, else the page itself with a text-fragment
+    (#:~:text=<title>) so items without their own link still get a unique
+    URL -- run_scraper()'s URL dedup would otherwise drop all but one.
+    Items are filtered to Copilot/agent/AI topics (_AI_RELEVANT_RE) and
+    de-duplicated by title (the same feature can list several roadmap IDs).
+    """
+    MAX_ITEMS = 10
+    items: list[dict] = []
+    seen_titles: set[str] = set()
+    for h2 in main.find_all("h2"):
+        section_date = _parse_full_date(h2.get_text(" ", strip=True))
+        if not section_date:
+            continue
+        area = ""
+        for sib in h2.find_next_siblings():
+            if sib.name == "h2":
+                break
+            if sib.name == "h3":
+                area = sib.get_text(" ", strip=True)
+                continue
+            if sib.name != "ul":
+                continue
+            for li in sib.find_all("li", recursive=False):
+                first_p = li.find("p")
+                strong = first_p.find("strong") if first_p else None
+                title = strong.get_text(" ", strip=True) if strong else ""
+                if len(title) < 8:
+                    continue
+                ps = li.find_all("p", recursive=False)
+                desc = ps[1].get_text(" ", strip=True) if len(ps) > 1 else ""
+                if not _AI_RELEVANT_RE.search(f"{area} {title} {desc}"):
+                    continue
+                if title.lower() in seen_titles:
+                    continue
+                seen_titles.add(title.lower())
+                body = (f"{area}: {desc}" if area else desc)[:800]
+                learn = roadmap = None
+                for a in li.find_all("a", href=True):
+                    href = a["href"]
+                    if "roadmap" in href.lower() and not roadmap:
+                        roadmap = href
+                    elif ("learn.microsoft.com" in href or href.startswith("/")
+                          or "support.microsoft.com" in href) and not learn:
+                        learn = href
+                items.append({
+                    "source": source["name"],
+                    "title": title,
+                    "body": body,
+                    "url": (resolve_item_url(page_url, learn or roadmap) if (learn or roadmap)
+                            else f"{page_url}#:~:text={quote(title[:60])}"),
+                    "date": section_date,
+                })
+                if len(items) >= MAX_ITEMS:
+                    return items
+        break  # only the most recent dated release
+    return items
+
+
+def _parse_month_bullets_page(main, source: dict, page_url: str, page_date: str) -> list[dict]:
+    """Parse learn.microsoft.com/.../microsoft-copilot-studio/whats-new.
+
+    Layout (confirmed against a saved copy of the live page, 2026-11-28):
+    month headings are <h3> ('October 2026'), newest first, sitting under a
+    non-dated <h2> ('Notable changes') — so the generic path, which only
+    looks for dated <h2> sections, finds nothing and returns []. Each month
+    is followed by a <ul> of bullets with NO per-item titles: just a
+    leading status tag like '(Preview)' / '(General availability)' and a
+    sentence with inline Learn links. The title is built from the first
+    sentence of the bullet (kept short), the full text goes in the body.
+    Only the most recent month is parsed; it is dated with the page's own
+    ms.date meta tag, same honest-freshness-proxy convention as
+    _parse_section_date() uses for the other month-granular pages.
+    """
+    MAX_ITEMS = 20
+    items: list[dict] = []
+    for h3 in main.find_all("h3"):
+        section_date = _parse_section_date(h3.get_text(" ", strip=True), page_date, True)
+        if not section_date:
+            continue
+        for sib in h3.find_next_siblings():
+            if sib.name in ("h2", "h3"):
+                break
+            if sib.name not in ("ul", "ol"):
+                continue
+            for li in sib.find_all("li", recursive=False):
+                text = li.get_text(" ", strip=True)
+                if len(text) < 15:
+                    continue
+                first = re.split(r"(?<=[.!?])\s", text, maxsplit=1)[0]
+                title = first if len(first) <= 110 else first[:107].rsplit(" ", 1)[0] + "..."
+                link = li.find("a", href=True)
+                items.append({
+                    "source": source["name"],
+                    "title": title,
+                    "body": text[:800],
+                    "url": resolve_item_url(page_url, link["href"] if link else None),
+                    "date": section_date,
+                })
+                if len(items) >= MAX_ITEMS:
+                    return items
+        break  # only the most recent month
+    return items
+
+
 def fetch_whatsnew(source: dict) -> list[dict]:
     """Supplemental fetch for learn.microsoft.com 'What's new' changelog pages.
 
@@ -557,7 +698,8 @@ def fetch_whatsnew(source: dict) -> list[dict]:
     """
     try:
         log.info(f"  Whats-new HTML → {source['name']}")
-        resp = SESSION.get(source["url"], timeout=15)
+        page_url = source.get("whatsnew_url") or source["url"]
+        resp = SESSION.get(page_url, timeout=15)
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, "html.parser")
 
@@ -571,6 +713,19 @@ def fetch_whatsnew(source: dict) -> list[dict]:
         article = soup.find("main") or soup.find("article") or soup.body
         if not article:
             return []
+
+        # Opt-in page-specific parsers (see their docstrings). Sources
+        # without a 'whatsnew_mode' key take the generic path below,
+        # unchanged.
+        mode = source.get("whatsnew_mode")
+        if mode == "release_notes":
+            items = _parse_release_notes_page(article, source, page_url)
+            log.info(f"    → {len(items)} items from release-notes page")
+            return items
+        if mode == "month_bullets":
+            items = _parse_month_bullets_page(article, source, page_url, page_date)
+            log.info(f"    → {len(items)} items from month-bullets page")
+            return items
 
         dated_sections = []  # (h2_tag, date_str)
         for h2 in article.find_all("h2"):
@@ -623,7 +778,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                     # which a leading-slash-only check silently leaves
                     # unresolved. urljoin handles absolute, root-relative,
                     # document-relative, and fragment-only hrefs correctly.
-                    item_url = resolve_item_url(source["url"], link.get("href") if link else None)
+                    item_url = resolve_item_url(page_url, link.get("href") if link else None)
                     items.append({
                         "source": source["name"],
                         "title": title,
@@ -652,7 +807,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         if len(title) < 8:
                             continue
                         link = row.find("a")
-                        item_url = resolve_item_url(source["url"], link.get("href") if link else None)
+                        item_url = resolve_item_url(page_url, link.get("href") if link else None)
                         items.append({
                             "source": source["name"],
                             "title": title,
@@ -677,7 +832,7 @@ def fetch_whatsnew(source: dict) -> list[dict]:
                         continue
                     title = text.split(":", 1)[0].strip(" *")[:120] if ":" in text[:80] else text[:100]
                     link = li.find("a")
-                    item_url = resolve_item_url(source["url"], link.get("href") if link else None)
+                    item_url = resolve_item_url(page_url, link.get("href") if link else None)
                     items.append({
                         "source": source["name"],
                         "title": title,
