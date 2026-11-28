@@ -1676,7 +1676,10 @@ details[open] .toc-label::before { content: "▼ "; }
    content down. */
 @media (max-width: 1060px) {
   .post-layout {
-    grid-template-columns: 1fr;
+    /* minmax(0,1fr), not 1fr: a bare 1fr column won't shrink below its widest
+       content, which blew post pages out to ~1300px on phones and made the
+       browser zoom the whole page out. */
+    grid-template-columns: minmax(0, 1fr);
   }
   .post-sidebar {
     display: block;
@@ -1695,7 +1698,7 @@ details[open] .toc-label::before { content: "▼ "; }
   .post-sidebar-accordion {
     margin-bottom: 0.75rem;
   }
-  .post-sidebar-accordion summary {
+  .post-sidebar-accordion > summary {
     cursor: pointer;
     list-style: none;
     padding: 0.6rem 0.875rem;
@@ -1708,17 +1711,17 @@ details[open] .toc-label::before { content: "▼ "; }
     letter-spacing: 0.08em;
     color: var(--color-text-muted);
   }
-  .post-sidebar-accordion summary::-webkit-details-marker { display: none; }
-  .post-sidebar-accordion summary::after {
+  .post-sidebar-accordion > summary::-webkit-details-marker { display: none; }
+  .post-sidebar-accordion > summary::after {
     content: "+";
     float: right;
     font-size: 0.9rem;
   }
-  .post-sidebar-accordion[open] summary {
+  .post-sidebar-accordion[open] > summary {
     border-radius: 8px 8px 0 0;
     border-bottom: none;
   }
-  .post-sidebar-accordion[open] summary::after {
+  .post-sidebar-accordion[open] > summary::after {
     content: "\2212";
   }
   /* Panel(s) inside the accordion lose their own top rounding/margin so
@@ -1736,7 +1739,7 @@ details[open] .toc-label::before { content: "▼ "; }
    the "open" attribute is always set by the template and this hides the
    toggle control that would let it close. */
 @media (min-width: 1061px) {
-  .post-sidebar-accordion summary {
+  .post-sidebar-accordion > summary {
     display: none;
   }
 }
@@ -3885,10 +3888,16 @@ details[open] .toc-label::before { content: "▼ "; }
 
 /* Comfortable tap targets for accordion toggles on touch screens. */
 @media (pointer: coarse) {
-  .post-sidebar-accordion summary {
+  .post-sidebar-accordion > summary {
     min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+}
+
+/* Phones: root font bump so the many sub-0.8rem labels, tags and badges stay
+   readable (rem-based, so everything scales together). */
+@media (max-width: 700px) {
+  html { font-size: 19px; }
 }
